@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Journal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #141210;
+    --surface: #1e1b18;
+    --border: #2e2a26;
+    --accent: #c84b2f;
+    --accent-hover: #e05535;
+    --text: #e8e0d4;
+    --muted: #6e6560;
+    --success: #4a9b6f;
+    --warning: #c8962f;
+    --input-bg: #0f0d0b;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘DM Mono’, monospace;
+font-weight: 300;
+font-size: 0.82rem;
+min-height: 100vh;
+}
+
+/* Layout */
+.shell {
+display: grid;
+grid-template-columns: 260px 1fr;
+min-height: 100vh;
+}
+
+/* Sidebar */
+aside {
+background: var(–surface);
+border-right: 1px solid var(–border);
+padding: 2rem 1.5rem;
+display: flex;
+flex-direction: column;
+gap: 2rem;
+}
+
+.logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.3rem;
+color: var(–text);
+letter-spacing: -0.02em;
+}
+
+.logo span {
+display: block;
+font-family: ‘DM Mono’, monospace;
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–accent);
+margin-top: 0.2rem;
+}
+
+/* Config section */
+.config-section h3 {
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 1rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid var(–border);
+}
+
+.field {
+margin-bottom: 0.75rem;
+}
+
+label {
+display: block;
+font-size: 0.65rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 0.3rem;
+}
+
+input, textarea, select {
+width: 100%;
+background: var(–input-bg);
+border: 1px solid var(–border);
+color: var(–text);
+font-family: ‘DM Mono’, monospace;
+font-size: 0.78rem;
+font-weight: 300;
+padding: 0.5rem 0.65rem;
+border-radius: 3px;
+outline: none;
+transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+border-color: var(–accent);
+}
+
+input[type=“password”] { letter-spacing: 0.05em; }
+
+.save-config {
+width: 100%;
+background: transparent;
+border: 1px solid var(–border);
+color: var(–muted);
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 0.5rem;
+cursor: pointer;
+border-radius: 3px;
+transition: all 0.2s;
+margin-top: 0.5rem;
+}
+
+.save-config:hover {
+border-color: var(–text);
+color: var(–text);
+}
+
+/* Post list */
+.posts-nav h3 {
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 1rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid var(–border);
+}
+
+.post-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 0.4rem;
+max-height: 300px;
+overflow-y: auto;
+}
+
+.post-list li {
+padding: 0.5rem 0.6rem;
+border-radius: 3px;
+cursor: pointer;
+border: 1px solid transparent;
+transition: all 0.15s;
+line-height: 1.3;
+}
+
+.post-list li:hover {
+background: var(–bg);
+border-color: var(–border);
+}
+
+.post-list li.active {
+background: var(–bg);
+border-color: var(–accent);
+color: var(–accent);
+}
+
+.post-list .p-title {
+display: block;
+font-size: 0.75rem;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.post-list .p-date {
+display: block;
+font-size: 0.62rem;
+color: var(–muted);
+margin-top: 0.1rem;
+}
+
+/* Main content area */
+main {
+padding: 2rem 2.5rem;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.toolbar {
+display: flex;
+align-items: center;
+gap: 1rem;
+justify-content: space-between;
+padding-bottom: 1.5rem;
+border-bottom: 1px solid var(–border);
+}
+
+.toolbar-left { display: flex; gap: 0.75rem; }
+
+.btn {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.68rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 0.5rem 1rem;
+border-radius: 3px;
+cursor: pointer;
+border: 1px solid;
+transition: all 0.15s;
+}
+
+.btn-primary {
+background: var(–accent);
+border-color: var(–accent);
+color: white;
+}
+
+.btn-primary:hover { background: var(–accent-hover); border-color: var(–accent-hover); }
+
+.btn-ghost {
+background: transparent;
+border-color: var(–border);
+color: var(–muted);
+}
+
+.btn-ghost:hover { border-color: var(–text); color: var(–text); }
+
+.btn-danger {
+background: transparent;
+border-color: #6e2010;
+color: #c84b2f;
+}
+
+.btn-danger:hover { background: #6e2010; color: white; }
+
+/* Editor */
+.editor-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.5rem;
+}
+
+.editor-col { display: flex; flex-direction: column; gap: 1rem; }
+
+.field-group {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 1.25rem;
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+}
+
+.field-group h4 {
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+padding-bottom: 0.5rem;
+border-bottom: 1px solid var(–border);
+}
+
+textarea {
+resize: vertical;
+min-height: 120px;
+line-height: 1.6;
+}
+
+#body-input { min-height: 280px; }
+
+/* Image preview */
+.img-preview {
+width: 100%;
+max-height: 200px;
+object-fit: cover;
+border-radius: 3px;
+border: 1px solid var(–border);
+display: none;
+}
+
+.img-preview.visible { display: block; }
+
+/* Status bar */
+.status-bar {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 3px;
+padding: 0.75rem 1rem;
+font-size: 0.7rem;
+letter-spacing: 0.05em;
+min-height: 2.5rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.status-bar.idle { color: var(–muted); }
+.status-bar.loading { color: var(–warning); }
+.status-bar.success { color: var(–success); }
+.status-bar.error { color: var(–accent); }
+
+.status-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: currentColor;
+flex-shrink: 0;
+}
+
+.status-bar.loading .status-dot {
+animation: pulse 0.8s ease infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 0.2; }
+50% { opacity: 1; }
+}
+
+/* Site settings */
+.site-settings {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 1.25rem;
+}
+
+.site-settings h4 {
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 1rem;
+padding-bottom: 0.5rem;
+border-bottom: 1px solid var(–border);
+}
+
+.site-settings-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.75rem;
+}
+
+@media (max-width: 900px) {
+.shell { grid-template-columns: 1fr; }
+aside { border-right: none; border-bottom: 1px solid var(–border); }
+.editor-grid { grid-template-columns: 1fr; }
+.site-settings-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- Sidebar -->
+
+  <aside>
+    <div class="logo">
+      Journal
+      <span>Admin Panel</span>
+    </div>
+
+```
+<!-- GitHub Config -->
+<div class="config-section">
+  <h3>GitHub Config</h3>
+  <div class="field">
+    <label>Owner (username)</label>
+    <input type="text" id="gh-owner" placeholder="your-username">
+  </div>
+  <div class="field">
+    <label>Repository</label>
+    <input type="text" id="gh-repo" placeholder="your-repo-name">
+  </div>
+  <div class="field">
+    <label>Branch</label>
+    <input type="text" id="gh-branch" value="main">
+  </div>
+  <div class="field">
+    <label>Personal Access Token</label>
+    <input type="password" id="gh-token" placeholder="ghp_···">
+  </div>
+  <button class="save-config" onclick="saveConfig()">Save to localStorage</button>
+</div>
+
+<!-- Post list -->
+<div class="posts-nav">
+  <h3>Posts (<span id="count">0</span>)</h3>
+  <ul class="post-list" id="post-list"></ul>
+</div>
+```
+
+  </aside>
+
+  <!-- Main editor -->
+
+  <main>
+
+```
+<div class="toolbar">
+  <div class="toolbar-left">
+    <button class="btn btn-primary" onclick="newPost()">+ New Post</button>
+    <button class="btn btn-ghost" onclick="loadFromGitHub()">↓ Pull from GitHub</button>
+    <button class="btn btn-primary" onclick="publishToGitHub()">↑ Publish</button>
+  </div>
+  <button class="btn btn-danger" onclick="deletePost()">Delete Post</button>
+</div>
+
+<!-- Site settings -->
+<div class="site-settings">
+  <h4>Site Settings</h4>
+  <div class="site-settings-grid">
+    <div class="field">
+      <label>Site Title</label>
+      <input type="text" id="site-title" placeholder="My Journal">
+    </div>
+    <div class="field">
+      <label>Subtitle</label>
+      <input type="text" id="site-subtitle" placeholder="Notes & Images">
+    </div>
+  </div>
+</div>
+
+<!-- Post editor -->
+<div class="editor-grid">
+  <div class="editor-col">
+    <div class="field-group">
+      <h4>Post Details</h4>
+      <div class="field">
+        <label>Title</label>
+        <input type="text" id="title-input" placeholder="Post title">
+      </div>
+      <div class="field">
+        <label>Tag / Category</label>
+        <input type="text" id="tag-input" placeholder="e.g. design, photo, note">
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="date" id="date-input">
+      </div>
+    </div>
+    <div class="field-group">
+      <h4>Image</h4>
+      <div class="field">
+        <label>Image URL</label>
+        <input type="url" id="image-input" placeholder="https://..." oninput="previewImage()">
+      </div>
+      <img id="img-preview" class="img-preview" alt="preview">
+    </div>
+  </div>
+
+  <div class="editor-col">
+    <div class="field-group" style="flex:1">
+      <h4>Body Text</h4>
+      <textarea id="body-input" placeholder="Write your post here. Each line break becomes a new paragraph."></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="status-bar idle" id="status">
+  <span class="status-dot"></span>
+  <span id="status-text">Ready. Pull from GitHub to start, or create a new post.</span>
+</div>
+```
+
+  </main>
+</div>
+
+<script>
+// ─── State ─────────────────────────────────────────────────────────────────
+let db = { site: { title: 'Journal', subtitle: 'Notes & Images' }, posts: [] };
+let currentId = null;
+let fileSha = null;
+
+// ─── Config ────────────────────────────────────────────────────────────────
+function loadConfig() {
+  const cfg = JSON.parse(localStorage.getItem('journal-cfg') || '{}');
+  if (cfg.owner) document.getElementById('gh-owner').value = cfg.owner;
+  if (cfg.repo)  document.getElementById('gh-repo').value  = cfg.repo;
+  if (cfg.branch) document.getElementById('gh-branch').value = cfg.branch;
+  if (cfg.token) document.getElementById('gh-token').value = cfg.token;
+}
+
+function saveConfig() {
+  const cfg = {
+    owner:  document.getElementById('gh-owner').value.trim(),
+    repo:   document.getElementById('gh-repo').value.trim(),
+    branch: document.getElementById('gh-branch').value.trim() || 'main',
+    token:  document.getElementById('gh-token').value.trim(),
+  };
+  localStorage.setItem('journal-cfg', JSON.stringify(cfg));
+  setStatus('Config saved to localStorage', 'success');
+}
+
+function getConfig() {
+  return JSON.parse(localStorage.getItem('journal-cfg') || '{}');
+}
+
+// ─── Status ────────────────────────────────────────────────────────────────
+function setStatus(msg, type = 'idle') {
+  const bar = document.getElementById('status');
+  bar.className = `status-bar ${type}`;
+  document.getElementById('status-text').textContent = msg;
+}
+
+// ─── GitHub API ────────────────────────────────────────────────────────────
+async function githubRequest(method, path, body) {
+  const cfg = getConfig();
+  if (!cfg.token || !cfg.owner || !cfg.repo) {
+    throw new Error('GitHub config is incomplete. Fill in Owner, Repo, Branch, Token and save.');
+  }
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
+  const res = await fetch(url, {
+    method,
+    headers: {
+      Authorization: `token ${cfg.token}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github.v3+json',
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `HTTP ${res.status}`);
+  }
+  return res.json();
+}
+
+async function loadFromGitHub() {
+  setStatus('Fetching posts.json from GitHub…', 'loading');
+  try {
+    const cfg = getConfig();
+    const branch = cfg.branch || 'main';
+    const data = await githubRequest('GET', `posts.json?ref=${branch}`);
+    fileSha = data.sha;
+    const decoded = atob(data.content.replace(/\n/g, ''));
+    db = JSON.parse(decoded);
+    db.site = db.site || { title: 'Journal', subtitle: '' };
+    db.posts = db.posts || [];
+    syncSiteInputs();
+    renderPostList();
+    setStatus(`Loaded ${db.posts.length} posts from GitHub.`, 'success');
+  } catch (e) {
+    if (e.message.includes('Not Found') || e.message.includes('404')) {
+      // File doesn't exist yet — start fresh
+      fileSha = null;
+      db = { site: { title: 'Journal', subtitle: '' }, posts: [] };
+      renderPostList();
+      setStatus('posts.json not found on GitHub — will create it on first publish.', 'idle');
+    } else {
+      setStatus('Error: ' + e.message, 'error');
+    }
+  }
+}
+
+async function publishToGitHub() {
+  collectCurrentPost();
+  syncSiteFromInputs();
+  setStatus('Publishing to GitHub…', 'loading');
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(db, null, 2))));
+    const body = {
+      message: `Update posts.json — ${new Date().toISOString().slice(0,10)}`,
+      content,
+    };
+    if (fileSha) body.sha = fileSha;
+    const cfg = getConfig();
+    if (cfg.branch) body.branch = cfg.branch;
+    const result = await githubRequest('PUT', 'posts.json', body);
+    fileSha = result.content.sha;
+    setStatus('Published! GitHub Pages will update in ~30 seconds.', 'success');
+  } catch (e) {
+    setStatus('Error: ' + e.message, 'error');
+  }
+}
+
+// ─── Site settings ─────────────────────────────────────────────────────────
+function syncSiteInputs() {
+  document.getElementById('site-title').value    = db.site.title || '';
+  document.getElementById('site-subtitle').value = db.site.subtitle || '';
+}
+
+function syncSiteFromInputs() {
+  db.site.title    = document.getElementById('site-title').value.trim();
+  db.site.subtitle = document.getElementById('site-subtitle').value.trim();
+}
+
+// ─── Post list ─────────────────────────────────────────────────────────────
+function renderPostList() {
+  const ul = document.getElementById('post-list');
+  document.getElementById('count').textContent = db.posts.length;
+
+  if (!db.posts.length) {
+    ul.innerHTML = '<li style="color:var(--muted);font-size:0.7rem;padding:0.4rem 0.6rem">No posts yet</li>';
+    return;
+  }
+
+  const sorted = [...db.posts].sort((a,b) => new Date(b.date) - new Date(a.date));
+  ul.innerHTML = sorted.map(p => `
+    <li class="${p.id === currentId ? 'active' : ''}" onclick="selectPost('${p.id}')">
+      <span class="p-title">${p.title || '(untitled)'}</span>
+      <span class="p-date">${p.date || ''}</span>
+    </li>
+  `).join('');
+}
+
+// ─── Editor ────────────────────────────────────────────────────────────────
+function today() {
+  return new Date().toISOString().slice(0,10);
+}
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+}
+
+function newPost() {
+  collectCurrentPost();
+  const post = { id: uid(), title: '', tag: '', date: today(), image: '', body: '' };
+  db.posts.push(post);
+  currentId = post.id;
+  fillEditor(post);
+  renderPostList();
+  setStatus('New post created. Fill in details and publish.', 'idle');
+}
+
+function selectPost(id) {
+  collectCurrentPost();
+  currentId = id;
+  const post = db.posts.find(p => p.id === id);
+  if (post) fillEditor(post);
+  renderPostList();
+}
+
+function fillEditor(post) {
+  document.getElementById('title-input').value = post.title || '';
+  document.getElementById('tag-input').value   = post.tag   || '';
+  document.getElementById('date-input').value  = post.date  || today();
+  document.getElementById('image-input').value = post.image || '';
+  document.getElementById('body-input').value  = post.body  || '';
+  previewImage();
+}
+
+function collectCurrentPost() {
+  if (!currentId) return;
+  const post = db.posts.find(p => p.id === currentId);
+  if (!post) return;
+  post.title = document.getElementById('title-input').value.trim();
+  post.tag   = document.getElementById('tag-input').value.trim();
+  post.date  = document.getElementById('date-input').value;
+  post.image = document.getElementById('image-input').value.trim();
+  post.body  = document.getElementById('body-input').value.trim();
+}
+
+function deletePost() {
+  if (!currentId) { setStatus('No post selected.', 'error'); return; }
+  const post = db.posts.find(p => p.id === currentId);
+  const title = post ? (post.title || '(untitled)') : '';
+  if (!confirm(`Delete "${title}"?`)) return;
+  db.posts = db.posts.filter(p => p.id !== currentId);
+  currentId = null;
+  fillEditor({ title:'', tag:'', date: today(), image:'', body:'' });
+  renderPostList();
+  setStatus('Post deleted. Publish to save changes.', 'idle');
+}
+
+function previewImage() {
+  const url = document.getElementById('image-input').value.trim();
+  const img = document.getElementById('img-preview');
+  if (url) {
+    img.src = url;
+    img.classList.add('visible');
+  } else {
+    img.classList.remove('visible');
+  }
+}
+
+// ─── Init ──────────────────────────────────────────────────────────────────
+loadConfig();
+renderPostList();
+syncSiteInputs();
+</script>
+
+</body>
+</html>
