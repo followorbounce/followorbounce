@@ -1,0 +1,16 @@
+{
+  "site": {
+    "title": "Journal",
+    "subtitle": "Notes & Images"
+  },
+  "posts": [
+    {
+      "id": "example1",
+      "title": "Welcome to the Journal",
+      "tag": "note",
+      "date": "2026-04-07",
+      "image": "",
+      "body": "This is your first post. Edit it in the admin panel or delete it and start fresh.\n\nEach line break becomes a new paragraph on the site."
+    }
+  ]
+}
