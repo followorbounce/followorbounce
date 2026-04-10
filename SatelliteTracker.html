@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Satellite Tracker</title>
+  <style>
+    body {
+      background: black;
+      color: #00ff88;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #log {
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🛰️ Satellite Tracker</h2>
+<div id="log">Initializing...</div>
+
+<script>
+const API_KEY = "YOUR_API_KEY"; // <-- вставь сюда
+
+function log(text) {
+  document.getElementById("log").textContent += "\n" + text;
+}
+
+navigator.geolocation.getCurrentPosition(async (pos) => {
+  const lat = pos.coords.latitude;
+  const lng = pos.coords.longitude;
+
+  log("Location locked:");
+  log(`LAT: ${lat.toFixed(3)}`);
+  log(`LNG: ${lng.toFixed(3)}`);
+
+  const satId = 25544; // ISS
+
+  const url = `https://api.n2yo.com/rest/v1/satellite/radiopasses/${satId}/${lat}/${lng}/0/1/40/&apiKey=${API_KEY}`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  const pass = data.passes[0];
+
+  log("\nNext pass:");
+  log("Start: " + new Date(pass.startUTC * 1000));
+  log("Max Elevation: " + pass.maxEl + "°");
+  log("End: " + new Date(pass.endUTC * 1000));
+
+}, () => {
+  log("Location access denied.");
+});
+</script>
+
+</body>
+</html>
