@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Follow or Bounce — Navigation</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:    #0d0c0a;
+    --paper:  #f4f0e6;
+    --rust:   #c0390b;
+    --slate:  #3a3d44;
+    --fog:    #b8b3a8;
+    --line:   1px solid #0d0c0a;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER / NAV ─────────────────────────────────────── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: var(--line);
+  }
+
+  .nav-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 3.5rem;
+    border-bottom: var(--line);
+  }
+
+  .wordmark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.55rem;
+    letter-spacing: .12em;
+    color: var(--ink);
+    text-decoration: none;
+    user-select: none;
+  }
+  .wordmark span { color: var(--rust); }
+
+  .nav-meta {
+    font-size: .65rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  /* ── MENU BAR ─────────────────────────────────────────── */
+  .menu-bar {
+    display: flex;
+    align-items: stretch;
+    height: 3rem;
+    overflow: hidden;
+  }
+
+  .menu-bar a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 2.2rem;
+    text-decoration: none;
+    font-size: .7rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-right: var(--line);
+    transition: color .22s, background .22s;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .menu-bar a:first-child { border-left: var(--line); }
+
+  /* fill sweep on hover */
+  .menu-bar a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform: translateY(100%);
+    transition: transform .28s cubic-bezier(.77,0,.18,1);
+    z-index: 0;
+  }
+  .menu-bar a:hover::before  { transform: translateY(0); }
+  .menu-bar a:hover          { color: var(--paper); }
+
+  .menu-bar a .label {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* accent dot per section */
+  .menu-bar a .dot {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-right: .6rem;
+    background: var(--rust);
+    transition: background .22s;
+  }
+  .menu-bar a:hover .dot { background: var(--paper); }
+
+  /* active state */
+  .menu-bar a.active::before { transform: translateY(0); }
+  .menu-bar a.active         { color: var(--paper); }
+  .menu-bar a.active .dot    { background: var(--rust); }
+
+  /* right-aligned "sign-in" slot */
+  .menu-bar .spacer { flex: 1; }
+  .menu-bar .action-link {
+    border-left: var(--line);
+    border-right: none !important;
+    color: var(--rust) !important;
+  }
+  .menu-bar .action-link::before { background: var(--rust); }
+  .menu-bar .action-link:hover   { color: var(--paper) !important; }
+
+  /* ── HERO (demo page body) ────────────────────────────── */
+  main {
+    margin-top: 6.5rem; /* header height */
+    padding: 6rem 2.5rem 4rem;
+    max-width: 72rem;
+  }
+
+  .eyebrow {
+    font-size: .65rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--fog);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: .95;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .desc {
+    max-width: 38ch;
+    font-size: .82rem;
+    line-height: 1.75;
+    color: var(--slate);
+    border-left: 3px solid var(--rust);
+    padding-left: 1.2rem;
+  }
+
+  /* ── SECTION CARDS ────────────────────────────────────── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0;
+    margin-top: 6rem;
+    border-top: var(--line);
+    border-left: var(--line);
+  }
+
+  .card {
+    border-right: var(--line);
+    border-bottom: var(--line);
+    padding: 2rem 1.8rem;
+    cursor: pointer;
+    transition: background .25s;
+  }
+  .card:hover { background: var(--ink); }
+  .card:hover .card-title,
+  .card:hover .card-num  { color: var(--paper); }
+  .card:hover .card-body { color: var(--fog); }
+
+  .card-num {
+    font-size: .6rem;
+    letter-spacing: .3em;
+    color: var(--fog);
+    margin-bottom: 1.2rem;
+    transition: color .25s;
+  }
+
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: .06em;
+    margin-bottom: .8rem;
+    transition: color .25s;
+  }
+
+  .card-body {
+    font-size: .7rem;
+    line-height: 1.7;
+    color: var(--slate);
+    transition: color .25s;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  footer {
+    margin-top: 8rem;
+    border-top: var(--line);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: .6rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  /* ── MOBILE ───────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .nav-meta { display: none; }
+    .menu-bar a { padding: 0 1.1rem; font-size: .62rem; }
+    .menu-bar a .dot { display: none; }
+    main { padding: 5rem 1.2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-top">
+    <a class="wordmark" href="#">Follow<span>.</span>Or<span>.</span>Bounce</a>
+    <span class="nav-meta">Est. 2024 &nbsp;/&nbsp; Issue 01</span>
+  </div>
+
+  <nav class="menu-bar" aria-label="Main navigation">
+    <a href="#about" class="active" aria-current="page">
+      <span class="dot"></span><span class="label">About</span>
+    </a>
+    <a href="#technology">
+      <span class="dot"></span><span class="label">Technology</span>
+    </a>
+    <a href="#literature">
+      <span class="dot"></span><span class="label">Literature</span>
+    </a>
+    <a href="#contracts">
+      <span class="dot"></span><span class="label">Contracts</span>
+    </a>
+    <div class="spacer"></div>
+    <a href="#subscribe" class="action-link">
+      <span class="label">Subscribe ↗</span>
+    </a>
+  </nav>
+</header>
+
+<main>
+  <p class="eyebrow">Follow or Bounce</p>
+  <h1>Ideas that <em>stick</em>,<br>or they don't.</h1>
+  <p class="desc">
+    A publication at the intersection of technology, literature,
+    and the agreements that hold them together.
+    Signal over noise. Always.
+  </p>
+
+  <div class="cards">
+    <div class="card" id="about" onclick="setActive(this, 'about')">
+      <p class="card-num">00 — About</p>
+      <h2 class="card-title">Who We Are</h2>
+      <p class="card-body">Our mission, our editors, and why we built this platform from the ground up.</p>
+    </div>
+    <div class="card" id="technology" onclick="setActive(this, 'technology')">
+      <p class="card-num">01 — Technology</p>
+      <h2 class="card-title">Tech & Tools</h2>
+      <p class="card-body">Deep dives into software, infrastructure, and the tools shaping how we work and think.</p>
+    </div>
+    <div class="card" id="literature" onclick="setActive(this, 'literature')">
+      <p class="card-num">02 — Literature</p>
+      <h2 class="card-title">Writing & Ideas</h2>
+      <p class="card-body">Reviews, essays, and long-form pieces on the books and ideas that define our time.</p>
+    </div>
+    <div class="card" id="contracts" onclick="setActive(this, 'contracts')">
+      <p class="card-num">03 — Contracts</p>
+      <h2 class="card-title">Law & Agreements</h2>
+      <p class="card-body">Plain-language breakdowns of the frameworks, deals, and terms governing the digital world.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Follow or Bounce</span>
+  <span>All rights reserved</span>
+</footer>
+
+<script>
+  // Nav active state on click
+  const links = document.querySelectorAll('.menu-bar a:not(.action-link)');
+  function setActive(card, section) {
+    links.forEach(l => l.classList.remove('active'));
+    const target = document.querySelector(`.menu-bar a[href="#${section}"]`);
+    if (target) target.classList.add('active');
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Sync nav active on scroll
+  const sections = ['about','technology','literature','contracts'];
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const t = document.querySelector(`.menu-bar a[href="#${e.target.id}"]`);
+        if (t) t.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -40% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+</body>
+</html>
