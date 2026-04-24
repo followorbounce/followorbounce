@@ -414,25 +414,7 @@
                                                                                                                                                                           </form>
                                                                                                                                                                           </section>
 
- <!-- AI CHAT BUTTON -->
-<button id="aiButton">AI</button>
 
-<!-- MODAL -->
-<div id="aiModal">
-  <div id="aiBox">
-    <div id="aiHeader">
-      <span>Gemini Chat</span>
-      <button onclick="closeAI()">✕</button>
-    </div>
-
-    <div id="aiMessages"></div>
-
-    <div id="aiInputBox">
-      <input id="aiInput" placeholder="Напиши сообщение..." />
-      <button onclick="sendAI()">➤</button>
-    </div>
-  </div>
-</div>
 
 </main>
 
@@ -467,7 +449,7 @@
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
-  const API_KEY = "AIzaSyCfdyWcVP134l_p_cigoovGA-Y8rZotyM8";
+  const API_KEY = "";
 
 const modal = document.getElementById("aiModal");
 const messages = document.getElementById("aiMessages");
