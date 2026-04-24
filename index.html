@@ -413,6 +413,27 @@
 
                                                                                                                                                                           </form>
                                                                                                                                                                           </section>
+
+ <!-- AI CHAT BUTTON -->
+<button id="aiButton">AI</button>
+
+<!-- MODAL -->
+<div id="aiModal">
+  <div id="aiBox">
+    <div id="aiHeader">
+      <span>Gemini Chat</span>
+      <button onclick="closeAI()">✕</button>
+    </div>
+
+    <div id="aiMessages"></div>
+
+    <div id="aiInputBox">
+      <input id="aiInput" placeholder="Напиши сообщение..." />
+      <button onclick="sendAI()">➤</button>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <footer>
@@ -492,24 +513,6 @@ async function sendAI() {
   messages.scrollTop = messages.scrollHeight;
 }
 </script>
-  <!-- AI CHAT BUTTON -->
-<button id="aiButton">AI</button>
-
-<!-- MODAL -->
-<div id="aiModal">
-  <div id="aiBox">
-    <div id="aiHeader">
-      <span>Gemini Chat</span>
-      <button onclick="closeAI()">✕</button>
-    </div>
-
-    <div id="aiMessages"></div>
-
-    <div id="aiInputBox">
-      <input id="aiInput" placeholder="Напиши сообщение..." />
-      <button onclick="sendAI()">➤</button>
-    </div>
-  </div>
-</div>
+ 
 </body>
 </html>
