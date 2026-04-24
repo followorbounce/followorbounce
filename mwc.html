@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marine Wood Craft — Honolulu, Hawaiʻi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --black:      #0D0D0D;
+      --white:      #F5F2ED;
+      --red:        #C0392B;
+      --blue:       #1A3A5C;
+      --yellow:     #D4A017;
+      --wood:       #8B5E3C;
+      --wood-light: #C49A6C;
+      --wood-pale:  #E8D5B7;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ════════════════════════════════════
+       WOOD GRAIN UTILITY
+    ════════════════════════════════════ */
+    .grain {
+      background: repeating-linear-gradient(
+        91deg,
+        transparent 0px, transparent 5px,
+        rgba(139,94,60,0.055) 5px, rgba(139,94,60,0.055) 7px,
+        transparent 7px, transparent 13px,
+        rgba(196,154,108,0.03) 13px, rgba(196,154,108,0.03) 15px
+      );
+    }
+
+    /* ════════════════════════════════════
+       HEADER / NAV
+    ════════════════════════════════════ */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--black);
+      border-bottom: 3px solid var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+    }
+
+    /* Wood grain on header */
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        91deg,
+        transparent 0px, transparent 5px,
+        rgba(139,94,60,0.04) 5px, rgba(139,94,60,0.04) 7px
+      );
+      pointer-events: none;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .logo-mark {
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.07em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 7px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    nav a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,242,237,0.55);
+      text-decoration: none;
+      padding: 22px 20px;
+      border-left: 1px solid rgba(245,242,237,0.07);
+      transition: color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+    }
+
+    nav a.cta {
+      background: var(--red);
+      color: var(--white);
+      border-left: none;
+      margin-left: 12px;
+      padding: 10px 20px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+    }
+
+    nav a.cta:hover { background: #a93225; }
+
+    /* ════════════════════════════════════
+       HERO
+    ════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+
+    /* Wood grain on hero */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        91deg,
+        transparent 0px, transparent 5px,
+        rgba(139,94,60,0.04) 5px, rgba(139,94,60,0.04) 7px,
+        transparent 7px, transparent 13px,
+        rgba(196,154,108,0.02) 13px, rgba(196,154,108,0.02) 15px
+      );
+      pointer-events: none;
+    }
+
+    /* Ocean blue triangle — top right */
+    .hero-triangle {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%; height: 100%;
+      background: var(--blue);
+      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    .hero-triangle-grain {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%; height: 100%;
+      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+      background: repeating-linear-gradient(
+        135deg,
+        transparent 0px, transparent 8px,
+        rgba(245,242,237,0.03) 8px, rgba(245,242,237,0.03) 10px
+      );
+      z-index: 1;
+    }
+
+    /* Blueprint grid overlay on blue */
+    .hero-grid {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%; height: 100%;
+      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+      background-image:
+        linear-gradient(rgba(245,242,237,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,242,237,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      z-index: 2;
+    }
+
+    /* Wave lines on blue */
+    .hero-waves {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%; height: 100%;
+      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+      overflow: hidden;
+      z-index: 2;
+      opacity: 0.15;
+    }
+
+    /* Red left accent bar */
+    .hero-bar {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 6px;
+      background: var(--red);
+      z-index: 5;
+    }
+
+    /* Gold bottom strip */
+    .hero-gold {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow) 0%, var(--wood-light) 50%, transparent 100%);
+      z-index: 5;
+    }
+
+    /* Hero left: copy */
+    .hero-left {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 72px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 6vw, 88px);
+      line-height: 0.88;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-h1 em {
+      color: var(--red);
+      font-style: normal;
+      display: block;
+    }
+
+    .hero-rule {
+      width: 48px; height: 3px;
+      background: var(--red);
+      margin: 28px 0;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    .hero-p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(245,242,237,0.6);
+      max-width: 380px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+    }
+
+    .btn-primary {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary:hover { background: #a93225; transform: translateY(-1px); }
+
+    .btn-secondary {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: transparent;
+      color: rgba(245,242,237,0.6);
+      padding: 14px 28px;
+      text-decoration: none;
+      border: 1px solid rgba(245,242,237,0.18);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* Hero right: large logomark */
+    .hero-right {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.5s forwards;
+    }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 72px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 5;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.2s forwards;
+    }
+
+    .hero-scroll-line {
+      width: 32px; height: 1px;
+      background: rgba(245,242,237,0.3);
+    }
+
+    .hero-scroll-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245,242,237,0.3);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Steam animation on hero mark */
+    @keyframes steamRise {
+      0%   { transform: translateY(0) scaleX(1); opacity: 0.5; }
+      100% { transform: translateY(-18px) scaleX(1.06); opacity: 0; }
+    }
+
+    .steam-path { animation: steamRise 3s ease-in-out infinite; }
+    .steam-path:nth-child(2) { animation-delay: 0.8s; }
+    .steam-path:nth-child(3) { animation-delay: 1.6s; }
+
+    /* ════════════════════════════════════
+       PATTERN BAR
+    ════════════════════════════════════ */
+    .pattern-bar {
+      height: 10px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--black)  0px,  var(--black)  40px,
+        var(--red)    40px, var(--red)    43px,
+        var(--black)  43px, var(--black)  83px,
+        var(--blue)   83px, var(--blue)   86px,
+        var(--black)  86px, var(--black)  126px,
+        var(--yellow) 126px,var(--yellow) 129px
+      );
+    }
+
+    /* ════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════ */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .about-left {
+      background: var(--wood-pale);
+      padding: 80px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle grain on pale wood */
+    .about-left::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        89deg,
+        transparent 0px, transparent 6px,
+        rgba(139,94,60,0.08) 6px, rgba(139,94,60,0.08) 8px
+      );
+    }
+
+    .about-left::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 200px; height: 200px;
+      background: var(--yellow);
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+      opacity: 0.25;
+    }
+
+    .about-right {
+      background: var(--black);
+      padding: 80px 64px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        91deg,
+        transparent 0px, transparent 5px,
+        rgba(139,94,60,0.04) 5px, rgba(139,94,60,0.04) 7px
+      );
+    }
+
+    /* Blue triangle accent */
+    .about-right::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 140px; height: 140px;
+      background: var(--blue);
+      clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
+      opacity: 0.7;
+    }
+
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .section-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .about-left .section-h2 { color: var(--black); }
+    .about-right .section-h2 { color: var(--white); position: relative; z-index: 1; }
+
+    .about-left .section-label { color: var(--black); }
+    .about-right .section-label { color: rgba(245,242,237,0.4); }
+
+    .about-left p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(10,10,10,0.65);
+      max-width: 400px;
+      position: relative;
+    }
+
+    .about-right p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(245,242,237,0.55);
+      max-width: 400px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-rule {
+      width: 40px; height: 2px;
+      background: var(--red);
+      margin: 20px 0;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-block {}
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 44px;
+      letter-spacing: 0.03em;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,242,237,0.35);
+      margin-top: 4px;
+    }
+
+    /* ════════════════════════════════════
+       SERVICES
+    ════════════════════════════════════ */
+    .services-section {
+      background: var(--white);
+      padding: 96px 64px;
+      position: relative;
+    }
+
+    .services-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 6px;
+      background: var(--red);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      padding-left: 8px;
+    }
+
+    .services-header .section-label { color: var(--black); }
+
+    .services-header p {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(10,10,10,0.4);
+      max-width: 280px;
+      text-align: right;
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    /* 5-column service grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid rgba(13,13,13,0.1);
+    }
+
+    .svc-card {
+      padding: 32px 24px;
+      border-right: 1px solid rgba(13,13,13,0.1);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .svc-card:last-child { border-right: none; }
+
+    .svc-card:hover { background: var(--black); }
+    .svc-card:hover .svc-card-name { color: var(--white); }
+    .svc-card:hover .svc-card-desc { color: rgba(245,242,237,0.45); }
+    .svc-card:hover .svc-card-num { color: rgba(245,242,237,0.06); }
+    .svc-card:hover .svc-card-icon svg path,
+    .svc-card:hover .svc-card-icon svg rect,
+    .svc-card:hover .svc-card-icon svg line { stroke: var(--yellow); }
+    .svc-card:hover .svc-card-bar { width: 100%; }
+
+    .svc-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      letter-spacing: 0;
+      color: rgba(13,13,13,0.05);
+      line-height: 1;
+      position: absolute;
+      top: 8px; right: 12px;
+      transition: color 0.3s;
+    }
+
+    .svc-card-icon {
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .svc-card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .svc-card-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(13,13,13,0.5);
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    /* Bottom accent bar that expands on hover */
+    .svc-card-bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px;
+      width: 0;
+      background: var(--yellow);
+      transition: width 0.4s ease;
+    }
+
+    /* Highlight card — 12V */
+    .svc-card.highlight {
+      background: var(--blue);
+    }
+
+    .svc-card.highlight .svc-card-name { color: var(--yellow); }
+    .svc-card.highlight .svc-card-desc { color: rgba(245,242,237,0.5); }
+    .svc-card.highlight .svc-card-num { color: rgba(245,242,237,0.04); }
+    .svc-card.highlight:hover { background: var(--black); }
+    .svc-card.highlight:hover .svc-card-name { color: var(--yellow); }
+
+    /* ════════════════════════════════════
+       PROCESS STRIP
+    ════════════════════════════════════ */
+    .process {
+      background: var(--black);
+      padding: 80px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        91deg,
+        transparent 0px, transparent 5px,
+        rgba(139,94,60,0.04) 5px, rgba(139,94,60,0.04) 7px
+      );
+    }
+
+    .process-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-header .section-label { color: rgba(245,242,237,0.4); }
+    .process-header .section-h2 { color: var(--white); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step {
+      padding: 32px 28px;
+      border-right: 1px solid rgba(245,242,237,0.07);
+      position: relative;
+    }
+
+    .process-step:last-child { border-right: none; }
+
+    .process-step::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 28px; right: 28px;
+      height: 2px;
+      background: rgba(245,242,237,0.07);
+    }
+
+    .process-step:first-child::before { background: var(--red); }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(245,242,237,0.4);
+    }
+
+    /* ════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════ */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-left {
+      background: var(--blue);
+      padding: 88px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-left::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(245,242,237,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,242,237,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Wave lines */
+    .contact-waves {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 50%;
+      opacity: 0.2;
+      overflow: hidden;
+    }
+
+    .contact-left .section-label { color: rgba(245,242,237,0.4); position: relative; z-index: 1; }
+    .contact-left .section-h2 { color: var(--white); position: relative; z-index: 1; }
+
+    .contact-left p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(245,242,237,0.5);
+      max-width: 360px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-detail {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+    }
+
+    .contact-detail-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 4px;
+    }
+
+    .contact-detail-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      line-height: 1;
+      text-decoration: none;
+      display: block;
+      transition: color 0.2s;
+    }
+
+    a.contact-detail-value:hover { color: var(--yellow); }
+
+    .contact-detail-email {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: rgba(245,242,237,0.55);
+    }
+
+    .contact-right {
+      background: var(--wood-pale);
+      padding: 88px 64px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        89deg,
+        transparent 0px, transparent 6px,
+        rgba(139,94,60,0.07) 6px, rgba(139,94,60,0.07) 8px
+      );
+    }
+
+    .contact-right::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 160px; height: 160px;
+      background: var(--red);
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+      opacity: 0.15;
+    }
+
+    .contact-right .section-label { color: var(--black); position: relative; z-index: 1; }
+
+    /* Service list in contact */
+    .contact-services {
+      position: relative; z-index: 1;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-svc-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(13,13,13,0.1);
+    }
+
+    .contact-svc-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      color: var(--red);
+      letter-spacing: 0.08em;
+      min-width: 18px;
+    }
+
+    .contact-svc-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: var(--black);
+    }
+
+    .contact-svc-name.gold { color: var(--wood); }
+
+    .contact-svc-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 7px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.35);
+      margin-left: auto;
+    }
+
+    /* ════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════ */
+    footer {
+      background: var(--black);
+      border-top: 3px solid var(--red);
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        91deg,
+        transparent 0px, transparent 5px,
+        rgba(139,94,60,0.035) 5px, rgba(139,94,60,0.035) 7px
+      );
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      position: relative;
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    .footer-copy {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      color: rgba(245,242,237,0.25);
+      position: relative;
+    }
+
+    .footer-mark {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      color: var(--yellow);
+      opacity: 0.6;
+      position: relative;
+    }
+
+    /* ════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════ */
+    @media (max-width: 900px) {
+      header { padding: 0 24px; }
+      nav a:not(.cta) { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 120px 32px 80px; }
+      .hero-triangle { width: 100%; clip-path: none; opacity: 0.3; }
+      .hero-right { display: none; }
+      .hero-left { padding: 0; }
+      .about { grid-template-columns: 1fr; }
+      .about-left, .about-right { padding: 56px 32px; }
+      .services-section { padding: 64px 32px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .svc-card:last-child { grid-column: 1 / -1; }
+      .process { padding: 64px 32px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .contact-left, .contact-right { padding: 56px 32px; }
+      footer { flex-direction: column; gap: 12px; padding: 32px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     HEADER
+════════════════════════════════════ -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
+        <rect x="18" y="24" width="28" height="28" fill="none" stroke="rgba(245,242,237,0.55)" stroke-width="1.5"/>
+        <path d="M18 24 L32 10 L46 24" fill="none" stroke="#F5F2ED" stroke-width="2.5"/>
+        <path d="M12 52 Q32 62 52 52" fill="none" stroke="#D4A017" stroke-width="2"/>
+        <line x1="21" y1="32" x2="43" y2="32" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <line x1="21" y1="36" x2="43" y2="36" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <line x1="21" y1="40" x2="43" y2="40" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <line x1="21" y1="44" x2="43" y2="44" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <rect x="15" y="21" width="5" height="5" fill="#C0392B"/>
+        <rect x="44" y="21" width="5" height="5" fill="#C0392B"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="logo-name">Marine Wood<span style="color:var(--red)">Craft</span></span>
+      <span class="logo-sub">Honolulu, Hawaiʻi</span>
+    </div>
+  </a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="cta">Get a Quote</a>
+  </nav>
+</header>
+
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-triangle"></div>
+  <div class="hero-triangle-grain"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-waves">
+    <svg width="100%" height="100%" viewBox="0 0 600 700" preserveAspectRatio="none" fill="none">
+      <path d="M0 100 Q75 70 150 100 Q225 130 300 100 Q375 70 450 100 Q525 130 600 100" stroke="white" stroke-width="1.5"/>
+      <path d="M0 180 Q75 150 150 180 Q225 210 300 180 Q375 150 450 180 Q525 210 600 180" stroke="white" stroke-width="1"/>
+      <path d="M0 260 Q75 230 150 260 Q225 290 300 260 Q375 230 450 260 Q525 290 600 260" stroke="white" stroke-width="1.5"/>
+      <path d="M0 340 Q75 310 150 340 Q225 370 300 340 Q375 310 450 340 Q525 370 600 340" stroke="white" stroke-width="1"/>
+      <path d="M0 420 Q75 390 150 420 Q225 450 300 420 Q375 390 450 420 Q525 450 600 420" stroke="white" stroke-width="1.5"/>
+      <path d="M0 500 Q75 470 150 500 Q225 530 300 500 Q375 470 450 500 Q525 530 600 500" stroke="white" stroke-width="1"/>
+      <path d="M0 580 Q75 550 150 580 Q225 610 300 580 Q375 550 450 580 Q525 610 600 580" stroke="white" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="hero-bar"></div>
+  <div class="hero-gold"></div>
+
+  <!-- Left copy -->
+  <div class="hero-left">
+    <span class="hero-eyebrow">Marine Woodworking · Est. Honolulu, HI</span>
+    <h1 class="hero-h1">
+      Craftsmanship<br>For The<br><em>Sea</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-p">
+      Custom marine woodworking, boat restoration, wood treatment, steam cleaning,
+      and 12V electrical service. Built for durability, precision, and timeless design on water.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Get a Quote
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+
+  <!-- Right mark -->
+  <div class="hero-right">
+    <svg width="280" height="280" viewBox="0 0 280 280" fill="none">
+      <!-- outer hull ring -->
+      <path d="M140 30 L230 90 L230 180 Q230 230 140 250 Q50 230 50 180 L50 90 Z"
+            fill="none" stroke="rgba(245,242,237,0.06)" stroke-width="1"/>
+      <!-- mark -->
+      <rect x="100" y="110" width="80" height="80" fill="none" stroke="rgba(245,242,237,0.5)" stroke-width="2"/>
+      <path d="M100 110 L140 70 L180 110" fill="none" stroke="#F5F2ED" stroke-width="3"/>
+      <path d="M80 190 Q140 215 200 190" fill="none" stroke="#D4A017" stroke-width="2.5"/>
+      <!-- wood grain inside rect -->
+      <line x1="108" y1="125" x2="172" y2="125" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="133" x2="172" y2="133" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="141" x2="172" y2="141" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="149" x2="172" y2="149" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="157" x2="172" y2="157" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="165" x2="172" y2="165" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="173" x2="172" y2="173" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="181" x2="172" y2="181" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <!-- corner squares -->
+      <rect x="95" y="105" width="10" height="10" fill="#C0392B"/>
+      <rect x="175" y="105" width="10" height="10" fill="#C0392B"/>
+      <rect x="95" y="180" width="10" height="10" fill="#1A3A5C"/>
+      <rect x="175" y="180" width="10" height="10" fill="#1A3A5C"/>
+      <!-- steam wisps -->
+      <path class="steam-path" d="M120 110 Q117 96 120 84 Q123 72 120 60" stroke="rgba(245,242,237,0.4)" stroke-width="1.5" fill="none"/>
+      <path class="steam-path" d="M140 110 Q137 93 140 80 Q143 67 140 52" stroke="rgba(245,242,237,0.3)" stroke-width="1.5" fill="none"/>
+      <path class="steam-path" d="M160 110 Q157 96 160 84 Q163 72 160 60" stroke="rgba(245,242,237,0.35)" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- pattern -->
+<div class="pattern-bar"></div>
+
+<!-- ════════════════════════════════════
+     ABOUT
+════════════════════════════════════ -->
+<section id="about" class="about">
+  <div class="about-left">
+    <span class="section-label">02 — About Us</span>
+    <h2 class="section-h2">Built For<br>The Ocean</h2>
+    <div class="about-rule"></div>
+    <p>
+      Marine Wood Craft specializes in high-quality marine woodworking, restoration,
+      and custom boat interiors. Based in Honolulu, Hawaiʻi, we serve vessels of all
+      types — from classic wooden sailboats to modern motor yachts.
+    </p>
+    <p style="margin-top:16px;">
+      Every project is approached with the same commitment: precision craftsmanship,
+      durable materials, and finishes that stand up to the Pacific.
+    </p>
+  </div>
+  <div class="about-right">
+    <span class="section-label">Honolulu, Hawaiʻi</span>
+    <h2 class="section-h2" style="color:var(--white)">Precision &amp;<br>Durability</h2>
+    <div class="about-rule"></div>
+    <p>
+      Marine environments demand more. We use time-tested treatments, premium-grade
+      teak and hardwoods, and finishing techniques developed specifically for vessels
+      in the Pacific — where UV, salt, and humidity demand the highest standards.
+    </p>
+    <div class="about-stats">
+      <div class="stat-block">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Vessels Restored</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Core Services</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">HNL</div>
+        <div class="stat-label">Honolulu Based</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pattern -->
+<div class="pattern-bar"></div>
+
+<!-- ════════════════════════════════════
+     SERVICES
+════════════════════════════════════ -->
+<section id="services" class="services-section">
+  <div class="services-header">
+    <div>
+      <span class="section-label">03 — What We Do</span>
+      <h2 class="section-h2" style="font-size:52px;">Our Services</h2>
+    </div>
+    <p>Interior &amp; exterior woodwork for marine vessels. Licensed, insured &amp; marine certified.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- 01 -->
+    <div class="svc-card">
+      <div class="svc-card-num">01</div>
+      <div class="svc-card-icon">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+          <path d="M8 28 L20 8 L32 28 Q32 34 20 36 Q8 34 8 28Z" stroke="#0D0D0D" stroke-width="1.5" fill="none"/>
+          <line x1="12" y1="22" x2="28" y2="22" stroke="#8B5E3C" stroke-width="1"/>
+          <line x1="11" y1="25" x2="29" y2="25" stroke="#8B5E3C" stroke-width="1"/>
+          <line x1="10" y1="28" x2="30" y2="28" stroke="#8B5E3C" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="svc-card-name">Marine Woodwork</div>
+      <div class="svc-card-desc">Hull, deck and interior finishing for all vessel types. Custom joinery and cabinetry.</div>
+      <div class="svc-card-bar"></div>
+    </div>
+
+    <!-- 02 -->
+    <div class="svc-card">
+      <div class="svc-card-num">02</div>
+      <div class="svc-card-icon">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+          <rect x="8" y="13" width="24" height="18" stroke="#0D0D0D" stroke-width="1.5" fill="none"/>
+          <line x1="8" y1="18" x2="32" y2="18" stroke="#8B5E3C" stroke-width="1"/>
+          <line x1="8" y1="22" x2="32" y2="22" stroke="#8B5E3C" stroke-width="1"/>
+          <rect x="14" y="8" width="12" height="7" stroke="#C0392B" stroke-width="1.5" fill="none"/>
+          <line x1="20" y1="4" x2="20" y2="8" stroke="#C0392B" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="svc-card-name">Boat Restoration</div>
+      <div class="svc-card-desc">Full vessel restoration — period correct and modern finishes. Structural repair.</div>
+      <div class="svc-card-bar"></div>
+    </div>
+
+    <!-- 03 -->
+    <div class="svc-card">
+      <div class="svc-card-num">03</div>
+      <div class="svc-card-icon">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+          <rect x="12" y="14" width="16" height="20" stroke="#0D0D0D" stroke-width="1.5" fill="none"/>
+          <line x1="12" y1="19" x2="28" y2="19" stroke="#8B5E3C" stroke-width="1"/>
+          <line x1="12" y1="23" x2="28" y2="23" stroke="#8B5E3C" stroke-width="1"/>
+          <line x1="12" y1="27" x2="28" y2="27" stroke="#8B5E3C" stroke-width="1"/>
+          <path d="M18 14 L20 7 L22 14" stroke="#C0392B" stroke-width="1.5" fill="none"/>
+          <line x1="8" y1="34" x2="32" y2="34" stroke="#D4A017" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="svc-card-name">Wood Treatment</div>
+      <div class="svc-card-desc">Sealing, oiling and UV protection for interior and exterior wood surfaces.</div>
+      <div class="svc-card-bar"></div>
+    </div>
+
+    <!-- 04 -->
+    <div class="svc-card">
+      <div class="svc-card-num">04</div>
+      <div class="svc-card-icon">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+          <rect x="10" y="26" width="20" height="7" rx="1" stroke="#0D0D0D" stroke-width="1.5" fill="none"/>
+          <path d="M14 26 Q13 20 15 15" stroke="#0D0D0D" stroke-width="1.3" fill="none"/>
+          <path d="M20 26 Q19 18 21 13" stroke="#0D0D0D" stroke-width="1.3" fill="none"/>
+          <path d="M26 26 Q25 20 27 15" stroke="#0D0D0D" stroke-width="1.3" fill="none"/>
+          <line x1="8" y1="33" x2="32" y2="33" stroke="#D4A017" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="svc-card-name">Steam Cleaning</div>
+      <div class="svc-card-desc">Deep steam cleaning and teak deck restoration. Removes salt, algae and staining.</div>
+      <div class="svc-card-bar"></div>
+    </div>
+
+    <!-- 05 -->
+    <div class="svc-card highlight">
+      <div class="svc-card-num">05</div>
+      <div class="svc-card-icon">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+          <path d="M23 6 L14 22 L20 22 L17 34 L26 18 L20 18 Z" stroke="#D4A017" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+          <circle cx="9" cy="20" r="2" stroke="rgba(245,242,237,0.4)" stroke-width="1" fill="none"/>
+          <circle cx="31" cy="20" r="2" stroke="rgba(245,242,237,0.4)" stroke-width="1" fill="none"/>
+          <line x1="11" y1="20" x2="14" y2="20" stroke="rgba(245,242,237,0.3)" stroke-width="1"/>
+          <line x1="26" y1="20" x2="29" y2="20" stroke="rgba(245,242,237,0.3)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="svc-card-name">12V Electrical Fix</div>
+      <div class="svc-card-desc">Marine wiring, systems diagnostics and navigation lighting. Interior &amp; exterior.</div>
+      <div class="svc-card-bar"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PROCESS
+════════════════════════════════════ -->
+<section id="process" class="process">
+  <div class="process-header">
+    <div>
+      <span class="section-label">04 — How We Work</span>
+      <h2 class="section-h2" style="color:var(--white)">Our Process</h2>
+    </div>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Inspection</div>
+      <div class="step-desc">We assess every surface, joint and system — identifying what needs attention before a single tool is raised.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Proposal</div>
+      <div class="step-desc">A clear, itemized quote covering materials, timelines and scope. No surprises, no hidden costs.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Craftwork</div>
+      <div class="step-desc">Our team executes with precision — using premium marine-grade materials and time-tested techniques.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Delivery</div>
+      <div class="step-desc">Final inspection, walkthrough with the owner, and a care guide for maintaining your vessel's finish.</div>
+    </div>
+  </div>
+</section>
+
+<!-- pattern -->
+<div class="pattern-bar"></div>
+
+<!-- ════════════════════════════════════
+     CONTACT
+════════════════════════════════════ -->
+<section id="contact" class="contact">
+  <div class="contact-left">
+    <span class="section-label">05 — Get In Touch</span>
+    <h2 class="section-h2">Call Us<br><span style="color:var(--yellow)">Today</span></h2>
+    <div class="about-rule" style="margin:20px 0;"></div>
+    <p>Ready to restore, treat, or build? We work on vessels of all sizes across Honolulu and the surrounding islands. Reach out for a free quote.</p>
+
+    <div class="contact-detail">
+      <div class="contact-detail-label">Phone</div>
+      <a href="tel:8089791296" class="contact-detail-value">808-979-1296</a>
+    </div>
+
+    <div class="contact-detail" style="margin-top:20px;">
+      <div class="contact-detail-label">Email</div>
+      <span class="contact-detail-email">info@marinewoodcraft.com</span>
+    </div>
+
+    <div class="contact-detail" style="margin-top:20px;">
+      <div class="contact-detail-label">Location</div>
+      <span class="contact-detail-email" style="font-size:13px;color:rgba(245,242,237,0.5);">Honolulu, Hawaiʻi · Interior &amp; Exterior Marine</span>
+    </div>
+
+    <div class="contact-waves">
+      <svg width="100%" height="100%" viewBox="0 0 500 200" preserveAspectRatio="none" fill="none">
+        <path d="M0 40 Q62 20 125 40 Q187 60 250 40 Q312 20 375 40 Q437 60 500 40" stroke="white" stroke-width="1.5"/>
+        <path d="M0 80 Q62 60 125 80 Q187 100 250 80 Q312 60 375 80 Q437 100 500 80" stroke="white" stroke-width="1"/>
+        <path d="M0 120 Q62 100 125 120 Q187 140 250 120 Q312 100 375 120 Q437 140 500 120" stroke="white" stroke-width="1.5"/>
+        <path d="M0 160 Q62 140 125 160 Q187 180 250 160 Q312 140 375 160 Q437 180 500 160" stroke="white" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-h2" style="color:var(--black);font-size:40px;">All Services</h2>
+    <div class="about-rule"></div>
+    <div class="contact-services">
+      <div class="contact-svc-row">
+        <span class="contact-svc-num">01</span>
+        <span class="contact-svc-name">Marine Woodwork</span>
+        <span class="contact-svc-tag">Interior · Exterior</span>
+      </div>
+      <div class="contact-svc-row">
+        <span class="contact-svc-num">02</span>
+        <span class="contact-svc-name">Boat Restoration</span>
+        <span class="contact-svc-tag">Full Vessel</span>
+      </div>
+      <div class="contact-svc-row">
+        <span class="contact-svc-num">03</span>
+        <span class="contact-svc-name">Wood Treatment</span>
+        <span class="contact-svc-tag">Seal · Oil · UV</span>
+      </div>
+      <div class="contact-svc-row">
+        <span class="contact-svc-num">04</span>
+        <span class="contact-svc-name">Steam Cleaning</span>
+        <span class="contact-svc-tag">Teak · Deep Clean</span>
+      </div>
+      <div class="contact-svc-row" style="border-bottom:none;">
+        <span class="contact-svc-num" style="color:var(--wood)">05</span>
+        <span class="contact-svc-name gold">12V Electrical Fix</span>
+        <span class="contact-svc-tag">Wiring · Nav · Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">MARINE WOOD<span>CRAFT</span></div>
+  <div class="footer-copy">&copy; 2026 Marine Wood Craft · Honolulu, Hawaiʻi · All rights reserved.</div>
+  <div class="footer-mark">Licensed · Insured · Marine Certified</div>
+</footer>
+
+</body>
+</html>
