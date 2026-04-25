@@ -1,0 +1,72 @@
+---
+layout: page
+title: "Services"
+hero_label: "What We Offer"
+hero_title: "Comprehensive psychiatric care"
+hero_sub: "From diagnosis and medication management to specialized therapy and integrative wellness — we provide the full spectrum of psychiatric support."
+description: "Services at The Fountain Group — psychiatric evaluation, medication management, psychotherapy, perinatal psychiatry, women's health, and more."
+permalink: /services/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="services__grid services__grid--full">
+      {% for service in site.data.services %}
+      <div class="service-item service-item--expanded fade-up">
+        <div class="service-item__num">{{ service.num }}</div>
+        <h3 class="service-item__title">{{ service.title }}</h3>
+        <p class="service-item__desc">{{ service.description }}</p>
+        <ul class="service-item__details">
+          {% for detail in service.details %}
+          <li>{{ detail }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tinted">
+  <div class="container">
+    <div class="trust__grid">
+      <div class="trust__left">
+        <div class="section-label">Fees &amp; Insurance</div>
+        <h2 class="section-title">Transparent pricing</h2>
+      </div>
+      <div class="trust__right">
+        {% for fee in site.data.site.fees %}
+        <div class="trust__item" style="align-items:flex-start;">
+          <div class="trust__item-icon" style="font-family:var(--font-display);font-size:1.3rem;color:var(--green-600);">{{ fee.price }}</div>
+          <div>
+            <h4>{{ fee.type }}</h4>
+            <p>{{ fee.duration }} · {{ fee.applies_to }}. {{ fee.note }}</p>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="trust__item">
+          <div class="trust__item-icon">✦</div>
+          <div>
+            <h4>Insurance Accepted</h4>
+            <p>{{ site.data.site.practice.insurance_note }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <div class="cta-banner__text">
+        <h2>Not sure which service is right for you?</h2>
+        <p>Call us or send a message — we'll help you find the right starting point.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="{{ '/booking/' | relative_url }}" class="btn btn--white">Book a Consultation</a>
+        <a href="{{ '/contact/' | relative_url }}" class="btn btn--ghost-white">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{% comment %}
+  Usage: {% include doctor-card.html doctor=doctor %}
+  Expects a doctor object from _data/doctors.yml
+{% endcomment %}
+<article class="doctor-card">
+  <div class="doctor-card__photo-wrap">
+    <div class="doctor-card__photo {{ include.doctor.color_class }}">
+      <div class="doctor-card__photo-placeholder">
+        <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="60" cy="48" rx="28" ry="32" fill="currentColor" opacity=".45"/>
+          <path d="M10 140c0-27.614 22.386-50 50-50s50 22.386 50 50" fill="currentColor" opacity=".45"/>
+        </svg>
+      </div>
+    </div>
+    <div class="doctor-card__tag">{{ include.doctor.specialty_short }}</div>
+  </div>
+  <div class="doctor-card__body">
+    <h3 class="doctor-card__name">{{ include.doctor.name }}</h3>
+    <p class="doctor-card__title">{{ include.doctor.credentials }} — {{ include.doctor.title }}</p>
+    <p class="doctor-card__bio">{{ include.doctor.bio_short }}</p>
+    <div class="doctor-card__tags">
+      {% for tag in include.doctor.expertise_tags %}
+      <span>{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <a href="{{ include.doctor.profile_url }}" class="btn btn--outline">View Profile</a>
+  </div>
+</article>

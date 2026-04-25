@@ -1,0 +1,106 @@
+---
+layout: page
+title: "About the Practice"
+hero_label: "About"
+hero_title: "A practice built on<br/><em style='font-style:italic;color:var(--green-600)'>real care.</em>"
+hero_sub: "The Fountain Group exists because good mental health care should be accessible, thorough, and deeply human."
+description: "About The Fountain Group — a psychiatric practice led by Dr. Prashanth Pillai and Dr. Ksenia Pillai, offering compassionate care for children, adolescents, and adults."
+permalink: /about/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Visual/Stats Panel -->
+      <div class="about-visual fade-up">
+        {% for stat in site.data.site.stats %}
+        <div class="about-stat-card">
+          <div class="about-stat-card__num">{{ stat.num }}</div>
+          <div class="about-stat-card__label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+
+        <div style="background:var(--green-800);border-radius:var(--radius-xl);padding:2rem;color:var(--white);margin-top:.5rem;">
+          <p style="font-family:var(--font-display);font-size:1.4rem;font-weight:300;line-height:1.5;margin-bottom:1.5rem;">
+            <em>"While many discuss mental health, The Fountain Group is committed to fostering mental wealth."</em>
+          </p>
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--green-500);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1rem;color:var(--white);">K</div>
+            <div>
+              <div style="font-size:.85rem;font-weight:500;">Dr. Ksenia Pillai</div>
+              <div style="font-size:.75rem;opacity:.7;">Co-founder, The Fountain Group</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="fade-up">
+
+        <div class="about-text-section">
+          <h2>Who we are</h2>
+          <p>{{ site.data.site.practice.description }}</p>
+          <p>{{ site.data.site.practice.philosophy }}</p>
+        </div>
+
+        <div class="about-text-section">
+          <h2>Our approach to care</h2>
+          <p>We integrate lifestyle medicine into our practice, focusing on a holistic and biological approach to mental well-being. Cash patients receive extended consultation times for a more in-depth understanding of their needs.</p>
+          <p>The practice prioritizes accuracy — utilizing the most evidence-based methods to ensure precise diagnoses without rushing the process. Both psychotherapy (talk therapy) and medication management are available, all through HIPAA-compliant telehealth for complete privacy and security.</p>
+        </div>
+
+        <div class="about-text-section">
+          <h2>Fees &amp; insurance</h2>
+          <p>{{ site.data.site.practice.insurance_note }}</p>
+          <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem;">
+            {% for fee in site.data.site.fees %}
+            <div style="padding:1rem 1.25rem;background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--radius-lg);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;">
+              <div>
+                <strong style="font-size:.95rem;color:var(--neutral-800);">{{ fee.type }}</strong>
+                <div style="font-size:.8rem;color:var(--neutral-500);margin-top:.2rem;">{{ fee.duration }} · {{ fee.applies_to }}</div>
+                <div style="font-size:.8rem;color:var(--neutral-500);margin-top:.2rem;">{{ fee.note }}</div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--green-700);white-space:nowrap;">{{ fee.price }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="about-text-section">
+          <h2>Where we practise</h2>
+          <p>The Fountain Group operates across three locations — Reston, VA; Oakland, CA; and Honolulu, HI — making high-quality psychiatric care accessible across the country. All appointment types are also available via HIPAA-compliant telehealth, open seven days a week from 8am to 9pm.</p>
+          <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.75rem;">
+            {% for loc in site.data.site.locations %}
+            <div style="padding:1rem 1.25rem;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--radius-lg);">
+              <strong style="color:var(--green-700);">{{ loc.name }}</strong>
+              <div style="font-size:.9rem;color:var(--neutral-600);margin-top:.2rem;">{{ loc.address }}, {{ loc.city_state_zip }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <a href="{{ '/booking/' | relative_url }}" class="btn btn--primary" style="margin-right:1rem;">Book a Consultation</a>
+          <a href="{{ '/contact/' | relative_url }}" class="btn btn--ghost">Get in Touch</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Meet the doctors -->
+<section class="section section--tinted">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">The Team</div>
+      <h2 class="section-title">The psychiatrists</h2>
+    </div>
+    <div class="doctors__grid">
+      {% for doctor in site.data.doctors %}
+        {% include doctor-card.html doctor=doctor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+layout: default
+---
+
+<div class="page-hero">
+  <div class="page-hero__inner">
+    <div class="page-hero__label">{{ page.doctor.specialty_short }}</div>
+    <h1 class="page-hero__title">{{ page.doctor.name }}</h1>
+    <p class="page-hero__sub">{{ page.doctor.credentials }} — {{ page.doctor.title }}</p>
+  </div>
+</div>
+
+<main>
+  <div class="doctor-profile">
+    <div class="doctor-profile__grid">
+
+      <div class="doctor-profile__sidebar fade-up">
+        <div class="doctor-profile__photo {{ page.doctor.color_class }}">
+          <svg viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="90" cy="72" rx="42" ry="48" fill="currentColor" opacity=".5"/>
+            <path d="M15 220c0-41.42 33.58-75 75-75s75 33.58 75 75" fill="currentColor" opacity=".5"/>
+          </svg>
+        </div>
+
+        <div class="doctor-profile__meta">
+          <h1>{{ page.doctor.name }}</h1>
+          <div class="role">{{ page.doctor.credentials }} — {{ page.doctor.title }}</div>
+          <div class="doctor-profile__creds">
+            {% for cred in page.doctor.credentials_list %}
+            <span>{{ cred }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <a href="{{ page.doctor.booking_url }}" class="btn btn--primary" style="width:100%;justify-content:center">
+          Book with {{ page.doctor.name | split: ' ' | last }}
+        </a>
+      </div>
+
+      <div class="doctor-profile__content">
+
+        <div class="profile-section fade-up">
+          <h2>About {{ page.doctor.name }}</h2>
+          {% assign paragraphs = page.doctor.bio_full | newline_to_br | split: '<br /><br />' %}
+          {% for para in paragraphs %}
+          <p>{{ para | remove: '<br />' }}</p>
+          {% endfor %}
+        </div>
+
+        <div class="profile-section fade-up">
+          <h2>Areas of Expertise</h2>
+          <div class="expertise-tags">
+            {% for spec in page.doctor.specialties %}
+            <span>{{ spec }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="profile-section fade-up">
+          <h2>Clinical Philosophy</h2>
+          <p>{{ page.doctor.philosophy }}</p>
+        </div>
+
+        <div class="profile-section fade-up">
+          <h2>Session Format</h2>
+          <p><strong>Initial Consultation (40 minutes):</strong> A thorough assessment of your history, current symptoms, and goals. May extend to 1–2 sessions depending on history, records review, and your preference. You will leave with a clear clinical impression and proposed treatment pathway.</p>
+          <p><strong>Follow-up / Medication Management (20 minutes):</strong> Regular review appointments to monitor progress, adjust treatment, and ensure your care remains responsive. Follow-up sessions available in 20-minute increments.</p>
+          <p><strong>In-person &amp; Telehealth:</strong> All appointment types are available both in-person at our clinic locations and via HIPAA-compliant secure video consultation.</p>
+          <p><strong>After-Hours Crisis Appointments:</strong> Available at 1.5× standard fee for urgent situations.</p>
+        </div>
+
+        <div class="fade-up" style="background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--radius-xl);padding:2rem;margin-top:1rem;">
+          <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:var(--neutral-900);margin-bottom:.75rem;">Ready to book with {{ page.doctor.name | split: ' ' | last }}?</h3>
+          <p style="color:var(--neutral-600);font-size:.95rem;margin-bottom:1.5rem;">In-person appointments available in Reston VA, Oakland CA, and Honolulu HI. Telehealth available nationwide.</p>
+          <a href="{{ page.doctor.booking_url }}" class="btn btn--primary">Book a Consultation</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

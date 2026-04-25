@@ -1,0 +1,52 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="nav__logo">
+          <span class="nav__logo-mark">F</span>
+          <span class="nav__logo-text">The Fountain Group</span>
+        </div>
+        <p class="footer__tagline">{{ site.tagline }}</p>
+      </div>
+      <div class="footer__col">
+        <h5>Practice</h5>
+        <ul>
+          <li><a href="{{ '/about/' | relative_url }}">About Us</a></li>
+          <li><a href="{{ '/doctors/prashanth/' | relative_url }}">Dr. Prashanth Pillai</a></li>
+          <li><a href="{{ '/doctors/ksenia/' | relative_url }}">Dr. Ksenia Pillai</a></li>
+          <li><a href="{{ '/services/' | relative_url }}">Services</a></li>
+          <li><a href="{{ '/booking/' | relative_url }}">Book a Session</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Information</h5>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Care</a></li>
+          <li><a href="#">Fees &amp; Insurance</a></li>
+          <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:{{ site.data.site.contact.email }}">{{ site.data.site.contact.email }}</a></li>
+          <li><a href="tel:+1{{ site.data.site.contact.phone }}">{{ site.data.site.contact.phone_display }}</a></li>
+          <li>Mon–Sun, 8am–9pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__grid footer__grid--locations" style="border-top:1px solid var(--neutral-800);padding-top:1.5rem;margin-top:1.5rem;">
+      {% for loc in site.data.site.locations %}
+      <div style="color:var(--neutral-400);font-size:.8rem;line-height:1.6;">
+        <strong style="color:var(--neutral-300);display:block;margin-bottom:.25rem;">{{ loc.name }}</strong>
+        {{ loc.address }}<br/>{{ loc.city_state_zip }}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="footer__bottom">
+      <p>© {% assign year = 'now' | date: '%Y' %}{{ year }} The Fountain Group. All rights reserved.</p>
+      <p>If you are in crisis, please call 988 or contact emergency services.</p>
+    </div>
+  </div>
+</footer>
