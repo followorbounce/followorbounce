@@ -160,7 +160,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* --- NAV --- */
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 1.25rem 0;
@@ -253,13 +253,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 2rem;
-  padding: 5rem var(--gutter) 5rem;
+  padding: 8rem var(--gutter) 5rem;
   max-width: var(--max-width);
   margin-inline: auto;
   position: relative;
 }
 .hero__bg-grid {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image:
     linear-gradient(var(--green-100) 1px, transparent 1px),
@@ -1077,10 +1077,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 840px) {
   .hero {
     grid-template-columns: 1fr;
-    padding-top: 3rem;
+    padding-top: 7rem;
     min-height: auto;
     padding-bottom: 3rem;
   }
@@ -1103,7 +1103,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .cta-banner__inner { flex-direction: column; align-items: flex-start; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .nav__links {
     display: none;
     flex-direction: column;
@@ -1188,32 +1188,4 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Nav logo mark update */
 .nav__logo-mark {
   background: var(--green-600);
-}
-
-/* ===========================
-   CHROME ANDROID FIX
-   =========================== */
-
-/* Prevent horizontal overflow that can disable mobile viewport */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-/* Hero: clip the absolute background grid */
-.hero {
-  overflow: hidden;
-}
-
-/* Ensure touch targets are large enough on mobile */
-@media (max-width: 900px) {
-  .btn {
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-  }
-  .nav__toggle {
-    min-width: 44px;
-    min-height: 44px;
-  }
 }
