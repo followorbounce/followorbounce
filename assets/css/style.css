@@ -249,14 +249,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* --- HERO --- */
 .hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-  padding: 8rem var(--gutter) 5rem;
-  max-width: var(--max-width);
-  margin-inline: auto;
-  position: relative;
+ 
 }
 .hero__bg-grid {
   position: absolute;
