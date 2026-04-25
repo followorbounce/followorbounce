@@ -259,8 +259,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
 }
 .hero__bg-grid {
-  position: fixed;
-  inset: 0;
+  position: absolute;
   background-image:
     linear-gradient(var(--green-100) 1px, transparent 1px),
     linear-gradient(90deg, var(--green-100) 1px, transparent 1px);
