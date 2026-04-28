@@ -1,0 +1,10 @@
+---
+---
+
+body {
+font-family: monospace;
+margin:0;
+}
+.menu-bar { display:flex; gap:20px; }
+.submenu { display:none; }
+.has-submenu:hover .submenu { display:block; }
