@@ -44,14 +44,12 @@
     function openIt() {
       closeAll();
       var rect = btn.getBoundingClientRect();
-      sm.style.top     = rect.bottom + 'px';
-      sm.style.left    = rect.left + 'px';
+      // Position below button, aligned to its LEFT edge by default.
+      // Use right-align (via 'right' property) so it never overflows the viewport.
+      sm.style.top   = rect.bottom + 'px';
+      sm.style.left  = 'auto';
+      sm.style.right = (window.innerWidth - rect.right) + 'px';
       sm.style.display = 'block';
-      // Clamp to viewport: if submenu overflows right edge, shift it left
-      var smRect = sm.getBoundingClientRect();
-      if (smRect.right > window.innerWidth - 8) {
-        sm.style.left = Math.max(8, window.innerWidth - smRect.width - 8) + 'px';
-      }
       wrapper.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
     }
