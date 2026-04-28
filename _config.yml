@@ -27,8 +27,8 @@ issue_number: "01"
 established: "2024"
 
 navigation:
-  - title: "About"
-    url: "/about/"
+#  - title: "About"
+#    url: "/about/"
   - title: "Technology"
     url: "/technology/"
   - title: "Literature"
