@@ -1,0 +1,35 @@
+// ─────────────────────────────────────────────
+//  _tokens.scss — design tokens
+// ─────────────────────────────────────────────
+
+// Sass variables (for use in media queries / arithmetic)
+$bp-sm: 640px;
+$bp-md: 768px;
+
+// CSS custom properties (runtime)
+:root {
+  --ink:   #0d0c0a;
+  --paper: #f4f0e6;
+  --rust:  #c0390b;
+  --slate: #3a3d44;
+  --fog:   #b8b3a8;
+  --line:  1px solid #0d0c0a;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif:   'DM Serif Display', serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;
+  --sp-4: 1rem;     --sp-6: 1.5rem;   --sp-8: 2rem;
+  --sp-10: 2.5rem;  --sp-12: 3rem;    --sp-16: 4rem;
+  --sp-20: 5rem;    --sp-24: 6rem;    --sp-32: 8rem;
+
+  --header-top:   3.5rem;
+  --header-menu:  3rem;
+  --header-total: 6.5rem;
+
+  --ease-sweep: cubic-bezier(0.77, 0, 0.18, 1);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 0.22s;
+  --t-mid:  0.28s;
+}

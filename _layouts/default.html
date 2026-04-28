@@ -1,65 +1,126 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!--
-    jekyll-seo-tag outputs <title>, <meta name="description">, og: tags,
-    twitter: tags, and canonical. It reads page.title / site.title automatically.
-    Do NOT add a manual <title> here — that would create a duplicate.
-  -->
-  {%- seo -%}
-
-  <!-- Google Fonts -->
+  {% seo %}
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Global stylesheet (compiled from _sass/main.scss → assets/css/main.css) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-
-  <!-- Page-specific stylesheet (opt-in via front-matter: page_css: /assets/css/foo.css) -->
-  {%- if page.page_css %}
-  <link rel="stylesheet" href="{{ page.page_css | relative_url }}" />
-  {%- endif %}
-
-  <!-- RSS feed discovery -->
-  {%- feed_meta -%}
+  {% if page.page_css %}<link rel="stylesheet" href="{{ page.page_css | relative_url }}" />{% endif %}
+  {% feed_meta %}
 </head>
 
-<!--
-  body class pattern: page--{name}
-  `page.name`  — set explicitly in front-matter (preferred, readable)
-  `page.id`    — Jekyll's auto-generated id from file path (fallback)
-  Examples: page--home, page--about, page--technology, page--blog
--->
-<body class="page--{{ page.name | default: page.id | slugify }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+<body class="page--{{ page.name | default: page.slug | slugify }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
 
-  {%- include header.html -%}
+  <!-- ═══ HEADER ═══════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+
+    <div class="nav-top">
+      <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+        Follow<span class="wordmark__dot">.</span>Or<span class="wordmark__dot">.</span>Bounce
+      </a>
+      <span class="nav-meta" aria-hidden="true">Est. {{ site.brand.established }} / {{ site.brand.issue }}</span>
+      <button class="hamburger js-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="menu-bar" aria-label="Main navigation">
+      {% for item in site.data.navigation.main %}
+        {% if item.children %}
+          <div class="menu-bar__item menu-bar__item--has-sub{% if page.url contains item.url %} active{% endif %}">
+            <a href="{{ item.url | relative_url }}" class="menu-bar__link{% if page.url contains item.url %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+              <span class="dot" aria-hidden="true"></span>
+              <span>{{ item.title }}</span>
+              <span class="chevron" aria-hidden="true">↓</span>
+            </a>
+            <ul class="submenu" role="menu">
+              {% for child in item.children %}
+              <li role="none">
+                <a href="{{ child.url | relative_url }}" class="submenu__link{% if page.url == child.url %} is-active{% endif %}" role="menuitem">{{ child.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% else %}
+          <div class="menu-bar__item{% if page.url == item.url %} active{% endif %}">
+            <a href="{{ item.url | relative_url }}" class="menu-bar__link{% if page.url == item.url %} is-active{% endif %}">
+              <span class="dot" aria-hidden="true"></span>
+              <span>{{ item.title }}</span>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="menu-bar__spacer"></div>
+      {% for item in site.data.navigation.action %}
+      <div class="menu-bar__item">
+        <a href="{{ item.url | relative_url }}" class="menu-bar__link menu-bar__link--action">{{ item.title }}</a>
+      </div>
+      {% endfor %}
+    </nav>
+
+    <!-- Mobile nav panel -->
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+      <ul class="mobile-nav__list">
+        {% for item in site.data.navigation.main %}
+        <li class="mobile-nav__item">
+          <a href="{{ item.url | relative_url }}" class="mobile-nav__link{% if page.url contains item.url %} is-active{% endif %}">{{ item.title }}</a>
+          {% if item.children %}
+          <ul class="mobile-nav__sub">
+            {% for child in item.children %}
+            <li><a href="{{ child.url | relative_url }}" class="mobile-nav__sub-link{% if page.url == child.url %} is-active{% endif %}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+        {% for item in site.data.navigation.action %}
+        <li class="mobile-nav__item">
+          <a href="{{ item.url | relative_url }}" class="mobile-nav__link mobile-nav__link--action">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+  </header>
+  <!-- ═══ END HEADER ═══════════════════════════════════════ -->
 
   <main id="main-content" class="site-main" tabindex="-1">
     {{ content }}
   </main>
 
-  {%- include footer.html -%}
+  <!-- ═══ FOOTER ═══════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <span>© {{ 'now' | date: "%Y" }} {{ site.title }}</span>
+    <span>All rights reserved</span>
+  </footer>
 
-  <!-- Global navigation script -->
-  <script src="{{ '/assets/js/nav.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+  {% if page.page_js %}<script src="{{ page.page_js | relative_url }}" defer></script>{% endif %}
 
-  <!-- Page-specific script (opt-in via front-matter: page_js: /assets/js/foo.js) -->
-  {%- if page.page_js %}
-  <script src="{{ page.page_js | relative_url }}" defer></script>
-  {%- endif %}
-
-  <!-- AI chat widget (opt-in via front-matter: ai_widget: true) -->
-  {%- if page.ai_widget %}
-  {%- include ai-widget.html -%}
+  {% if page.ai_widget %}
+  <button id="aiBtn" class="ai-trigger" aria-label="Open AI assistant" aria-expanded="false">AI</button>
+  <div id="aiModal" class="ai-modal" role="dialog" aria-modal="true" aria-label="AI assistant" hidden>
+    <div class="ai-box">
+      <div class="ai-header">
+        <span>Assistant</span>
+        <button class="ai-close" id="aiClose" aria-label="Close">✕</button>
+      </div>
+      <div id="aiMessages" class="ai-messages" role="log" aria-live="polite"></div>
+      <div class="ai-input-row">
+        <label for="aiInput" class="sr-only">Message</label>
+        <input id="aiInput" type="text" class="ai-input" placeholder="Ask anything…" autocomplete="off" />
+        <button id="aiSend" class="ai-send" aria-label="Send">→</button>
+      </div>
+    </div>
+  </div>
   <script src="{{ '/assets/js/ai-widget.js' | relative_url }}" defer></script>
-  {%- endif %}
+  {% endif %}
 
 </body>
 </html>

@@ -1,0 +1,20 @@
+// ─────────────────────────────────────────────
+//  _layout.scss — structural layout
+// ─────────────────────────────────────────────
+
+.site-main {
+  margin-top: var(--header-total);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--sp-24) var(--sp-10) var(--sp-16);
+  max-width: 72rem;
+  width: 100%;
+  @media (max-width: #{$bp-sm}) {
+    padding: var(--sp-20) var(--sp-4) var(--sp-12);
+  }
+}
+
+.page-wrapper { width: 100%; }
+.page-content { margin-top: var(--sp-12); }
+
+.error-actions { margin-top: var(--sp-12); }

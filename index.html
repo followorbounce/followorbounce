@@ -1,95 +1,47 @@
 ---
 layout: default
-title: null          # Omit for home so <title> uses site.title / tagline
 name: home
-body_class: ""
-ai_widget: true      # Enable floating AI button on home page
+ai_widget: true
 ---
 
 <section class="page-hero">
   <p class="eyebrow">Follow or Bounce</p>
-  <h1 class="page-hero__title">
-    Ideas that <em>stick</em>,<br>or they don't.
-  </h1>
-  <p class="page-hero__desc">
-    A publication at the intersection of technology, literature,
-    and the agreements that hold them together.
-    Signal over noise. Always.
-  </p>
+  <h1 class="page-hero__title">Ideas that <em>stick</em>,<br>or they don't.</h1>
+  <p class="page-hero__desc">A publication at the intersection of technology, literature, and the agreements that hold them together. Signal over noise. Always.</p>
 </section>
 
-<!-- Section cards ────────────────────────────────────────── -->
 <div class="cards">
-
-  <div class="card" id="about" onclick="setActive(this, 'about')">
+  <div class="card" onclick="scrollToSection('about')">
     <p class="card__num">00 — About</p>
     <h2 class="card__title">Who We Are</h2>
-    <p class="card__body">
-      Our mission, our editors, and why we built this platform from the ground up.
-    </p>
+    <p class="card__body">Our mission, our editors, and why we built this platform from the ground up.</p>
   </div>
-
-  <div class="card" id="technology" onclick="setActive(this, 'technology')">
+  <div class="card" onclick="scrollToSection('technology')">
     <p class="card__num">01 — Technology</p>
     <h2 class="card__title">Tech &amp; Tools</h2>
-    <p class="card__body">
-      Deep dives into software, infrastructure, and the tools shaping how we work and think.
-    </p>
+    <p class="card__body">Deep dives into software, infrastructure, and the tools shaping how we work and think.</p>
   </div>
-
-  <div class="card" id="literature" onclick="setActive(this, 'literature')">
+  <div class="card" onclick="scrollToSection('literature')">
     <p class="card__num">02 — Literature</p>
     <h2 class="card__title">Writing &amp; Ideas</h2>
-    <p class="card__body">
-      Reviews, essays, and long-form pieces on the books and ideas that define our time.
-    </p>
+    <p class="card__body">Reviews, essays, and long-form pieces on the books and ideas that define our time.</p>
   </div>
-
-  <div class="card" id="contracts" onclick="setActive(this, 'contracts')">
+  <div class="card" onclick="scrollToSection('contracts')">
     <p class="card__num">03 — Contracts</p>
     <h2 class="card__title">Law &amp; Agreements</h2>
-    <p class="card__body">
-      Plain-language breakdowns of the frameworks, deals, and terms governing the digital world.
-    </p>
+    <p class="card__body">Plain-language breakdowns of the frameworks, deals, and terms governing the digital world.</p>
   </div>
-
 </div>
 
-<!-- Subscribe / contact form ─────────────────────────────── -->
 <div class="form__section form" id="subscribe">
   <p class="eyebrow">Subscribe</p>
   <h2 class="form__heading">Get in touch</h2>
-
   <form action="https://formsubmit.co/{{ site.brand.email }}" method="POST">
     <input type="hidden" name="_captcha" value="false" />
     <input type="hidden" name="_subject" value="New message — {{ site.title }}" />
-
-    <input
-      class="field"
-      type="text"
-      name="name"
-      placeholder="Your name"
-      required
-      autocomplete="name"
-    />
-
-    <input
-      class="field"
-      type="email"
-      name="email"
-      placeholder="Your email"
-      required
-      autocomplete="email"
-    />
-
-    <textarea
-      class="field"
-      name="message"
-      placeholder="Your message"
-      rows="5"
-      required
-    ></textarea>
-
+    <input class="field" type="text"  name="name"    placeholder="Your name"    required autocomplete="name" />
+    <input class="field" type="email" name="email"   placeholder="Your email"   required autocomplete="email" />
+    <textarea class="field"           name="message" placeholder="Your message" rows="5" required></textarea>
     <button class="btn-submit" type="submit">Send →</button>
   </form>
 </div>
