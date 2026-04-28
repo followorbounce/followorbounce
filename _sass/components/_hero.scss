@@ -1,0 +1,30 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/components/_hero.scss
+// ═══════════════════════════════════════════════════════════
+
+.page-hero {
+  padding-bottom: var(--space-12);
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: var(--space-10);
+
+    em {
+      font-style: italic;
+      color: var(--rust);
+    }
+  }
+
+  &__desc {
+    max-width: 38ch;
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: var(--slate);
+    border-left: 3px solid var(--rust);
+    // Use calc() to combine CSS custom property with a literal value
+    padding-left: calc(var(--space-4) + 0.2rem);
+  }
+}

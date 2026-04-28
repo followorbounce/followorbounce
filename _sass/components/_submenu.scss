@@ -1,0 +1,59 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/components/_submenu.scss
+//  Dropdown panel that appears beneath menu items with children.
+//  Reveal triggered by .menu-bar__item--has-sub:hover rules in _nav.scss.
+// ═══════════════════════════════════════════════════════════
+
+.submenu {
+  // Positioning
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 14rem;
+  z-index: 200;
+
+  // Appearance
+  background: var(--ink);
+  border: var(--line);
+  border-top: none;
+  border-color: rgba(244, 240, 230, 0.15);
+
+  // Hidden by default — revealed via CSS (no JS required)
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out-expo);
+
+  // ── Individual item ────────────────────────────────────
+  &__item {
+    border-bottom: 1px solid rgba(244, 240, 230, 0.08);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  // ── Link ───────────────────────────────────────────────
+  &__link {
+    display: block;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+    transition:
+      color var(--duration-fast) ease,
+      background var(--duration-fast) ease;
+
+    &:hover {
+      color: var(--paper);
+      background: rgba(244, 240, 230, 0.06);
+    }
+
+    &.is-active {
+      color: var(--rust);
+    }
+  }
+}

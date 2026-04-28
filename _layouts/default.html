@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    jekyll-seo-tag outputs <title>, <meta name="description">, og: tags,
+    twitter: tags, and canonical. It reads page.title / site.title automatically.
+    Do NOT add a manual <title> here — that would create a duplicate.
+  -->
+  {%- seo -%}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global stylesheet (compiled from _sass/main.scss → assets/css/main.css) -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+
+  <!-- Page-specific stylesheet (opt-in via front-matter: page_css: /assets/css/foo.css) -->
+  {%- if page.page_css %}
+  <link rel="stylesheet" href="{{ page.page_css | relative_url }}" />
+  {%- endif %}
+
+  <!-- RSS feed discovery -->
+  {%- feed_meta -%}
+</head>
+
+<!--
+  body class pattern: page--{name}
+  `page.name`  — set explicitly in front-matter (preferred, readable)
+  `page.id`    — Jekyll's auto-generated id from file path (fallback)
+  Examples: page--home, page--about, page--technology, page--blog
+-->
+<body class="page--{{ page.name | default: page.id | slugify }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+
+  {%- include header.html -%}
+
+  <main id="main-content" class="site-main" tabindex="-1">
+    {{ content }}
+  </main>
+
+  {%- include footer.html -%}
+
+  <!-- Global navigation script -->
+  <script src="{{ '/assets/js/nav.js' | relative_url }}" defer></script>
+
+  <!-- Page-specific script (opt-in via front-matter: page_js: /assets/js/foo.js) -->
+  {%- if page.page_js %}
+  <script src="{{ page.page_js | relative_url }}" defer></script>
+  {%- endif %}
+
+  <!-- AI chat widget (opt-in via front-matter: ai_widget: true) -->
+  {%- if page.ai_widget %}
+  {%- include ai-widget.html -%}
+  <script src="{{ '/assets/js/ai-widget.js' | relative_url }}" defer></script>
+  {%- endif %}
+
+</body>
+</html>

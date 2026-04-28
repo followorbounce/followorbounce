@@ -1,0 +1,133 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/components/_post.scss  —  Blog post article styles
+// ═══════════════════════════════════════════════════════════
+
+.post {
+  max-width: 68ch;
+}
+
+// ── Post header ───────────────────────────────────────────
+.post-header {
+  margin-bottom: var(--space-12);
+
+  &__date,
+  &__category {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  &__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
+
+    em { color: var(--rust); }
+  }
+
+  &__desc {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--slate);
+    border-left: 3px solid var(--rust);
+    padding-left: var(--space-4);
+  }
+
+  &__author {
+    margin-top: var(--space-4);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+}
+
+// ── Post body — prose styles inlined (avoids cross-file @extend) ──
+.post-body {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--slate);
+  max-width: 68ch;
+
+  p + p   { margin-top: 1em; }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--ink);
+    margin-top: 2em;
+    margin-bottom: 0.4em;
+  }
+
+  h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-top: 1.6em;
+    margin-bottom: 0.3em;
+  }
+
+  a {
+    color: var(--rust);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  strong { color: var(--ink); }
+
+  blockquote {
+    border-left: 3px solid var(--rust);
+    padding-left: var(--space-4);
+    color: var(--fog);
+    font-style: italic;
+    margin: 1.5em 0;
+  }
+
+  ul, ol {
+    list-style: revert;
+    padding-left: 1.4em;
+    margin: 1em 0;
+  }
+
+  li + li { margin-top: 0.4em; }
+
+  hr {
+    border: none;
+    border-top: var(--line);
+    margin: 2.5em 0;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    background: rgba(13, 12, 10, 0.07);
+    padding: 0.1em 0.35em;
+  }
+
+  pre {
+    background: var(--ink);
+    color: var(--paper);
+    padding: var(--space-6);
+    overflow-x: auto;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    margin: var(--space-8) 0;
+
+    code {
+      background: none;
+      padding: 0;
+      font-size: inherit;
+      color: inherit;
+    }
+  }
+}
+
+// ── Post footer ───────────────────────────────────────────
+.post-footer {
+  margin-top: var(--space-16);
+  border-top: var(--line);
+  padding-top: var(--space-8);
+}

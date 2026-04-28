@@ -1,0 +1,35 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/components/_post-nav.scss
+// ═══════════════════════════════════════════════════════════
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fog);
+    transition: color var(--duration-fast) ease;
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    &--next {
+      margin-left: auto;
+    }
+  }
+
+  &__title {
+    max-width: 24ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

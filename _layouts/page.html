@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="page-wrapper">
+
+  {%- if page.show_hero != false -%}
+  <section class="page-hero">
+    {%- if page.eyebrow %}
+    <p class="eyebrow">{{ page.eyebrow }}</p>
+    {%- endif %}
+
+    <h1 class="page-hero__title">
+      {%- if page.title_html %}
+        {{ page.title_html }}
+      {%- else %}
+        {{ page.title }}
+      {%- endif %}
+    </h1>
+
+    {%- if page.description %}
+    <p class="page-hero__desc">{{ page.description }}</p>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
+  <div class="page-content">
+    {{ content }}
+  </div>
+
+</div>

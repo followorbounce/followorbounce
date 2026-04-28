@@ -1,0 +1,40 @@
+// ═══════════════════════════════════════════════════════════
+//  main.scss — single entry point compiled by Jekyll's Sass
+//
+//  Uses @import (not @use) for compatibility with Jekyll's
+//  built-in LibSass / SassC pipeline and to allow cross-file
+//  @extend (e.g. .post-body { @extend .prose }).
+//
+//  Import order matters: tokens → base → components → pages
+// ═══════════════════════════════════════════════════════════
+
+// ── 1. Design tokens (CSS custom props + Sass vars) ───────
+@import 'base/tokens';
+
+// ── 2. Reset + base ───────────────────────────────────────
+@import 'base/reset';
+@import 'base/elements';
+@import 'base/typography';
+@import 'base/layout';
+
+// ── 3. Components ─────────────────────────────────────────
+@import 'components/header';
+@import 'components/nav';
+@import 'components/submenu';
+@import 'components/footer';
+@import 'components/hero';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/post';
+@import 'components/post-nav';
+@import 'components/ai-widget';
+@import 'components/mobile-nav';
+
+// ── 4. Page-scoped overrides (body.page--{name}) ──────────
+@import 'pages/home';
+@import 'pages/about';
+@import 'pages/technology';
+@import 'pages/literature';
+@import 'pages/contracts';
+@import 'pages/blog';
+@import 'pages/subscribe';

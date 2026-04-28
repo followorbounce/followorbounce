@@ -1,0 +1,51 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/pages/_blog.scss
+//  Scoped to .page--blog  (the listing page, not single posts)
+// ═══════════════════════════════════════════════════════════
+
+.page--blog {
+  .post-list {
+    border-top: var(--line);
+    margin-top: var(--space-12);
+  }
+
+  .post-list__item {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0 var(--space-8);
+    border-bottom: var(--line);
+    padding: var(--space-6) 0;
+    align-items: start;
+
+    @media (max-width: #{$bp-sm}) {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+    &:hover .post-list__title {
+      color: var(--rust);
+    }
+  }
+
+  .post-list__date {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--fog);
+    padding-top: 0.25rem;
+  }
+
+  .post-list__title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    transition: color var(--duration-fast) ease;
+  }
+
+  .post-list__excerpt {
+    font-size: 0.72rem;
+    color: var(--slate);
+    margin-top: var(--space-2);
+    line-height: 1.65;
+  }
+}

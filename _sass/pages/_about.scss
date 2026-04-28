@@ -1,0 +1,36 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/pages/_about.scss
+//  Scoped to .page--about
+// ═══════════════════════════════════════════════════════════
+
+.page--about {
+  // Team grid specific to About
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0;
+    border-top: var(--line);
+    border-left: var(--line);
+    margin-top: var(--space-16);
+  }
+
+  .team-member {
+    border-right: var(--line);
+    border-bottom: var(--line);
+    padding: var(--space-8) var(--space-6);
+
+    &__name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+
+    &__role {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fog);
+    }
+  }
+}

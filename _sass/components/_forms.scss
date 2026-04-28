@@ -1,0 +1,78 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/components/_forms.scss
+//  Contact / subscribe form styles — zero inline styles.
+// ═══════════════════════════════════════════════════════════
+
+.form {
+  max-width: 520px;
+
+  &__section {
+    margin-top: var(--space-32);
+    border-top: var(--line);
+    padding-top: var(--space-16);
+  }
+
+  &__heading {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: var(--space-6);
+  }
+}
+
+// ── Input / textarea ──────────────────────────────────────
+.field {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: var(--line);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  transition: border-color var(--duration-fast) ease;
+  resize: none; // applies to textarea; no effect on input
+
+  &::placeholder {
+    color: var(--fog);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--rust);
+  }
+}
+
+// ── Submit button ─────────────────────────────────────────
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  border: var(--line);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+
+  &:hover {
+    background: var(--rust);
+    border-color: var(--rust);
+  }
+}
+
+// ── Error / utility actions ────────────────────────────────
+.error-actions {
+  margin-top: var(--space-12);
+}
+
+// Inline variant: auto width, no full-width stretch
+.btn-submit--inline {
+  display: inline-block;
+  width: auto;
+  padding: 12px 32px;
+  text-decoration: none;
+}

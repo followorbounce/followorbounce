@@ -1,0 +1,30 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/pages/_literature.scss
+//  Scoped to .page--literature
+// ═══════════════════════════════════════════════════════════
+
+.page--literature {
+  // Pull-quote styling for literary content
+  .pull-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--ink);
+    border-left: 4px solid var(--rust);
+    padding: var(--space-4) var(--space-6);
+    margin: var(--space-12) 0;
+  }
+
+  // Reading time badge
+  .reading-time {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+    border: var(--line);
+    padding: 0.25em 0.6em;
+    margin-left: var(--space-4);
+  }
+}

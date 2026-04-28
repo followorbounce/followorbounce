@@ -1,0 +1,61 @@
+<!-- ═══════════════════════════════════════════════════════════
+     _includes/ai-widget.html
+     Opt-in via front-matter: ai_widget: true
+     Requires assets/js/ai-widget.js
+════════════════════════════════════════════════════════════ -->
+
+<button
+  id="aiButton"
+  class="ai-widget__trigger"
+  aria-label="Open AI assistant"
+  aria-expanded="false"
+  aria-controls="aiModal"
+>
+  AI
+</button>
+
+<div
+  id="aiModal"
+  class="ai-widget__backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-label="AI assistant"
+  hidden
+>
+  <div id="aiBox" class="ai-widget__box">
+
+    <header id="aiHeader" class="ai-widget__header">
+      <span>Assistant</span>
+      <button
+        class="ai-widget__close"
+        onclick="closeAI()"
+        aria-label="Close AI assistant"
+      >✕</button>
+    </header>
+
+    <div
+      id="aiMessages"
+      class="ai-widget__messages"
+      role="log"
+      aria-live="polite"
+      aria-atomic="false"
+    ></div>
+
+    <div id="aiInputBox" class="ai-widget__input-row">
+      <label for="aiInput" class="sr-only">Message</label>
+      <input
+        id="aiInput"
+        type="text"
+        class="ai-widget__input"
+        placeholder="Ask anything…"
+        autocomplete="off"
+      />
+      <button
+        class="ai-widget__send"
+        onclick="sendAI()"
+        aria-label="Send message"
+      >→</button>
+    </div>
+
+  </div>
+</div>

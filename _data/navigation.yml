@@ -1,0 +1,53 @@
+# ────────────────────────────────────────────────────────────
+#  Navigation data — edit here to update all menus site-wide.
+#  Each top-level item may have an optional `children` list
+#  which renders as a dropdown submenu.
+# ────────────────────────────────────────────────────────────
+
+main:
+  - title: About
+    url: /about/
+    id: about
+
+  - title: Technology
+    url: /technology/
+    id: technology
+    children:
+      - title: Software
+        url: /technology/software/
+      - title: Infrastructure
+        url: /technology/infrastructure/
+      - title: Tools
+        url: /technology/tools/
+
+  - title: Literature
+    url: /literature/
+    id: literature
+    children:
+      - title: Essays
+        url: /literature/essays/
+      - title: Reviews
+        url: /literature/reviews/
+      - title: Long-form
+        url: /literature/long-form/
+
+  - title: Contracts
+    url: /contracts/
+    id: contracts
+    children:
+      - title: Digital Law
+        url: /contracts/digital-law/
+      - title: Agreements
+        url: /contracts/agreements/
+      - title: Frameworks
+        url: /contracts/frameworks/
+
+  - title: Blog
+    url: /blog/
+    id: blog
+
+action:
+  - title: Subscribe ↗
+    url: /subscribe/
+    id: subscribe
+    class: action-link

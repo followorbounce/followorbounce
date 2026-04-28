@@ -1,0 +1,87 @@
+# ────────────────────────────────────────────────────────────
+#  Follow or Bounce — Jekyll Configuration
+# ────────────────────────────────────────────────────────────
+
+# Site identity
+title:       "Follow or Bounce"
+tagline:     "Ideas that stick, or they don't."
+description: >
+  A publication at the intersection of technology, literature,
+  and the agreements that hold them together. Signal over noise. Always.
+baseurl: ""      # subpath e.g. "/blog" — leave empty for root deploy
+url:     "https://followorbounce.com"
+
+# Branding meta (available as {{ site.brand.X }} in templates)
+brand:
+  issue:       "Issue 01"
+  established: "2024"
+  email:       "followorbounce@gmail.com"
+
+# Build settings
+source:      .
+destination: ./_site
+timezone:    America/Honolulu
+
+# Markdown / converter
+markdown:    kramdown
+highlighter: rouge
+kramdown:
+  input:              GFM
+  syntax_highlighter: rouge
+  hard_wrap:          false
+
+# Sass
+sass:
+  sass_dir: _sass
+  style:    compressed   # change to "expanded" for readable dev output
+
+# Permalink for posts
+permalink: /:categories/:title/
+
+# Collections
+# `pages` collection: output:true + /:path/ handles nested subdirs
+# e.g. _pages/technology/software.md → /technology/software/
+collections:
+  pages:
+    output:    true
+    permalink: /:path/
+
+# Front-matter defaults
+defaults:
+  # All posts get the post layout
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+  # All documents in the `pages` collection get the page layout
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+  # Global fallback for anything else (plain HTML/MD at root)
+  - scope:
+      path: ""
+    values:
+      layout:  default
+      sitemap: true
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from build output
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - .git/
+  - README.md
+  - "*.sh"
+  - assets/css/README.md

@@ -1,0 +1,36 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/pages/_contracts.scss
+//  Scoped to .page--contracts
+// ═══════════════════════════════════════════════════════════
+
+.page--contracts {
+  // Legal definition callout box
+  .definition-box {
+    border: var(--line);
+    padding: var(--space-6) var(--space-8);
+    margin: var(--space-8) 0;
+
+    &__term {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-2);
+    }
+
+    &__body {
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--slate);
+    }
+  }
+
+  // Warning / caution flag
+  .legal-note {
+    border-left: 3px solid var(--rust);
+    padding-left: var(--space-4);
+    font-size: 0.72rem;
+    color: var(--fog);
+    font-style: italic;
+    margin: var(--space-6) 0;
+  }
+}

@@ -1,0 +1,119 @@
+// ═══════════════════════════════════════════════════════════
+//  _sass/components/_mobile-nav.scss
+//  Hamburger button + full-screen off-canvas nav.
+//  Visible only below $bp-md (768px).
+// ═══════════════════════════════════════════════════════════
+
+// ── Hamburger trigger ─────────────────────────────────────
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+
+  @media (max-width: #{$bp-md}) {
+    display: flex;
+  }
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--ink);
+    transition:
+      transform var(--duration-mid) var(--ease-sweep),
+      opacity   var(--duration-fast) ease;
+    transform-origin: center;
+  }
+
+  // Animated X when open
+  &[aria-expanded="true"] {
+    .hamburger__line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger__line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger__line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  }
+}
+
+// ── Off-canvas panel ──────────────────────────────────────
+.mobile-nav {
+  position: fixed;
+  inset: var(--header-total) 0 0 0;
+  background: var(--paper);
+  border-top: var(--line);
+  z-index: 99;
+  overflow-y: auto;
+  padding: var(--space-6) var(--space-6) var(--space-16);
+
+  // Panel is shown/hidden via the `hidden` attribute (JS-toggled)
+  // CSS transition via clip-path for a clean reveal
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--duration-mid) var(--ease-out-expo);
+
+  &:not([hidden]) {
+    clip-path: inset(0 0 0% 0);
+  }
+
+  // Override hidden so transition still plays
+  &[hidden] {
+    display: block !important;
+    clip-path: inset(0 0 100% 0);
+    pointer-events: none;
+  }
+
+  @media (min-width: #{$bp-md}) {
+    display: none !important;
+  }
+
+  // ── List ─────────────────────────────────────────────────
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    border-bottom: var(--line);
+  }
+
+  &__link {
+    display: block;
+    padding: var(--space-4) 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+
+    &.is-active { color: var(--rust); }
+
+    &--action {
+      color: var(--rust);
+      margin-top: var(--space-4);
+    }
+  }
+
+  // ── Sub-list (child pages) ────────────────────────────────
+  &__sub {
+    padding: 0 0 var(--space-4) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  &__sub-link {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fog);
+    padding: var(--space-1) 0;
+
+    &.is-active { color: var(--rust); }
+    &:hover { color: var(--ink); }
+  }
+}
