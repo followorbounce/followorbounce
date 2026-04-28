@@ -86,6 +86,8 @@ header {
   white-space: nowrap;
   overflow: hidden;
   transition: color .22s;
+  -webkit-tap-highlight-color: transparent; /* iOS Safari: remove tap flash */
+  touch-action: manipulation;              /* iOS Safari: no double-tap zoom delay */
 
   &:first-child { border-left: var(--line); }
 

@@ -2,6 +2,10 @@
   'use strict';
 
   /* ── DROPDOWN SUBMENUS ─────────────────────────────────────────────────── */
+  // iOS Safari fix: make document clickable so outside-click close works
+  document.body.style.cursor = 'pointer';
+  document.body.style.cursor = '';
+
   document.querySelectorAll('.has-submenu').forEach(function (wrapper) {
     var btn = wrapper.querySelector('.menu-bar-btn');
     var links = wrapper.querySelectorAll('.submenu a');
@@ -17,17 +21,36 @@
       links.forEach(function (l) { l.setAttribute('tabindex', '-1'); });
     }
 
-    btn.addEventListener('click', function () {
-      wrapper.classList.contains('open') ? close() : open();
+    // iOS Safari requires touchend OR click — we handle both, deduped with a flag
+    var justOpened = false;
+
+    function handleToggle(e) {
+      e.stopPropagation();
+      if (wrapper.classList.contains('open')) {
+        close();
+      } else {
+        open();
+        justOpened = true;
+        setTimeout(function () { justOpened = false; }, 50);
+      }
+    }
+
+    btn.addEventListener('click', handleToggle);
+    btn.addEventListener('touchend', function (e) {
+      e.preventDefault(); // prevent ghost click on iOS
+      handleToggle(e);
     });
+
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close();
     });
-    wrapper.addEventListener('focusout', function (e) {
-      if (!wrapper.contains(e.relatedTarget)) close();
-    });
+
+    // Close on outside click/tap
     document.addEventListener('click', function (e) {
-      if (!wrapper.contains(e.target)) close();
+      if (!justOpened && !wrapper.contains(e.target)) close();
+    });
+    document.addEventListener('touchend', function (e) {
+      if (!justOpened && !wrapper.contains(e.target)) close();
     });
   });
 
