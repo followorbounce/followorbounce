@@ -1,61 +1,47 @@
-# ─────────────────────────────────────────────
-#  Follow or Bounce — _config.yml
-#  Compatible with GitHub Pages (jekyll 3.10)
-# ─────────────────────────────────────────────
-
-title:       "Follow or Bounce"
-tagline:     "Ideas that stick, or they don't."
+title: "Follow or Bounce"
 description: "A publication at the intersection of technology, literature, and the agreements that hold them together."
-baseurl:     ""
-url:         "https://followorbounce.com"
+author: "Follow or Bounce"
 
-brand:
-  issue:       "Issue 01"
-  established: "2024"
-  email:       "followorbounce@gmail.com"
+# Set baseurl to "/repo-name" for GitHub project pages, or "" for custom domains / user pages
+baseurl: ""
+url: "https://followorbounce.github.io"
 
-# Build
-timezone: America/Honolulu
+# No gem theme — we use our own _layouts entirely
+theme: ~
 
-# Markdown
-markdown:    kramdown
-highlighter: rouge
-kramdown:
-  input:     GFM
-  hard_wrap: false
+markdown: kramdown
+permalink: pretty
 
-# Sass
 sass:
   sass_dir: _sass
-  style:    compressed
-
-# Permalink for posts
-permalink: /:categories/:title/
-
-# Collections — _pages outputs at /:path/
-collections:
-  pages:
-    output:    true
-    permalink: /:path/
-
-# Defaults
-defaults:
-  - scope: { path: "", type: posts }
-    values: { layout: post }
-  - scope: { path: "", type: pages }
-    values: { layout: page }
-  - scope: { path: "" }
-    values: { layout: default }
-
-# GitHub Pages safe plugins only
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+  style: compressed
 
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - node_modules/
-  - vendor/
+  - vendor
+
+# Site-wide data used in templates
+issue_number: "01"
+established: "2024"
+
+navigation:
+  - title: "About"
+    url: "/about/"
+  - title: "Technology"
+    url: "/technology/"
+  - title: "Literature"
+    url: "/literature/"
+  - title: "Contracts"
+    url: "/contracts/"
+    children:
+      - title: "Digital Law"
+        url: "/contracts/digital-law/"
+      - title: "Open Source"
+        url: "/contracts/open-source/"
+      - title: "Platform Terms"
+        url: "/contracts/platform-terms/"
+  - title: "Subscribe ↗"
+    url: "/subscribe/"
+    action: true

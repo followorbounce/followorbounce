@@ -1,47 +1,64 @@
 ---
 layout: default
-name: home
-ai_widget: true
+title: "Follow or Bounce"
 ---
 
-<section class="page-hero">
-  <p class="eyebrow">Follow or Bounce</p>
-  <h1 class="page-hero__title">Ideas that <em>stick</em>,<br>or they don't.</h1>
-  <p class="page-hero__desc">A publication at the intersection of technology, literature, and the agreements that hold them together. Signal over noise. Always.</p>
-</section>
+<p class="eyebrow">Follow or Bounce</p>
+<h1>Ideas that <em>stick</em>,<br>or they don't.</h1>
+<p class="desc">
+  A publication at the intersection of technology, literature,
+  and the agreements that hold them together.
+  Signal over noise. Always.
+</p>
 
 <div class="cards">
-  <div class="card" onclick="scrollToSection('about')">
-    <p class="card__num">00 — About</p>
-    <h2 class="card__title">Who We Are</h2>
-    <p class="card__body">Our mission, our editors, and why we built this platform from the ground up.</p>
+  <div class="card" onclick="activateSection(this, 'about')">
+    <p class="card-num">00 — About</p>
+    <h2 class="card-title"><a href="{{ '/about/' | relative_url }}">Who We Are</a></h2>
+    <p class="card-body">Our mission, our editors, and why we built this platform from the ground up.</p>
   </div>
-  <div class="card" onclick="scrollToSection('technology')">
-    <p class="card__num">01 — Technology</p>
-    <h2 class="card__title">Tech &amp; Tools</h2>
-    <p class="card__body">Deep dives into software, infrastructure, and the tools shaping how we work and think.</p>
+  <div class="card" onclick="activateSection(this, 'technology')">
+    <p class="card-num">01 — Technology</p>
+    <h2 class="card-title"><a href="{{ '/technology/' | relative_url }}">Tech &amp; Tools</a></h2>
+    <p class="card-body">Deep dives into software, infrastructure, and the tools shaping how we work and think.</p>
   </div>
-  <div class="card" onclick="scrollToSection('literature')">
-    <p class="card__num">02 — Literature</p>
-    <h2 class="card__title">Writing &amp; Ideas</h2>
-    <p class="card__body">Reviews, essays, and long-form pieces on the books and ideas that define our time.</p>
+  <div class="card" onclick="activateSection(this, 'literature')">
+    <p class="card-num">02 — Literature</p>
+    <h2 class="card-title"><a href="{{ '/literature/' | relative_url }}">Writing &amp; Ideas</a></h2>
+    <p class="card-body">Reviews, essays, and long-form pieces on the books and ideas that define our time.</p>
   </div>
-  <div class="card" onclick="scrollToSection('contracts')">
-    <p class="card__num">03 — Contracts</p>
-    <h2 class="card__title">Law &amp; Agreements</h2>
-    <p class="card__body">Plain-language breakdowns of the frameworks, deals, and terms governing the digital world.</p>
+  <div class="card" onclick="activateSection(this, 'contracts')">
+    <p class="card-num">03 — Contracts</p>
+    <h2 class="card-title"><a href="{{ '/contracts/' | relative_url }}">Law &amp; Agreements</a></h2>
+    <p class="card-body">Plain-language breakdowns of the frameworks, deals, and terms governing the digital world.</p>
   </div>
 </div>
 
-<div class="form__section form" id="subscribe">
+<section class="subscribe-section" id="subscribe">
   <p class="eyebrow">Subscribe</p>
-  <h2 class="form__heading">Get in touch</h2>
-  <form action="https://formsubmit.co/{{ site.brand.email }}" method="POST">
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="hidden" name="_subject" value="New message — {{ site.title }}" />
-    <input class="field" type="text"  name="name"    placeholder="Your name"    required autocomplete="name" />
-    <input class="field" type="email" name="email"   placeholder="Your email"   required autocomplete="email" />
-    <textarea class="field"           name="message" placeholder="Your message" rows="5" required></textarea>
-    <button class="btn-submit" type="submit">Send →</button>
+  <h2>Get in touch</h2>
+  <form action="https://formsubmit.co/followorbounce@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New message — Follow or Bounce">
+    <input class="form-field" type="text" name="name" placeholder="Your name" required>
+    <input class="form-field" type="email" name="email" placeholder="Your email" required>
+    <textarea class="form-field" name="message" placeholder="Your message" rows="5" required></textarea>
+    <button class="form-submit" type="submit">Send →</button>
   </form>
+</section>
+
+<button id="ai-btn" aria-label="Open AI chat">AI</button>
+
+<div id="ai-modal" aria-hidden="true">
+  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat">
+    <div id="ai-box-header">
+      <span>Ask AI</span>
+      <button id="ai-close" aria-label="Close">✕</button>
+    </div>
+    <div id="ai-messages" aria-live="polite"></div>
+    <div id="ai-input-row">
+      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message">
+      <button id="ai-send">→</button>
+    </div>
+  </div>
 </div>

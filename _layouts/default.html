@@ -3,124 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% seo %}
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-  {% if page.page_css %}<link rel="stylesheet" href="{{ page.page_css | relative_url }}" />{% endif %}
-  {% feed_meta %}
 </head>
+<body>
 
-<body class="page--{{ page.name | default: page.slug | slugify }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+<!-- ── HEADER ─────────────────────────────────────────────────────────────── -->
+<header>
+  <div class="nav-top">
+    <a class="wordmark" href="{{ '/' | relative_url }}">Follow<span>.</span>Or<span>.</span>Bounce</a>
+    <span class="nav-meta">Est. {{ site.established }} / Issue {{ site.issue_number }}</span>
+  </div>
 
-  <!-- ═══ HEADER ═══════════════════════════════════════════ -->
-  <header class="site-header" role="banner">
-
-    <div class="nav-top">
-      <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
-        Follow<span class="wordmark__dot">.</span>Or<span class="wordmark__dot">.</span>Bounce
-      </a>
-      <span class="nav-meta" aria-hidden="true">Est. {{ site.brand.established }} / {{ site.brand.issue }}</span>
-      <button class="hamburger js-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span class="hamburger__line"></span>
-        <span class="hamburger__line"></span>
-        <span class="hamburger__line"></span>
-      </button>
-    </div>
-
-    <!-- Desktop nav -->
-    <nav class="menu-bar" aria-label="Main navigation">
-      {% for item in site.data.navigation.main %}
-        {% if item.children %}
-          <div class="menu-bar__item menu-bar__item--has-sub{% if page.url contains item.url %} active{% endif %}">
-            <a href="{{ item.url | relative_url }}" class="menu-bar__link{% if page.url contains item.url %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
-              <span class="dot" aria-hidden="true"></span>
-              <span>{{ item.title }}</span>
-              <span class="chevron" aria-hidden="true">↓</span>
-            </a>
-            <ul class="submenu" role="menu">
-              {% for child in item.children %}
-              <li role="none">
-                <a href="{{ child.url | relative_url }}" class="submenu__link{% if page.url == child.url %} is-active{% endif %}" role="menuitem">{{ child.title }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% else %}
-          <div class="menu-bar__item{% if page.url == item.url %} active{% endif %}">
-            <a href="{{ item.url | relative_url }}" class="menu-bar__link{% if page.url == item.url %} is-active{% endif %}">
-              <span class="dot" aria-hidden="true"></span>
-              <span>{{ item.title }}</span>
-            </a>
-          </div>
-        {% endif %}
-      {% endfor %}
-      <div class="menu-bar__spacer"></div>
-      {% for item in site.data.navigation.action %}
-      <div class="menu-bar__item">
-        <a href="{{ item.url | relative_url }}" class="menu-bar__link menu-bar__link--action">{{ item.title }}</a>
-      </div>
-      {% endfor %}
-    </nav>
-
-    <!-- Mobile nav panel -->
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
-      <ul class="mobile-nav__list">
-        {% for item in site.data.navigation.main %}
-        <li class="mobile-nav__item">
-          <a href="{{ item.url | relative_url }}" class="mobile-nav__link{% if page.url contains item.url %} is-active{% endif %}">{{ item.title }}</a>
-          {% if item.children %}
-          <ul class="mobile-nav__sub">
+  <nav class="menu-bar" aria-label="Main navigation">
+    {% for item in site.navigation %}
+      {% if item.children %}
+        <div class="has-submenu{% if page.url contains item.url %} active{% endif %}">
+          <button class="menu-bar-btn" aria-haspopup="true" aria-expanded="false">
+            <span class="dot"></span>
+            <span class="label">{{ item.title }}</span>
+            <span class="chevron">▾</span>
+          </button>
+          <ul class="submenu">
             {% for child in item.children %}
-            <li><a href="{{ child.url | relative_url }}" class="mobile-nav__sub-link{% if page.url == child.url %} is-active{% endif %}">{{ child.title }}</a></li>
+            <li><a href="{{ child.url | relative_url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
             {% endfor %}
           </ul>
-          {% endif %}
-        </li>
-        {% endfor %}
-        {% for item in site.data.navigation.action %}
-        <li class="mobile-nav__item">
-          <a href="{{ item.url | relative_url }}" class="mobile-nav__link mobile-nav__link--action">{{ item.title }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
+        </div>
+      {% elsif item.action %}
+        <div class="spacer"></div>
+        <a class="menu-bar-link action" href="{{ item.url | relative_url }}">
+          <span class="label">{{ item.title }}</span>
+        </a>
+      {% else %}
+        <a class="menu-bar-link{% if page.url == item.url %} active{% endif %}" href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>
+          <span class="dot"></span>
+          <span class="label">{{ item.title }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+</header>
 
-  </header>
-  <!-- ═══ END HEADER ═══════════════════════════════════════ -->
+<!-- ── MAIN CONTENT ───────────────────────────────────────────────────────── -->
+<main>
+  {{ content }}
+</main>
 
-  <main id="main-content" class="site-main" tabindex="-1">
-    {{ content }}
-  </main>
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <span>© {{ 'now' | date: '%Y' }} {{ site.title }}</span>
+  <span>All rights reserved</span>
+</footer>
 
-  <!-- ═══ FOOTER ═══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
-    <span>© {{ 'now' | date: "%Y" }} {{ site.title }}</span>
-    <span>All rights reserved</span>
-  </footer>
-
-  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-  {% if page.page_js %}<script src="{{ page.page_js | relative_url }}" defer></script>{% endif %}
-
-  {% if page.ai_widget %}
-  <button id="aiBtn" class="ai-trigger" aria-label="Open AI assistant" aria-expanded="false">AI</button>
-  <div id="aiModal" class="ai-modal" role="dialog" aria-modal="true" aria-label="AI assistant" hidden>
-    <div class="ai-box">
-      <div class="ai-header">
-        <span>Assistant</span>
-        <button class="ai-close" id="aiClose" aria-label="Close">✕</button>
-      </div>
-      <div id="aiMessages" class="ai-messages" role="log" aria-live="polite"></div>
-      <div class="ai-input-row">
-        <label for="aiInput" class="sr-only">Message</label>
-        <input id="aiInput" type="text" class="ai-input" placeholder="Ask anything…" autocomplete="off" />
-        <button id="aiSend" class="ai-send" aria-label="Send">→</button>
-      </div>
-    </div>
-  </div>
-  <script src="{{ '/assets/js/ai-widget.js' | relative_url }}" defer></script>
-  {% endif %}
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+{% if page.extra_js %}
+<script src="{{ page.extra_js | relative_url }}" defer></script>
+{% endif %}
 
 </body>
 </html>
