@@ -1,0 +1,186 @@
+// ──────────────────────────────────────────────────────────────────────────────
+// components/_navigation.scss
+// BEM: .menu-bar, .submenu
+// ──────────────────────────────────────────────────────────────────────────────
+
+// ── MENU BAR ──────────────────────────────────────────────────────────────────
+.menu-bar {
+  display: flex;
+  align-items: stretch;
+  height: $header-nav-height;
+  overflow: visible; // must be visible so submenus can escape
+  position: relative;
+
+  // ── NAV ITEM WRAPPER (used for items that have submenus) ────────
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+
+    &--has-submenu {
+      // Show submenu when open class is applied by JS
+      &.is-open .submenu {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      &.is-open .menu-bar__link--parent {
+        &::before { transform: translateY(0); }
+        color: $paper;
+      }
+
+      &.is-open .menu-bar__chevron {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // ── SHARED LINK + BUTTON STYLES ─────────────────────────────────
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 2.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $ink;
+    border-right: $border;
+    transition: color $transition-fast, background $transition-fast;
+    white-space: nowrap;
+    overflow: hidden;
+    background: transparent;
+
+    // First link gets left border
+    &:first-child,
+    .menu-bar__item:first-child & {
+      border-left: $border;
+    }
+
+    // Fill-sweep hover effect
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: $ink;
+      transform: translateY(100%);
+      transition: transform $transition-sweep;
+      z-index: 0;
+    }
+
+    &:hover,
+    &.is-active {
+      color: $paper;
+
+      &::before { transform: translateY(0); }
+
+      .menu-bar__dot { background: $paper; }
+    }
+
+    // ── Accent dot ──────────────────────────────────────────────
+    &--action-link {
+      border-left: $border;
+      border-right: none !important;
+      color: $rust !important;
+
+      &::before { background: $rust; }
+      &:hover { color: $paper !important; }
+    }
+
+    // ── Parent button (has dropdown) ─────────────────────────────
+    &--parent {
+      gap: 0.5rem;
+    }
+  }
+
+  // ── ACCENT DOT ──────────────────────────────────────────────────
+  &__dot {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 0.6rem;
+    background: $rust;
+    flex-shrink: 0;
+    transition: background $transition-fast;
+  }
+
+  // ── LABEL + CHEVRON ─────────────────────────────────────────────
+  &__label,
+  &__chevron {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__chevron {
+    font-size: 0.6rem;
+    transition: transform $transition-fast;
+    margin-left: 0.3rem;
+  }
+
+  // ── SPACER (pushes action-link to far right) ─────────────────────
+  &__spacer {
+    flex: 1;
+  }
+}
+
+// ── SUBMENU (DROPDOWN) ────────────────────────────────────────────────────────
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 14rem;
+  background: $paper;
+  border: $border;
+  border-top: none;
+  z-index: 200;
+
+  // Hidden by default — revealed by .is-open on parent
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity $transition-fast, transform $transition-fast;
+
+  &__item {
+    border-bottom: $border;
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $ink;
+    transition: background $transition-fast, color $transition-fast;
+
+    &:hover,
+    &.is-active {
+      background: $ink;
+      color: $paper;
+    }
+  }
+
+  &__label {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ── MOBILE ────────────────────────────────────────────────────────────────────
+@media (max-width: $bp-mobile) {
+  .menu-bar {
+    &__link {
+      padding: 0 1.1rem;
+      font-size: 0.62rem;
+    }
+
+    &__dot { display: none; }
+  }
+}

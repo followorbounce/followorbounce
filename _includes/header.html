@@ -1,0 +1,16 @@
+<header class="site-header" role="banner">
+
+  <!-- ── TOP BAR: Wordmark + meta ─────────────────────────────────── -->
+  <div class="site-header__top">
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} — Home">
+      Follow<span class="wordmark__dot">.</span>Or<span class="wordmark__dot">.</span>Bounce
+    </a>
+    <span class="site-header__meta" aria-label="Publication info">
+      Est. {{ site.established }}&nbsp;/&nbsp;Issue {{ site.issue_number }}
+    </span>
+  </div>
+
+  <!-- ── MAIN NAV ─────────────────────────────────────────────────── -->
+  {% include navigation.html %}
+
+</header>

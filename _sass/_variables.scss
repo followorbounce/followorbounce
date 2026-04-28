@@ -1,0 +1,42 @@
+// ──────────────────────────────────────────────────────────────────────────────
+// _variables.scss
+// Design tokens for Follow or Bounce.
+// All CSS custom properties are also declared in _base.scss for runtime access.
+// ──────────────────────────────────────────────────────────────────────────────
+
+// ── COLOR PALETTE ─────────────────────────────────────────────────────────────
+$ink:   #0d0c0a;
+$paper: #f4f0e6;
+$rust:  #c0390b;
+$slate: #3a3d44;
+$fog:   #b8b3a8;
+
+// ── TYPOGRAPHY ────────────────────────────────────────────────────────────────
+$font-display:  'Bebas Neue', sans-serif;
+$font-serif:    'DM Serif Display', serif;
+$font-mono:     'DM Mono', monospace;
+
+// ── BORDERS ───────────────────────────────────────────────────────────────────
+$border: 1px solid $ink;
+
+// ── SPACING ───────────────────────────────────────────────────────────────────
+$space-xs:  0.5rem;
+$space-sm:  1rem;
+$space-md:  2rem;
+$space-lg:  4rem;
+$space-xl:  6rem;
+$space-xxl: 8rem;
+
+// ── LAYOUT ────────────────────────────────────────────────────────────────────
+$content-max-width: 72rem;
+$header-top-height: 3.5rem;
+$header-nav-height: 3rem;
+$header-total-height: $header-top-height + $header-nav-height;
+
+// ── TRANSITIONS ───────────────────────────────────────────────────────────────
+$transition-fast:   0.22s ease;
+$transition-sweep:  0.28s cubic-bezier(0.77, 0, 0.18, 1);
+
+// ── BREAKPOINTS ───────────────────────────────────────────────────────────────
+$bp-mobile: 640px;
+$bp-tablet: 1024px;

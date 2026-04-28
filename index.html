@@ -1,202 +1,102 @@
 ---
-layout: default
-title: "Psychiatric Care · The Fountain Group"
-description: "The Fountain Group provides expert psychiatric care for children, adolescents, and adults. Led by board-certified psychiatrists Dr. Prashanth Pillai and Dr. Ksenia Pillai. In-person and telehealth available."
+layout: home
+title: "Ideas that stick, or they don't."
+description: "A publication at the intersection of technology, literature, and the agreements that hold them together. Signal over noise. Always."
+page_js: ai-chat
 ---
 
-<main>
+<div class="home-hero">
+  <p class="eyebrow">Follow or Bounce</p>
+  <h1 class="home-hero__heading">Ideas that <em>stick</em>,<br>or they don't.</h1>
+  <p class="home-hero__desc">
+    A publication at the intersection of technology, literature,
+    and the agreements that hold them together.
+    Signal over noise. Always.
+  </p>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__bg-grid"></div>
-    <div class="hero__content">
-      <div class="hero__tag">Psychiatric Care · Children · Adolescents · Adults</div>
-      <h1 class="hero__headline">
-        Mental wealth<br />
-        <em>begins here.</em>
-      </h1>
-      <p class="hero__sub">
-        Two board-certified psychiatrists. One commitment to evidence-based, compassionate care for every stage of life — in-person and via telehealth.
-      </p>
-      <div class="hero__actions">
-        <a href="{{ '/booking/' | relative_url }}" class="btn btn--primary">Book a Consultation</a>
-        <a href="{{ '/about/' | relative_url }}" class="btn btn--ghost">Our Approach</a>
-      </div>
-    </div>
-    <div class="hero__visual">
-      <div class="hero__circle hero__circle--1"></div>
-      <div class="hero__circle hero__circle--2"></div>
-      <div class="hero__circle hero__circle--3"></div>
-      <div class="hero__line hero__line--h"></div>
-      <div class="hero__line hero__line--v"></div>
-      <div class="hero__badge">
-        <span class="hero__badge-num">3</span>
-        <span class="hero__badge-label">Clinic<br/>Locations</span>
-      </div>
-    </div>
-  </section>
+<!-- ── SECTION CARDS ────────────────────────────────────────────────────────── -->
+<div class="cards" style="max-width: {{ site.content_max_width | default: '72rem' }}; margin-left: 2.5rem;">
 
-  <!-- INTRO STRIP -->
-  <section class="intro-strip">
-    <div class="container">
-      <div class="intro-strip__grid">
-        <div class="intro-strip__item">
-          <span class="intro-strip__icon">◯</span>
-          <span>Evidence-based care</span>
-        </div>
-        <div class="intro-strip__item">
-          <span class="intro-strip__icon">◯</span>
-          <span>In-person &amp; telehealth</span>
-        </div>
-        <div class="intro-strip__item">
-          <span class="intro-strip__icon">◯</span>
-          <span>Major insurance accepted</span>
-        </div>
-        <div class="intro-strip__item">
-          <span class="intro-strip__icon">◯</span>
-          <span>Children, teens &amp; adults</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="card" id="about" data-nav-section onclick="setActiveSection(this, 'about')">
+    <p class="card__num">00 — About</p>
+    <h2 class="card__title"><a href="{{ '/about/' | relative_url }}">Who We Are</a></h2>
+    <p class="card__body">Our mission, our editors, and why we built this platform from the ground up.</p>
+  </div>
 
-  <!-- ABOUT PRACTICE -->
-  <section class="about-brief section">
-    <div class="container">
-      <div class="about-brief__grid">
-        <div class="about-brief__left">
-          <div class="section-label">The Practice</div>
-          <h2 class="section-title">Two psychiatrists.<br/>One mission.</h2>
-        </div>
-        <div class="about-brief__right">
-          <p class="about-brief__text">
-            {{ site.data.site.practice.description }}
-          </p>
-          <p class="about-brief__text">
-            {{ site.data.site.practice.philosophy }}
-          </p>
-          <a href="{{ '/about/' | relative_url }}" class="link-arrow">Learn about our practice →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="card" id="technology" data-nav-section onclick="setActiveSection(this, 'technology')">
+    <p class="card__num">01 — Technology</p>
+    <h2 class="card__title"><a href="{{ '/technology/' | relative_url }}">Tech &amp; Tools</a></h2>
+    <p class="card__body">Deep dives into software, infrastructure, and the tools shaping how we work and think.</p>
+  </div>
 
-  <!-- DOCTORS -->
-  <section class="doctors section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">The Psychiatrists</div>
-        <h2 class="section-title">Meet your doctors</h2>
-      </div>
-      <div class="doctors__grid">
-        {% for doctor in site.data.doctors %}
-          {% include doctor-card.html doctor=doctor %}
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+  <div class="card" id="literature" data-nav-section onclick="setActiveSection(this, 'literature')">
+    <p class="card__num">02 — Literature</p>
+    <h2 class="card__title"><a href="{{ '/literature/' | relative_url }}">Writing &amp; Ideas</a></h2>
+    <p class="card__body">Reviews, essays, and long-form pieces on the books and ideas that define our time.</p>
+  </div>
 
-  <!-- SERVICES -->
-  <section class="services section section--tinted">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">What We Offer</div>
-        <h2 class="section-title">Services</h2>
-      </div>
-      <div class="services__grid">
-        {% for service in site.data.services %}
-        <div class="service-item">
-          <div class="service-item__num">{{ service.num }}</div>
-          <h3 class="service-item__title">{{ service.title }}</h3>
-          <p class="service-item__desc">{{ service.description }}</p>
-        </div>
-        {% endfor %}
-      </div>
-      <div style="text-align:center;margin-top:3rem;">
-        <a href="{{ '/services/' | relative_url }}" class="btn btn--outline">View All Services</a>
-      </div>
-    </div>
-  </section>
+  <div class="card" id="contracts" data-nav-section onclick="setActiveSection(this, 'contracts')">
+    <p class="card__num">03 — Contracts</p>
+    <h2 class="card__title"><a href="{{ '/contracts/' | relative_url }}">Law &amp; Agreements</a></h2>
+    <p class="card__body">Plain-language breakdowns of the frameworks, deals, and terms governing the digital world.</p>
+  </div>
 
-  <!-- LOCATIONS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Find Us</div>
-        <h2 class="section-title">Our locations</h2>
-      </div>
-      <div class="services__grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
-        {% for loc in site.data.site.locations %}
-        <div class="service-item">
-          <div class="service-item__num">{% if loc.primary %}✦{% else %}◯{% endif %}</div>
-          <h3 class="service-item__title">{{ loc.name }}</h3>
-          <p class="service-item__desc">{{ loc.address }}<br/>{{ loc.city_state_zip }}</p>
-        </div>
-        {% endfor %}
-      </div>
-      <div style="margin-top:2rem;text-align:center;">
-        <p style="color:var(--neutral-500);font-size:.9rem;">Telehealth available nationwide via HIPAA-compliant video. <strong>Hours: Mon–Sun, 8am–9pm.</strong></p>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <!-- TRUST -->
-  <section class="trust section section--tinted">
-    <div class="container">
-      <div class="trust__grid">
-        <div class="trust__left">
-          <div class="section-label">Why The Fountain Group</div>
-          <h2 class="section-title">Our commitment<br/>to you</h2>
-          <a href="{{ '/booking/' | relative_url }}" class="btn btn--primary" style="margin-top:2rem">Book a Session</a>
-        </div>
-        <div class="trust__right">
-          <div class="trust__item">
-            <div class="trust__item-icon">✦</div>
-            <div>
-              <h4>Board-Certified Psychiatrists</h4>
-              <p>Both doctors are fully licensed, board-certified, and committed to the highest standards of clinical care.</p>
-            </div>
-          </div>
-          <div class="trust__item">
-            <div class="trust__item-icon">✦</div>
-            <div>
-              <h4>Insurance Accepted</h4>
-              <p>We accept major insurance providers and can assist with out-of-network reimbursements for your plan.</p>
-            </div>
-          </div>
-          <div class="trust__item">
-            <div class="trust__item-icon">✦</div>
-            <div>
-              <h4>HIPAA-Compliant Telehealth</h4>
-              <p>Secure, confidential video sessions for complete privacy — the same quality of care, wherever you are.</p>
-            </div>
-          </div>
-          <div class="trust__item">
-            <div class="trust__item-icon">✦</div>
-            <div>
-              <h4>Care for Every Age</h4>
-              <p>From children and adolescents to adults — including specialized perinatal and women's mental health care.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ── SUBSCRIBE / CONTACT ──────────────────────────────────────────────────── -->
+<section id="subscribe" class="subscribe-section" style="margin: 8rem 2.5rem 0; padding-top: 4rem; border-top: var(--line);">
+  <p class="eyebrow">Subscribe</p>
+  <h2 class="form-block__heading">Get in touch</h2>
 
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-banner__inner">
-        <div class="cta-banner__text">
-          <h2>Ready to take the first step?</h2>
-          <p>A single conversation can be the beginning of real change.</p>
-        </div>
-        <div class="cta-banner__actions">
-          <a href="{{ '/booking/' | relative_url }}" class="btn btn--white">Book a Consultation</a>
-          <a href="{{ '/contact/' | relative_url }}" class="btn btn--ghost-white">Get in Touch</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <form class="form-block" action="https://formsubmit.co/followorbounce@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New message — Follow or Bounce">
 
-</main>
+    <input
+      class="form-block__field"
+      type="text"
+      name="name"
+      placeholder="Your name"
+      required
+    >
+    <input
+      class="form-block__field"
+      type="email"
+      name="email"
+      placeholder="Your email"
+      required
+    >
+    <textarea
+      class="form-block__field"
+      name="message"
+      placeholder="Your message"
+      rows="5"
+      required
+    ></textarea>
+    <button class="form-block__submit" type="submit">Send →</button>
+  </form>
+</section>
+
+<!-- ── AI CHAT WIDGET ────────────────────────────────────────────────────────── -->
+<button class="ai-chat__button" id="aiButton" aria-label="Open AI chat">AI</button>
+
+<div class="ai-chat__modal" id="aiModal" aria-hidden="true" aria-label="AI Chat">
+  <div class="ai-chat__box" role="dialog" aria-modal="true" aria-labelledby="aiChatTitle">
+    <div class="ai-chat__header">
+      <span id="aiChatTitle">Ask AI</span>
+      <button class="ai-chat__close" aria-label="Close AI chat">✕</button>
+    </div>
+    <div class="ai-chat__messages" id="aiMessages" aria-live="polite"></div>
+    <div class="ai-chat__input-row">
+      <input
+        class="ai-chat__input"
+        id="aiInput"
+        type="text"
+        placeholder="Ask anything…"
+        aria-label="Your message"
+      >
+      <button class="ai-chat__send" aria-label="Send message">→</button>
+    </div>
+  </div>
+</div>

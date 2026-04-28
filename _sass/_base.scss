@@ -1,0 +1,99 @@
+// ──────────────────────────────────────────────────────────────────────────────
+// _base.scss
+// Global reset, CSS custom properties, and element-level defaults.
+// ──────────────────────────────────────────────────────────────────────────────
+
+// ── RESET ─────────────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ── CSS CUSTOM PROPERTIES (runtime tokens) ────────────────────────────────────
+// These mirror $variables so they're accessible to vanilla JS at runtime.
+:root {
+  --ink:   #{$ink};
+  --paper: #{$paper};
+  --rust:  #{$rust};
+  --slate: #{$slate};
+  --fog:   #{$fog};
+  --line:  #{$border};
+  --header-height: #{$header-total-height};
+}
+
+// ── GLOBAL ELEMENT DEFAULTS ───────────────────────────────────────────────────
+html,
+body {
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: $font-mono;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Anchor reset — components apply their own link styles via BEM
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+// ── ACCESSIBILITY ─────────────────────────────────────────────────────────────
+// Skip link — appears on keyboard focus only
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: $ink;
+  color: $paper;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  z-index: 9999;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Visually hidden utility (for screen readers)
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Focus ring — consistent across all interactive elements
+:focus-visible {
+  outline: 2px solid $rust;
+  outline-offset: 2px;
+}

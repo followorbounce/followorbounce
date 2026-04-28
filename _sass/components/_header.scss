@@ -1,0 +1,58 @@
+// ──────────────────────────────────────────────────────────────────────────────
+// components/_header.scss
+// BEM: .site-header
+// ──────────────────────────────────────────────────────────────────────────────
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $paper;
+  border-bottom: $border;
+
+  // ── TOP BAR (wordmark + meta) ────────────────────────────────────
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: $header-top-height;
+    border-bottom: $border;
+  }
+
+  &__meta {
+    @extend .text-meta;
+  }
+}
+
+// ── WORDMARK ──────────────────────────────────────────────────────────────────
+.wordmark {
+  font-family: $font-display;
+  font-size: 1.55rem;
+  letter-spacing: 0.12em;
+  color: $ink;
+  user-select: none;
+
+  &__dot {
+    color: $rust;
+  }
+
+  &:hover {
+    color: $ink; // keep consistent; no underline
+  }
+}
+
+// ── MOBILE ────────────────────────────────────────────────────────────────────
+@media (max-width: $bp-mobile) {
+  .site-header {
+    &__meta {
+      display: none;
+    }
+
+    &__top {
+      padding: 0 1.2rem;
+    }
+  }
+}

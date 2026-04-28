@@ -1,0 +1,124 @@
+// ──────────────────────────────────────────────────────────────────────────────
+// components/_ai-chat.scss
+// BEM: .ai-chat
+// Floating AI chat widget (FAB + modal).
+// ──────────────────────────────────────────────────────────────────────────────
+
+// ── FAB TRIGGER BUTTON ────────────────────────────────────────────────────────
+.ai-chat__button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: $border;
+  background: $ink;
+  color: $paper;
+  z-index: 9999;
+  font-family: $font-mono;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $rust;
+    transform: scale(1.05);
+  }
+}
+
+// ── MODAL BACKDROP ────────────────────────────────────────────────────────────
+.ai-chat__modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+
+  &.is-open {
+    display: flex;
+  }
+}
+
+// ── CHAT BOX ──────────────────────────────────────────────────────────────────
+.ai-chat__box {
+  width: 380px;
+  height: 520px;
+  background: $paper;
+  border: $border;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $bp-mobile) {
+    width: 95vw;
+    height: 80vh;
+  }
+}
+
+// ── CHAT HEADER ───────────────────────────────────────────────────────────────
+.ai-chat__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: $border;
+  font-family: $font-display;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+
+.ai-chat__close {
+  font-size: 1rem;
+  color: $fog;
+  transition: color $transition-fast;
+
+  &:hover { color: $ink; }
+}
+
+// ── MESSAGES AREA ─────────────────────────────────────────────────────────────
+.ai-chat__messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  line-height: 1.6;
+
+  p + p { margin-top: 0.5rem; }
+
+  b { color: $rust; }
+}
+
+// ── INPUT ROW ─────────────────────────────────────────────────────────────────
+.ai-chat__input-row {
+  display: flex;
+  border-top: $border;
+}
+
+.ai-chat__input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $ink;
+
+  &::placeholder { color: $fog; }
+  &:focus { outline: none; }
+}
+
+.ai-chat__send {
+  border-left: $border;
+  background: $ink;
+  color: $paper;
+  padding: 10px 14px;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  transition: background $transition-fast;
+
+  &:hover { background: $rust; }
+}

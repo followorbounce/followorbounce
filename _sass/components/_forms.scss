@@ -1,0 +1,58 @@
+// ──────────────────────────────────────────────────────────────────────────────
+// components/_forms.scss
+// BEM: .form-block
+// Generic contact / subscribe form styles.
+// ──────────────────────────────────────────────────────────────────────────────
+
+.form-block {
+  max-width: 520px;
+
+  &__heading {
+    font-family: $font-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  // ── FIELD ────────────────────────────────────────────────────────
+  &__field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: $border;
+    background: transparent;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    color: $ink;
+    transition: border-color $transition-fast;
+
+    &::placeholder { color: $fog; }
+
+    &:focus {
+      outline: none;
+      border-color: $rust;
+    }
+  }
+
+  textarea.form-block__field {
+    resize: none;
+  }
+
+  // ── SUBMIT BUTTON ────────────────────────────────────────────────
+  &__submit {
+    width: 100%;
+    padding: 12px;
+    border: $border;
+    background: $ink;
+    color: $paper;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: background $transition-fast, color $transition-fast;
+
+    &:hover {
+      background: $rust;
+      border-color: $rust;
+    }
+  }
+}

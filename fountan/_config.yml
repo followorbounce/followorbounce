@@ -1,0 +1,34 @@
+title: "The Fountain Group"
+tagline: "Compassionate psychiatric care for every stage of life."
+description: "The Fountain Group provides expert psychiatric care for children, adolescents, and adults. Led by Dr. Prashanth Pillai and Dr. Ksenia Pillai, board-certified psychiatrists, we offer comprehensive mental health diagnosis and treatment in-person and via telehealth."
+baseurl: ""
+url: "https://followorbounce.com"
+
+email: drkpillai@thefountaingroup.org
+phone: "4159800186"
+phone_display: "(415) 980-0186"
+
+# Navigation
+nav_links:
+  - title: Home
+    url: /
+  - title: Practice
+    url: /about/
+  - title: Dr. Prashanth Pillai
+    url: /doctors/prashanth/
+  - title: Dr. Ksenia Pillai
+    url: /doctors/ksenia/
+  - title: Services
+    url: /services/
+  - title: Contact
+    url: /contact/
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap

@@ -1,34 +1,86 @@
-title: "The Fountain Group"
-tagline: "Compassionate psychiatric care for every stage of life."
-description: "The Fountain Group provides expert psychiatric care for children, adolescents, and adults. Led by Dr. Prashanth Pillai and Dr. Ksenia Pillai, board-certified psychiatrists, we offer comprehensive mental health diagnosis and treatment in-person and via telehealth."
-baseurl: ""
-url: "https://followorbounce.com"
+# ──────────────────────────────────────────────────────────────────────────────
+# Follow or Bounce — Jekyll Configuration
+# GitHub Pages compatible (no unsupported plugins)
+# ──────────────────────────────────────────────────────────────────────────────
 
-email: drkpillai@thefountaingroup.org
-phone: "4159800186"
-phone_display: "(415) 980-0186"
+title: "Follow or Bounce"
+description: "A publication at the intersection of technology, literature, and the agreements that hold them together."
+author: "Follow or Bounce"
+email: followorbounce@gmail.com
 
-# Navigation
-nav_links:
-  - title: Home
-    url: /
-  - title: Practice
-    url: /about/
-  - title: Dr. Prashanth Pillai
-    url: /doctors/prashanth/
-  - title: Dr. Ksenia Pillai
-    url: /doctors/ksenia/
-  - title: Services
-    url: /services/
-  - title: Contact
-    url: /contact/
+# ── GITHUB PAGES ──────────────────────────────────────────────────────────────
+# Set baseurl to your repo name if hosting on GitHub Pages as a project site.
+# Example: baseurl: "/follow-or-bounce"
+# Leave empty if hosting at a custom domain or as a user/org page (username.github.io)
+baseurl: ""   # Change to "/your-repo-name" for project sites
+url: "https://followorbounce.github.io"   # Replace with your actual GitHub Pages URL
 
-# Build settings
+# ── BUILD ─────────────────────────────────────────────────────────────────────
 markdown: kramdown
+highlighter: rouge
 permalink: pretty
-sass:
-  style: compressed
 
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# ── SASS ──────────────────────────────────────────────────────────────────────
+sass:
+  sass_dir: _sass
+  style: compressed   # compressed for production; use 'expanded' for dev debugging
+
+# ── COLLECTIONS ───────────────────────────────────────────────────────────────
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# ── DEFAULTS ──────────────────────────────────────────────────────────────────
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# ── EXCLUDE FROM BUILD ────────────────────────────────────────────────────────
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .gitignore
+  - .sass-cache
+
+# ── SITE META ─────────────────────────────────────────────────────────────────
+issue_number: "01"
+established: "2024"
+
+# ── NAVIGATION ────────────────────────────────────────────────────────────────
+# Main nav items — edit here to add/remove menu links globally.
+# For dropdown submenus, add a `children` key (see Services example below).
+navigation:
+  - title: "About"
+    url: "/about/"
+  - title: "Technology"
+    url: "/technology/"
+  - title: "Literature"
+    url: "/literature/"
+  - title: "Contracts"
+    url: "/contracts/"
+    children:
+      - title: "Digital Law"
+        url: "/contracts/digital-law/"
+      - title: "Open Source"
+        url: "/contracts/open-source/"
+      - title: "Platform Terms"
+        url: "/contracts/platform-terms/"
+  - title: "Subscribe ↗"
+    url: "/subscribe/"
+    class: "action-link"
