@@ -2,56 +2,60 @@
   'use strict';
 
   /* ── DROPDOWN SUBMENUS ─────────────────────────────────────────────────── */
-  // iOS Safari fix: make document clickable so outside-click close works
-  document.body.style.cursor = 'pointer';
-  document.body.style.cursor = '';
+  // Fully rebuilt for iOS Safari compatibility:
+  // - uses div[role=button] instead of <button> (avoids iOS tap issues)
+  // - listens to touchstart (not touchend/click) for instant response
+  // - closes on any tap outside via document touchstart
+
+  function openSubmenu(wrapper, btn) {
+    wrapper.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeSubmenu(wrapper, btn) {
+    wrapper.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  function closeAll() {
+    document.querySelectorAll('.has-submenu.open').forEach(function (w) {
+      var b = w.querySelector('.menu-bar-btn');
+      closeSubmenu(w, b);
+    });
+  }
 
   document.querySelectorAll('.has-submenu').forEach(function (wrapper) {
     var btn = wrapper.querySelector('.menu-bar-btn');
-    var links = wrapper.querySelectorAll('.submenu a');
 
-    function open() {
-      wrapper.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      links.forEach(function (l) { l.setAttribute('tabindex', '0'); });
-    }
-    function close() {
-      wrapper.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      links.forEach(function (l) { l.setAttribute('tabindex', '-1'); });
-    }
-
-    // iOS Safari requires touchend OR click — we handle both, deduped with a flag
-    var justOpened = false;
-
-    function handleToggle(e) {
+    function toggle(e) {
       e.stopPropagation();
       if (wrapper.classList.contains('open')) {
-        close();
+        closeSubmenu(wrapper, btn);
       } else {
-        open();
-        justOpened = true;
-        setTimeout(function () { justOpened = false; }, 50);
+        closeAll();
+        openSubmenu(wrapper, btn);
       }
     }
 
-    btn.addEventListener('click', handleToggle);
-    btn.addEventListener('touchend', function (e) {
-      e.preventDefault(); // prevent ghost click on iOS
-      handleToggle(e);
-    });
+    // touchstart fires instantly on iOS, no 300ms delay
+    btn.addEventListener('touchstart', toggle, { passive: false });
+    // click as fallback for desktop
+    btn.addEventListener('click', toggle);
 
+    // keyboard support
     btn.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
+      if (e.key === 'Escape') closeSubmenu(wrapper, btn);
     });
+  });
 
-    // Close on outside click/tap
-    document.addEventListener('click', function (e) {
-      if (!justOpened && !wrapper.contains(e.target)) close();
-    });
-    document.addEventListener('touchend', function (e) {
-      if (!justOpened && !wrapper.contains(e.target)) close();
-    });
+  // Close when tapping anywhere outside
+  document.addEventListener('touchstart', function (e) {
+    if (!e.target.closest('.has-submenu')) closeAll();
+  }, { passive: true });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.has-submenu')) closeAll();
   });
 
   /* ── CARD CLICK → SCROLL + NAV HIGHLIGHT ──────────────────────────────── */

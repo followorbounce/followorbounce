@@ -67,6 +67,7 @@ header {
 /* shared styles for both <a> and <button> nav items */
 .menu-bar-link,
 .menu-bar-btn {
+  cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;

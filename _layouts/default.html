@@ -23,11 +23,11 @@
     {% for item in site.navigation %}
       {% if item.children %}
         <div class="has-submenu{% if page.url contains item.url %} active{% endif %}">
-          <button class="menu-bar-btn" aria-haspopup="true" aria-expanded="false">
+          <div class="menu-bar-btn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
             <span class="dot"></span>
             <span class="label">{{ item.title }}</span>
             <span class="chevron">▾</span>
-          </button>
+          </div>
           <ul class="submenu">
             {% for child in item.children %}
             <li><a href="{{ child.url | relative_url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
