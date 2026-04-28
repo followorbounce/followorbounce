@@ -2,35 +2,57 @@
   'use strict';
 
   /* ── DROPDOWN SUBMENUS ─────────────────────────────────────────────────── */
-  // Fully rebuilt for iOS Safari compatibility:
-  // - uses div[role=button] instead of <button> (avoids iOS tap issues)
-  // - listens to touchstart (not touchend/click) for instant response
-  // - closes on any tap outside via document touchstart
+  //
+  // ROOT CAUSE:
+  // .menu-bar uses overflow-x:auto for horizontal scroll on mobile.
+  // CSS spec: overflow-x:auto forces overflow-y to 'hidden' — cannot be overridden.
+  // Safari enforces this strictly, clipping submenus in portrait mode.
+  //
+  // FIX: Move every .submenu to <body> ("portal" pattern).
+  // Position with fixed coords via getBoundingClientRect().
+
+  var wrappers = Array.from(document.querySelectorAll('.has-submenu'));
+
+  var submenus = wrappers.map(function (wrapper) {
+    var sm = wrapper.querySelector('.submenu');
+    if (sm) document.body.appendChild(sm);
+    return sm;
+  });
 
   function closeAll() {
-    document.querySelectorAll('.has-submenu.open').forEach(function (w) {
+    wrappers.forEach(function (w, i) {
       w.classList.remove('open');
-      w.querySelector('.menu-bar-btn').setAttribute('aria-expanded', 'false');
+      var b = w.querySelector('.menu-bar-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+      if (submenus[i]) submenus[i].style.display = 'none';
     });
   }
 
-  document.querySelectorAll('.has-submenu').forEach(function (wrapper) {
+  wrappers.forEach(function (wrapper, i) {
     var btn = wrapper.querySelector('.menu-bar-btn');
-    var submenu = wrapper.querySelector('.submenu');
+    var sm  = submenus[i];
+    if (!btn || !sm) return;
+
+    sm.style.position   = 'fixed';
+    sm.style.zIndex     = '9999';
+    sm.style.display    = 'none';
+    sm.style.background = 'var(--paper)';
+    sm.style.border     = '1px solid #0d0c0a';
+    sm.style.listStyle  = 'none';
+    sm.style.minWidth   = '180px';
 
     function openIt() {
       closeAll();
+      var rect = btn.getBoundingClientRect();
+      sm.style.top     = rect.bottom + 'px';
+      sm.style.left    = rect.left + 'px';
+      sm.style.display = 'block';
       wrapper.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
-      // Position submenu under the button (fixed positioning needs manual coords)
-      var rect = btn.getBoundingClientRect();
-      submenu.style.left = rect.left + 'px';
-      submenu.style.top  = rect.bottom + 'px';
-      submenu.style.maxWidth = 'none';
-      submenu.style.minWidth = '180px';
     }
 
     function closeIt() {
+      sm.style.display = 'none';
       wrapper.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
     }
@@ -43,22 +65,31 @@
 
     btn.addEventListener('touchstart', toggle, { passive: false });
     btn.addEventListener('click', toggle);
-
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
       if (e.key === 'Escape') closeIt();
     });
+
+    sm.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('touchstart', function () {
+        setTimeout(closeIt, 150);
+      }, { passive: true });
+    });
   });
 
   document.addEventListener('touchstart', function (e) {
-    if (!e.target.closest('.has-submenu')) closeAll();
+    var inWrapper = wrappers.some(function (w) { return w.contains(e.target); });
+    var inSubmenu = submenus.some(function (sm) { return sm && sm.contains(e.target); });
+    if (!inWrapper && !inSubmenu) closeAll();
   }, { passive: true });
 
   document.addEventListener('click', function (e) {
-    if (!e.target.closest('.has-submenu')) closeAll();
+    var inWrapper = wrappers.some(function (w) { return w.contains(e.target); });
+    var inSubmenu = submenus.some(function (sm) { return sm && sm.contains(e.target); });
+    if (!inWrapper && !inSubmenu) closeAll();
   });
 
-  /* ── CARD CLICK → SCROLL + NAV HIGHLIGHT ──────────────────────────────── */
+  /* ── CARD CLICK → NAV HIGHLIGHT ───────────────────────────────────────── */
   window.activateSection = function (card, id) {
     document.querySelectorAll('.menu-bar-link').forEach(function (l) {
       l.classList.remove('active');
@@ -69,19 +100,18 @@
   };
 
   /* ── AI CHAT WIDGET ────────────────────────────────────────────────────── */
-  var btn     = document.getElementById('ai-btn');
-  var modal   = document.getElementById('ai-modal');
+  var aibtn    = document.getElementById('ai-btn');
+  var modal    = document.getElementById('ai-modal');
   var closeBtn = document.getElementById('ai-close');
-  var input   = document.getElementById('ai-input');
-  var send    = document.getElementById('ai-send');
-  var msgs    = document.getElementById('ai-messages');
+  var input    = document.getElementById('ai-input');
+  var send     = document.getElementById('ai-send');
+  var msgs     = document.getElementById('ai-messages');
 
-  if (!btn) return;
+  if (!aibtn) return;
 
-  // Replace with your Gemini API key — never commit a real key to a public repo.
   var API_KEY = '';
 
-  btn.addEventListener('click', function () { modal.classList.add('open'); input && input.focus(); });
+  aibtn.addEventListener('click', function () { modal.classList.add('open'); input && input.focus(); });
   closeBtn.addEventListener('click', function () { modal.classList.remove('open'); });
   modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.remove('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('open'); });
