@@ -1,0 +1,11 @@
+title: Follow or Bounce
+description: Ideas that stick, or they don't
+baseurl: ""
+url: ""
+
+markdown: kramdown
+permalink: pretty
+
+sass:
+  sass_dir: _sass
+  style: compressed
