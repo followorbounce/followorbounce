@@ -371,9 +371,40 @@ footer {
 }
 
 /* ── MOBILE ──────────────────────────────────────────────────────────────── */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .nav-top { padding: 0 1.2rem; }
   .nav-meta { display: none; }
-  .menu-bar-link, .menu-bar-btn { padding: 0 1.1rem; font-size: .62rem; }
+
+  /* Horizontal scroll — all items fully visible, no clipping */
+  .menu-bar {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  .menu-bar-link,
+  .menu-bar-btn {
+    flex: 0 0 auto;
+    padding: 0 1.4rem;
+    font-size: .6rem;
+    letter-spacing: .12em;
+    white-space: nowrap;
+  }
+
   .dot { display: none !important; }
+
+  /* Submenu drops full-width below fixed header */
+  .has-submenu { position: static; }
+  .submenu {
+    position: fixed;
+    top: 6.5rem;
+    left: 0; right: 0;
+    min-width: 100%;
+    border-left: none; border-right: none;
+  }
+
   main { padding: 5rem 1.2rem 3rem; }
+  footer { flex-direction: column; gap: .75rem; text-align: center; }
 }
