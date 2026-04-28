@@ -132,47 +132,51 @@ header {
 
 /* ── DROPDOWN ────────────────────────────────────────────────────────────── */
 .has-submenu {
-  position: relative;
+  position: static;
   display: flex;
   align-items: stretch;
   border-left: var(--line);
-
-  .menu-bar-btn { border-left: none; }
-
-  &.open .menu-bar-btn::before { transform: translateY(0); }
-  &.open .menu-bar-btn { color: var(--paper); }
-  &.open .chevron { transform: rotate(180deg); }
 }
 
+.has-submenu .menu-bar-btn { border-left: none; }
+
+.has-submenu.open .menu-bar-btn::before { transform: translateY(0); }
+.has-submenu.open .menu-bar-btn { color: var(--paper); }
+.has-submenu.open .chevron { transform: rotate(180deg); }
+
+/* submenu uses fixed so it escapes overflow:auto on the nav bar */
 .submenu {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 6.5rem;
   left: 0;
+  right: 0;
   min-width: 14rem;
+  max-width: 220px;
   background: var(--paper);
   border: var(--line);
-  border-top: none;
   list-style: none;
   display: none;
-  z-index: 200;
-
-  .has-submenu.open & { display: block; }
-
-  li { border-bottom: var(--line); }
-  li:last-child { border-bottom: none; }
-
-  a {
-    display: block;
-    padding: .85rem 1.4rem;
-    font-size: .68rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    transition: background .2s, color .2s;
-    &:hover, &[aria-current] { background: var(--ink); color: var(--paper); }
-  }
+  z-index: 9999;
 }
+
+.has-submenu.open .submenu { display: block; }
+
+.submenu li { border-bottom: var(--line); }
+.submenu li:last-child { border-bottom: none; }
+
+.submenu a {
+  display: block;
+  padding: .85rem 1.4rem;
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+
+.submenu a:hover,
+.submenu a[aria-current] { background: var(--ink); color: var(--paper); }
 
 /* ── MAIN ────────────────────────────────────────────────────────────────── */
 main {

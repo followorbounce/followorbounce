@@ -7,49 +7,49 @@
   // - listens to touchstart (not touchend/click) for instant response
   // - closes on any tap outside via document touchstart
 
-  function openSubmenu(wrapper, btn) {
-    wrapper.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeSubmenu(wrapper, btn) {
-    wrapper.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-
   function closeAll() {
     document.querySelectorAll('.has-submenu.open').forEach(function (w) {
-      var b = w.querySelector('.menu-bar-btn');
-      closeSubmenu(w, b);
+      w.classList.remove('open');
+      w.querySelector('.menu-bar-btn').setAttribute('aria-expanded', 'false');
     });
   }
 
   document.querySelectorAll('.has-submenu').forEach(function (wrapper) {
     var btn = wrapper.querySelector('.menu-bar-btn');
+    var submenu = wrapper.querySelector('.submenu');
+
+    function openIt() {
+      closeAll();
+      wrapper.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      // Position submenu under the button (fixed positioning needs manual coords)
+      var rect = btn.getBoundingClientRect();
+      submenu.style.left = rect.left + 'px';
+      submenu.style.top  = rect.bottom + 'px';
+      submenu.style.maxWidth = 'none';
+      submenu.style.minWidth = '180px';
+    }
+
+    function closeIt() {
+      wrapper.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
 
     function toggle(e) {
       e.stopPropagation();
-      if (wrapper.classList.contains('open')) {
-        closeSubmenu(wrapper, btn);
-      } else {
-        closeAll();
-        openSubmenu(wrapper, btn);
-      }
+      e.preventDefault();
+      wrapper.classList.contains('open') ? closeIt() : openIt();
     }
 
-    // touchstart fires instantly on iOS, no 300ms delay
     btn.addEventListener('touchstart', toggle, { passive: false });
-    // click as fallback for desktop
     btn.addEventListener('click', toggle);
 
-    // keyboard support
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
-      if (e.key === 'Escape') closeSubmenu(wrapper, btn);
+      if (e.key === 'Escape') closeIt();
     });
   });
 
-  // Close when tapping anywhere outside
   document.addEventListener('touchstart', function (e) {
     if (!e.target.closest('.has-submenu')) closeAll();
   }, { passive: true });
