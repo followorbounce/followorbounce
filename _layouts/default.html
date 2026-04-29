@@ -65,5 +65,21 @@
 <script src="{{ page.extra_js | relative_url }}" defer></script>
 {% endif %}
 
+<button id="ai-btn" aria-label="Open AI chat">AI</button>
+
+<div id="ai-modal" aria-hidden="true">
+  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat">
+    <div id="ai-box-header">
+      <span>Ask AI</span>
+      <button id="ai-close" aria-label="Close">✕</button>
+    </div>
+    <div id="ai-messages" aria-live="polite"></div>
+    <div id="ai-input-row">
+      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message">
+      <button id="ai-send">→</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

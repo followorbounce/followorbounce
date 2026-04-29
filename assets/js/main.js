@@ -110,7 +110,7 @@
   var send     = document.getElementById('ai-send');
   var msgs     = document.getElementById('ai-messages');
 
-  if (!aibtn) return;
+  // NOTE: no early return here — form handler must run on all pages
 
   var API_KEY = '';
 
@@ -152,7 +152,8 @@
 
   /* ── CONTACT FORM — fetch submit, no redirect ─────────────────────────── */
   document.querySelectorAll('.contact-form').forEach(function (form) {
-    var success = form.nextElementSibling;
+    var successId = form.dataset.success;
+    var success = successId ? document.getElementById(successId) : form.nextElementSibling;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();

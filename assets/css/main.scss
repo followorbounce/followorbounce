@@ -254,10 +254,12 @@ h1 {
 }
 
 .card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
   border-right: var(--line);
   border-bottom: var(--line);
   padding: 2rem 1.8rem;
-  cursor: pointer;
   transition: background .25s;
 
   &:hover { background: var(--ink); }
@@ -272,7 +274,6 @@ h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.6rem; letter-spacing: .06em;
     margin-bottom: .8rem; transition: color .25s;
-    a { color: inherit; text-decoration: none; }
   }
   .card-body { font-size: .7rem; line-height: 1.7; color: var(--slate); transition: color .25s; }
 }
