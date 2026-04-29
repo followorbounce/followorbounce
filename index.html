@@ -37,14 +37,17 @@ title: "Follow or Bounce"
 <section class="subscribe-section" id="subscribe">
   <p class="eyebrow">Subscribe</p>
   <h2>Get in touch</h2>
-  <form action="https://formsubmit.co/followorbounce@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="New message — Follow or Bounce">
+  <form class="contact-form" data-email="followorbounce@gmail.com">
     <input class="form-field" type="text" name="name" placeholder="Your name" required>
     <input class="form-field" type="email" name="email" placeholder="Your email" required>
     <textarea class="form-field" name="message" placeholder="Your message" rows="5" required></textarea>
     <button class="form-submit" type="submit">Send →</button>
   </form>
+  <div class="form-success" style="display:none;">
+    <p class="eyebrow">Message sent</p>
+    <h2>Thank you.</h2>
+    <p>We received your message and will get back to you soon.</p>
+  </div>
 </section>
 
 <button id="ai-btn" aria-label="Open AI chat">AI</button>

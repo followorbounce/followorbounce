@@ -150,4 +150,37 @@
     if (e.key === 'Enter') { e.preventDefault(); sendMsg(); }
   });
 
+  /* ── CONTACT FORM — fetch submit, no redirect ─────────────────────────── */
+  document.querySelectorAll('.contact-form').forEach(function (form) {
+    var success = form.nextElementSibling;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var email = form.dataset.email;
+      var data  = new FormData(form);
+      data.append('_captcha', 'false');
+      data.append('_subject', 'New message — Follow or Bounce');
+
+      var btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      fetch('https://formsubmit.co/ajax/' + email, {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    data
+      })
+      .then(function (res) { return res.json(); })
+      .then(function () {
+        form.style.display    = 'none';
+        success.style.display = 'block';
+      })
+      .catch(function () {
+        btn.textContent = 'Error — try again';
+        btn.disabled    = false;
+      });
+    });
+  });
+
 })();
