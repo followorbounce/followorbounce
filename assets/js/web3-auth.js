@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  var PROXY_URL    = 'https://fob-ai-proxy.onrender.com'; // your Render URL
+  var PROXY_URL    = 'https://fob-render-api.onrender.com'; // your Render URL
   var TOKEN_KEY    = 'fob_auth_token';
   var ADDRESS_KEY  = 'fob_wallet_address';
   var TOKEN_EXPIRY = 'fob_token_expiry';
