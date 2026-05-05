@@ -110,11 +110,16 @@
   var send     = document.getElementById('ai-send');
   var msgs     = document.getElementById('ai-messages');
 
-  // NOTE: no early return here — form handler must run on all pages
+  // Proxy URL — your Render.com service URL
+  var PROXY_URL = 'https://fob-render-api.onrender.com/chat';
 
-  var API_KEY = '';
+  // Conversation history for multi-turn chat
+  var chatHistory = [];
 
-  aibtn.addEventListener('click', function () { modal.classList.add('open'); input && input.focus(); });
+  aibtn.addEventListener('click', function () {
+    modal.classList.add('open');
+    input && input.focus();
+  });
   closeBtn.addEventListener('click', function () { modal.classList.remove('open'); });
   modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.remove('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('open'); });
@@ -122,27 +127,64 @@
   async function sendMsg() {
     var text = input.value.trim();
     if (!text) return;
-    addMsg('You', text);
+
     input.value = '';
+    input.disabled = true;
+    send.disabled  = true;
+
+    addMsg('user', text);
+    chatHistory.push({ role: 'user', text: text });
+
+    // Typing indicator
+    var typingEl = addTyping();
+
     try {
-      var res = await fetch(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + API_KEY,
-        { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contents: [{ parts: [{ text: text }] }] }) }
-      );
-      var data = await res.json();
-      var reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response.';
-      addMsg('AI', reply);
-    } catch (e) {
-      addMsg('AI', 'Error — check your API key.');
+      var res = await fetch(PROXY_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: chatHistory.slice(-10)  // send last 10 messages for context
+        })
+      });
+
+      typingEl.remove();
+
+      if (!res.ok) throw new Error('Server error ' + res.status);
+
+      var data  = await res.json();
+      var reply = data.reply || 'No response.';
+
+      addMsg('ai', reply);
+      chatHistory.push({ role: 'ai', text: reply });
+
+    } catch (err) {
+      typingEl.remove();
+      addMsg('error', 'Connection error. Please try again.');
+      console.error('[AI chat]', err);
     }
+
+    input.disabled = false;
+    send.disabled  = false;
+    input.focus();
   }
 
-  function addMsg(who, text) {
+  function addMsg(role, text) {
     var p = document.createElement('p');
-    p.innerHTML = '<b>' + who + ':</b> ' + text.replace(/</g, '&lt;');
+    var label = role === 'user' ? 'You' : role === 'ai' ? 'AI' : '!';
+    p.innerHTML = '<b>' + label + ':</b> ' + text.replace(/</g, '&lt;');
+    if (role === 'error') p.style.color = '#c0390b';
     msgs.appendChild(p);
     msgs.scrollTop = msgs.scrollHeight;
+    return p;
+  }
+
+  function addTyping() {
+    var p = document.createElement('p');
+    p.innerHTML = '<b>AI:</b> <span class="typing">···</span>';
+    msgs.appendChild(p);
+    msgs.scrollTop = msgs.scrollHeight;
+    return p;
   }
 
   send.addEventListener('click', sendMsg);

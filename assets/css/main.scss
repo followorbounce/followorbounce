@@ -427,3 +427,14 @@ footer {
   }
   p { font-size: .85rem; line-height: 1.8; color: var(--slate); }
 }
+
+/* ── AI TYPING INDICATOR ─────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: .2; }
+  50%       { opacity: 1;  }
+}
+.typing {
+  display: inline-block;
+  letter-spacing: .15em;
+  animation: blink 1.2s infinite;
+}
