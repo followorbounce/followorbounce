@@ -2,11 +2,9 @@ title: "Follow or Bounce"
 description: "A publication at the intersection of technology, literature, and the agreements that hold them together."
 author: "Follow or Bounce"
 
-# Set baseurl to "/repo-name" for GitHub project pages, or "" for custom domains / user pages
 baseurl: ""
 url: "https://followorbounce.github.io"
 
-# No gem theme — we use our own _layouts entirely
 theme: ~
 
 markdown: kramdown
@@ -22,7 +20,6 @@ exclude:
   - README.md
   - vendor
 
-# Site-wide data used in templates
 issue_number: "01"
 established: "2024"
 
@@ -45,5 +42,5 @@ navigation:
   - title: "Subscribe ↗"
     url: "/subscribe/"
     action: true
-    - title: "Dashboard"    # ← добавить
-    url: "/dashboard/"     # ← добавить
+  - title: "Dashboard"
+    url: "/dashboard/"
