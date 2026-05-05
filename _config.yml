@@ -45,3 +45,5 @@ navigation:
   - title: "Subscribe ↗"
     url: "/subscribe/"
     action: true
+    - title: "Dashboard"    # ← добавить
+    url: "/dashboard/"     # ← добавить

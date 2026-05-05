@@ -1,0 +1,382 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   web3-styles.css — Follow or Bounce
+   Web3 UI: Connect button, Wallet selection, Profile modal, Dashboard
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── CONNECT BUTTON ──────────────────────────────────────────────────────── */
+#web3-connect-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: .4rem 1rem;
+  border: 1px solid var(--ink, #0d0c0a);
+  background: transparent;
+  color: var(--ink, #0d0c0a);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#web3-connect-btn:hover:not(:disabled) {
+  background: var(--ink, #0d0c0a);
+  color: var(--paper, #f4f0e6);
+}
+
+#web3-connect-btn.is-connected {
+  background: var(--ink, #0d0c0a);
+  color: var(--paper, #f4f0e6);
+}
+
+#web3-connect-btn:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+#web3-disconnect {
+  font-size: .65rem;
+  color: var(--fog, #b8b3a8);
+  text-decoration: none;
+  transition: color .2s;
+}
+#web3-disconnect:hover { color: var(--rust, #c0390b); }
+
+/* ── WALLET SELECTION MODAL ──────────────────────────────────────────────── */
+#wallet-select-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.wsm-box {
+  background: var(--paper, #f4f0e6);
+  border: 1px solid var(--ink, #0d0c0a);
+  width: 340px;
+  max-width: 95vw;
+}
+
+.wsm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--ink, #0d0c0a);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: .08em;
+}
+
+.wsm-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--fog, #b8b3a8);
+  transition: color .2s;
+}
+.wsm-close:hover { color: var(--ink, #0d0c0a); }
+
+.wsm-options { padding: 1rem; display: flex; flex-direction: column; gap: .6rem; }
+
+.wsm-opt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .9rem 1.1rem;
+  border: 1px solid var(--ink, #0d0c0a);
+  background: transparent;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: .78rem;
+  text-align: left;
+  transition: background .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.wsm-opt:hover {
+  background: var(--ink, #0d0c0a);
+  color: var(--paper, #f4f0e6);
+}
+
+.wsm-icon { font-size: 1.4rem; line-height: 1; }
+
+.wsm-opt small {
+  display: block;
+  font-size: .65rem;
+  opacity: .7;
+  margin-top: .2rem;
+}
+
+/* ── PROFILE MODAL ───────────────────────────────────────────────────────── */
+#profile-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1rem;
+}
+
+.pm-box {
+  background: var(--paper, #f4f0e6);
+  border: 1px solid var(--ink, #0d0c0a);
+  width: 420px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.pm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--ink, #0d0c0a);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: .08em;
+  position: sticky;
+  top: 0;
+  background: var(--paper, #f4f0e6);
+}
+
+.pm-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--fog, #b8b3a8);
+}
+.pm-close:hover { color: var(--ink, #0d0c0a); }
+
+.pm-wallet {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--ink, #0d0c0a);
+  background: #e8e4da;
+}
+
+.pm-address {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem;
+  word-break: break-all;
+  color: var(--slate, #3a3d44);
+  margin-bottom: .3rem;
+}
+
+.pm-balance {
+  font-size: .8rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--ink, #0d0c0a);
+}
+
+.pm-form { padding: 1.2rem; display: flex; flex-direction: column; gap: .8rem; }
+
+.pm-label {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--fog, #b8b3a8);
+}
+
+.pm-input {
+  width: 100%;
+  padding: .55rem .7rem;
+  border: 1px solid var(--ink, #0d0c0a);
+  background: transparent;
+  font-family: 'DM Mono', monospace;
+  font-size: .8rem;
+  color: var(--ink, #0d0c0a);
+  resize: none;
+}
+.pm-input:focus { outline: none; border-color: var(--rust, #c0390b); }
+
+.pm-status {
+  font-size: .75rem;
+  min-height: 1.2rem;
+  font-family: 'DM Mono', monospace;
+}
+
+.pm-save {
+  width: 100%;
+  padding: .7rem;
+  border: 1px solid var(--ink, #0d0c0a);
+  background: var(--ink, #0d0c0a);
+  color: var(--paper, #f4f0e6);
+  font-family: 'DM Mono', monospace;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  cursor: pointer;
+  transition: background .2s;
+}
+.pm-save:hover  { background: var(--rust, #c0390b); border-color: var(--rust, #c0390b); }
+.pm-save:disabled { opacity: .5; cursor: wait; }
+
+.pm-footer {
+  padding: .8rem 1.2rem;
+  border-top: 1px solid var(--ink, #0d0c0a);
+  text-align: center;
+  font-size: .65rem;
+}
+.pm-footer a {
+  color: var(--fog, #b8b3a8);
+  text-decoration: none;
+  transition: color .2s;
+}
+.pm-footer a:hover { color: var(--rust, #c0390b); }
+
+/* ── DASHBOARD ───────────────────────────────────────────────────────────── */
+.dash-loading,
+.dash-error,
+.dash-empty {
+  font-size: .8rem;
+  color: var(--fog, #b8b3a8);
+  padding: 2rem 0;
+}
+
+.dash-wallet-info {
+  border: 1px solid var(--ink, #0d0c0a);
+  margin-bottom: 2.5rem;
+}
+
+.dash-row {
+  display: flex;
+  gap: 1rem;
+  padding: .8rem 1.2rem;
+  border-bottom: 1px solid var(--ink, #0d0c0a);
+  font-size: .78rem;
+}
+.dash-row:last-child { border-bottom: none; }
+
+.dash-label {
+  flex-shrink: 0;
+  width: 80px;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--fog, #b8b3a8);
+  padding-top: .1rem;
+}
+
+.dash-value { word-break: break-all; }
+.dash-mono  { font-family: 'DM Mono', monospace; font-size: .7rem; }
+
+.dash-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: .08em;
+  margin-bottom: 1.5rem;
+}
+
+/* ── NFT GRID ────────────────────────────────────────────────────────────── */
+.dash-nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--ink, #0d0c0a);
+  border-left: 1px solid var(--ink, #0d0c0a);
+}
+
+.nft-card {
+  border-right: 1px solid var(--ink, #0d0c0a);
+  border-bottom: 1px solid var(--ink, #0d0c0a);
+  overflow: hidden;
+}
+
+.nft-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.nft-no-img {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e4da;
+  font-size: .65rem;
+  color: var(--fog, #b8b3a8);
+}
+
+.nft-info { padding: .7rem .8rem; }
+
+.nft-name {
+  font-size: .72rem;
+  font-weight: 500;
+  margin-bottom: .2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nft-collection {
+  font-size: .62rem;
+  color: var(--fog, #b8b3a8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nft-id {
+  font-size: .6rem;
+  color: var(--rust, #c0390b);
+  font-family: 'DM Mono', monospace;
+  margin-top: .2rem;
+}
+
+/* ── GATING ──────────────────────────────────────────────────────────────── */
+[data-web3-gate]   { display: none; }
+[data-web3-locked] { display: block; }
+
+.gate-screen {
+  border: 1px solid var(--ink, #0d0c0a);
+  padding: 3rem 2.5rem;
+  max-width: 480px;
+  margin: 4rem 0;
+}
+.gate-screen h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.gate-screen p {
+  font-size: .82rem;
+  line-height: 1.75;
+  color: var(--slate, #3a3d44);
+  margin-bottom: 1.5rem;
+}
+.gate-connect-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: .75rem 1.8rem;
+  border: 1px solid var(--ink, #0d0c0a);
+  background: var(--ink, #0d0c0a);
+  color: var(--paper, #f4f0e6);
+  cursor: pointer;
+  transition: background .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.gate-connect-btn:hover { background: var(--rust, #c0390b); border-color: var(--rust, #c0390b); }
+
+/* ── MOBILE ──────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  #web3-connect-btn { font-size: .55rem; padding: .35rem .7rem; letter-spacing: .08em; }
+  .pm-box  { max-height: 100vh; }
+  .pm-address { font-size: .6rem; }
+  .dash-nft-grid { grid-template-columns: repeat(2, 1fr); }
+}
