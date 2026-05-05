@@ -16,7 +16,11 @@
 <header>
   <div class="nav-top">
     <a class="wordmark" href="{{ '/' | relative_url }}">Follow<span>.</span>Or<span>.</span>Bounce</a>
-    <span class="nav-meta">Est. {{ site.established }} / Issue {{ site.issue_number }}</span>
+    <div class="nav-top-right">
+      <span class="nav-meta">Est. {{ site.established }} / Issue {{ site.issue_number }}</span>
+      <button id="web3-connect-btn" class="web3-btn" aria-label="Connect crypto wallet">Connect Wallet</button>
+      <a href="#" id="web3-disconnect" class="web3-disconnect" style="display:none" aria-label="Disconnect wallet">✕</a>
+    </div>
   </div>
 
   <nav class="menu-bar" aria-label="Main navigation">
@@ -60,6 +64,7 @@
   <span>All rights reserved</span>
 </footer>
 
+<script src="{{ '/assets/js/web3-auth.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 {% if page.extra_js %}
 <script src="{{ page.extra_js | relative_url }}" defer></script>

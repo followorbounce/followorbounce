@@ -111,7 +111,7 @@
   var msgs     = document.getElementById('ai-messages');
 
   // Proxy URL — your Render.com service URL
-  var PROXY_URL = 'https://fob-render-api.onrender.com/chat';
+  var PROXY_URL = 'https://fob-ai-proxy.onrender.com/chat';
 
   // Conversation history for multi-turn chat
   var chatHistory = [];
@@ -139,12 +139,17 @@
     var typingEl = addTyping();
 
     try {
+      // Attach JWT if user is connected via Web3
+      var headers = { 'Content-Type': 'application/json' };
+      var token = window.Web3Auth && window.Web3Auth.getToken();
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+
       var res = await fetch(PROXY_URL, {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: headers,
         body: JSON.stringify({
           message: text,
-          history: chatHistory.slice(-10)  // send last 10 messages for context
+          history: chatHistory.slice(-10)
         })
       });
 

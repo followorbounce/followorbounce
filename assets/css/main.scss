@@ -438,3 +438,94 @@ footer {
   letter-spacing: .15em;
   animation: blink 1.2s infinite;
 }
+
+/* ── WEB3 AUTH ───────────────────────────────────────────────────────────── */
+.nav-top-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.web3-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: .4rem 1rem;
+  border: var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  &:hover:not(:disabled) {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  &:disabled {
+    opacity: .5;
+    cursor: wait;
+  }
+
+  &.is-connected {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+}
+
+.web3-disconnect {
+  font-size: .7rem;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color .2s;
+  &:hover { color: var(--rust); }
+}
+
+/* Gate: content hidden until wallet connected */
+[data-web3-gate]   { display: none; }
+[data-web3-locked] { display: block; }
+
+/* Lock screen shown on gated pages */
+.gate-screen {
+  border: var(--line);
+  padding: 3rem 2.5rem;
+  max-width: 480px;
+  margin: 4rem 0;
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: .82rem;
+    line-height: 1.75;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+  }
+
+  .gate-connect-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: .75rem 1.8rem;
+    border: var(--line);
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    transition: background .2s;
+    &:hover { background: var(--rust); border-color: var(--rust); }
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-meta { display: none; }
+  .web3-btn { font-size: .55rem; padding: .35rem .7rem; letter-spacing: .08em; }
+}
