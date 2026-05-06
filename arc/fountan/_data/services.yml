@@ -1,0 +1,63 @@
+- num: "01"
+  title: "Psychiatric Evaluation & Diagnosis"
+  description: "Comprehensive mental health assessments with diagnostic clarification for mood, anxiety, and behavioral disorders. Second opinions on existing diagnoses available."
+  details:
+    - "Comprehensive mental health assessments"
+    - "Diagnostic clarification for mood, anxiety, and behavioral disorders"
+    - "Second opinions on existing diagnoses"
+
+- num: "02"
+  title: "Medication Management"
+  description: "Evidence-based prescribing with ongoing monitoring, dosage adjustments based on patient response, and thorough education on medication benefits and risks."
+  details:
+    - "Prescription and monitoring of psychiatric medications"
+    - "Adjustments based on patient response and side effects"
+    - "Education on medication benefits and risks"
+
+- num: "03"
+  title: "Specialized Disorder Treatment"
+  description: "Targeted treatment for a wide range of psychiatric conditions — depression, anxiety, ADHD, OCD, bipolar disorder, ASD, substance use, and psychosis."
+  details:
+    - "Depression and anxiety treatment"
+    - "ADHD evaluation and management"
+    - "Obsessive-compulsive disorder (OCD) therapy"
+    - "Bipolar disorder and mood disorder stabilization"
+    - "Autism spectrum disorder (ASD) support"
+    - "Mild substance use and addiction treatment"
+    - "Psychosis and schizophrenia treatment"
+
+- num: "04"
+  title: "Psychotherapy (Talk Therapy)"
+  description: "Individual counseling, CBT, psychodynamic therapy, and trauma-focused approaches including EMDR and exposure therapy for PTSD."
+  details:
+    - "Individual therapy: one-on-one counseling"
+    - "Cognitive Behavioral Therapy (CBT)"
+    - "Psychodynamic therapy"
+    - "Trauma therapy: PTSD treatment with EMDR and exposure therapy"
+
+- num: "05"
+  title: "Lifestyle & Integrative Psychiatry"
+  description: "A holistic approach that addresses sleep, stress, nutrition, and mindfulness — targeting the biological roots of mental health alongside the psychological."
+  details:
+    - "Sleep and stress management strategies"
+    - "Nutritional psychiatry for mental well-being"
+    - "Mindfulness and holistic approaches"
+
+- num: "06"
+  title: "Perinatal Psychiatry"
+  description: "Specialized support for mood disorders during pregnancy, postpartum recovery, infertility, and parent-infant bonding — with pregnancy-safe medication options."
+  details:
+    - "Diagnosis & treatment of perinatal mood disorders"
+    - "Medication management including pregnancy-safe options"
+    - "Support for pregnancy loss & infertility"
+    - "Parent-infant bonding support"
+
+- num: "07"
+  title: "Women's Mental Health"
+  description: "Comprehensive care for hormonal mood disorders, trauma, chronic illness, and life-stage transitions — from PMDD and menopause to postpartum and beyond."
+  details:
+    - "Hormonal mood disorders (PMDD, menopause-related depression/anxiety)"
+    - "Trauma & PTSD treatment (birth trauma, sexual trauma)"
+    - "Anxiety & depression across the lifespan"
+    - "Support for women with chronic illness"
+    - "Relationship & parenting counseling"

@@ -1,0 +1,117 @@
+- id: prashanth
+  name: "Dr. Prashanth Pillai"
+  credentials: "MD"
+  title: "Board-Certified Psychiatrist"
+  specialty_short: "General & Child/Adolescent Psychiatry"
+  specialty_tag: "Children · Adolescents · Adults"
+  photo_initial: "P"
+  color_class: "doctor-card__photo--prashanth"
+  profile_url: /doctors/prashanth/
+  booking_url: /booking/?doctor=prashanth
+  bio_short: >
+    Specializing in child, adolescent, and adult psychiatry. Dr. Prashanth Pillai
+    integrates psychopharmacology, CBT, play therapy, and family-centered
+    interventions to deliver holistic, personalized care.
+  bio_full: >
+    Dr. Prashanth Pillai is a board-certified psychiatrist committed to addressing
+    the intricate psychological and developmental needs of children, adolescents,
+    and adults at every stage of life. He completed his general psychiatry residency
+    at Jamaica Hospital Medical Center, followed by a specialized fellowship in
+    child and adolescent psychiatry at Nassau University Medical Center and SUNY
+    Downstate Medical Center.
+
+    Dr. Pillai employs a comprehensive approach to mental health care, integrating
+    psychopharmacology, cognitive-behavioral therapy, play therapy, mindfulness
+    techniques, psychoeducation, and family-centered interventions. His
+    patient-focused philosophy emphasizes trust, open communication, and
+    personalized treatment plans to ensure the most effective care.
+
+    Beyond clinical practice, Dr. Pillai is a passionate advocate for mental
+    health awareness and reducing societal stigma. He actively promotes community
+    education to encourage understanding and compassion for individuals facing
+    psychological challenges.
+  specialties:
+    - "General Psychiatry"
+    - "Child & Adolescent Psychiatry"
+    - "ADHD Evaluation & Management"
+    - "Depression & Anxiety"
+    - "Autism Spectrum Disorder"
+    - "OCD"
+    - "Family-Centered Interventions"
+    - "Play Therapy"
+    - "Psychoeducation"
+    - "Behavioral Disorders"
+  expertise_tags:
+    - "Depression"
+    - "ADHD"
+    - "Anxiety"
+    - "Autism"
+  credentials_list:
+    - "Board Certified in Psychiatry"
+    - "General Psychiatry Residency — Jamaica Hospital Medical Center"
+    - "Fellowship in Child & Adolescent Psychiatry — Nassau University Medical Center"
+    - "SUNY Downstate Medical Center"
+  philosophy: >
+    Dr. Pillai's patient-focused philosophy emphasizes trust, open communication,
+    and personalized treatment plans. He believes in taking the time to truly
+    understand each patient — their history, family context, and individual needs —
+    before designing a care plan. He is a passionate advocate for reducing stigma
+    and promoting mental health literacy in every community he serves.
+
+- id: ksenia
+  name: "Dr. Ksenia Pillai"
+  credentials: "MD"
+  title: "Board-Certified Psychiatrist"
+  specialty_short: "General, Child & Reproductive Psychiatry"
+  specialty_tag: "Child · Adult · Reproductive"
+  photo_initial: "K"
+  color_class: "doctor-card__photo--ksenia"
+  profile_url: /doctors/ksenia/
+  booking_url: /booking/?doctor=ksenia
+  bio_short: >
+    Specializing in child, adult, and reproductive psychiatry, Dr. Ksenia Pillai
+    brings deep expertise in perinatal mental health, hormonal mood disorders,
+    and personalized functional treatment across every life stage.
+  bio_full: >
+    Dr. Ksenia Pillai is a distinguished psychiatrist specializing in child,
+    adult, and reproductive psychiatry. With extensive experience in mental health
+    care across different life stages, she is dedicated to providing personalized
+    and functional treatment tailored to each patient's unique needs.
+
+    She earned her medical degree and completed her general psychiatry residency
+    at Jamaica Hospital Medical Center, where she developed a deep understanding
+    of the complexities of the human mind. Driven by a passion for expanding her
+    expertise, she pursued specialized training in child psychiatry at SUNY
+    Downstate.
+
+    In addition, Dr. Pillai has extensive experience in reproductive psychiatry,
+    helping individuals navigate the psychological challenges associated with
+    pregnancy, postpartum mental health, and hormonal transitions.
+  specialties:
+    - "General Psychiatry"
+    - "Child Psychiatry"
+    - "Reproductive & Perinatal Psychiatry"
+    - "Postpartum Mental Health"
+    - "Hormonal Mood Disorders (PMDD)"
+    - "Women's Mental Health"
+    - "Anxiety & Depression"
+    - "Trauma & PTSD"
+    - "Pregnancy Loss Support"
+    - "Menopause-Related Psychiatry"
+  expertise_tags:
+    - "Perinatal"
+    - "Women's Health"
+    - "Anxiety"
+    - "Trauma"
+  credentials_list:
+    - "Board Certified in Psychiatry"
+    - "General Psychiatry Residency — Jamaica Hospital Medical Center"
+    - "Specialized Training in Child Psychiatry — SUNY Downstate"
+    - "Extensive Experience in Reproductive Psychiatry"
+  philosophy: >
+    Dr. Ksenia Pillai believes that every patient deserves care that honors
+    their full story — not just their diagnosis. She takes a functional and
+    personalized approach, working closely with patients to understand the
+    biological, psychological, and life-stage factors shaping their mental health.
+    Her work in reproductive psychiatry reflects a deep commitment to supporting
+    patients through some of the most vulnerable transitions in life.

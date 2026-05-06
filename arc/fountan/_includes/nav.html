@@ -1,0 +1,20 @@
+<nav class="nav {% unless page.url == '/' %}scrolled{% endunless %}" id="nav">
+  <div class="nav__inner">
+    <a href="{{ '/' | relative_url }}" class="nav__logo">
+      <span class="nav__logo-mark">F</span>
+      <span class="nav__logo-text">The Fountain Group</span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>Practice</a></li>
+      <li><a href="{{ '/doctors/prashanth/' | relative_url }}" {% if page.url == '/doctors/prashanth/' %}class="active"{% endif %}>Dr. Prashanth</a></li>
+      <li><a href="{{ '/doctors/ksenia/' | relative_url }}" {% if page.url == '/doctors/ksenia/' %}class="active"{% endif %}>Dr. Ksenia</a></li>
+      <li><a href="{{ '/services/' | relative_url }}" {% if page.url == '/services/' %}class="active"{% endif %}>Services</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+      <li><a href="{{ '/booking/' | relative_url }}" class="nav__cta {% if page.url == '/booking/' %}active{% endif %}">Book a Session</a></li>
+    </ul>
+  </div>
+</nav>

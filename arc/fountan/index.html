@@ -1,0 +1,202 @@
+---
+layout: default
+title: "Psychiatric Care · The Fountain Group"
+description: "The Fountain Group provides expert psychiatric care for children, adolescents, and adults. Led by board-certified psychiatrists Dr. Prashanth Pillai and Dr. Ksenia Pillai. In-person and telehealth available."
+---
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__content">
+      <div class="hero__tag">Psychiatric Care · Children · Adolescents · Adults</div>
+      <h1 class="hero__headline">
+        Mental wealth<br />
+        <em>begins here.</em>
+      </h1>
+      <p class="hero__sub">
+        Two board-certified psychiatrists. One commitment to evidence-based, compassionate care for every stage of life — in-person and via telehealth.
+      </p>
+      <div class="hero__actions">
+        <a href="{{ '/booking/' | relative_url }}" class="btn btn--primary">Book a Consultation</a>
+        <a href="{{ '/about/' | relative_url }}" class="btn btn--ghost">Our Approach</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__circle hero__circle--1"></div>
+      <div class="hero__circle hero__circle--2"></div>
+      <div class="hero__circle hero__circle--3"></div>
+      <div class="hero__line hero__line--h"></div>
+      <div class="hero__line hero__line--v"></div>
+      <div class="hero__badge">
+        <span class="hero__badge-num">3</span>
+        <span class="hero__badge-label">Clinic<br/>Locations</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <section class="intro-strip">
+    <div class="container">
+      <div class="intro-strip__grid">
+        <div class="intro-strip__item">
+          <span class="intro-strip__icon">◯</span>
+          <span>Evidence-based care</span>
+        </div>
+        <div class="intro-strip__item">
+          <span class="intro-strip__icon">◯</span>
+          <span>In-person &amp; telehealth</span>
+        </div>
+        <div class="intro-strip__item">
+          <span class="intro-strip__icon">◯</span>
+          <span>Major insurance accepted</span>
+        </div>
+        <div class="intro-strip__item">
+          <span class="intro-strip__icon">◯</span>
+          <span>Children, teens &amp; adults</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PRACTICE -->
+  <section class="about-brief section">
+    <div class="container">
+      <div class="about-brief__grid">
+        <div class="about-brief__left">
+          <div class="section-label">The Practice</div>
+          <h2 class="section-title">Two psychiatrists.<br/>One mission.</h2>
+        </div>
+        <div class="about-brief__right">
+          <p class="about-brief__text">
+            {{ site.data.site.practice.description }}
+          </p>
+          <p class="about-brief__text">
+            {{ site.data.site.practice.philosophy }}
+          </p>
+          <a href="{{ '/about/' | relative_url }}" class="link-arrow">Learn about our practice →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section class="doctors section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">The Psychiatrists</div>
+        <h2 class="section-title">Meet your doctors</h2>
+      </div>
+      <div class="doctors__grid">
+        {% for doctor in site.data.doctors %}
+          {% include doctor-card.html doctor=doctor %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services section section--tinted">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Services</h2>
+      </div>
+      <div class="services__grid">
+        {% for service in site.data.services %}
+        <div class="service-item">
+          <div class="service-item__num">{{ service.num }}</div>
+          <h3 class="service-item__title">{{ service.title }}</h3>
+          <p class="service-item__desc">{{ service.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div style="text-align:center;margin-top:3rem;">
+        <a href="{{ '/services/' | relative_url }}" class="btn btn--outline">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Find Us</div>
+        <h2 class="section-title">Our locations</h2>
+      </div>
+      <div class="services__grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+        {% for loc in site.data.site.locations %}
+        <div class="service-item">
+          <div class="service-item__num">{% if loc.primary %}✦{% else %}◯{% endif %}</div>
+          <h3 class="service-item__title">{{ loc.name }}</h3>
+          <p class="service-item__desc">{{ loc.address }}<br/>{{ loc.city_state_zip }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div style="margin-top:2rem;text-align:center;">
+        <p style="color:var(--neutral-500);font-size:.9rem;">Telehealth available nationwide via HIPAA-compliant video. <strong>Hours: Mon–Sun, 8am–9pm.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust section section--tinted">
+    <div class="container">
+      <div class="trust__grid">
+        <div class="trust__left">
+          <div class="section-label">Why The Fountain Group</div>
+          <h2 class="section-title">Our commitment<br/>to you</h2>
+          <a href="{{ '/booking/' | relative_url }}" class="btn btn--primary" style="margin-top:2rem">Book a Session</a>
+        </div>
+        <div class="trust__right">
+          <div class="trust__item">
+            <div class="trust__item-icon">✦</div>
+            <div>
+              <h4>Board-Certified Psychiatrists</h4>
+              <p>Both doctors are fully licensed, board-certified, and committed to the highest standards of clinical care.</p>
+            </div>
+          </div>
+          <div class="trust__item">
+            <div class="trust__item-icon">✦</div>
+            <div>
+              <h4>Insurance Accepted</h4>
+              <p>We accept major insurance providers and can assist with out-of-network reimbursements for your plan.</p>
+            </div>
+          </div>
+          <div class="trust__item">
+            <div class="trust__item-icon">✦</div>
+            <div>
+              <h4>HIPAA-Compliant Telehealth</h4>
+              <p>Secure, confidential video sessions for complete privacy — the same quality of care, wherever you are.</p>
+            </div>
+          </div>
+          <div class="trust__item">
+            <div class="trust__item-icon">✦</div>
+            <div>
+              <h4>Care for Every Age</h4>
+              <p>From children and adolescents to adults — including specialized perinatal and women's mental health care.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text">
+          <h2>Ready to take the first step?</h2>
+          <p>A single conversation can be the beginning of real change.</p>
+        </div>
+        <div class="cta-banner__actions">
+          <a href="{{ '/booking/' | relative_url }}" class="btn btn--white">Book a Consultation</a>
+          <a href="{{ '/contact/' | relative_url }}" class="btn btn--ghost-white">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

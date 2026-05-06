@@ -1,0 +1,87 @@
+---
+layout: page
+title: "Contact"
+hero_label: "Contact"
+hero_title: "We're here to help"
+hero_sub: "Whether you have a question before booking or need to reach us about an existing appointment — get in touch."
+description: "Contact The Fountain Group — reach us by phone, email, or visit one of our three clinic locations in Reston VA, Oakland CA, or Honolulu HI."
+permalink: /contact/
+---
+
+<div class="contact-layout">
+
+  <!-- Contact Details -->
+  <div class="fade-up">
+    <div class="section-label" style="margin-bottom:1.5rem">Get in Touch</div>
+
+    <div class="contact-item">
+      <div class="contact-item__icon">✉</div>
+      <div class="contact-item__body">
+        <h4>Email</h4>
+        <a href="mailto:{{ site.data.site.contact.email }}">{{ site.data.site.contact.email }}</a>
+        <p style="color:var(--neutral-500);font-size:.85rem;margin-top:.25rem">We typically respond within one business day.</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-item__icon">☎</div>
+      <div class="contact-item__body">
+        <h4>Phone</h4>
+        <a href="tel:+1{{ site.data.site.contact.phone }}">{{ site.data.site.contact.phone_display }}</a>
+        <p style="color:var(--neutral-500);font-size:.85rem;margin-top:.25rem">Monday to Sunday, 8:00 am – 9:00 pm</p>
+      </div>
+    </div>
+
+    {% for loc in site.data.site.locations %}
+    <div class="contact-item">
+      <div class="contact-item__icon">⌂</div>
+      <div class="contact-item__body">
+        <h4>{{ loc.name }}</h4>
+        <p>{{ loc.address }}<br/>{{ loc.city_state_zip }}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="contact-item">
+      <div class="contact-item__icon">◎</div>
+      <div class="contact-item__body">
+        <h4>Telehealth Sessions</h4>
+        <p>All appointment types are available via HIPAA-compliant secure video. Complete privacy and security guaranteed.</p>
+        <p style="color:var(--neutral-500);font-size:.85rem;margin-top:.25rem">Available nationwide.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ + Info -->
+  <div class="fade-up">
+    <div class="section-label" style="margin-bottom:1.5rem">Frequently Asked Questions</div>
+
+    <div style="display:flex;flex-direction:column;gap:1.25rem;">
+      {% for item in site.data.faq %}
+      <details style="background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--radius-lg);overflow:hidden;">
+        <summary style="padding:1.25rem 1.5rem;cursor:pointer;font-weight:500;font-size:.95rem;color:var(--neutral-800);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          {{ item.question }}
+          <span style="color:var(--green-500);font-size:1.2rem;flex-shrink:0">+</span>
+        </summary>
+        <div style="padding:0 1.5rem 1.25rem;color:var(--neutral-600);font-size:.9rem;line-height:1.75;border-top:1px solid var(--neutral-100);">
+          <p style="margin-top:1rem">{{ item.answer }}</p>
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+
+    <div style="margin-top:2.5rem;padding:2rem;background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--radius-xl);">
+      <div class="section-label" style="margin-bottom:.75rem">Crisis Resources</div>
+      <p style="font-size:.9rem;color:var(--neutral-600);line-height:1.75;margin-bottom:1rem;">If you or someone you know is in immediate crisis, please contact emergency services or one of the following:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
+        <li style="font-size:.9rem;color:var(--neutral-700)">🇺🇸 <strong>988 Suicide &amp; Crisis Lifeline</strong> — call or text 988</li>
+        <li style="font-size:.9rem;color:var(--neutral-700)">🌐 <strong>Crisis Text Line</strong> — text HOME to 741741</li>
+        <li style="font-size:.9rem;color:var(--neutral-700)">🚨 <strong>Emergency</strong> — call 911</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <a href="{{ '/booking/' | relative_url }}" class="btn btn--primary">Book a Consultation</a>
+    </div>
+  </div>
+</div>

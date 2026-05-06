@@ -1,0 +1,71 @@
+practice:
+  name: "The Fountain Group"
+  founded: "Est. 2018"
+  tagline: "Compassionate psychiatric care for every stage of life."
+  description: >
+    The Fountain Group provides expert psychiatric care for children, adolescents,
+    and adults. Led by board-certified psychiatrists Dr. Prashanth Pillai and
+    Dr. Ksenia Pillai, the practice offers comprehensive mental health diagnosis
+    and treatment in a secure and convenient setting — both in-person and via telehealth.
+  philosophy: >
+    We integrate lifestyle medicine into our practice, focusing on a holistic
+    and biological approach to mental well-being. We prioritize accuracy,
+    utilizing evidence-based methods to ensure precise diagnoses without rushing
+    the process. While many discuss mental health, The Fountain Group is committed
+    to fostering mental wealth.
+  accepts_insurance: true
+  insurance_note: >
+    We accept major insurance providers and can assist with your out-of-network
+    reimbursements.
+
+contact:
+  email: drkpillai@thefountaingroup.org
+  phone: "4159800186"
+  phone_display: "(415) 980-0186"
+
+hours:
+  monday_friday: "8:00 am – 9:00 pm"
+  saturday: "8:00 am – 9:00 pm"
+  sunday: "8:00 am – 9:00 pm"
+  note: "After-hours crisis appointments available at 1.5× standard fee."
+
+locations:
+  - name: "Reston, VA"
+    address: "1900 Reston Metro Plaza, Suite 600"
+    city_state_zip: "Reston, VA 20190"
+    primary: true
+  - name: "Oakland, CA"
+    address: "409 13th St, Suite 600, Office 322A"
+    city_state_zip: "Oakland, CA 94612"
+    primary: false
+  - name: "Honolulu, HI"
+    address: "1150 South King St, Office 302"
+    city_state_zip: "Honolulu, HI 96814"
+    primary: false
+
+fees:
+  - type: "Initial Consultation"
+    duration: "40 min"
+    price: "$399"
+    note: "May take 1–2 sessions depending on history, records review, and additional testing."
+    applies_to: "Adult & Child"
+  - type: "Follow-up / Med Management"
+    duration: "20 min"
+    price: "$199"
+    note: "Follow-up sessions available in 20-minute increments."
+    applies_to: "Adult & Child"
+  - type: "After-Hours Crisis"
+    duration: "Varies"
+    price: "1.5× standard fee"
+    note: "Available for urgent situations outside regular hours."
+    applies_to: "All patients"
+
+stats:
+  - num: "2"
+    label: "Board-certified psychiatrists"
+  - num: "3"
+    label: "Clinic locations"
+  - num: "7"
+    label: "Days a week, 8am–9pm"
+  - num: "100%"
+    label: "HIPAA-compliant telehealth"

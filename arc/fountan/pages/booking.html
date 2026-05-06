@@ -1,0 +1,189 @@
+---
+layout: page
+title: "Book a Session"
+hero_label: "Booking"
+hero_title: "Book a consultation"
+hero_sub: "Complete the form below and we'll confirm your appointment within one business day."
+description: "Book a psychiatric consultation at The Fountain Group with Dr. Prashanth Pillai or Dr. Ksenia Pillai."
+permalink: /booking/
+extra_js: |
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const doctorParam = params.get('doctor');
+    if (doctorParam) {
+      const sel = document.getElementById('doctor');
+      if (sel) sel.value = doctorParam;
+    }
+    const dateInput = document.getElementById('preferredDate');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+  </script>
+---
+
+<div class="booking-layout">
+
+  <!-- Info Panel -->
+  <div class="booking-info fade-up">
+    <h2>What to expect</h2>
+    <p>Reaching out is the hardest part. We make everything else as easy as possible.</p>
+
+    <div class="booking-steps">
+      <div class="booking-step">
+        <div class="booking-step__num">1</div>
+        <div class="booking-step__text">
+          <h4>Complete this form</h4>
+          <p>Takes about two minutes. We ask only what we need.</p>
+        </div>
+      </div>
+      <div class="booking-step">
+        <div class="booking-step__num">2</div>
+        <div class="booking-step__text">
+          <h4>We confirm within 24 hours</h4>
+          <p>Our team will reach out to confirm your slot and send any forms to complete beforehand.</p>
+        </div>
+      </div>
+      <div class="booking-step">
+        <div class="booking-step__num">3</div>
+        <div class="booking-step__text">
+          <h4>Attend your session</h4>
+          <p>In-person or via HIPAA-compliant telehealth. Your first appointment is 40 minutes — no rush.</p>
+        </div>
+      </div>
+      <div class="booking-step">
+        <div class="booking-step__num">4</div>
+        <div class="booking-step__text">
+          <h4>Receive a care plan</h4>
+          <p>Your psychiatrist will share a clear clinical impression and proposed treatment pathway after your session.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;padding:1.5rem;background:var(--green-50);border:1px solid var(--green-200);border-radius:var(--radius-lg);">
+      <div style="font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green-600);margin-bottom:.75rem;">Need to talk first?</div>
+      <p style="font-size:.9rem;color:var(--neutral-600);margin-bottom:1rem;">Not sure which doctor is right for you, or have a question before booking? Call or email us.</p>
+      <a href="tel:+1{{ site.data.site.contact.phone }}" style="color:var(--green-700);font-weight:500;font-size:.95rem;">{{ site.data.site.contact.phone_display }}</a><br/>
+      <a href="mailto:{{ site.data.site.contact.email }}" style="color:var(--green-700);font-weight:500;font-size:.95rem;">{{ site.data.site.contact.email }}</a>
+    </div>
+
+    <!-- Fees summary -->
+    <div style="margin-top:1.5rem;padding:1.5rem;background:var(--white);border:1px solid var(--neutral-200);border-radius:var(--radius-lg);">
+      <div style="font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--neutral-500);margin-bottom:1rem;">Session Fees</div>
+      {% for fee in site.data.site.fees %}
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:.5rem 0;{% unless forloop.last %}border-bottom:1px solid var(--neutral-100);{% endunless %}">
+        <div>
+          <span style="font-size:.9rem;font-weight:500;color:var(--neutral-700);">{{ fee.type }}</span>
+          <span style="font-size:.8rem;color:var(--neutral-400);margin-left:.5rem;">{{ fee.duration }}</span>
+        </div>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--green-700);">{{ fee.price }}</span>
+      </div>
+      {% endfor %}
+      <p style="font-size:.8rem;color:var(--neutral-400);margin-top:.75rem;">We accept major insurance. Out-of-network reimbursement assistance available.</p>
+    </div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="booking-form-card fade-up" id="bookingFormCard">
+    <h3>Consultation request</h3>
+
+    <form id="bookingForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" required placeholder="Your first name" />
+          <div class="error-msg" role="alert">Please enter your first name.</div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" required placeholder="Your last name" />
+          <div class="error-msg" role="alert">Please enter your last name.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+        <div class="error-msg" role="alert">Please enter a valid email address.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="+1 (415) 000-0000" />
+        <div class="error-msg" role="alert">Please enter your phone number.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="patientType">Patient Type <span aria-hidden="true">*</span></label>
+        <select id="patientType" name="patientType" required>
+          <option value="" disabled selected>Who is this appointment for?</option>
+          <option value="adult-self">Adult (for myself)</option>
+          <option value="child">Child or Adolescent</option>
+          <option value="adult-other">Adult (for someone else)</option>
+        </select>
+        <div class="error-msg" role="alert">Please select a patient type.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="doctor">Preferred Doctor <span aria-hidden="true">*</span></label>
+        <select id="doctor" name="doctor" required>
+          <option value="" disabled selected>Select a psychiatrist…</option>
+          {% for doctor in site.data.doctors %}
+          <option value="{{ doctor.id }}">{{ doctor.name }} — {{ doctor.specialty_short }}</option>
+          {% endfor %}
+          <option value="no-preference">No preference / Not sure</option>
+        </select>
+        <div class="error-msg" role="alert">Please select a preferred doctor.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Preferred Location <span aria-hidden="true">*</span></label>
+        <select id="location" name="location" required>
+          <option value="" disabled selected>In-person or telehealth?</option>
+          {% for loc in site.data.site.locations %}
+          <option value="{{ loc.name | slugify }}">In-person — {{ loc.name }}</option>
+          {% endfor %}
+          <option value="telehealth">Telehealth (video)</option>
+          <option value="no-preference">No preference</option>
+        </select>
+        <div class="error-msg" role="alert">Please select a location.</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="preferredDate">Preferred Date</label>
+          <input type="date" id="preferredDate" name="preferredDate" min="" />
+        </div>
+        <div class="form-group">
+          <label for="preferredTime">Preferred Time</label>
+          <select id="preferredTime" name="preferredTime">
+            <option value="" selected>Any time</option>
+            <option value="morning">Morning (8am–12pm)</option>
+            <option value="afternoon">Afternoon (12pm–5pm)</option>
+            <option value="evening">Evening (5pm–9pm)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">What brings you here? <span style="color:var(--neutral-400);font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="message" name="message" placeholder="A brief note about what you're looking for — this helps us prepare. Share as much or as little as feels comfortable."></textarea>
+      </div>
+
+      <div style="background:var(--neutral-100);border-radius:var(--radius-md);padding:1rem;margin-bottom:1rem;font-size:.8rem;color:var(--neutral-500);line-height:1.6;">
+        ✦ Your information is held in strict confidence and used only to arrange your appointment. HIPAA-compliant. We do not share it with third parties.
+      </div>
+
+      <button type="submit" class="btn btn--primary form-submit">Request Appointment</button>
+    </form>
+
+    <!-- Success State -->
+    <div class="booking-success" id="bookingSuccess">
+      <div class="booking-success__icon">✓</div>
+      <h3>Request received</h3>
+      <p style="margin-bottom:.75rem;">Thank you for reaching out. We'll be in touch within one business day to confirm your appointment.</p>
+      <p>In the meantime, if you have any urgent questions, please call us at <a href="tel:+1{{ site.data.site.contact.phone }}" style="color:var(--green-700)">{{ site.data.site.contact.phone_display }}</a>.</p>
+    </div>
+  </div>
+
+</div>
