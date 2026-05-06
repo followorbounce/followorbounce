@@ -3,7 +3,7 @@ description: "A publication at the intersection of technology, literature, and t
 author: "Follow or Bounce"
 
 baseurl: ""
-url: "https://followorbounce.github.io"
+url: "https://followorbounce.com"   # ← YOUR GITHUB PAGES URL
 
 theme: ~
 
@@ -23,6 +23,11 @@ exclude:
 issue_number: "01"
 established: "2024"
 
+# ─── API KEYS ────────────────────────────────────────────────────────────────
+# Get free key at alchemy.com → used for NFT portfolio on /dashboard/
+alchemy_key: "XiZdGt7aHKwDQqkOEf9bR"
+
+# ─── NAVIGATION ──────────────────────────────────────────────────────────────
 navigation:
   - title: "About"
     url: "/about/"
