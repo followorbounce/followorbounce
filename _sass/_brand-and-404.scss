@@ -12,9 +12,9 @@
 
 /* ── HERO ──────────────────────────────────────────────────────────────────── */
 .brand-hero {
-  padding: 5rem 0 4rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
   border-bottom: var(--line);
-  margin-bottom: 0;
 
   &__label {
     display: flex;
@@ -31,12 +31,9 @@
   }
 
   &__headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3.5rem, 9vw, 8rem);
-    line-height: .92;
-    color: var(--ink);
     margin-bottom: 3rem;
-    em { font-style: italic; color: var(--rust); }
+    padding-bottom: 3rem;
+    border-bottom: var(--line);
   }
 
   &__sub {
