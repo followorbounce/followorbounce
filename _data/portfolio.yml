@@ -1,0 +1,51 @@
+# _data/portfolio.yml
+# ─────────────────────────────────────────────────────────────────────────────
+# Each project supports these fields:
+#
+#   title        (required) Display title
+#   category     (required) One of: web, branding, identity, development, graphic
+#   tags         List of short label strings shown on the card
+#   description  One or two sentences max
+#   cover        Path relative to site root, e.g. /assets/images/portfolio/project.jpg
+#                Use a 16:9 or 4:3 image for best results (recommend 1200×675px)
+#   url          External URL (opens in new tab)
+#   case_study   Internal path, e.g. /work/project-name/
+#   behance      Behance project URL
+#   dribbble     Dribbble shot URL
+#   figma        Figma file share URL
+#   featured     true → appears in Featured row at top
+#   year         4-digit year string
+# ─────────────────────────────────────────────────────────────────────────────
+
+- title: "Follow or Bounce"
+  category: web
+  tags: ["Editorial", "Jekyll", "GitHub Pages"]
+  description: "Publication platform at the intersection of technology, literature, and digital law. Built on a custom Jekyll stack deployed to GitHub Pages."
+  cover: "/assets/images/portfolio/fob-cover.jpg"
+  url: "https://followorbounce.com"
+  featured: true
+  year: "2024"
+
+- title: "Brand Identity System"
+  category: branding
+  tags: ["Brand Book", "Typography", "Colour"]
+  description: "Full visual identity for Follow or Bounce — logotype, colour system, type scale, editorial voice guidelines, and grid principles."
+  cover: "/assets/images/portfolio/fob-brand.jpg"
+  case_study: "/brand/"
+  featured: true
+  year: "2024"
+
+- title: "Editorial Layout System"
+  category: graphic
+  tags: ["Print", "Layout", "Editorial"]
+  description: "Modular editorial grid adapted for both digital and print contexts. Brutalist border system, ink-on-paper aesthetic."
+  cover: "/assets/images/portfolio/editorial-layout.jpg"
+  year: "2024"
+
+- title: "Project Name"
+  category: identity
+  tags: ["Logo", "Identity", "Guidelines"]
+  description: "Replace this with your actual project. Add a cover image, link, and description."
+  cover: ""
+  url: ""
+  year: "2025"
