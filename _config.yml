@@ -29,6 +29,8 @@ established: "2024"
 navigation:
   - title: "About"
     url: "/about/"
+  - title: "Work"
+    url: "/work/"
   - title: "Technology"
     url: "/technology/"
   - title: "Literature"

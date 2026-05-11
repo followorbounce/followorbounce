@@ -62,6 +62,11 @@
 
 <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
 {% if page.extra_js %}
+
+{% if page.permalink == '/work/' %}
+<script src="{{ '/assets/js/portfolio.js' | relative_url }}" defer></script>
+{% endif %}
+
 <script src="{{ page.extra_js | relative_url }}" defer></script>
 {% endif %}
 
