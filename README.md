@@ -1,68 +1,48 @@
-# Follow or Bounce
+# Brand + 404 Pages — Follow or Bounce
 
-## Local development
+## Files to add to your Jekyll repo
 
-```bash
-bundle install
-bundle exec jekyll serve --livereload
-# → http://localhost:4000
+```
+pages/brand.md              → pages/brand.md
+404.html                    → 404.html  (root, not in pages/)
+_sass/_brand-and-404.scss   → _sass/_brand-and-404.scss
 ```
 
-## Deploy to GitHub Pages
+## One line to add in _sass/main.scss
 
-1. Edit `_config.yml`:
-   - **Project page** (`username.github.io/repo`): set `baseurl: "/repo-name"`
-   - **User page or custom domain**: leave `baseurl: ""`
-2. Push to `main`
-3. Settings → Pages → Source → Deploy from branch → `main`
+At the very end of `_sass/main.scss`, add:
 
-## Add a page
+```scss
+@import "brand-and-404";
+```
 
-Create `pages/my-page.md`:
+## Add Brand to navigation in _config.yml
 
 ```yaml
----
-layout: default
-title: "My Page"
-permalink: /my-page/
----
-Content here.
+navigation:
+  - title: "About"
+    url: "/about/"
+  - title: "Technology"
+    url: "/technology/"
+  - title: "Literature"
+    url: "/literature/"
+  - title: "Contracts"
+    url: "/contracts/"
+    children:
+      - title: "Digital Law"
+        url: "/contracts/digital-law/"
+      - title: "Open Source"
+        url: "/contracts/open-source/"
+      - title: "Platform Terms"
+        url: "/contracts/platform-terms/"
+  - title: "Brand"
+    url: "/brand/"
+  - title: "Subscribe ↗"
+    url: "/subscribe/"
+    action: true
 ```
 
-Add it to `navigation` in `_config.yml`:
+## Done.
 
-```yaml
-- title: "My Page"
-  url: "/my-page/"
-```
-
-## Add a dropdown
-
-```yaml
-- title: "Section"
-  url: "/section/"
-  children:
-    - title: "Sub Page"
-      url: "/section/sub-page/"
-```
-
-## Project structure
-
-```
-├── _config.yml          # Site config + nav data
-├── _layouts/
-│   └── default.html     # The only layout — header, footer, nav all here
-├── assets/
-│   ├── css/main.scss    # All styles
-│   └── js/main.js       # Nav dropdowns + AI chat
-├── pages/               # Content pages
-│   ├── about.md
-│   ├── technology.md
-│   ├── literature.md
-│   ├── contracts.md
-│   ├── contracts-digital-law.md
-│   ├── contracts-open-source.md
-│   ├── contracts-platform-terms.md
-│   └── subscribe.md
-└── index.html           # Homepage
-```
+- Brand page → followorbounce.com/brand/
+- 404 page   → served automatically by GitHub Pages on any missing URL
