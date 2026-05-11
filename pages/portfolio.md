@@ -37,7 +37,7 @@ permalink: /work/
     <button class="pf-filter__btn" data-filter="graphic">Graphic</button>
   </div>
 
-  <!-- ── FEATURED PROJECTS ─────────────────────────────────────────────── -->
+   ── FEATURED PROJECTS ─────────────────────────────────────────────── -->
   {% assign featured = site.data.portfolio | where: "featured", true %}
   {% if featured.size > 0 %}
   <section class="pf-featured" aria-label="Featured projects">
@@ -96,8 +96,8 @@ permalink: /work/
         <span class="pf-profile-card__arrow">↗</span>
       </a>
 
-    </div> -->
-  </section>
+    </div> 
+ <!-- </section> -->
 
   <!-- ── CTA ───────────────────────────────────────────────────────────── -->
   <section class="pf-cta">
