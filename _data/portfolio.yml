@@ -20,7 +20,7 @@
   category:    web
   tags:        ["Editorial", "Jekyll", "GitHub Pages"]
   description: "Publication platform at the intersection of technology, literature, and digital law. Built on a custom Jekyll stack deployed to GitHub Pages."
-#  cover:       "/assets/images/portfolio/fob-cover.jpg"
+  cover:       "/assets/images/portfolio/fob-cover.jpg"
   url:         "https://followorbounce.com"
   featured:    true
   year:        "2024"
@@ -38,7 +38,7 @@
   category:    graphic
   tags:        ["Print", "Layout", "Editorial"]
   description: "Modular editorial grid adapted for both digital and print contexts. Brutalist border system, ink-on-paper aesthetic."
-  cover:       "/assets/images/portfolio/editorial-layout.jpg"
+#  cover:       "/assets/images/portfolio/editorial-layout.jpg"
   year:        "2024"
 
 - title:       "Project Name"
