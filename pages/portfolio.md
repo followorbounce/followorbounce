@@ -71,32 +71,32 @@ permalink: /work/
   </div>
 
   <!-- ── EXTERNAL PROFILES ─────────────────────────────────────────────── -->
-  <section class="pf-profiles">
+  <!-- <section class="pf-profiles">
     <div class="pf-section-label">
       <span class="pf-section-label__text">Find me on</span>
     </div>
-    <div class="pf-profiles__grid">
+    <div class="pf-profiles__grid"> 
 
       <!-- Edit or remove any of these links -->
-      <a class="pf-profile-card" href="https://behance.net" target="_blank" rel="noopener">
+    <!--  <a class="pf-profile-card" href="https://behance.net" target="_blank" rel="noopener">
         <span class="pf-profile-card__name">Behance</span>
         <span class="pf-profile-card__desc">Full project case studies</span>
         <span class="pf-profile-card__arrow">↗</span>
-      </a>
+      </a> 
 
-      <a class="pf-profile-card" href="https://dribbble.com" target="_blank" rel="noopener">
+    <!--  <a class="pf-profile-card" href="https://dribbble.com" target="_blank" rel="noopener">
         <span class="pf-profile-card__name">Dribbble</span>
         <span class="pf-profile-card__desc">UI shots and explorations</span>
         <span class="pf-profile-card__arrow">↗</span>
       </a>
 
-      <a class="pf-profile-card" href="https://figma.com" target="_blank" rel="noopener">
+    <!--  <a class="pf-profile-card" href="https://figma.com" target="_blank" rel="noopener">
         <span class="pf-profile-card__name">Figma</span>
         <span class="pf-profile-card__desc">Live design files</span>
         <span class="pf-profile-card__arrow">↗</span>
       </a>
 
-    </div>
+    </div> -->
   </section>
 
   <!-- ── CTA ───────────────────────────────────────────────────────────── -->
