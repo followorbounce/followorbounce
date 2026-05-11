@@ -1,6 +1,10 @@
 /* ══════════════════════════════════════════════════════════════════════════════
-   BRAND PAGE
+   _brand-and-404.scss — Follow or Bounce
+   Uses CSS variables: --ink, --paper, --rust, --slate, --fog, --line
+   Imported at the end of main.scss.
 ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── BRAND PAGE ─────────────────────────────────────────────────────────── */
 
 .brand-page {
   padding-top: 0;
@@ -140,7 +144,6 @@
     letter-spacing: .12em;
     padding: 1.2rem 2rem;
     border-bottom: var(--line);
-    color: var(--ink);
     background: var(--ink);
     color: var(--paper);
   }
@@ -247,11 +250,11 @@
     color: var(--slate);
   }
 
-  &--ink    .brand-swatch__chip { background: #0d0c0a; }
-  &--paper  .brand-swatch__chip { background: #f4f0e6; border-right: var(--line); }
-  &--rust   .brand-swatch__chip { background: #c0390b; }
-  &--slate  .brand-swatch__chip { background: #3a3d44; }
-  &--fog    .brand-swatch__chip { background: #b8b3a8; }
+  &--ink   .brand-swatch__chip { background: #0d0c0a; }
+  &--paper .brand-swatch__chip { background: #f4f0e6; }
+  &--rust  .brand-swatch__chip { background: #c0390b; }
+  &--slate .brand-swatch__chip { background: #3a3d44; }
+  &--fog   .brand-swatch__chip { background: #b8b3a8; }
 
   @media (max-width: 640px) {
     &__chip { width: 60px; min-width: 60px; height: 60px; }
@@ -429,7 +432,12 @@
     &--a { grid-column: 1 / 2; grid-row: 1 / 2; &::before { background: var(--ink); } }
     &--b { grid-column: 2 / 4; grid-row: 1 / 2; &::before { background: var(--ink); } }
     &--c { grid-column: 1 / 2; grid-row: 2 / 3; background: #e8e4da; &::before { background: var(--ink); } }
-    &--d { grid-column: 2 / 3; grid-row: 2 / 3; background: var(--rust); .brand-grid-demo__label { color: var(--paper); } &::before { background: #a02e08; } }
+    &--d {
+      grid-column: 2 / 3; grid-row: 2 / 3;
+      background: var(--rust);
+      .brand-grid-demo__label { color: var(--paper); }
+      &::before { background: #a02e08; }
+    }
     &--e { grid-column: 3 / 4; grid-row: 2 / 3; &::before { background: var(--ink); } }
     &--f { display: none; }
   }
@@ -481,9 +489,6 @@
   color: var(--fog);
   line-height: 1.5;
 }
-
-/* ── UTILITY ───────────────────────────────────────────────────────────────── */
-.rust { color: var(--rust); }
 
 
 /* ══════════════════════════════════════════════════════════════════════════════

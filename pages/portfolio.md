@@ -37,7 +37,7 @@ permalink: /work/
     <button class="pf-filter__btn" data-filter="graphic">Graphic</button>
   </div>
 
-   ── FEATURED PROJECTS ─────────────────────────────────────────────── 
+  <!-- ── FEATURED PROJECTS ──────────────────────────────────────────────── -->
   {% assign featured = site.data.portfolio | where: "featured", true %}
   {% if featured.size > 0 %}
   <section class="pf-featured" aria-label="Featured projects">
@@ -52,7 +52,7 @@ permalink: /work/
   </section>
   {% endif %}
 
-  <!-- ── ALL PROJECTS GRID ─────────────────────────────────────────────── -->
+  <!-- ── ALL PROJECTS GRID ──────────────────────────────────────────────── -->
   <section class="pf-grid-section" aria-label="All projects">
     <div class="pf-section-label">
       <span class="pf-section-label__text">All Projects</span>
@@ -64,47 +64,45 @@ permalink: /work/
     </div>
   </section>
 
-  <!-- ── EMPTY STATE (shown by JS when filter has no results) ──────────── -->
+  <!-- ── EMPTY STATE (shown by JS when filter has no results) ────────────── -->
   <div class="pf-empty" id="portfolio-empty" style="display:none" aria-live="polite">
     <span class="pf-empty__icon">—</span>
     <p class="pf-empty__text">No projects in this category yet.</p>
   </div>
 
-  <!-- ── EXTERNAL PROFILES ─────────────────────────────────────────────── -->
-  <!-- <section class="pf-profiles">
+  <!-- ── EXTERNAL PROFILES ─────────────────────────────────────────────────
+    Uncomment and populate when ready to link external profiles.
+
+  <section class="pf-profiles">
     <div class="pf-section-label">
       <span class="pf-section-label__text">Find me on</span>
     </div>
-    <div class="pf-profiles__grid"> 
-
-      <!-- Edit or remove any of these links -->
-    <!--  <a class="pf-profile-card" href="https://behance.net" target="_blank" rel="noopener">
+    <div class="pf-profiles__grid">
+      <a class="pf-profile-card" href="https://behance.net/YOUR_HANDLE" target="_blank" rel="noopener">
         <span class="pf-profile-card__name">Behance</span>
         <span class="pf-profile-card__desc">Full project case studies</span>
         <span class="pf-profile-card__arrow">↗</span>
-      </a> 
-
-    <!--  <a class="pf-profile-card" href="https://dribbble.com" target="_blank" rel="noopener">
+      </a>
+      <a class="pf-profile-card" href="https://dribbble.com/YOUR_HANDLE" target="_blank" rel="noopener">
         <span class="pf-profile-card__name">Dribbble</span>
         <span class="pf-profile-card__desc">UI shots and explorations</span>
         <span class="pf-profile-card__arrow">↗</span>
       </a>
-
-    <!--  <a class="pf-profile-card" href="https://figma.com" target="_blank" rel="noopener">
+      <a class="pf-profile-card" href="https://figma.com/@YOUR_HANDLE" target="_blank" rel="noopener">
         <span class="pf-profile-card__name">Figma</span>
         <span class="pf-profile-card__desc">Live design files</span>
         <span class="pf-profile-card__arrow">↗</span>
       </a>
-
-    </div> 
- <!-- </section> -->
+    </div>
+  </section>
+  ──────────────────────────────────────────────────────────────────────────── -->
 
   <!-- ── CTA ───────────────────────────────────────────────────────────── -->
   <section class="pf-cta">
     <div class="pf-cta__inner">
       <p class="eyebrow">Start a project</p>
       <h2 class="pf-cta__headline">Have something in mind?</h2>
-      <a class="pf-cta__btn" href="/subscribe/">Get in touch →</a>
+      <a class="pf-cta__btn" href="{{ '/subscribe/' | relative_url }}">Get in touch →</a>
     </div>
   </section>
 

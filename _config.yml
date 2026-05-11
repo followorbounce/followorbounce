@@ -1,49 +1,48 @@
-title: "Follow or Bounce"
+title:       "Follow or Bounce"
 description: "A publication at the intersection of technology, literature, and the agreements that hold them together."
-author: "Follow or Bounce"
+author:      "Follow or Bounce"
 
-# Set baseurl to "/repo-name" for GitHub project pages, or "" for custom domains / user pages
 baseurl: ""
-url: "https://followorbounce.github.io"
+url:     "https://followorbounce.com"
 
-# No gem theme — we use our own _layouts entirely
 theme: ~
 
-markdown: kramdown
+markdown:  kramdown
 permalink: pretty
 
 sass:
   sass_dir: _sass
-  style: compressed
+  style:    compressed
 
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
   - vendor
+  - arc
 
 # Site-wide data used in templates
 issue_number: "01"
-established: "2024"
+established:  "2024"
 
 navigation:
   - title: "About"
-    url: "/about/"
+    url:   "/about/"
   - title: "Work"
-    url: "/work/"
+    url:   "/work/"
   - title: "Technology"
-    url: "/technology/"
+    url:   "/technology/"
   - title: "Literature"
-    url: "/literature/"
+    url:   "/literature/"
   - title: "Contracts"
-    url: "/contracts/"
+    url:   "/contracts/"
     children:
       - title: "Digital Law"
-        url: "/contracts/digital-law/"
+        url:   "/contracts/digital-law/"
       - title: "Open Source"
-        url: "/contracts/open-source/"
+        url:   "/contracts/open-source/"
       - title: "Platform Terms"
-        url: "/contracts/platform-terms/"
+        url:   "/contracts/platform-terms/"
   - title: "Subscribe ↗"
-    url: "/subscribe/"
+    url:   "/subscribe/"
     action: true

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing & Ideas — Follow or Bounce</title>
+  <meta name="description" content="A publication at the intersection of technology, literature, and the agreements that hold them together." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────────────────────────── -->
+<header>
+  <div class="nav-top">
+    <a class="wordmark" href="/">Follow<span>.</span>Or<span>.</span>Bounce</a>
+    <span class="nav-meta">Est. 2024 / Issue 01</span>
+  </div>
+
+  <nav class="menu-bar" aria-label="Main navigation">
+    
+      
+        <a class="menu-bar-link"
+           href="/about/"
+           >
+          <span class="dot"></span>
+          <span class="label">About</span>
+        </a>
+      
+    
+      
+        <a class="menu-bar-link"
+           href="/work/"
+           >
+          <span class="dot"></span>
+          <span class="label">Work</span>
+        </a>
+      
+    
+      
+        <a class="menu-bar-link"
+           href="/technology/"
+           >
+          <span class="dot"></span>
+          <span class="label">Technology</span>
+        </a>
+      
+    
+      
+        <a class="menu-bar-link active"
+           href="/literature/"
+           aria-current="page">
+          <span class="dot"></span>
+          <span class="label">Literature</span>
+        </a>
+      
+    
+      
+        <div class="has-submenu">
+          <div class="menu-bar-btn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
+            <span class="dot"></span>
+            <span class="label">Contracts</span>
+            <span class="chevron">▾</span>
+          </div>
+          <ul class="submenu">
+            
+            <li><a href="/contracts/digital-law/">Digital Law</a></li>
+            
+            <li><a href="/contracts/open-source/">Open Source</a></li>
+            
+            <li><a href="/contracts/platform-terms/">Platform Terms</a></li>
+            
+          </ul>
+        </div>
+      
+    
+      
+        <div class="spacer"></div>
+        <a class="menu-bar-link action" href="/subscribe/">
+          <span class="label">Subscribe ↗</span>
+        </a>
+      
+    
+  </nav>
+</header>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────────────────── -->
+<main>
+  <div class="page-hero">
+  <p class="eyebrow">Literature</p>
+  <h1>Writing &amp; Ideas</h1>
+  <p class="subtitle">Reviews, essays, and long-form pieces on the books and ideas that define our time.</p>
+</div>
+
+<div class="page-content">
+
+## What We Read
+
+Literature, for us, is anything written with intention. That includes novels and essays, but also manifestos, policy papers, and the occasional well-crafted thread. We care about *how* ideas are communicated as much as *which* ideas.
+
+---
+
+## Our Critical Standard
+
+We don't publish summaries. A review from Follow or Bounce will tell you what a book *does*, not just what it's *about*. We're interested in argument, structure, and implication.
+
+We're also honest about books we think are overrated. A publication that praises everything means nothing.
+
+---
+
+## Recent Reading
+
+- On the resurgence of the long essay
+- Why the best technology writing reads like fiction
+- The books every infrastructure engineer should read
+- Reading contracts as literature
+
+[Subscribe for updates →](/subscribe/)
+
+</div>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <span>© 2026 Follow or Bounce</span>
+  <span>All rights reserved</span>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+
+
+<!-- ── AI CHAT WIDGET ─────────────────────────────────────────────────────── -->
+<button id="ai-btn" aria-label="Open AI chat">AI</button>
+
+<div id="ai-modal" aria-hidden="true">
+  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat">
+    <div id="ai-box-header">
+      <span>Ask AI</span>
+      <button id="ai-close" aria-label="Close">✕</button>
+    </div>
+    <div id="ai-messages" aria-live="polite"></div>
+    <div id="ai-input-row">
+      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message">
+      <button id="ai-send">→</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

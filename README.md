@@ -1,124 +1,120 @@
-# Portfolio Page — Implementation Guide
+# Follow or Bounce
 
-## Files to add (copy exactly as-is)
+A publication at the intersection of technology, literature, and the agreements that hold them together.
+
+**Live site:** [followorbounce.com](https://followorbounce.com)  
+**Host:** GitHub Pages (custom domain via CNAME)  
+**Stack:** Jekyll, GitHub Pages, Sass, vanilla JS
+
+---
+
+## Project Structure
 
 ```
-_data/portfolio.yml              → _data/portfolio.yml
-_includes/portfolio-card.html    → _includes/portfolio-card.html
-pages/portfolio.md               → pages/portfolio.md
-_sass/_portfolio.scss            → _sass/_portfolio.scss
-assets/js/portfolio.js           → assets/js/portfolio.js
+followorbounce.com/
+├── _config.yml             # Site config, navigation, metadata
+├── _data/
+│   └── portfolio.yml       # Portfolio project entries
+├── _includes/
+│   └── portfolio-card.html # Reusable portfolio card component
+├── _layouts/
+│   └── default.html        # Single shared layout for all pages
+├── _sass/
+│   ├── _brand-and-404.scss # Brand page + 404 page styles
+│   └── _portfolio.scss     # Portfolio/work page styles
+├── assets/
+│   ├── css/
+│   │   └── main.scss       # Main stylesheet (imports all partials)
+│   ├── images/
+│   │   └── portfolio/      # Portfolio cover images (add your own)
+│   └── js/
+│       ├── main.js         # Nav dropdowns, AI chat widget, contact forms
+│       └── portfolio.js    # Portfolio filter by category
+├── pages/
+│   ├── about.md
+│   ├── brand.md
+│   ├── contracts.md
+│   ├── contracts-digital-law.md
+│   ├── contracts-open-source.md
+│   ├── contracts-platform-terms.md
+│   ├── literature.md
+│   ├── portfolio.md        # Renders at /work/
+│   ├── subscribe.md
+│   └── technology.md
+├── 404.html
+├── index.html
+├── CNAME                   # followorbounce.com
+└── Gemfile
 ```
 
 ---
 
-## 1. Add one import to _sass/main.scss
+## Local Development
 
-Open `_sass/main.scss` and add at the very end:
-
-```scss
-@import "portfolio";
+```bash
+bundle install
+bundle exec jekyll serve
 ```
+
+Open [http://localhost:4000](http://localhost:4000)
 
 ---
 
-## 2. Add portfolio.js to _layouts/default.html
+## Adding Portfolio Projects
 
-Open `_layouts/default.html`. Find the line:
+Edit `_data/portfolio.yml`. Each project supports:
 
-```html
-<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-```
-
-Add below it (only loads on portfolio page):
-
-```html
-{% if page.permalink == '/work/' %}
-<script src="{{ '/assets/js/portfolio.js' | relative_url }}" defer></script>
-{% endif %}
-```
-
----
-
-## 3. Add Work to navigation in _config.yml
-
-```yaml
-navigation:
-  - title: "About"
-    url: "/about/"
-  - title: "Technology"
-    url: "/technology/"
-  - title: "Literature"
-    url: "/literature/"
-  - title: "Contracts"
-    url: "/contracts/"
-    children:
-      - title: "Digital Law"
-        url: "/contracts/digital-law/"
-      - title: "Open Source"
-        url: "/contracts/open-source/"
-      - title: "Platform Terms"
-        url: "/contracts/platform-terms/"
-  - title: "Work"           # ← ADD THIS
-    url: "/work/"           # ← ADD THIS
-  - title: "Brand"
-    url: "/brand/"
-  - title: "Subscribe ↗"
-    url: "/subscribe/"
-    action: true
-```
+| Field | Description |
+|---|---|
+| `title` | Display title (required) |
+| `category` | `web`, `branding`, `identity`, `development`, or `graphic` (required) |
+| `tags` | Array of short label strings |
+| `description` | One or two sentences |
+| `cover` | Image path, e.g. `/assets/images/portfolio/project.jpg` (1200×675px recommended) |
+| `url` | External URL — opens in new tab |
+| `case_study` | Internal path, e.g. `/work/project-name/` |
+| `behance` | Behance project URL |
+| `dribbble` | Dribbble shot URL |
+| `figma` | Figma file share URL |
+| `featured` | `true` to appear in Featured row |
+| `year` | 4-digit year string |
 
 ---
 
-## 4. Add project cover images
+## Contact Form
 
-Place cover images in:
-```
-assets/images/portfolio/your-project.jpg
-```
-
-Recommended size: 1200 × 675px (16:9). JPEG or WebP.
+Forms use [FormSubmit](https://formsubmit.co) (no backend required).  
+Update `data-email` in `index.html` and `pages/subscribe.md` to your actual email address.
 
 ---
 
-## 5. Add your projects in _data/portfolio.yml
+## AI Chat Widget
 
-Each project entry:
-
-```yaml
-- title: "Project Name"
-  category: web              # web | branding | identity | development | graphic
-  tags: ["Tag One", "Tag Two", "Tag Three"]
-  description: "One or two sentences describing the project and its outcome."
-  cover: "/assets/images/portfolio/project-cover.jpg"
-  url: "https://external-site.com"      # optional — opens in new tab
-  case_study: "/work/project-name/"     # optional — internal link
-  behance: "https://behance.net/..."    # optional
-  dribbble: "https://dribbble.com/..."  # optional
-  figma: "https://figma.com/..."        # optional
-  featured: true                        # optional — shows in featured row
-  year: "2025"
-```
+The AI chat button connects to a Render.com proxy service.  
+Update `PROXY_URL` in `assets/js/main.js` to point to your own proxy endpoint.
 
 ---
 
-## 6. Update external profile links in pages/portfolio.md
+## CSS Architecture
 
-Find the profiles section and replace the href values:
+All styles live in three files:
 
-```html
-<a class="pf-profile-card" href="https://behance.net/YOUR_HANDLE" ...>
-<a class="pf-profile-card" href="https://dribbble.com/YOUR_HANDLE" ...>
-<a class="pf-profile-card" href="https://figma.com/@YOUR_HANDLE" ...>
-```
+- `assets/css/main.scss` — global tokens, layout, typography, forms, AI widget, footer
+- `_sass/_brand-and-404.scss` — brand identity page + 404 page
+- `_sass/_portfolio.scss` — work/portfolio page
 
-Remove any profile cards you don't use.
+Both partials are imported at the bottom of `main.scss`.
 
 ---
 
-## Result
+## Known Fixes Applied (v2)
 
-- Portfolio page: `followorbounce.com/work/`
-- Filter works by category with no page reload
-- Projects driven entirely from `_data/portfolio.yml` — no HTML changes needed to add new work
-- All styles use existing CSS variables — zero visual inconsistency with the rest of the site
+1. `_brand-and-404.scss` was never imported — added `@import` to `main.scss`
+2. `.contact-form` class was used but never defined — added rule to `main.scss`
+3. `.pf-hero` had double horizontal padding — changed `padding: 3rem` to `padding: 3rem 0`
+4. `.page-hero` lacked `border-bottom` — added border + `padding-bottom` for consistent rhythm
+5. `h1` margin inside `.page-hero` was not reset — added `margin-bottom: 0` inside `.page-hero`
+6. `portfolio.js` had Liquid include code appended to it — separated into correct file
+7. `_config.yml` url pointed to `github.io` instead of custom domain — corrected to `followorbounce.com`
+8. Portfolio CTA link used absolute `/subscribe/` — updated to `relative_url` filter
+9. `arc/` directory excluded from Jekyll build via `_config.yml`

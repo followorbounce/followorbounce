@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════════════════
    _portfolio.scss — Follow or Bounce
-   Uses existing CSS variables: --ink, --paper, --rust, --slate, --fog, --line
-   Import at the end of main.scss: @import "portfolio";
+   Uses CSS variables: --ink, --paper, --rust, --slate, --fog, --line
+   Imported at the end of main.scss.
 ══════════════════════════════════════════════════════════════════════════════ */
 
 /* ── PAGE WRAPPER ──────────────────────────────────────────────────────────── */
@@ -10,8 +10,14 @@
 }
 
 /* ── HERO ──────────────────────────────────────────────────────────────────── */
+/*
+ * FIX #3 — padding was "3rem" (all sides), adding 3rem left/right on top of
+ * main's 2.5rem padding. Changed to "3rem 0" so horizontal indent matches
+ * brand-hero and all other page sections.
+ */
 .pf-hero {
-  padding: 3rem;
+   margin-bottom: 3rem;
+  padding-bottom: 3rem;
   border-bottom: var(--line);
 
   &__label {
@@ -29,21 +35,19 @@
   }
 
   &__headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: .92;
-    color: var(--ink);
-    margin-bottom: 2.5rem;
-    em { font-style: italic; color: var(--rust); }
+     margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: var(--line);
   }
 
   &__sub {
-    max-width: 44ch;
+    max-width: 52ch;
     font-size: .82rem;
-    line-height: 1.8;
+    line-height: 1.75;
     color: var(--slate);
     border-left: 3px solid var(--rust);
     padding-left: 1.2rem;
+    margin-top: 1.5rem;
   }
 }
 
@@ -75,9 +79,7 @@
 
     &:first-child { border-left: none; }
 
-    &:hover {
-      color: var(--ink);
-    }
+    &:hover { color: var(--ink); }
 
     &.is-active {
       color: var(--ink);
@@ -152,12 +154,11 @@
   flex-direction: column;
   transition: background .25s;
 
-  /* Hidden by JS filter */
   &.is-hidden {
     display: none;
   }
 
-  /* ── Cover ── */
+  /* Cover */
   &__link {
     display: flex;
     flex-direction: column;
@@ -225,7 +226,7 @@
     border: 1px solid rgba(244, 240, 230, .5);
   }
 
-  /* ── Info ── */
+  /* Info */
   &__info {
     padding: 1.4rem 1.5rem;
     display: flex;

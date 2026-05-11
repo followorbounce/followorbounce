@@ -64,7 +64,7 @@ header {
   position: relative;
 }
 
-/* shared styles for both <a> and <button> nav items */
+/* Shared styles for both <a> and <div> nav items */
 .menu-bar-link,
 .menu-bar-btn {
   cursor: pointer;
@@ -82,13 +82,12 @@ header {
   border-bottom: none;
   border-left: none;
   background: var(--paper);
-  cursor: pointer;
   font-family: 'DM Mono', monospace;
   white-space: nowrap;
   overflow: hidden;
   transition: color .22s;
-  -webkit-tap-highlight-color: transparent; /* iOS Safari: remove tap flash */
-  touch-action: manipulation;              /* iOS Safari: no double-tap zoom delay */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 
   &:first-child { border-left: var(--line); }
 
@@ -144,12 +143,9 @@ header {
 .has-submenu.open .menu-bar-btn { color: var(--paper); }
 .has-submenu.open .chevron { transform: rotate(180deg); }
 
-/* submenu uses fixed so it escapes overflow:auto on the nav bar */
+/* Submenu portalled to <body> by JS — positioned via inline styles */
 .submenu {
   position: fixed;
-  top: 6.5rem;
-  left: 0;
-  right: 0;
   min-width: 14rem;
   max-width: 220px;
   background: var(--paper);
@@ -213,9 +209,19 @@ h1 {
 }
 
 /* ── PAGE HERO (interior pages) ──────────────────────────────────────────── */
+/*
+ * FIX #4 — added border-bottom + padding-bottom to match brand-hero / pf-hero
+ * FIX #5 — zeroed h1 margin-bottom inside .page-hero so the container owns spacing
+ */
 .page-hero {
   margin-bottom: 3rem;
-  h1 { font-size: clamp(2rem, 5vw, 4rem); }
+  padding-bottom: 3rem;
+  border-bottom: var(--line);
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 0;
+  }
   .subtitle {
     max-width: 52ch;
     font-size: .82rem;
@@ -232,15 +238,26 @@ h1 {
   h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin: 2.5rem 0 .8rem; }
   h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin: 2rem 0 .6rem; }
   p  { font-size: .85rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.2rem; max-width: 65ch; }
-  ul, ol { padding-left: 1.5rem; margin-bottom: 1.2rem;
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
     li { font-size: .82rem; line-height: 1.75; color: var(--slate); margin-bottom: .4rem; }
   }
   ul li { list-style: disc; }
   hr { border: none; border-top: var(--line); margin: 2.5rem 0; }
-  a { color: var(--rust); text-decoration: none; border-bottom: 1px solid transparent;
+  a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
     &:hover { border-color: var(--rust); }
   }
-  blockquote { border-left: 3px solid var(--rust); padding-left: 1.2rem; color: var(--slate); font-style: italic; margin: 1.5rem 0; }
+  blockquote {
+    border-left: 3px solid var(--rust);
+    padding-left: 1.2rem;
+    color: var(--slate);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
   strong { color: var(--ink); }
 }
 
@@ -289,6 +306,16 @@ h1 {
 }
 
 /* ── FORM ────────────────────────────────────────────────────────────────── */
+/*
+ * FIX #2 — added .contact-form rule (was used in index.html + subscribe.md but never defined)
+ */
+.contact-form {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
 .form-field {
   width: 100%; padding: 12px; margin-bottom: 12px;
   border: var(--line); background: transparent;
@@ -305,6 +332,16 @@ textarea.form-field { resize: none; }
   font-family: 'DM Mono', monospace; font-size: .75rem; letter-spacing: .15em;
   cursor: pointer; transition: background .2s;
   &:hover { background: var(--rust); border-color: var(--rust); }
+}
+
+.form-success {
+  padding: 2rem 0;
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    margin: .5rem 0 1rem;
+  }
+  p { font-size: .85rem; line-height: 1.8; color: var(--slate); }
 }
 
 /* ── AI CHAT ─────────────────────────────────────────────────────────────── */
@@ -378,12 +415,25 @@ footer {
   font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--fog);
 }
 
+/* ── AI TYPING INDICATOR ─────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: .2; }
+  50%       { opacity: 1;  }
+}
+.typing {
+  display: inline-block;
+  letter-spacing: .15em;
+  animation: blink 1.2s infinite;
+}
+
+/* ── UTILITY ─────────────────────────────────────────────────────────────── */
+.rust { color: var(--rust); }
+
 /* ── MOBILE ──────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-top { padding: 0 1.2rem; }
   .nav-meta { display: none; }
 
-  /* Horizontal scroll — all items fully visible, no clipping */
   .menu-bar {
     overflow-x: auto;
     overflow-y: visible;
@@ -403,7 +453,6 @@ footer {
 
   .dot { display: none !important; }
 
-  /* Submenu drops full-width below fixed header */
   .has-submenu { position: static; }
   .submenu {
     position: fixed;
@@ -417,26 +466,10 @@ footer {
   footer { flex-direction: column; gap: .75rem; text-align: center; }
 }
 
-/* ── FORM SUCCESS MESSAGE ────────────────────────────────────────────────── */
-.form-success {
-  padding: 2rem 0;
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
-    margin: .5rem 0 1rem;
-  }
-  p { font-size: .85rem; line-height: 1.8; color: var(--slate); }
-}
-
-/* ── AI TYPING INDICATOR ─────────────────────────────────────────────────── */
-@keyframes blink {
-  0%, 100% { opacity: .2; }
-  50%       { opacity: 1;  }
-}
-.typing {
-  display: inline-block;
-  letter-spacing: .15em;
-  animation: blink 1.2s infinite;
-}
-
+/* ── SASS PARTIALS ───────────────────────────────────────────────────────── */
+/*
+ * FIX #1 — _brand-and-404.scss was never imported; added here.
+ * Import order: brand-and-404 before portfolio (both are independent).
+ */
+@import "brand-and-404";
 @import "portfolio";

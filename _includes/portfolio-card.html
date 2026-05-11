@@ -1,18 +1,17 @@
 {% comment %}
   portfolio-card.html
   Usage: {% include portfolio-card.html project=project %}
-
   project is a single item from _data/portfolio.yml
 {% endcomment %}
 
 {% assign project = include.project %}
 {% assign link = project.url | default: project.case_study %}
 {% assign is_external = false %}
-{% if project.url %}{% assign is_external = true %}{% endif %}
+{% if project.url and project.url != "" %}{% assign is_external = true %}{% endif %}
 
 <article class="pf-card" data-category="{{ project.category }}">
 
-  {% if link %}
+  {% if link and link != "" %}
   <a class="pf-card__link"
      href="{{ link }}"
      {% if is_external %}target="_blank" rel="noopener noreferrer"{% endif %}
@@ -60,7 +59,6 @@
         <p class="pf-card__desc">{{ project.description }}</p>
       {% endif %}
 
-      <!-- External links row -->
       {% if project.behance or project.dribbble or project.figma %}
       <div class="pf-card__externals">
         {% if project.behance %}
@@ -77,6 +75,6 @@
 
     </div>
 
-  {% if link %}</a>{% endif %}
+  {% if link and link != "" %}</a>{% endif %}
 
 </article>
