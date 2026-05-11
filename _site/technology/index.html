@@ -3,11 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
   <title>Tech & Tools — Follow or Bounce</title>
   <meta name="description" content="A publication at the intersection of technology, literature, and the agreements that hold them together." />
+  <link rel="canonical" href="http://localhost:4000/technology/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Follow or Bounce" />
+  <meta property="og:title"       content="Tech & Tools — Follow or Bounce" />
+  <meta property="og:description" content="A publication at the intersection of technology, literature, and the agreements that hold them together." />
+  <meta property="og:url"         content="http://localhost:4000/technology/" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:title"       content="Tech & Tools — Follow or Bounce" />
+  <meta name="twitter:description" content="A publication at the intersection of technology, literature, and the agreements that hold them together." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
@@ -25,7 +44,7 @@
         <a class="menu-bar-link"
            href="/about/"
            >
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           <span class="label">About</span>
         </a>
       
@@ -34,7 +53,7 @@
         <a class="menu-bar-link"
            href="/work/"
            >
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           <span class="label">Work</span>
         </a>
       
@@ -43,7 +62,7 @@
         <a class="menu-bar-link active"
            href="/technology/"
            aria-current="page">
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           <span class="label">Technology</span>
         </a>
       
@@ -52,7 +71,7 @@
         <a class="menu-bar-link"
            href="/literature/"
            >
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           <span class="label">Literature</span>
         </a>
       
@@ -62,22 +81,22 @@
           <div class="menu-bar-btn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
             <span class="dot"></span>
             <span class="label">Contracts</span>
-            <span class="chevron">▾</span>
+            <span class="chevron" aria-hidden="true">▾</span>
           </div>
-          <ul class="submenu">
+          <ul class="submenu" role="menu">
             
-            <li><a href="/contracts/digital-law/">Digital Law</a></li>
+            <li role="none"><a href="/contracts/digital-law/" role="menuitem">Digital Law</a></li>
             
-            <li><a href="/contracts/open-source/">Open Source</a></li>
+            <li role="none"><a href="/contracts/open-source/" role="menuitem">Open Source</a></li>
             
-            <li><a href="/contracts/platform-terms/">Platform Terms</a></li>
+            <li role="none"><a href="/contracts/platform-terms/" role="menuitem">Platform Terms</a></li>
             
           </ul>
         </div>
       
     
       
-        <div class="spacer"></div>
+        <div class="spacer" aria-hidden="true"></div>
         <a class="menu-bar-link action" href="/subscribe/">
           <span class="label">Subscribe ↗</span>
         </a>
@@ -136,15 +155,15 @@ We interview practitioners, not just executives. We read the documentation, not 
 <button id="ai-btn" aria-label="Open AI chat">AI</button>
 
 <div id="ai-modal" aria-hidden="true">
-  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat">
+  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat" aria-labelledby="ai-box-title">
     <div id="ai-box-header">
-      <span>Ask AI</span>
-      <button id="ai-close" aria-label="Close">✕</button>
+      <span id="ai-box-title">Ask AI</span>
+      <button id="ai-close" aria-label="Close AI chat">✕</button>
     </div>
-    <div id="ai-messages" aria-live="polite"></div>
+    <div id="ai-messages" aria-live="polite" aria-atomic="false"></div>
     <div id="ai-input-row">
-      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message">
-      <button id="ai-send">→</button>
+      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message" autocomplete="off">
+      <button id="ai-send" aria-label="Send message">→</button>
     </div>
   </div>
 </div>

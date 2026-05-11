@@ -1,8 +1,10 @@
 ---
 ---
 
+// ── RESET & BOX MODEL ────────────────────────────────────────────────────────
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+// ── DESIGN TOKENS ────────────────────────────────────────────────────────────
 :root {
   --ink:   #0d0c0a;
   --paper: #f4f0e6;
@@ -12,6 +14,7 @@
   --line:  1px solid #0d0c0a;
 }
 
+// ── BASE ─────────────────────────────────────────────────────────────────────
 html, body {
   height: 100%;
   background: var(--paper);
@@ -20,7 +23,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ── HEADER ──────────────────────────────────────────────────────────────── */
+// ── HEADER ───────────────────────────────────────────────────────────────────
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -55,16 +58,18 @@ header {
   color: var(--fog);
 }
 
-/* ── MENU BAR ────────────────────────────────────────────────────────────── */
+// ── MENU BAR ─────────────────────────────────────────────────────────────────
 .menu-bar {
   display: flex;
   align-items: stretch;
   height: 3rem;
+  // overflow:visible keeps submenus visible when NOT portalled.
+  // When portalled to <body> by JS, overflow value is irrelevant.
   overflow: visible;
   position: relative;
 }
 
-/* Shared styles for both <a> and <div> nav items */
+// Shared styles for link and button nav items.
 .menu-bar-link,
 .menu-bar-btn {
   cursor: pointer;
@@ -86,11 +91,14 @@ header {
   white-space: nowrap;
   overflow: hidden;
   transition: color .22s;
+  // iOS tap highlight suppression.
   -webkit-tap-highlight-color: transparent;
+  // Prevent double-tap zoom; allow single-tap.
   touch-action: manipulation;
 
   &:first-child { border-left: var(--line); }
 
+  // Slide-up background reveal animation.
   &::before {
     content: '';
     position: absolute;
@@ -129,7 +137,7 @@ header {
 
 .spacer { flex: 1; }
 
-/* ── DROPDOWN ────────────────────────────────────────────────────────────── */
+// ── DROPDOWN ─────────────────────────────────────────────────────────────────
 .has-submenu {
   position: static;
   display: flex;
@@ -143,18 +151,30 @@ header {
 .has-submenu.open .menu-bar-btn { color: var(--paper); }
 .has-submenu.open .chevron { transform: rotate(180deg); }
 
-/* Submenu portalled to <body> by JS — positioned via inline styles */
+// .submenu base styles.
+// JS portals this element to <body> and overrides position/z-index/display
+// via inline styles. These CSS rules serve as the fallback for no-JS.
 .submenu {
-  position: fixed;
+  position: absolute;
+  top: 100%;
+  right: 0;
   min-width: 14rem;
   max-width: 220px;
   background: var(--paper);
   border: var(--line);
   list-style: none;
   display: none;
-  z-index: 9999;
+  // z-index set by JS to 10001 (above header:100, AI btn:9999, modal:10000)
+  z-index: 10001;
+  margin: 0;
+  padding: 0;
 }
 
+// No-JS fallback: show submenu on focus-within/hover.
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu { display: block; }
+
+// JS-driven open state.
 .has-submenu.open .submenu { display: block; }
 
 .submenu li { border-bottom: var(--line); }
@@ -168,20 +188,29 @@ header {
   text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
+  // Explicit cursor for iOS WebKit (required for portalled elements).
+  cursor: pointer;
+  // Ensure minimum tap target size (WCAG 2.5.5).
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   transition: background .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .submenu a:hover,
+.submenu a:focus,
 .submenu a[aria-current] { background: var(--ink); color: var(--paper); }
 
-/* ── MAIN ────────────────────────────────────────────────────────────────── */
+// ── MAIN ─────────────────────────────────────────────────────────────────────
 main {
   margin-top: 6.5rem;
   padding: 6rem 2.5rem 4rem;
   max-width: 72rem;
 }
 
-/* ── TYPOGRAPHY UTILITIES ────────────────────────────────────────────────── */
+// ── TYPOGRAPHY UTILITIES ─────────────────────────────────────────────────────
 .eyebrow {
   font-size: .65rem;
   letter-spacing: .28em;
@@ -208,11 +237,7 @@ h1 {
   padding-left: 1.2rem;
 }
 
-/* ── PAGE HERO (interior pages) ──────────────────────────────────────────── */
-/*
- * FIX #4 — added border-bottom + padding-bottom to match brand-hero / pf-hero
- * FIX #5 — zeroed h1 margin-bottom inside .page-hero so the container owns spacing
- */
+// ── PAGE HERO (interior pages) ───────────────────────────────────────────────
 .page-hero {
   margin-bottom: 3rem;
   padding-bottom: 3rem;
@@ -233,7 +258,7 @@ h1 {
   }
 }
 
-/* ── PAGE CONTENT (markdown prose) ──────────────────────────────────────── */
+// ── PAGE CONTENT (markdown prose) ───────────────────────────────────────────
 .page-content {
   h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin: 2.5rem 0 .8rem; }
   h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin: 2rem 0 .6rem; }
@@ -261,7 +286,7 @@ h1 {
   strong { color: var(--ink); }
 }
 
-/* ── CARDS ───────────────────────────────────────────────────────────────── */
+// ── CARDS ────────────────────────────────────────────────────────────────────
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -295,7 +320,7 @@ h1 {
   .card-body { font-size: .7rem; line-height: 1.7; color: var(--slate); transition: color .25s; }
 }
 
-/* ── SUBSCRIBE SECTION ───────────────────────────────────────────────────── */
+// ── SUBSCRIBE SECTION ────────────────────────────────────────────────────────
 .subscribe-section {
   margin-top: 8rem;
   border-top: var(--line);
@@ -305,10 +330,7 @@ h1 {
   h2 { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 1.5rem; }
 }
 
-/* ── FORM ────────────────────────────────────────────────────────────────── */
-/*
- * FIX #2 — added .contact-form rule (was used in index.html + subscribe.md but never defined)
- */
+// ── FORM ─────────────────────────────────────────────────────────────────────
 .contact-form {
   width: 100%;
   max-width: 520px;
@@ -320,17 +342,22 @@ h1 {
   width: 100%; padding: 12px; margin-bottom: 12px;
   border: var(--line); background: transparent;
   font-family: 'DM Mono', monospace; font-size: .8rem; color: var(--ink);
+  // iOS Safari font-size < 16px causes auto-zoom; set to .8rem ≈ 12.8px
+  // but we want to prevent zoom: use font-size: 1rem on mobile via media query.
   &::placeholder { color: var(--fog); }
   &:focus { outline: none; border-color: var(--rust); }
 }
 
-textarea.form-field { resize: none; }
+textarea.form-field { resize: vertical; }
 
 .form-submit {
   width: 100%; padding: 12px;
   border: var(--line); background: var(--ink); color: var(--paper);
   font-family: 'DM Mono', monospace; font-size: .75rem; letter-spacing: .15em;
   cursor: pointer; transition: background .2s;
+  // Minimum tap target.
+  min-height: 44px;
+  touch-action: manipulation;
   &:hover { background: var(--rust); border-color: var(--rust); }
 }
 
@@ -344,15 +371,18 @@ textarea.form-field { resize: none; }
   p { font-size: .85rem; line-height: 1.8; color: var(--slate); }
 }
 
-/* ── AI CHAT ─────────────────────────────────────────────────────────────── */
+// ── AI CHAT ──────────────────────────────────────────────────────────────────
 #ai-btn {
   position: fixed; bottom: 25px; right: 25px;
   width: 55px; height: 55px; border-radius: 50%;
   border: var(--line); background: var(--ink); color: var(--paper);
-  cursor: pointer; z-index: 9999;
+  cursor: pointer;
+  // AI button sits below submenu (10001) but above content.
+  z-index: 9999;
   font-family: 'DM Mono', monospace; font-size: .7rem;
   display: flex; align-items: center; justify-content: center;
   transition: background .2s;
+  touch-action: manipulation;
   &:hover { background: var(--rust); }
 }
 
@@ -360,12 +390,15 @@ textarea.form-field { resize: none; }
   position: fixed; inset: 0;
   background: rgba(0,0,0,.4);
   display: none; align-items: center; justify-content: center;
-  z-index: 10000;
+  // Modal sits above AI button and submenus.
+  z-index: 10002;
   &.open { display: flex; }
 }
 
 #ai-box {
   width: 380px; height: 520px;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 4rem);
   background: var(--paper); border: var(--line);
   display: flex; flex-direction: column;
 }
@@ -374,11 +407,14 @@ textarea.form-field { resize: none; }
   display: flex; justify-content: space-between; align-items: center;
   padding: 10px; border-bottom: var(--line);
   font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 #ai-close {
   background: none; border: none; cursor: pointer;
   color: var(--fog); font-size: 1rem;
+  min-width: 44px; min-height: 44px;
+  display: flex; align-items: center; justify-content: center;
   &:hover { color: var(--ink); }
 }
 
@@ -391,11 +427,12 @@ textarea.form-field { resize: none; }
 
 #ai-input-row {
   display: flex; border-top: var(--line);
+  flex-shrink: 0;
 }
 
 #ai-input {
   flex: 1; padding: 10px; border: none; background: transparent;
-  font-family: 'DM Mono', monospace; font-size: .8rem;
+  font-family: 'DM Mono', monospace; font-size: 1rem; // 1rem prevents iOS zoom
   &:focus { outline: none; }
   &::placeholder { color: var(--fog); }
 }
@@ -403,11 +440,13 @@ textarea.form-field { resize: none; }
 #ai-send {
   border-left: var(--line); background: var(--ink); color: var(--paper);
   padding: 10px 14px; cursor: pointer; font-family: 'DM Mono', monospace;
+  min-width: 44px; min-height: 44px;
   transition: background .2s;
+  touch-action: manipulation;
   &:hover { background: var(--rust); }
 }
 
-/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+// ── FOOTER ───────────────────────────────────────────────────────────────────
 footer {
   margin-top: 8rem; border-top: var(--line);
   padding: 1.5rem 2.5rem;
@@ -415,7 +454,7 @@ footer {
   font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--fog);
 }
 
-/* ── AI TYPING INDICATOR ─────────────────────────────────────────────────── */
+// ── AI TYPING INDICATOR ──────────────────────────────────────────────────────
 @keyframes blink {
   0%, 100% { opacity: .2; }
   50%       { opacity: 1;  }
@@ -426,17 +465,20 @@ footer {
   animation: blink 1.2s infinite;
 }
 
-/* ── UTILITY ─────────────────────────────────────────────────────────────── */
+// ── UTILITY ──────────────────────────────────────────────────────────────────
 .rust { color: var(--rust); }
 
-/* ── MOBILE ──────────────────────────────────────────────────────────────── */
+// ── MOBILE ───────────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
   .nav-top { padding: 0 1.2rem; }
   .nav-meta { display: none; }
 
+  // Horizontal scroll on mobile.
+  // overflow-x:auto forces overflow-y to behave as 'auto' per CSS spec —
+  // submenus would be clipped. JS portals them to <body> to bypass this.
   .menu-bar {
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: visible; // Declared but overridden by browser; portal is the real fix.
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     &::-webkit-scrollbar { display: none; }
@@ -449,33 +491,45 @@ footer {
     font-size: .6rem;
     letter-spacing: .12em;
     white-space: nowrap;
+    // Ensure minimum tap target height (menu bar is 3rem = 48px, fine).
   }
 
   .dot { display: none !important; }
 
+  // On mobile the portalled submenu is full-width below the header.
+  // JS sets exact top/right via getBoundingClientRect.
+  // These CSS rules are a fallback for the no-JS case.
   .has-submenu { position: static; }
   .submenu {
     position: fixed;
     top: 6.5rem;
     left: 0; right: 0;
     min-width: 100%;
+    max-width: 100%;
     border-left: none; border-right: none;
+  }
+
+  // Prevent iOS Safari auto-zoom on input focus (requires font-size >= 16px).
+  .form-field {
+    font-size: 1rem;
   }
 
   main { padding: 5rem 1.2rem 3rem; }
   footer { flex-direction: column; gap: .75rem; text-align: center; }
+
+  #ai-box {
+    width: calc(100vw - 1rem);
+    height: calc(100vh - 8rem);
+    max-width: none;
+    max-height: none;
+  }
 }
 
-/* ── SASS PARTIALS ───────────────────────────────────────────────────────── */
-/*
- * FIX #1 — _brand-and-404.scss was never imported; added here.
- * Import order: brand-and-404 before portfolio (both are independent).
- */
+// ── SASS PARTIALS ─────────────────────────────────────────────────────────────
 @import "brand-and-404";
 @import "portfolio";
 
-
-/* === Accessibility + Stability Patch === */
+// ── ACCESSIBILITY ─────────────────────────────────────────────────────────────
 :focus-visible {
   outline: 2px solid var(--rust);
   outline-offset: 2px;
@@ -489,14 +543,7 @@ footer {
   }
 }
 
-input, textarea, button {
+// Ensure form elements inherit the document font.
+input, textarea, button, select {
   font: inherit;
-}
-
-#ai-modal {
-  min-height: 100svh;
-}
-
-textarea {
-  resize: vertical;
 }

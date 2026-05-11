@@ -3,11 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
   <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page.description | default: site.description }}" />
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="{{ site.title }}" />
+  <meta property="og:title"       content="{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
+  <meta property="og:description" content="{{ page.description | default: site.description }}" />
+  <meta property="og:url"         content="{{ page.url | absolute_url }}" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:title"       content="{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 </head>
 <body>
@@ -26,16 +45,16 @@
           <div class="menu-bar-btn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
             <span class="dot"></span>
             <span class="label">{{ item.title }}</span>
-            <span class="chevron">▾</span>
+            <span class="chevron" aria-hidden="true">▾</span>
           </div>
-          <ul class="submenu">
+          <ul class="submenu" role="menu">
             {% for child in item.children %}
-            <li><a href="{{ child.url | relative_url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+            <li role="none"><a href="{{ child.url | relative_url }}" role="menuitem"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
             {% endfor %}
           </ul>
         </div>
       {% elsif item.action %}
-        <div class="spacer"></div>
+        <div class="spacer" aria-hidden="true"></div>
         <a class="menu-bar-link action" href="{{ item.url | relative_url }}">
           <span class="label">{{ item.title }}</span>
         </a>
@@ -43,7 +62,7 @@
         <a class="menu-bar-link{% if page.url == item.url %} active{% endif %}"
            href="{{ item.url | relative_url }}"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           <span class="label">{{ item.title }}</span>
         </a>
       {% endif %}
@@ -71,15 +90,15 @@
 <button id="ai-btn" aria-label="Open AI chat">AI</button>
 
 <div id="ai-modal" aria-hidden="true">
-  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat">
+  <div id="ai-box" role="dialog" aria-modal="true" aria-label="AI Chat" aria-labelledby="ai-box-title">
     <div id="ai-box-header">
-      <span>Ask AI</span>
-      <button id="ai-close" aria-label="Close">✕</button>
+      <span id="ai-box-title">Ask AI</span>
+      <button id="ai-close" aria-label="Close AI chat">✕</button>
     </div>
-    <div id="ai-messages" aria-live="polite"></div>
+    <div id="ai-messages" aria-live="polite" aria-atomic="false"></div>
     <div id="ai-input-row">
-      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message">
-      <button id="ai-send">→</button>
+      <input id="ai-input" type="text" placeholder="Ask anything…" aria-label="Your message" autocomplete="off">
+      <button id="ai-send" aria-label="Send message">→</button>
     </div>
   </div>
 </div>

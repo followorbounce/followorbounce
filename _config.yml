@@ -18,8 +18,12 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - vendor
-  - arc
+  - vendor/
+  - arc/
+  - .vscode/
+  - .gitignore
+  - "*.swp"
+  - "*.swo"
 
 # Site-wide data used in templates
 issue_number: "01"
