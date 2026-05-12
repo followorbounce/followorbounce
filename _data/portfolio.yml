@@ -94,11 +94,18 @@
 
 - title:       "The Hero's Journey"
   category:    web
-  tags:        ["Editorial", "Experimental", "HTML/CSS", "Motion Design", "Interactive", "Mythology"]
+  tags:        ["Editorial", "Experimental", "Interactive", "Mythology"]
   description: "A ritualistic, mythopoetic exploration of the Hero's Journey across cultures — from Gilgamesh to the Bhagavad Gita. Luxury apocalypse aesthetics: acid greens, burnt oranges, fire particle systems, branching moral choices, and a philosophical inquiry into the Logos as the operating system of existence."
   cover:       "/assets/images/portfolio/heros-journey-cover.svg"
   url:         "https://id.followorbounce.com/pages/heros-journey"
 #  featured:    true
   year:        "2025"
 
- 
+- title:       "PROPHETIC OS"
+  category:    web
+  tags:        ["Editorial", "Experimental", "Interactive", "Mythology"]
+  description: "In order to understand where we are, we must first look at the surface of the earth. Everything matters. Sometimes we just don't see it. INVISIBLE ≠ EMPTY"
+  cover:      # "/assets/images/portfolio/prophetic-os.svg"
+  url:         "https://id.followorbounce.com/pages/prophetic-os"
+#  featured:    true
+  year:        "2024"
