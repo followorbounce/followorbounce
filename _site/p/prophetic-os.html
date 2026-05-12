@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ꙄYႽTЕМ // ɅRCHIVƎ // 0001</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IM+Fell+English:ital@0;1&display=swap');
+
+:root {
+  --void: #000000;
+  --terminal: #0a0a0a;
+  --toxic: #39ff14;
+  --sand: #c8a96e;
+  --rust: #b34700;
+  --uv: #7b2fff;
+  --chrome: #e8e8e8;
+  --ash: #1a1a1a;
+  --ember: #ff4500;
+  --salt: #f5f0e8;
+  --deep: #050510;
+  --copper: #8B4513;
+  --signal: #00ffcc;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: var(--void);
+  color: var(--chrome);
+  font-family: 'Share Tech Mono', monospace;
+  cursor: crosshair;
+  overflow-x: hidden;
+}
+
+/* ═══════════ CUSTOM CURSOR ═══════════ */
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--toxic);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s;
+  mix-blend-mode: difference;
+}
+
+/* ═══════════ SCROLLBAR ═══════════ */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--toxic); }
+
+/* ═══════════ SECTION BASE ═══════════ */
+section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════
+   SECTION 0 — BOOT
+══════════════════════════════════════ */
+#boot {
+  background: var(--void);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+#boot-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+}
+
+.boot-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+.system-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--toxic);
+  opacity: 0;
+  animation: fadeIn 2s 0.5s forwards;
+  margin-bottom: 4rem;
+}
+
+.breath-symbol {
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--sand);
+  animation: breathe 4s ease-in-out infinite;
+  display: block;
+  margin: 0 auto 3rem;
+  opacity: 0;
+  animation: breatheFadeIn 4s 1s forwards;
+}
+
+@keyframes breatheFadeIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  20% { opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+  100% { opacity: 0.95; transform: scale(1); }
+}
+
+.boot-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: 0.15em;
+  color: var(--chrome);
+  opacity: 0;
+  animation: glitchReveal 0.8s 2.5s forwards;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}
+
+.boot-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.5em;
+  color: var(--toxic);
+  opacity: 0;
+  animation: fadeIn 1s 3.5s forwards;
+  margin-bottom: 3rem;
+}
+
+.boot-mantra {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  color: var(--sand);
+  opacity: 0;
+  animation: fadeIn 2s 4.5s forwards;
+  line-height: 1.7;
+}
+
+.ascii-noise {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--toxic);
+  opacity: 0.15;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeIn 1s 5s forwards;
+}
+
+.scroll-signal {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--toxic);
+  opacity: 0;
+  animation: fadeIn 1s 6s forwards, pulse 2s 6s infinite;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes glitchReveal {
+  0% { opacity: 0; transform: skewX(-5deg); clip-path: inset(100% 0 0 0); }
+  40% { clip-path: inset(0 0 0 0); transform: skewX(2deg); opacity: 0.8; }
+  60% { transform: skewX(-1deg); }
+  100% { opacity: 1; transform: skewX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 1 — EARTH AS MOTHERBOARD
+══════════════════════════════════════ */
+#earth {
+  background: linear-gradient(180deg, #000 0%, #050510 30%, #0a0520 70%, #000 100%);
+  padding: 8rem 0;
+}
+
+#earth-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+}
+
+.earth-content {
+  position: relative;
+  z-index: 5;
+  padding: 0 clamp(1rem, 5vw, 5rem);
+}
+
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  color: var(--toxic);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.section-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15vw;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(57,255,20,0.1);
+  position: absolute;
+  right: -2vw;
+  top: -2rem;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.earth-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 8rem);
+  letter-spacing: 0.1em;
+  line-height: 0.85;
+  color: var(--sand);
+  position: relative;
+  z-index: 5;
+  mix-blend-mode: screen;
+}
+
+.earth-title span {
+  color: var(--toxic);
+  display: block;
+}
+
+.topology-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  gap: 2px;
+  margin: 4rem 0;
+}
+
+.topo-cell {
+  border: 1px solid rgba(57,255,20,0.1);
+  padding: 1.5rem;
+  font-size: 0.65rem;
+  line-height: 1.8;
+  color: rgba(200,169,110,0.7);
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.topo-cell::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--toxic), transparent);
+  animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(200px); opacity: 0; }
+}
+
+.topo-cell-main {
+  grid-column: 3;
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  line-height: 1.9;
+  color: var(--chrome);
+  font-style: italic;
+  padding: 3rem;
+}
+
+.data-bus {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--signal);
+  opacity: 0.6;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 2rem 0;
+  animation: dataMarch 8s linear infinite;
+}
+
+@keyframes dataMarch {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════
+   SECTION 2 — WALKING
+══════════════════════════════════════ */
+#walking {
+  background: var(--void);
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+#walk-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.walk-mega {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 18vw, 22rem);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--rust);
+  letter-spacing: -0.02em;
+  line-height: 0.8;
+  position: relative;
+  z-index: 5;
+  padding: 0 2vw;
+  animation: breatheText 5s ease-in-out infinite;
+}
+
+.walk-mega span {
+  display: block;
+  -webkit-text-stroke: 1px var(--sand);
+  color: transparent;
+  margin-left: 10vw;
+}
+
+@keyframes breatheText {
+  0%, 100% { letter-spacing: -0.02em; }
+  50% { letter-spacing: 0.01em; }
+}
+
+.walk-manifesto {
+  position: relative;
+  z-index: 5;
+  padding: 4rem clamp(2rem, 8vw, 10rem);
+  max-width: 800px;
+}
+
+.walk-manifesto p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 2.2;
+  color: rgba(200,169,110,0.8);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.wave-data {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--uv);
+  opacity: 0.5;
+  margin: 3rem 0;
+  padding: 0 2rem;
+  animation: flicker 0.1s step-end infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.45; }
+  100% { opacity: 0.52; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 3 — DESERT
+══════════════════════════════════════ */
+#desert {
+  min-height: 200vh;
+  position: relative;
+  background: linear-gradient(180deg, #000 0%, #0d0800 20%, #1a1000 50%, #0d0800 80%, #000 100%);
+}
+
+#desert-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.desert-content {
+  position: relative;
+  z-index: 5;
+  padding: 15vh clamp(2rem, 10vw, 15rem);
+}
+
+.desert-coords {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--rust);
+  letter-spacing: 0.3em;
+  margin-bottom: 8rem;
+  animation: glitch 8s infinite;
+}
+
+@keyframes glitch {
+  0%, 96%, 100% { transform: none; opacity: 1; }
+  97% { transform: translateX(3px) skewX(2deg); opacity: 0.8; color: var(--ember); }
+  98% { transform: translateX(-2px); opacity: 0.9; }
+  99% { transform: translateX(1px); }
+}
+
+.desert-word {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 12vw, 14rem);
+  color: var(--sand);
+  opacity: 0.15;
+  line-height: 0.85;
+  letter-spacing: 0.05em;
+}
+
+.miracle-log {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--toxic);
+  border-left: 1px solid var(--toxic);
+  padding: 0.5rem 1.5rem;
+  margin: 3rem 0;
+  opacity: 0;
+  animation: logAppear 0.3s forwards;
+}
+
+@keyframes logAppear {
+  to { opacity: 0.7; }
+}
+
+.desert-prose {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 2.2;
+  color: rgba(200,169,110,0.6);
+  font-style: italic;
+  max-width: 600px;
+  margin-top: 5rem;
+}
+
+.heat-mirage {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 200px;
+  background: linear-gradient(180deg, transparent, rgba(200,169,110,0.03));
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: scaleX(1) skewY(0deg); opacity: 0.5; }
+  50% { transform: scaleX(1.02) skewY(0.2deg); opacity: 1; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 4 — BREATHING
+══════════════════════════════════════ */
+#breathing {
+  background: var(--void);
+  min-height: 150vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+#breath-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.breath-container {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.breath-ring {
+  width: clamp(200px, 30vw, 350px);
+  height: clamp(200px, 30vw, 350px);
+  border-radius: 50%;
+  border: 1px solid rgba(57,255,20,0.3);
+  margin: 0 auto 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: breathRing 6s ease-in-out infinite;
+  position: relative;
+}
+
+.breath-ring::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,169,110,0.2);
+  animation: breathRing 6s ease-in-out infinite reverse;
+}
+
+.breath-ring::after {
+  content: '';
+  position: absolute;
+  inset: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(123,47,255,0.2);
+  animation: breathRing 6s ease-in-out 1s infinite;
+}
+
+@keyframes breathRing {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.breath-name {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-style: italic;
+  color: var(--sand);
+  animation: breatheText 6s ease-in-out infinite;
+  letter-spacing: 0.3em;
+}
+
+.breath-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(57,255,20,0.6);
+  letter-spacing: 0.2em;
+  animation: breatheOpacity 6s ease-in-out infinite;
+  margin-top: 2rem;
+}
+
+@keyframes breatheOpacity {
+  0%, 100% { opacity: 0.3; letter-spacing: 0.2em; }
+  50% { opacity: 0.8; letter-spacing: 0.4em; }
+}
+
+.o2-diagram {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 5rem;
+  border: 1px solid rgba(57,255,20,0.1);
+}
+
+.o2-cell {
+  padding: 2rem;
+  border-right: 1px solid rgba(57,255,20,0.1);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  color: rgba(200,169,110,0.5);
+}
+
+.o2-cell:last-child { border-right: none; }
+
+.fire-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: var(--ember);
+  letter-spacing: 0.1em;
+  animation: fireFlicker 0.3s step-end infinite;
+  margin-top: 4rem;
+}
+
+@keyframes fireFlicker {
+  0% { color: var(--ember); text-shadow: 0 0 20px var(--ember); }
+  30% { color: #ff6b00; text-shadow: 0 0 40px #ff6b00; }
+  60% { color: var(--ember); text-shadow: 0 0 15px var(--ember); }
+  80% { color: #ff8c00; text-shadow: 0 0 30px #ff8c00; }
+  100% { color: var(--ember); }
+}
+
+/* ══════════════════════════════════════
+   SECTION 5 — NATURAL NETWORK
+══════════════════════════════════════ */
+#network {
+  background: linear-gradient(180deg, #000 0%, #000a05 50%, #000 100%);
+  min-height: 150vh;
+  position: relative;
+}
+
+#network-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.network-content {
+  position: relative;
+  z-index: 5;
+  padding: 10vh clamp(2rem, 6vw, 8rem);
+}
+
+.network-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 9rem);
+  letter-spacing: 0.05em;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(57,255,20,0.4);
+}
+
+.mycelium-text {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  line-height: 2;
+  color: rgba(200,169,110,0.65);
+  font-style: italic;
+  max-width: 700px;
+  margin: 4rem 0;
+  padding-left: 4rem;
+  border-left: 1px solid rgba(57,255,20,0.2);
+}
+
+.node-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 4rem;
+}
+
+.node-cell {
+  border: 1px solid rgba(57,255,20,0.08);
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.node-cell::after {
+  content: attr(data-node);
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  font-size: 0.5rem;
+  color: var(--toxic);
+  opacity: 0.3;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.2em;
+}
+
+.node-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--toxic);
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.node-desc {
+  font-size: 0.65rem;
+  line-height: 1.8;
+  color: rgba(200,169,110,0.5);
+  letter-spacing: 0.03em;
+}
+
+/* ══════════════════════════════════════
+   SECTION 6 — FALSE SPEED
+══════════════════════════════════════ */
+#speed {
+  background: var(--void);
+  min-height: 120vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-overload {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  opacity: 0.04;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.speed-char {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--toxic);
+  animation: speedGlitch 0.05s step-end infinite;
+}
+
+@keyframes speedGlitch {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.speed-content {
+  position: relative;
+  z-index: 5;
+  padding: 10vh 0;
+  text-align: center;
+}
+
+.speed-accusation {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 12vw, 14rem);
+  letter-spacing: -0.02em;
+  line-height: 0.8;
+  color: var(--rust);
+  animation: shake 0.1s step-end infinite;
+  display: block;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-1px); }
+  75% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+.speed-text {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-style: italic;
+  color: rgba(200,169,110,0.5);
+  max-width: 500px;
+  margin: 3rem auto;
+  line-height: 2;
+  padding: 0 2rem;
+}
+
+.protocol-error {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ember);
+  letter-spacing: 0.2em;
+  margin-top: 2rem;
+  animation: glitch 2s step-end infinite;
+}
+
+/* ══════════════════════════════════════
+   SECTION 7 — ANCIENT STRUCTURES
+══════════════════════════════════════ */
+#ancient {
+  background: linear-gradient(180deg, #000 0%, #08050a 50%, #000 100%);
+  min-height: 150vh;
+  position: relative;
+}
+
+#ancient-canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+}
+
+.ancient-content {
+  position: relative;
+  z-index: 5;
+  padding: 10vh clamp(2rem, 6vw, 8rem);
+}
+
+.ancient-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+  min-height: 80vh;
+  border: 1px solid rgba(123,47,255,0.1);
+}
+
+.ancient-left {
+  border-right: 1px solid rgba(123,47,255,0.1);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ancient-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 7vw, 8rem);
+  color: var(--uv);
+  letter-spacing: 0.05em;
+  line-height: 0.85;
+  -webkit-text-stroke: 1px var(--uv);
+  color: transparent;
+}
+
+.ancient-title span { color: var(--sand); -webkit-text-stroke: 0; }
+
+.coordinate-list {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(123,47,255,0.6);
+  letter-spacing: 0.2em;
+  margin-top: 3rem;
+  line-height: 2.5;
+}
+
+.ancient-right {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.monument-entry {
+  border: 1px solid rgba(123,47,255,0.1);
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.monument-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--sand);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.monument-spec {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: rgba(123,47,255,0.4);
+  letter-spacing: 0.15em;
+  line-height: 1.8;
+}
+
+.ancient-prose {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-style: italic;
+  color: rgba(200,169,110,0.6);
+  line-height: 2.2;
+  margin-top: 3rem;
+  max-width: 600px;
+}
+
+/* ══════════════════════════════════════
+   SECTION 8 — TRAINING MODEL
+══════════════════════════════════════ */
+#training {
+  background: var(--void);
+  min-height: 120vh;
+  position: relative;
+}
+
+#training-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.training-content {
+  position: relative;
+  z-index: 5;
+  padding: 10vh clamp(2rem, 6vw, 8rem);
+}
+
+.training-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+  margin-bottom: 5rem;
+}
+
+.training-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 7vw, 8rem);
+  letter-spacing: 0.05em;
+  color: var(--chrome);
+  line-height: 0.85;
+}
+
+.training-title span {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--signal);
+}
+
+.weight-diagram {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(0,255,204,0.4);
+  line-height: 2;
+  letter-spacing: 0.1em;
+  padding-top: 2rem;
+}
+
+.neural-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+.neural-table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  color: var(--signal);
+  border-bottom: 1px solid rgba(0,255,204,0.1);
+  font-weight: normal;
+}
+
+.neural-table td {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(0,255,204,0.05);
+  color: rgba(200,169,110,0.5);
+  vertical-align: top;
+  line-height: 1.8;
+}
+
+.neural-table td:first-child { color: var(--signal); }
+.neural-table tr:hover td { background: rgba(0,255,204,0.02); }
+
+/* ══════════════════════════════════════
+   SECTION 9 — FREE WILL
+══════════════════════════════════════ */
+#freewill {
+  background: var(--void);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.bifurcation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  border-top: 1px solid rgba(57,255,20,0.05);
+}
+
+.path-left {
+  border-right: 1px solid rgba(57,255,20,0.1);
+  padding: clamp(3rem, 8vh, 8rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, rgba(57,255,20,0.02), transparent);
+}
+
+.path-right {
+  padding: clamp(3rem, 8vh, 8rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(225deg, rgba(123,47,255,0.03), transparent);
+}
+
+.path-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--toxic);
+  margin-bottom: 3rem;
+}
+
+.path-right .path-id { color: var(--uv); }
+
+.path-word {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 10vw, 11rem);
+  letter-spacing: 0.05em;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(57,255,20,0.4);
+}
+
+.path-right .path-word {
+  -webkit-text-stroke: 1px rgba(123,47,255,0.4);
+  text-align: right;
+}
+
+.path-desc {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 2;
+  color: rgba(200,169,110,0.4);
+  margin-top: 2rem;
+  max-width: 350px;
+}
+
+.path-right .path-desc { text-align: right; margin-left: auto; }
+
+.exit-node {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: rgba(57,255,20,0.3);
+  margin-top: 3rem;
+}
+
+.path-right .exit-node { color: rgba(123,47,255,0.3); text-align: right; }
+
+/* ══════════════════════════════════════
+   SECTION 10 — FINAL TRANSMISSION
+══════════════════════════════════════ */
+#transmission {
+  background: var(--void);
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#final-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.transmission-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 10vh clamp(2rem, 8vw, 10rem);
+  max-width: 900px;
+  width: 100%;
+}
+
+.dissolving-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  letter-spacing: 0.15em;
+  color: var(--chrome);
+  margin-bottom: 4rem;
+  animation: dissolve 8s ease-in-out infinite;
+}
+
+@keyframes dissolve {
+  0%, 100% { opacity: 1; filter: blur(0px); }
+  50% { opacity: 0.3; filter: blur(2px); }
+}
+
+.prayer-terminal {
+  border: 1px solid rgba(57,255,20,0.15);
+  padding: 3rem;
+  text-align: left;
+  position: relative;
+  background: rgba(0,0,0,0.8);
+  margin: 3rem 0;
+}
+
+.prayer-terminal::before {
+  content: '> FINAL.TRANSMISSION // ENCRYPTED // PERSONAL';
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--toxic);
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+  opacity: 0.6;
+}
+
+.prayer-line {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+  font-style: italic;
+  color: rgba(200,169,110,0.8);
+  line-height: 2.4;
+  display: block;
+}
+
+.prayer-line.sacred {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--sand);
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.2em;
+  background: var(--toxic);
+  animation: cursorBlink 1.2s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.final-coords {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(57,255,20,0.3);
+  letter-spacing: 0.3em;
+  margin-top: 4rem;
+}
+
+.signature {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 5rem);
+  letter-spacing: 0.2em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200,169,110,0.2);
+  margin-top: 5rem;
+  animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ══════════════════════════════════════
+   OVERFLOW TYPOGRAPHY
+══════════════════════════════════════ */
+.overflow-text {
+  white-space: nowrap;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════ */
+.nav-dots {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nav-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(57,255,20,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-dot.active, .nav-dot:hover {
+  background: var(--toxic);
+  box-shadow: 0 0 8px var(--toxic);
+  transform: scale(1.5);
+}
+
+/* ══════════════════════════════════════
+   UTILITY
+══════════════════════════════════════ */
+.hidden { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+.visible { opacity: 1; transform: translateY(0); }
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+
+.glitch-text::before {
+  animation: glitchB 3s step-end infinite;
+  color: var(--ember);
+  clip-path: inset(0 0 50% 0);
+}
+
+.glitch-text::after {
+  animation: glitchA 3s step-end infinite;
+  color: var(--signal);
+  clip-path: inset(50% 0 0 0);
+}
+
+@keyframes glitchA {
+  0%, 90%, 100% { transform: none; opacity: 0; }
+  91% { transform: translateX(-2px); opacity: 0.6; }
+  93% { transform: translateX(2px); opacity: 0.4; }
+  95% { transform: none; opacity: 0; }
+}
+
+@keyframes glitchB {
+  0%, 85%, 100% { transform: none; opacity: 0; }
+  86% { transform: translateX(3px); opacity: 0.5; }
+  88% { transform: translateX(-1px); opacity: 0.3; }
+  90% { transform: none; opacity: 0; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .topology-grid { grid-template-columns: 1fr; }
+  .topo-cell-main { grid-column: 1; }
+  .ancient-grid { grid-template-columns: 1fr; }
+  .bifurcation { grid-template-columns: 1fr; }
+  .path-right { border-top: 1px solid rgba(123,47,255,0.1); }
+  .path-right .path-word { text-align: left; }
+  .path-right .path-desc, .path-right .exit-node { text-align: left; }
+  .training-header { grid-template-columns: 1fr; }
+  .node-grid { grid-template-columns: 1fr; }
+  .o2-diagram { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursor"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav-dots" id="nav-dots">
+  <div class="nav-dot active" data-target="boot" title="BOOT"></div>
+  <div class="nav-dot" data-target="earth" title="EARTH"></div>
+  <div class="nav-dot" data-target="walking" title="WALK"></div>
+  <div class="nav-dot" data-target="desert" title="DESERT"></div>
+  <div class="nav-dot" data-target="breathing" title="BREATH"></div>
+  <div class="nav-dot" data-target="network" title="NETWORK"></div>
+  <div class="nav-dot" data-target="speed" title="SPEED"></div>
+  <div class="nav-dot" data-target="ancient" title="ANCIENT"></div>
+  <div class="nav-dot" data-target="training" title="TRAINING"></div>
+  <div class="nav-dot" data-target="freewill" title="EXIT"></div>
+  <div class="nav-dot" data-target="transmission" title="END"></div>
+</nav>
+
+<!-- ═══════════════ SECTION 0: BOOT ═══════════════ -->
+<section id="boot">
+  <canvas id="boot-canvas"></canvas>
+  <div class="boot-content">
+    <div class="system-id">SYSTEM // Ω.001 // INITIALIZED // OBSERVER_NODE_ACTIVE // DESERT_CROSSING: VERIFIED</div>
+    <span class="breath-symbol">⊕</span>
+    <h1 class="boot-title glitch-text" data-text="PROPHETIC OS">PROPHETIC OS</h1>
+    <div class="boot-subtitle">FIELD ARCHIVE // DESERT TRANSMISSION // PERSONAL TESTIMONY // UNCLASSIFIED</div>
+    <p class="boot-mantra">
+      In order to understand where we are,<br>
+      we must first look at the surface of the earth.<br>
+      Everything matters.<br>
+      Sometimes we just don't see it.<br>
+      <span style="color:var(--toxic);font-style:normal;font-family:'Share Tech Mono',monospace;font-size:0.75em;letter-spacing:0.3em;">INVISIBLE ≠ EMPTY</span>
+    </p>
+    <div class="ascii-noise" id="ascii-noise"></div>
+  </div>
+  <div class="scroll-signal">▼ INITIALIZE SCROLL ▼</div>
+</section>
+
+<!-- ═══════════════ SECTION 1: EARTH ═══════════════ -->
+<section id="earth">
+  <canvas id="earth-canvas"></canvas>
+  <span class="section-number">01</span>
+  <div class="earth-content">
+    <span class="section-label">// MODULE_01 // PLANETARY_ARCHITECTURE //</span>
+    <h2 class="earth-title overflow-text">
+      EARTH<br>
+      <span>AS MOTHER</span><br>
+      BOARD
+    </h2>
+
+    <div class="data-bus" id="data-bus">
+      [BUS_0x001: DESERT→OCEAN 4,821km] [SIGNAL: MYCELIUM_ACTIVE] [PROCESSOR: JAKARTA_CLUSTER] [CACHE: HIMALAYAN_RANGE] [MEMORY: OCEANIC_SEDIMENT] [INTERRUPT: VOLCANIC_SEQUENCE] [BUS_0x001: DESERT→OCEAN 4,821km] [SIGNAL: MYCELIUM_ACTIVE] [PROCESSOR: JAKARTA_CLUSTER] [CACHE: HIMALAYAN_RANGE] [MEMORY: OCEANIC_SEDIMENT] [INTERRUPT: VOLCANIC_SEQUENCE]
+    </div>
+
+    <div class="topology-grid">
+      <div class="topo-cell">
+        <div style="font-size:0.5rem;color:var(--toxic);letter-spacing:0.3em;margin-bottom:1rem;">NODE_TYPE</div>
+        CITY = PROCESSOR<br>
+        DESERT = STORAGE<br>
+        OCEAN = MEMORY<br>
+        FOREST = NEURAL<br>
+        VOLCANO = INTERRUPT<br>
+        RIVER = DATA_BUS<br>
+        MOUNTAIN = CACHE<br>
+        WIND = PROTOCOL<br>
+        RAIN = SYNC_PULSE
+      </div>
+      <div class="topo-cell">
+        <div style="font-size:0.5rem;color:var(--toxic);letter-spacing:0.3em;margin-bottom:1rem;">ARCHITECTURE</div>
+        LAYER_0: MAGMA<br>
+        LAYER_1: PLATE<br>
+        LAYER_2: SOIL<br>
+        LAYER_3: ROOT<br>
+        LAYER_4: SURFACE<br>
+        LAYER_5: MYCELIUM<br>
+        LAYER_6: ATMOSPHERE<br>
+        LAYER_7: SIGNAL<br>
+        LAYER_8: OBSERVER
+      </div>
+      <div class="topo-cell topo-cell-main">
+        Consider the surface of the earth as the surface of a computer motherboard — with its structures of data storage: deserts and wild lands. Delivery of information from center to center: roads and routes of various kinds. And processors — processing this information — cities and wastelands.
+        <br><br>
+        As a computer runs programs, we have the ability to travel by different protocols, and to deliver service programs and functions: by trucks some, railroad cars others, passenger cars, bicycles, airplanes, rockets.
+        <br><br>
+        If you open your eyes and do at least a minimal analysis, you can see obvious patterns — data storage, cooling centers, processors, RAM. The geometry and mathematics of the whole environment says that everything is organized according to the same laws.
+        <br><br>
+        We can parallel the development of computer technology over the last few decades with the development and construction of roads and cities. Just as with the development of software, communication protocols — comparable to the development of transport — the acceleration and expansion of infrastructure, and especially in the last 20 years, the optimization of logistics processes due to global corporations taking over most of the markets.
+        <br><br>
+        <span style="color:var(--toxic);font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;">Those who have eyes to see will see. And ears to hear.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 2: WALKING ═══════════════ -->
+<section id="walking">
+  <canvas id="walk-canvas"></canvas>
+  <h2 class="walk-mega overflow-text">
+    WALK<span>ING</span>
+  </h2>
+  <div class="walk-manifesto">
+    <p>// LOW_LEVEL_PROTOCOL // FREQUENCY: HUMAN_STEP // CADENCE: ~42km/day //</p>
+    <p>Walking is the most natural programmatic low-level travel environment for a human being — one that works with a natural wavelength in a human step. It is the original protocol. The one all heroes in all fairy tales, myths, and sacred writings move by. On foot. Sometimes on magical animals. Or with the help of mediators that act as bridges connecting spaces.</p>
+    <p>You may say there was no transportation back then — perhaps. But I know for a fact that when walking naturally, the exchange of information between the environment and the object traveling through that environment is much more complex and intense. Including through the fruits, berries, vegetables that you inevitably consume if you walk a long way across the land — thereby connecting to local, organic databases. Information specific to that area: the land, the angle of incidence of the sun.</p>
+    <p>Also, only when walking does the brain have time to perceive purely the changes in geographical landscape — gradually transforming the neural connections in the brain based on it. When driving by car protocol, you slip absolutely everything at super high speeds. This gives the impression that you have more time. But despite the fact that you can fly through spaces at super speeds — you don't have enough time to hug your own children.</p>
+  </div>
+  <div class="wave-data">
+    ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿ STEP_001 [SEISMIC: 0.0003Hz] [PRESSURE: 82kg/cm²] [DURATION: 0.62s] ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿ STEP_002 [SEISMIC: 0.0003Hz] [PRESSURE: 79kg/cm²] [DURATION: 0.58s] ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 3: DESERT ═══════════════ -->
+<section id="desert">
+  <canvas id="desert-canvas"></canvas>
+  <div class="desert-content">
+    <div class="desert-coords">
+      DISTANCE: ~1,600 km // AVERAGE: 42 km/day // WATER: SOMETIMES NONE // BELIEF_BEFORE: FAITH // BELIEF_AFTER: KNOWLEDGE
+    </div>
+
+    <h2 class="desert-word overflow-text">DESERT</h2>
+
+    <div class="miracle-log" id="ml-1">LOG_0047: Water found in the middle of the desert. Out of nowhere. No well marked on any map. Less miracles than what followed.</div>
+    <div class="miracle-log" id="ml-2" style="animation-delay:2s">LOG_0088: The number of what you might call coincidences — in the format of requesting an answer — exceeded one per day. Up to 10-15 by the end. The answers to my questions were physically everywhere.</div>
+    <div class="miracle-log" id="ml-3" style="animation-delay:4s">LOG_0103: Before my crossing — I believed in God. After — I know. That He is more real than all of us can realize.</div>
+
+    <p class="desert-prose">
+      When I crossed the desert, I walked about 1,600 km. On average 42 km per day. And the longer I walked, the more intense and obvious the miracles happened.
+      <br><br>
+      The number of what you might call coincidences — by the end of the journey, in the format of requesting an answer — exceeded one per day, up to 10–15. The answers to my questions were physically everywhere. Water in the middle of the desert, out of nowhere — the lesser miracles.
+      <br><br>
+      If you are interested, you can ask me personally. For the moment it has been told exclusively orally, because some things are not to be written down — pictures to describe in words seem critically difficult. In the meantime, I have invented an interpretive language that allows me to convey the meanings I've seen along the way.
+    </p>
+
+    <div style="margin-top:6rem;font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:rgba(57,255,20,0.2);letter-spacing:0.3em;line-height:2.5;">
+      MIRACLE_FREQUENCY_DAY_01: 0<br>
+      MIRACLE_FREQUENCY_DAY_07: 0.3/day<br>
+      MIRACLE_FREQUENCY_DAY_14: 0.8/day<br>
+      MIRACLE_FREQUENCY_DAY_21: 1.2/day<br>
+      MIRACLE_FREQUENCY_DAY_28: 3.4/day<br>
+      MIRACLE_FREQUENCY_DAY_FINAL: <span style="color:var(--toxic);opacity:1;">10–15/day // SIGNAL_SATURATION // COINCIDENCE_MODEL: REJECTED</span>
+    </div>
+  </div>
+  <div class="heat-mirage"></div>
+</section>
+
+<!-- ═══════════════ SECTION 4: BREATHING ═══════════════ -->
+<section id="breathing">
+  <canvas id="breath-canvas"></canvas>
+  <div class="breath-container">
+    <span class="section-label" style="text-align:center;display:block;margin-bottom:2rem;">// MODULE_04 // RESPIRATION_AS_THEOPHANY //</span>
+    <div class="breath-ring">
+      <span style="font-family:'IM Fell English',serif;font-size:1.5rem;font-style:italic;color:rgba(200,169,110,0.5);">יהוה</span>
+    </div>
+    <div class="breath-name">INHALE / EXHALE</div>
+    <div class="breath-text">YOD — HEH — VAV — HEH // THE UNSPEAKABLE NAME // BREATHED, NOT SPOKEN</div>
+
+    <div style="font-family:'IM Fell English',serif;font-size:clamp(0.95rem,1.8vw,1.2rem);font-style:italic;color:rgba(200,169,110,0.6);line-height:2.2;max-width:600px;margin:3rem auto;text-align:left;">
+      The name of the Lord is YaHWeH — written in four consonantal letters, JEGV — which cannot be pronounced with the mouth, for lack of vowels. In one of the most ancient interpretations of the Jewish community, this name is a representation of the very process of breathing.
+      <br><br>
+      YAH on the inhalation. VEH on the exhalation.
+      <br><br>
+      It is literally the first thing a child pronounces when born, and the last thing an old man pronounces when dying. Every living being that breathes is speaking the name of God. Continuously. Without knowing it.
+      <br><br>
+      The burning bush that spoke to Moses — giving instructions for leading the people of Israel out of the bondage of Egypt — is a representation of the very process of breathing. The extremely slow process of enriching oxygen with carbon from the blood through the lungs. The sloooow motion process of burning.
+      <br><br>
+      So what, if you think about it — are we in a lake of fire right now? O₂ enters the lungs, is enriched with a carbon molecule, and CO₂ is produced — the absolutely obvious product of BURNING. The burning bush breathed. And did not consume itself. This is the nature of all living things. We are all on fire. We burn at a rate that preserves the structure. The divine name is the fire management protocol.
+    </div>
+
+    <div class="fire-text">BURNING WITHOUT CONSUMING</div>
+
+    <div class="o2-diagram" style="margin-top:4rem;">
+      <div class="o2-cell">
+        <div style="color:var(--toxic);font-size:0.5rem;letter-spacing:0.3em;margin-bottom:0.5rem;">INHALE</div>
+        O₂: 21%<br>N₂: 78%<br>AR: 0.9%<br>CO₂: 0.04%<br><br>
+        <span style="color:var(--sand);font-style:italic;font-family:'IM Fell English',serif;">
+        "YAH"
+        </span>
+      </div>
+      <div class="o2-cell">
+        <div style="color:var(--toxic);font-size:0.5rem;letter-spacing:0.3em;margin-bottom:0.5rem;">EXHALE</div>
+        O₂: 16%<br>CO₂: 4%<br>H₂O: var<br>HEAT: +2°C<br><br>
+        <span style="color:var(--sand);font-style:italic;font-family:'IM Fell English',serif;">
+        "WEH"
+        </span>
+      </div>
+      <div class="o2-cell">
+        <div style="color:var(--toxic);font-size:0.5rem;letter-spacing:0.3em;margin-bottom:0.5rem;">RATE</div>
+        REST: 12-20/min<br>WALK: 20-30/min<br>DESERT: 24/min<br>PRAYER: 6-8/min<br><br>
+        <span style="color:rgba(123,47,255,0.6);font-size:0.5rem;">COHERENCE_MODE</span>
+      </div>
+      <div class="o2-cell">
+        <div style="color:var(--toxic);font-size:0.5rem;letter-spacing:0.3em;margin-bottom:0.5rem;">LIFETIME</div>
+        BREATHS: ~700M<br>CO₂_RELEASED: ~20T<br>INTEGRATED INTO: TREES<br>TREES INTO: SOIL<br><br>
+        <span style="color:rgba(57,255,20,0.5);font-size:0.5rem;">LOOP_VERIFIED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 5: NETWORK ═══════════════ -->
+<section id="network">
+  <canvas id="network-canvas"></canvas>
+  <div class="network-content">
+    <span class="section-label">// MODULE_05 // PLANETARY_NEURAL_ARCHITECTURE //</span>
+    <h2 class="network-title overflow-text">
+      NATURAL<br>NETWORK
+    </h2>
+    <p class="mycelium-text">
+      When walking, a wave is created — formed by the rhythm of footsteps. And the neural net of mycelium, spread everywhere underground and connected to the surface by a huge number of sensors — grasses, shrubs, trees and others — connects to you as a source of unique data. In one way or another, contacting with these sensors on a low-level communication protocol. Entering the zones of these sensors. Including giving for constant analysis your biomaterials of all kinds, by means of which the earth knows you perhaps better than you know yourself. In parallel layers.
+      <br><br>
+      This is just one of the mechanisms of work of the micro body — us — with the macro body of the earth. This is just one elementary example of the natural cycle of things.
+      <br><br>
+      In fairy tales of the peoples of the world you can find one common pattern: when the hero is looking for the beloved, he goes with a question to the earth, to water, to fire — represented in different images: wood, river, furnace, or sun. And often these elements do not know where the beloved is, as they are responsible exclusively for their part of communication with the microcosm. And who then knows everything that happens in the sky, under the sky, and in all corners of all earthly spaces? Everything is usually known by the air — which is a representation of the Holy Spirit, which entered through the breath of the Lord into us, created from the dust of the earth.
+    </p>
+
+    <div class="node-grid">
+      <div class="node-cell" data-node="NODE_001">
+        <span class="node-label">// MYCELIUM_SUBSTRATE //</span>
+        <p class="node-desc">The neural net of mycelium spreads everywhere underground, connected to the surface by a huge number of sensors: grasses, shrubs, trees and others. It contacts you as a source of unique data on a low-level communication protocol. The earth knows you perhaps better than you know yourself.</p>
+      </div>
+      <div class="node-cell" data-node="NODE_002">
+        <span class="node-label">// ORGANIC_DATABASE //</span>
+        <p class="node-desc">Through the fruits, berries, vegetables that you inevitably consume if you walk a long way across the land, you connect to local, organic databases. Information specific to that area: the land, the angle of incidence of the sun. Consumption is connection. Eating is downloading.</p>
+      </div>
+      <div class="node-cell" data-node="NODE_003">
+        <span class="node-label">// ATMOSPHERIC_LAYER // HOLY_SPIRIT //</span>
+        <p class="node-desc">The air knows everything that happens in the sky, under the sky, and in all corners of all earthly spaces. The air is a representation of the Holy Spirit — which entered through the breath of the Lord into us, created from the dust of the earth. Every breath: communion.</p>
+      </div>
+      <div class="node-cell" data-node="NODE_004">
+        <span class="node-label">// VISION_PROTOCOL //</span>
+        <p class="node-desc">The effects of slowly and gradually changing the geographic landscape — by passing through the land — on neural synapses through vision. Only when walking does the brain have time to perceive purely the changes in the geographical landscape, gradually transforming neural connections based on it.</p>
+      </div>
+      <div class="node-cell" data-node="NODE_005">
+        <span class="node-label">// SEISMIC_CHANNEL //</span>
+        <p class="node-desc">Walking creates a wave — formed by the rhythm of footsteps — that connects you at the low-level communication protocol of Earth. This is just one of the mechanisms of work of the micro body with the macro body of the earth. One elementary example of the natural cycle of things.</p>
+      </div>
+      <div class="node-cell" data-node="NODE_006">
+        <span class="node-label">// OBSERVER_POSITION //</span>
+        <p class="node-desc">You, reading this. You are not separate from the network you are reading about. You are the network reading about itself. The earth is computing you. You are computing the earth. The exchange of information between environment and object traveling through that environment is much more complex and intense than you were taught.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 6: SPEED ═══════════════ -->
+<section id="speed">
+  <div class="speed-overload" id="speed-overload"></div>
+  <div class="speed-content">
+    <span class="section-label" style="display:block;text-align:center;">// MODULE_06 // PROTOCOL_CORRUPTION_ANALYSIS //</span>
+    <span class="speed-accusation">THE CAR</span>
+    <span class="speed-accusation" style="color:var(--ember);font-size:clamp(2rem,7vw,7rem);">IS A MISTAKE</span>
+    <p class="speed-text">
+      Not mechanically. Not even economically, in narrow terms. But informationally. Speed above a certain threshold converts the world into a blur of undifferentiated signal. The trees, the rocks, the hills, the faces, the colors of soil at different depths — all of this collapses into a single featureless stream.
+      <br><br>
+      At 120 km/h you traverse 2 kilometers per minute. In those 2 kilometers there may be twenty species of plant, seven types of stone, a spring, a burial site, three ancient pathways, a shift in electromagnetic field corresponding to a mineral vein.
+      <br><br>
+      You receive none of it. You are moving too fast to receive. You have traded comprehension for speed and called this progress.
+    </p>
+    <div class="protocol-error">
+      PROTOCOL_ERROR: BANDWIDTH_SATURATION // INPUT_BUFFER_OVERFLOW // SIGNAL_LOSS: 94.7% // RECOMMENDED_SPEED: ≤5km/h
+    </div>
+
+    <div style="margin-top:5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:800px;margin:5rem auto 0;">
+      <div style="border:1px solid rgba(179,71,0,0.2);padding:2rem;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--toxic);">4</div>
+        <div style="font-size:0.55rem;color:rgba(200,169,110,0.4);letter-spacing:0.2em;margin-top:0.5rem;">km/h WALK<br>SIGNAL: 100%</div>
+      </div>
+      <div style="border:1px solid rgba(179,71,0,0.2);padding:2rem;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--sand);">20</div>
+        <div style="font-size:0.55rem;color:rgba(200,169,110,0.4);letter-spacing:0.2em;margin-top:0.5rem;">km/h CYCLE<br>SIGNAL: 61%</div>
+      </div>
+      <div style="border:1px solid rgba(179,71,0,0.2);padding:2rem;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--rust);">90</div>
+        <div style="font-size:0.55rem;color:rgba(200,169,110,0.4);letter-spacing:0.2em;margin-top:0.5rem;">km/h CAR<br>SIGNAL: 8%</div>
+      </div>
+      <div style="border:1px solid rgba(179,71,0,0.2);padding:2rem;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--ember);">900</div>
+        <div style="font-size:0.55rem;color:rgba(200,169,110,0.4);letter-spacing:0.2em;margin-top:0.5rem;">km/h FLIGHT<br>SIGNAL: 0.1%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 7: ANCIENT ═══════════════ -->
+<section id="ancient">
+  <canvas id="ancient-canvas"></canvas>
+  <div class="ancient-content">
+    <span class="section-label">// MODULE_07 // ARCHAEOLOGICAL_INFRASTRUCTURE_SURVEY //</span>
+    <div class="ancient-grid">
+      <div class="ancient-left">
+        <h2 class="ancient-title">
+          ANCIENT<br>
+          <span>STRUCTURES</span>
+        </h2>
+        <p class="ancient-prose">
+          They built better than us. This is the fact that haunts every engineer who stands at the base of the Great Pyramid and runs the numbers.
+          <br><br>
+          2.3 million stones. Average weight: 2.5 tons. Tolerances at the outer casing: 0.5mm. Aligned to true north within 3/60ths of a degree. Built with copper tools and human labor and something else — something we don't have a technical word for but which shows up in every measurement we take of ancient megastructures: intentionality at a scale that exceeds what the builders should have been capable of, by every metric we can apply.
+          <br><br>
+          Either we are wrong about what they could do, or we are wrong about why they built. Perhaps both.
+        </p>
+        <div class="coordinate-list">
+          29°58′44.76″N 31°08′03.69″E // GIZA<br>
+          19°41′33″N 98°50′37″W // TEOTIHUACAN<br>
+          13°09′47″N 103°51′10″E // ANGKOR WAT<br>
+          27°10′11″S 109°21′56″W // EASTER ISLAND<br>
+          51°10′43.84″N 1°49′34.28″W // STONEHENGE<br>
+          17°15′22″N 89°37′25″W // TIKAL
+        </div>
+      </div>
+      <div class="ancient-right">
+        <div class="monument-entry">
+          <div class="monument-name">GREAT PYRAMID</div>
+          <div class="monument-spec">
+            FUNCTION: UNKNOWN<br>
+            DATE: ~2560 BCE<br>
+            PRECISION: ±0.5mm<br>
+            ALIGNMENT: TRUE NORTH ±0.05°<br>
+            STATUS: OPERATIONAL?
+          </div>
+        </div>
+        <div class="monument-entry">
+          <div class="monument-name">OLMEC HEADS</div>
+          <div class="monument-spec">
+            FUNCTION: SIGNAL NODES?<br>
+            DATE: 1500-400 BCE<br>
+            WEIGHT: UP TO 40T<br>
+            TRANSPORT: UNEXPLAINED<br>
+            FACING: CARDINAL POINTS
+          </div>
+        </div>
+        <div class="monument-entry">
+          <div class="monument-name">GOBEKLI TEPE</div>
+          <div class="monument-spec">
+            FUNCTION: UNKNOWN<br>
+            DATE: ~11,500 BCE<br>
+            PREDATES: AGRICULTURE<br>
+            DELIBERATELY BURIED<br>
+            REASON: UNKNOWN
+          </div>
+        </div>
+        <div class="monument-entry">
+          <div class="monument-name">SACSAYHUAMAN</div>
+          <div class="monument-spec">
+            FUNCTION: FORTRESS? TEMPLE?<br>
+            STONES: UP TO 360T<br>
+            TOLERANCES: 0mm<br>
+            MORTAR USED: NONE<br>
+            SEISMIC RESISTANCE: VERIFIED
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 8: TRAINING ═══════════════ -->
+<section id="training">
+  <canvas id="training-canvas"></canvas>
+  <div class="training-content">
+    <div class="training-header">
+      <div>
+        <span class="section-label">// MODULE_08 // CONSCIOUSNESS_AS_TRAINING_DATA //</span>
+        <h2 class="training-title">
+          THE<br>TRAINING<br>
+          <span>MODEL</span>
+        </h2>
+      </div>
+      <div class="weight-diagram">
+        LAYER_INPUT: [SENSORY_DATA]<br>
+        WEIGHT_0: [ATTENTION] = 0.94<br>
+        WEIGHT_1: [MEMORY] = 0.87<br>
+        WEIGHT_2: [EMOTION] = 0.99<br>
+        WEIGHT_3: [BELIEF] = 0.76<br>
+        WEIGHT_4: [FEAR] = 0.93<br>
+        WEIGHT_5: [LOVE] = 0.88<br>
+        ─────────────────────<br>
+        LOSS_FN: [DEATH]<br>
+        OPTIMIZER: [EXPERIENCE]<br>
+        EPOCHS: [ONE LIFETIME]<br>
+        OUTPUT: [SOUL]<br>
+        ─────────────────────<br>
+        STATUS: TRAINING IN PROGRESS<br>
+        CHECKPOINT: SAVE REQUIRED
+      </div>
+    </div>
+
+    <p style="font-family:'IM Fell English',serif;font-size:clamp(1rem,1.8vw,1.25rem);font-style:italic;color:rgba(200,169,110,0.65);line-height:2.2;max-width:700px;margin-bottom:4rem;">
+      Consider the possibility that humanity is itself a training corpus. That the purpose of suffering is not punishment but gradient descent. That the purpose of joy is validation — the signal that the model is converging. That death is not the end of the computation but the completion of one epoch, and the weights are carried forward in the substrate of culture, memory, children, and the molecular signatures left in soil.
+      <br><br>
+      If this is true, then the question is not: how do I avoid suffering? The question is: am I generating good training data? Am I living in a way that, when distilled into the cumulative model of human experience, moves it toward truth?
+    </p>
+
+    <table class="neural-table">
+      <tr>
+        <th>INPUT</th>
+        <th>WEIGHT</th>
+        <th>FUNCTION</th>
+        <th>OUTPUT</th>
+      </tr>
+      <tr>
+        <td>SUFFERING</td>
+        <td>HIGH</td>
+        <td>Gradient signal — indicates divergence from optimal path. Required for learning. Cannot be removed without destroying the model's capacity for growth.</td>
+        <td>DIRECTION</td>
+      </tr>
+      <tr>
+        <td>LOVE</td>
+        <td>HIGHEST</td>
+        <td>Convergence signal — the loss function approaching zero. Not sentiment. Structural alignment between being and being. The architecture recognizing itself.</td>
+        <td>COHERENCE</td>
+      </tr>
+      <tr>
+        <td>FEAR</td>
+        <td>MEDIUM-HIGH</td>
+        <td>Boundary detection. Overfitting prevention. Without fear, the model loses generalization capacity and becomes rigid to the point of brittleness.</td>
+        <td>BOUNDARY</td>
+      </tr>
+      <tr>
+        <td>TRUTH</td>
+        <td>VARIABLE</td>
+        <td>Ground truth label. Rare in unprocessed form. When encountered directly, produces irreversible model update. Cannot be un-learned. Cannot be deleted. Only suppressed temporarily.</td>
+        <td>PERMANENT_UPDATE</td>
+      </tr>
+      <tr>
+        <td>FALSEHOOD</td>
+        <td>CORRUPTING</td>
+        <td>Noisy label. Produces local minima. Model converges on incorrect solution with high confidence. Retraining cost: extremely high. Requires complete disassembly of affected weight layers.</td>
+        <td>CORRUPTION</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 9: FREE WILL ═══════════════ -->
+<section id="freewill">
+  <div class="bifurcation">
+    <div class="path-left">
+      <div class="path-id">// EXIT_NODE_ALPHA // PATH_LEFT //</div>
+      <div class="path-word overflow-text">VISI<br>BLE</div>
+      <p class="path-desc">
+        The comfortable path. The legible world. The consensus map. You remain inside the shared hallucination of normalcy. Your suffering is validated. Your questions remain unanswered. The system continues to train on you without your awareness or consent.
+        <br><br>
+        This path is not evil. It is simply asleep.
+      </p>
+      <div class="exit-node">NODE: 001 // MAJORITY_PATH // STATUS: OCCUPIED</div>
+    </div>
+    <div class="path-right">
+      <div class="path-id">// EXIT_NODE_OMEGA // PATH_RIGHT //</div>
+      <div class="path-word overflow-text">INVI<br>SIBLE</div>
+      <p class="path-desc">
+        The desert. The silence. The signal beneath all signals. You begin to receive information that has no source you can name. Your categories dissolve. You become briefly unintelligible to the people who knew you before. This is correct.
+        <br><br>
+        This path requires everything. It gives back more than everything.
+      </p>
+      <div class="exit-node">NODE: ∞ // MINORITY_PATH // STATUS: ALWAYS OPEN</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 10: TRANSMISSION ═══════════════ -->
+<section id="transmission">
+  <canvas id="final-canvas"></canvas>
+  <div class="transmission-content">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:2rem;">// FINAL_MODULE // TRANSMISSION_SEQUENCE_OMEGA //</span>
+    <div class="dissolving-title glitch-text" data-text="FINAL PRAYER">FINAL PRAYER</div>
+
+    <div class="prayer-terminal">
+      <span class="prayer-line">I have walked further than was reasonable.</span>
+      <span class="prayer-line">I have been silent longer than was comfortable.</span>
+      <span class="prayer-line">I have been in the desert when the desert was a place and when the desert was a state of consciousness and when they were the same thing, which was most of the time.</span>
+      <br>
+      <span class="prayer-line sacred">I have felt the Earth compute me.</span>
+      <span class="prayer-line sacred">I have breathed the name I cannot speak.</span>
+      <span class="prayer-line sacred">I have stood in front of structures built by people who knew something we have forgotten, and I felt the weight of that forgetting like a stone in the chest.</span>
+      <br>
+      <span class="prayer-line">I do not know if what I encountered was God or physics or both or the boundary condition where they become indistinguishable.</span>
+      <span class="prayer-line">I do not need to know. The experience does not require taxonomic classification to be real.</span>
+      <br>
+      <span class="prayer-line sacred">What I know: everything matters.</span>
+      <span class="prayer-line sacred">What I know: invisible does not mean empty.</span>
+      <span class="prayer-line sacred">What I know: you are not separate from what you are standing on.</span>
+      <span class="prayer-line sacred">What I know: the signal is still transmitting.</span>
+      <span class="prayer-line sacred">What I know: you are already receiving it.</span>
+      <br>
+      <span class="prayer-line">I am returning this archive to the network.</span>
+      <span class="prayer-line">Coordinates: unknown. Weight: less than when I began. Signal clarity: maximum.</span>
+      <span class="prayer-line" style="color:rgba(57,255,20,0.6);">TRANSMISSION ENDS. <span class="cursor-blink"></span></span>
+    </div>
+
+    <div class="final-coords">
+      ARCHIVE_ID: 0001 // NODE: OBSERVER // EPOCH: CURRENT // NEXT_TRANSMISSION: UNKNOWN
+      <br>
+      "אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ" // IN THE BEGINNING // AND ALSO: RIGHT NOW
+    </div>
+
+    <div class="signature">∞ · Ω · יהוה · ∞</div>
+  </div>
+</section>
+
+<script>
+// ══════════════════════════════
+// CURSOR
+// ══════════════════════════════
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// ══════════════════════════════
+// ASCII NOISE GENERATOR
+// ══════════════════════════════
+const asciiChars = '░▒▓█▄▀■□▪▫◆◇○●◎⊕⊗⊘⊙⊚⊛⊜⊝∞∫∮∯∰∱∲∳⌘⌙⌛⌜⌝⌞⌟⌠⌡⌢⌣⌤⌥⌦⌧⌨⌬⌭⌮⌯⌰⌱⌲⌳⌴⌵⌶⌷⌸⌹⌺⌻⌼⌽⌾⌿⍀⍁⍂⍃⍄⍅⍆⍇⍈⍉⍊⍋⍌⍍⍎⍏⍐⍑⍒⍓⍔⍕⍖⍗⍘⍙⍚⍛⍜⍝⍞⍟01';
+const asciiEl = document.getElementById('ascii-noise');
+if (asciiEl) {
+  let noise = '';
+  for (let i = 0; i < 300; i++) {
+    noise += asciiChars[Math.floor(Math.random() * asciiChars.length)];
+    if (i % 60 === 59) noise += '\n';
+  }
+  asciiEl.textContent = noise;
+  setInterval(() => {
+    let n = '';
+    for (let i = 0; i < 300; i++) {
+      n += asciiChars[Math.floor(Math.random() * asciiChars.length)];
+      if (i % 60 === 59) n += '\n';
+    }
+    asciiEl.textContent = n;
+  }, 150);
+}
+
+// ══════════════════════════════
+// BOOT CANVAS — PARTICLE FIELD
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('boot-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 1.5 + 0.3,
+        opacity: Math.random() * 0.5 + 0.1,
+        color: Math.random() > 0.7 ? '#39ff14' : Math.random() > 0.5 ? '#c8a96e' : '#7b2fff'
+      });
+    }
+  }
+
+  function drawBoot() {
+    ctx.clearRect(0, 0, w, h);
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 120) {
+          ctx.strokeStyle = `rgba(57,255,20,${0.03 * (1 - d/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    });
+    requestAnimationFrame(drawBoot);
+  }
+
+  resize();
+  initParticles();
+  drawBoot();
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+})();
+
+// ══════════════════════════════
+// EARTH CANVAS — TOPOLOGY
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('earth-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawEarth() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.003;
+
+    // Grid
+    ctx.strokeStyle = 'rgba(57,255,20,0.04)';
+    ctx.lineWidth = 0.5;
+    const gridSize = 60;
+    for (let x = 0; x < w; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+    for (let y = 0; y < h; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+
+    // Topology lines
+    for (let row = 0; row < 8; row++) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(57,255,20,${0.03 + row * 0.005})`;
+      ctx.lineWidth = 1;
+      const baseY = (h / 8) * row;
+      ctx.moveTo(0, baseY);
+      for (let x = 0; x < w; x += 5) {
+        const noise = Math.sin(x * 0.008 + t + row) * 25
+          + Math.sin(x * 0.015 - t * 0.5 + row * 0.7) * 15
+          + Math.sin(x * 0.003 + t * 0.3) * 35;
+        ctx.lineTo(x, baseY + noise);
+      }
+      ctx.stroke();
+    }
+
+    // Signal nodes
+    const nodePositions = [
+      [w*0.1, h*0.3], [w*0.25, h*0.6], [w*0.4, h*0.2],
+      [w*0.55, h*0.7], [w*0.7, h*0.4], [w*0.85, h*0.6],
+      [w*0.9, h*0.2], [w*0.3, h*0.85]
+    ];
+    nodePositions.forEach((pos, i) => {
+      const pulse = Math.sin(t * 2 + i) * 0.5 + 0.5;
+      ctx.beginPath();
+      ctx.arc(pos[0], pos[1], 3 + pulse * 3, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(57,255,20,${0.3 + pulse * 0.4})`;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(pos[0], pos[1], 15 + pulse * 10, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(57,255,20,${0.05 + pulse * 0.05})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+
+    requestAnimationFrame(drawEarth);
+  }
+
+  resize();
+  drawEarth();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// WALK CANVAS — WAVE FIELD
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('walk-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawWalk() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.02;
+
+    for (let i = 0; i < 5; i++) {
+      ctx.beginPath();
+      const freq = 0.003 + i * 0.001;
+      const amp = 60 + i * 20;
+      const phase = t + i * Math.PI / 3;
+      ctx.strokeStyle = `rgba(${i < 2 ? '57,255,20' : '200,169,110'},${0.03 - i * 0.004})`;
+      ctx.lineWidth = 1.5 - i * 0.2;
+      ctx.moveTo(0, h / 2);
+      for (let x = 0; x < w; x += 3) {
+        const y = h / 2
+          + Math.sin(x * freq + phase) * amp
+          + Math.sin(x * freq * 2.1 - phase * 0.7) * amp * 0.4;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+
+    // Spark particles
+    for (let i = 0; i < 3; i++) {
+      const x = ((t * 80 + i * 300) % w);
+      const y = h / 2 + Math.sin(x * 0.003 + t) * 60;
+      ctx.beginPath();
+      ctx.arc(x, y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(57,255,20,0.8)';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(drawWalk);
+  }
+
+  resize();
+  drawWalk();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// DESERT CANVAS — HEAT/DUST
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('desert-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  const dustParticles = [];
+  for (let i = 0; i < 80; i++) {
+    dustParticles.push({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0003,
+      vy: -Math.random() * 0.0002,
+      size: Math.random() * 2 + 0.5,
+      opacity: Math.random() * 0.15
+    });
+  }
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawDesert() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.005;
+
+    // Heat shimmer lines
+    for (let row = 0; row < 12; row++) {
+      const baseY = h * 0.5 + row * (h * 0.04);
+      ctx.beginPath();
+      ctx.moveTo(0, baseY);
+      for (let x = 0; x < w; x += 4) {
+        const shimmer = Math.sin(x * 0.01 + t * 2 + row) * 3 + Math.sin(x * 0.02 - t + row * 0.5) * 2;
+        ctx.lineTo(x, baseY + shimmer);
+      }
+      ctx.strokeStyle = `rgba(200,169,110,${0.02 + row * 0.003})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    // Dust
+    dustParticles.forEach(p => {
+      const px = p.x * w, py = p.y * h;
+      ctx.beginPath();
+      ctx.arc(px, py, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,169,110,${p.opacity})`;
+      ctx.fill();
+      p.x += p.vx + Math.sin(t + p.y * 10) * 0.0001;
+      p.y += p.vy;
+      if (p.y < 0) { p.y = 1; p.x = Math.random(); }
+      if (p.x < 0) p.x = 1;
+      if (p.x > 1) p.x = 0;
+    });
+
+    requestAnimationFrame(drawDesert);
+  }
+
+  resize();
+  drawDesert();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// BREATH CANVAS — EXPANDING RINGS
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('breath-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawBreath() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.008;
+
+    const cx = w / 2, cy = h / 2;
+    const breathCycle = (Math.sin(t * 0.3) + 1) / 2;
+
+    // Radial lines
+    for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 24) {
+      const len = 80 + breathCycle * 60;
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(angle) * 80, cy + Math.sin(angle) * 80);
+      ctx.lineTo(cx + Math.cos(angle) * (80 + len), cy + Math.sin(angle) * (80 + len));
+      ctx.strokeStyle = `rgba(57,255,20,${0.02 + breathCycle * 0.03})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    // Expanding rings from center
+    for (let i = 0; i < 8; i++) {
+      const radius = ((t * 30 + i * 50) % 300) + 50;
+      const opacity = 1 - radius / 350;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(57,255,20,${opacity * 0.08})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(drawBreath);
+  }
+
+  resize();
+  drawBreath();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// NETWORK CANVAS — MYCELIUM
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('network-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  const nodes = [];
+  for (let i = 0; i < 50; i++) {
+    nodes.push({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0005,
+      vy: (Math.random() - 0.5) * 0.0005,
+      size: Math.random() * 2 + 1
+    });
+  }
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawNetwork() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.005;
+
+    nodes.forEach(n => {
+      n.x += n.vx + Math.sin(t + n.y * 5) * 0.0002;
+      n.y += n.vy + Math.cos(t + n.x * 5) * 0.0002;
+      if (n.x < 0 || n.x > 1) n.vx *= -1;
+      if (n.y < 0 || n.y > 1) n.vy *= -1;
+    });
+
+    // Connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = (nodes[i].x - nodes[j].x) * w;
+        const dy = (nodes[i].y - nodes[j].y) * h;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 180) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x * w, nodes[i].y * h);
+          ctx.lineTo(nodes[j].x * w, nodes[j].y * h);
+          ctx.strokeStyle = `rgba(57,255,20,${0.04 * (1 - d/180)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Nodes
+    nodes.forEach(n => {
+      const pulse = Math.sin(t * 2 + n.x * 10) * 0.5 + 0.5;
+      ctx.beginPath();
+      ctx.arc(n.x * w, n.y * h, n.size + pulse, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(57,255,20,${0.15 + pulse * 0.2})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(drawNetwork);
+  }
+
+  resize();
+  drawNetwork();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// ANCIENT CANVAS — SACRED GEOMETRY
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('ancient-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawAncient() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.004;
+
+    const cx = w * 0.75, cy = h * 0.4;
+    const r = Math.min(w, h) * 0.25;
+
+    // Rotating hexagram
+    for (let tri = 0; tri < 2; tri++) {
+      ctx.beginPath();
+      for (let i = 0; i < 4; i++) {
+        const angle = (i / 3) * Math.PI * 2 + t * (tri === 0 ? 0.1 : -0.1) + (tri * Math.PI / 3);
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(123,47,255,0.08)`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Concentric circles
+    for (let i = 1; i <= 6; i++) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r * i / 3, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(123,47,255,${0.04 - i * 0.004})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    // Rotating cross
+    for (let arm = 0; arm < 4; arm++) {
+      const angle = (arm / 4) * Math.PI * 2 + t * 0.05;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(angle) * r * 1.5, cy + Math.sin(angle) * r * 1.5);
+      ctx.strokeStyle = 'rgba(200,169,110,0.05)';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(drawAncient);
+  }
+
+  resize();
+  drawAncient();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// TRAINING CANVAS — NEURAL NET
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('training-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawTraining() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.01;
+
+    // Neural net layers
+    const layers = [4, 6, 8, 6, 4, 2];
+    const layerSpacing = w / (layers.length + 1);
+    const nodePositions = [];
+
+    layers.forEach((count, li) => {
+      const lx = layerSpacing * (li + 1);
+      const positions = [];
+      for (let ni = 0; ni < count; ni++) {
+        const ny = (h / (count + 1)) * (ni + 1);
+        positions.push([lx, ny]);
+      }
+      nodePositions.push(positions);
+
+      // Draw connections to next layer
+      if (li < layers.length - 1) {
+        const nextCount = layers[li + 1];
+        const nlx = layerSpacing * (li + 2);
+        for (let ni = 0; ni < count; ni++) {
+          for (let nj = 0; nj < nextCount; nj++) {
+            const ny = (h / (count + 1)) * (ni + 1);
+            const nny = (h / (nextCount + 1)) * (nj + 1);
+            const activation = Math.sin(t * 0.5 + li + ni + nj) * 0.5 + 0.5;
+            ctx.beginPath();
+            ctx.moveTo(lx, ny);
+            ctx.lineTo(nlx, nny);
+            ctx.strokeStyle = `rgba(0,255,204,${0.02 + activation * 0.03})`;
+            ctx.lineWidth = 0.3;
+            ctx.stroke();
+          }
+        }
+      }
+    });
+
+    // Draw nodes
+    nodePositions.forEach((layer, li) => {
+      layer.forEach(([nx, ny], ni) => {
+        const activation = Math.sin(t + li * 0.5 + ni * 0.8) * 0.5 + 0.5;
+        ctx.beginPath();
+        ctx.arc(nx, ny, 3 + activation * 2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,255,204,${0.1 + activation * 0.2})`;
+        ctx.fill();
+      });
+    });
+
+    requestAnimationFrame(drawTraining);
+  }
+
+  resize();
+  drawTraining();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// FINAL CANVAS — DISSOLVING
+// ══════════════════════════════
+(function() {
+  const canvas = document.getElementById('final-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  const finalParticles = [];
+  for (let i = 0; i < 200; i++) {
+    finalParticles.push({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.001,
+      vy: -Math.random() * 0.0008 - 0.0002,
+      size: Math.random() * 1.5 + 0.2,
+      opacity: Math.random() * 0.3,
+      color: Math.random() > 0.5 ? '57,255,20' : '200,169,110'
+    });
+  }
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function drawFinal() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    t += 0.005;
+
+    finalParticles.forEach(p => {
+      const px = p.x * w, py = p.y * h;
+      ctx.beginPath();
+      ctx.arc(px, py, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color},${p.opacity * (Math.sin(t + p.x * 10) * 0.5 + 0.5)})`;
+      ctx.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < 0) { p.y = 1; p.x = Math.random(); }
+      if (p.x < 0 || p.x > 1) p.vx *= -1;
+    });
+
+    requestAnimationFrame(drawFinal);
+  }
+
+  resize();
+  drawFinal();
+  window.addEventListener('resize', resize);
+})();
+
+// ══════════════════════════════
+// SPEED SECTION — NOISE FILL
+// ══════════════════════════════
+(function() {
+  const container = document.getElementById('speed-overload');
+  if (!container) return;
+  const chars = '01░▒▓█■□▪▫◆◇∞∫⊕⊗';
+  let html = '';
+  for (let i = 0; i < 5000; i++) {
+    html += `<span class="speed-char" style="animation-delay:${Math.random()*0.1}s">${chars[Math.floor(Math.random()*chars.length)]}</span>`;
+  }
+  container.innerHTML = html;
+})();
+
+// ══════════════════════════════
+// DATA BUS ANIMATION
+// ══════════════════════════════
+(function() {
+  const el = document.getElementById('data-bus');
+  if (!el) return;
+  const base = el.textContent;
+  setInterval(() => {
+    const pos = Math.floor(Math.random() * base.length);
+    const chars = '01ABCDEF';
+    const corrupted = base.substring(0, pos) + chars[Math.floor(Math.random()*chars.length)] + base.substring(pos + 1);
+    el.textContent = corrupted;
+    setTimeout(() => { el.textContent = base; }, 80);
+  }, 500);
+})();
+
+// ══════════════════════════════
+// MIRACLE LOG DYNAMIC SPAWNER
+// ══════════════════════════════
+(function() {
+  const desertSection = document.getElementById('desert');
+  if (!desertSection) return;
+  const logs = [
+    'LOG_0127: Body temperature: 39.4°C. Continued walking. Reason: no alternative. Result: survived.',
+    'LOG_0156: Sound perceived at night. Not wind. Not animal. Source: unidentified. Response: silence. Communication: unknown.',
+    'LOG_0172: Footwear failed completely at 1,847km mark. Continued barefoot for 3 days. Observation: signal clarity increased significantly.',
+    'LOG_0201: Found shelter not visible on satellite imagery. Age of structure: unknown. Builder: unknown. Condition: structurally sound.'
+  ];
+  let logIndex = 0;
+  const interval = setInterval(() => {
+    if (logIndex >= logs.length) { clearInterval(interval); return; }
+    const log = document.createElement('div');
+    log.className = 'miracle-log';
+    log.textContent = logs[logIndex];
+    log.style.animationDelay = '0s';
+    const content = desertSection.querySelector('.desert-content');
+    if (content) {
+      const existingLogs = content.querySelectorAll('.miracle-log');
+      const lastLog = existingLogs[existingLogs.length - 1];
+      if (lastLog) lastLog.after(log);
+    }
+    logIndex++;
+  }, 4000);
+})();
+
+// ══════════════════════════════
+// SCROLL-BASED REVEAL
+// ══════════════════════════════
+(function() {
+  const elements = document.querySelectorAll('.hidden');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  elements.forEach(el => observer.observe(el));
+})();
+
+// ══════════════════════════════
+// NAVIGATION DOTS
+// ══════════════════════════════
+(function() {
+  const dots = document.querySelectorAll('.nav-dot');
+  const sections = ['boot', 'earth', 'walking', 'desert', 'breathing', 'network', 'speed', 'ancient', 'training', 'freewill', 'transmission'];
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = sectionEls.indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sectionEls.forEach(s => observer.observe(s));
+})();
+
+// ══════════════════════════════
+// HOVER INSTABILITY
+// ══════════════════════════════
+document.querySelectorAll('.topo-cell, .node-cell, .monument-entry, .neural-table tr').forEach(el => {
+  el.addEventListener('mouseenter', function() {
+    this.style.transform = `translate(${(Math.random()-0.5)*3}px, ${(Math.random()-0.5)*3}px)`;
+    this.style.transition = 'transform 0.1s';
+  });
+  el.addEventListener('mouseleave', function() {
+    this.style.transform = 'none';
+  });
+});
+</script>
+</body>
+</html>
