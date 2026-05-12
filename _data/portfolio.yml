@@ -22,7 +22,7 @@
   description: "Publication platform at the intersection of technology, literature, and digital law. Built on a custom Jekyll stack deployed to GitHub Pages."
   cover:       "/assets/images/portfolio/fob-cover.jpg"
   url:         "https://followorbounce.com"
-  featured:    true
+  #featured:    true
   year:        "2024"
 
 - title:       "Brand Identity System"
@@ -31,7 +31,7 @@
   description: "Full visual identity for Follow or Bounce — logotype, colour system, type scale, editorial voice guidelines, and grid principles."
   cover:       "/assets/images/portfolio/fob-brand.jpg"
   case_study:  "/brand/"
-  featured:    true
+  #featured:    true
   year:        "2024"
 
 - title:       "Marine Wood Craft"
@@ -74,10 +74,19 @@
   url:         "https://id.followorbounce.com/pages/MeridianMind"
   year:        "2026"
 
-- title:       "Brand Identity System - FoBv2"
+- title:       "Brand Identity System - FoB_v2"
   category:    identity
   tags:        ["Design System", "Editorial", "Presentation"]
   description: "Identity system presentation for Follow or Bounce v2 — a publication at the intersection of technology, literature, and law. Covers typographic scale, ink-on-paper color logic, grid principles, UI components, and the editorial philosophy behind the brand"
   cover:       ""
   url:         "https://id.followorbounce.com/pages/FollowOrBounce_v2"
   year:        "2025"
+
+- title:       "Ministry of Final Things"
+  category:    web
+  tags:        ["Editorial", "Experimental", "HTML/CSS", "Motion Design"]
+  description: "Luxury apocalypse catalogue documenting the aesthetic collapse of civilization. A single-page editorial artifact combining post-Soviet brutalism, Bauhaus decay, and institutional surrealism — built in pure HTML/CSS with cinematic scroll choreography."
+  cover:       "/assets/images/portfolio/moft-cover.jpg"
+  url:         "https://id.followorbounce.com/pages/collapse"
+  featured:    true
+  year:        "2025"  
