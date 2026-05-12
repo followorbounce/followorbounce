@@ -20,7 +20,7 @@
   category:    web
   tags:        ["Editorial", "Jekyll", "GitHub Pages"]
   description: "Publication platform at the intersection of technology, literature, and digital law. Built on a custom Jekyll stack deployed to GitHub Pages."
-  cover:       "/assets/images/portfolio/fob-cover.jpg"
+  cover:       ""
   url:         "https://followorbounce.com"
   #featured:    true
   year:        "2024"
@@ -38,7 +38,7 @@
   category:    web
   tags:        ["html", "Layout", "Static Site"]
   description: "Custom marine services website for a Honolulu-based woodworking and boat restoration company. Clean single-page layout showcasing services, process, and contact for Pacific vessel work."
-  cover:       ""
+  cover:       "/assets/images/portfolio/marine-wood.jpg"
   url:         "https://marinewoodcraft.com/"
   year:        "2026"
 
@@ -46,7 +46,7 @@
   category:    identity
   tags:        ["Logo", "Identity", "Guidelines"]
   description: "Comprehensive brand identity passport for Marine Wood Craft — a reverse-engineered visual style guide covering color tokens, typography, motion language, component system, and cross-media application guidelines."
-  cover:       ""
+  cover:       "/assets/images/portfolio/marine-wood-craft.jpg"
   url:         "https://id.followorbounce.com/pages/MarineWoodCraft"
   year:        "2026"
 
@@ -54,7 +54,7 @@
   category:    web, development
   tags:        ["Static Site", "GitHub Pages", "Naming"]
   description: "Single-page service site for a solo commercial hull diver operating out of Fisherman's Wharf, San Francisco Bay. Covers underwater hull cleaning, barnacle removal, prop inspection, and zinc replacement for fishing and private vessels."
-  cover:       ""
+  cover:       "/assets/images/portfolio/bay-current.jpg"
   url:         "https://followorbounce.github.io/BayCurrentDiving/"
   year:        "2026" 
 
@@ -62,7 +62,7 @@
   category:    identity
   tags:        ["Brand Book", "Typography", "Colour"]
   description: "Complete brand identity system for Bay Current Diving — covering color palette, typography, logo anatomy, icon system, photography direction, copy tone, workwear, and digital/SEO guidelines for a solo SF Bay commercial diving operation"
-  cover:       ""
+  cover:       "/assets/images/portfolio/bay-current-diving.jpg"
   url:         "https://id.followorbounce.com/pages/BayCurrentDiving"
   year:        "2026"
 
@@ -70,7 +70,7 @@
   category:    identity
   tags:        ["Design System", "Style Guide", "Healthcare"]
   description: "Full brand identity guide for Meridian Mind, a psychiatric practice — covering logo system, therapeutic green color palette, Cormorant Garamond and DM Sans typography, UI components, motion principles, and voice guidelines for a calm, clinical digital presence."
-  cover:       ""
+  cover:       "/assets/images/portfolio/meridian-mind.jpg"
   url:         "https://id.followorbounce.com/pages/MeridianMind"
   year:        "2026"
 
@@ -78,9 +78,10 @@
   category:    identity
   tags:        ["Design System", "Editorial", "Presentation"]
   description: "Identity system presentation for Follow or Bounce v2 — a publication at the intersection of technology, literature, and law. Covers typographic scale, ink-on-paper color logic, grid principles, UI components, and the editorial philosophy behind the brand"
-  cover:       ""
+  cover:       "/assets/images/portfolio/fob-v2.jpg"
   url:         "https://id.followorbounce.com/pages/FollowOrBounce_v2"
-  year:        "2025"
+  featured:    true
+  year:        "2026"
 
 - title:       "Ministry of Final Things"
   category:    web
