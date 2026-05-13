@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#1a0000" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <!-- Projector beam -->
+    <linearGradient id="beamGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Beam cone fill -->
+    <linearGradient id="beamCone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#8b0000" stop-opacity="0.02"/>
+    </linearGradient>
+    <!-- Crimson glow -->
+    <radialGradient id="crimsonGlow" cx="50%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#8b0000" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Top light -->
+    <radialGradient id="topLight" cx="50%" cy="0%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Scanline pattern -->
+    <pattern id="scanlines" x="0" y="0" width="2" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="2" height="2" fill="black" fill-opacity="0.06"/>
+    </pattern>
+    <!-- Noise grain -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="overlay" result="noisy"/>
+      <feComposite in="noisy" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <!-- Strong glow -->
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1536" height="1024" fill="url(#bgGrad)"/>
+  <rect width="1536" height="1024" fill="url(#crimsonGlow)"/>
+  <rect width="1536" height="1024" fill="url(#topLight)"/>
+
+  <!-- Grid lines — horizontal -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="128" x2="1536" y2="128"/>
+    <line x1="0" y1="256" x2="1536" y2="256"/>
+    <line x1="0" y1="384" x2="1536" y2="384"/>
+    <line x1="0" y1="512" x2="1536" y2="512"/>
+    <line x1="0" y1="640" x2="1536" y2="640"/>
+    <line x1="0" y1="768" x2="1536" y2="768"/>
+    <line x1="0" y1="896" x2="1536" y2="896"/>
+  </g>
+
+  <!-- Grid lines — vertical -->
+  <g stroke="#ffffff" stroke-opacity="0.025" stroke-width="1">
+    <line x1="192" y1="0" x2="192" y2="1024"/>
+    <line x1="384" y1="0" x2="384" y2="1024"/>
+    <line x1="576" y1="0" x2="576" y2="1024"/>
+    <line x1="768" y1="0" x2="768" y2="1024"/>
+    <line x1="960" y1="0" x2="960" y2="1024"/>
+    <line x1="1152" y1="0" x2="1152" y2="1024"/>
+    <line x1="1344" y1="0" x2="1344" y2="1024"/>
+  </g>
+
+  <!-- Projector beam — center cone -->
+  <polygon points="768,0 640,1024 896,1024" fill="url(#beamCone)"/>
+
+  <!-- Projector beam — narrow shaft -->
+  <rect x="766" y="0" width="4" height="500" fill="url(#beamGrad)"/>
+
+  <!-- Dust particles in beam -->
+  <g fill="#ffffff">
+    <circle cx="768" cy="80" r="1" fill-opacity="0.6"/>
+    <circle cx="754" cy="160" r="0.8" fill-opacity="0.4"/>
+    <circle cx="780" cy="240" r="1.2" fill-opacity="0.3"/>
+    <circle cx="760" cy="320" r="0.6" fill-opacity="0.5"/>
+    <circle cx="776" cy="400" r="1" fill-opacity="0.2"/>
+    <circle cx="748" cy="180" r="0.5" fill-opacity="0.35"/>
+    <circle cx="790" cy="300" r="0.8" fill-opacity="0.25"/>
+    <circle cx="758" cy="440" r="1.2" fill-opacity="0.15"/>
+    <circle cx="782" cy="120" r="0.7" fill-opacity="0.45"/>
+    <circle cx="765" cy="360" r="0.9" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Beam source point -->
+  <circle cx="768" cy="0" r="24" fill="#ffffff" fill-opacity="0.12" filter="url(#strongGlow)"/>
+  <circle cx="768" cy="0" r="8" fill="#ffffff" fill-opacity="0.4"/>
+
+  <!-- Horizontal accent lines -->
+  <line x1="0" y1="1" x2="1536" y2="1" stroke="#8b0000" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="0" y1="1023" x2="1536" y2="1023" stroke="#8b0000" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- Main title — THE ILLUMINATORS -->
+  <text x="768" y="580" font-family="'Bebas Neue', 'Impact', sans-serif" font-size="180" letter-spacing="12" text-anchor="middle" fill="#f0eeeb" fill-opacity="0.92" filter="url(#glow)">THE ILLUMINATORS</text>
+
+  <!-- Ghost text behind -->
+  <text x="768" y="580" font-family="'Bebas Neue', 'Impact', sans-serif" font-size="180" letter-spacing="12" text-anchor="middle" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.08">THE ILLUMINATORS</text>
+
+  <!-- Subtitle line -->
+  <text x="768" y="640" font-family="'Courier New', monospace" font-size="13" letter-spacing="8" text-anchor="middle" fill="#888888" fill-opacity="0.7">A DIGITAL SERMON ON LIGHT, PROJECTION &amp; MORAL COLLAPSE</text>
+
+  <!-- Crimson separator lines -->
+  <line x1="192" y1="660" x2="580" y2="660" stroke="#8b0000" stroke-width="0.5" stroke-opacity="0.5"/>
+  <line x1="956" y1="660" x2="1344" y2="660" stroke="#8b0000" stroke-width="0.5" stroke-opacity="0.5"/>
+
+  <!-- Cross symbol center -->
+  <text x="768" y="666" font-family="serif" font-size="14" text-anchor="middle" fill="#8b0000" fill-opacity="0.8">☩</text>
+
+  <!-- System annotation — top left -->
+  <text x="48" y="48" font-family="'Courier New', monospace" font-size="10" letter-spacing="4" fill="#888888" fill-opacity="0.4">SYS/0001 — FRAGMENT 001</text>
+  <text x="48" y="66" font-family="'Courier New', monospace" font-size="10" letter-spacing="4" fill="#8b0000" fill-opacity="0.6">TRANSMISSION ACTIVE</text>
+
+  <!-- Timecode — top right -->
+  <text x="1488" y="48" font-family="'Courier New', monospace" font-size="10" letter-spacing="3" text-anchor="end" fill="#888888" fill-opacity="0.4">00:00:00:00</text>
+  <text x="1488" y="66" font-family="'Courier New', monospace" font-size="10" letter-spacing="3" text-anchor="end" fill="#888888" fill-opacity="0.25">21.3069°N 157.8583°W</text>
+
+  <!-- Vertical text — left -->
+  <text x="32" y="512" font-family="'Courier New', monospace" font-size="9" letter-spacing="5" fill="#8b0000" fill-opacity="0.5" writing-mode="tb" transform="rotate(180, 32, 512)">PROJECTION SYSTEM /// ACTIVE</text>
+
+  <!-- Vertical text — right -->
+  <text x="1504" y="512" font-family="'Courier New', monospace" font-size="9" letter-spacing="5" fill="#888888" fill-opacity="0.3" writing-mode="tb">AUDIOVISUAL MEDIA MANAGEMENT</text>
+
+  <!-- Bottom doctrine fragments -->
+  <text x="192" y="880" font-family="'Courier New', monospace" font-size="9" letter-spacing="3" fill="#888888" fill-opacity="0.3">A — YOU ARE THE CENTER</text>
+  <text x="192" y="900" font-family="'Courier New', monospace" font-size="9" letter-spacing="3" fill="#888888" fill-opacity="0.3">B — YOU ARE THE HIGHEST BEING</text>
+  <text x="192" y="920" font-family="'Courier New', monospace" font-size="9" letter-spacing="3" fill="#888888" fill-opacity="0.3">C — YOUR WORLD IS CLOSED</text>
+
+  <!-- Bottom right quote fragment -->
+  <text x="1344" y="880" font-family="'Courier New', monospace" font-size="9" letter-spacing="2" text-anchor="end" fill="#8b0000" fill-opacity="0.5">"LOVE YOUR NEIGHBOR AS YOURSELF"</text>
+  <text x="1344" y="900" font-family="'Courier New', monospace" font-size="9" letter-spacing="3" text-anchor="end" fill="#888888" fill-opacity="0.3">MATTHEW 22:39</text>
+
+  <!-- Scanline overlay -->
+  <rect width="1536" height="1024" fill="url(#scanlines)"/>
+
+  <!-- Grain overlay -->
+  <rect width="1536" height="1024" fill="#888888" fill-opacity="0.025" filter="url(#grain)"/>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="986" width="1536" height="38" fill="#000000" fill-opacity="0.5"/>
+  <text x="192" y="1010" font-family="'Courier New', monospace" font-size="9" letter-spacing="4" fill="#888888" fill-opacity="0.4">FOLLOWORBOUNCE.COM</text>
+  <text x="768" y="1010" font-family="'Courier New', monospace" font-size="9" letter-spacing="4" text-anchor="middle" fill="#8b0000" fill-opacity="0.5">THE ILLUMINATORS — 2026</text>
+  <text x="1344" y="1010" font-family="'Courier New', monospace" font-size="9" letter-spacing="4" text-anchor="end" fill="#888888" fill-opacity="0.4">ALL PROJECTIONS ARE INTENTIONAL</text>
+</svg>

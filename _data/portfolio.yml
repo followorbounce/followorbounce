@@ -109,3 +109,13 @@
   url:         "https://id.followorbounce.com/pages/prophetic-os"
 #  featured:    true
   year:        "2024"
+
+- title: "The Illuminators"
+  tags:        ["Editorial", "Experimental", "Interactive"]
+  category: "web"
+  description: "A cinematic meditation on self-deification, closed systems, and the ethics of light. Where projection becomes control."
+  cover: "/assets/images/portfolio/the-illuminators.svg"
+  url: "id.followorbounce.com/pages/the-illuminators/"
+#  featured: "true"
+  year: "2026"
+
