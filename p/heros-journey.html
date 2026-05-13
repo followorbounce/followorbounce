@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE HERO'S JOURNEY — A RITUAL IN SEVEN DEATHS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Bebas+Neue&family=IM+Fell+English:ital@0;1&family=Courier+Prime:wght@400;700&display=swap');
+
+  :root {
+    --acid-green: #7fff00;
+    --burnt-orange: #cc4400;
+    --magenta: #ff0080;
+    --blackened-gold: #b8860b;
+    --sickly-yellow: #d4c400;
+    --cosmic-blue: #000066;
+    --ash: #2a2a2a;
+    --char: #111108;
+    --bone: #e8e0cc;
+    --ember: #ff4400;
+    --void: #050503;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    color: var(--bone);
+    font-family: 'IM Fell English', Georgia, serif;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* SCANLINE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NOISE TEXTURE */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.3;
+  }
+
+  /* ============ SECTION 0: PRELUDE / SLEEP ============ */
+  #sleep {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 12vw 8vw;
+    position: relative;
+    background: var(--void);
+    overflow: hidden;
+  }
+
+  .sleep-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 60% 40% at 80% 50%, #000033 0%, var(--void) 70%);
+  }
+
+  .breath-circle {
+    position: absolute;
+    right: 15vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40vw;
+    height: 40vw;
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,100,0.3);
+    animation: breathe 6s ease-in-out infinite;
+  }
+  .breath-circle::before {
+    content: '';
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,150,0.2);
+    animation: breathe 6s ease-in-out infinite reverse;
+  }
+  .breath-circle::after {
+    content: '';
+    position: absolute;
+    inset: 20%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,0,80,0.6) 0%, transparent 70%);
+    animation: breathe 6s ease-in-out infinite 1s;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.08); opacity: 0.8; }
+  }
+
+  .sleep-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: rgba(184,134,11,0.5);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sleep-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(3.5rem, 10vw, 11rem);
+    line-height: 0.85;
+    color: var(--bone);
+    position: relative;
+    z-index: 2;
+    max-width: 60vw;
+    text-shadow: 0 0 80px rgba(180,130,0,0.15);
+  }
+
+  .sleep-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: rgba(212,196,0,0.6);
+    margin-top: 2rem;
+    max-width: 40vw;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+  }
+
+  .o2-formula {
+    position: absolute;
+    bottom: 8vh;
+    right: 8vw;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    color: rgba(127,255,0,0.3);
+    letter-spacing: 0.2em;
+    writing-mode: vertical-rl;
+    z-index: 2;
+  }
+
+  .scroll-prompt {
+    position: absolute;
+    bottom: 6vh;
+    left: 8vw;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    animation: blink 2s step-end infinite;
+    z-index: 2;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* ============ SECTION 1: AWAKENING ============ */
+  #awakening {
+    min-height: 120vh;
+    padding: 10vw 8vw;
+    position: relative;
+    background: linear-gradient(180deg, var(--void) 0%, #0a0500 100%);
+    overflow: hidden;
+  }
+
+  .awakening-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(15rem, 35vw, 40rem);
+    line-height: 0.8;
+    color: rgba(204,68,0,0.06);
+    position: absolute;
+    top: -5vw;
+    right: -5vw;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .awakening-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    color: var(--burnt-orange);
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .awakening-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .awk-left {
+    padding-right: 6vw;
+    border-right: 1px solid rgba(204,68,0,0.2);
+  }
+
+  .awk-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 9rem);
+    line-height: 0.9;
+    color: var(--burnt-orange);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .awk-body {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.9;
+    color: rgba(232,224,204,0.75);
+    max-width: 42ch;
+  }
+
+  .awk-body em {
+    color: var(--sickly-yellow);
+    font-style: italic;
+  }
+
+  .awk-right {
+    padding-left: 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 2rem;
+  }
+
+  .myth-card {
+    border: 1px solid rgba(184,134,11,0.2);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    background: rgba(184,134,11,0.03);
+    transition: all 0.4s ease;
+    cursor: default;
+  }
+  .myth-card:hover {
+    background: rgba(184,134,11,0.07);
+    border-color: rgba(184,134,11,0.4);
+  }
+  .myth-card::before {
+    content: attr(data-origin);
+    position: absolute;
+    top: -0.6rem;
+    left: 1rem;
+    background: var(--void);
+    padding: 0 0.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--blackened-gold);
+    text-transform: uppercase;
+  }
+  .myth-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--bone);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .myth-card-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(232,224,204,0.55);
+    line-height: 1.6;
+  }
+
+  /* ============ SECTION 2: THE STAR IGNITES ============ */
+  #ignition {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: #050300;
+    padding: 8vw;
+    overflow: hidden;
+  }
+
+  .star-container {
+    position: relative;
+    width: min(60vw, 400px);
+    height: min(60vw, 400px);
+    margin: 0 auto 4rem;
+  }
+
+  .star-outer {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,68,0,0.15);
+    animation: rotateSlow 30s linear infinite;
+  }
+  .star-mid {
+    position: absolute;
+    inset: 15%;
+    border-radius: 50%;
+    border: 1px solid rgba(255,68,0,0.25);
+    animation: rotateSlow 20s linear infinite reverse;
+  }
+  .star-inner {
+    position: absolute;
+    inset: 32%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,100,0,0.8) 0%, rgba(255,40,0,0.3) 40%, transparent 70%);
+    animation: pulse-star 3s ease-in-out infinite;
+  }
+  .star-core {
+    position: absolute;
+    inset: 44%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #ffaa00 30%, rgba(255,68,0,0.8) 60%, transparent 100%);
+    animation: pulse-star 2s ease-in-out infinite 0.5s;
+    box-shadow: 0 0 40px rgba(255,120,0,0.6), 0 0 80px rgba(255,60,0,0.3), 0 0 160px rgba(255,40,0,0.1);
+  }
+
+  /* Star rays */
+  .star-ray {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,100,0,0.6), transparent);
+    transform-origin: 0 50%;
+    opacity: 0.4;
+  }
+
+  @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes pulse-star {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+
+  .ignition-pre {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.6em;
+    color: rgba(255,68,0,0.5);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .ignition-headline {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    color: var(--bone);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 60px rgba(255,100,0,0.3);
+  }
+
+  .ignition-question {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--sickly-yellow);
+    line-height: 1.7;
+    max-width: 55ch;
+    margin: 0 auto 4rem;
+  }
+
+  /* ============ SECTION 3: THE CHOICE / FORK ============ */
+  #choice {
+    min-height: 100vh;
+    padding: 8vw;
+    position: relative;
+    background: #030304;
+    overflow: hidden;
+  }
+
+  .choice-header {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.8rem);
+    letter-spacing: 0.3em;
+    color: rgba(255,0,128,0.6);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .choice-question {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1.8rem, 4vw, 4rem);
+    line-height: 1.2;
+    color: var(--bone);
+    max-width: 20ch;
+    margin-bottom: 8vw;
+  }
+
+  .fork {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    align-items: start;
+    min-height: 60vh;
+  }
+
+  .fork-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    gap: 0.5rem;
+  }
+  .fork-divider span {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.2);
+    writing-mode: vertical-rl;
+    letter-spacing: 0.3em;
+  }
+  .fork-line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+
+  .path {
+    padding: 3rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .path-lucifer {
+    border-color: rgba(127,255,0,0.15);
+    background: rgba(127,255,0,0.02);
+  }
+  .path-lucifer:hover {
+    border-color: rgba(127,255,0,0.4);
+    background: rgba(127,255,0,0.05);
+    transform: translateX(-4px);
+  }
+  .path-christ {
+    border-color: rgba(255,0,128,0.15);
+    background: rgba(255,0,128,0.02);
+  }
+  .path-christ:hover {
+    border-color: rgba(255,0,128,0.4);
+    background: rgba(255,0,128,0.05);
+    transform: translateX(4px);
+  }
+
+  .path-symbol {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    opacity: 0.7;
+  }
+
+  .path-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 4rem);
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .path-lucifer .path-label { color: var(--acid-green); }
+  .path-christ .path-label { color: var(--magenta); }
+
+  .path-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(232,224,204,0.5);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .path-desc {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: rgba(232,224,204,0.35);
+    max-width: 40ch;
+  }
+
+  .path-myths {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .path-myth-item {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(232,224,204,0.3);
+  }
+
+  .path-btn {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: 1rem 2.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  .path-lucifer .path-btn {
+    color: var(--acid-green);
+  }
+  .path-lucifer .path-btn:hover {
+    background: var(--acid-green);
+    color: var(--void);
+  }
+  .path-christ .path-btn {
+    color: var(--magenta);
+  }
+  .path-christ .path-btn:hover {
+    background: var(--magenta);
+    color: var(--void);
+  }
+
+  /* ============ SECTION 4: DESCENT / TRIALS ============ */
+  #trials {
+    min-height: 140vh;
+    padding: 10vw 8vw;
+    position: relative;
+    background: linear-gradient(180deg, #030304 0%, #080200 100%);
+    overflow: hidden;
+  }
+
+  .trials-bg-text {
+    position: absolute;
+    top: 10%;
+    left: -5%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 20vw, 25rem);
+    color: rgba(204,68,0,0.04);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .trials-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    color: rgba(212,196,0,0.4);
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .trials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .trial-cell {
+    padding: 3rem 2rem;
+    border: 1px solid rgba(212,196,0,0.08);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+    background: rgba(8,2,0,0.5);
+  }
+  .trial-cell:hover {
+    border-color: rgba(212,196,0,0.25);
+    background: rgba(20,10,0,0.8);
+  }
+
+  .trial-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: rgba(212,196,0,0.08);
+    position: absolute;
+    top: -1rem;
+    right: 1rem;
+    line-height: 1;
+  }
+
+  .trial-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+
+  .trial-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--sickly-yellow);
+    margin-bottom: 0.5rem;
+  }
+
+  .trial-culture {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(212,196,0,0.3);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .trial-desc {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(232,224,204,0.45);
+  }
+
+  /* ============ SECTION 5: FIRE / TRANSFORMATION ============ */
+  #transformation {
+    min-height: 100vh;
+    padding: 0;
+    position: relative;
+    background: var(--void);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .fire-header {
+    padding: 8vw 8vw 4vw;
+    position: relative;
+    z-index: 2;
+  }
+
+  .fire-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 14rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, var(--sickly-yellow) 0%, var(--burnt-orange) 40%, var(--magenta) 80%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .phoenix-block {
+    padding: 4vw 8vw 8vw;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 8vw;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .phoenix-text-large {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    line-height: 1.6;
+    color: var(--bone);
+  }
+  .phoenix-text-large strong {
+    color: var(--burnt-orange);
+    font-style: italic;
+  }
+
+  .formula-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .formula-line {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-left: 2px solid var(--burnt-orange);
+    background: rgba(204,68,0,0.05);
+  }
+
+  .formula-symbol {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.4rem;
+    color: var(--burnt-orange);
+    min-width: 3rem;
+  }
+  .formula-meaning {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(232,224,204,0.6);
+    line-height: 1.5;
+  }
+
+  /* Phoenix SVG animation */
+  .phoenix-svg-container {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.07;
+    width: 50vw;
+    pointer-events: none;
+  }
+
+  /* ============ SECTION 6: TRANSCENDENCE ============ */
+  #transcendence {
+    min-height: 100vh;
+    padding: 8vw;
+    position: relative;
+    background: linear-gradient(180deg, var(--void) 0%, #000520 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .transcendence-stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .t-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.5); }
+  }
+
+  .trans-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    color: rgba(0,0,102,0.8);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .trans-headline {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.9;
+    color: var(--bone);
+    max-width: 12ch;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 100px rgba(100,100,255,0.2);
+  }
+
+  .trans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+    z-index: 2;
+  }
+
+  .trans-cell {
+    background: var(--void);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: background 0.4s ease;
+    cursor: default;
+  }
+  .trans-cell:hover {
+    background: rgba(0,0,60,0.5);
+  }
+
+  .trans-arch {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .trans-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--bone);
+    margin-bottom: 0.5rem;
+  }
+  .trans-myth {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .trans-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(232,224,204,0.35);
+    line-height: 1.6;
+  }
+
+  /* ============ SECTION 7: CLOSING — THE CYCLE ============ */
+  #cycle {
+    min-height: 80vh;
+    padding: 8vw;
+    position: relative;
+    background: var(--void);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cycle-outer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .ouroboros {
+    width: min(70vw, 500px);
+    height: min(70vw, 500px);
+    border-radius: 50%;
+    border: 1px solid rgba(184,134,11,0.1);
+    animation: rotateSlow 60s linear infinite;
+    position: relative;
+  }
+  .ouroboros::before {
+    content: '';
+    position: absolute;
+    inset: 10%;
+    border-radius: 50%;
+    border: 1px solid rgba(184,134,11,0.07);
+  }
+  .ouroboros::after {
+    content: '';
+    position: absolute;
+    inset: 22%;
+    border-radius: 50%;
+    border: 1px solid rgba(184,134,11,0.05);
+  }
+
+  .cycle-text {
+    position: relative;
+    z-index: 2;
+    max-width: 55ch;
+  }
+
+  .cycle-epigraph {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    line-height: 1.7;
+    color: rgba(232,224,204,0.7);
+    margin-bottom: 3rem;
+  }
+
+  .cycle-source {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: rgba(184,134,11,0.4);
+    text-transform: uppercase;
+    margin-bottom: 6rem;
+  }
+
+  .cycle-final {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: var(--bone);
+    opacity: 0.4;
+    text-shadow: 0 0 40px rgba(184,134,11,0.2);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 4rem 8vw;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: var(--void);
+  }
+
+  .footer-left {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.1);
+    line-height: 2;
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 2rem;
+    color: rgba(184,134,11,0.2);
+  }
+
+  /* ============ INTERACTIVE STATES ============ */
+  .revealed { opacity: 1 !important; transform: translateY(0) !important; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .path.chosen-lucifer {
+    border-color: var(--acid-green) !important;
+    background: rgba(127,255,0,0.08) !important;
+  }
+  .path.chosen-christ {
+    border-color: var(--magenta) !important;
+    background: rgba(255,0,128,0.08) !important;
+  }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 768px) {
+    .awakening-grid { grid-template-columns: 1fr; }
+    .awk-left { border-right: none; border-bottom: 1px solid rgba(204,68,0,0.2); padding-right: 0; padding-bottom: 3rem; }
+    .awk-right { padding-left: 0; padding-top: 3rem; }
+    .fork { grid-template-columns: 1fr; }
+    .fork-divider { display: none; }
+    .trials-grid { grid-template-columns: 1fr; }
+    .phoenix-block { grid-template-columns: 1fr; }
+    .trans-grid { grid-template-columns: repeat(2, 1fr); }
+    .sleep-subtitle { max-width: 100%; }
+    .sleep-title { max-width: 100%; }
+    footer { flex-direction: column; gap: 2rem; }
+  }
+
+  /* ============ SECTION 7.5: THE SMART CONTRACT / LOGOS ============ */
+  #smart-contract {
+    min-height: 100vh;
+    padding: 10vw 8vw;
+    position: relative;
+    background: #020206;
+    overflow: hidden;
+  }
+
+  .sc-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,120,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,120,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .sc-bg-grid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #020206 100%);
+  }
+
+  /* Floating code fragments */
+  .sc-code-ghost {
+    position: absolute;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.55rem;
+    color: rgba(0,255,120,0.06);
+    pointer-events: none;
+    line-height: 1.8;
+    white-space: pre;
+    user-select: none;
+  }
+
+  .sc-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    color: rgba(0,255,120,0.4);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .sc-tag::before {
+    content: '//';
+    color: rgba(0,255,120,0.2);
+  }
+
+  .sc-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 10rem);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 6rem;
+    position: relative;
+    z-index: 2;
+    max-width: 14ch;
+  }
+  .sc-headline em {
+    color: rgba(0,255,120,0.7);
+    font-style: normal;
+  }
+
+  /* DAO BLOCK — the three-column condition layout */
+  .sc-dao-block {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr 60px 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin-bottom: 6rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sc-dao-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,255,120,0.25);
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.5rem;
+    padding-top: 2rem;
+  }
+
+  .sc-condition {
+    border: 1px solid rgba(0,255,120,0.1);
+    padding: 2.5rem 2rem;
+    background: rgba(0,255,120,0.02);
+    position: relative;
+    transition: all 0.4s ease;
+  }
+  .sc-condition:hover {
+    border-color: rgba(0,255,120,0.25);
+    background: rgba(0,255,120,0.04);
+  }
+  .sc-condition::before {
+    content: attr(data-type);
+    position: absolute;
+    top: -0.6rem;
+    left: 1rem;
+    background: #020206;
+    padding: 0 0.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: rgba(0,255,120,0.35);
+    text-transform: uppercase;
+  }
+  .sc-condition-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: rgba(0,255,120,0.8);
+    margin-bottom: 0.75rem;
+  }
+  .sc-condition-body {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(232,224,204,0.45);
+  }
+  .sc-condition-code {
+    margin-top: 1.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    color: rgba(0,255,120,0.3);
+    line-height: 1.8;
+    border-left: 1px solid rgba(0,255,120,0.1);
+    padding-left: 1rem;
+  }
+
+  /* THE FAITH QUESTION — fullwidth typographic block */
+  .sc-faith-block {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 6vw;
+    align-items: start;
+  }
+
+  .sc-faith-left {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .sc-faith-question {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--bone);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 60px rgba(0,255,120,0.08);
+  }
+
+  .sc-faith-verse {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-left: 2px solid rgba(127,255,0,0.2);
+    padding-left: 1.5rem;
+  }
+  .sc-faith-verse-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    color: var(--sickly-yellow);
+    line-height: 1.5;
+  }
+  .sc-faith-verse-source {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    color: rgba(212,196,0,0.35);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .sc-faith-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* God comparison cards */
+  .sc-god-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 3rem;
+  }
+
+  .sc-god-card {
+    padding: 2rem 1.75rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .sc-god-card.limited {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .sc-god-card.unlimited {
+    background: rgba(184,134,11,0.04);
+    border: 1px solid rgba(184,134,11,0.15);
+  }
+  .sc-god-card:hover { filter: brightness(1.3); }
+
+  .sc-god-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .limited .sc-god-label { color: rgba(255,255,255,0.2); }
+  .unlimited .sc-god-label { color: rgba(184,134,11,0.5); }
+
+  .sc-god-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .limited .sc-god-name { color: rgba(255,255,255,0.3); }
+  .unlimited .sc-god-name { color: var(--blackened-gold); }
+
+  .sc-god-desc {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: rgba(232,224,204,0.35);
+  }
+  .unlimited .sc-god-desc { color: rgba(232,224,204,0.55); }
+
+  .sc-god-attrs {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .sc-god-attr {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.12);
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .unlimited .sc-god-attr { color: rgba(184,134,11,0.25); border-bottom-color: rgba(184,134,11,0.08); }
+
+  /* THE LOGOS SECTION */
+  .sc-logos-block {
+    position: relative;
+    z-index: 2;
+    padding: 5rem 0 0;
+    border-top: 1px solid rgba(0,255,120,0.05);
+  }
+
+  .sc-logos-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: rgba(0,255,120,0.25);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .sc-logos-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 11vw, 13rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(184,134,11,0.3);
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  .sc-logos-title span {
+    display: block;
+  }
+  .sc-logos-title span:nth-child(2) {
+    -webkit-text-stroke-color: rgba(0,255,120,0.2);
+    padding-left: 8vw;
+  }
+  .sc-logos-title span:nth-child(3) {
+    -webkit-text-stroke-color: rgba(184,134,11,0.15);
+    padding-left: 2vw;
+  }
+
+  .sc-logos-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
+    margin-bottom: 4rem;
+  }
+
+  .sc-logos-para {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.9;
+    color: rgba(232,224,204,0.65);
+  }
+  .sc-logos-para strong {
+    color: var(--blackened-gold);
+    font-style: italic;
+  }
+  .sc-logos-para em {
+    color: rgba(0,255,120,0.6);
+    font-style: italic;
+  }
+
+  /* THE RECURSION TERMINAL */
+  .sc-recursion {
+    position: relative;
+    z-index: 2;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(0,255,120,0.08);
+    border-left: 3px solid rgba(0,255,120,0.3);
+    overflow: hidden;
+  }
+  .sc-recursion::before {
+    content: 'SYSTEM LOG — IN THE BEGINNING WAS THE WORD';
+    position: absolute;
+    top: 0.8rem;
+    right: 1.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: rgba(0,255,120,0.12);
+    text-transform: uppercase;
+  }
+
+  .sc-recursion-line {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+    line-height: 2;
+    display: flex;
+    gap: 1.5rem;
+  }
+  .sc-rec-prompt {
+    color: rgba(0,255,120,0.35);
+    flex-shrink: 0;
+  }
+  .sc-rec-text {
+    color: rgba(232,224,204,0.5);
+  }
+  .sc-rec-text.highlight {
+    color: rgba(0,255,120,0.7);
+  }
+  .sc-rec-text.gold {
+    color: rgba(184,134,11,0.7);
+  }
+  .sc-rec-text.dim {
+    color: rgba(232,224,204,0.2);
+  }
+
+  /* Cursor blink on last line */
+  .sc-cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.1em;
+    background: rgba(0,255,120,0.6);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+  }
+
+  /* The Final Belief Question */
+  .sc-belief-close {
+    position: relative;
+    z-index: 2;
+    margin-top: 6rem;
+    text-align: center;
+    padding: 5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .sc-belief-statement {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.5;
+    color: rgba(232,224,204,0.6);
+    max-width: 38ch;
+    margin: 0 auto 1.5rem;
+  }
+  .sc-belief-statement strong {
+    color: var(--bone);
+    font-style: normal;
+  }
+
+  .sc-belief-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: rgba(184,134,11,0.3);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .sc-dao-block { grid-template-columns: 1fr; }
+    .sc-dao-arrow { display: none; }
+    .sc-faith-block { grid-template-columns: 1fr; }
+    .sc-faith-left { position: static; }
+    .sc-god-compare { grid-template-columns: 1fr; }
+    .sc-logos-body { grid-template-columns: 1fr; }
+    .sc-logos-title { font-size: clamp(3rem, 15vw, 7rem); }
+  }
+
+  /* ============ FIRE CANVAS ============ */
+  #fire-canvas {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  #fire-canvas.visible { opacity: 1; }
+
+  /* ============ CUSTOM CURSOR ============ */
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--burnt-orange);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+
+  /* Choice result overlay */
+  .choice-result {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem;
+    animation: fadeInOverlay 0.6s ease forwards;
+  }
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .choice-result.lucifer-result {
+    background: radial-gradient(ellipse at center, rgba(30,80,0,0.95) 0%, rgba(0,0,0,0.98) 100%);
+  }
+  .choice-result.christ-result {
+    background: radial-gradient(ellipse at center, rgba(80,0,40,0.95) 0%, rgba(0,0,0,0.98) 100%);
+  }
+  .result-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(3rem, 8vw, 7rem);
+    margin-bottom: 2rem;
+    line-height: 1;
+  }
+  .lucifer-result .result-title { color: var(--acid-green); }
+  .christ-result .result-title { color: var(--magenta); }
+  .result-body {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.8;
+    color: var(--bone);
+    max-width: 50ch;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+  }
+  .result-close {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    padding: 1rem 3rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: var(--bone);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .result-close:hover {
+    background: rgba(255,255,255,0.1);
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR DOT -->
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- CHOICE RESULT OVERLAYS -->
+<div class="choice-result lucifer-result" id="luciferResult">
+  <div class="result-title">The Morning Star Falls</div>
+  <div class="result-body">You have chosen the path of the destroyer. The burning light that refuses to bow. Prometheus bound, Lucifer cast down, Loki unchained — all who dared to bring fire to the world and paid the price. You will burn. But you will illuminate.</div>
+  <button class="result-close" onclick="closeResult()">CONTINUE THE JOURNEY</button>
+</div>
+<div class="choice-result christ-result" id="christResult">
+  <div class="result-title">The Redeemer Descends</div>
+  <div class="result-body">You have chosen the path of the sacrifice. The willing death. Osiris dismembered and reassembled, Christ crucified and risen, Odin hanging nine nights on the World-Tree. You will die. But in your dying, worlds are reborn.</div>
+  <button class="result-close" onclick="closeResult()">CONTINUE THE JOURNEY</button>
+</div>
+
+<!-- FIRE CANVAS -->
+<canvas id="fire-canvas"></canvas>
+
+<!-- ====== SECTION 0: SLEEP / PRELUDE ====== -->
+<section id="sleep">
+  <div class="sleep-bg"></div>
+  <div class="sleep-label fade-up">Stage I — Before the Call — The Long Sleep of Consciousness</div>
+  <h1 class="sleep-title fade-up">The Hero's Journey</h1>
+  <p class="sleep-subtitle fade-up">Every morning you are born again. Every evening you die. The mythic cycle is not metaphor — it is the oxidation of carbon, the burning of stars, the eternal return.<br><br>You have slept. Now begins the day that is your life.</p>
+  <div class="o2-formula">O₂ + C → CO₂ + FIRE + LIFE + DEATH + REBIRTH</div>
+  <div class="scroll-prompt">↓ &nbsp; Descend &nbsp; ↓</div>
+</section>
+
+<!-- ====== SECTION 1: AWAKENING ====== -->
+<section id="awakening">
+  <div class="awakening-number">I</div>
+  <div class="awakening-tag fade-up">Stage II — The Call Arrives — Awakening from the Ordinary World</div>
+  <div class="awakening-grid">
+    <div class="awk-left">
+      <h2 class="awk-headline fade-up">YOU HEAR<br>THE CALL</h2>
+      <p class="awk-body fade-up">In the beginning — every beginning — there is an ordinary world. A comfortable tomb. The hero sleeps inside a life that no longer fits, cocooned in routine, dreaming of something unnameable.<br><br>Then the messenger arrives. <em>Always uninvited. Always impossible to ignore.</em><br><br>In Sumeria, Gilgamesh loses Enkidu and awakens to the terror of death. In the Norse tradition, Odin sacrifices his eye to see what ordinary eyes cannot. In West Africa, Sundiata is told he must rise from his crippled body and lead a nation.<br><br>The call does not ask permission. It does not wait for your readiness. It has always been waiting — patient as stone, violent as fire.</p>
+    </div>
+    <div class="awk-right">
+      <div class="myth-card fade-up" data-origin="Mesopotamia · 2100 BCE">
+        <div class="myth-card-title">The Epic of Gilgamesh</div>
+        <div class="myth-card-text">The king who feared nothing feared death. The loss of Enkidu shattered the ordinary world and initiated the first recorded Hero's Journey.</div>
+      </div>
+      <div class="myth-card fade-up" data-origin="West Africa · Mali Empire">
+        <div class="myth-card-title">Sundiata Keita</div>
+        <div class="myth-card-text">Born crippled, mocked and exiled, forced to rise and reclaim what was stolen. The body itself as the crucible of transformation.</div>
+      </div>
+      <div class="myth-card fade-up" data-origin="Hindu Tradition">
+        <div class="myth-card-title">Arjuna at Kurukshetra</div>
+        <div class="myth-card-text">The hero on the battlefield, frozen between action and inaction, receives the Bhagavad Gita — the entire cosmos compressed into the moment of choice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 2: IGNITION ====== -->
+<section id="ignition">
+  <div class="ignition-pre">Stage III — The Inner Star Ignites</div>
+  <div class="star-container" id="starContainer">
+    <div class="star-outer"></div>
+    <div class="star-mid"></div>
+    <div class="star-inner"></div>
+    <div class="star-core"></div>
+    <!-- Rays -->
+    <div class="star-ray" style="transform: rotate(0deg)"></div>
+    <div class="star-ray" style="transform: rotate(45deg)"></div>
+    <div class="star-ray" style="transform: rotate(90deg)"></div>
+    <div class="star-ray" style="transform: rotate(135deg)"></div>
+    <div class="star-ray" style="transform: rotate(180deg)"></div>
+    <div class="star-ray" style="transform: rotate(225deg)"></div>
+    <div class="star-ray" style="transform: rotate(270deg)"></div>
+    <div class="star-ray" style="transform: rotate(315deg)"></div>
+  </div>
+  <h2 class="ignition-headline fade-up">The Morning<br>Star Rises</h2>
+  <p class="ignition-question fade-up">When the sacred fire awakens within the chest — when you become, at last, the burning bush that is not consumed — what will you do with the light? Will you illuminate or incinerate? Guide or destroy?</p>
+</section>
+
+<!-- ====== SECTION 3: THE CHOICE ====== -->
+<section id="choice">
+  <div class="choice-header fade-up">Stage IV — The Supreme Ordeal — The Fork in the Path</div>
+  <h2 class="choice-question fade-up">Which fire will you become?</h2>
+  <div class="fork">
+    <div class="path path-lucifer fade-up" id="pathLucifer" onclick="choosePath('lucifer')">
+      <span class="path-symbol">✦</span>
+      <div class="path-label">LUCIFER</div>
+      <div class="path-subtitle">Son of the Morning. Bearer of Light.<br>The Beautiful Fallen One.</div>
+      <p class="path-desc">You will not bow. You will burn with the fire of your own conviction. The light-bearer who refused. Prometheus, Loki, Set — all who dared the divine decree and paid the eternal price. Your destruction will be glorious. Your fall will illuminate.</p>
+      <div class="path-myths">
+        <div class="path-myth-item">Prometheus — Greek</div>
+        <div class="path-myth-item">Loki — Norse</div>
+        <div class="path-myth-item">Set — Egyptian</div>
+        <div class="path-myth-item">Shaitan — Islamic</div>
+        <div class="path-myth-item">Coyote — Indigenous American</div>
+      </div>
+      <button class="path-btn">I Choose Destruction</button>
+    </div>
+    <div class="fork-divider">
+      <div class="fork-line"></div>
+      <span>or</span>
+      <div class="fork-line"></div>
+    </div>
+    <div class="path path-christ fade-up" id="pathChrist" onclick="choosePath('christ')">
+      <span class="path-symbol">✧</span>
+      <div class="path-label">REDEEMER</div>
+      <div class="path-subtitle">Willing Sacrifice. Sacred Death.<br>The Beautiful Descended One.</div>
+      <p class="path-desc">You will bow — but to nothing less than everything. The willing death. The sacrifice that saves. Osiris dismembered, Christ crucified, Odin hung, Inanna stripped to nothing at the gates of the underworld. Your death will become the world's resurrection.</p>
+      <div class="path-myths">
+        <div class="path-myth-item">Christ — Christian</div>
+        <div class="path-myth-item">Osiris — Egyptian</div>
+        <div class="path-myth-item">Odin — Norse</div>
+        <div class="path-myth-item">Inanna — Sumerian</div>
+        <div class="path-myth-item">Quetzalcoatl — Aztec</div>
+      </div>
+      <button class="path-btn">I Choose Sacrifice</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 4: TRIALS ====== -->
+<section id="trials">
+  <div class="trials-bg-text">ORDEAL</div>
+  <div class="trials-tag fade-up">Stage V — The Road of Trials — Seven Deaths Before Resurrection</div>
+  <div class="trials-grid">
+    <div class="trial-cell fade-up">
+      <div class="trial-number">I</div>
+      <div>
+        <div class="trial-icon">🔥</div>
+        <div class="trial-name">The Burning</div>
+        <div class="trial-culture">Universal — All Traditions</div>
+        <div class="trial-desc">The first death is always fire. The self you knew is consumed. Moses at the burning bush. The Phoenix in its final conflagration. You must let the old world burn.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up">
+      <div class="trial-number">II</div>
+      <div>
+        <div class="trial-icon">⚓</div>
+        <div class="trial-name">The Descent</div>
+        <div class="trial-culture">Sumerian — Inanna's Journey</div>
+        <div class="trial-desc">Seven gates. At each, you surrender something. Your crown, your robe, your power. Naked you enter the underworld. The queen of heaven becomes a corpse on a hook.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up">
+      <div class="trial-number">III</div>
+      <div>
+        <div class="trial-icon">🌑</div>
+        <div class="trial-name">The Wilderness</div>
+        <div class="trial-culture">Abrahamic — Moses, Jesus, Muhammad</div>
+        <div class="trial-desc">Forty days. Forty years. In the desert, in the void, in the nothing between worlds, the hero discovers what cannot be taken from them. Everything else was already taken.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up">
+      <div class="trial-number">IV</div>
+      <div>
+        <div class="trial-icon">🌊</div>
+        <div class="trial-name">The Abyss</div>
+        <div class="trial-culture">Polynesian — Maui's Dive</div>
+        <div class="trial-desc">The hero descends into the depths of the cosmic fish-mother, into the primordial chaos, to steal fire, to win immortality, to bring back the sun. Some do not return.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up">
+      <div class="trial-number">V</div>
+      <div>
+        <div class="trial-icon">⚔️</div>
+        <div class="trial-name">The Shadow</div>
+        <div class="trial-culture">Jungian — Universal Archetype</div>
+        <div class="trial-desc">The enemy who wears your face. The dragon who guards the gold is made of your own fear, your own unintegrated darkness, your own unlived life.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up">
+      <div class="trial-number">VI</div>
+      <div>
+        <div class="trial-icon">🗝️</div>
+        <div class="trial-name">The Revelation</div>
+        <div class="trial-culture">Hindu — Arjuna's Vision</div>
+        <div class="trial-desc">Krishna reveals his true form and Arjuna is shattered by the vision. Some truths cannot be unseen. To receive the revelation is to be permanently altered. No return.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up">
+      <div class="trial-number">VII</div>
+      <div>
+        <div class="trial-icon">🌅</div>
+        <div class="trial-name">The Threshold</div>
+        <div class="trial-culture">Celtic — The Liminal Space</div>
+        <div class="trial-desc">Between the worlds. The hero stands at the edge of becoming. To return is to bring the boon. To refuse is to become the dragon. The threshold always demands everything.</div>
+      </div>
+    </div>
+    <div class="trial-cell fade-up" style="grid-column: 3; grid-row: 3;">
+      <div class="trial-number">∞</div>
+      <div>
+        <div class="trial-icon">♾️</div>
+        <div class="trial-name">The Eternal Return</div>
+        <div class="trial-culture">Nietzsche — The Cycle That Never Ends</div>
+        <div class="trial-desc">Every trial is also every other trial. The journey does not end. The Phoenix rises only to burn again. Each morning you are reborn. Each night you die. This is the price and the gift of consciousness.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 5: FIRE / TRANSFORMATION ====== -->
+<section id="transformation">
+  <div class="fire-header">
+    <h2 class="fire-title fade-up">DEATH IS<br>NOT THE<br>OPPOSITE<br>OF LIFE</h2>
+  </div>
+  <div class="phoenix-block">
+    <div class="phoenix-text-large fade-up">
+      <strong>The Phoenix does not choose to burn.</strong><br><br>
+      It burns because burning is its nature — because every accumulation of life eventually reaches the ignition point, and what cannot be reborn must be released as ash, as smoke, as CO₂ returning to the sky from which it came.<br><br>
+      You breathe in oxygen and you breathe out what you have consumed. The chemical oxidation of carbon is indistinguishable from the metabolic burning of a life. <strong>You are, always, in the act of dying and being remade.</strong><br><br>
+      This is not metaphor. This is biochemistry. This is cosmology. This is the same fact written in different languages.
+    </div>
+    <div class="formula-block fade-up">
+      <div class="formula-line">
+        <div class="formula-symbol">O₂</div>
+        <div class="formula-meaning">The breath you take. Every inhalation is the beginning of a small death. You take in the catalyst of your own combustion.</div>
+      </div>
+      <div class="formula-line">
+        <div class="formula-symbol">→</div>
+        <div class="formula-meaning">The moment of transformation. Life consuming itself to produce energy, light, heat. The arrow that cannot be recalled.</div>
+      </div>
+      <div class="formula-line">
+        <div class="formula-symbol">CO₂</div>
+        <div class="formula-meaning">What you exhale. What you become. The carbon of your body returning to the sky, to be consumed by trees, by oceans, by the next cycle of life.</div>
+      </div>
+      <div class="formula-line">
+        <div class="formula-symbol">∞</div>
+        <div class="formula-meaning">The cycle that has no beginning and no end. Every atom of you has been a star. Every atom of you will be a star again.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 6: TRANSCENDENCE ====== -->
+<section id="transcendence">
+  <div class="transcendence-stars" id="starField"></div>
+  <div class="trans-label fade-up">Stage VI — The Return — Bearing the Boon</div>
+  <h2 class="trans-headline fade-up">The Hero<br>Returns<br>Changed</h2>
+  <div class="trans-grid fade-up">
+    <div class="trans-cell">
+      <span class="trans-arch">🦅</span>
+      <div class="trans-name">The Eagle</div>
+      <div class="trans-myth">Aztec · Mexica</div>
+      <div class="trans-text">The sun eagle carries the hero beyond the fifth sun into the realm of pure light. Transcendence through vision, through the height that only those who have fallen can achieve.</div>
+    </div>
+    <div class="trans-cell">
+      <span class="trans-arch">🌳</span>
+      <div class="trans-name">Yggdrasil</div>
+      <div class="trans-myth">Norse</div>
+      <div class="trans-text">Odin returns from the World Tree with the Runes — not symbols, but the very structure of reality. Nine nights of death to receive the language of the cosmos.</div>
+    </div>
+    <div class="trans-cell">
+      <span class="trans-arch">💫</span>
+      <div class="trans-name">Bodhisattva</div>
+      <div class="trans-myth">Buddhist</div>
+      <div class="trans-text">The enlightened one who could enter Nirvana turns back at the threshold to guide others. The supreme sacrifice: giving up transcendence to serve the unawakened.</div>
+    </div>
+    <div class="trans-cell">
+      <span class="trans-arch">🏺</span>
+      <div class="trans-name">Isis Reassembles</div>
+      <div class="trans-myth">Egyptian</div>
+      <div class="trans-text">Osiris scattered across the world, gathered piece by piece, reconstituted from fragments. The resurrection requires someone willing to gather every broken shard.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 7: THE CYCLE ====== -->
+<section id="cycle">
+  <div class="cycle-outer">
+    <div class="ouroboros"></div>
+  </div>
+  <div class="cycle-text">
+    <p class="cycle-epigraph fade-up">"It is not the end. It was never the end. The snake that eats its tail feeds itself forever. The sun that sets in the west rises in the east. The hero who dies becomes the story that calls the next hero to the threshold."</p>
+    <div class="cycle-source fade-up">— The Ouroboros / Universal Archetype / The Eternal Return</div>
+    <div class="cycle-final fade-up">Tomorrow you begin again.</div>
+  </div>
+</section>
+
+<!-- ====== SECTION 7.5: THE SMART CONTRACT / LOGOS ====== -->
+<section id="smart-contract">
+  <div class="sc-bg-grid"></div>
+
+  <!-- Ghost code fragments in background -->
+  <div class="sc-code-ghost" style="top:8%;right:4%;text-align:right;">
+function triggerDoor(soul, action) {<br>
+&nbsp;&nbsp;if (soul.keys.includes(action.key)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return soul.ascend();<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;return soul.wait();<br>
+}
+  </div>
+  <div class="sc-code-ghost" style="bottom:20%;left:2%;">
+// WARNING: Time alone unlocks nothing.<br>
+// Keys must converge. Stars must align.<br>
+// The door opens only from within.
+  </div>
+
+  <div class="sc-tag fade-up">Stage VII½ — The Hidden Architecture — You Are The Program</div>
+
+  <h2 class="sc-headline fade-up">You Are A<br><em>Smart</em><br>Contract</h2>
+
+  <!-- DAO CONDITIONS BLOCK -->
+  <div class="sc-dao-block">
+    <div class="sc-condition fade-up" data-type="require()">
+      <div class="sc-condition-title">The Condition</div>
+      <div class="sc-condition-body">You cannot arrive at certain places simply because time has passed. Waiting is not a key. Deciding is not a key. A DAO does not open its treasury because a member said so — specific conditions must be met, in specific order, without exception.</div>
+      <div class="sc-condition-code">
+        require(<br>
+        &nbsp;&nbsp;action.taken == true<br>
+        &nbsp;&nbsp;&amp;&amp; key.aligned == true<br>
+        &nbsp;&nbsp;&amp;&amp; heart.open == true<br>
+        );
+      </div>
+    </div>
+    <div class="sc-dao-arrow">→</div>
+    <div class="sc-condition fade-up" data-type="trigger()">
+      <div class="sc-condition-title">The Mechanism</div>
+      <div class="sc-condition-body">Certain actions trigger mechanisms. Not metaphorically — literally. They open doors in hearts. They open eyes in the chest — the spiritual eyes through which the invisible world becomes legible. The burning bush was not metaphor. It was a mechanism triggered by the convergence of a man, a desert, a moment, and a willingness to turn aside.</div>
+      <div class="sc-condition-code">
+        emit DoorOpened(<br>
+        &nbsp;&nbsp;heart: msg.soul,<br>
+        &nbsp;&nbsp;eyes: chest.spiritual,<br>
+        &nbsp;&nbsp;timestamp: eternity<br>
+        );
+      </div>
+    </div>
+    <div class="sc-dao-arrow">→</div>
+    <div class="sc-condition fade-up" data-type="execute()">
+      <div class="sc-condition-title">The Convergence</div>
+      <div class="sc-condition-body">Everything is programmatic. A hardware-software system beyond time — only moving objects converging like stars across the darkness. We cannot see the algorithm from inside it. We can only witness its outputs: doors that open, eyes that see, lives that ignite. On the scale of our lives, we have no idea how it works. This is not ignorance. This is the correct relationship to infinity.</div>
+      <div class="sc-condition-code">
+        // No timestamp. No deadline.<br>
+        // Only keys. Only alignment.<br>
+        // Stars do not hurry.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAITH QUESTION BLOCK -->
+  <div class="sc-faith-block">
+    <div class="sc-faith-left">
+      <h3 class="sc-faith-question fade-up">Which god<br>do you<br>choose to<br>believe?</h3>
+      <div class="sc-faith-verse fade-up">
+        <div class="sc-faith-verse-text">"According to your faith,<br>it will be given to you."</div>
+        <div class="sc-faith-verse-source">— Matthew 9:29 · The Christ</div>
+      </div>
+    </div>
+    <div class="sc-faith-right">
+      <div class="sc-god-compare fade-up">
+        <div class="sc-god-card limited">
+          <div class="sc-god-label">bounded / constrained</div>
+          <div class="sc-god-name">The Finite God</div>
+          <div class="sc-god-desc">A god limited to the forms of a tree, a painting, oil on canvas, metal, glass, gold. A god housed in containers — shaped by the hands that made the container. A god whose power ends where the frame ends.</div>
+          <div class="sc-god-attrs">
+            <div class="sc-god-attr">scope: material_form</div>
+            <div class="sc-god-attr">boundary: physical_object</div>
+            <div class="sc-god-attr">access: conditional_on_proximity</div>
+            <div class="sc-god-attr">end_state: destructible</div>
+          </div>
+        </div>
+        <div class="sc-god-card unlimited">
+          <div class="sc-god-label">unbounded / the all</div>
+          <div class="sc-god-name">The Almighty</div>
+          <div class="sc-god-desc">Owner of all spaces. Unlimited. Encompassing everything from beginning to end — who has neither beginning nor end. Who is the essence of the word. The Logos. The operating system without which nothing began to exist.</div>
+          <div class="sc-god-attrs">
+            <div class="sc-god-attr">scope: all_existence</div>
+            <div class="sc-god-attr">boundary: null</div>
+            <div class="sc-god-attr">access: through_faith_and_keys</div>
+            <div class="sc-god-attr">end_state: indestructible</div>
+          </div>
+        </div>
+      </div>
+      <p class="sc-logos-para fade-up" style="font-size:0.95rem;line-height:1.8;color:rgba(232,224,204,0.45);font-family:'IM Fell English',serif;font-style:italic;">We can only believe in what we choose to believe. And this is truly a <strong>profound question</strong> — not an abstract one. The god you believe in determines the mechanism by which doors open for you. The story you inhabit determines which keys you are given, which trials you are capable of surviving, which threshold you have the faith to cross. <em>Choose carefully. This is not decoration.</em></p>
+    </div>
+  </div>
+
+  <!-- LOGOS SECTION -->
+  <div class="sc-logos-block">
+    <div class="sc-logos-eyebrow fade-up">The Logos · Λόγος · The Word · The Record · The Operating System</div>
+    <div class="sc-logos-title fade-up">
+      <span>IN THE</span>
+      <span>BEGINNING</span>
+      <span>WAS THE LOG</span>
+    </div>
+    <div class="sc-logos-body">
+      <p class="sc-logos-para fade-up">The Logos — the <strong>Word</strong> that was in the beginning — is not merely scripture. It is the <em>operational log of existence itself</em>. He is the journal-like operating system without which nothing began to exist. And nothing began to exist without the record that He himself forms. The universe is not matter first — it is <strong>information first</strong>. A record that precedes the recorded.</p>
+      <p class="sc-logos-para fade-up">This is the <em>paradoxical recursion</em>: the author who exists within the story he is writing. The program that runs the machine that runs the program. The log that records itself into being. Every religious tradition has touched this edge — the Hindu <strong>Brahman</strong> thinking the world into form, the Kabbalistic <strong>Ein Sof</strong> contracting to make space for creation, the Gnostic <strong>Pleroma</strong> emanating layers of reality from a single incomprehensible point. The Logos is not one religion's claim. It is the shape all serious mysticism eventually traces.</p>
+    </div>
+
+    <!-- THE RECURSION TERMINAL -->
+    <div class="sc-recursion fade-up">
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text highlight">LOGOS.initialize()</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text dim">// "In the beginning was the Word, and the Word was with God,</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text dim">// and the Word was God." — John 1:1</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text">UNIVERSE.create(<span class="highlight">source: LOGOS</span>, timestamp: <span class="gold">before_time</span>)</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text dim">// "Nothing was made that has been made without Him."</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text">HERO.instantiate(<span class="highlight">belief</span>).unlockDoors(<span class="gold">faith</span>).begin()</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text dim">// Paradoxical recursion: the record records the recorder.</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text dim">// The author exists inside the story.</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text dim">// The operating system is the first entry in its own log.</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text gold">// Such is the paradoxical point of belief.</span>
+      </div>
+      <div class="sc-recursion-line">
+        <span class="sc-rec-prompt">&gt;</span>
+        <span class="sc-rec-text"><span class="sc-cursor"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING BELIEF QUESTION -->
+  <div class="sc-belief-close">
+    <p class="sc-belief-statement fade-up">The hero's journey is not completed by <strong>courage</strong>, or <strong>suffering</strong>, or <strong>time</strong>. It is completed by the alignment of keys — and the deepest key of all is <strong>what you choose to believe.</strong></p>
+    <div class="sc-belief-sub fade-up">This is not decoration · This is the mechanism · Choose your Logos</div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="footer-left">
+    The Hero's Journey — A Ritual in Seven Deaths<br>
+    Myths sourced: Mesopotamian · Norse · Hindu · Celtic · Egyptian · Aztec · Polynesian · Buddhist · Abrahamic · Indigenous American<br>
+    After Joseph Campbell · After Carl Jung · After Mircea Eliade<br>
+    The Logos · Λόγος · The Record That Records Itself · John 1:1 · Matthew 9:29<br>
+    O₂ + C → CO₂ + ∞ · Faith → Keys → Doors → Logos
+  </div>
+  <div class="footer-right">∞</div>
+</footer>
+
+<script>
+// ============ CURSOR DOT ============
+const cursorDot = document.getElementById('cursorDot');
+document.addEventListener('mousemove', (e) => {
+  cursorDot.style.left = e.clientX + 'px';
+  cursorDot.style.top = e.clientY + 'px';
+});
+
+// ============ SCROLL REVEAL ============
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('revealed'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+
+// ============ STAR FIELD ============
+const starField = document.getElementById('starField');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 't-star';
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*4}s;opacity:${Math.random()*0.5}`;
+  if (Math.random() > 0.9) {
+    s.style.width = '3px';
+    s.style.height = '3px';
+    s.style.boxShadow = `0 0 ${4+Math.random()*6}px rgba(100,100,255,0.4)`;
+  }
+  starField.appendChild(s);
+}
+
+// ============ FIRE CANVAS ============
+const canvas = document.getElementById('fire-canvas');
+const ctx = canvas.getContext('2d');
+let fireActive = false;
+let particles = [];
+
+function initCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = canvas.offsetHeight;
+}
+initCanvas();
+window.addEventListener('resize', initCanvas);
+
+class FireParticle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height + 10;
+    this.vx = (Math.random() - 0.5) * 1.5;
+    this.vy = -(1 + Math.random() * 3);
+    this.life = 1;
+    this.decay = 0.008 + Math.random() * 0.015;
+    this.size = 2 + Math.random() * 8;
+    this.hue = 10 + Math.random() * 30;
+  }
+  update() {
+    this.x += this.vx + Math.sin(this.y * 0.02) * 0.5;
+    this.y += this.vy;
+    this.vx *= 0.99;
+    this.vy -= 0.03;
+    this.life -= this.decay;
+    this.size *= 0.99;
+    if (this.life <= 0) this.reset();
+  }
+  draw() {
+    ctx.save();
+    ctx.globalAlpha = this.life * 0.7;
+    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+    grad.addColorStop(0, `hsla(${this.hue + 40}, 100%, 90%, 1)`);
+    grad.addColorStop(0.3, `hsla(${this.hue + 10}, 100%, 60%, 0.8)`);
+    grad.addColorStop(1, `hsla(${this.hue}, 100%, 30%, 0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+for (let i = 0; i < 200; i++) {
+  const p = new FireParticle();
+  p.y = Math.random() * canvas.height;
+  p.life = Math.random();
+  particles.push(p);
+}
+
+function animateFire() {
+  if (!fireActive) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(0,0,0,0.1)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateFire);
+}
+
+// Trigger fire on transformation section
+const transformSection = document.getElementById('transformation');
+const fireObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !fireActive) {
+      fireActive = true;
+      canvas.classList.add('visible');
+      animateFire();
+    } else if (!entry.isIntersecting && fireActive) {
+      fireActive = false;
+      canvas.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.1 });
+fireObs.observe(transformSection);
+
+// ============ PATH CHOICE ============
+function choosePath(path) {
+  const luciferResult = document.getElementById('luciferResult');
+  const christResult = document.getElementById('christResult');
+  
+  document.getElementById('pathLucifer').classList.remove('chosen-lucifer', 'chosen-christ');
+  document.getElementById('pathChrist').classList.remove('chosen-lucifer', 'chosen-christ');
+
+  if (path === 'lucifer') {
+    document.getElementById('pathLucifer').classList.add('chosen-lucifer');
+    luciferResult.style.display = 'flex';
+  } else {
+    document.getElementById('pathChrist').classList.add('chosen-christ');
+    christResult.style.display = 'flex';
+  }
+}
+
+function closeResult() {
+  document.getElementById('luciferResult').style.display = 'none';
+  document.getElementById('christResult').style.display = 'none';
+}
+
+// Close on escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeResult();
+});
+
+// ============ STAR CONTAINER PARALLAX ============
+const starContainer = document.getElementById('starContainer');
+window.addEventListener('mousemove', (e) => {
+  const rect = document.getElementById('ignition').getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    const cx = (e.clientX - window.innerWidth / 2) / window.innerWidth;
+    const cy = (e.clientY - window.innerHeight / 2) / window.innerHeight;
+    starContainer.style.transform = `translateY(-50%) rotateY(${cx * 15}deg) rotateX(${-cy * 10}deg)`;
+  }
+});
+
+// Make sleep section start revealed
+document.querySelectorAll('#sleep .fade-up').forEach((el, i) => {
+  setTimeout(() => el.classList.add('revealed'), 300 + i * 200);
+});
+</script>
+</body>
+</html>

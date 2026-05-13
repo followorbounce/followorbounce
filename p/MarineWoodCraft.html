@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marine Wood Craft — Brand Identity Passport</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── DESIGN TOKENS (mirrored from source) ─── */
+:root {
+  --black:      #0D0D0D;
+  --white:      #F5F2ED;
+  --red:        #C0392B;
+  --blue:       #1A3A5C;
+  --yellow:     #D4A017;
+  --wood:       #8B5E3C;
+  --wood-light: #C49A6C;
+  --wood-pale:  #E8D5B7;
+
+  --page-bg: #111010;
+  --surface-1: #181614;
+  --surface-2: #1E1B18;
+  --border: rgba(245,242,237,0.07);
+  --text-dim: rgba(245,242,237,0.4);
+  --text-mid: rgba(245,242,237,0.6);
+  --text-on:  #F5F2ED;
+
+  --mono: 'IBM Plex Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--page-bg);
+  color: var(--text-on);
+  font-family: var(--body);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ─── GRAIN UTILITY ─── */
+.grain {
+  background: repeating-linear-gradient(
+    91deg,
+    transparent 0px, transparent 5px,
+    rgba(139,94,60,0.055) 5px, rgba(139,94,60,0.055) 7px,
+    transparent 7px, transparent 13px,
+    rgba(196,154,108,0.03) 13px, rgba(196,154,108,0.03) 15px
+  );
+}
+
+/* ─── COVER PAGE ─── */
+.cover {
+  min-height: 100vh;
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content:'';
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(
+    91deg,
+    transparent 0px, transparent 5px,
+    rgba(139,94,60,0.045) 5px, rgba(139,94,60,0.045) 7px
+  );
+  pointer-events:none;
+}
+.cover-bar {
+  position:absolute;
+  top:0; left:0; bottom:0;
+  width:6px;
+  background: var(--red);
+  z-index:5;
+}
+.cover-gold {
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:4px;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--wood-light) 50%, transparent 100%);
+  z-index:5;
+}
+.cover-triangle {
+  position:absolute;
+  top:0; right:0;
+  width:50%; height:100%;
+  background: var(--blue);
+  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index:1;
+}
+.cover-grid {
+  position:absolute;
+  top:0; right:0;
+  width:50%; height:100%;
+  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%);
+  background-image:
+    linear-gradient(rgba(245,242,237,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,242,237,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index:2;
+}
+.cover-left {
+  position:relative; z-index:4;
+  display:flex; flex-direction:column;
+  justify-content:center;
+  padding: 80px 72px;
+}
+.cover-eyebrow {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-bottom: 24px;
+}
+.cover-title {
+  font-family: var(--display);
+  font-size: clamp(52px, 5.5vw, 80px);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  color: var(--white);
+}
+.cover-title em { color: var(--red); font-style:normal; display:block; }
+.cover-rule { width:48px; height:3px; background:var(--red); margin:28px 0; }
+.cover-sub {
+  font-size:15px;
+  line-height:1.8;
+  color: rgba(245,242,237,0.55);
+  max-width:360px;
+}
+.cover-meta {
+  margin-top:48px;
+  display:flex; gap:32px;
+}
+.cover-meta-item {}
+.cover-meta-label {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.3em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-bottom:4px;
+}
+.cover-meta-value {
+  font-family: var(--display);
+  font-size:20px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+.cover-right {
+  position:relative; z-index:4;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ─── PATTERN BAR ─── */
+.pattern-bar {
+  height:10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--black)  0px,  var(--black)  40px,
+    var(--red)    40px, var(--red)    43px,
+    var(--black)  43px, var(--black)  83px,
+    var(--blue)   83px, var(--blue)   86px,
+    var(--black)  86px, var(--black)  126px,
+    var(--yellow) 126px,var(--yellow) 129px
+  );
+}
+
+/* ─── SECTION CHROME ─── */
+.doc-section {
+  padding: 96px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.doc-section + .doc-section { border-top: 1px solid var(--border); }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.35em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-bottom:12px;
+  display:block;
+}
+.section-h {
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 58px);
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom:32px;
+}
+.section-h em { color: var(--red); font-style:normal; }
+.section-rule { width:40px; height:2px; background:var(--red); margin-bottom:40px; }
+
+/* body copy */
+.body-p {
+  font-size:15px;
+  font-weight:300;
+  line-height:1.85;
+  color: var(--text-mid);
+  max-width:680px;
+  margin-bottom:20px;
+}
+.body-p strong { color: var(--text-on); font-weight:500; }
+
+/* ─── CARDS / GRIDS ─── */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+
+.info-card {
+  background: var(--surface-1);
+  padding: 32px 28px;
+  position:relative;
+  overflow:hidden;
+}
+.info-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+  background: var(--border);
+}
+.info-card.accent::before { background: var(--red); }
+.info-card.gold-top::before { background: var(--yellow); }
+.info-card.blue-top::before { background: var(--blue); }
+.info-card.wood-top::before { background: var(--wood); }
+
+.card-label {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.3em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-bottom:10px;
+}
+.card-title {
+  font-family: var(--display);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom:8px;
+}
+.card-body {
+  font-size:13px;
+  line-height:1.75;
+  color: var(--text-dim);
+}
+.card-body strong { color: var(--text-on); font-weight:400; }
+
+/* ─── COLOR SWATCHES ─── */
+.swatch-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap:2px; margin-bottom:2px; }
+.swatch {
+  height: 90px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding: 10px 12px;
+  position:relative;
+}
+.swatch-name {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  text-transform:uppercase;
+  margin-bottom:2px;
+}
+.swatch-hex {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.swatch-meta {
+  background: var(--surface-1);
+  padding: 16px 12px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+.swatch-meta span { color: var(--text-on); }
+
+/* ─── TYPOGRAPHY SPECIMENS ─── */
+.type-block {
+  border-left: 3px solid var(--border);
+  padding: 24px 28px;
+  margin-bottom: 2px;
+  background: var(--surface-1);
+}
+.type-block.active { border-color: var(--red); }
+.type-meta {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-bottom:12px;
+}
+.type-specimen { color: var(--white); }
+
+/* ─── TOKEN BLOCK ─── */
+.token-block {
+  background: #0a0908;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--yellow);
+  padding: 28px 32px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 2;
+  color: rgba(245,242,237,0.55);
+  overflow-x: auto;
+}
+.token-block .key   { color: #C49A6C; }
+.token-block .val   { color: #D4A017; }
+.token-block .cmt   { color: rgba(245,242,237,0.2); font-style:italic; }
+.token-block .str   { color: #C0392B; }
+.token-block .punc  { color: rgba(245,242,237,0.3); }
+
+/* ─── COMPONENT DEMOS ─── */
+.component-demo {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 40px;
+  display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  margin-bottom: 2px;
+}
+.demo-label {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform:uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  display:block;
+}
+
+/* Replicate source buttons */
+.btn-p {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform:uppercase;
+  background: var(--red);
+  color: var(--white);
+  padding: 14px 28px;
+  text-decoration:none;
+  display:inline-flex; align-items:center; gap:10px;
+  transition: background 0.2s, transform 0.15s;
+  cursor:pointer; border:none;
+}
+.btn-p:hover { background:#a93225; transform:translateY(-1px); }
+.btn-s {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform:uppercase;
+  background: transparent;
+  color: rgba(245,242,237,0.6);
+  padding: 14px 28px;
+  border: 1px solid rgba(245,242,237,0.18);
+  transition: border-color 0.2s, color 0.2s;
+  cursor:pointer;
+}
+.btn-s:hover { border-color: var(--yellow); color: var(--yellow); }
+.btn-cta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform:uppercase;
+  background: var(--red);
+  color: var(--white);
+  padding: 10px 20px;
+  cursor:pointer; border:none;
+}
+
+/* ─── NAV DEMO ─── */
+.nav-demo {
+  background: var(--black);
+  border-bottom: 3px solid var(--red);
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 40px;
+  height: 64px;
+  margin-bottom: 2px;
+}
+.nav-demo-logo {
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.07em;
+  color: var(--white);
+}
+.nav-demo-logo span { color: var(--red); }
+.nav-demo-links { display:flex; }
+.nav-demo-link {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform:uppercase;
+  color: rgba(245,242,237,0.55);
+  padding: 22px 18px;
+  border-left: 1px solid rgba(245,242,237,0.07);
+}
+
+/* ─── SERVICE CARD DEMO ─── */
+.svc-demo-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:0; border: 1px solid rgba(13,13,13,0.1); }
+.svc-demo-card {
+  padding: 28px 22px;
+  border-right: 1px solid rgba(13,13,13,0.1);
+  position:relative; overflow:hidden;
+  background: var(--white);
+  transition: background 0.3s;
+  cursor:default;
+}
+.svc-demo-card:last-child { border-right:none; }
+.svc-demo-card:hover { background: var(--black); }
+.svc-demo-card:hover .svc-demo-name { color: var(--white); }
+.svc-demo-card:hover .svc-demo-desc { color: rgba(245,242,237,0.45); }
+.svc-demo-card:hover .svc-demo-bar { width:100%; }
+.svc-demo-num {
+  font-family: var(--display);
+  font-size: 48px;
+  color: rgba(13,13,13,0.05);
+  position:absolute; top:6px; right:10px;
+  line-height:1;
+  transition: color 0.3s;
+}
+.svc-demo-card:hover .svc-demo-num { color: rgba(245,242,237,0.05); }
+.svc-demo-name {
+  font-family: var(--display);
+  font-size:17px;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  margin-bottom: 6px;
+  position:relative; z-index:1;
+  transition: color 0.3s;
+}
+.svc-demo-desc {
+  font-size: 12px;
+  font-weight:300;
+  line-height:1.7;
+  color: rgba(13,13,13,0.5);
+  position:relative; z-index:1;
+  transition: color 0.3s;
+}
+.svc-demo-bar {
+  position:absolute;
+  bottom:0; left:0;
+  height:3px; width:0;
+  background: var(--yellow);
+  transition: width 0.4s ease;
+}
+
+/* ─── PROCESS STEP DEMO ─── */
+.process-demo { display:grid; grid-template-columns: repeat(4,1fr); gap:0; }
+.proc-step {
+  padding: 28px 22px;
+  border-right: 1px solid rgba(245,242,237,0.07);
+  background: var(--black);
+  position:relative;
+}
+.proc-step:last-child { border-right:none; }
+.proc-step::before {
+  content:'';
+  position:absolute;
+  top:0; left:22px; right:22px;
+  height:2px;
+  background: rgba(245,242,237,0.07);
+}
+.proc-step:first-child::before { background: var(--red); }
+.proc-step-num { font-family:var(--display); font-size:40px; color:var(--yellow); line-height:1; margin-bottom:8px; }
+.proc-step-title { font-family:var(--display); font-size:16px; letter-spacing:0.08em; color:var(--white); margin-bottom:6px; }
+.proc-step-desc { font-size:12px; font-weight:300; line-height:1.75; color:rgba(245,242,237,0.4); }
+
+/* ─── LOGO PASSPORT ─── */
+.logo-field {
+  background: var(--black);
+  display:flex; align-items:center; justify-content:center;
+  padding: 56px 40px;
+  position:relative; overflow:hidden;
+}
+.logo-field::before {
+  content:'';
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(91deg,
+    transparent 0px, transparent 5px,
+    rgba(139,94,60,0.04) 5px, rgba(139,94,60,0.04) 7px);
+}
+.logo-field-white { background: var(--white); }
+.logo-field-wood  { background: var(--wood-pale); }
+.logo-field-blue  { background: var(--blue); }
+
+.logo-display {
+  display:flex; align-items:center; gap:14px;
+  position:relative; z-index:1;
+}
+.logo-display-name {
+  font-family: var(--display);
+  font-size: 28px;
+  letter-spacing: 0.07em;
+  color: var(--white);
+  line-height:1;
+}
+.logo-display-name.on-white { color: var(--black); }
+.logo-display-name span { color: var(--red); }
+.logo-display-sub {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-top:3px;
+}
+.logo-display-sub.on-white { color: var(--wood); }
+
+/* ─── MOTION DIAGRAM ─── */
+.motion-row { display:grid; grid-template-columns:220px 1fr; align-items:center; border-bottom:1px solid var(--border); }
+.motion-label-col { padding: 20px 28px; background: var(--surface-1); }
+.motion-label { font-family:var(--mono); font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:var(--yellow); margin-bottom:4px; }
+.motion-timing { font-family:var(--mono); font-size:10px; color:var(--text-mid); }
+.motion-demo-col { padding: 20px 28px; }
+.motion-bar-wrap { height:3px; background:rgba(245,242,237,0.07); position:relative; overflow:hidden; border-radius:2px; }
+.motion-bar { height:100%; background:var(--red); position:absolute; left:-100%; animation: motionSlide 2.5s cubic-bezier(0.4,0,0.2,1) infinite; }
+@keyframes motionSlide { 0%{left:-100%} 60%{left:100%} 100%{left:100%} }
+.motion-bar.ease-out { animation-timing-function: cubic-bezier(0,0,0.2,1); }
+.motion-bar.ease-in-out { animation-timing-function: cubic-bezier(0.4,0,0.2,1); }
+.motion-bar.linear { animation-timing-function: linear; animation-duration:1.8s; background: var(--blue); }
+
+/* ─── TABLE ─── */
+.doc-table { width:100%; border-collapse:collapse; }
+.doc-table th {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  text-align:left;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+}
+.doc-table td {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-mid);
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(245,242,237,0.04);
+  vertical-align:top;
+}
+.doc-table td strong { color: var(--text-on); font-weight:400; }
+.doc-table tr:hover td { background: rgba(245,242,237,0.02); }
+
+/* ─── CHAPTER DIVIDER ─── */
+.chapter-div {
+  background: var(--black);
+  position:relative; overflow:hidden;
+  padding: 60px 80px;
+  display:flex; align-items:center; gap:32px;
+  border-top: 1px solid var(--border);
+}
+.chapter-div::before {
+  content:'';
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(91deg,
+    transparent 0px, transparent 5px,
+    rgba(139,94,60,0.04) 5px, rgba(139,94,60,0.04) 7px);
+}
+.chapter-num {
+  font-family: var(--display);
+  font-size: 100px;
+  color: rgba(245,242,237,0.04);
+  line-height:1;
+  flex-shrink:0;
+  position:relative; z-index:1;
+}
+.chapter-info { position:relative; z-index:1; }
+.chapter-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.35em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  margin-bottom:10px;
+}
+.chapter-name {
+  font-family: var(--display);
+  font-size: clamp(28px, 3.5vw, 48px);
+  letter-spacing: 0.03em;
+  color: var(--white);
+  line-height:0.95;
+}
+
+/* ─── APPLICATION GRID ─── */
+.app-card {
+  background: var(--surface-1);
+  padding: 36px 28px;
+  border-top: 2px solid var(--border);
+  transition: border-color 0.3s;
+  position:relative; overflow:hidden;
+}
+.app-card:hover { border-top-color: var(--yellow); }
+.app-card::after {
+  content:'';
+  position:absolute;
+  bottom:0; right:0;
+  width:60px; height:60px;
+  background: var(--yellow);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+  opacity:0.06;
+}
+.app-card-ico {
+  font-family: var(--display);
+  font-size: 40px;
+  color: rgba(245,242,237,0.06);
+  line-height:1;
+  margin-bottom:16px;
+}
+.app-card-title {
+  font-family: var(--display);
+  font-size:18px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom:6px;
+}
+.app-card-body {
+  font-size:13px;
+  line-height:1.75;
+  color: var(--text-dim);
+}
+
+/* ─── FOOTER ─── */
+.doc-footer {
+  background: var(--black);
+  border-top: 3px solid var(--red);
+  padding: 36px 80px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:relative;
+}
+.doc-footer::before {
+  content:'';
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(91deg,
+    transparent 0px, transparent 5px,
+    rgba(139,94,60,0.035) 5px, rgba(139,94,60,0.035) 7px);
+}
+.footer-wordmark {
+  font-family: var(--display);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  position:relative;
+}
+.footer-wordmark span { color: var(--red); }
+.footer-doc-type {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform:uppercase;
+  color: var(--yellow);
+  opacity:0.7;
+  position:relative;
+}
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  color: rgba(245,242,237,0.22);
+  position:relative;
+}
+
+/* ─── TAG ─── */
+.tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform:uppercase;
+  padding: 4px 10px;
+  background: rgba(245,242,237,0.07);
+  color: var(--text-mid);
+  display:inline-block;
+  margin: 3px 2px;
+}
+.tag.red   { background: rgba(192,57,43,0.15); color: #e05a4a; }
+.tag.blue  { background: rgba(26,58,92,0.4); color: #6ba3d6; }
+.tag.gold  { background: rgba(212,160,23,0.15); color: var(--yellow); }
+.tag.wood  { background: rgba(139,94,60,0.2); color: var(--wood-light); }
+
+/* ─── ACCESSIBILITY GRID ─── */
+.a11y-row {
+  display:flex; align-items:center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  gap:16px;
+}
+.a11y-swatch { width:32px; height:32px; flex-shrink:0; }
+.a11y-combo { font-family:var(--mono); font-size:11px; color:var(--text-on); flex:1; }
+.a11y-ratio { font-family:var(--mono); font-size:11px; color:var(--yellow); min-width:70px; }
+.a11y-status { font-family:var(--mono); font-size:9px; letter-spacing:0.15em; }
+.pass { color: #4caf72; }
+.warn { color: var(--yellow); }
+.fail { color: var(--red); }
+
+/* ─── STEAM ANIMATION ─── */
+@keyframes steamRise {
+  0%   { transform: translateY(0) scaleX(1);   opacity: 0.5; }
+  100% { transform: translateY(-18px) scaleX(1.06); opacity: 0; }
+}
+.steam-path { animation: steamRise 3s ease-in-out infinite; }
+.steam-path:nth-child(2) { animation-delay: 0.8s; }
+.steam-path:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s ease forwards; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px) {
+  .cover { grid-template-columns:1fr; }
+  .cover-right { display:none; }
+  .doc-section { padding: 64px 32px; }
+  .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
+  .svc-demo-grid { grid-template-columns:1fr 1fr; }
+  .process-demo { grid-template-columns:1fr 1fr; }
+  .chapter-div { padding: 40px 32px; }
+  .doc-footer { flex-direction:column; gap:12px; padding:28px 32px; text-align:center; }
+  .motion-row { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     COVER PAGE
+══════════════════════════════════════════════════ -->
+<section class="cover">
+  <div class="cover-bar"></div>
+  <div class="cover-gold"></div>
+  <div class="cover-triangle"></div>
+  <div class="cover-grid"></div>
+
+  <div class="cover-left fade-up">
+    <span class="cover-eyebrow">Brand Identity Passport · Visual Style Guide · Design System</span>
+    <h1 class="cover-title">Marine<br>Wood<em>Craft</em></h1>
+    <div class="cover-rule"></div>
+    <p class="cover-sub">A comprehensive brand identity manual reverse-engineered from the production frontend. Covering visual language, design tokens, component system, motion principles, and cross-media application guidelines.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Location</div>
+        <div class="cover-meta-value" style="font-size:14px;font-family:var(--mono);letter-spacing:0.1em;color:rgba(245,242,237,0.6);">Honolulu, Hawaiʻi</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Document</div>
+        <div class="cover-meta-value" style="font-size:14px;font-family:var(--mono);letter-spacing:0.1em;color:rgba(245,242,237,0.6);">v1.0 · 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Sections</div>
+        <div class="cover-meta-value" style="font-size:14px;font-family:var(--mono);letter-spacing:0.1em;color:rgba(245,242,237,0.6);">16 Chapters</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-right">
+    <svg width="260" height="260" viewBox="0 0 280 280" fill="none">
+      <path d="M140 30 L230 90 L230 180 Q230 230 140 250 Q50 230 50 180 L50 90 Z" fill="none" stroke="rgba(245,242,237,0.06)" stroke-width="1"/>
+      <rect x="100" y="110" width="80" height="80" fill="none" stroke="rgba(245,242,237,0.5)" stroke-width="2"/>
+      <path d="M100 110 L140 70 L180 110" fill="none" stroke="#F5F2ED" stroke-width="3"/>
+      <path d="M80 190 Q140 215 200 190" fill="none" stroke="#D4A017" stroke-width="2.5"/>
+      <line x1="108" y1="125" x2="172" y2="125" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="133" x2="172" y2="133" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="141" x2="172" y2="141" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="149" x2="172" y2="149" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="157" x2="172" y2="157" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="165" x2="172" y2="165" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="173" x2="172" y2="173" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <line x1="108" y1="181" x2="172" y2="181" stroke="rgba(196,154,108,0.5)" stroke-width="1"/>
+      <rect x="95" y="105" width="10" height="10" fill="#C0392B"/>
+      <rect x="175" y="105" width="10" height="10" fill="#C0392B"/>
+      <rect x="95" y="180" width="10" height="10" fill="#1A3A5C"/>
+      <rect x="175" y="180" width="10" height="10" fill="#1A3A5C"/>
+      <path class="steam-path" d="M120 110 Q117 96 120 84 Q123 72 120 60" stroke="rgba(245,242,237,0.4)" stroke-width="1.5" fill="none"/>
+      <path class="steam-path" d="M140 110 Q137 93 140 80 Q143 67 140 52" stroke="rgba(245,242,237,0.3)" stroke-width="1.5" fill="none"/>
+      <path class="steam-path" d="M160 110 Q157 96 160 84 Q163 72 160 60" stroke="rgba(245,242,237,0.35)" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     01 · BRAND OVERVIEW
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">01</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter One</div>
+    <div class="chapter-name">Brand Overview &amp;<br>Visual Philosophy</div>
+  </div>
+</div>
+
+<section class="doc-section grain" style="background:var(--surface-1);">
+  <span class="section-num">01 — Brand Overview</span>
+  <h2 class="section-h">Crafted For<br>The <em>Pacific</em></h2>
+  <div class="section-rule"></div>
+
+  <div class="grid-2" style="gap:32px; margin-bottom:48px;">
+    <div>
+      <p class="body-p"><strong>Marine Wood Craft</strong> presents a visual identity that fuses the precision of maritime engineering with the warmth of artisan woodworking. The design language operates at a rare intersection: technically rigorous yet deeply tactile — a brand that feels as at home in a boatyard as on a luxury yacht.</p>
+      <p class="body-p">The palette, typography, and compositional logic together construct a world of <strong>controlled ruggedness</strong> — a brand that never mistakes refinement for softness. This is confidence earned through craft, not aesthetics borrowed for effect.</p>
+      <p class="body-p">Visually, the identity suggests a small but serious specialist operation: experienced, licensed, Pacific-hardened. The target audience are vessel owners, marina managers, and boat enthusiasts who trust craftsmanship over marketing — and can immediately read quality in how a brand presents itself.</p>
+    </div>
+    <div>
+      <div class="info-card accent" style="margin-bottom:2px;">
+        <div class="card-label">Brand Archetype</div>
+        <div class="card-title">The Craftsman</div>
+        <div class="card-body">Skilled, precise, earned authority. No excess, no decoration without purpose. Every design decision can be defended by function or heritage.</div>
+      </div>
+      <div class="info-card blue-top" style="margin-bottom:2px;">
+        <div class="card-label">Aesthetic Territory</div>
+        <div class="card-title">Industrial Maritime Editorial</div>
+        <div class="card-body">Midway between a naval architecture blueprint and a premium heritage brand manual. References: vintage boatbuilding manuals, industrial type specimens, Pacific nautical charts.</div>
+      </div>
+      <div class="info-card gold-top">
+        <div class="card-label">Minimalism / Maximalism Balance</div>
+        <div class="card-title">Structured Restraint</div>
+        <div class="card-body">Minimal in element count; rich in surface texture. Each section earns its visual weight through grain overlays, geometry, and typographic hierarchy.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <div class="info-card accent">
+      <div class="card-label">Emotional Tone</div>
+      <div class="card-body"><strong>Reliable · Expert · Durable</strong><br>The feeling of trusting someone who has done this 500 times before.</div>
+    </div>
+    <div class="info-card blue-top">
+      <div class="card-label">Design DNA</div>
+      <div class="card-body"><strong>Blueprint + Teak + Brutalism</strong><br>Naval engineering precision, warm wood materiality, raw typographic confidence.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Market Position</div>
+      <div class="card-body"><strong>Premium Specialist</strong><br>Not a commodity service — a skilled craft practice. Priced above generalist marine maintenance.</div>
+    </div>
+    <div class="info-card wood-top">
+      <div class="card-label">Stylistic References</div>
+      <div class="card-body"><strong>Hermes · Carhartt · Swissair identity</strong><br>Heritage precision meets utilitarian material honesty.</div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     02 · LOGO PASSPORT
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">02</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Two</div>
+    <div class="chapter-name">Logo Passport</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2); padding-bottom:0;">
+  <span class="section-num">02 — Logo Passport</span>
+  <h2 class="section-h">Identity<br><em>Mark</em> System</h2>
+  <div class="section-rule"></div>
+  <p class="body-p">The logo system is composed of three elements in precise relationship: an SVG <strong>icon mark</strong> encoding the brand's core symbolism (hull form, wood grain, wave arc, corner bolts), a <strong>wordmark</strong> in Bebas Neue, and a <strong>geolocation sub-tag</strong> in IBM Plex Mono. Together they form a horizontal lockup of exceptional coherence.</p>
+  <p class="body-p">The icon mark draws a house-like structure (roof pitch = boat bow) above a grid-ruled rectangle (wood planks), anchored by a gold wave arc (ocean). Red corner squares act as "bolts" — a direct reference to marine construction fasteners. This is not decorative iconography — every element is semantically loaded.</p>
+</section>
+
+<div class="grid-2" style="gap:2px;">
+  <div class="logo-field">
+    <div class="logo-display">
+      <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+        <rect x="18" y="24" width="28" height="28" fill="none" stroke="rgba(245,242,237,0.55)" stroke-width="1.5"/>
+        <path d="M18 24 L32 10 L46 24" fill="none" stroke="#F5F2ED" stroke-width="2.5"/>
+        <path d="M12 52 Q32 62 52 52" fill="none" stroke="#D4A017" stroke-width="2"/>
+        <line x1="21" y1="32" x2="43" y2="32" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <line x1="21" y1="36" x2="43" y2="36" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <line x1="21" y1="40" x2="43" y2="40" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <line x1="21" y1="44" x2="43" y2="44" stroke="rgba(196,154,108,0.7)" stroke-width="1"/>
+        <rect x="15" y="21" width="5" height="5" fill="#C0392B"/>
+        <rect x="44" y="21" width="5" height="5" fill="#C0392B"/>
+      </svg>
+      <div>
+        <div class="logo-display-name">Marine Wood<span>Craft</span></div>
+        <div class="logo-display-sub">Honolulu, Hawaiʻi</div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:12px;left:20px;font-family:var(--mono);font-size:7px;letter-spacing:0.22em;color:rgba(245,242,237,0.2);">PRIMARY — ON DARK</div>
+  </div>
+  <div class="logo-field logo-field-wood">
+    <div class="logo-display">
+      <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+        <rect x="18" y="24" width="28" height="28" fill="none" stroke="rgba(10,10,10,0.5)" stroke-width="1.5"/>
+        <path d="M18 24 L32 10 L46 24" fill="none" stroke="#0D0D0D" stroke-width="2.5"/>
+        <path d="M12 52 Q32 62 52 52" fill="none" stroke="#8B5E3C" stroke-width="2"/>
+        <line x1="21" y1="32" x2="43" y2="32" stroke="rgba(139,94,60,0.6)" stroke-width="1"/>
+        <line x1="21" y1="36" x2="43" y2="36" stroke="rgba(139,94,60,0.6)" stroke-width="1"/>
+        <line x1="21" y1="40" x2="43" y2="40" stroke="rgba(139,94,60,0.6)" stroke-width="1"/>
+        <line x1="21" y1="44" x2="43" y2="44" stroke="rgba(139,94,60,0.6)" stroke-width="1"/>
+        <rect x="15" y="21" width="5" height="5" fill="#C0392B"/>
+        <rect x="44" y="21" width="5" height="5" fill="#C0392B"/>
+      </svg>
+      <div>
+        <div class="logo-display-name on-white">Marine Wood<span>Craft</span></div>
+        <div class="logo-display-sub on-white">Honolulu, Hawaiʻi</div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:12px;left:20px;font-family:var(--mono);font-size:7px;letter-spacing:0.22em;color:rgba(10,10,10,0.3);">SECONDARY — ON WARM SURFACE</div>
+  </div>
+</div>
+<div class="grid-2" style="gap:2px;">
+  <div class="logo-field logo-field-blue">
+    <div class="logo-display">
+      <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+        <rect x="18" y="24" width="28" height="28" fill="none" stroke="rgba(245,242,237,0.7)" stroke-width="1.5"/>
+        <path d="M18 24 L32 10 L46 24" fill="none" stroke="#F5F2ED" stroke-width="2.5"/>
+        <path d="M12 52 Q32 62 52 52" fill="none" stroke="#D4A017" stroke-width="2"/>
+        <line x1="21" y1="32" x2="43" y2="32" stroke="rgba(245,242,237,0.5)" stroke-width="1"/>
+        <line x1="21" y1="36" x2="43" y2="36" stroke="rgba(245,242,237,0.5)" stroke-width="1"/>
+        <rect x="15" y="21" width="5" height="5" fill="#C0392B"/>
+        <rect x="44" y="21" width="5" height="5" fill="#C0392B"/>
+      </svg>
+      <div>
+        <div class="logo-display-name">Marine Wood<span>Craft</span></div>
+        <div class="logo-display-sub">Honolulu, Hawaiʻi</div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:12px;left:20px;font-family:var(--mono);font-size:7px;letter-spacing:0.22em;color:rgba(245,242,237,0.25);">ON OCEAN BLUE</div>
+  </div>
+  <div class="logo-field" style="background:rgba(245,242,237,1);">
+    <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:rgba(10,10,10,0.4);text-align:center;position:relative;z-index:1;">
+      <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(10,10,10,0.3);margin-bottom:12px;">❌ INCORRECT USAGE</div>
+      <div style="color:rgba(10,10,10,0.4);">Do not use on <span style="color:#C0392B;">untextured white</span> without a bounding box or the sub-label. Do not scale icon below 24px. Do not omit the gold wave arc from the mark. Do not rearrange lockup orientation.</div>
+    </div>
+    <div style="position:absolute;bottom:12px;left:20px;font-family:var(--mono);font-size:7px;letter-spacing:0.22em;color:rgba(10,10,10,0.2);">INCORRECT USAGE NOTES</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">Logo Anatomy</span>
+  <div class="grid-3" style="gap:2px; margin-top:8px;">
+    <div class="info-card accent">
+      <div class="card-label">Icon Mark</div>
+      <div class="card-title">36 × 36 px (min.)</div>
+      <div class="card-body">SVG icon containing: hull-bow path (white), grain lines (wood-light), wave arc (gold), corner bolt squares (red). Never use below 24px. Always paired with wordmark at sizes above 32px. Stand-alone icon only for favicon / app icon contexts.</div>
+    </div>
+    <div class="info-card blue-top">
+      <div class="card-label">Wordmark</div>
+      <div class="card-title">Bebas Neue · 22px / 0.07em LS</div>
+      <div class="card-body">"Marine Wood" in white, "Craft" in red (#C0392B). This two-tone split is the wordmark's core identity device — never render the wordmark in a single color. Never alter letter spacing or weight.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Sub-Tag / Location Line</div>
+      <div class="card-title">IBM Plex Mono · 7px / 0.28em LS</div>
+      <div class="card-body">"HONOLULU, HAWAIʻI" in yellow (#D4A017). Positioned 3px below the wordmark baseline. Acts as a geographic anchor — reinforcing the brand's Pacific specialist positioning. Omit only at very small sizes (below 16px wordmark).</div>
+    </div>
+  </div>
+  <div class="grid-3" style="gap:2px; margin-top:2px;">
+    <div class="info-card">
+      <div class="card-label">Clear Space Rule</div>
+      <div class="card-body">Minimum clear space = height of the "M" in the wordmark on all four sides. At 22px wordmark, clear space ≈ 18px. No other graphic elements, text, or imagery may enter this zone.</div>
+    </div>
+    <div class="info-card">
+      <div class="card-label">Favicon Direction</div>
+      <div class="card-body">Use the icon mark only at 32×32 / 16×16. At 16px, reduce to bow-path + single grain line + wave arc. Eliminate bolt squares below 20px. Maintain red in the bow-corner fill.</div>
+    </div>
+    <div class="info-card">
+      <div class="card-label">Animation (Digital)</div>
+      <div class="card-body">On page load: icon fadeIn at 0.5s ease-in. Steam paths loop at 3s steamRise. Wordmark slides up via fadeUp at 0.8s. Never animate the color split — it must remain stable.</div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     03 · COLOR SYSTEM
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">03</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Three</div>
+    <div class="chapter-name">Color System &amp;<br>Palette Architecture</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2);">
+  <span class="section-num">03 — Color System</span>
+  <h2 class="section-h">Five Forces,<br>One <em>Palette</em></h2>
+  <div class="section-rule"></div>
+  <p class="body-p">The palette is composed of exactly seven named tokens — a master discipline rarely achieved in production design. Each color carries a dual identity: a material reference (coal, canvas, blood lacquer, deep ocean, goldenrod, teak heartwood, sanded teak) and a functional role. The palette achieves remarkable richness through opacity stacking rather than additional hues.</p>
+
+  <!-- Primary -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;margin-top:32px;">Primary Palette</div>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#0D0D0D;">
+      <div class="swatch-name" style="color:rgba(245,242,237,0.5);">--black</div>
+      <div class="swatch-hex" style="color:rgba(245,242,237,0.8);">#0D0D0D</div>
+    </div>
+    <div class="swatch" style="background:#F5F2ED;">
+      <div class="swatch-name" style="color:rgba(13,13,13,0.5);">--white</div>
+      <div class="swatch-hex" style="color:rgba(13,13,13,0.8);">#F5F2ED</div>
+    </div>
+    <div class="swatch" style="background:#C0392B;">
+      <div class="swatch-name" style="color:rgba(245,242,237,0.7);">--red</div>
+      <div class="swatch-hex" style="color:#F5F2ED;">#C0392B</div>
+    </div>
+    <div class="swatch" style="background:#1A3A5C;">
+      <div class="swatch-name" style="color:rgba(245,242,237,0.7);">--blue</div>
+      <div class="swatch-hex" style="color:#F5F2ED;">#1A3A5C</div>
+    </div>
+    <div class="swatch" style="background:#D4A017;">
+      <div class="swatch-name" style="color:rgba(13,13,13,0.6);">--yellow</div>
+      <div class="swatch-hex" style="color:#0D0D0D;">#D4A017</div>
+    </div>
+  </div>
+
+  <!-- Wood scale -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;margin-top:4px;">Wood Scale</div>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#8B5E3C;">
+      <div class="swatch-name" style="color:rgba(245,242,237,0.7);">--wood</div>
+      <div class="swatch-hex" style="color:#F5F2ED;">#8B5E3C</div>
+    </div>
+    <div class="swatch" style="background:#C49A6C;">
+      <div class="swatch-name" style="color:rgba(13,13,13,0.6);">--wood-light</div>
+      <div class="swatch-hex" style="color:#0D0D0D;">#C49A6C</div>
+    </div>
+    <div class="swatch" style="background:#E8D5B7;">
+      <div class="swatch-name" style="color:rgba(13,13,13,0.5);">--wood-pale</div>
+      <div class="swatch-hex" style="color:#0D0D0D;">#E8D5B7</div>
+    </div>
+  </div>
+
+  <!-- Color detail table -->
+  <div style="margin-top:32px;">
+    <table class="doc-table" style="background:var(--surface-1);">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>HEX</th>
+          <th>RGB</th>
+          <th>HSL</th>
+          <th>Semantic Role</th>
+          <th>Emotional Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>--black</strong></td>
+          <td>#0D0D0D</td>
+          <td>13, 13, 13</td>
+          <td>0°, 0%, 5%</td>
+          <td>Backgrounds · Header · Footer · Process sections · Dark-panel halves</td>
+          <td>Depth, authority, coalfield weight</td>
+        </tr>
+        <tr>
+          <td><strong>--white</strong></td>
+          <td>#F5F2ED</td>
+          <td>245, 242, 237</td>
+          <td>36°, 26%, 95%</td>
+          <td>Page background · Body text on dark · Services section BG</td>
+          <td>Warm canvas — not clinical white. Aged nautical paper.</td>
+        </tr>
+        <tr>
+          <td><strong>--red</strong></td>
+          <td>#C0392B</td>
+          <td>192, 57, 43</td>
+          <td>5°, 63%, 46%</td>
+          <td>CTA buttons · Header border · Hero rule · Accent bars · Logo "Craft" · Section left strip</td>
+          <td>Action, urgency, marine lacquer, danger signal</td>
+        </tr>
+        <tr>
+          <td><strong>--blue</strong></td>
+          <td>#1A3A5C</td>
+          <td>26, 58, 92</td>
+          <td>211°, 56%, 23%</td>
+          <td>Hero triangle · Highlight service card · Contact left panel · About corner accent</td>
+          <td>Deep Pacific ocean, nautical charts, institutional depth</td>
+        </tr>
+        <tr>
+          <td><strong>--yellow</strong></td>
+          <td>#D4A017</td>
+          <td>212, 160, 23</td>
+          <td>43°, 80%, 46%</td>
+          <td>Sub-labels · Stat numbers · Step numbers · Nav sub · Wave arc · Gold strip · Hover color · Footer mark</td>
+          <td>Aged brass hardware, goldenrod, navigational instrument dials</td>
+        </tr>
+        <tr>
+          <td><strong>--wood</strong></td>
+          <td>#8B5E3C</td>
+          <td>139, 94, 60</td>
+          <td>25°, 40%, 39%</td>
+          <td>Grain overlays · Icon line strokes · Grain utility class</td>
+          <td>Teak heartwood, caulked planking, warm materiality</td>
+        </tr>
+        <tr>
+          <td><strong>--wood-light</strong></td>
+          <td>#C49A6C</td>
+          <td>196, 154, 108</td>
+          <td>31°, 43%, 60%</td>
+          <td>Hero mark grain lines · Grain overlays · Gold gradient end</td>
+          <td>Sanded teak, oiled mahogany, sun-bleached deck</td>
+        </tr>
+        <tr>
+          <td><strong>--wood-pale</strong></td>
+          <td>#E8D5B7</td>
+          <td>232, 213, 183</td>
+          <td>35°, 48%, 81%</td>
+          <td>About-left panel · Contact-right panel · Warm section backgrounds</td>
+          <td>Aged parchment, dried marine varnish, warm neutrality</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Accessibility -->
+  <div style="margin-top:48px;">
+    <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;">Accessibility · Contrast Ratios</div>
+    <div style="background:var(--surface-1); border:1px solid var(--border);">
+      <div class="a11y-row" style="background:var(--surface-2);">
+        <div style="font-family:var(--mono);font-size:7px;letter-spacing:0.2em;color:var(--text-dim);width:220px;">FOREGROUND / BACKGROUND</div>
+        <div style="font-family:var(--mono);font-size:7px;letter-spacing:0.2em;color:var(--text-dim);width:80px;">RATIO</div>
+        <div style="font-family:var(--mono);font-size:7px;letter-spacing:0.2em;color:var(--text-dim);">WCAG AA</div>
+      </div>
+      <div class="a11y-row">
+        <div class="a11y-swatch" style="background:#F5F2ED;"></div>
+        <div class="a11y-combo">#F5F2ED (white) on #0D0D0D (black)</div>
+        <div class="a11y-ratio">19.6:1</div>
+        <div class="a11y-status pass">✓ AAA Pass</div>
+      </div>
+      <div class="a11y-row">
+        <div class="a11y-swatch" style="background:#D4A017;border:1px solid rgba(245,242,237,0.1);"></div>
+        <div class="a11y-combo">#D4A017 (yellow) on #0D0D0D (black)</div>
+        <div class="a11y-ratio">8.9:1</div>
+        <div class="a11y-status pass">✓ AAA Pass</div>
+      </div>
+      <div class="a11y-row">
+        <div class="a11y-swatch" style="background:#C0392B;"></div>
+        <div class="a11y-combo">#C0392B (red) on #0D0D0D (black)</div>
+        <div class="a11y-ratio">4.9:1</div>
+        <div class="a11y-status pass">✓ AA Pass</div>
+      </div>
+      <div class="a11y-row">
+        <div class="a11y-swatch" style="background:#D4A017;"></div>
+        <div class="a11y-combo">#D4A017 (yellow) on #1A3A5C (blue)</div>
+        <div class="a11y-ratio">5.2:1</div>
+        <div class="a11y-status pass">✓ AA Pass</div>
+      </div>
+      <div class="a11y-row">
+        <div class="a11y-swatch" style="background:rgba(245,242,237,0.4);border:1px solid rgba(245,242,237,0.1);"></div>
+        <div class="a11y-combo">rgba(F5F2ED, 0.4) dim text on #0D0D0D</div>
+        <div class="a11y-ratio">~5.1:1</div>
+        <div class="a11y-status warn">⚠ AA (body only)</div>
+      </div>
+      <div class="a11y-row">
+        <div class="a11y-swatch" style="background:rgba(245,242,237,0.25);border:1px solid rgba(245,242,237,0.1);"></div>
+        <div class="a11y-combo">rgba(F5F2ED, 0.25) on #0D0D0D — footer copy</div>
+        <div class="a11y-ratio">~2.8:1</div>
+        <div class="a11y-status fail">✗ Fails — decorative only</div>
+      </div>
+    </div>
+    <p class="body-p" style="margin-top:16px;font-size:13px;"><strong>Recommendation:</strong> The 0.25 opacity footer copy is decorative — acceptable for non-essential metadata. All primary navigation and body text meets or exceeds AA. Consider raising dim body text from 0.55 to 0.65 opacity for stronger AA compliance on body paragraphs in dark sections.</p>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     04 · TYPOGRAPHY SYSTEM
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">04</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Four</div>
+    <div class="chapter-name">Typography System</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">04 — Typography</span>
+  <h2 class="section-h">A Trinity Of<br><em>Voice</em></h2>
+  <div class="section-rule"></div>
+  <p class="body-p">The type system employs exactly three typefaces in fixed role assignments — a discipline that creates extraordinary coherence. Each typeface occupies its lane without overlap: <strong>Bebas Neue</strong> commands, <strong>DM Sans</strong> speaks, <strong>IBM Plex Mono</strong> annotates. The result reads like a maritime instrument panel: precision at every register.</p>
+
+  <div class="grid-3" style="gap:2px; margin-bottom:32px;">
+    <div class="info-card accent">
+      <div class="card-label">Display · Commands</div>
+      <div style="font-family:var(--display);font-size:36px;color:var(--white);letter-spacing:0.03em;line-height:1;margin:12px 0;">BEBAS NEUE</div>
+      <div class="card-body">Used for: H1–H2, section headings, logo wordmark, service names, step numbers, stat numbers, footer wordmark, service list names. All-caps geometric condensed display. Evokes naval typography, instrument panel labeling, blueprint callouts.</div>
+    </div>
+    <div class="info-card" style="border-top:2px solid rgba(245,242,237,0.15);">
+      <div class="card-label">Body · Speaks</div>
+      <div style="font-family:var(--body);font-size:16px;color:var(--white);font-weight:300;line-height:1.6;margin:12px 0;">DM Sans Light</div>
+      <div class="card-body">Used for: Body paragraphs, descriptions, about copy, service descriptions, step descriptions. Weight 300 exclusively — a deliberate lightness that makes Bebas Neue feel heavier by contrast. 15px / 1.8 line-height is the dominant body rhythm.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Annotation · Tags</div>
+      <div style="font-family:var(--mono);font-size:13px;color:var(--yellow);letter-spacing:0.25em;text-transform:uppercase;margin:12px 0;">IBM PLEX MONO</div>
+      <div class="card-body">Used for: Section labels, nav links, buttons, sub-tags, eyebrow text, footer copy, stat labels, contact labels, service tags. Letter-spacing 0.2–0.38em. This is the brand's data-layer voice — technical, precise, systematic.</div>
+    </div>
+  </div>
+
+  <!-- Type specimens -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Type Scale · Specimens</div>
+
+  <div class="type-block active">
+    <div class="type-meta">H1 · Hero · Bebas Neue · clamp(56px, 6vw, 88px) · LS 0.03em · LH 0.88</div>
+    <div class="type-specimen" style="font-family:var(--display);font-size:clamp(48px,5vw,76px);line-height:0.88;letter-spacing:0.03em;">Craftsmanship<br>For The Sea</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">H2 · Section · Bebas Neue · 52px · LS 0.03em · LH 0.95</div>
+    <div class="type-specimen" style="font-family:var(--display);font-size:46px;line-height:0.95;letter-spacing:0.03em;">Built For The Ocean</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">H3 · Component · Bebas Neue · 20px · LS 0.08em</div>
+    <div class="type-specimen" style="font-family:var(--display);font-size:20px;letter-spacing:0.08em;">Marine Woodwork · Boat Restoration</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">Eyebrow / Section Label · IBM Plex Mono · 9px · LS 0.35em · Uppercase · Opacity 0.4</div>
+    <div class="type-specimen" style="font-family:var(--mono);font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(245,242,237,0.4);">02 — About Us · Marine Woodworking · Est. Honolulu, HI</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">Body · DM Sans · 15px · Weight 300 · LH 1.8 · Color rgba(F5F2ED, 0.55–0.65)</div>
+    <div class="type-specimen" style="font-family:var(--body);font-size:15px;font-weight:300;line-height:1.8;color:rgba(245,242,237,0.6);max-width:560px;">Marine Wood Craft specializes in high-quality marine woodworking, restoration, and custom boat interiors. Based in Honolulu, Hawaiʻi, we serve vessels of all types — from classic wooden sailboats to modern motor yachts.</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">Button / Nav · IBM Plex Mono · 10px · LS 0.22em · Uppercase</div>
+    <div class="type-specimen" style="font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;">GET A QUOTE · OUR SERVICES · ABOUT · CONTACT</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">Stat Number · Bebas Neue · 44px · Color --yellow</div>
+    <div class="type-specimen" style="font-family:var(--display);font-size:44px;color:var(--yellow);line-height:1;letter-spacing:0.03em;">20+ · 500+ · HNL</div>
+  </div>
+  <div class="type-block">
+    <div class="type-meta">Micro Label · IBM Plex Mono · 7–8px · LS 0.2–0.28em · Uppercase · Color --yellow / dim</div>
+    <div class="type-specimen" style="font-family:var(--mono);font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(245,242,237,0.35);">YEARS EXPERIENCE · VESSELS RESTORED · HONOLULU BASED</div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     05 · LAYOUT & GRID
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">05</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Five</div>
+    <div class="chapter-name">Layout &amp; Grid System</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2);">
+  <span class="section-num">05 — Layout & Grid</span>
+  <h2 class="section-h">Binary Splits &amp;<br>Rhythmic <em>Density</em></h2>
+  <div class="section-rule"></div>
+  <p class="body-p">The layout philosophy is built on <strong>binary panel logic</strong> — sections split exactly 50/50 between contrasting material environments (dark/light, ocean/wood, black/cream). This creates a page rhythm that oscillates: every section is a dialogue between two opposing worlds. There is no neutral zone — surfaces are always semantically loaded.</p>
+  <div class="grid-2" style="gap:2px; margin-top:32px;">
+    <div class="info-card accent">
+      <div class="card-label">Primary Container</div>
+      <div class="card-title">Full-bleed, no max-width container</div>
+      <div class="card-body">Unlike conventional constrained-column layouts, Marine Wood Craft uses edge-to-edge sections with internal padding (72px desktop, 32px mobile). This gives each section a gallery-wall quality — total ownership of its zone.</div>
+    </div>
+    <div class="info-card blue-top">
+      <div class="card-label">Internal Padding</div>
+      <div class="card-title">72–88px horizontal · 80–96px vertical</div>
+      <div class="card-body">Generous internal breathing room creates what feels like a premium editorial layout. The 64–88px left padding on dark sections echoes the 6px red accent bar — an invisible baseline alignment system.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Grid Patterns</div>
+      <div class="card-title">1-col hero text · 2-col split · 4-col process · 5-col services</div>
+      <div class="card-body">Grid column count is semantically driven: 2 = dialogue (about, contact), 4 = sequence (process steps), 5 = parallel offerings (services). Each grid count carries a different reading pace — 5-col scans faster; 2-col invites longer reading.</div>
+    </div>
+    <div class="info-card wood-top">
+      <div class="card-label">Vertical Rhythm</div>
+      <div class="card-title">4px base unit · 8px micro · 16/20/24/28/32/48/56/80/96px macro</div>
+      <div class="card-body">The vertical spacing follows a disciplined modular scale. Section spacing (80–96px) creates clear chapter breaks. Component internal spacing (24–32px) maintains visual density without crowding. mb-20px for rule/label gaps.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;">Section Layout Sequence</div>
+    <table class="doc-table" style="background:var(--surface-1);">
+      <thead>
+        <tr><th>Section</th><th>Grid</th><th>Background Duality</th><th>Accent Logic</th><th>Visual Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Header</strong></td><td>Flex space-between</td><td>--black + red border</td><td>Red bottom border, wood grain overlay</td><td>Fixed anchor, authority</td></tr>
+        <tr><td><strong>Hero</strong></td><td>2-col + absolute layers</td><td>--black + --blue triangle</td><td>Red vertical bar (left), gold horizontal strip (bottom), blueprint grid (right)</td><td>First impression, spatial drama</td></tr>
+        <tr><td><strong>Pattern Bar</strong></td><td>1-col 10px strip</td><td>Repeating --black/red/blue/yellow</td><td>All four brand colors in rhythm</td><td>Section separator, brand signature</td></tr>
+        <tr><td><strong>About</strong></td><td>2-col 50/50</td><td>--wood-pale + --black</td><td>Yellow corner triangle (wood), blue corner triangle (dark), red rule</td><td>Brand story, materiality contrast</td></tr>
+        <tr><td><strong>Services</strong></td><td>5-col grid</td><td>--white + --blue (highlight)</td><td>Red left strip (6px), yellow expand bar on hover, hover inversion</td><td>Product catalog, scannable</td></tr>
+        <tr><td><strong>Process</strong></td><td>4-col strip</td><td>--black full-bleed</td><td>Red top line on first step only, dim vertical dividers</td><td>Sequential narrative, trust building</td></tr>
+        <tr><td><strong>Contact</strong></td><td>2-col 50/50</td><td>--blue + --wood-pale</td><td>Blueprint grid (left), grain (right), wave lines, red corner triangle (right)</td><td>Conversion, dual-environment harmony</td></tr>
+        <tr><td><strong>Footer</strong></td><td>Flex space-between</td><td>--black + red border</td><td>Mirrors header — closes the visual bracket</td><td>Brand close, credentials</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     06 · COMPONENT SYSTEM
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">06</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Six</div>
+    <div class="chapter-name">Component System</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">06 — Components</span>
+  <h2 class="section-h">UI Anatomy &amp;<br>Interaction <em>States</em></h2>
+  <div class="section-rule"></div>
+
+  <!-- NAV -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Navigation · Fixed Header</div>
+  <div class="nav-demo">
+    <div class="nav-demo-logo">Marine Wood<span>Craft</span></div>
+    <div class="nav-demo-links">
+      <div class="nav-demo-link">About</div>
+      <div class="nav-demo-link">Services</div>
+      <div class="nav-demo-link">Process</div>
+      <div class="nav-demo-link" style="border-right:1px solid rgba(245,242,237,0.07);">Contact</div>
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;background:var(--red);color:var(--white);padding:10px 20px;margin-left:12px;">Get a Quote</div>
+    </div>
+  </div>
+  <div class="info-card" style="margin-bottom:24px;">
+    <div class="card-label">Navigation Anatomy</div>
+    <div class="card-body"><strong>Height:</strong> 64px fixed · <strong>Background:</strong> --black with wood grain pseudo · <strong>Border:</strong> 3px solid --red (bottom) · <strong>Logo:</strong> mark + wordmark + geo-tag lockup · <strong>Nav links:</strong> IBM Plex Mono 10px / 0.22em LS / opacity 0.55 default / 1.0 hover · <strong>Link separation:</strong> 1px left border rgba(white,0.07) · <strong>CTA:</strong> --red fill, no border, 12px left margin, padding 10×20px · <strong>Hover transition:</strong> 0.2s for color and background · <strong>Responsive:</strong> non-CTA links hidden at 900px</div>
+  </div>
+
+  <!-- BUTTONS -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Buttons · CTA System</div>
+  <div class="component-demo">
+    <div>
+      <span class="demo-label">Primary</span>
+      <button class="btn-p">Get a Quote →</button>
+    </div>
+    <div>
+      <span class="demo-label">Secondary</span>
+      <button class="btn-s">Our Services</button>
+    </div>
+    <div>
+      <span class="demo-label">Nav CTA</span>
+      <button class="btn-cta">Get a Quote</button>
+    </div>
+  </div>
+  <div class="grid-3" style="gap:2px; margin-bottom:32px;">
+    <div class="info-card accent">
+      <div class="card-label">Primary Button</div>
+      <div class="card-body">Background: --red · Color: --white · Padding: 14px 28px · Font: IBM Plex Mono 10px 0.22em · Hover: bg #a93225 + translateY(-1px) · Arrow icon inline-flex · No border-radius (intentionally sharp)</div>
+    </div>
+    <div class="info-card">
+      <div class="card-label">Secondary Button</div>
+      <div class="card-body">Background: transparent · Border: 1px solid rgba(white,0.18) · Color: rgba(white,0.6) · Same size as primary · Hover: border --yellow, color --yellow · Functions as "soft alternative" to primary</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">CTA (Nav)</div>
+      <div class="card-body">Background: --red · Tighter padding: 10px 20px · Same mono typography · Hover: #a93225 · Position: right-most nav item, separated by 12px margin. Mirrors primary button but in nav context.</div>
+    </div>
+  </div>
+
+  <!-- SERVICE CARDS -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Service Cards · Interactive</div>
+  <div class="svc-demo-grid" style="margin-bottom:2px;">
+    <div class="svc-demo-card">
+      <div class="svc-demo-num">01</div>
+      <div style="margin-bottom:14px;position:relative;z-index:1;">
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+          <path d="M8 28 L20 8 L32 28 Q32 34 20 36 Q8 34 8 28Z" stroke="#0D0D0D" stroke-width="1.5" fill="none"/>
+          <line x1="12" y1="22" x2="28" y2="22" stroke="#8B5E3C" stroke-width="1"/>
+          <line x1="11" y1="25" x2="29" y2="25" stroke="#8B5E3C" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="svc-demo-name">Marine Woodwork</div>
+      <div class="svc-demo-desc">Hull, deck and interior finishing for all vessel types. Custom joinery and cabinetry.</div>
+      <div class="svc-demo-bar"></div>
+    </div>
+    <div class="svc-demo-card">
+      <div class="svc-demo-num">02</div>
+      <div style="margin-bottom:14px;position:relative;z-index:1;">
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+          <rect x="8" y="13" width="24" height="18" stroke="#0D0D0D" stroke-width="1.5" fill="none"/>
+          <line x1="8" y1="18" x2="32" y2="18" stroke="#8B5E3C" stroke-width="1"/>
+          <rect x="14" y="8" width="12" height="7" stroke="#C0392B" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="svc-demo-name">Boat Restoration</div>
+      <div class="svc-demo-desc">Full vessel restoration — period correct and modern finishes. Structural repair.</div>
+      <div class="svc-demo-bar"></div>
+    </div>
+    <div class="svc-demo-card" style="background:var(--blue);">
+      <div class="svc-demo-num" style="color:rgba(245,242,237,0.04);">05</div>
+      <div style="margin-bottom:14px;position:relative;z-index:1;">
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+          <path d="M23 6 L14 22 L20 22 L17 34 L26 18 L20 18 Z" stroke="#D4A017" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="svc-demo-name" style="color:var(--yellow);">12V Electrical Fix</div>
+      <div class="svc-demo-desc" style="color:rgba(245,242,237,0.5);">Marine wiring, systems diagnostics and navigation lighting.</div>
+      <div class="svc-demo-bar"></div>
+    </div>
+  </div>
+  <div class="info-card" style="margin-bottom:32px;">
+    <div class="card-label">Service Card · States</div>
+    <div class="card-body"><strong>Default:</strong> --white bg · Bebas Neue name · DM Sans 12px 300 desc · ghost number (opacity 0.05) · SVG icon · border-right divider · <strong>Hover:</strong> bg → --black, name → --white, desc → rgba(white,0.45), icon strokes → --yellow, bottom bar expands width 0→100% at 0.4s ease · <strong>Highlight (5th card):</strong> --blue bg, yellow name — inversion of default hierarchy · 0-radius corners (no rounded styling anywhere)</div>
+  </div>
+
+  <!-- PROCESS STEPS -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Process Steps</div>
+  <div class="process-demo" style="margin-bottom:2px;">
+    <div class="proc-step"><div class="proc-step-num">01</div><div class="proc-step-title">Inspection</div><div class="proc-step-desc">We assess every surface before a single tool is raised.</div></div>
+    <div class="proc-step"><div class="proc-step-num">02</div><div class="proc-step-title">Proposal</div><div class="proc-step-desc">A clear, itemized quote. No surprises.</div></div>
+    <div class="proc-step"><div class="proc-step-num">03</div><div class="proc-step-title">Craftwork</div><div class="proc-step-desc">Executed with premium marine-grade materials.</div></div>
+    <div class="proc-step" style="border-right:none;"><div class="proc-step-num">04</div><div class="proc-step-title">Delivery</div><div class="proc-step-desc">Final inspection and care guide walkthrough.</div></div>
+  </div>
+  <div class="info-card" style="margin-bottom:32px;">
+    <div class="card-label">Process Step · Anatomy</div>
+    <div class="card-body"><strong>Step number:</strong> Bebas 48px, --yellow · <strong>Title:</strong> Bebas 20px, 0.08em LS, --white · <strong>Description:</strong> DM Sans 13px 300, rgba(white, 0.4) · <strong>Separator:</strong> 1px top line rgba(white,0.07) · <strong>First step only:</strong> top line color = --red — a subtle signal of start point · <strong>Vertical dividers:</strong> 1px right border rgba(white,0.07) · No hover state — read-only component</div>
+  </div>
+
+  <!-- CONTACT DETAIL -->
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;">Contact Details</div>
+  <div class="component-demo" style="background:var(--blue); justify-content:flex-start; flex-direction:column; gap:20px;">
+    <div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:4px;">Phone</div>
+      <div style="font-family:var(--display);font-size:24px;letter-spacing:0.06em;color:var(--white);">808-979-1296</div>
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:4px;">Email</div>
+      <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:rgba(245,242,237,0.55);">hi@marinewoodcraft.com</div>
+    </div>
+  </div>
+  <div class="info-card" style="margin-bottom:0;">
+    <div class="card-label">Contact Detail · Anatomy</div>
+    <div class="card-body"><strong>Label:</strong> IBM Plex Mono 8px 0.3em LS, --yellow · <strong>Phone value:</strong> Bebas Neue 24px 0.06em LS — treated as a display number, not body text · <strong>Email:</strong> IBM Plex Mono 12px, rgba(white,0.55) · <strong>Hover:</strong> phone link transitions to --yellow (0.2s) · The shift from mono to display for the phone number is intentional — it elevates the call number as the primary conversion action</div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     07 · MOTION & ANIMATION
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">07</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Seven</div>
+    <div class="chapter-name">Motion &amp; Animation Language</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2);">
+  <span class="section-num">07 — Motion</span>
+  <h2 class="section-h">Purposeful<br><em>Momentum</em></h2>
+  <div class="section-rule"></div>
+  <p class="body-p">The animation language is restrained but deliberate. Motion is never decorative — every animated element serves either to <strong>reveal hierarchy</strong> (hero load sequence) or to <strong>signal interactivity</strong> (hover states). The dominant metaphor is the slow unfurling of a sail — elements rise and resolve with unhurried confidence.</p>
+
+  <div style="margin-top:32px; border:1px solid var(--border);">
+    <div class="motion-row">
+      <div class="motion-label-col">
+        <div class="motion-label">fadeUp</div>
+        <div class="motion-timing">0.8s · ease · from Y+16px</div>
+      </div>
+      <div class="motion-demo-col">
+        <div class="motion-bar-wrap"><div class="motion-bar ease-out" style="width:100%;"></div></div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);margin-top:6px;letter-spacing:0.1em;">Hero eyebrow (0.2s delay), H1 (0.4s), rule (0.6s), paragraph (0.7s), actions (0.9s), scroll indicator (1.2s) — staggered cascade</div>
+      </div>
+    </div>
+    <div class="motion-row">
+      <div class="motion-label-col">
+        <div class="motion-label">fadeIn</div>
+        <div class="motion-timing">1.2s · ease · opacity only</div>
+      </div>
+      <div class="motion-demo-col">
+        <div class="motion-bar-wrap"><div class="motion-bar ease-in-out" style="width:100%;background:var(--blue);"></div></div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);margin-top:6px;letter-spacing:0.1em;">Hero right logomark — longer duration than fadeUp, no Y translation. Creates the sense that the mark materializes from behind the copy.</div>
+      </div>
+    </div>
+    <div class="motion-row">
+      <div class="motion-label-col">
+        <div class="motion-label">steamRise</div>
+        <div class="motion-timing">3s · ease-in-out · infinite · offset delays</div>
+      </div>
+      <div class="motion-demo-col">
+        <div class="motion-bar-wrap"><div class="motion-bar linear" style="width:100%;background:rgba(245,242,237,0.3);animation-duration:3s;"></div></div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);margin-top:6px;letter-spacing:0.1em;">Three SVG paths on hero logomark: Y-translate -18px + opacity 0.5→0 + scaleX 1→1.06. Paths offset at 0s, 0.8s, 1.6s. Creates a continuous, calming steam effect.</div>
+      </div>
+    </div>
+    <div class="motion-row" style="border-bottom:none;">
+      <div class="motion-label-col">
+        <div class="motion-label">Hover Transitions</div>
+        <div class="motion-timing">0.2–0.4s · linear / ease</div>
+      </div>
+      <div class="motion-demo-col">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:0.1em;line-height:1.8;">
+          Service card background: 0.3s · Bar expand: 0.4s ease · Button bg: 0.2s · Button lift: 0.15s translateY(-1px) · Nav link: 0.2s · Phone link: 0.2s · All transitions prefer speed over duration — interactions feel immediate.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="gap:2px; margin-top:32px;">
+    <div class="info-card accent">
+      <div class="card-label">Temporal Architecture</div>
+      <div class="card-body">Hero load spans 0.2s–1.2s across 7 elements. This 1-second window is the brand's complete motion signature — everything else is hover-state. No scroll-triggered animations exist — a deliberate restraint that focuses motion budget on the first impression.</div>
+    </div>
+    <div class="info-card blue-top">
+      <div class="card-label">Easing Philosophy</div>
+      <div class="card-body">"ease" is the dominant curve — a standard decelerating ease-out that mimics natural deceleration. "ease-in-out" for the steam (breathing, organic). Linear for the motion-bar diagram. No spring physics, no bounce — consistent with the brand's measured authority.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Emotional Function</div>
+      <div class="card-body">The staggered hero reveal communicates unhurried confidence. Elements don't rush into view — they arrive. The steam loop is the only infinite animation, adding living warmth to an otherwise static mark. Motion says: precision, not performance.</div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     08 · VISUAL COMPOSITION
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">08</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Eight</div>
+    <div class="chapter-name">Visual Composition Principles</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">08 — Composition</span>
+  <h2 class="section-h">Geometry,<br><em>Tension</em> &amp; Grain</h2>
+  <div class="section-rule"></div>
+  <div class="grid-2" style="gap:2px;">
+    <div>
+      <div class="info-card accent" style="margin-bottom:2px;">
+        <div class="card-label">Clip-Path Geometry</div>
+        <div class="card-title">Diagonal Cuts as Brand Device</div>
+        <div class="card-body">The hero triangle (polygon 25% 0%, 100% 0%, 100% 100%, 0% 100%), about corner triangles, contact corner triangle — all use clip-path polygons to create diagonal visual cuts. These diagonals echo the hull bow angle in the logo mark. The brand's geometric language is consistently angular, never circular.</div>
+      </div>
+      <div class="info-card blue-top" style="margin-bottom:2px;">
+        <div class="card-label">Grain as Atmosphere</div>
+        <div class="card-title">Repeating-Gradient Wood Texture</div>
+        <div class="card-body">A 91° repeating-linear-gradient at 2–7% opacity simulates wood grain across dark sections. This is not decoration — it references the physical material that defines the service. The grain direction (nearly horizontal) matches real teak planking direction. On blue sections, the grain runs at 135° (diagonal), evoking water movement.</div>
+      </div>
+      <div class="info-card gold-top">
+        <div class="card-label">Blueprint Grid Overlay</div>
+        <div class="card-title">Naval Engineering Reference</div>
+        <div class="card-body">The 48×48px hairline grid on the hero's ocean-blue triangle directly references naval architecture blueprints. It positions the brand within a professional technical tradition. The grid lines are rgba(white,0.04) — barely visible, atmospheric rather than structural.</div>
+      </div>
+    </div>
+    <div>
+      <div class="info-card wood-top" style="margin-bottom:2px;">
+        <div class="card-label">Pattern Bar as Rhythm Marker</div>
+        <div class="card-title">10px · Black/Red/Blue/Yellow Sequence</div>
+        <div class="card-body">The repeating 3px color stripe (black 40px, red 3px, black 40px, blue 3px, black 40px, yellow 3px) is the brand's most concentrated visual expression — all four colors in a single 10px horizontal band. It acts as a section separator, page rhythm marker, and identity declaration simultaneously.</div>
+      </div>
+      <div class="info-card accent" style="margin-bottom:2px;">
+        <div class="card-label">Wave SVG Lines</div>
+        <div class="card-title">Bezier Ocean Surface</div>
+        <div class="card-body">Sine-wave SVG paths rendered at 0.15–0.2 opacity in hero and contact sections. The Q bezier wave is the brand's softest element — the only organic curve against a system of right angles and polygons. It anchors the identity in the Pacific without illustrative literalism.</div>
+      </div>
+      <div class="info-card">
+        <div class="card-label">Gold Strip</div>
+        <div class="card-title">4px · Gradient Anchor</div>
+        <div class="card-body">The 4px gold-to-wood-light gradient strip at the hero's bottom edge is a compositional anchor: it terminates the full-bleed dark hero with warmth, creating a material transition downward. A subtle device that carries enormous visual weight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     09 · UX & INTERACTION PHILOSOPHY
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">09</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Nine</div>
+    <div class="chapter-name">UX &amp; Interaction Philosophy</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2);">
+  <span class="section-num">09 — UX Philosophy</span>
+  <h2 class="section-h">Conversion<br><em>Through</em> Credibility</h2>
+  <div class="section-rule"></div>
+  <p class="body-p">The UX strategy is built on a single premise: <strong>if you trust the design, you'll trust the craft</strong>. The interface earns the phone call — it doesn't beg for it. Every interaction decision serves the goal of conveying premium specialist credibility, not generating clicks through anxiety or urgency.</p>
+  <div class="grid-4" style="gap:2px; margin-top:32px;">
+    <div class="info-card accent">
+      <div class="card-label">Navigation Philosophy</div>
+      <div class="card-body">Flat hierarchy: 4 anchor links + 1 CTA. No dropdowns, no megamenus. The simplicity signals a business that knows exactly what it offers. The "Get a Quote" CTA appears twice in the nav — at header and at hero — never becoming intrusive because it's separated by layout logic, not duplication.</div>
+    </div>
+    <div class="info-card blue-top">
+      <div class="card-label">Attention Management</div>
+      <div class="card-body">Reading flow: Eyebrow → H1 → Rule → Body → CTA. Each element earns the next. The fade-up sequence times exactly to this reading pace. The rule (48px wide, 3px tall) is a visual breath — a pause before the body text — that prevents cognitive overwhelm.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Conversion Architecture</div>
+      <div class="card-body">Two CTAs (hero + nav) both anchor to #contact. The contact section presents both the phone number (primary, in 24px Bebas display) and email (secondary, mono), with a complete service recap — all information a buyer needs to commit. No form friction: phone first.</div>
+    </div>
+    <div class="info-card wood-top">
+      <div class="card-label">Cognitive Load</div>
+      <div class="card-body">Service count: 5 (memorizable). Process steps: 4 (a complete loop). Stats: 4 (scannable in 3 seconds). Every enumerable set is small. The numbered section labels (01–05) give the reader a map of progress. Nothing is hidden behind interaction — all content is immediately scannable.</div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     10 · RESPONSIVE DESIGN
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">10</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Ten</div>
+    <div class="chapter-name">Responsive Design Rules</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">10 — Responsive</span>
+  <h2 class="section-h">Mobile<br><em>Adaptation</em></h2>
+  <div class="section-rule"></div>
+  <table class="doc-table">
+    <thead>
+      <tr><th>Breakpoint</th><th>Grid Change</th><th>Typography</th><th>Component Behavior</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Desktop<br>≥ 900px</strong></td>
+        <td>Hero 2-col · About 2-col · Services 5-col · Process 4-col · Contact 2-col</td>
+        <td>H1: clamp(56px, 6vw, 88px) · Section padding 80–96px</td>
+        <td>Nav: all links visible · Hero-right mark: visible · Full column splits</td>
+      </tr>
+      <tr>
+        <td><strong>Mobile<br>≤ 900px</strong></td>
+        <td>Hero 1-col · About 1-col · Services 2-col (last card full) · Process 2-col · Contact 1-col</td>
+        <td>H1 clamp still applies · Reduced padding 32px horizontal · Sections 56–64px vertical</td>
+        <td>Nav links hidden (non-CTA) · Hero triangle: full-width at 30% opacity (background texture only) · Hero-right mark: display:none · Footer: column layout</td>
+      </tr>
+      <tr>
+        <td><strong>Strategy</strong></td>
+        <td colspan="3">Desktop-first architecture with a single 900px breakpoint. The binary split collapses gracefully to stacked panels. Services grid goes from 5 to 2 columns (maintaining card density). The 5th service card spans full width on mobile. The breakpoint is broad — a single rule covers all mobile/tablet scenarios, prioritizing simplicity over granular control.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="grid-3" style="gap:2px; margin-top:32px;">
+    <div class="info-card accent">
+      <div class="card-label">Responsive Typography</div>
+      <div class="card-body">Hero H1 uses clamp(56px, 6vw, 88px) — the only fluid type in the system. All other type is fixed-size with layout context adjustments. This is a deliberate choice: predictability over complexity. IBM Plex Mono micro labels maintain fixed px at all sizes — they are data, not display.</div>
+    </div>
+    <div class="info-card blue-top">
+      <div class="card-label">Mobile Simplification</div>
+      <div class="card-body">The hero-right SVG logomark is hidden on mobile — reducing cognitive overhead on small screens. The hero triangle loses its clip-path and becomes a full-width atmospheric overlay at 0.3 opacity. The visual argument is maintained through grain and the text column alone.</div>
+    </div>
+    <div class="info-card gold-top">
+      <div class="card-label">Missing Breakpoints</div>
+      <div class="card-body">No tablet-specific (600–900px) or large-desktop (1400px+) breakpoints are defined. Recommendation: add a 640px breakpoint for single-column services on narrow phones, and a 1400px max-width content container for very wide displays to prevent content from over-stretching.</div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     11 · ACCESSIBILITY
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">11</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Eleven</div>
+    <div class="chapter-name">Accessibility &amp; Inclusivity</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2);">
+  <span class="section-num">11 — Accessibility</span>
+  <h2 class="section-h">Inclusive<br><em>Standards</em></h2>
+  <div class="section-rule"></div>
+  <div class="grid-2" style="gap:2px;">
+    <div>
+      <div class="info-card accent" style="margin-bottom:2px;">
+        <div class="card-label">✓ Strengths</div>
+        <div class="card-body">
+          <strong>Semantic HTML:</strong> Proper header, nav, section, footer structure · 
+          <strong>Link structure:</strong> All nav items are anchor tags · 
+          <strong>Smooth scroll:</strong> html scroll-behavior smooth · 
+          <strong>Color contrast:</strong> Primary text combinations pass AA/AAA · 
+          <strong>Motion:</strong> No seizure-risk animations (nothing &lt;200ms flashing) ·
+          <strong>DM Sans:</strong> Excellent legibility at 300 weight at 15px+ ·
+          <strong>Phone link:</strong> tel: href enables one-tap calling on mobile
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-card" style="border-top:2px solid rgba(212,160,23,0.5); margin-bottom:2px;">
+        <div class="card-label">⚠ Recommendations</div>
+        <div class="card-body">
+          <strong>Focus states:</strong> No custom focus rings defined — browser defaults may be invisible on dark backgrounds. Add :focus-visible with yellow outline. ·
+          <strong>Prefers-reduced-motion:</strong> No @media (prefers-reduced-motion) query — add to disable fadeUp / steamRise for users with vestibular sensitivities. ·
+          <strong>Alt text:</strong> SVG icons have no aria-label or title elements. ·
+          <strong>Color-only meaning:</strong> The pattern-bar uses color to convey brand identity — add an aria-hidden to decorative elements. ·
+          <strong>Section labels:</strong> The dim micro-labels (opacity 0.25) are decorative-only — confirm they're not carrying critical content.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     12 · DESIGN TOKENS
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">12</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Twelve</div>
+    <div class="chapter-name">Design Token Reference</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">12 — Design Tokens</span>
+  <h2 class="section-h">Token<br><em>Architecture</em></h2>
+  <div class="section-rule"></div>
+
+  <div class="token-block">
+<span class="cmt">/* ── COLOR TOKENS ── */</span><br>
+<span class="punc">{</span><br>
+&nbsp;&nbsp;<span class="key">"color.black"</span><span class="punc">:</span> <span class="val">"#0D0D0D"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* backgrounds, headers, footers */</span><br>
+&nbsp;&nbsp;<span class="key">"color.white"</span><span class="punc">:</span> <span class="val">"#F5F2ED"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* page bg, body text on dark */</span><br>
+&nbsp;&nbsp;<span class="key">"color.red"</span><span class="punc">:</span> <span class="val">"#C0392B"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* CTA, borders, accents, "Craft" */</span><br>
+&nbsp;&nbsp;<span class="key">"color.blue"</span><span class="punc">:</span> <span class="val">"#1A3A5C"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* ocean panels, hero triangle */</span><br>
+&nbsp;&nbsp;<span class="key">"color.yellow"</span><span class="punc">:</span> <span class="val">"#D4A017"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* labels, numbers, hovers, gold strip */</span><br>
+&nbsp;&nbsp;<span class="key">"color.wood"</span><span class="punc">:</span> <span class="val">"#8B5E3C"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* grain lines, teak material */</span><br>
+&nbsp;&nbsp;<span class="key">"color.wood-light"</span><span class="punc">:</span> <span class="val">"#C49A6C"</span><span class="punc">,</span>&nbsp;<span class="cmt">/* lighter grain, oiled surface */</span><br>
+&nbsp;&nbsp;<span class="key">"color.wood-pale"</span><span class="punc">:</span> <span class="val">"#E8D5B7"</span><span class="punc">,</span>&nbsp;&nbsp;<span class="cmt">/* warm section backgrounds */</span><br>
+<br>
+<span class="cmt">/* ── TYPOGRAPHY TOKENS ── */</span><br>
+&nbsp;&nbsp;<span class="key">"font.display"</span><span class="punc">:</span> <span class="str">"'Bebas Neue', sans-serif"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.body"</span><span class="punc">:</span> <span class="str">"'DM Sans', sans-serif"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.mono"</span><span class="punc">:</span> <span class="str">"'IBM Plex Mono', monospace"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.weight.body"</span><span class="punc">:</span> <span class="val">300</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.weight.mono"</span><span class="punc">:</span> <span class="val">400</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.hero"</span><span class="punc">:</span> <span class="str">"clamp(56px, 6vw, 88px)"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.section-h2"</span><span class="punc">:</span> <span class="val">"52px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.body"</span><span class="punc">:</span> <span class="val">"15px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.body-sm"</span><span class="punc">:</span> <span class="val">"13px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.nav"</span><span class="punc">:</span> <span class="val">"10px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.label"</span><span class="punc">:</span> <span class="val">"9px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.size.micro"</span><span class="punc">:</span> <span class="val">"7-8px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.ls.display"</span><span class="punc">:</span> <span class="val">"0.03em"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.ls.nav"</span><span class="punc">:</span> <span class="val">"0.22em"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.ls.label"</span><span class="punc">:</span> <span class="val">"0.35em"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.ls.micro"</span><span class="punc">:</span> <span class="val">"0.28em"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.lh.hero"</span><span class="punc">:</span> <span class="val">0.88</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.lh.section"</span><span class="punc">:</span> <span class="val">0.95</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.lh.body"</span><span class="punc">:</span> <span class="val">1.8</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"font.lh.body-sm"</span><span class="punc">:</span> <span class="val">1.75</span><span class="punc">,</span><br>
+<br>
+<span class="cmt">/* ── SPACING TOKENS ── */</span><br>
+&nbsp;&nbsp;<span class="key">"space.micro"</span><span class="punc">:</span> <span class="val">"4px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.xs"</span><span class="punc">:</span> <span class="val">"8px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.sm"</span><span class="punc">:</span> <span class="val">"12px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.md"</span><span class="punc">:</span> <span class="val">"16px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.lg"</span><span class="punc">:</span> <span class="val">"20-24px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.xl"</span><span class="punc">:</span> <span class="val">"28-32px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.2xl"</span><span class="punc">:</span> <span class="val">"40-48px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.3xl"</span><span class="punc">:</span> <span class="val">"56-64px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.section"</span><span class="punc">:</span> <span class="val">"80-96px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"space.section-h"</span><span class="punc">:</span> <span class="val">"64-72px"</span><span class="punc">,</span>&nbsp;<span class="cmt">/* horizontal padding */</span><br>
+<br>
+<span class="cmt">/* ── BORDER / RADIUS ── */</span><br>
+&nbsp;&nbsp;<span class="key">"border.radius"</span><span class="punc">:</span> <span class="val">"0px"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* no border-radius system — sharp edges only */</span><br>
+&nbsp;&nbsp;<span class="key">"border.width.accent"</span><span class="punc">:</span> <span class="val">"3px"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* header/footer red border */</span><br>
+&nbsp;&nbsp;<span class="key">"border.width.rule"</span><span class="punc">:</span> <span class="val">"2px"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* about-rule, process top */</span><br>
+&nbsp;&nbsp;<span class="key">"border.width.card-bar"</span><span class="punc">:</span> <span class="val">"3px"</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* hover expand bar */</span><br>
+&nbsp;&nbsp;<span class="key">"border.color.default"</span><span class="punc">:</span> <span class="str">"rgba(13,13,13,0.1)"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"border.color.dark"</span><span class="punc">:</span> <span class="str">"rgba(245,242,237,0.07)"</span><span class="punc">,</span><br>
+<br>
+<span class="cmt">/* ── ANIMATION TOKENS ── */</span><br>
+&nbsp;&nbsp;<span class="key">"motion.fade-up.duration"</span><span class="punc">:</span> <span class="val">"0.8s"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.fade-up.easing"</span><span class="punc">:</span> <span class="val">"ease"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.fade-up.y"</span><span class="punc">:</span> <span class="val">"16px"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.fade-in.duration"</span><span class="punc">:</span> <span class="val">"1.2s"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.steam.duration"</span><span class="punc">:</span> <span class="val">"3s"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.steam.easing"</span><span class="punc">:</span> <span class="val">"ease-in-out"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.hover.fast"</span><span class="punc">:</span> <span class="val">"0.15s"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.hover.default"</span><span class="punc">:</span> <span class="val">"0.2s"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.hover.card"</span><span class="punc">:</span> <span class="val">"0.3s"</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"motion.hover.bar"</span><span class="punc">:</span> <span class="val">"0.4s ease"</span><span class="punc">,</span><br>
+<br>
+<span class="cmt">/* ── Z-INDEX ── */</span><br>
+&nbsp;&nbsp;<span class="key">"z.header"</span><span class="punc">:</span> <span class="val">100</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"z.hero-overlay"</span><span class="punc">:</span> <span class="val">5</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;<span class="cmt">/* bar, gold strip, scroll indicator */</span><br>
+&nbsp;&nbsp;<span class="key">"z.hero-content"</span><span class="punc">:</span> <span class="val">4</span><span class="punc">,</span>&nbsp;&nbsp;&nbsp;<span class="cmt">/* left copy, right mark */</span><br>
+&nbsp;&nbsp;<span class="key">"z.hero-grid"</span><span class="punc">:</span> <span class="val">2</span><span class="punc">,</span><br>
+&nbsp;&nbsp;<span class="key">"z.hero-triangle"</span><span class="punc">:</span> <span class="val">1</span><span class="punc">,</span><br>
+<br>
+<span class="cmt">/* ── BREAKPOINTS ── */</span><br>
+&nbsp;&nbsp;<span class="key">"bp.mobile"</span><span class="punc">:</span> <span class="val">"900px"</span>&nbsp;&nbsp;<span class="cmt">/* single breakpoint — desktop-first */</span><br>
+<span class="punc">}</span>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     13 · FRONTEND ARCHITECTURE
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">13</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Thirteen</div>
+    <div class="chapter-name">Frontend Style Architecture</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">13 — CSS Architecture</span>
+  <h2 class="section-h">Custom Tokens,<br><em>Zero</em> Framework</h2>
+  <div class="section-rule"></div>
+  <div class="grid-2" style="gap:2px;">
+    <div>
+      <div class="info-card accent" style="margin-bottom:2px;">
+        <div class="card-label">Architecture Pattern</div>
+        <div class="card-title">Custom Property + Semantic Naming</div>
+        <div class="card-body">No utility framework (no Tailwind, no Bootstrap). CSS variables for all design tokens. Class naming is semantic and section-scoped: .hero-h1, .svc-card-name, .proc-step-desc — a BEM-adjacent pattern without strict double-underscore notation. Highly readable, zero abstraction overhead.</div>
+      </div>
+      <div class="info-card blue-top" style="margin-bottom:2px;">
+        <div class="card-label">Strengths</div>
+        <div class="card-body">
+          · Token system is exhaustive and principled (7 colors, all named)<br>
+          · CSS comment architecture (═══ SECTION ═══) makes the file self-documenting<br>
+          · Pseudo-element grain system is elegant — zero additional HTML markup<br>
+          · Clip-path geometry handled entirely in CSS<br>
+          · Animation keyframes are minimal and purposeful<br>
+          · Single-file architecture — zero HTTP overhead for styles
+        </div>
+      </div>
+      <div class="info-card gold-top">
+        <div class="card-label">CSS Methodology Score</div>
+        <div class="card-body"><strong>Readability:</strong> ★★★★★ · <strong>Scalability:</strong> ★★★☆☆ (flat class namespace, no component isolation) · <strong>Maintainability:</strong> ★★★★☆ (tokens centralized, structure clear) · <strong>Performance:</strong> ★★★★★ (single inline stylesheet, no external CSS)</div>
+      </div>
+    </div>
+    <div>
+      <div class="info-card" style="border-top:2px solid rgba(139,94,60,0.5); margin-bottom:2px;">
+        <div class="card-label">Weaknesses / Recommendations</div>
+        <div class="card-body">
+          · No dark/light mode support — entire site is fixed dark/warm. Recommend adding a prefers-color-scheme query for the wood-pale sections.<br>
+          · Class namespace is flat — at scale, .contact-svc-name and .svc-card-name could collide in complex projects. Recommend BEM or CSS Modules if expanding.<br>
+          · No CSS custom property for spacing — spacing values are inline (80px, 64px). Recommend adding --space-section, --space-inner tokens.<br>
+          · No CSS Grid named areas — the grid logic is structural but unnamed. Named grid areas would improve readability.<br>
+          · Single breakpoint (900px) is pragmatically efficient for a small site but limiting for future expansion.
+        </div>
+      </div>
+      <div class="info-card" style="margin-bottom:2px;">
+        <div class="card-label">Notable Patterns</div>
+        <div class="card-body">
+          <strong>Grain via pseudo-element:</strong> No extra DOM nodes — ::before handles all texture overlays with pointer-events:none.<br>
+          <strong>Clip-path for geometry:</strong> All diagonal cuts are CSS-only — no SVG backgrounds or image assets.<br>
+          <strong>Opacity stacking:</strong> rgba() on top of color tokens creates an infinite implicit tonal range from 7 base colors.<br>
+          <strong>Animation fill-mode:</strong> opacity:0 with forwards fill — elements are invisible until their animation fires.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     14 · BRAND APPLICATION GUIDE
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">14</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Fourteen</div>
+    <div class="chapter-name">Brand Application Guide</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-2);">
+  <span class="section-num">14 — Applications</span>
+  <h2 class="section-h">Cross-Media<br><em>Deployment</em></h2>
+  <div class="section-rule"></div>
+  <div class="grid-3" style="gap:2px;">
+    <div class="app-card">
+      <div class="app-card-ico">WEB</div>
+      <div class="app-card-title">Web & Digital</div>
+      <div class="app-card-body">Apply the full token system via CSS custom properties. Hero diagonal geometry translates to CSS clip-path. Pattern bar becomes a universal section separator. Use fadeUp for all above-fold content reveals. Maintain 64px header height across breakpoints.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">PRINT</div>
+      <div class="app-card-title">Print Materials</div>
+      <div class="app-card-body">Convert --black to CMYK 0/0/0/97. --red to C:0 M:79 Y:73 K:9. --yellow to C:0 M:20 Y:100 K:10. --blue to C:90 M:62 Y:0 K:55. Wood grain texture reproduces as halftone on uncoated stocks — use silk/satin for best grain fidelity. Minimum logo: 18mm wide.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">CARD</div>
+      <div class="app-card-title">Business Cards</div>
+      <div class="app-card-body">Black card stock, warm white thermography for wordmark. Red foil for "Craft." Gold foil for wave arc and sub-tag. Beveled or square corner — no rounded. Back: deep ocean blue with blueprint grid. Phone number in 24pt Bebas Neue. 90×55mm standard.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">SIGN</div>
+      <div class="app-card-title">Marina / Yard Signage</div>
+      <div class="app-card-body">Black aluminum dibond panel. Red vinyl stripe border (matches header). Logo lockup at 200mm minimum width. IBM Plex Mono services list in yellow vinyl. Pattern bar strip as base band. Weather-sealed matte laminate — marine-grade UV coating essential.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">VEH</div>
+      <div class="app-card-title">Vehicle Wraps</div>
+      <div class="app-card-body">Black base wrap. Red diagonal stripe echoing hero clip-path angle on rear quarter panel. Wordmark centered on side panels at 300mm. Phone number in Bebas Neue 80mm height. Wood grain vinyl texture strip as lower body accent — 100mm tall. Yellow wave arc on rear door.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">APP</div>
+      <div class="app-card-title">Mobile App / PWA</div>
+      <div class="app-card-body">App icon: icon mark on --black field, 1024×1024. Tab bar: --black with --red active indicator. Section headers: Bebas Neue 28px. List items: DM Sans 14px. Bottom CTA: full-width red button. Splash screen: dark hero with animated steam logo. --wood-pale used for form backgrounds.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">SOC</div>
+      <div class="app-card-title">Social Media</div>
+      <div class="app-card-body">Profile: icon mark on black square. Posts: full black panels with single image zone, Bebas Neue heading, IBM Plex Mono caption. Story format: pattern bar at top, full bleed image, gold wave arc overlay, CTA button in red. Avoid lifestyle/casual photography — favor technical close-ups and material details.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">DECK</div>
+      <div class="app-card-title">Pitch Decks</div>
+      <div class="app-card-body">Slide master: black background, red left accent bar (6px, full height). Section dividers: pattern bar strip. Charts/data: stat block style — Bebas Neue large number, IBM Plex Mono label below. Dividers slides: blue triangle fill echoing hero geometry. Fonts embed via Google Fonts or local OTF.</div>
+    </div>
+    <div class="app-card">
+      <div class="app-card-ico">MERCH</div>
+      <div class="app-card-title">Apparel & Merchandise</div>
+      <div class="app-card-body">Primary: black t-shirt / work jacket. Chest embroidery: icon mark in ecru + red bolt squares. Back: "MARINE WOODCRAFT · HONOLULU HI" in Bebas Neue wordmark. Cap: black 5-panel, embroidered icon mark. Safety workwear: add high-vis yellow on --wood-pale accent areas. No gradient printing — flat colors only.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;">Print Adaptations</div>
+    <table class="doc-table" style="background:var(--surface-1);">
+      <thead>
+        <tr><th>Consideration</th><th>Rule</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>CMYK Safety</strong></td><td>All 7 palette colors have clean CMYK equivalents. No spot-color dependency, but wood grain gradient should be tested before large-format print runs.</td></tr>
+        <tr><td><strong>Paper Texture</strong></td><td>Uncoated / silk stocks emphasize the warmth of --wood-pale and enhance grain texture. Gloss stocks flatten the identity and should be avoided except for large-format vinyl.</td></tr>
+        <tr><td><strong>Embossing / Foil</strong></td><td>Deboss the icon mark on thick cards. Gold foil for wave arc and yellow sub-tag. Spot UV for wordmark on matte stocks. Red hot foil for "Craft" accent.</td></tr>
+        <tr><td><strong>Bleed / Safe Area</strong></td><td>3mm bleed standard. 5mm safe area inside trim. Pattern bar extends to bleed on all edges where applicable. Logo never closer than 10mm to trim edge.</td></tr>
+        <tr><td><strong>Large Format</strong></td><td>All identity elements are vector-native (SVG-source). Scale without limit. At 1m+ widths, increase grain line weight proportionally (2→4px). Blueprint grid on blue panels enhances at large format — maintain 48mm spacing at scale.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     15 · REAL-WORLD MOCKUP SCENARIOS
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">15</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Fifteen</div>
+    <div class="chapter-name">Real-World Mockup Applications</div>
+  </div>
+</div>
+
+<section class="doc-section" style="background:var(--surface-1);">
+  <span class="section-num">15 — Mockup Scenarios</span>
+  <h2 class="section-h">Brand In The<br><em>World</em></h2>
+  <div class="section-rule"></div>
+
+  <div class="grid-2" style="gap:2px;">
+
+    <!-- Scenario 1: Marina Storefront -->
+    <div class="info-card accent" style="padding:36px;">
+      <div style="font-family:var(--display);font-size:13px;letter-spacing:0.1em;color:rgba(245,242,237,0.3);margin-bottom:16px;">SCENARIO 01</div>
+      <div class="card-label">Marina Storefront / Boatyard Office</div>
+      <div class="card-title" style="font-size:22px; margin-bottom:16px;">Physical Presence</div>
+      <div class="card-body">
+        <strong>Visual behavior:</strong> Exterior dibond signage, 1200×600mm. Black field, red border strip (top/left), wordmark in white Bebas Neue at 120mm height. "Craft" in red spot UV. Icon mark 200×200mm above wordmark. Gold wave arc at base.<br><br>
+        <strong>Material interaction:</strong> Matte black surface absorbs direct sunlight — maintains legibility in Hawaiian UV. Yellow and red elements retain saturation in bright conditions. Grain texture adds depth at close viewing distance.<br><br>
+        <strong>Lighting:</strong> Backlit version: switch to 0.3 opacity black field (allow light bleed), amplify red border to 6mm. At night: the yellow and red elements read first — correct hierarchy maintained.<br><br>
+        <strong>Emotional perception:</strong> Visitors perceive a professional, established operation. The dark palette signals premium service; the wood grain signals craft authenticity. The red accent signals action and urgency appropriate to a working marine yard.
+      </div>
+    </div>
+
+    <!-- Scenario 2: Yacht Magazine Ad -->
+    <div class="info-card blue-top" style="padding:36px;">
+      <div style="font-family:var(--display);font-size:13px;letter-spacing:0.1em;color:rgba(245,242,237,0.3);margin-bottom:16px;">SCENARIO 02</div>
+      <div class="card-label">Yacht & Boat Magazine Full-Page Ad</div>
+      <div class="card-title" style="font-size:22px; margin-bottom:16px;">Editorial Presence</div>
+      <div class="card-body">
+        <strong>Layout:</strong> Full-page (210×297mm). Black field, full bleed. Hero layout mirrored from web: left third = copy column, right two-thirds = blue triangle with material close-up photography (teak grain, tool on wood surface). Pattern bar at bottom instead of page footer.<br><br>
+        <strong>Photography style:</strong> Macro details of craft — teak joint, oiled grain, a tool resting on finished mahogany. High contrast, dramatic side-lighting. No people, no lifestyle. The material is the hero.<br><br>
+        <strong>Typography hierarchy:</strong> Bebas Neue 60pt headline. IBM Plex Mono 8pt service list. Phone number 36pt Bebas as the sole CTA. URL in 7pt mono sub-tag style.<br><br>
+        <strong>Scale adaptation:</strong> Red left accent bar becomes a printed rule at the spine. Gold strip migrates to the gutter edge. Blueprint grid renders at 6mm spacing to maintain hairline quality at print resolution.
+      </div>
+    </div>
+
+    <!-- Scenario 3: Trade Show -->
+    <div class="info-card gold-top" style="padding:36px;">
+      <div style="font-family:var(--display);font-size:13px;letter-spacing:0.1em;color:rgba(245,242,237,0.3);margin-bottom:16px;">SCENARIO 03</div>
+      <div class="card-label">Marine Trade Show Booth · 3×3m</div>
+      <div class="card-title" style="font-size:22px; margin-bottom:16px;">Exhibition Presence</div>
+      <div class="card-body">
+        <strong>Architecture:</strong> Back wall: full black fabric tension display. Upper 20% = hero pattern bar strip (full width). Center: wordmark at 600mm width, icon mark at 400mm. Lower half split: 50% ocean blue with blueprint grid, 50% wood-pale grain — mirroring the contact section split.<br><br>
+        <strong>Counter:</strong> Black laminate surface with inset teak strip (actual wood — literal material reference). Service list panel in IBM Plex Mono style on acrylic standee.<br><br>
+        <strong>Lighting:</strong> Warm directional spotlights on teak material samples. Cool backlight on blue panel. Red LED strip as accent line at ceiling junction — extends the header border metaphor into 3D space.<br><br>
+        <strong>Environmental integration:</strong> The brand's own materials (teak, mahogany) displayed as physical samples in the booth — the product IS the brand. Photography backdrops: close-up wood grain photographed at 6000dpi — printed at 1:1 scale creates a photorealistic 3m teak wall.
+      </div>
+    </div>
+
+    <!-- Scenario 4: Vehicle -->
+    <div class="info-card wood-top" style="padding:36px;">
+      <div style="font-family:var(--display);font-size:13px;letter-spacing:0.1em;color:rgba(245,242,237,0.3);margin-bottom:16px;">SCENARIO 04</div>
+      <div class="card-label">Work Van / Truck Wrap</div>
+      <div class="card-title" style="font-size:22px; margin-bottom:16px;">Mobile Presence</div>
+      <div class="card-body">
+        <strong>Concept:</strong> Full-black wrap base. Side panel: 40% height red diagonal band from front wheel arch to rear, running at the same angle as the hero clip-path polygon — the geometry of the brand literally wraps the vehicle.<br><br>
+        <strong>Typography:</strong> MARINE WOOD CRAFT in Bebas Neue at 250mm height on side, white. "Honolulu, HI" in IBM Plex Mono below. Phone number on rear door at 180mm in Bebas Neue.<br><br>
+        <strong>Material interaction:</strong> Gloss laminate on flat panels, matte on curved surfaces. The grain texture is omitted at small vehicle scale — too fine to read in motion.<br><br>
+        <strong>Lighting interaction:</strong> Gold wave arc vinyl on rear door activates under headlights at night — a kinetic identity element that works in the harbor context. Yellow reflective vinyl ensures road safety compliance while maintaining brand color accuracy.
+      </div>
+    </div>
+
+    <!-- Scenario 5: Stationery -->
+    <div class="info-card" style="padding:36px; border-top:2px solid rgba(245,242,237,0.12);">
+      <div style="font-family:var(--display);font-size:13px;letter-spacing:0.1em;color:rgba(245,242,237,0.3);margin-bottom:16px;">SCENARIO 05</div>
+      <div class="card-label">Stationery System</div>
+      <div class="card-title" style="font-size:22px; margin-bottom:16px;">Correspondence Presence</div>
+      <div class="card-body">
+        <strong>Letterhead:</strong> Natural kraft paper, black digital print. Pattern bar strip at top (10mm). Wordmark left-aligned, below strip. Body text: DM Sans 10pt / 1.6 LH, black ink. Footer: IBM Plex Mono 7pt, dark gray. Red rule separates header from body.<br><br>
+        <strong>Envelope:</strong> Kraft or black C5. Logo mark on flap seal, debossed or gold foil. Return address in IBM Plex Mono 7pt.<br><br>
+        <strong>Quote document:</strong> Black header panel (50mm depth), wordmark white, pattern bar beneath. Section labels in IBM Plex Mono yellow-approximated to CMYK gold. Itemized table uses the contact-svc-row style — service name left, tag right, rule divider.<br><br>
+        <strong>Material compatibility:</strong> Kraft paper enhances the wood-pale warmth — a natural material analog. Avoid pure white stock — the --white (#F5F2ED) warmth must be maintained in print.
+      </div>
+    </div>
+
+    <!-- Scenario 6: Social Campaign -->
+    <div class="info-card" style="padding:36px; border-top:2px solid rgba(192,57,43,0.4);">
+      <div style="font-family:var(--display);font-size:13px;letter-spacing:0.1em;color:rgba(245,242,237,0.3);margin-bottom:16px;">SCENARIO 06</div>
+      <div class="card-label">Social Media Campaign Series</div>
+      <div class="card-title" style="font-size:22px; margin-bottom:16px;">Digital Campaign Presence</div>
+      <div class="card-body">
+        <strong>Post format:</strong> 1:1 black panel. Left edge: 6px red accent bar (echoes website). Photo inset: 70% width, right-aligned, with diagonal clip at left edge (polygon cut matching hero triangle angle). Text left: section label + service name in Bebas Neue + DM Sans body. Yellow bottom rule.<br><br>
+        <strong>Story format:</strong> 9:16 full-bleed. Blueprint grid overlay on ocean-blue full bleed. Wordmark centered, gold sub-tag. Single stat: "500+ VESSELS RESTORED" in Bebas Neue 80pt + IBM Plex Mono label. Red CTA strip at bottom: "CALL 808-979-1296."<br><br>
+        <strong>Photography direction:</strong> Never portraits or lifestyle shots. Always: close-up tools, wood grain, bronze hardware, teak planking, water reflections on hull. Shot in natural harbor light — never studio-lit. Shallow depth of field. Warm tones that complement the wood-pale palette.<br><br>
+        <strong>Caption style:</strong> IBM Plex Mono tone for captions. All-caps section label format. Hashtags in lowercase mono: #marinewoodcraft #honolulu #teak #boatrestoration.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- ══════════════════════════════════════════════════
+     16 · CREATIVE DIRECTION SUMMARY
+══════════════════════════════════════════════════ -->
+<div class="chapter-div">
+  <div class="chapter-num">16</div>
+  <div class="chapter-info">
+    <div class="chapter-tag">Chapter Sixteen</div>
+    <div class="chapter-name">Creative Direction Summary</div>
+  </div>
+</div>
+
+<section class="doc-section grain" style="background:var(--black);">
+  <span class="section-num">16 — Summary</span>
+  <h2 class="section-h">An Identity<br>Worth Its <em>Weight</em></h2>
+  <div class="section-rule"></div>
+
+  <div class="grid-2" style="gap:32px; margin-bottom:48px;">
+    <div>
+      <p class="body-p"><strong>Marine Wood Craft's visual identity is one of the most coherent marine-trade brand systems built for digital.&nbsp;</strong> It achieves something rare: a premium aesthetic constructed from zero borrowed design language. Every element is purpose-built and materially justified — the grain references teak, the triangle references the hull bow, the blueprint grid references naval architecture, the steam animation references the service literally performed. Nothing is decorative in the superficial sense.</p>
+      <p class="body-p">The typography trinity (Bebas + DM Sans + IBM Plex Mono) is exceptionally well-chosen. These three typefaces cover the entire personality range needed — authority, warmth, precision — without ever competing. The strict role assignments prevent any typographic ambiguity.</p>
+      <p class="body-p">The seven-token color palette is an achievement of restraint. Most brands define 15–20+ colors and lose coherence. Seven tokens, with opacity stacking as the expansion mechanism, produces a rich visual environment that never feels confused.</p>
+    </div>
+    <div>
+      <div class="info-card accent" style="margin-bottom:2px;">
+        <div class="card-label">Strongest Visual Qualities</div>
+        <div class="card-body">
+          1. Token discipline — 7 colors, zero drift<br>
+          2. Geometric language consistency — clip-path diagonals across all sections<br>
+          3. Material authenticity — grain overlays tied to the actual product<br>
+          4. Typography hierarchy — three voices, zero overlap<br>
+          5. Pattern bar — the brand's most concentrated visual signature<br>
+          6. Animation restraint — motion only where it earns its place
+        </div>
+      </div>
+      <div class="info-card gold-top" style="margin-bottom:2px;">
+        <div class="card-label">Emotional Signature</div>
+        <div class="card-body">The identity communicates: <strong>I have done this a thousand times and I will do it right.</strong> This is not a brand trying to be premium — it simply is. The design's confidence comes from consistency, not loudness.</div>
+      </div>
+      <div class="info-card blue-top">
+        <div class="card-label">Perceived Market Position</div>
+        <div class="card-body">Specialist premium marine craftsman. Positioned 20–30% above commodity marine maintenance services in perceived value. Competitive with boutique yacht services but more honest and utilitarian in character. Appeals to serious boat owners, not first-time buyers.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;">Recommendations For Evolution</div>
+  <div class="grid-4" style="gap:2px;">
+    <div class="info-card">
+      <div class="card-label">01 · Accessibility</div>
+      <div class="card-body">Add :focus-visible states and @media (prefers-reduced-motion). Raise body text opacity from 0.55 to 0.65 in dark sections. Add aria-labels to SVG elements.</div>
+    </div>
+    <div class="info-card">
+      <div class="card-label">02 · Responsive Depth</div>
+      <div class="card-body">Add a 640px breakpoint for narrow mobile. Consider a 1400px max-width content clamp. Restore the hero logomark at 600px+ as an overlay rather than hiding it entirely.</div>
+    </div>
+    <div class="info-card">
+      <div class="card-label">03 · Scroll Animation</div>
+      <div class="card-body">Introduce IntersectionObserver-based reveal for below-fold sections. Apply the same fadeUp keyframe to stat numbers, service cards, and process steps as they enter viewport. Maintain the same timing DNA.</div>
+    </div>
+    <div class="info-card">
+      <div class="card-label">04 · Token Expansion</div>
+      <div class="card-body">Formalize spacing tokens (--space-section, --space-inner). Add a shadow token for any future card elevation. Consider a --red-dark token (#a93225) as a named hover state rather than inline in hover rules.</div>
+    </div>
+  </div>
+
+  <!-- Final mark -->
+  <div style="display:flex; align-items:center; justify-content:center; margin-top:80px; gap:32px; opacity:0.7;">
+    <div style="width:80px;height:1px;background:rgba(245,242,237,0.2);"></div>
+    <svg width="48" height="48" viewBox="0 0 64 64" fill="none">
+      <rect x="18" y="24" width="28" height="28" fill="none" stroke="rgba(245,242,237,0.4)" stroke-width="1.5"/>
+      <path d="M18 24 L32 10 L46 24" fill="none" stroke="rgba(245,242,237,0.6)" stroke-width="2"/>
+      <path d="M12 52 Q32 62 52 52" fill="none" stroke="#D4A017" stroke-width="1.5"/>
+      <line x1="21" y1="32" x2="43" y2="32" stroke="rgba(196,154,108,0.4)" stroke-width="1"/>
+      <line x1="21" y1="36" x2="43" y2="36" stroke="rgba(196,154,108,0.4)" stroke-width="1"/>
+      <line x1="21" y1="40" x2="43" y2="40" stroke="rgba(196,154,108,0.4)" stroke-width="1"/>
+      <rect x="15" y="21" width="5" height="5" fill="rgba(192,57,43,0.6)"/>
+      <rect x="44" y="21" width="5" height="5" fill="rgba(192,57,43,0.6)"/>
+    </svg>
+    <div style="width:80px;height:1px;background:rgba(245,242,237,0.2);"></div>
+  </div>
+</section>
+
+<div class="pattern-bar"></div>
+
+<!-- FOOTER -->
+<footer class="doc-footer">
+  <div class="footer-wordmark">Marine Wood<span>Craft</span></div>
+  <div class="footer-doc-type">Brand Identity Passport · Visual Style Guide · v1.0</div>
+  <div class="footer-copy">© 2026 Marine Wood Craft · Honolulu, Hawaiʻi · All rights reserved.</div>
+</footer>
+
+</body>
+</html>

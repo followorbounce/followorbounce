@@ -1,0 +1,1472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>THE ILLUMINATORS — A Digital Sermon</title>
+<meta name="description" content="A forbidden digital sermon on light, projection, and moral collapse. An initiation ritual hidden inside a luxury interface.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="THE ILLUMINATORS — A Digital Sermon">
+<meta property="og:description" content="A forbidden digital sermon on light, projection, and moral collapse. An initiation ritual hidden inside a luxury interface.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/images/portfolio/the-illuminators.svg">
+<meta property="og:site_name" content="followorbounce.com">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="THE ILLUMINATORS — A Digital Sermon">
+<meta name="twitter:description" content="A forbidden digital sermon on light, projection, and moral collapse.">
+<meta name="twitter:image" content="/assets/images/portfolio/the-illuminators.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;600;700&display=swap">
+
+<style>
+/* ============================================================
+   RESET & ROOT
+   ============================================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --black:    #000000;
+  --void:     #030303;
+  --graphite: #0a0a0a;
+  --ash:      #111111;
+  --iron:     #1a1a1a;
+  --smoke:    #2a2a2a;
+  --silver:   #888888;
+  --pale:     #cccccc;
+  --white:    #f0eeeb;
+  --crimson:  #8b0000;
+  --blood:    #c0392b;
+  --amber:    #d4700a;
+  --glass:    rgba(255,255,255,0.03);
+  --glass2:   rgba(255,255,255,0.06);
+
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+
+  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+  --font-mono:    'Space Mono', 'Courier New', monospace;
+  --font-body:    'Rajdhani', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--void);
+  color: var(--pale);
+  font-family: var(--font-body);
+  font-weight: 300;
+  max-width: 100vw;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* ============================================================
+   GRAIN OVERLAY
+   ============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  -webkit-animation: grain 0.3s steps(1) infinite;
+  animation: grain 0.3s steps(1) infinite;
+}
+
+@-webkit-keyframes grain {
+  0%,100%{-webkit-transform:translate(0,0);transform:translate(0,0)}
+  20%{-webkit-transform:translate(-3px,2px);transform:translate(-3px,2px)}
+  40%{-webkit-transform:translate(2px,-3px);transform:translate(2px,-3px)}
+  60%{-webkit-transform:translate(-2px,3px);transform:translate(-2px,3px)}
+  80%{-webkit-transform:translate(3px,-1px);transform:translate(3px,-1px)}
+}
+@keyframes grain {
+  0%,100%{-webkit-transform:translate(0,0);transform:translate(0,0)}
+  20%{-webkit-transform:translate(-3px,2px);transform:translate(-3px,2px)}
+  40%{-webkit-transform:translate(2px,-3px);transform:translate(2px,-3px)}
+  60%{-webkit-transform:translate(-2px,3px);transform:translate(-2px,3px)}
+  80%{-webkit-transform:translate(3px,-1px);transform:translate(3px,-1px)}
+}
+
+/* ============================================================
+   SCANLINE EFFECT
+   ============================================================ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+}
+
+/* ============================================================
+   NAV / SYSTEM BAR
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding-top: calc(16px + var(--safe-top));
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.nav-id {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0.6;
+}
+
+.nav-status {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--crimson);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--blood);
+  border-radius: 50%;
+  -webkit-animation: pulse 2s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@-webkit-keyframes pulse {
+  0%,100%{opacity:1}50%{opacity:0.2}
+}
+@keyframes pulse {
+  0%,100%{opacity:1}50%{opacity:0.2}
+}
+
+.nav-coords {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--silver);
+  opacity: 0.4;
+  letter-spacing: 0.2em;
+}
+
+/* ============================================================
+   HERO — RITUAL CHAMBER I
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: clip;
+  padding: 120px 32px 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(139,0,0,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 100%, rgba(212,112,10,0.04) 0%, transparent 60%),
+    var(--void);
+}
+
+/* Projector beam simulation */
+.hero-beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 2px;
+  height: 45%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, white, transparent);
+  mask-image: linear-gradient(to bottom, white, transparent);
+  -webkit-animation: beamFlicker 8s ease-in-out infinite;
+  animation: beamFlicker 8s ease-in-out infinite;
+}
+
+.hero-beam::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.04), transparent);
+  clip-path: polygon(calc(50% - 1px) 0%, calc(50% + 1px) 0%, 100% 100%, 0% 100%);
+}
+
+@-webkit-keyframes beamFlicker {
+  0%,100%{opacity:0.6}
+  30%{opacity:0.3}
+  45%{opacity:0.7}
+  60%{opacity:0.2}
+  75%{opacity:0.8}
+}
+@keyframes beamFlicker {
+  0%,100%{opacity:0.6}
+  30%{opacity:0.3}
+  45%{opacity:0.7}
+  60%{opacity:0.2}
+  75%{opacity:0.8}
+}
+
+.hero-timecode {
+  position: absolute;
+  top: 80px;
+  right: 32px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--silver);
+  opacity: 0.3;
+  writing-mode: vertical-rl;
+}
+
+.hero-annotation {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  color: var(--crimson);
+  opacity: 0.7;
+  writing-mode: vertical-rl;
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-overline {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 24px;
+  opacity: 0;
+  -webkit-animation: fadeUp 1.2s 0.3s forwards;
+  animation: fadeUp 1.2s 0.3s forwards;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 14vw, 200px);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 0;
+  opacity: 0;
+  -webkit-animation: fadeUp 1.4s 0.5s forwards;
+  animation: fadeUp 1.4s 0.5s forwards;
+  text-shadow: 0 0 80px rgba(255,255,255,0.04);
+}
+
+.hero-title span {
+  display: block;
+  color: var(--graphite);
+  -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+  text-stroke: 1px rgba(255,255,255,0.15);
+}
+
+.hero-sub {
+  margin-top: 40px;
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1.5vw, 16px);
+  line-height: 1.7;
+  color: var(--silver);
+  max-width: 480px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  -webkit-animation: fadeUp 1.2s 0.8s forwards;
+  animation: fadeUp 1.2s 0.8s forwards;
+}
+
+.hero-rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+
+@-webkit-keyframes fadeUp {
+  from{opacity:0;-webkit-transform:translateY(30px);transform:translateY(30px)}
+  to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}
+}
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ============================================================
+   SECTION — RITUAL CHAMBER II — THE CONFESSION
+   ============================================================ */
+.chamber {
+  position: relative;
+  overflow: clip;
+  padding: 120px 32px;
+}
+
+.chamber-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  opacity: 0.6;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chamber-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  max-width: 200px;
+}
+
+/* Large editorial text layout */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.editorial-number {
+  font-family: var(--font-display);
+  font-size: clamp(100px, 18vw, 280px);
+  line-height: 1;
+  color: rgba(255,255,255,0.04);
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.editorial-col {
+  padding: 60px 40px;
+  position: relative;
+}
+
+.editorial-col:first-child {
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.editorial-quote {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+.editorial-quote em {
+  font-style: normal;
+  color: var(--crimson);
+  -webkit-text-stroke: 0;
+}
+
+.editorial-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--silver);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.editorial-body + .editorial-body {
+  margin-top: 24px;
+}
+
+/* ============================================================
+   PROJECTION STATEMENT
+   ============================================================ */
+.projection {
+  position: relative;
+  overflow: clip;
+  padding: 0 32px;
+  background: var(--graphite);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.projection-inner {
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.projection-line {
+  width: 1px;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, var(--crimson), transparent);
+  flex-shrink: 0;
+}
+
+.projection-text {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 110px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--white);
+}
+
+.projection-text .dim {
+  color: rgba(255,255,255,0.15);
+}
+
+.projection-annotation {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  color: var(--silver);
+  opacity: 0.3;
+  writing-mode: vertical-rl;
+}
+
+/* ============================================================
+   CHAMBER III — THE ILLUMINATI ARCHITECTURE
+   ============================================================ */
+.doctrine {
+  padding: 120px 32px;
+  position: relative;
+  overflow: clip;
+}
+
+.doctrine-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 100px;
+}
+
+.doctrine-index {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  color: var(--crimson);
+  padding-top: 8px;
+}
+
+.doctrine-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 130px);
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+/* Three-column doctrine list */
+.doctrine-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.doctrine-item {
+  padding: 48px 32px 48px 0;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+
+.doctrine-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.doctrine-item:not(:first-child) {
+  padding-left: 32px;
+}
+
+.doctrine-item-letter {
+  font-family: var(--font-display);
+  font-size: 80px;
+  line-height: 1;
+  color: rgba(139,0,0,0.2);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.doctrine-item-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--silver);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.doctrine-warning {
+  margin-top: 80px;
+  padding: 48px;
+  border: 1px solid rgba(139,0,0,0.3);
+  background: rgba(139,0,0,0.04);
+  position: relative;
+}
+
+.doctrine-warning::before {
+  content: 'SYSTEM WARNING';
+  position: absolute;
+  top: -6px;
+  left: 24px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.5em;
+  background: var(--void);
+  padding: 0 8px;
+  color: var(--blood);
+}
+
+.doctrine-warning-text {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.65;
+  color: var(--pale);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   CHAMBER IV — THE COMMANDMENT / FRACTURE
+   ============================================================ */
+.fracture {
+  position: relative;
+  overflow: clip;
+  background: var(--ash);
+  padding: 0;
+}
+
+.fracture-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(139,0,0,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.fracture-inner {
+  padding: 160px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.fracture-left {
+  position: relative;
+}
+
+.fracture-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 32px;
+  opacity: 0.7;
+}
+
+.fracture-command {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 80px);
+  line-height: 1.0;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+}
+
+.fracture-command .accent {
+  display: block;
+  color: rgba(255,255,255,0.2);
+  font-size: 0.7em;
+}
+
+.fracture-vs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 100px;
+  color: rgba(255,255,255,0.02);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fracture-right {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--silver);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.fracture-right p + p {
+  margin-top: 20px;
+}
+
+.fracture-right .highlight {
+  color: var(--pale);
+  font-weight: 400;
+}
+
+/* ============================================================
+   CHAMBER V — THE GLASS OF WATER / TERMINAL
+   ============================================================ */
+.terminal {
+  padding: 120px 32px;
+  position: relative;
+  overflow: clip;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.terminal-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.terminal-sidebar {
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding-right: 60px;
+}
+
+.terminal-sidebar-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.5em;
+  color: var(--crimson);
+  margin-bottom: 32px;
+  display: block;
+}
+
+.terminal-question {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+.terminal-data {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--silver);
+  opacity: 0.4;
+  line-height: 2.4;
+}
+
+.terminal-content {
+  max-width: 640px;
+}
+
+.terminal-paragraph {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--silver);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.terminal-paragraph strong {
+  color: var(--pale);
+  font-weight: 400;
+}
+
+.terminal-verse {
+  padding: 40px;
+  border-left: 2px solid var(--crimson);
+  margin: 60px 0;
+  background: var(--glass);
+}
+
+.terminal-verse-text {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 36px);
+  line-height: 1.2;
+  color: var(--white);
+  letter-spacing: 0.03em;
+  margin-bottom: 16px;
+}
+
+.terminal-verse-ref {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--crimson);
+}
+
+/* ============================================================
+   CHAMBER VI — FULL-WIDTH STATEMENT
+   ============================================================ */
+.manifesto {
+  position: relative;
+  overflow: clip;
+  padding: 200px 32px;
+  background: var(--graphite);
+  text-align: center;
+}
+
+.manifesto-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 0%, rgba(255,255,255,0.02) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.manifesto-line {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 160px);
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px);
+  transition: opacity 1.4s ease, -webkit-transform 1.4s ease, transform 1.4s ease;
+}
+
+.manifesto-line.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.manifesto-line:nth-child(2) {
+  color: rgba(255,255,255,0.15);
+  transition-delay: 0.2s;
+}
+.manifesto-line:nth-child(3) {
+  color: var(--crimson);
+  transition-delay: 0.4s;
+}
+.manifesto-line:nth-child(4) {
+  color: rgba(255,255,255,0.06);
+  transition-delay: 0.6s;
+}
+
+.manifesto-footnote {
+  margin-top: 80px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--silver);
+  opacity: 0.3;
+}
+
+/* ============================================================
+   CHAMBER VII — CLOSING / FOOTER
+   ============================================================ */
+.closing {
+  padding: 120px 32px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+  overflow: clip;
+}
+
+.closing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 80px;
+}
+
+.closing-col {
+  padding: 48px 0;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding-right: 40px;
+}
+
+.closing-col:not(:first-child) {
+  padding-left: 40px;
+}
+
+.closing-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.closing-col-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.5em;
+  color: var(--crimson);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.closing-col-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--silver);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+footer {
+  padding: 40px 32px;
+  padding-bottom: calc(40px + var(--safe-bottom));
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-mark {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.15);
+}
+
+.footer-data {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.4em;
+  color: var(--silver);
+  opacity: 0.3;
+  text-align: right;
+  line-height: 2;
+}
+
+/* ============================================================
+   FLOATING SYSTEM MESSAGES
+   ============================================================ */
+.sys-msg {
+  position: fixed;
+  bottom: 40px;
+  right: 32px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: var(--crimson);
+  opacity: 0;
+  z-index: 500;
+  pointer-events: none;
+  line-height: 1.8;
+  text-align: right;
+  -webkit-animation: sysAppear 0.3s ease forwards;
+  animation: sysAppear 0.3s ease forwards;
+}
+
+@-webkit-keyframes sysAppear {
+  from{opacity:0;-webkit-transform:translateY(8px);transform:translateY(8px)}
+  to{opacity:0.7;-webkit-transform:translateY(0);transform:translateY(0)}
+}
+@keyframes sysAppear {
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:0.7;transform:translateY(0)}
+}
+
+/* ============================================================
+   CUSTOM CURSOR LIGHT
+   ============================================================ */
+.cursor-light {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9990;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.025) 0%, transparent 70%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: left 0.1s ease, top 0.1s ease;
+}
+
+/* ============================================================
+   SEPARATOR LINES
+   ============================================================ */
+.h-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+  margin: 0;
+}
+
+/* ============================================================
+   OBSERVER UTILITY
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  -webkit-transform: translateY(24px);
+  transform: translateY(24px);
+  transition: opacity 1.2s ease, -webkit-transform 1.2s ease, transform 1.2s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  nav { padding-left: 20px; padding-right: 20px; }
+  .nav-coords { display: none; }
+
+  .hero { padding: 100px 20px 60px; }
+  .hero-timecode { display: none; }
+
+  .chamber { padding: 80px 20px; }
+  .editorial-grid { grid-template-columns: 1fr; }
+  .editorial-col:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  .projection-inner { flex-direction: column; gap: 24px; }
+  .projection-annotation { display: none; }
+
+  .doctrine { padding: 80px 20px; }
+  .doctrine-list { grid-template-columns: 1fr; }
+  .doctrine-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 40px 0; }
+  .doctrine-item:last-child { border-bottom: none; }
+  .doctrine-item:not(:first-child) { padding-left: 0; }
+
+  .fracture-inner { grid-template-columns: 1fr; gap: 40px; padding: 80px 20px; }
+  .fracture-vs { display: none; }
+
+  .terminal-grid { grid-template-columns: 1fr; gap: 40px; }
+  .terminal-sidebar { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 40px; }
+
+  .manifesto { padding: 120px 20px; }
+
+  .closing { padding: 80px 20px; }
+  .closing-grid { grid-template-columns: 1fr; }
+  .closing-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 32px 0; }
+  .closing-col:last-child { border-bottom: none; }
+  .closing-col:not(:first-child) { padding-left: 0; }
+
+  footer { flex-direction: column; gap: 16px; text-align: center; padding-left: 20px; padding-right: 20px; }
+  .footer-data { text-align: center; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   HOVER — DESKTOP ONLY
+   ============================================================ */
+@media (hover: hover) {
+  a:hover { opacity: 0.7; }
+
+  .doctrine-item:hover .doctrine-item-letter {
+    color: rgba(139,0,0,0.4);
+    transition: color 0.4s ease;
+  }
+
+  .terminal-verse:hover {
+    border-left-color: var(--blood);
+    transition: border-color 0.6s ease;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor light -->
+<div class="cursor-light" id="cursorLight"></div>
+
+<!-- System message container -->
+<div class="sys-msg" id="sysMsg"></div>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav>
+  <span class="nav-id">ILLUMINATORS — SYS/0001</span>
+  <span class="nav-status">
+    <span class="status-dot"></span>
+    TRANSMISSION ACTIVE
+  </span>
+  <span class="nav-coords" id="navCoords">21.3069°N 157.8583°W</span>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-beam"></div>
+
+  <span class="hero-timecode" id="heroTimecode">00:00:00:00</span>
+  <span class="hero-annotation">PROJECTION SYSTEM /// ACTIVE</span>
+
+  <div class="hero-content">
+    <p class="hero-overline">Fragment 001 — The Illuminators</p>
+    <h1 class="hero-title">
+      THE<br>
+      <span>LIGHT</span><br>
+      THEY<br>
+      CAST
+    </h1>
+    <p class="hero-sub">
+      A meditation on projection, self-worship, closed systems, and the ethics of light. 
+      Written from the periphery of a world that has learned to illuminate everything 
+      except itself.
+    </p>
+  </div>
+  <div class="hero-rule"></div>
+</section>
+
+<!-- ============================================================
+     CHAMBER II — THE CONFESSION
+     ============================================================ -->
+<section class="chamber" style="background: var(--void);">
+  <div class="chamber-label">CHAMBER 02 — MORAL ARCHITECTURE / PERSONAL LOG</div>
+
+  <div class="editorial-grid reveal">
+    <div class="editorial-col">
+      <p class="editorial-quote">
+        He told me there are<br>
+        no absolute moral<br>
+        standards.<br>
+        <em>He was deeply<br>unhappy.</em>
+      </p>
+      <div class="editorial-number" aria-hidden="true">I</div>
+    </div>
+    <div class="editorial-col">
+      <p class="editorial-body">
+        Once, one of my acquaintances — a fairly well-known media figure in the Russian sphere — tried to convince me that no absolute moral standards exist in this world. That you are free to do absolutely anything you want. And that only in this way can a person become truly happy.
+      </p>
+      <p class="editorial-body">
+        At the same time, despite his access to enormous financial resources, a high standard of living, popularity, and connections with some of the most influential people, his behavior and the stories he reflected on — including through his artistic work — suggested that he was deeply unhappy. More likely existing on the edge of depressive disorder.
+      </p>
+      <p class="editorial-body" style="color: var(--crimson); margin-top: 32px; font-size: 12px; letter-spacing: 0.1em;">
+        Enchanted by the idea of death and suicide.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTION STATEMENT
+     ============================================================ -->
+<div class="projection">
+  <div class="projection-inner reveal">
+    <div class="projection-line"></div>
+    <div class="projection-text">
+      THEY PROJECT<br>
+      <span class="dim">LIGHT ONTO</span><br>
+      DARKNESS
+    </div>
+  </div>
+  <span class="projection-annotation">AUDIOVISUAL MEDIA MANAGEMENT /// 3D MAPPING SYSTEMS</span>
+</div>
+
+<!-- ============================================================
+     CHAMBER III — THE ILLUMINATI ARCHITECTURE
+     ============================================================ -->
+<section class="doctrine">
+  <div class="chamber-label reveal">CHAMBER 03 — CLOSED SYSTEM / DOCTRINE ANALYSIS</div>
+
+  <div class="doctrine-header reveal">
+    <span class="doctrine-index">003 — THE PATTERN</span>
+    <h2 class="doctrine-title">
+      I AM<br>
+      THE<br>
+      CREATOR
+    </h2>
+  </div>
+
+  <p class="editorial-body reveal" style="max-width: 680px; margin-bottom: 60px; font-size: 15px;">
+    After observing people in this industry for a long time, I noticed a certain behavioral pattern among many of them: either the absence of moral boundaries, or an obsession with the idea that "I am the creator." Some groups involved in this work clearly have bright intentions and visible moral principles, but certain representatives seem far more connected to darkness than to light.
+  </p>
+
+  <div class="doctrine-list reveal">
+    <div class="doctrine-item">
+      <span class="doctrine-item-letter" aria-hidden="true">A</span>
+      <p class="doctrine-item-text">
+        You are the center of the universe. Every system orbits your will. Every connection is measured by proximity to your axis.
+      </p>
+    </div>
+    <div class="doctrine-item">
+      <span class="doctrine-item-letter" aria-hidden="true">B</span>
+      <p class="doctrine-item-text">
+        You are the highest being. Not accountable. Not observable. The knowledge you hold remains sealed — it is power, and power shared is power diminished.
+      </p>
+    </div>
+    <div class="doctrine-item">
+      <span class="doctrine-item-letter" aria-hidden="true">C</span>
+      <p class="doctrine-item-text">
+        You should create an entirely closed world for yourself, without letting others into it. An entertainment complex built on Earth. For one.
+      </p>
+    </div>
+  </div>
+
+  <div class="doctrine-warning reveal">
+    <p class="doctrine-warning-text">
+      In practice, this becomes a kind of entertainment complex on Earth, built exclusively for oneself, without concern for others — which directly contradicts Christ's main commandment: 
+      <strong style="color: var(--white); font-weight: 600;">"Love the Lord your God with all your heart, soul, and body, and love your neighbor as yourself."</strong>
+    </p>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<!-- ============================================================
+     MANIFESTO STATEMENT
+     ============================================================ -->
+<section class="manifesto">
+  <div class="manifesto-bg"></div>
+  <p class="manifesto-line">WHO IS</p>
+  <p class="manifesto-line">YOUR</p>
+  <p class="manifesto-line">NEIGHBOR?</p>
+  <p class="manifesto-line">ANSWER.</p>
+  <p class="manifesto-footnote">MATTHEW 22:39 // Luke 10:29 // SYSTEM QUERY UNRESOLVED</p>
+</section>
+
+<!-- ============================================================
+     CHAMBER IV — THE FRACTURE
+     ============================================================ -->
+<section class="fracture">
+  <div class="fracture-bg"></div>
+  <div class="fracture-inner">
+    <div class="fracture-left reveal">
+      <p class="fracture-label">CHAMBER 04 — THEOLOGICAL CONFLICT</p>
+      <h3 class="fracture-command">
+        SELF<br>
+        WORSHIP<br>
+        <span class="accent">VERSUS</span><br>
+        COMPASSION
+      </h3>
+    </div>
+    <div class="fracture-right reveal">
+      <p>
+        Representatives of modern "Illuminati" may say that they do love their neighbor. But who is your neighbor? Only your family? Only your closest circle?
+      </p>
+      <p>
+        <span class="highlight">Or is every person potentially an angel in a human body, sent into your reality?</span>
+      </p>
+      <p>
+        And as it is written in the Bible, even the one who offers a glass of water will be saved. But how often are you willing to step away from your own affairs to give water to those in need, to answer someone asking for help, to share the resources you received — whether deservedly or undeservedly?
+      </p>
+      <p>
+        With how much joy are you willing to share the knowledge you have gained? Or do you still believe that you yourself have not yet learned enough?
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAMBER V — THE QUESTION / TERMINAL
+     ============================================================ -->
+<section class="terminal">
+  <div class="chamber-label reveal">CHAMBER 05 — QUESTION PROTOCOL / KNOWLEDGE TRANSFER</div>
+
+  <div class="terminal-grid">
+    <div class="terminal-sidebar reveal">
+      <span class="terminal-sidebar-label">INPUT QUERY</span>
+      <h3 class="terminal-question">
+        Do you share<br>
+        what you<br>
+        know?
+      </h3>
+      <div class="terminal-data">
+        STATUS — UNRESOLVED<br>
+        QUERY — OPEN<br>
+        EPOCH — NOW<br>
+        RESPONSE — PENDING
+      </div>
+    </div>
+
+    <div class="terminal-content reveal">
+      <p class="terminal-paragraph">
+        The Freemason, the Illuminist, the media mogul — they each construct a closed architecture of knowledge. A private library. Access by invitation only. Power maintained through scarcity of information.
+      </p>
+      <p class="terminal-paragraph">
+        This is not wisdom. This is <strong>hoarding disguised as sophistication.</strong>
+      </p>
+
+      <div class="terminal-verse">
+        <p class="terminal-verse-text">
+          "Even the one who offers a glass of water will be saved."
+        </p>
+        <p class="terminal-verse-ref">SCRIPTURE FRAGMENT — MARK 9:41 // CONTEXT: THRESHOLD ETHICS</p>
+      </div>
+
+      <p class="terminal-paragraph">
+        The projector casts light. But what does it choose to illuminate? What remains deliberately in shadow? The operator's god-complex is revealed not in what he shows — but in what he withholds.
+      </p>
+      <p class="terminal-paragraph">
+        You received your knowledge. Your wealth. Your connections. Your platform. The question is not whether you deserved it. The question is: <strong>what do you do with it now?</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAMBER VI — CLOSING / TRANSMISSION END
+     ============================================================ -->
+<section class="closing">
+  <div class="chamber-label reveal">CHAMBER 06 — TRANSMISSION / CLOSING SYSTEM</div>
+
+  <div class="closing-grid reveal">
+    <div class="closing-col">
+      <span class="closing-col-label">DIAGNOSIS</span>
+      <p class="closing-col-text">
+        A civilization that has mastered the projection of light onto objects, but forgotten how to illuminate other human beings. The technology is sacred. The empathy is absent.
+      </p>
+    </div>
+    <div class="closing-col">
+      <span class="closing-col-label">PARADOX</span>
+      <p class="closing-col-text">
+        The Illuminator claims to enlighten. But illumination without ethics is theater. Projection without love is propaganda. And a closed system, no matter how sophisticated, is simply a prison with beautiful walls.
+      </p>
+    </div>
+    <div class="closing-col">
+      <span class="closing-col-label">THRESHOLD</span>
+      <p class="closing-col-text">
+        The smallest act of genuine generosity — a glass of water, an honest answer, freely shared knowledge — carries more ontological weight than the most spectacular light installation ever projected.
+      </p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 60px;">
+    <p style="font-family: var(--font-display); font-size: clamp(24px, 4vw, 64px); color: rgba(255,255,255,0.08); line-height: 1.1; letter-spacing: 0.02em;">
+      THE VIEWER SHOULD FEEL<br>
+      SIMULTANEOUSLY FASCINATED<br>
+      <span style="color: var(--crimson);">AND OBSERVED.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <span class="footer-mark">☩ IL</span>
+  <div class="footer-data">
+    FRAGMENT 001 — THE ILLUMINATORS<br>
+    FOLLOWORBOUNCE.COM // 2026<br>
+    ALL PROJECTIONS ARE INTENTIONAL
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Passive scroll detection ── */
+  var passiveSupported = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function () { passiveSupported = true; }
+    });
+    window.addEventListener('_t', null, opts);
+    window.removeEventListener('_t', null, opts);
+  } catch (e) {}
+  var PASSIVE = passiveSupported ? { passive: true } : false;
+
+  /* ── Cursor light ── */
+  var cursorLight = document.getElementById('cursorLight');
+  var mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', function (e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorLight.style.left = mouseX + 'px';
+    cursorLight.style.top = mouseY + 'px';
+  }, PASSIVE);
+
+  /* ── Timecode ── */
+  var tcEl = document.getElementById('heroTimecode');
+  function updateTimecode() {
+    var now = new Date();
+    var h = String(now.getHours()).padStart(2, '0');
+    var m = String(now.getMinutes()).padStart(2, '0');
+    var s = String(now.getSeconds()).padStart(2, '0');
+    var ms = String(Math.floor(now.getMilliseconds() / 10)).padStart(2, '0');
+    if (tcEl) tcEl.textContent = h + ':' + m + ':' + s + ':' + ms;
+  }
+  setInterval(updateTimecode, 100);
+
+  /* ── IntersectionObserver for reveals ── */
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { revealObs.observe(el); });
+  }
+
+  /* ── Manifesto line observer ── */
+  var mLines = document.querySelectorAll('.manifesto-line');
+  if (!('IntersectionObserver' in window)) {
+    mLines.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var mObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.3 });
+    mLines.forEach(function (el) { mObs.observe(el); });
+  }
+
+  /* ── System messages ── */
+  var messages = [
+    'OBSERVER DETECTED',
+    'MORAL FRAMEWORK LOADING...',
+    'NEIGHBOR QUERY — UNRESOLVED',
+    'KNOWLEDGE TRANSFER — PENDING',
+    'PROJECTION SYSTEM — ACTIVE',
+    'CLOSED SYSTEM DETECTED',
+    'COMPASSION MODULE — OFFLINE',
+    'LIGHT BEARER PROTOCOL — ENGAGED'
+  ];
+  var msgEl = document.getElementById('sysMsg');
+  var msgIdx = 0;
+  var msgVisible = false;
+
+  function showNextMessage() {
+    if (msgVisible) return;
+    msgVisible = true;
+    msgEl.textContent = messages[msgIdx % messages.length];
+    msgEl.style.opacity = '0.7';
+    msgIdx++;
+    setTimeout(function () {
+      msgEl.style.transition = 'opacity 1s ease';
+      msgEl.style.opacity = '0';
+      setTimeout(function () {
+        msgVisible = false;
+        msgEl.style.transition = '';
+      }, 1100);
+    }, 3000);
+  }
+
+  /* Show first after 4 seconds, then randomly */
+  setTimeout(function () {
+    showNextMessage();
+    setInterval(function () {
+      if (Math.random() > 0.5) { showNextMessage(); }
+    }, 8000);
+  }, 4000);
+
+  /* ── Smooth scroll for hash links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ── Beam flicker on scroll ── */
+  window.addEventListener('scroll', function () {
+    /* Coords drift */
+    var nc = document.getElementById('navCoords');
+    if (nc) {
+      var lat = (21.3069 + (Math.random() - 0.5) * 0.001).toFixed(4);
+      var lng = (157.8583 + (Math.random() - 0.5) * 0.001).toFixed(4);
+      nc.textContent = lat + '°N ' + lng + '°W';
+    }
+  }, PASSIVE);
+
+}());
+</script>
+</body>
+</html>

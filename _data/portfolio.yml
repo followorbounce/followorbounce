@@ -47,7 +47,7 @@
   tags:        ["Logo", "Identity", "Guidelines"]
   description: "Comprehensive brand identity passport for Marine Wood Craft — a reverse-engineered visual style guide covering color tokens, typography, motion language, component system, and cross-media application guidelines."
   cover:       "/assets/images/portfolio/marine-wood-craft.jpg"
-  url:         "https://id.followorbounce.com/pages/MarineWoodCraft"
+  url:         "/p/MarineWoodCraft"
   year:        "2026"
 
 - title:       "Bay Current Diving"
@@ -63,7 +63,7 @@
   tags:        ["Brand Book", "Typography", "Colour"]
   description: "Complete brand identity system for Bay Current Diving — covering color palette, typography, logo anatomy, icon system, photography direction, copy tone, workwear, and digital/SEO guidelines for a solo SF Bay commercial diving operation"
   cover:       "/assets/images/portfolio/bay-current-diving.jpg"
-  url:         "https://id.followorbounce.com/pages/BayCurrentDiving"
+  url:         "/p/BayCurrentDiving"
   year:        "2026"
 
 - title:       "Meridian Mind Identity"
@@ -71,7 +71,7 @@
   tags:        ["Design System", "Style Guide", "Healthcare"]
   description: "Full brand identity guide for Meridian Mind, a psychiatric practice — covering logo system, therapeutic green color palette, Cormorant Garamond and DM Sans typography, UI components, motion principles, and voice guidelines for a calm, clinical digital presence."
   cover:       "/assets/images/portfolio/meridian-mind.jpg"
-  url:         "https://id.followorbounce.com/pages/MeridianMind"
+  url:         "/p/MeridianMind"
   year:        "2026"
 
 - title:       "Brand Identity System - FoB_v2"
@@ -79,7 +79,7 @@
   tags:        ["Design System", "Editorial", "Presentation"]
   description: "Identity system presentation for Follow or Bounce v2 — a publication at the intersection of technology, literature, and law. Covers typographic scale, ink-on-paper color logic, grid principles, UI components, and the editorial philosophy behind the brand"
   cover:       "/assets/images/portfolio/fob-v2.jpg"
-  url:         "https://id.followorbounce.com/pages/FollowOrBounce_v2"
+  url:         "/p/FollowOrBounce_v2"
 #  featured:    true
   year:        "2026"
 
@@ -88,7 +88,7 @@
   tags:        ["Editorial", "Experimental", "HTML/CSS", "Motion Design"]
   description: "Luxury apocalypse catalogue documenting the aesthetic collapse of civilization. A single-page editorial artifact combining post-Soviet brutalism, Bauhaus decay, and institutional surrealism — built in pure HTML/CSS with cinematic scroll choreography."
   cover:       "/assets/images/portfolio/moft-cover.jpg"
-  url:         "https://id.followorbounce.com/pages/collapse"
+  url:         "/p/collapse"
   featured:    true
   year:        "2025"  
 
@@ -97,7 +97,7 @@
   tags:        ["Editorial", "Experimental", "Interactive", "Mythology"]
   description: "A ritualistic, mythopoetic exploration of the Hero's Journey across cultures — from Gilgamesh to the Bhagavad Gita. Luxury apocalypse aesthetics: acid greens, burnt oranges, fire particle systems, branching moral choices, and a philosophical inquiry into the Logos as the operating system of existence."
   cover:       "/assets/images/portfolio/heros-journey-cover.svg"
-  url:         "https://id.followorbounce.com/pages/heros-journey"
+  url:         "/p/heros-journey"
 #  featured:    true
   year:        "2025"
 
@@ -106,7 +106,7 @@
   tags:        ["Editorial", "Experimental", "Interactive", "Mythology"]
   description: "In order to understand where we are, we must first look at the surface of the earth. Everything matters. Sometimes we just don't see it. INVISIBLE ≠ EMPTY"
   cover:      "/assets/images/portfolio/prophetic-os.svg"
-  url:         "https://id.followorbounce.com/pages/prophetic-os"
+  url:         "/p/prophetic-os"
 #  featured:    true
   year:        "2024"
 
@@ -115,7 +115,7 @@
   category: "web"
   description: "A cinematic meditation on self-deification, closed systems, and the ethics of light. Where projection becomes control."
   cover: "/assets/images/portfolio/the-illuminators.svg"
-  url: "https://id.followorbounce.com/pages/the-illuminators"
+  url: "/p/the-illuminators"
 #  featured: "true"
   year: "2026"
 
@@ -124,7 +124,7 @@
   tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
   description: "An existential digital manifesto exploring identity, empire, consciousness, and the illusion of progress."
   cover: "/assets/images/portfolio/who-are.svg"
-  url: "https://id.followorbounce.com/pages/who-are"
+  url: "/p/who-are"
   featured: "true"
   year: "2026"
 

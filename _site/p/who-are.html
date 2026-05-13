@@ -1,0 +1,1576 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WHO ARE — A Philosophical Manifesto</title>
+<meta name="description" content="An existential digital manifesto exploring identity, empire, consciousness, and the illusion of progress.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="WHO ARE">
+<meta property="og:description" content="An existential digital manifesto exploring identity, empire, consciousness, and the illusion of progress.">
+<meta property="og:image" content="/assets/images/portfolio/who-are.svg">
+<meta property="og:url" content="https://id.followorbounce.com/pages/who-are">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WHO ARE">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WHO ARE">
+<meta name="twitter:description" content="An existential digital manifesto exploring identity, empire, consciousness, and the illusion of progress.">
+<meta name="twitter:image" content="/assets/images/portfolio/who-are.svg">
+
+<!-- Theme -->
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   RESET & FOUNDATIONS
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #000000;
+  --void: #040404;
+  --graphite: #0f0f0f;
+  --smoke: #1a1a1a;
+  --bone: #e8e4dc;
+  --parchment: #d4cfc4;
+  --silver: #9a9896;
+  --chrome: #c8c4be;
+  --rust: #8b1a1a;
+  --blood: #5c0a0a;
+  --midnight: #06080f;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-instrument: 'Instrument Serif', serif;
+  --font-mono: 'Inter Tight', sans-serif;
+
+  --ease-heavy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-decay: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--black);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-weight: 200;
+  overflow-x: clip;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+#cursor {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--bone);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+#cursor-ring {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(232, 228, 220, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s var(--ease-heavy), width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+/* ============================================
+   NOISE OVERLAY
+   ============================================ */
+#noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: noise-drift 8s steps(10) infinite;
+}
+
+@keyframes noise-drift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -1%); }
+  20% { transform: translate(1%, 2%); }
+  30% { transform: translate(-1%, 1%); }
+  40% { transform: translate(2%, -2%); }
+  50% { transform: translate(-2%, 2%); }
+  60% { transform: translate(1%, -1%); }
+  70% { transform: translate(-1%, 2%); }
+  80% { transform: translate(2%, 1%); }
+  90% { transform: translate(-1%, -2%); }
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background: var(--rust);
+  z-index: 200;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.1s linear;
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  padding: max(1.5rem, env(safe-area-inset-top)) 2.5rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  color: var(--bone);
+  opacity: 0.7;
+}
+
+.nav-coords {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--silver);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   SECTION BASE
+   ============================================ */
+section {
+  position: relative;
+  overflow: clip;
+}
+
+/* ============================================
+   S1: HERO — WHO ARE YOU?
+   ============================================ */
+#s1 {
+  height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 clamp(2rem, 8vw, 10rem);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--void);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Generative gradient blobs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.08;
+  animation: orb-drift linear infinite;
+}
+
+.orb-1 {
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, #4a3020 0%, transparent 70%);
+  top: -20%;
+  left: -10%;
+  animation-duration: 40s;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, #1a2a4a 0%, transparent 70%);
+  bottom: -20%;
+  right: -10%;
+  animation-duration: 55s;
+  animation-delay: -20s;
+}
+
+.orb-3 {
+  width: 30vw;
+  height: 30vw;
+  background: radial-gradient(circle, #3a1010 0%, transparent 70%);
+  top: 40%;
+  left: 40%;
+  animation-duration: 35s;
+  animation-delay: -10s;
+}
+
+@keyframes orb-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5%, 3%) scale(1.05); }
+  50% { transform: translate(-3%, 6%) scale(0.95); }
+  75% { transform: translate(4%, -4%) scale(1.03); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Sacred geometry background */
+.sacred-geo {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sacred-geo svg {
+  width: 80vmin;
+  height: 80vmin;
+  animation: sacred-rotate 120s linear infinite;
+}
+
+@keyframes sacred-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fade-up 1s var(--ease-heavy) 0.5s forwards;
+}
+
+h1.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(14vw, 22vw, 28rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  position: relative;
+  overflow: hidden;
+}
+
+h1.hero-title .line {
+  display: block;
+  opacity: 0;
+  transform: translateY(110%);
+  animation: reveal-line 1.2s var(--ease-heavy) forwards;
+}
+
+h1.hero-title .l1 { animation-delay: 0.2s; }
+h1.hero-title .l2 { animation-delay: 0.4s; }
+h1.hero-title .l3 {
+  animation-delay: 0.6s;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(232, 228, 220, 0.3);
+}
+
+@keyframes reveal-line {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rotating fragments */
+.hero-fragments {
+  position: absolute;
+  right: clamp(2rem, 6vw, 8rem);
+  bottom: clamp(6rem, 12vh, 14rem);
+  width: clamp(200px, 25vw, 380px);
+  z-index: 10;
+}
+
+.fragment-item {
+  font-size: clamp(0.65rem, 0.9vw, 0.85rem);
+  font-weight: 300;
+  color: var(--silver);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(154, 152, 150, 0.15);
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.fragment-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.8s var(--ease-heavy);
+}
+
+.fragment-item.exit {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: max(2rem, env(safe-area-inset-bottom, 2rem));
+  left: clamp(2rem, 8vw, 10rem);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fade-up 1s var(--ease-heavy) 2s forwards;
+}
+
+.scroll-line {
+  width: 60px;
+  height: 1px;
+  background: var(--silver);
+  transform-origin: left;
+  animation: scroll-extend 2s var(--ease-heavy) 2.5s infinite alternate;
+}
+
+@keyframes scroll-extend {
+  from { transform: scaleX(0.3); opacity: 0.3; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+.scroll-text {
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  color: var(--silver);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   S2: WHO AM I — IDENTITY INTERROGATION
+   ============================================ */
+#s2 {
+  min-height: 100svh;
+  background: var(--graphite);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.s2-left {
+  padding: clamp(6rem, 12vh, 16rem) clamp(2rem, 6vw, 8rem);
+  border-right: 1px solid rgba(154, 152, 150, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s2-title {
+  font-family: var(--font-display);
+  font-size: clamp(12vw, 14vw, 18rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s var(--ease-heavy);
+  transform: translateY(40px);
+}
+
+.s2-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.s2-sub {
+  margin-top: 3rem;
+  font-family: var(--font-serif);
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+  font-style: italic;
+  color: var(--silver);
+  line-height: 1.9;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 1s ease 0.3s;
+}
+
+.s2-sub.visible { opacity: 1; }
+
+.s2-right {
+  padding: clamp(6rem, 12vh, 16rem) clamp(2rem, 6vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.log-entry {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(154, 152, 150, 0.08);
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.9s var(--ease-heavy);
+}
+
+.log-entry.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.log-prefix {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.log-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--parchment);
+  font-weight: 300;
+}
+
+.log-entry:nth-child(2) { transition-delay: 0.1s; }
+.log-entry:nth-child(3) { transition-delay: 0.2s; }
+.log-entry:nth-child(4) { transition-delay: 0.3s; }
+.log-entry:nth-child(5) { transition-delay: 0.4s; }
+.log-entry:nth-child(6) { transition-delay: 0.5s; }
+
+@media (max-width: 768px) {
+  #s2 {
+    grid-template-columns: 1fr;
+  }
+  .s2-left { border-right: none; border-bottom: 1px solid rgba(154,152,150,0.1); }
+  .s2-title { font-size: clamp(20vw, 28vw, 10rem); }
+}
+
+/* ============================================
+   S3: CIVILIZATION COLLAPSE — DIVIDER
+   ============================================ */
+#s3-intro {
+  padding: clamp(4rem, 10vh, 12rem) clamp(2rem, 8vw, 10rem);
+  background: var(--black);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  color: var(--rust);
+  text-transform: uppercase;
+}
+
+.collapse-headline {
+  font-family: var(--font-display);
+  font-size: clamp(8vw, 12vw, 14rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s var(--ease-heavy);
+}
+
+.collapse-headline.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.collapse-sub {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-style: italic;
+  color: var(--silver);
+  max-width: 600px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ============================================
+   S3: SPLIT SCREEN COLLAPSE
+   ============================================ */
+#s3 {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.s3-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    transparent,
+    var(--rust) 20%,
+    var(--rust) 80%,
+    transparent
+  );
+  opacity: 0.4;
+  z-index: 10;
+}
+
+.s3-divider::before {
+  content: '∞';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: var(--rust);
+  opacity: 0.6;
+  background: var(--black);
+  padding: 0.5rem;
+}
+
+.s3-panel {
+  padding: clamp(4rem, 8vh, 10rem) clamp(2rem, 5vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+}
+
+.s3-panel.ancient {
+  background: linear-gradient(160deg, #0d0a08 0%, #110e0a 50%, #0a0808 100%);
+}
+
+.s3-panel.modern {
+  background: linear-gradient(160deg, #080a0d 0%, #0a0e12 50%, #060809 100%);
+}
+
+.panel-era {
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  color: var(--rust);
+  text-transform: uppercase;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+.ancient .panel-title { color: #c4a882; }
+.modern .panel-title { color: #8aaac4; }
+
+.panel-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+}
+
+.panel-item {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(154, 152, 150, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  color: var(--silver);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.8s var(--ease-heavy);
+}
+
+.modern .panel-item {
+  transform: translateX(20px);
+}
+
+.panel-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.item-glyph {
+  width: 24px;
+  height: 24px;
+  border: 1px solid currentColor;
+  opacity: 0.3;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+.ancient .item-glyph { border-color: #c4a882; }
+.modern .item-glyph { border-color: #8aaac4; }
+
+.s3-morph {
+  position: absolute;
+  bottom: clamp(2rem, 6vh, 8rem);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 20;
+  white-space: nowrap;
+}
+
+.morph-statement {
+  font-family: var(--font-serif);
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  font-style: italic;
+  color: var(--rust);
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  #s3 {
+    grid-template-columns: 1fr;
+  }
+  .s3-divider { display: none; }
+}
+
+/* ============================================
+   S4: CONSCIOUSNESS / TECHNOLOGY
+   ============================================ */
+#s4 {
+  min-height: 100svh;
+  background: var(--graphite);
+  padding: clamp(6rem, 12vh, 16rem) clamp(2rem, 8vw, 10rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: clip;
+}
+
+.s4-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(20vw, 30vw, 40rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(154, 152, 150, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  animation: bg-pulse 8s ease-in-out infinite;
+}
+
+@keyframes bg-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.s4-content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+}
+
+.s4-question {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 6rem);
+  line-height: 1.1;
+  color: var(--bone);
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s var(--ease-heavy);
+}
+
+.s4-question.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.s4-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+
+@media (max-width: 768px) {
+  .s4-blocks { grid-template-columns: 1fr; }
+}
+
+.s4-block {
+  padding: 2.5rem 2rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(154, 152, 150, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.9s var(--ease-heavy);
+  position: relative;
+  overflow: hidden;
+}
+
+.s4-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--rust), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.s4-block:hover::before { opacity: 0.6; }
+
+.s4-block.visible { opacity: 1; transform: translateY(0); }
+.s4-block:nth-child(2) { transition-delay: 0.15s; }
+.s4-block:nth-child(3) { transition-delay: 0.3s; }
+
+.block-num {
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  color: var(--rust);
+  font-weight: 400;
+}
+
+.block-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 3rem);
+  letter-spacing: 0.05em;
+  color: var(--bone);
+  line-height: 1;
+}
+
+.block-body {
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.8;
+  color: var(--silver);
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Signal interference widget */
+.interference-zone {
+  margin-top: 5rem;
+  position: relative;
+  height: 1px;
+  background: rgba(154, 152, 150, 0.1);
+  overflow: visible;
+}
+
+.interference-pulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 1px;
+  background: var(--rust);
+  transform-origin: left;
+  animation: interference 3s ease-in-out infinite;
+}
+
+@keyframes interference {
+  0% { width: 0; opacity: 1; left: 0; }
+  60% { width: 100%; opacity: 0.5; }
+  100% { width: 100%; opacity: 0; left: 0; }
+}
+
+.interference-label {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  color: var(--rust);
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* ============================================
+   S5: FINAL EXISTENTIAL CHAMBER
+   ============================================ */
+#s5 {
+  min-height: 100svh;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 10vh, 12rem) clamp(2rem, 8vw, 10rem);
+  padding-bottom: max(clamp(4rem, 10vh, 12rem), env(safe-area-inset-bottom));
+  position: relative;
+  overflow: clip;
+}
+
+/* Breathing void */
+.void-orb {
+  position: absolute;
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle at center,
+    rgba(92, 10, 10, 0.15) 0%,
+    rgba(92, 10, 10, 0.05) 40%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  animation: void-breathe 8s ease-in-out infinite;
+}
+
+@keyframes void-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.3); opacity: 0.8; }
+}
+
+.final-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 5vh, 5rem);
+}
+
+.final-title {
+  font-family: var(--font-display);
+  font-size: clamp(20vw, 28vw, 32rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  position: relative;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.final-title.visible { opacity: 1; }
+
+/* Glitch effect */
+.final-title::before,
+.final-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.final-title.glitch::before {
+  color: var(--rust);
+  clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  transform: translateX(-3px);
+  animation: glitch-a 0.3s ease forwards;
+}
+
+.final-title.glitch::after {
+  color: #2a4a6a;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  transform: translateX(3px);
+  animation: glitch-b 0.3s ease forwards;
+}
+
+@keyframes glitch-a {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+@keyframes glitch-b {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+.final-question {
+  font-family: var(--font-display);
+  font-size: clamp(6vw, 10vw, 12rem);
+  letter-spacing: 0.1em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(232, 228, 220, 0.3);
+  opacity: 0;
+  transition: opacity 1.5s ease 0.5s;
+}
+
+.final-question.visible { opacity: 1; }
+
+.final-statement {
+  max-width: 540px;
+  font-family: var(--font-serif);
+  font-size: clamp(0.9rem, 1.3vw, 1.2rem);
+  font-style: italic;
+  color: var(--silver);
+  line-height: 2;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 1.5s ease 1s;
+}
+
+.final-statement.visible { opacity: 1; }
+
+.final-silence {
+  font-size: 0.5rem;
+  letter-spacing: 0.8em;
+  color: rgba(154, 152, 150, 0.3);
+  text-transform: uppercase;
+  margin-top: 2rem;
+  opacity: 0;
+  transition: opacity 2s ease 2s;
+}
+
+.final-silence.visible { opacity: 1; }
+
+/* Ambient scan lines */
+.scan-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.006) 2px,
+    rgba(255,255,255,0.006) 4px
+  );
+  pointer-events: none;
+  animation: scan-drift 20s linear infinite;
+}
+
+@keyframes scan-drift {
+  from { background-position: 0 0; }
+  to { background-position: 0 200px; }
+}
+
+/* ============================================
+   FOOTER MANIFESTO
+   ============================================ */
+footer {
+  background: var(--void);
+  border-top: 1px solid rgba(154, 152, 150, 0.08);
+  padding: 3rem clamp(2rem, 8vw, 10rem);
+  padding-bottom: max(3rem, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+}
+
+@media (max-width: 768px) {
+  footer { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  color: var(--bone);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.footer-statement {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--silver);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.footer-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer-meta { text-align: left; }
+}
+
+.footer-meta span {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--silver);
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* ============================================
+   TRANSITION INTERLUDE — between sections
+   ============================================ */
+.interlude {
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(92, 10, 10, 0.4) 30%,
+    rgba(92, 10, 10, 0.4) 70%,
+    transparent 100%
+  );
+  position: relative;
+}
+
+.interlude-text {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  letter-spacing: 0.4em;
+  color: var(--rust);
+  text-transform: uppercase;
+  background: var(--black);
+  padding: 0 1rem;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- Noise -->
+<div id="noise" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- Navigation -->
+<nav aria-label="Navigation">
+  <span class="nav-logo">WHO ARE</span>
+  <span class="nav-coords">2026 — PHILOSOPHICAL TRANSMISSION</span>
+</nav>
+
+<!-- ===================== S1: HERO ===================== -->
+<section id="s1" aria-labelledby="hero-heading">
+
+  <!-- Background -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+
+    <!-- Sacred geometry -->
+    <div class="sacred-geo">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="180" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="200" cy="200" r="120" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="200" cy="200" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="260" cy="200" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="140" cy="200" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="200" cy="96" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="200" cy="304" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="303" cy="148" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="97" cy="148" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="303" cy="252" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <circle cx="97" cy="252" r="60" stroke="#c4a882" stroke-width="0.5"/>
+        <!-- Triangle overlay -->
+        <polygon points="200,30 358,270 42,270" stroke="#c4a882" stroke-width="0.5" fill="none"/>
+        <polygon points="200,370 42,130 358,130" stroke="#c4a882" stroke-width="0.5" fill="none"/>
+        <!-- Cross hairs -->
+        <line x1="200" y1="20" x2="200" y2="380" stroke="#c4a882" stroke-width="0.3"/>
+        <line x1="20" y1="200" x2="380" y2="200" stroke="#c4a882" stroke-width="0.3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <p class="hero-label">Transmission 001 — Identity</p>
+    <h1 class="hero-title" id="hero-heading" aria-label="Who Are You?">
+      <span class="line l1">WHO</span>
+      <span class="line l2">ARE</span>
+      <span class="line l3">YOU?</span>
+    </h1>
+  </div>
+
+  <!-- Rotating fragments -->
+  <div class="hero-fragments" aria-live="polite" aria-atomic="true">
+    <div class="fragment-item" data-frag="0">"Your attention is no longer yours."</div>
+    <div class="fragment-item" data-frag="1">"Exhaustion became civilization."</div>
+    <div class="fragment-item" data-frag="2">"Progress without meaning."</div>
+    <div class="fragment-item" data-frag="3">"The empire never disappeared."</div>
+    <div class="fragment-item" data-frag="4">"Babylon learned interface design."</div>
+    <div class="fragment-item" data-frag="5">"Connection increased. Presence disappeared."</div>
+  </div>
+
+  <!-- Scroll -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Descend</span>
+  </div>
+</section>
+
+<!-- ===================== INTERLUDE ===================== -->
+<div class="interlude" aria-hidden="true">
+  <span class="interlude-text">Self — Diagnostic Protocol</span>
+</div>
+
+<!-- ===================== S2: WHO AM I ===================== -->
+<section id="s2" aria-labelledby="s2-heading">
+
+  <div class="s2-left">
+    <h2 class="s2-title" id="s2-heading">WHO<br>AM<br>I?</h2>
+    <p class="s2-sub">
+      The self is the oldest architecture.<br>
+      Also the most surveilled.<br>
+      Also the least understood.
+    </p>
+  </div>
+
+  <div class="s2-right" role="list" aria-label="Identity diagnostic entries">
+
+    <article class="log-entry" role="listitem">
+      <span class="log-prefix">Entry 001 — Origin</span>
+      <p class="log-text">"You were born into systems older than memory. The language you think in was written before your birth."</p>
+    </article>
+
+    <article class="log-entry" role="listitem">
+      <span class="log-prefix">Entry 002 — Desire</span>
+      <p class="log-text">"Your desires may not belong to you. The wanting was optimized before the wanting began."</p>
+    </article>
+
+    <article class="log-entry" role="listitem">
+      <span class="log-prefix">Entry 003 — Labor</span>
+      <p class="log-text">"Your exhaustion is economically useful. Fatigue is not a malfunction. It is the intended output."</p>
+    </article>
+
+    <article class="log-entry" role="listitem">
+      <span class="log-prefix">Entry 004 — Identity</span>
+      <p class="log-text">"Your identity is partially manufactured. The self you perform was rehearsed in systems built by others."</p>
+    </article>
+
+    <article class="log-entry" role="listitem">
+      <span class="log-prefix">Entry 005 — Transcendence</span>
+      <p class="log-text">"Consumption replaced transcendence. The sacred was monetized. The ritual became the scroll."</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== INTERLUDE ===================== -->
+<div class="interlude" aria-hidden="true" style="background: var(--graphite);">
+  <span class="interlude-text" style="background: var(--graphite);">Civilizational Analysis</span>
+</div>
+
+<!-- ===================== S3-INTRO ===================== -->
+<section id="s3-intro" aria-labelledby="collapse-heading">
+  <span class="section-eyebrow">Transmission 003</span>
+  <h2 class="collapse-headline" id="collapse-heading">THE<br>SAME<br>EMPIRE</h2>
+  <p class="collapse-sub">
+    Nothing changed except the interface complexity.
+    Ancient systems learned modern aesthetics.
+    The extraction continued.
+  </p>
+</section>
+
+<!-- ===================== S3: SPLIT SCREEN ===================== -->
+<section id="s3" aria-label="Civilization comparison">
+
+  <div class="s3-divider" aria-hidden="true"></div>
+
+  <!-- Ancient -->
+  <div class="s3-panel ancient">
+    <span class="panel-era">Ancient Systems</span>
+    <h3 class="panel-title">THEN</h3>
+    <ul class="panel-items" aria-label="Ancient civilizations">
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">Δ</span>Babylon — Infrastructure of Control</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">☥</span>Egypt — Architecture of Power</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">Ω</span>Rome — Legal Systems of Empire</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">◈</span>Temple — The Attention Economy</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">∴</span>Ritual — Manufactured Meaning</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⊕</span>Stone — The Interface of the Era</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">◇</span>Tribute — Extraction Protocols</li>
+    </ul>
+  </div>
+
+  <!-- Modern -->
+  <div class="s3-panel modern">
+    <span class="panel-era">Modern Systems</span>
+    <h3 class="panel-title">NOW</h3>
+    <ul class="panel-items" aria-label="Modern civilizations">
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⬡</span>Silicon Valley — Infrastructure of Control</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⌖</span>Glass Towers — Architecture of Power</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">≡</span>Terms of Service — Legal Systems of Empire</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⬕</span>Feed — The Attention Economy</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⊛</span>Content — Manufactured Meaning</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⟁</span>Screen — The Interface of the Era</li>
+      <li class="panel-item"><span class="item-glyph" aria-hidden="true">⊞</span>Data — Extraction Protocols</li>
+    </ul>
+  </div>
+
+  <!-- Bottom morph -->
+  <div class="s3-morph" aria-hidden="true">
+    <p class="morph-statement" id="morph-text">Roman legal structures → Terms of Service</p>
+  </div>
+
+</section>
+
+<!-- ===================== INTERLUDE ===================== -->
+<div class="interlude" aria-hidden="true" style="background: var(--black);">
+  <span class="interlude-text" style="background: var(--black);">Consciousness Audit</span>
+</div>
+
+<!-- ===================== S4: CONSCIOUSNESS / TECHNOLOGY ===================== -->
+<section id="s4" aria-labelledby="s4-heading">
+
+  <div class="s4-bg-text" aria-hidden="true">MIND</div>
+
+  <div class="s4-content">
+
+    <h2 class="s4-question" id="s4-heading">
+      "Did progress<br>make humanity wiser?"
+    </h2>
+
+    <div class="s4-blocks" role="list">
+
+      <article class="s4-block" role="listitem">
+        <span class="block-num">01 — Technology</span>
+        <h3 class="block-title">THE TOOL</h3>
+        <p class="block-body">
+          We built instruments of extraordinary precision. We mapped the genome, split the atom, crossed the sky. The tools became more powerful than the hands that held them. Yet the hands remained the same hands.
+        </p>
+      </article>
+
+      <article class="s4-block" role="listitem">
+        <span class="block-num">02 — Consciousness</span>
+        <h3 class="block-title">THE MIND</h3>
+        <p class="block-body">
+          The ancient fear of death persists. The hunger for status persists. The capacity for cruelty persists. Alongside extraordinary compassion. The inner landscape of the human did not scale with the outer.
+        </p>
+      </article>
+
+      <article class="s4-block" role="listitem">
+        <span class="block-num">03 — Meaning</span>
+        <h3 class="block-title">THE GAP</h3>
+        <p class="block-body">
+          Between technological acceleration and spiritual stagnation lives the existential crisis of modernity. More bandwidth. Less silence. More connection. Less communion. The question was never the machine. The question was always the self.
+        </p>
+      </article>
+
+    </div>
+
+    <!-- Signal interference -->
+    <div class="interference-zone" aria-hidden="true">
+      <div class="interference-pulse"></div>
+      <span class="interference-label">Signal Degrading</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== INTERLUDE ===================== -->
+<div class="interlude" aria-hidden="true" style="background: var(--graphite);">
+  <span class="interlude-text" style="background: var(--graphite);">Final Chamber — Enter</span>
+</div>
+
+<!-- ===================== S5: FINAL CHAMBER ===================== -->
+<section id="s5" aria-labelledby="final-heading">
+
+  <div class="scan-lines" aria-hidden="true"></div>
+  <div class="void-orb" aria-hidden="true"></div>
+
+  <div class="final-content">
+
+    <h2 class="final-title" id="final-heading" data-text="WHO ARE" aria-label="Who Are">
+      WHO ARE
+    </h2>
+
+    <p class="final-question" aria-label="What is the matter?">WHAT IS THE MATTER?</p>
+
+    <p class="final-statement">
+      "Perhaps civilization advanced technologically<br>
+      because spiritual evolution failed."
+    </p>
+
+    <p class="final-silence">
+      ·&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;silence&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;·
+    </p>
+
+  </div>
+
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-brand">WHO<br>ARE</div>
+  <p class="footer-statement">
+    A philosophical transmission on identity, empire,<br>
+    consciousness, and the illusion of progress.<br>
+    Humanity examining itself through black glass.
+  </p>
+  <div class="footer-meta">
+    <span>2026 — PHILOSOPHICAL MANIFESTO</span>
+    <span>id.followorbounce.com</span>
+    <span>Category: Identity</span>
+    <span>Transmission Complete</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   WHO ARE — JavaScript Engine
+   CSP-safe. No eval(). No external libs.
+   Safari/iOS optimized.
+   ============================================ */
+
+(function() {
+  'use strict';
+
+  /* ---------- Custom Cursor ---------- */
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursor-ring');
+
+  if (cursor && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+    let cx = 0, cy = 0;
+    let rx = 0, ry = 0;
+    let rafId = null;
+
+    document.addEventListener('mousemove', function(e) {
+      cx = e.clientX;
+      cy = e.clientY;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+    }, { passive: true });
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function animateCursor() {
+      rx = lerp(rx, cx, 0.08);
+      ry = lerp(ry, cy, 0.08);
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top = ry + 'px';
+      rafId = requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+  } else {
+    if (cursor) cursor.style.display = 'none';
+    if (cursorRing) cursorRing.style.display = 'none';
+  }
+
+  /* ---------- Scroll Progress ---------- */
+  const progress = document.getElementById('scroll-progress');
+
+  function updateProgress() {
+    if (!progress) return;
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? scrollTop / docHeight : 0;
+    progress.style.width = (pct * 100) + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  /* ---------- IntersectionObserver for reveal ---------- */
+  const observerOptions = {
+    root: null,
+    rootMargin: '-10% 0px -10% 0px',
+    threshold: 0.1
+  };
+
+  // Elements to observe
+  const revealTargets = document.querySelectorAll(
+    '.s2-title, .s2-sub, .log-entry, .collapse-headline, .panel-item, ' +
+    '.s4-question, .s4-block, .final-title, .final-question, .final-statement, .final-silence'
+  );
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    revealTargets.forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback: show all
+    revealTargets.forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* ---------- Hero Fragments Rotation ---------- */
+  const fragments = document.querySelectorAll('.fragment-item');
+  let currentFrag = -1;
+  let fragTimer = null;
+
+  function showNextFragment() {
+    if (!fragments.length) return;
+
+    // Exit current
+    if (currentFrag >= 0 && fragments[currentFrag]) {
+      fragments[currentFrag].classList.remove('active');
+      fragments[currentFrag].classList.add('exit');
+      const exitEl = fragments[currentFrag];
+      setTimeout(function() {
+        exitEl.classList.remove('exit');
+      }, 500);
+    }
+
+    currentFrag = (currentFrag + 1) % fragments.length;
+    fragments[currentFrag].classList.add('active');
+    fragTimer = setTimeout(showNextFragment, 2800);
+  }
+
+  // Start after hero animation completes
+  setTimeout(showNextFragment, 1800);
+
+  /* ---------- Morph Statement Rotation ---------- */
+  const morphStatements = [
+    'Roman legal structures → Terms of Service',
+    'Temple priests → Recommendation algorithms',
+    'Ancient tribute → Monthly subscriptions',
+    'Sacred ritual → Notification dopamine',
+    'Stone carvings → Interface aesthetics',
+    'Military conquest → Market capture',
+    'Empire loyalty → Platform dependency'
+  ];
+
+  const morphEl = document.getElementById('morph-text');
+  let morphIdx = 0;
+
+  if (morphEl) {
+    setInterval(function() {
+      morphEl.style.opacity = '0';
+      morphEl.style.transition = 'opacity 0.5s ease';
+      setTimeout(function() {
+        morphIdx = (morphIdx + 1) % morphStatements.length;
+        morphEl.textContent = morphStatements[morphIdx];
+        morphEl.style.opacity = '1';
+      }, 500);
+    }, 3000);
+  }
+
+  /* ---------- Final Chamber Glitch ---------- */
+  const finalTitle = document.querySelector('.final-title');
+
+  if (finalTitle && 'IntersectionObserver' in window) {
+    const glitchObserver = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        // Periodic glitch
+        let glitchCount = 0;
+        const glitchInterval = setInterval(function() {
+          finalTitle.classList.add('glitch');
+          setTimeout(function() {
+            finalTitle.classList.remove('glitch');
+          }, 300);
+          glitchCount++;
+          if (glitchCount > 20) clearInterval(glitchInterval);
+        }, 4000 + Math.random() * 3000);
+
+        glitchObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+
+    glitchObserver.observe(finalTitle);
+  }
+
+  /* ---------- Parallax on Scroll (subtle) ---------- */
+  const safeZone = document.querySelector('.sacred-geo');
+
+  function onScroll() {
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    // Sacred geo parallax
+    if (safeZone) {
+      const offset = scrollY * 0.15;
+      safeZone.style.transform = 'translateY(' + offset + 'px)';
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- Reduced Motion Check ---------- */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (prefersReducedMotion.matches) {
+    // Clear animation timers for fragment rotation
+    clearTimeout(fragTimer);
+    // Show first fragment statically
+    if (fragments.length) {
+      fragments[0].classList.add('active');
+    }
+  }
+
+  /* ---------- iOS safe: prevent passive violation ---------- */
+  document.addEventListener('touchstart', function() {}, { passive: true });
+  document.addEventListener('touchmove', function() {}, { passive: true });
+
+})();
+</script>
+
+</body>
+</html>

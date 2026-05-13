@@ -1,0 +1,1068 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --ink: #0d0c0a;
+    --paper: #f4f0e6;
+    --rust: #c0390b;
+    --slate: #3a3d44;
+    --fog: #b8b3a8;
+    --line: 1px solid #0d0c0a;
+    --line-faint: 1px solid rgba(13,12,10,0.15);
+    --ff-display: 'Bebas Neue', sans-serif;
+    --ff-serif: 'DM Serif Display', serif;
+    --ff-mono: 'DM Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0ebe0;
+      --paper: #111009;
+      --rust: #e04d1a;
+      --slate: #a8aab2;
+      --fog: #5a5750;
+      --line: 1px solid rgba(240,235,224,0.18);
+      --line-faint: 1px solid rgba(240,235,224,0.08);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .fob-page {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--ff-mono);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: var(--line);
+  }
+
+  .hero-left {
+    padding: 48px 40px 48px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: var(--line);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--fog);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .hero-title {
+    font-family: var(--ff-display);
+    font-size: clamp(52px, 9vw, 88px);
+    line-height: 0.92;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    margin: 20px 0 0;
+  }
+
+  .hero-title .dot { color: var(--rust); }
+
+  .hero-bottom {
+    margin-top: auto;
+    padding-top: 32px;
+  }
+
+  .hero-line {
+    font-size: 11px;
+    line-height: 1.75;
+    color: var(--slate);
+    max-width: 32ch;
+    border-left: 2px solid var(--rust);
+    padding-left: 14px;
+    margin-bottom: 28px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border: var(--line);
+    padding: 11px 20px;
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.22s, color 0.22s;
+    font-family: var(--ff-mono);
+  }
+
+  .hero-cta:hover { background: var(--ink); color: var(--paper); }
+  .hero-cta-arrow { transition: transform 0.22s; }
+  .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+  }
+
+  .hero-grid-canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+  }
+
+  .hero-monogram {
+    position: relative;
+    z-index: 1;
+    font-family: var(--ff-display);
+    font-size: clamp(80px, 14vw, 148px);
+    color: var(--paper);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    opacity: 0.9;
+    text-align: center;
+  }
+
+  .hero-monogram em {
+    color: var(--rust);
+    font-style: normal;
+  }
+
+  .hero-meta {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--fog);
+    opacity: 0.6;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--fog);
+    padding: 10px 0;
+    border-bottom: var(--line);
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-num {
+    font-size: 9px;
+    color: var(--fog);
+    opacity: 0.5;
+  }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: var(--line);
+  }
+
+  .manifesto-sidebar {
+    border-right: var(--line);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .manifesto-sidebar-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  .manifesto-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: auto;
+  }
+
+  .stat-block { }
+  .stat-num {
+    font-family: var(--ff-display);
+    font-size: 32px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+    margin-top: 3px;
+  }
+
+  .manifesto-body {
+    padding: 36px 36px 48px;
+  }
+
+  .manifesto-heading {
+    font-family: var(--ff-serif);
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .manifesto-heading em { color: var(--rust); font-style: italic; }
+
+  .manifesto-text {
+    font-size: 12px;
+    line-height: 1.85;
+    color: var(--slate);
+    max-width: 56ch;
+    margin-bottom: 16px;
+  }
+
+  /* ── PRINCIPLES ── */
+  .principles {
+    border-bottom: var(--line);
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .principle-cell {
+    padding: 28px 20px 32px;
+    border-right: var(--line);
+  }
+
+  .principle-cell:last-child { border-right: none; }
+
+  .p-index {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--fog);
+    margin-bottom: 20px;
+  }
+
+  .p-title {
+    font-family: var(--ff-display);
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  .p-body {
+    font-size: 10px;
+    line-height: 1.7;
+    color: var(--slate);
+  }
+
+  /* ── SYSTEM SECTION ── */
+  .system {
+    border-bottom: var(--line);
+  }
+
+  .system-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sys-panel {
+    padding: 32px 28px;
+    border-right: var(--line);
+    border-bottom: var(--line);
+  }
+
+  .sys-panel:nth-child(2),
+  .sys-panel:nth-child(4) { border-right: none; }
+
+  .sys-panel:nth-child(3),
+  .sys-panel:nth-child(4) { border-bottom: none; }
+
+  .sys-panel-title {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--fog);
+    margin-bottom: 20px;
+  }
+
+  /* Type scale */
+  .type-scale { display: flex; flex-direction: column; gap: 6px; }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: var(--line-faint);
+  }
+
+  .type-row:last-child { border-bottom: none; }
+
+  .type-meta {
+    font-size: 9px;
+    color: var(--fog);
+    width: 56px;
+    flex-shrink: 0;
+    letter-spacing: 0.1em;
+  }
+
+  .type-sample-a {
+    font-family: var(--ff-display);
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .type-sample-b {
+    font-family: var(--ff-serif);
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .type-sample-c {
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1;
+  }
+
+  /* Color logic */
+  .color-swatches { display: flex; flex-direction: column; gap: 8px; }
+
+  .swatch-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .swatch {
+    width: 32px;
+    height: 32px;
+    border: var(--line-faint);
+    flex-shrink: 0;
+  }
+
+  .swatch-label { font-size: 10px; color: var(--slate); }
+  .swatch-hex { font-size: 9px; color: var(--fog); margin-top: 1px; }
+
+  /* UI Components */
+  .comp-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .comp-btn-a {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: default;
+  }
+
+  .comp-btn-b {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--ink);
+    border: var(--line);
+    cursor: default;
+  }
+
+  .comp-btn-c {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--rust);
+    border: 1px solid var(--rust);
+    cursor: default;
+  }
+
+  .comp-tag {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border: var(--line-faint);
+    color: var(--slate);
+  }
+
+  .comp-nav-bar {
+    border: var(--line);
+    padding: 0;
+    display: flex;
+    height: 28px;
+    margin-top: 4px;
+  }
+
+  .comp-nav-item {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    border-right: var(--line);
+    color: var(--slate);
+    white-space: nowrap;
+  }
+
+  .comp-nav-item.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .comp-nav-item:last-child { border-right: none; }
+
+  /* Grid logic panel */
+  .grid-demo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: var(--line);
+  }
+
+  .grid-cell {
+    height: 36px;
+    border-right: var(--line-faint);
+    border-bottom: var(--line-faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: var(--fog);
+  }
+
+  .grid-cell.filled { background: var(--ink); }
+  .grid-cell.accent { background: var(--rust); }
+  .grid-cell:last-child { border-right: none; }
+
+  /* ── APPLICATIONS ── */
+  .applications {
+    border-bottom: var(--line);
+  }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .app-card {
+    border-right: var(--line);
+    border-bottom: var(--line);
+  }
+
+  .app-card:nth-child(3),
+  .app-card:nth-child(6) { border-right: none; }
+
+  .app-card:nth-child(4),
+  .app-card:nth-child(5),
+  .app-card:nth-child(6) { border-bottom: none; }
+
+  .app-card-visual {
+    background: var(--ink);
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-card-mock-a {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .mock-line-xl {
+    height: 14px;
+    background: var(--paper);
+    opacity: 0.9;
+    width: 90%;
+  }
+
+  .mock-line-md {
+    height: 6px;
+    background: var(--paper);
+    opacity: 0.3;
+    width: 70%;
+  }
+
+  .mock-line-sm {
+    height: 5px;
+    background: var(--paper);
+    opacity: 0.2;
+    width: 50%;
+  }
+
+  .mock-rust-bar {
+    height: 3px;
+    background: var(--rust);
+    width: 30%;
+    margin-top: 6px;
+  }
+
+  .app-card-mock-b {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .mock-card-mini {
+    height: 50px;
+    border: 1px solid rgba(240,235,224,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5px;
+    gap: 3px;
+  }
+
+  .mock-card-mini .ml { height: 4px; background: var(--paper); opacity: 0.6; width: 80%; }
+  .mock-card-mini .ms { height: 3px; background: var(--paper); opacity: 0.2; width: 55%; }
+
+  .app-card-mock-c {
+    width: 80%;
+    border: 1px solid rgba(240,235,224,0.3);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mock-form-field {
+    height: 16px;
+    border: 1px solid rgba(240,235,224,0.25);
+    width: 100%;
+  }
+
+  .mock-form-btn {
+    height: 16px;
+    background: var(--rust);
+    width: 50%;
+    align-self: flex-end;
+  }
+
+  .app-card-info {
+    padding: 14px 16px 18px;
+  }
+
+  .app-tag {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+    margin-bottom: 6px;
+  }
+
+  .app-name {
+    font-family: var(--ff-display);
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .app-desc {
+    font-size: 10px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: var(--line);
+  }
+
+  .closing-main {
+    padding: 48px 40px 52px 36px;
+    border-right: var(--line);
+  }
+
+  .closing-heading {
+    font-family: var(--ff-display);
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 0.94;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .closing-heading .rust { color: var(--rust); }
+
+  .closing-sub {
+    font-size: 11px;
+    line-height: 1.75;
+    color: var(--slate);
+    max-width: 38ch;
+    margin-bottom: 32px;
+  }
+
+  .closing-aside {
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .closing-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cl-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: var(--line-faint);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .cl-link:hover { color: var(--rust); }
+  .cl-link:first-child { border-top: var(--line-faint); }
+
+  .cl-arrow { font-size: 12px; opacity: 0.5; }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 36px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  .footer-mark { font-family: var(--ff-display); font-size: 14px; color: var(--ink); letter-spacing: 0.08em; }
+  .footer-mark span { color: var(--rust); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .anim { animation: fadeUp 0.6s ease both; }
+  .anim-d1 { animation-delay: 0.05s; }
+  .anim-d2 { animation-delay: 0.15s; }
+  .anim-d3 { animation-delay: 0.25s; }
+  .anim-d4 { animation-delay: 0.38s; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 180px; }
+    .hero-left { padding: 28px 20px; border-right: none; }
+    .manifesto { grid-template-columns: 1fr; }
+    .manifesto-sidebar { border-right: none; border-bottom: var(--line); padding: 20px; flex-direction: row; flex-wrap: wrap; gap: 20px; }
+    .manifesto-stats { flex-direction: row; }
+    .manifesto-body { padding: 24px 20px; }
+    .principles-grid { grid-template-columns: 1fr 1fr; }
+    .principle-cell:nth-child(2) { border-right: none; }
+    .system-grid { grid-template-columns: 1fr; }
+    .sys-panel { border-right: none !important; }
+    .app-grid { grid-template-columns: 1fr; }
+    .app-card { border-right: none !important; }
+    .app-card:nth-child(n) { border-bottom: var(--line); }
+    .closing { grid-template-columns: 1fr; }
+    .closing-main { border-right: none; padding: 28px 20px; }
+    .closing-aside { padding: 24px 20px; }
+    .footer { flex-direction: column; gap: 8px; text-align: center; padding: 16px 20px; }
+  }
+</style>
+
+<div class="fob-page">
+
+  <h2 class="sr-only">Follow or Bounce — Identity & System Presentation</h2>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-eyebrow anim anim-d1">EST. 2024 — Identity System</span>
+
+      <div class="anim anim-d2">
+        <h1 class="hero-title">FOLLOW<br><span class="dot">.</span>OR<span class="dot">.</span><br>BOUNCE</h1>
+      </div>
+
+      <div class="hero-bottom anim anim-d3">
+        <p class="hero-line">
+          A publication at the intersection of technology, literature, and the agreements that hold them together.
+        </p>
+        <button class="hero-cta">
+          Explore System
+          <span class="hero-cta-arrow">→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <svg class="hero-grid-canvas" viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f4f0e6" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="520" fill="url(#g)"/>
+        <line x1="200" y1="0" x2="200" y2="520" stroke="#c0390b" stroke-width="1" opacity="0.6"/>
+        <line x1="0" y1="260" x2="400" y2="260" stroke="#c0390b" stroke-width="1" opacity="0.6"/>
+        <circle cx="200" cy="260" r="80" fill="none" stroke="#f4f0e6" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="200" cy="260" r="140" fill="none" stroke="#f4f0e6" stroke-width="0.5" opacity="0.2"/>
+      </svg>
+      <div class="hero-monogram">FOB<em>.</em></div>
+      <div class="hero-meta">V1.0 / 2024</div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <div class="section-label" style="padding: 10px 36px; border-bottom: var(--line);">
+    <span>Identity Statement</span>
+    <span class="section-num">01 / 06</span>
+  </div>
+
+  <section class="manifesto">
+    <div class="manifesto-sidebar">
+      <span class="manifesto-sidebar-label">At a glance</span>
+      <div class="manifesto-stats">
+        <div class="stat-block">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Pillars</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">01</div>
+          <div class="stat-label">Current Issue</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Decision Paths</div>
+        </div>
+      </div>
+    </div>
+    <div class="manifesto-body">
+      <h2 class="manifesto-heading">
+        Ideas either earn their place,<br>or they <em>don't.</em>
+      </h2>
+      <p class="manifesto-text">
+        Follow or Bounce is not a publication about technology. It is a publication that thinks through technology — alongside literature and law — to ask what we actually want from the systems we build and inhabit.
+      </p>
+      <p class="manifesto-text">
+        The name is the methodology. Every idea, product, or framework we encounter is subjected to a binary test: does it generate follow-through — action, understanding, change — or does it bounce, leaving the reader exactly where they started? We write for readers who want to distinguish between the two.
+      </p>
+      <p class="manifesto-text">
+        This identity system exists to make that distinction visible in every line, every weight, every margin.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <div class="section-label" style="padding: 10px 36px; border-bottom: var(--line);">
+    <span>Core Principles</span>
+    <span class="section-num">02 / 06</span>
+  </div>
+
+  <section class="principles">
+    <div class="principles-grid">
+      <div class="principle-cell">
+        <div class="p-index">P.01</div>
+        <div class="p-title">CLARITY</div>
+        <p class="p-body">Every visual decision is a claim. Make it defensible. Ambiguity is not sophistication — it is failure to commit.</p>
+      </div>
+      <div class="principle-cell">
+        <div class="p-index">P.02</div>
+        <div class="p-title">DECISION FLOW</div>
+        <p class="p-body">Structure precedes content. The reader should always know where they are and where the system intends to take them.</p>
+      </div>
+      <div class="principle-cell">
+        <div class="p-index">P.03</div>
+        <div class="p-title">SIGNAL LOGIC</div>
+        <p class="p-body">Noise is the enemy. Every element must earn its space. If a line, weight, or colour does not carry meaning, remove it.</p>
+      </div>
+      <div class="principle-cell">
+        <div class="p-index">P.04</div>
+        <div class="p-title">SYSTEM THINKING</div>
+        <p class="p-body">No component exists in isolation. Type, colour, grid, and interaction are one system — not a collection of choices.</p>
+      </div>
+      <div class="principle-cell">
+        <div class="p-index">P.05</div>
+        <div class="p-title">DISCIPLINE</div>
+        <p class="p-body">Restraint is the hardest skill. The identity holds its ground against trend, decoration, and the temptation to elaborate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM -->
+  <div class="section-label" style="padding: 10px 36px; border-bottom: var(--line);">
+    <span>Design System</span>
+    <span class="section-num">03 / 06</span>
+  </div>
+
+  <section class="system">
+    <div class="system-grid">
+
+      <div class="sys-panel">
+        <div class="sys-panel-title">Typography Scale</div>
+        <div class="type-scale">
+          <div class="type-row">
+            <span class="type-meta">Display</span>
+            <span class="type-sample-a">BEBAS NEUE</span>
+          </div>
+          <div class="type-row">
+            <span class="type-meta">Serif</span>
+            <span class="type-sample-b">DM Serif Display</span>
+          </div>
+          <div class="type-row">
+            <span class="type-meta">Mono</span>
+            <span class="type-sample-c">DM Mono — system interface</span>
+          </div>
+          <div class="type-row">
+            <span class="type-meta">Caption</span>
+            <span style="font-family:var(--ff-mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--fog);">LABEL / 9PX / 0.22EM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sys-panel">
+        <div class="sys-panel-title">Colour Logic</div>
+        <div class="color-swatches">
+          <div class="swatch-row">
+            <div class="swatch" style="background:#0d0c0a;"></div>
+            <div>
+              <div class="swatch-label">Ink — Primary</div>
+              <div class="swatch-hex">#0D0C0A</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#f4f0e6;border:var(--line);"></div>
+            <div>
+              <div class="swatch-label">Paper — Ground</div>
+              <div class="swatch-hex">#F4F0E6</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#c0390b;"></div>
+            <div>
+              <div class="swatch-label">Rust — Accent / Signal</div>
+              <div class="swatch-hex">#C0390B</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#b8b3a8;"></div>
+            <div>
+              <div class="swatch-label">Fog — Tertiary / Meta</div>
+              <div class="swatch-hex">#B8B3A8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sys-panel">
+        <div class="sys-panel-title">UI Components</div>
+        <div class="comp-row">
+          <div class="comp-btn-a">Primary</div>
+          <div class="comp-btn-b">Secondary</div>
+          <div class="comp-btn-c">Action ↗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-tag">Technology</div>
+          <div class="comp-tag">Literature</div>
+          <div class="comp-tag">Contracts</div>
+        </div>
+        <div class="comp-nav-bar">
+          <div class="comp-nav-item active">About</div>
+          <div class="comp-nav-item">Work</div>
+          <div class="comp-nav-item">Technology</div>
+          <div class="comp-nav-item">Contracts ▾</div>
+        </div>
+      </div>
+
+      <div class="sys-panel">
+        <div class="sys-panel-title">Grid & Rhythm</div>
+        <div class="grid-demo">
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell accent"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell filled"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <p style="font-size:9px;color:var(--fog);margin-top:12px;letter-spacing:0.12em;">Border-based layout. No shadows. Ink on paper.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <div class="section-label" style="padding: 10px 36px; border-bottom: var(--line);">
+    <span>Applications</span>
+    <span class="section-num">04 / 06</span>
+  </div>
+
+  <section class="applications">
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-card-visual">
+          <div class="app-card-mock-a">
+            <div class="mock-line-xl"></div>
+            <div class="mock-line-md"></div>
+            <div class="mock-line-sm"></div>
+            <div class="mock-rust-bar"></div>
+          </div>
+        </div>
+        <div class="app-card-info">
+          <div class="app-tag">01 — Web</div>
+          <div class="app-name">Editorial Interface</div>
+          <p class="app-desc">The primary publication layer. Grid-locked. Ruthlessly typographic.</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-visual">
+          <div class="app-card-mock-b">
+            <div class="mock-card-mini"><div class="ml"></div><div class="ms"></div></div>
+            <div class="mock-card-mini"><div class="ml"></div><div class="ms"></div></div>
+            <div class="mock-card-mini"><div class="ml"></div><div class="ms"></div></div>
+            <div class="mock-card-mini" style="border-color:rgba(192,57,11,0.5)"><div class="ml" style="background:var(--rust);opacity:0.9;"></div><div class="ms"></div></div>
+          </div>
+        </div>
+        <div class="app-card-info">
+          <div class="app-tag">02 — Product</div>
+          <div class="app-name">Content Cards</div>
+          <p class="app-desc">Modular card system for technology, literature, and contracts sections.</p>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-visual">
+          <div class="app-card-mock-c">
+            <div class="mock-form-field"></div>
+            <div class="mock-form-field"></div>
+            <div style="height:40px;border:1px solid rgba(240,235,224,0.2);width:100%;"></div>
+            <div class="mock-form-btn"></div>
+          </div>
+        </div>
+        <div class="app-card-info">
+          <div class="app-tag">03 — Form</div>
+          <div class="app-name">Contact System</div>
+          <p class="app-desc">Zero-friction subscription and contact. Form as declaration of intent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="section-label" style="padding: 10px 36px; border-bottom: var(--line);">
+    <span>Vision</span>
+    <span class="section-num">05 / 06</span>
+  </div>
+
+  <section class="closing">
+    <div class="closing-main">
+      <h2 class="closing-heading">
+        THE SYSTEM<br>
+        IS THE<br>
+        <span class="rust">MESSAGE.</span>
+      </h2>
+      <p class="closing-sub">
+        A publication's identity is not its logo or its palette. It is the totality of decisions it makes about what deserves space and what does not. Follow or Bounce is a system built to enforce that discipline at every scale — from a 9px caption to a 7rem headline.
+      </p>
+      <button class="hero-cta">
+        Start reading →
+      </button>
+    </div>
+
+    <div class="closing-aside">
+      <div class="closing-links">
+        <div class="cl-link">Technology <span class="cl-arrow">→</span></div>
+        <div class="cl-link">Literature <span class="cl-arrow">→</span></div>
+        <div class="cl-link">Contracts <span class="cl-arrow">→</span></div>
+        <div class="cl-link">Brand Identity <span class="cl-arrow">→</span></div>
+        <div class="cl-link" style="color:var(--rust);">Subscribe ↗ <span class="cl-arrow">↗</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="section-label" style="padding: 10px 36px; border-bottom: var(--line);">
+    <span>Colophon</span>
+    <span class="section-num">06 / 06</span>
+  </div>
+
+  <footer class="footer">
+    <span class="footer-mark">F<span>.</span>O<span>.</span>B</span>
+    <span>Bebas Neue — DM Serif Display — DM Mono</span>
+    <span>© 2024 Follow or Bounce</span>
+    <span>Est. 2024 / Issue 01</span>
+  </footer>
+
+</div>

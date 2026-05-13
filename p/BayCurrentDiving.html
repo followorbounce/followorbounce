@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Brand Identity System — Bay Current Diving</title>
+  <meta name="description" content="Brand identity system and creative direction for Bay Current Diving, SF Bay." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --fog:     #F2F1EE;
+      --salt:    #E8E5DF;
+      --steel:   #8A9099;
+      --deep:    #1C2127;
+      --ink:     #0D1117;
+      --current: #2F6B8A;
+      --rust:    #B85C38;
+      --signal:  #E8A020;
+      --kelp:    #3D5C4A;
+
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+
+      --sp-xs:  8px;
+      --sp-sm:  16px;
+      --sp-md:  24px;
+      --sp-lg:  48px;
+      --sp-xl:  80px;
+      --sp-2xl: 120px;
+
+      --max-w: 1100px;
+      --ease:  0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--salt);
+      color: var(--deep);
+      line-height: 1.65;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--sp-lg);
+    }
+    @media (max-width: 768px) { .container { padding: 0 var(--sp-sm); } }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky;
+      top: 0; z-index: 100;
+      padding: var(--sp-sm) 0;
+      background: rgba(232,229,223,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(28,33,39,0.1);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark { width: 28px; height: 28px; flex-shrink: 0; }
+    .logo-mark svg { width: 100%; height: 100%; display: block; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .logo-primary {
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 800;
+      color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .logo-secondary {
+      font-family: var(--font-mono);
+      font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--steel); margin-top: 2px;
+    }
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--deep); text-decoration: none; opacity: 0.5;
+      transition: opacity var(--ease);
+    }
+    .nav-back:hover { opacity: 1; }
+    .nav-badge {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--signal);
+      border: 1px solid var(--signal);
+      padding: 3px 8px;
+    }
+
+    /* ---- PAGE HEADER ---- */
+    .page-header {
+      background: var(--ink);
+      padding: var(--sp-2xl) 0 var(--sp-xl);
+      border-bottom: 4px solid var(--signal);
+    }
+    .page-header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-lg); }
+    @media (max-width: 768px) { .page-header-inner { padding: 0 var(--sp-sm); } }
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: var(--sp-sm);
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 800; line-height: 0.92;
+      letter-spacing: -0.02em; color: var(--fog);
+      margin-bottom: var(--sp-md);
+    }
+    .page-desc {
+      font-size: 16px; font-weight: 300;
+      color: rgba(242,241,238,0.5);
+      max-width: 520px; line-height: 1.6;
+    }
+
+    /* ---- SECTION ---- */
+    .brand-section {
+      padding: var(--sp-xl) 0;
+      border-bottom: 1px solid rgba(28,33,39,0.08);
+    }
+    .brand-section:last-child { border-bottom: none; }
+    .brand-section-alt { background: var(--fog); }
+    .brand-section-dark { background: var(--ink); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--steel);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: var(--sp-lg);
+      padding-bottom: var(--sp-sm);
+      border-bottom: 1px solid rgba(28,33,39,0.1);
+    }
+    .section-label-dark {
+      color: rgba(242,241,238,0.3);
+      border-bottom-color: rgba(242,241,238,0.08);
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px; height: 1px;
+      background: currentColor; flex-shrink: 0;
+    }
+
+    /* ---- PALETTE ---- */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: var(--sp-xs);
+    }
+    @media (max-width: 768px) { .palette-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 400px) { .palette-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .swatch { display: flex; flex-direction: column; gap: 6px; }
+    .swatch-block { height: 72px; }
+    .swatch-name {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--deep);
+    }
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 9px; color: var(--steel);
+    }
+    .swatch-role {
+      font-size: 11px; font-weight: 300;
+      color: var(--steel); line-height: 1.4;
+    }
+
+    /* ---- TYPOGRAPHY ---- */
+    .type-grid { display: flex; flex-direction: column; gap: var(--sp-xl); }
+    .type-block { display: grid; grid-template-columns: 200px 1fr; gap: var(--sp-lg); align-items: start; }
+    @media (max-width: 600px) { .type-block { grid-template-columns: 1fr; gap: var(--sp-sm); } }
+    .type-meta { display: flex; flex-direction: column; gap: 4px; }
+    .type-role {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--steel);
+    }
+    .type-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+    .type-spec { font-size: 12px; font-weight: 300; color: var(--steel); }
+    .type-divider {
+      width: 1px; background: rgba(28,33,39,0.1);
+      align-self: stretch;
+      display: none;
+    }
+
+    /* ---- LOGO VARIANTS ---- */
+    .logo-variants-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-xs);
+    }
+    @media (max-width: 600px) { .logo-variants-grid { grid-template-columns: 1fr; } }
+    .logo-variant {
+      padding: var(--sp-lg) var(--sp-md);
+      display: flex; align-items: center; gap: var(--sp-sm);
+    }
+    .lv-light   { background: var(--fog); border: 1px solid rgba(28,33,39,0.1); }
+    .lv-dark    { background: var(--ink); }
+    .lv-current { background: var(--current); }
+
+    .lv-mark { width: 44px; height: 44px; flex-shrink: 0; }
+    .lv-mark svg { width: 100%; height: 100%; display: block; }
+    .lv-text { display: flex; flex-direction: column; line-height: 1; }
+    .lv-primary {
+      font-family: var(--font-display);
+      font-size: 18px; font-weight: 800;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .lv-secondary {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ---- ICONS ---- */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: var(--sp-md);
+    }
+    .icon-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      padding: var(--sp-md);
+      background: var(--fog);
+      border: 1px solid rgba(28,33,39,0.07);
+    }
+    .icon-item svg { width: 28px; height: 28px; color: var(--current); display: block; }
+    .icon-label {
+      font-family: var(--font-mono);
+      font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--steel); text-align: center;
+    }
+
+    /* ---- MOODBOARD ---- */
+    .moodboard {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 200px 160px;
+      gap: 3px;
+    }
+    @media (max-width: 768px) {
+      .moodboard {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+    }
+    .mood-cell {
+      display: flex; align-items: flex-end;
+      padding: var(--sp-sm);
+      position: relative; overflow: hidden;
+    }
+    .mood-cell:first-child { grid-row: span 2; }
+    @media (max-width: 768px) { .mood-cell:first-child { grid-row: span 1; } }
+
+    .mood-dock    { background: linear-gradient(160deg, #2A3038, #1A2028); }
+    .mood-fog     { background: linear-gradient(160deg, #C8D5D9, #A8B8C0); }
+    .mood-hull    { background: linear-gradient(160deg, #1C4A5C, #0E2530); }
+    .mood-water   { background: linear-gradient(160deg, #2F6B8A, #1A3D50); }
+    .mood-steel   { background: linear-gradient(160deg, #4A5560, #2A3040); }
+
+    .mood-label {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(242,241,238,0.5);
+      position: relative; z-index: 2;
+    }
+    .mood-fog .mood-label { color: rgba(28,33,39,0.4); }
+
+    /* ---- COPY SAMPLES ---- */
+    .copy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-md);
+    }
+    @media (max-width: 600px) { .copy-grid { grid-template-columns: 1fr; } }
+
+    .copy-card {
+      padding: var(--sp-md);
+      background: var(--salt);
+      border: 1px solid rgba(28,33,39,0.08);
+      border-left: 3px solid var(--current);
+    }
+    .copy-card-label {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--steel); margin-bottom: var(--sp-xs);
+    }
+    .copy-card-body {
+      font-size: 14px; font-weight: 300;
+      color: var(--deep); line-height: 1.7;
+    }
+
+    /* ---- WORKWEAR / DECALS ---- */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--sp-lg);
+    }
+    @media (max-width: 768px) { .specs-grid { grid-template-columns: 1fr; gap: var(--sp-md); } }
+    .spec-block { display: flex; flex-direction: column; gap: var(--sp-xs); }
+    .spec-title {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--steel);
+      padding-bottom: var(--sp-xs);
+      border-bottom: 1px solid rgba(28,33,39,0.1);
+      margin-bottom: 4px;
+    }
+    .spec-body {
+      font-size: 13px; font-weight: 300;
+      color: var(--deep); line-height: 1.7;
+    }
+    .spec-body strong { font-weight: 500; color: var(--ink); }
+
+    /* ---- SEO / KEYWORDS ---- */
+    .keyword-list {
+      display: flex; flex-wrap: wrap; gap: var(--sp-xs);
+    }
+    .kw {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.1em;
+      color: var(--current);
+      border: 1px solid rgba(47,107,138,0.3);
+      padding: 5px 10px;
+      background: rgba(47,107,138,0.05);
+    }
+
+    /* ---- FOOTER ---- */
+    .brand-footer {
+      background: var(--ink);
+      padding: var(--sp-lg) 0;
+      border-top: 1px solid rgba(242,241,238,0.05);
+    }
+    .brand-footer-inner {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: var(--sp-sm);
+    }
+    .footer-note {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.1em;
+      color: rgba(242,241,238,0.2);
+    }
+    .footer-link {
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(242,241,238,0.2); text-decoration: none;
+      transition: color var(--ease);
+    }
+    .footer-link:hover { color: rgba(242,241,238,0.5); }
+
+    /* ---- ANIMATIONS ---- */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ---- SKIP NAV ---- */
+    .skip-nav {
+      position:absolute; top:-100px; left:var(--sp-sm);
+      background:var(--signal); color:var(--ink);
+      font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em;
+      padding:8px 16px; text-decoration:none; z-index:200;
+      transition:top 0.2s;
+    }
+    .skip-nav:focus { top:var(--sp-sm); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-nav">Skip to content</a>
+
+<!-- ===== NAV ===== -->
+<nav role="navigation" aria-label="Brand guide navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" aria-label="Bay Current Diving — back to main site">
+        <div class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 20 Q16 28 28 20" stroke="#0D1117" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="20" x2="30" y2="20" stroke="#2F6B8A" stroke-width="1.5"/>
+            <line x1="16" y1="6" x2="16" y2="20" stroke="#0D1117" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="6" r="2" fill="#E8A020"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-primary">Bay Current</span>
+          <span class="logo-secondary">Diving · SF Bay</span>
+        </div>
+      </a>
+      <span class="nav-badge" aria-label="Internal document">Internal — Brand Guide</span>
+      <a href="index.html" class="nav-back">&larr; Back to Site</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header" role="banner">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">Bay Current Diving</p>
+    <h1 class="page-title">Brand Identity<br>System.</h1>
+    <p class="page-desc">Complete creative direction — color, type, logo, icons, photography, workwear, copy, and digital guidelines.</p>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===== 01 PALETTE ===== -->
+<section class="brand-section brand-section-alt" aria-labelledby="palette-heading">
+  <div class="container">
+    <p class="section-label" id="palette-heading">01 — Color Palette</p>
+    <div class="palette-grid reveal">
+      <div class="swatch">
+        <div class="swatch-block" style="background:#F2F1EE;border:1px solid rgba(0,0,0,0.08);"></div>
+        <span class="swatch-name">Fog</span>
+        <span class="swatch-hex">#F2F1EE</span>
+        <span class="swatch-role">Primary background. SF morning fog.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#E8E5DF;border:1px solid rgba(0,0,0,0.06);"></div>
+        <span class="swatch-name">Salt</span>
+        <span class="swatch-hex">#E8E5DF</span>
+        <span class="swatch-role">Secondary bg. Salt-bleached dock timber.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#8A9099;"></div>
+        <span class="swatch-name">Steel</span>
+        <span class="swatch-hex">#8A9099</span>
+        <span class="swatch-role">Labels, captions, secondary text.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#2F6B8A;"></div>
+        <span class="swatch-name">Current</span>
+        <span class="swatch-hex">#2F6B8A</span>
+        <span class="swatch-role">Accent. Pacific current, cold bay water.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#1C2127;"></div>
+        <span class="swatch-name">Deep</span>
+        <span class="swatch-hex">#1C2127</span>
+        <span class="swatch-role">Body text. Deep water, wet steel.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#0D1117;"></div>
+        <span class="swatch-name">Ink</span>
+        <span class="swatch-hex">#0D1117</span>
+        <span class="swatch-role">Hero bg, footer, engine paint.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#E8A020;"></div>
+        <span class="swatch-name">Signal</span>
+        <span class="swatch-hex">#E8A020</span>
+        <span class="swatch-role">CTA / primary action. Marine signal orange.</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background:#B85C38;"></div>
+        <span class="swatch-name">Rust</span>
+        <span class="swatch-hex">#B85C38</span>
+        <span class="swatch-role">Accent. Dock rust, mooring rings.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 02 TYPOGRAPHY ===== -->
+<section class="brand-section" aria-labelledby="type-heading">
+  <div class="container">
+    <p class="section-label" id="type-heading">02 — Typography</p>
+    <div class="type-grid reveal">
+
+      <div class="type-block">
+        <div class="type-meta">
+          <span class="type-role">Display</span>
+          <span class="type-name">Syne</span>
+          <span class="type-spec">800 weight · headings, names, hero</span>
+          <span class="type-spec" style="margin-top:6px;font-size:11px;color:var(--current);">Use for all major headings. Tight letter-spacing (-0.02em to -0.03em). Never used for body or labels.</span>
+        </div>
+        <div>
+          <p style="font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-0.02em;line-height:1;color:var(--ink);">Bay Current Diving</p>
+          <p style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-top:12px;">Hull Cleaning · Zinc Replacement</p>
+        </div>
+      </div>
+
+      <div class="type-block">
+        <div class="type-meta">
+          <span class="type-role">Body</span>
+          <span class="type-name">DM Sans</span>
+          <span class="type-spec">300 / 400 / 500 · paragraphs, values</span>
+          <span class="type-spec" style="margin-top:6px;font-size:11px;color:var(--current);">300 for body copy. 400 for values/data. 500 for emphasis inline. Never bold headings.</span>
+        </div>
+        <div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:300;line-height:1.75;color:var(--deep);">I've been working the Bay for over fifteen years. Bay Current is just me — no dispatch, no subcontractors, no surprises. When you call, I pick up.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:var(--ink);margin-top:10px;">15+ Years · SF Bay Licensed · Commercial OSHA</p>
+        </div>
+      </div>
+
+      <div class="type-block">
+        <div class="type-meta">
+          <span class="type-role">Mono</span>
+          <span class="type-name">DM Mono</span>
+          <span class="type-spec">400 · labels, tags, nav, data</span>
+          <span class="type-spec" style="margin-top:6px;font-size:11px;color:var(--current);">Always uppercase. Letter-spacing 0.12em–0.22em. Use for section labels, service numbers, metadata. Never for headlines.</span>
+        </div>
+        <div>
+          <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--steel);">What We Do · Services · SF Bay</p>
+          <p style="font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.1em;color:var(--current);margin-top:12px;">(209) 552-6958 · Fisherman's Wharf</p>
+          <p style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);background:var(--signal);display:inline-block;padding:8px 16px;margin-top:12px;">Get a Quote</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 03 LOGO ===== -->
+<section class="brand-section brand-section-alt" aria-labelledby="logo-heading">
+  <div class="container">
+    <p class="section-label" id="logo-heading">03 — Logo System</p>
+
+    <div class="logo-variants-grid reveal">
+
+      <!-- Light -->
+      <div class="logo-variant lv-light">
+        <div class="lv-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 20 Q16 28 28 20" stroke="#0D1117" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="20" x2="30" y2="20" stroke="#2F6B8A" stroke-width="1.5"/>
+            <line x1="16" y1="6" x2="16" y2="20" stroke="#0D1117" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="6" r="2" fill="#E8A020"/>
+          </svg>
+        </div>
+        <div class="lv-text">
+          <span class="lv-primary" style="color:var(--ink);">Bay Current</span>
+          <span class="lv-secondary" style="color:var(--steel);">Diving · SF Bay</span>
+          <span style="font-family:var(--font-mono);font-size:8px;letter-spacing:0.14em;color:var(--steel);margin-top:8px;text-transform:uppercase;">Light background</span>
+        </div>
+      </div>
+
+      <!-- Dark -->
+      <div class="logo-variant lv-dark">
+        <div class="lv-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 20 Q16 28 28 20" stroke="rgba(242,241,238,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="20" x2="30" y2="20" stroke="#2F6B8A" stroke-width="1.5"/>
+            <line x1="16" y1="6" x2="16" y2="20" stroke="rgba(242,241,238,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="6" r="2" fill="#E8A020"/>
+          </svg>
+        </div>
+        <div class="lv-text">
+          <span class="lv-primary" style="color:#F2F1EE;">Bay Current</span>
+          <span class="lv-secondary" style="color:rgba(242,241,238,0.35);">Diving · SF Bay</span>
+          <span style="font-family:var(--font-mono);font-size:8px;letter-spacing:0.14em;color:rgba(242,241,238,0.25);margin-top:8px;text-transform:uppercase;">Dark background</span>
+        </div>
+      </div>
+
+      <!-- Current blue -->
+      <div class="logo-variant lv-current">
+        <div class="lv-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 20 Q16 28 28 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="2" y1="20" x2="30" y2="20" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            <line x1="16" y1="6" x2="16" y2="20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="6" r="2" fill="#E8A020"/>
+          </svg>
+        </div>
+        <div class="lv-text">
+          <span class="lv-primary" style="color:white;">Bay Current</span>
+          <span class="lv-secondary" style="color:rgba(255,255,255,0.5);">Diving · SF Bay</span>
+          <span style="font-family:var(--font-mono);font-size:8px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-top:8px;text-transform:uppercase;">Current blue</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reveal" style="margin-top:var(--sp-lg);padding:var(--sp-md);background:var(--fog);border:1px solid rgba(28,33,39,0.08);">
+      <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--steel);margin-bottom:var(--sp-sm);">Logo Mark — Explained</p>
+      <p style="font-size:14px;font-weight:300;color:var(--deep);line-height:1.7;">
+        <strong style="font-weight:500;">Hull arc</strong> — the curved line represents a boat hull cross-section viewed from below the waterline.
+        <strong style="font-weight:500;">Waterline</strong> — the horizontal Current-blue line separates above from below.
+        <strong style="font-weight:500;">Vertical drop</strong> — the diver descending to work.
+        <strong style="font-weight:500;">Signal dot</strong> — the surface marker buoy: orange, visible, precise.
+        Works at 16px (favicon) through billboard. Embroidery: use hull arc + signal dot only at small sizes.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 04 ICONS ===== -->
+<section class="brand-section" aria-labelledby="icons-heading">
+  <div class="container">
+    <p class="section-label" id="icons-heading">04 — Icon System</p>
+    <p style="font-size:13px;font-weight:300;color:var(--steel);margin-bottom:var(--sp-lg);line-height:1.6;">1.5px stroke weight. Line-only. No fills. Current blue (#2F6B8A) on light backgrounds. Fog (#F2F1EE) on dark. 24×24 grid.</p>
+    <div class="icon-grid reveal">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="18" rx="10" ry="4"/><path d="M2 18v-4a10 10 0 0020 0v4"/><path d="M7 10c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg>
+        <span class="icon-label">Hull</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        <span class="icon-label">Prop</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+        <span class="icon-label">Zinc</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18c3-4 6-6 9-6s6 2 9 6"/><path d="M3 12c3-4 6-6 9-6s6 2 9 6"/></svg>
+        <span class="icon-label">Current</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="icon-label">Barnacle</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 012 0h3a2 2 0 012 1.72"/></svg>
+        <span class="icon-label">Call</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span class="icon-label">SMS</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="icon-label">Location</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+        <span class="icon-label">Report</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        <span class="icon-label">Schedule</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 05 MOODBOARD ===== -->
+<section class="brand-section brand-section-dark" aria-labelledby="mood-heading">
+  <div class="container">
+    <p class="section-label section-label-dark" id="mood-heading">05 — Visual Atmosphere</p>
+    <div class="moodboard reveal">
+      <div class="mood-cell mood-dock"><span class="mood-label">Cold morning light · working docks · boat reflections</span></div>
+      <div class="mood-cell mood-fog"><span class="mood-label">SF fog · diffused light · pale horizon</span></div>
+      <div class="mood-cell mood-water"><span class="mood-label">Underwater blue-green · equipment close-ups</span></div>
+      <div class="mood-cell mood-hull"><span class="mood-label">Textured hull steel · barnacle patterns</span></div>
+      <div class="mood-cell mood-steel"><span class="mood-label">Dock hardware · ropes · galvanized steel</span></div>
+    </div>
+    <div class="reveal" style="margin-top:var(--sp-lg);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-lg);">
+      <div>
+        <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,241,238,0.3);margin-bottom:var(--sp-xs);">Photo Style</p>
+        <p style="font-size:13px;font-weight:300;color:rgba(242,241,238,0.45);line-height:1.7;">Desaturated, slightly cool. Natural SF Bay overcast light. No filters. Close-up textures. Real work, real gear, real water.</p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,241,238,0.3);margin-bottom:var(--sp-xs);">Instagram Feed</p>
+        <p style="font-size:13px;font-weight:300;color:rgba(242,241,238,0.45);line-height:1.7;">Before/after hull shots, dock life, underwater stills, equipment detail, and type-only quote cards. Consistent desaturated palette throughout.</p>
+      </div>
+      <div>
+        <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,241,238,0.3);margin-bottom:var(--sp-xs);">Caption Voice</p>
+        <p style="font-size:13px;font-weight:300;color:rgba(242,241,238,0.45);line-height:1.7;">Short and direct. "Hull cleaned on a 38ft commercial before sunrise today." No hashtag spam. 3–4 targeted tags max: #SFBay #HullCleaning #CommercialDiving #FishermansWharf</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 06 COPY SAMPLES ===== -->
+<section class="brand-section brand-section-alt" aria-labelledby="copy-heading">
+  <div class="container">
+    <p class="section-label" id="copy-heading">06 — Copy &amp; Tone of Voice</p>
+    <p style="font-size:14px;font-weight:300;color:var(--steel);margin-bottom:var(--sp-lg);max-width:560px;line-height:1.65;">Calm. Confident. Direct. Human. Sounds like a real SF Bay working diver with modern taste. No startup buzzwords. No upsell language. No corporate jargon.</p>
+    <div class="copy-grid reveal">
+      <div class="copy-card" style="border-left-color:var(--signal);">
+        <p class="copy-card-label">Instagram Bio</p>
+        <p class="copy-card-body">Commercial hull diver. Fisherman's Wharf, SF Bay.<br>Hull cleaning · Barnacle removal · Prop inspection · Zinc work.<br>Call or text Tony ↓<br>(209) 552-6958</p>
+      </div>
+      <div class="copy-card" style="border-left-color:var(--current);">
+        <p class="copy-card-label">SMS Auto-Reply</p>
+        <p class="copy-card-body">Hey — got your message. I'll call you back within the hour. If it's urgent, call direct: (209) 552-6958. — Tony, Bay Current Diving</p>
+      </div>
+      <div class="copy-card" style="border-left-color:var(--steel);">
+        <p class="copy-card-label">Google Business Description</p>
+        <p class="copy-card-body">Bay Current Diving is a one-operator commercial diving service based at Fisherman's Wharf, San Francisco. Owner Tony provides underwater hull cleaning, barnacle removal, prop inspection, and zinc replacement for commercial fishing boats and private vessels throughout SF Bay.</p>
+      </div>
+      <div class="copy-card" style="border-left-color:var(--rust);">
+        <p class="copy-card-label">Business Card / Word-of-Mouth</p>
+        <p class="copy-card-body">"Tony does the work. Straight price, straight answer, done on time."<br><span style="color:var(--steel);font-size:12px;">— Commercial fisherman, Pier 45</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 07 WORKWEAR & DECALS ===== -->
+<section class="brand-section" aria-labelledby="workwear-heading">
+  <div class="container">
+    <p class="section-label" id="workwear-heading">07 — Workwear &amp; Decals</p>
+    <div class="specs-grid reveal">
+      <div class="spec-block">
+        <p class="spec-title">Embroidery</p>
+        <p class="spec-body">Use wordmark only: <strong>BAY CURRENT / DIVING</strong> in Syne 800, two lines, chest-left patch. Logo mark works as standalone badge. Signal orange thread on charcoal or navy. Never embroider the full lockup at under 40px equivalent.</p>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Boat Hull Decal</p>
+        <p class="spec-body">White on dark, high contrast. Single line: <strong>BAY CURRENT DIVING · baycurrentdiving.com · (209) 552-6958</strong>. Logo mark at left. DM Mono for contact info. No colour — white only. Cut vinyl preferred over print.</p>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Truck / Vehicle</p>
+        <p class="spec-body">Rear window: large <strong>BAY CURRENT DIVING</strong> in Syne across full width. Phone number in DM Mono below. White on dark tint. Door panels: logo mark + wordmark only, no taglines.</p>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Clothing Palette</p>
+        <p class="spec-body">Charcoal Carhartt work shirts. Navy or black waders. Black coveralls. Signal orange as accent stripe or patch only. No bright prints. No loud graphics. Workwear that looks right on a dock.</p>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Equipment Stickers</p>
+        <p class="spec-body">Tanks, cases, toolboxes: logo mark + <strong>BAY CURRENT DIVING</strong> in one line. Black or white depending on surface. Domed vinyl or anodised metal plate for marine environment durability.</p>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Business Card</p>
+        <p class="spec-body">Ink background. Logo top-left. Name: <strong>Tony</strong> in Syne 60px. Role in DM Mono. Phone, SMS, email as three lines DM Mono. Matte laminate, 400gsm minimum. No rounded corners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== 08 SEO + DIGITAL ===== -->
+<section class="brand-section brand-section-alt" aria-labelledby="seo-heading">
+  <div class="container">
+    <p class="section-label" id="seo-heading">08 — SEO &amp; Digital Guidelines</p>
+    <div class="specs-grid reveal">
+      <div class="spec-block">
+        <p class="spec-title">Target Keywords</p>
+        <div class="keyword-list" style="margin-top:var(--sp-xs);">
+          <span class="kw">hull cleaning San Francisco</span>
+          <span class="kw">underwater diver SF Bay</span>
+          <span class="kw">barnacle removal Bay Area</span>
+          <span class="kw">zinc replacement diving</span>
+          <span class="kw">Fisherman's Wharf boat service</span>
+          <span class="kw">commercial fishing hull cleaning</span>
+          <span class="kw">prop inspection San Francisco</span>
+          <span class="kw">underwater hull maintenance</span>
+        </div>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Animation Rules</p>
+        <p class="spec-body">Fade-up on scroll. 0.7s ease. Stagger cards by 80ms max. No parallax — performance impact on mobile. Nav blur activates at scrollY &gt; 20px. Process steps animate on section entry. No autoplay video.</p>
+      </div>
+      <div class="spec-block">
+        <p class="spec-title">Mobile Behaviour</p>
+        <p class="spec-body">Sticky "Call Tony" replaces nav links on mobile. Services: 2-col grid. Hero type: clamp() fluid scale. Process: vertical stack. Contact methods: 48px+ tap targets. No horizontal scroll.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="brand-footer" role="contentinfo">
+  <div class="container">
+    <div class="brand-footer-inner">
+      <p class="footer-note">Bay Current Diving — Internal Brand Document &mdash; &copy; <span id="yr"></span></p>
+      <a href="index.html" class="footer-link">&larr; Back to Website</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

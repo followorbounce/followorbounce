@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MINISTRY OF FINAL THINGS — Catalogue of Collapse №7</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,700&display=swap');
+
+  :root {
+    --acid-green: #7fff00;
+    --dusty-pink: #d4a5a5;
+    --dead-blue: #4a6fa5;
+    --nicotine: #c8b87a;
+    --warn-red: #cc2200;
+    --hospital-white: #f0eeeb;
+    --sick-yellow: #e8d44d;
+    --void: #0a0a08;
+    --concrete: #9e9e8a;
+    --bruise: #6b4c7a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--hospital-white);
+    color: var(--void);
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+  }
+
+  /* SCANLINES */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.015) 2px,
+      rgba(0,0,0,0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* ═══ HEADER ═══ */
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 24px 10px;
+    background: var(--void);
+    border-bottom: 3px solid var(--acid-green);
+  }
+
+  .header-stamp {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--concrete);
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  .header-logo {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    color: var(--acid-green);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .header-index {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--warn-red);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    min-height: 100vh;
+    background: var(--void);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 80px 40px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--acid-green);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: clamp(64px, 9vw, 130px);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--hospital-white);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--acid-green);
+    display: block;
+  }
+
+  .hero-title .struck {
+    text-decoration: line-through;
+    color: var(--warn-red);
+    opacity: 0.7;
+    font-size: 0.6em;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-subtext {
+    margin-top: 60px;
+    font-size: 11px;
+    line-height: 2;
+    color: var(--concrete);
+    letter-spacing: 0.1em;
+    max-width: 320px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+
+  .hero-right {
+    position: relative;
+    background: var(--warn-red);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 40px;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: 'ДОКУМЕНТ\ADOCUMENT\ADOKUMENT\ADOCUMENT\ADOKUMENT';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.06);
+    white-space: pre;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: 2;
+    padding: 20px;
+  }
+
+  .hero-number {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(140px, 20vw, 260px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+    letter-spacing: -0.05em;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .hero-classified {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+  }
+
+  .classified-label {
+    display: inline-block;
+    background: var(--void);
+    color: var(--acid-green);
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    padding: 6px 16px;
+    margin-bottom: 30px;
+    border: 1px solid var(--acid-green);
+  }
+
+  .classified-text {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-style: italic;
+    color: white;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  /* ═══ TICKER ═══ */
+  .ticker-wrap {
+    background: var(--acid-green);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-block;
+    animation: scroll-left 30s linear infinite;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    font-weight: 700;
+    color: var(--void);
+  }
+
+  .ticker span { margin: 0 40px; }
+  .ticker .dot { color: var(--warn-red); }
+
+  /* ═══ SECTION: SERVICES ═══ */
+  .section-services {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    min-height: 100vh;
+    background: var(--nicotine);
+  }
+
+  .services-left {
+    background: var(--void);
+    padding: 80px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .services-section-num {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--acid-green);
+    margin-bottom: 80px;
+  }
+
+  .services-title-block {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .services-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(40px, 4vw, 64px);
+    font-weight: 900;
+    color: var(--hospital-white);
+    line-height: 1.0;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 0.05em;
+  }
+
+  .services-footnote {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--concrete);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  .services-right {
+    padding: 80px 60px 80px 80px;
+  }
+
+  .services-header-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding-bottom: 20px;
+    margin-bottom: 0;
+  }
+
+  .services-header-label {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.4);
+  }
+
+  .service-item {
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: 80px 1fr 200px;
+    gap: 40px;
+    align-items: start;
+    transition: background 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-item::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 2px;
+    background: var(--warn-red);
+    transition: width 0.5s ease;
+  }
+
+  .service-item:hover::after { width: 100%; }
+
+  .service-item:hover .service-name {
+    color: var(--warn-red);
+    letter-spacing: 0.03em;
+  }
+
+  .service-num {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: rgba(0,0,0,0.3);
+    padding-top: 8px;
+  }
+
+  .service-name {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700;
+    line-height: 1.0;
+    transition: all 0.3s;
+    letter-spacing: -0.01em;
+  }
+
+  .service-name em {
+    font-style: italic;
+    color: var(--bruise);
+    font-size: 0.9em;
+  }
+
+  .service-meta {
+    font-size: 9px;
+    line-height: 2;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.5);
+    padding-top: 12px;
+    text-align: right;
+  }
+
+  /* ═══ MANIFESTO ═══ */
+  .section-manifesto {
+    background: var(--dead-blue);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto-left {
+    padding: 100px 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .manifesto-label {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--sick-yellow);
+    margin-bottom: 60px;
+    display: block;
+  }
+
+  .manifesto-quote {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(36px, 4vw, 58px);
+    font-style: italic;
+    color: var(--hospital-white);
+    line-height: 1.15;
+    font-weight: 400;
+    position: relative;
+  }
+
+  .manifesto-quote::before {
+    content: '❝';
+    font-size: 0.4em;
+    color: var(--sick-yellow);
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    opacity: 0.5;
+  }
+
+  .manifesto-attribution {
+    margin-top: 50px;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+
+  .manifesto-right {
+    padding: 100px 60px 100px 40px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .manifesto-body {
+    font-size: 12px;
+    line-height: 2.2;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+  }
+
+  .manifesto-body strong {
+    color: var(--sick-yellow);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .manifesto-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .manifesto-stat {
+    background: rgba(0,0,0,0.2);
+    padding: 30px 24px;
+    transition: background 0.3s;
+  }
+
+  .manifesto-stat:hover { background: rgba(0,0,0,0.4); }
+
+  .stat-num {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    color: var(--acid-green);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .stat-label {
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.3);
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+
+  /* ═══ WATERMARK SECTION ═══ */
+  .section-watermark {
+    position: relative;
+    min-height: 60vh;
+    background: var(--hospital-white);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .watermark-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .watermark-text {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(80px, 18vw, 280px);
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(0,0,0,0.04);
+    white-space: nowrap;
+    letter-spacing: -0.05em;
+    user-select: none;
+    animation: drift 8s ease-in-out infinite;
+  }
+
+  .watermark-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 80px 40px;
+  }
+
+  .watermark-headline {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    color: var(--void);
+    line-height: 1.4;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+
+  .watermark-rule {
+    width: 1px;
+    height: 60px;
+    background: var(--void);
+    margin: 0 auto 40px;
+    opacity: 0.3;
+  }
+
+  .watermark-small {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: rgba(0,0,0,0.3);
+    text-transform: uppercase;
+  }
+
+  /* ═══ CATALOGUE GRID ═══ */
+  .section-catalogue {
+    background: var(--void);
+    padding: 0;
+  }
+
+  .catalogue-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 40px 60px;
+    gap: 40px;
+  }
+
+  .catalogue-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(32px, 3vw, 52px);
+    font-weight: 900;
+    color: var(--hospital-white);
+    grid-column: span 2;
+    line-height: 1.0;
+  }
+
+  .catalogue-desc {
+    font-size: 10px;
+    line-height: 2;
+    color: var(--concrete);
+    letter-spacing: 0.1em;
+    align-self: end;
+  }
+
+  .catalogue-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: none;
+  }
+
+  .catalogue-cell {
+    border-right: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 50px 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.4s;
+  }
+
+  .catalogue-cell:nth-child(3n) { border-right: none; }
+
+  .catalogue-cell:hover { background: rgba(255,255,255,0.03); }
+
+  .cell-bg-num {
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+    font-family: 'Times New Roman', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    user-select: none;
+    transition: color 0.4s;
+  }
+
+  .catalogue-cell:hover .cell-bg-num {
+    color: rgba(127,255,0,0.06);
+  }
+
+  .cell-tag {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: var(--acid-green);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .cell-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 700;
+    color: var(--hospital-white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .cell-title em {
+    font-style: italic;
+    color: var(--dusty-pink);
+  }
+
+  .cell-body {
+    font-size: 10px;
+    line-height: 1.9;
+    color: var(--concrete);
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cell-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cell-status {
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    color: var(--warn-red);
+    text-transform: uppercase;
+  }
+
+  .cell-arrow {
+    font-size: 20px;
+    color: rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+
+  .catalogue-cell:hover .cell-arrow {
+    color: var(--acid-green);
+    transform: translate(4px, -4px);
+  }
+
+  /* ═══ FULL BLEED STATEMENT ═══ */
+  .section-statement {
+    min-height: 80vh;
+    background: var(--warn-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 60px;
+  }
+
+  .statement-bg-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(60px, 12vw, 200px);
+    font-weight: 900;
+    color: rgba(0,0,0,0.08);
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+    letter-spacing: -0.03em;
+  }
+
+  .statement-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1000px;
+  }
+
+  .statement-pre {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .statement-main {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(32px, 5vw, 72px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .statement-main em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .statement-button {
+    margin-top: 60px;
+    display: inline-block;
+    background: var(--void);
+    color: var(--acid-green);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    padding: 20px 60px;
+    border: 2px solid var(--acid-green);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .statement-button:hover {
+    background: var(--acid-green);
+    color: var(--void);
+    padding: 20px 80px;
+  }
+
+  /* ═══ ARCHIVE / FOOTER ═══ */
+  .section-archive {
+    background: var(--hospital-white);
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    min-height: 50vh;
+  }
+
+  .archive-divider {
+    background: rgba(0,0,0,0.1);
+  }
+
+  .archive-col {
+    padding: 70px 50px;
+  }
+
+  .archive-col-label {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+  }
+
+  .archive-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .archive-item:hover { padding-left: 10px; }
+
+  .archive-item:hover .archive-item-title {
+    color: var(--warn-red);
+  }
+
+  .archive-item-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .archive-item-date {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: rgba(0,0,0,0.3);
+  }
+
+  .archive-manifesto-block {
+    margin-top: 40px;
+    background: var(--void);
+    padding: 30px;
+    color: var(--concrete);
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══ FOOTER ═══ */
+  .site-footer {
+    background: var(--void);
+    border-top: 3px solid var(--warn-red);
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: var(--concrete);
+    text-transform: uppercase;
+  }
+
+  .footer-warning {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: var(--warn-red);
+    text-transform: uppercase;
+  }
+
+  /* ═══ GLITCH TEXT ═══ */
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch::before {
+    color: var(--acid-green);
+    animation: glitch1 3s infinite;
+    clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  }
+
+  .glitch::after {
+    color: var(--warn-red);
+    animation: glitch2 3s infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  }
+
+  /* ═══ PROGRESS ENTROPY BAR ═══ */
+  .entropy-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    z-index: 1001;
+  }
+
+  .entropy-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--acid-green), var(--warn-red));
+    transition: width 0.1s;
+    width: 0%;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.08; }
+    50% { opacity: 0.14; }
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translateX(0) skewX(0deg); }
+    50% { transform: translateX(20px) skewX(-1deg); }
+  }
+
+  @keyframes glitch1 {
+    0%, 90%, 100% { transform: none; opacity: 0; }
+    91% { transform: translateX(-3px); opacity: 0.5; }
+    94% { transform: translateX(3px); opacity: 0.5; }
+    97% { transform: translateX(0); opacity: 0.5; }
+  }
+
+  @keyframes glitch2 {
+    0%, 93%, 100% { transform: none; opacity: 0; }
+    94% { transform: translateX(4px); opacity: 0.4; }
+    97% { transform: translateX(-2px); opacity: 0.4; }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .blink { animation: blink 1.4s step-start infinite; }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Horizontal reveal */
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ═══ SECTION: QUESTIONS OF CONSCIOUSNESS ═══ */
+  .section-questions {
+    background: var(--hospital-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* TOP STRIP — stark declaration */
+  .q-top-strip {
+    background: var(--void);
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border-bottom: 1px solid rgba(127,255,0,0.2);
+  }
+
+  .q-top-number {
+    font-family: 'Times New Roman', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--acid-green);
+    white-space: nowrap;
+  }
+
+  .q-top-title {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--hospital-white);
+    letter-spacing: -0.01em;
+  }
+
+  .q-top-tag {
+    margin-left: auto;
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: var(--concrete);
+    white-space: nowrap;
+  }
+
+  /* OPENING STARE — full-width oppressive block */
+  .q-opening {
+    padding: 120px 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 520px;
+    gap: 100px;
+    align-items: end;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .q-opening-headline {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(52px, 7vw, 108px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    color: var(--void);
+  }
+
+  .q-opening-headline .q-faint {
+    color: rgba(0,0,0,0.12);
+    display: block;
+  }
+
+  .q-opening-headline .q-red {
+    color: var(--warn-red);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .q-opening-aside {
+    padding-bottom: 8px;
+  }
+
+  .q-opening-aside-label {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: var(--concrete);
+    text-transform: uppercase;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    padding-top: 16px;
+    margin-bottom: 20px;
+  }
+
+  .q-opening-aside-text {
+    font-size: 13px;
+    line-height: 2.1;
+    color: rgba(0,0,0,0.55);
+    letter-spacing: 0.04em;
+  }
+
+  .q-opening-aside-text strong {
+    color: var(--void);
+    font-weight: 700;
+  }
+
+  /* SIGNAL BLOCK — you are a radio */
+  .q-signal {
+    background: var(--bruise);
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .q-signal-spine {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+
+  .q-signal-left {
+    /* nothing extra */
+  }
+
+  .q-signal-who {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(38px, 4.5vw, 68px);
+    font-weight: 900;
+    color: var(--hospital-white);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+
+  .q-signal-who span {
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.75em;
+    color: var(--dusty-pink);
+    letter-spacing: 0.05em;
+  }
+
+  .q-signal-body {
+    font-size: 12px;
+    line-height: 2.2;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .q-signal-body em {
+    color: var(--sick-yellow);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .q-signal-right {
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 60px;
+  }
+
+  .q-signal-quote {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--hospital-white);
+    line-height: 1.3;
+    margin-bottom: 40px;
+  }
+
+  .q-signal-code {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    line-height: 2;
+    color: var(--acid-green);
+    letter-spacing: 0.08em;
+    background: rgba(0,0,0,0.3);
+    padding: 24px;
+    border-left: 2px solid var(--acid-green);
+  }
+
+  /* QUESTIONS — the interrogation layout */
+  .q-interrogation {
+    padding: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .q-interrogation-header {
+    padding: 60px 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 20px;
+  }
+
+  .q-interrogation-label {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: var(--concrete);
+    text-transform: uppercase;
+  }
+
+  .q-interrogation-count {
+    font-family: 'Times New Roman', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(0,0,0,0.2);
+  }
+
+  .q-question-list {
+    list-style: none;
+  }
+
+  .q-question-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    transition: background 0.35s;
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .q-question-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--warn-red);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease;
+  }
+
+  .q-question-item:hover::before { transform: scaleY(1); }
+  .q-question-item:hover { background: rgba(204,34,0,0.03); }
+
+  .q-q-num {
+    padding: 44px 30px 44px 60px;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--concrete);
+    align-self: center;
+  }
+
+  .q-q-text {
+    padding: 44px 40px 44px 0;
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(20px, 2.2vw, 30px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--void);
+    line-height: 1.2;
+    align-self: center;
+    transition: color 0.3s;
+  }
+
+  .q-question-item:hover .q-q-text { color: var(--warn-red); }
+
+  .q-q-answer {
+    padding: 44px 60px 44px 40px;
+    border-left: 1px solid rgba(0,0,0,0.07);
+    font-size: 10px;
+    line-height: 2;
+    color: rgba(0,0,0,0.35);
+    letter-spacing: 0.06em;
+    align-self: center;
+  }
+
+  .q-q-answer strong {
+    color: var(--void);
+    font-weight: 700;
+    display: block;
+    font-family: 'Times New Roman', serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 6px;
+    letter-spacing: 0;
+  }
+
+  /* LETTER SECTION — the handwriting that no longer exists */
+  .q-letter {
+    background: var(--nicotine);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+
+  .q-letter-left {
+    padding: 100px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0,0,0,0.06);
+  }
+
+  .q-letter-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: rgba(0,0,0,0.35);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .q-letter-headline {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--void);
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
+  }
+
+  .q-letter-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(0,0,0,0.45);
+    font-size: 0.85em;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .q-letter-sub {
+    font-size: 11px;
+    line-height: 2.1;
+    color: rgba(0,0,0,0.5);
+    letter-spacing: 0.05em;
+    max-width: 400px;
+    margin-bottom: 50px;
+  }
+
+  .q-letter-stats {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    padding-top: 30px;
+  }
+
+  .q-letter-stat {
+    flex: 1;
+    padding-right: 30px;
+  }
+
+  .q-letter-stat + .q-letter-stat {
+    padding-left: 30px;
+    border-left: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .q-ls-num {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(36px, 3.5vw, 52px);
+    font-weight: 900;
+    color: var(--void);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .q-ls-label {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: rgba(0,0,0,0.35);
+    text-transform: uppercase;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  .q-letter-right {
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .q-letter-paper {
+    background: var(--hospital-white);
+    padding: 50px 50px 60px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 4px 8px 40px rgba(0,0,0,0.12), 1px 2px 8px rgba(0,0,0,0.08);
+    position: relative;
+    transform: rotate(-1.2deg);
+    transition: transform 0.5s ease;
+  }
+
+  .q-letter-paper:hover { transform: rotate(0deg) scale(1.01); }
+
+  .q-letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 30px; right: 30px;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--dead-blue) 0, var(--dead-blue) 8px, transparent 8px, transparent 14px);
+    opacity: 0.3;
+  }
+
+  .q-paper-date {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+  }
+
+  .q-paper-salutation {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--void);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .q-paper-body {
+    font-family: 'Times New Roman', serif;
+    font-size: 14px;
+    line-height: 2.0;
+    color: rgba(0,0,0,0.65);
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+
+  .q-paper-body s {
+    color: rgba(0,0,0,0.25);
+  }
+
+  .q-paper-sign {
+    font-family: 'Times New Roman', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--void);
+    border-top: 1px solid rgba(0,0,0,0.15);
+    padding-top: 16px;
+    margin-top: 10px;
+  }
+
+  .q-paper-sign span {
+    display: block;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 0.3em;
+    color: rgba(0,0,0,0.3);
+    margin-top: 6px;
+  }
+
+  /* FINAL QUESTION — full bleed */
+  .q-final {
+    background: var(--void);
+    padding: 140px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .q-final::before {
+    content: '?';
+    position: absolute;
+    font-family: 'Times New Roman', serif;
+    font-size: 60vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.02);
+    line-height: 1;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .q-final-label {
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    color: var(--concrete);
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .q-final-text {
+    font-family: 'Times New Roman', serif;
+    font-size: clamp(28px, 4vw, 56px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--hospital-white);
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -0.01em;
+  }
+
+  .q-final-text strong {
+    font-weight: 900;
+    font-style: normal;
+    color: var(--acid-green);
+  }
+
+  .q-final-small {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    line-height: 2.4;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .q-final-small em {
+    color: var(--dusty-pink);
+    font-style: italic;
+    letter-spacing: 0.1em;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .section-services { grid-template-columns: 1fr; }
+    .services-title { writing-mode: horizontal-tb; transform: none; font-size: 40px; }
+    .services-left { padding: 60px 40px; min-height: auto; }
+    .section-manifesto { grid-template-columns: 1fr; }
+    .manifesto-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+    .catalogue-grid { grid-template-columns: 1fr; }
+    .catalogue-cell { border-right: none; }
+    .catalogue-header { grid-template-columns: 1fr; }
+    .catalogue-title { grid-column: 1; }
+    .section-archive { grid-template-columns: 1fr; }
+    .archive-divider { height: 2px; width: 100%; }
+    .service-item { grid-template-columns: 60px 1fr; }
+    .service-meta { display: none; }
+    .site-footer { flex-direction: column; gap: 10px; text-align: center; }
+    .header-stamp, .header-index { display: none; }
+    .q-opening { grid-template-columns: 1fr; gap: 40px; padding: 60px 30px 50px; }
+    .q-signal { grid-template-columns: 1fr; gap: 30px; padding: 60px 30px; }
+    .q-signal-spine { writing-mode: horizontal-tb; transform: none; }
+    .q-signal-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding-left: 0; padding-top: 40px; }
+    .q-question-item { grid-template-columns: 50px 1fr; }
+    .q-q-answer { display: none; }
+    .q-q-num { padding: 30px 10px 30px 30px; }
+    .q-q-text { padding: 30px 30px 30px 0; font-size: 18px; }
+    .q-letter { grid-template-columns: 1fr; }
+    .q-letter-left { padding: 60px 30px; }
+    .q-letter-right { padding: 40px 30px 60px; }
+    .q-final { padding: 80px 30px; }
+    .q-top-strip { padding: 20px 30px; gap: 20px; }
+    .q-top-tag { display: none; }
+    .q-interrogation-header { padding: 40px 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="entropy-bar"><div class="entropy-fill" id="entropyFill"></div></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-stamp">
+    MINISTRY OF FINAL THINGS<br>
+    ESTABLISHED IN THE YEAR OF COLLAPSE<br>
+    ALL RIGHTS RESERVED, ALL RIGHTS REVOKED
+  </div>
+  <div class="header-logo">
+    M.O.F.T.<br>
+    <span style="font-size:7px;font-weight:400;color:var(--concrete);letter-spacing:0.3em;">CATALOGUE № 7</span>
+  </div>
+  <div class="header-index">
+    DOCUMENT STATUS: <span style="color:var(--acid-green)" class="blink">ACTIVE</span><br>
+    CLEARANCE LEVEL: IRRELEVANT<br>
+    ENTROPY INDEX: <span id="entropyNum">—</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">CATALOGUE OF COLLAPSE — VOLUME VII — FINAL EDITION</div>
+    <h1 class="hero-title">
+      <span class="struck">PROGRESS</span>
+      THE END
+      <em>Is Beautiful</em>
+    </h1>
+    <p class="hero-subtext">
+      A COMPREHENSIVE LUXURY GUIDE<br>
+      TO THE DISSOLUTION OF<br>
+      EVERYTHING WE BUILT.<br><br>
+      PRICED ACCORDINGLY.<br>
+      DELIVERED NEVER.
+    </p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-number">VII</div>
+    <div class="hero-classified">
+      <span class="classified-label">CERTIFIED PREMIUM COLLAPSE</span>
+      <div class="classified-text">
+        "We had the technology<br>
+        to prevent this.<br>
+        We chose <em>aesthetics.</em>"
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>CIVILIZATIONAL EXHAUSTION</span><span class="dot">✦</span>
+    <span>LUXURY DYSTOPIA</span><span class="dot">✦</span>
+    <span>SYNTHETIC NOSTALGIA</span><span class="dot">✦</span>
+    <span>BUREAUCRATIC SURREALISM</span><span class="dot">✦</span>
+    <span>OPTIMISTIC COLLAPSE</span><span class="dot">✦</span>
+    <span>POISONED MODERNISM</span><span class="dot">✦</span>
+    <span>INSTITUTIONAL LONELINESS</span><span class="dot">✦</span>
+    <span>ELEGANT DECAY</span><span class="dot">✦</span>
+    <span>CIVILIZATIONAL EXHAUSTION</span><span class="dot">✦</span>
+    <span>LUXURY DYSTOPIA</span><span class="dot">✦</span>
+    <span>SYNTHETIC NOSTALGIA</span><span class="dot">✦</span>
+    <span>BUREAUCRATIC SURREALISM</span><span class="dot">✦</span>
+    <span>OPTIMISTIC COLLAPSE</span><span class="dot">✦</span>
+    <span>POISONED MODERNISM</span><span class="dot">✦</span>
+    <span>INSTITUTIONAL LONELINESS</span><span class="dot">✦</span>
+    <span>ELEGANT DECAY</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section-services">
+  <div class="services-left">
+    <div class="services-section-num reveal">02 / SERVICES</div>
+    <div class="services-title-block reveal">
+      <h2 class="services-title">OUR OFFERINGS</h2>
+    </div>
+    <div class="services-footnote reveal">
+      ALL SERVICES PERFORMED<br>
+      WITH MAXIMUM FORMALITY<br>
+      DURING MAXIMUM CRISIS.<br>
+      INVOICES REMAIN PENDING.
+    </div>
+  </div>
+  <div class="services-right">
+    <div class="services-header-line">
+      <span class="services-header-label">DESIGNATION</span>
+      <span class="services-header-label">STATUS / NOTES</span>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-num">01</span>
+      <div class="service-name">
+        Architectural<br>
+        <em>Abandonment</em>
+      </div>
+      <div class="service-meta">
+        STATUS: ONGOING<br>
+        REGION: GLOBAL<br>
+        PRICE: NEGOTIABLE
+      </div>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-num">02</span>
+      <div class="service-name">
+        Institutional<br>
+        <em>Loneliness</em>
+      </div>
+      <div class="service-meta">
+        STATUS: COMPLETED<br>
+        REGION: ALL ZONES<br>
+        PRICE: INCLUDED
+      </div>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-num">03</span>
+      <div class="service-name">
+        Memory<br>
+        <em>Liquidation</em>
+      </div>
+      <div class="service-meta">
+        STATUS: ACCELERATING<br>
+        REGION: EVERYWHERE<br>
+        PRICE: FREE
+      </div>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-num">04</span>
+      <div class="service-name">
+        Luxury<br>
+        <em>Apocalypse</em><br>
+        <span style="font-family:'Courier Prime';font-size:0.4em;letter-spacing:0.2em;color:var(--warn-red);font-style:normal;">PREMIUM TIER</span>
+      </div>
+      <div class="service-meta">
+        STATUS: IN PROGRESS<br>
+        REGION: SEE MAP<br>
+        PRICE: ALL OF IT
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="section-manifesto">
+  <div class="manifesto-left reveal">
+    <span class="manifesto-label">03 / DOCTRINE</span>
+    <blockquote class="manifesto-quote glitch" data-text="The infrastructure of hope was always ornamental.">
+      The infrastructure of hope was always ornamental.
+    </blockquote>
+    <p class="manifesto-attribution">
+      — FROM THE OFFICIAL RECORD<br>
+      DEPARTMENT OF TERMINAL AESTHETICS, 20XX
+    </p>
+  </div>
+  <div class="manifesto-right reveal-right">
+    <div class="manifesto-body">
+      We operated under the assumption that <strong>beauty was structural.</strong><br>
+      That form would protect function.<br>
+      That the right font choice could prevent the entropy.<br><br>
+      It did not.<br><br>
+      The grid systems held. The hierarchy was clear.<br>
+      The whitespace was tasteful and precisely measured.<br>
+      The civilization ended <strong>on schedule,</strong><br>
+      <strong>well within budget,</strong><br>
+      with excellent kerning throughout.
+    </div>
+    <div class="manifesto-stat-grid">
+      <div class="manifesto-stat">
+        <div class="stat-num">99%</div>
+        <div class="stat-label">ENTROPY ACHIEVED</div>
+      </div>
+      <div class="manifesto-stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">DOCUMENTS PENDING</div>
+      </div>
+      <div class="manifesto-stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">COMPLAINTS PROCESSED</div>
+      </div>
+      <div class="manifesto-stat">
+        <div class="stat-num">VII</div>
+        <div class="stat-label">FINAL CATALOGUES ISSUED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WATERMARK INTERLUDE -->
+<section class="section-watermark">
+  <div class="watermark-bg">
+    <div class="watermark-text">COLLAPSE COLLAPSE COLLAPSE COLLAPSE COLLAPSE COLLAPSE COLLAPSE COLLAPSE</div>
+  </div>
+  <div class="watermark-content reveal">
+    <p class="watermark-headline">
+      "We could see it coming for approximately<br>
+      forty years. The aesthetic direction<br>
+      was, nonetheless, impeccable."
+    </p>
+    <div class="watermark-rule"></div>
+    <p class="watermark-small">This observation has been notarized. File reference 0000-END.</p>
+  </div>
+</section>
+
+<!-- PHILOSOPHICAL QUESTIONS: CONSCIOUSNESS, ENTROPY, COMMUNICATION -->
+<section class="section-questions">
+
+  <!-- TOP STRIP -->
+  <div class="q-top-strip reveal">
+    <span class="q-top-number">04 / INQUIRY</span>
+    <h2 class="q-top-title">On Stopping. On Watching. On Whether We Are Still Here.</h2>
+    <span class="q-top-tag">FIELD NOTES — UNCLASSIFIED — UNRESOLVED</span>
+  </div>
+
+  <!-- OPENING HEADLINE -->
+  <div class="q-opening">
+    <div class="reveal">
+      <h2 class="q-opening-headline">
+        Can&nbsp;we
+        <span class="q-faint">stop</span>
+        in&nbsp;<span class="q-red">time</span>
+      </h2>
+    </div>
+    <div class="q-opening-aside reveal">
+      <div class="q-opening-aside-label">OBSERVATION PROTOCOL — DRAFT</div>
+      <p class="q-opening-aside-text">
+        The entropy increases regardless of whether we observe it.<br>
+        But the act of <strong>observation</strong> — of pausing, of actually looking —<br>
+        may be the last dignified act remaining to us.<br><br>
+        Not intervention. Not solution.<br>
+        Just the radical, unfashionable choice<br>
+        to <strong>stand still and watch</strong> what is happening<br>
+        before it finishes happening.
+      </p>
+    </div>
+  </div>
+
+  <!-- SIGNAL / CONSCIOUSNESS BLOCK -->
+  <div class="q-signal">
+    <div class="q-signal-spine reveal">UNIT OF CONSCIOUSNESS</div>
+    <div class="q-signal-left reveal">
+      <div class="q-signal-who">
+        Who are we?<br>
+        <span>— who are they —</span>
+        <span>— who is He —</span>
+      </div>
+      <p class="q-signal-body">
+        Perhaps we are code. A fragment of something larger
+        that does not explain itself to its components.<br><br>
+        A <em>unit of consciousness</em>, briefly switched on.<br>
+        A vessel. A receiver.<br>
+        The wave came from above — or below —<br>
+        and we called it <em>life</em> and built institutions around it.<br><br>
+        The institutions are now in their final quarter.<br>
+        The wave continues without them.
+      </p>
+    </div>
+    <div class="q-signal-right reveal-right">
+      <blockquote class="q-signal-quote">
+        "You are a radio that briefly picked up a signal<br>
+        and mistook the signal for yourself."
+      </blockquote>
+      <div class="q-signal-code">
+        ENTITY_TYPE: human<br>
+        FUNCTION: receiver / transmitter<br>
+        SIGNAL_SOURCE: unknown<br>
+        SIGNAL_DIRECTION: above / below<br>
+        SELF_AWARENESS: partial<br>
+        FOCUS_CONTROLLED_BY: [REDACTED]<br>
+        DURATION: brief<br>
+        PURPOSE: under investigation
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERROGATION TABLE -->
+  <div class="q-interrogation">
+    <div class="q-interrogation-header reveal">
+      <span class="q-interrogation-label">SEVEN QUESTIONS — NO ANSWERS GUARANTEED</span>
+      <span class="q-interrogation-count">Filed under: the obvious</span>
+    </div>
+    <ul class="q-question-list">
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.01</span>
+        <div class="q-q-text">Are we able to observe ourselves from outside?</div>
+        <div class="q-q-answer">
+          <strong>Or are we locked in our own perspective like in a prison.</strong>
+          The cell is comfortable. The cell has notifications.
+          The cell has a very good camera. The door is open.
+          Nobody leaves.
+        </div>
+      </li>
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.02</span>
+        <div class="q-q-text">Is the collapse coming — or is everything fine?</div>
+        <div class="q-q-answer">
+          <strong>Revelation has been scheduled. It keeps rescheduling.</strong>
+          The signs are present. The signs have always been present.
+          We learned to read them as wallpaper. Decorative.
+          Recurring. Familiar.
+        </div>
+      </li>
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.03</span>
+        <div class="q-q-text">Who, exactly, built our focus?</div>
+        <div class="q-q-answer">
+          <strong>And what did they build it toward.</strong>
+          The algorithm knows before you click.
+          The feed predicts the craving.
+          The attention was never yours to give.
+          It was always already taken.
+        </div>
+      </li>
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.04</span>
+        <div class="q-q-text">Does technology connect us or complete our isolation?</div>
+        <div class="q-q-answer">
+          <strong>More connections. Less time. No letters.</strong>
+          The number of links increased exponentially.
+          The depth of each link approaches zero asymptotically.
+          We are the most connected generation of the loneliest species.
+        </div>
+      </li>
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.05</span>
+        <div class="q-q-text">Do you have more time than twenty years ago?</div>
+        <div class="q-q-answer">
+          <strong>Or are you just a moving object now.</strong>
+          Time saved by every invention
+          immediately converted into new obligations.
+          The efficiency surplus has never once
+          become rest.
+        </div>
+      </li>
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.06</span>
+        <div class="q-q-text">When did you last try to truly explain yourself?</div>
+        <div class="q-q-answer">
+          <strong>Not in 280 characters. Not by swiping.</strong>
+          Not in the abbreviated grammar of urgency.
+          When did you last take a sentence apart
+          and rebuild it until it said the actual thing?
+          The date is probably further back than you think.
+        </div>
+      </li>
+      <li class="q-question-item reveal">
+        <span class="q-q-num">Q.07</span>
+        <div class="q-q-text">Are we still human? Or something else already?</div>
+        <div class="q-q-answer">
+          <strong>The question is not rhetorical.</strong>
+          The definition is shifting. The shift is not announced.
+          By the time there is consensus,
+          the previous version will be unavailable.
+          No rollback. No patch notes.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- THE LETTER -->
+  <div class="q-letter">
+    <div class="q-letter-left reveal">
+      <div class="q-letter-eyebrow">ON THE DEATH OF THE LETTER</div>
+      <h3 class="q-letter-headline">
+        When did you last write a real one.
+        <em>Not about work. To a person you loved.</em>
+      </h3>
+      <p class="q-letter-sub">
+        A complex letter. One that required you to sit with a thought
+        long enough to finish it. That asked something of the reader.
+        That said: I took time to understand myself before asking you
+        to understand me. That assumed you had time too.
+      </p>
+      <div class="q-letter-stats">
+        <div class="q-letter-stat">
+          <div class="q-ls-num">147</div>
+          <div class="q-ls-label">AVERAGE MESSAGES<br>SENT PER DAY</div>
+        </div>
+        <div class="q-letter-stat">
+          <div class="q-ls-num">0.3</div>
+          <div class="q-ls-label">LETTERS WRITTEN<br>PER YEAR (AVG.)</div>
+        </div>
+      </div>
+    </div>
+    <div class="q-letter-right reveal-right">
+      <div class="q-letter-paper">
+        <div class="q-paper-date">UNDATED — PROBABLY NEVER SENT</div>
+        <div class="q-paper-salutation">Dear [name I should have written more],</div>
+        <p class="q-paper-body">
+          I wanted to explain something to you.
+          <s>I'm not sure I have the words.</s>
+          I've been trying to find the words for a while now.
+          The thing is — I think I've been a moving object.
+          Responding. Reacting. Performing availability
+          while being completely absent.<br><br>
+          There is so much I meant to say
+          while there was still a format for saying it.<br><br>
+          <s>I'll call you instead.</s>
+          I'll send you something tomorrow.
+          I'll explain when we're in the same room.
+        </p>
+        <div class="q-paper-sign">
+          — Someone<br>
+          <span>STATUS: UNSENT / ENTROPY: MAXIMUM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL QUESTION — full bleed -->
+  <div class="q-final">
+    <div class="q-final-label reveal">TERMINAL INQUIRY — NO RESPONSE REQUIRED</div>
+    <p class="q-final-text reveal">
+      "We increased the connections.<br>
+      We decreased the <strong>contact.</strong><br>
+      We are not sure these are<br>
+      different things."
+    </p>
+    <p class="q-final-small reveal">
+      MORE INFORMATION THAN EVER BEFORE&nbsp;&nbsp;✦&nbsp;&nbsp;LESS UNDERSTANDING THAN IN CENTURIES<br>
+      <em>the entropy of human communication: increasing</em><br>
+      MORE CHANNELS&nbsp;&nbsp;✦&nbsp;&nbsp;MORE NOISE&nbsp;&nbsp;✦&nbsp;&nbsp;FEWER SENTENCES THAT MEAN WHAT THEY SAY<br>
+      <em>we are still here. probably. checking.</em>
+    </p>
+  </div>
+
+</section>
+
+<!-- CATALOGUE -->
+<section class="section-catalogue">
+  <div class="catalogue-header reveal">
+    <h2 class="catalogue-title">
+      Selected Works<br>
+      <em style="font-weight:400;font-style:italic;color:var(--concrete);font-size:0.7em;">From The Final Collection</em>
+    </h2>
+    <p class="catalogue-desc">
+      AN INCOMPLETE SURVEY<br>
+      OF CIVILIZATIONAL ARTIFACTS,<br>
+      CURATED WITH INDIFFERENCE<br>
+      AND GREAT FORMAL PRECISION.
+    </p>
+  </div>
+  <div class="catalogue-grid">
+    <div class="catalogue-cell reveal">
+      <div class="cell-bg-num">I</div>
+      <div class="cell-tag">CATEGORY: ARCHITECTURE</div>
+      <h3 class="cell-title">Brutalist <em>Cathedrals</em> of the State</h3>
+      <p class="cell-body">
+        Monuments to futures that arrived, inspected the premises,
+        and chose to leave. Concrete as optimism.
+        Concrete as regret. Concrete regardless.
+      </p>
+      <div class="cell-footer">
+        <span class="cell-status">● STANDING — FOR NOW</span>
+        <span class="cell-arrow">↗</span>
+      </div>
+    </div>
+    <div class="catalogue-cell reveal">
+      <div class="cell-bg-num">II</div>
+      <div class="cell-tag">CATEGORY: LANGUAGE</div>
+      <h3 class="cell-title"><em>Official</em> Communications, Preserved</h3>
+      <p class="cell-body">
+        Forms. Memos. Directives. The language of governance
+        rendered in 10pt typewriter font on yellowing paper.
+        Authoritative. Incomprehensible. Permanent.
+      </p>
+      <div class="cell-footer">
+        <span class="cell-status">● ARCHIVED INDEFINITELY</span>
+        <span class="cell-arrow">↗</span>
+      </div>
+    </div>
+    <div class="catalogue-cell reveal">
+      <div class="cell-bg-num">III</div>
+      <div class="cell-tag">CATEGORY: BRANDING</div>
+      <h3 class="cell-title">Logos of the <em>Insolvent</em> Era</h3>
+      <p class="cell-body">
+        Corporate identities that outlived their corporations.
+        Sans-serif confidence. The brand survived;
+        the product did not. Neither did the customer.
+      </p>
+      <div class="cell-footer">
+        <span class="cell-status">● TRADEMARK PENDING</span>
+        <span class="cell-arrow">↗</span>
+      </div>
+    </div>
+    <div class="catalogue-cell reveal">
+      <div class="cell-bg-num">IV</div>
+      <div class="cell-tag">CATEGORY: URBANISM</div>
+      <h3 class="cell-title">The Kiosk as <em>Cultural Artifact</em></h3>
+      <p class="cell-body">
+        Between the supermarket and the void, a small structure
+        sold everything simultaneously. Vernacular commerce.
+        Post-everything retail. Strangely beautiful.
+      </p>
+      <div class="cell-footer">
+        <span class="cell-status">● DEMOLISHED / REMEMBERED</span>
+        <span class="cell-arrow">↗</span>
+      </div>
+    </div>
+    <div class="catalogue-cell reveal">
+      <div class="cell-bg-num">V</div>
+      <div class="cell-tag">CATEGORY: TYPOGRAPHY</div>
+      <h3 class="cell-title">Times New Roman as <em>Empire</em></h3>
+      <p class="cell-body">
+        The default font of every institution in decline.
+        Neutral yet pompous. Eternal yet outdated.
+        Used for menus, constitutions, and certificates of death.
+      </p>
+      <div class="cell-footer">
+        <span class="cell-status">● STILL IN USE</span>
+        <span class="cell-arrow">↗</span>
+      </div>
+    </div>
+    <div class="catalogue-cell reveal">
+      <div class="cell-bg-num">VI</div>
+      <div class="cell-tag">CATEGORY: OBJECTS</div>
+      <h3 class="cell-title">Luxury Items of the <em>Final Year</em></h3>
+      <p class="cell-body">
+        Acquired during maximum uncertainty for maximum price.
+        Status signals functioning as distress signals.
+        Found intact. Context: gone.
+      </p>
+      <div class="cell-footer">
+        <span class="cell-status">● AVAILABLE FOR PURCHASE</span>
+        <span class="cell-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="section-statement">
+  <div class="statement-bg-text">
+    END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="statement-content reveal">
+    <p class="statement-pre">FINAL NOTICE — DOCUMENT REF: MOFT-VII-TERMINAL</p>
+    <h2 class="statement-main">
+      The committee has reviewed<br>
+      all available evidence<br>
+      and found it <em>aesthetically coherent.</em>
+    </h2>
+    <a class="statement-button" href="#">ACQUIRE THE FULL REPORT</a>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section class="section-archive">
+  <div class="archive-col reveal">
+    <div class="archive-col-label">RECENT DOCUMENTATION</div>
+    <div class="archive-item">
+      <span class="archive-item-title">On the Elegance of Systems Failure</span>
+      <span class="archive-item-date">20XX</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-title">Notes from the Administrative Void</span>
+      <span class="archive-item-date">20XX</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-title">Inventory: What Remains</span>
+      <span class="archive-item-date">20XX</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-title">The Beautiful Miscalculation</span>
+      <span class="archive-item-date">20XX</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-item-title">Certificate of Irreversibility</span>
+      <span class="archive-item-date">20XX</span>
+    </div>
+  </div>
+  <div class="archive-divider"></div>
+  <div class="archive-col reveal">
+    <div class="archive-col-label">INSTITUTIONAL STATEMENT</div>
+    <div class="archive-manifesto-block">
+      THE MINISTRY OF FINAL THINGS WAS ESTABLISHED<br>
+      TO DOCUMENT, CATALOGUE, AND AESTHETICALLY<br>
+      PROCESS THE END OF ORGANIZED CIVILIZATION.<br><br>
+      WE DO NOT CAUSE THE END.<br>
+      WE MERELY ENSURE IT IS<br>
+      PRESENTED CORRECTLY.<br><br>
+      STAFF: 3 (REMAINING)<br>
+      BUDGET: FROZEN<br>
+      MORALE: SOPHISTICATED
+    </div>
+  </div>
+  <div class="archive-divider"></div>
+  <div class="archive-col reveal">
+    <div class="archive-col-label">CONTACT / CORRESPONDENCE</div>
+    <div style="font-size:10px;line-height:2.2;color:rgba(0,0,0,0.4);letter-spacing:0.08em;margin-bottom:30px;">
+      All correspondence should be addressed<br>
+      to the Ministry's permanent address.<br>
+      (The address no longer exists.)<br>
+      Response time: <span style="color:var(--warn-red);">indefinite</span>
+    </div>
+    <div style="font-family:'Times New Roman',serif;font-size:28px;font-style:italic;font-weight:700;color:var(--void);line-height:1.2;">
+      "We were reachable.<br>
+      Then we were not."
+    </div>
+    <div style="font-size:8px;letter-spacing:0.4em;color:rgba(0,0,0,0.3);margin-top:20px;text-transform:uppercase;">
+      — Internal Memo, Undated
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span class="footer-copy">
+    © MINISTRY OF FINAL THINGS — ALL DOCUMENTS CLASSIFIED — ALL DOCUMENTS PUBLIC — ALL DOCUMENTS LOST
+  </span>
+  <span class="footer-warning blink">
+    ⚠ THIS CATALOGUE WILL NOT BE UPDATED
+  </span>
+</footer>
+
+<script>
+  // ENTROPY SCROLL PROGRESS
+  const fill = document.getElementById('entropyFill');
+  const entropyNum = document.getElementById('entropyNum');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    fill.style.width = pct + '%';
+    entropyNum.textContent = Math.round(pct) + '%';
+  });
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.classList.add('visible');
+        }, 80 * (e.target.dataset.delay || 0));
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach((el, i) => {
+    el.dataset.delay = i % 5;
+    observer.observe(el);
+  });
+
+  // CATALOGUE CELL STAGGER
+  document.querySelectorAll('.catalogue-cell').forEach((cell, i) => {
+    cell.style.transitionDelay = (i * 0.08) + 's';
+  });
+
+  // DISTORTION: random micro-glitch on hover for hero title
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    heroTitle.addEventListener('mouseenter', () => {
+      heroTitle.style.letterSpacing = '-0.04em';
+      setTimeout(() => heroTitle.style.letterSpacing = '', 200);
+    });
+  }
+
+  // ENTROPY NUMBER in header: slightly random drift
+  setInterval(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const base = Math.round((scrollTop / docHeight) * 100);
+    const jitter = Math.floor(Math.random() * 3) - 1;
+    const val = Math.max(0, Math.min(100, base + jitter));
+    entropyNum.textContent = val + '%';
+  }, 800);
+
+  // Statement button behavior
+  document.querySelector('.statement-button').addEventListener('click', (e) => {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = 'REPORT CLASSIFIED — ACCESS DENIED';
+    btn.style.borderColor = 'var(--warn-red)';
+    btn.style.color = 'var(--warn-red)';
+    setTimeout(() => {
+      btn.textContent = 'THE REPORT DOES NOT EXIST';
+      btn.style.borderColor = 'var(--concrete)';
+      btn.style.color = 'var(--concrete)';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
