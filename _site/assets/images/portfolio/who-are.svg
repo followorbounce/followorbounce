@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+
+    <!-- Noise filter -->
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" result="noiseOut"/>
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended"/>
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="0.08"/>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Chrome gradient for letters -->
+    <linearGradient id="chrome-who" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d8d4ce" stop-opacity="0.95"/>
+      <stop offset="25%" stop-color="#f2ede6" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#c8c4be" stop-opacity="0.9"/>
+      <stop offset="75%" stop-color="#e8e4dc" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#a89e94" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <linearGradient id="chrome-are" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a89e94" stop-opacity="0.7"/>
+      <stop offset="30%" stop-color="#d8d4ce" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#f2ede6" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#c8c4be" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <linearGradient id="chrome-q" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b1a1a" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#c43030" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#5c0a0a" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Radial dark glow -->
+    <radialGradient id="void-glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0a0606" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Red accent radial -->
+    <radialGradient id="red-orb" cx="50%" cy="55%" r="40%">
+      <stop offset="0%" stop-color="#5c0a0a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Clip for grid lines -->
+    <clipPath id="grid-clip">
+      <rect x="0" y="0" width="1536" height="1024"/>
+    </clipPath>
+
+  </defs>
+
+  <!-- Black base -->
+  <rect width="1536" height="1024" fill="#000000"/>
+
+  <!-- Subtle deep background gradient -->
+  <rect width="1536" height="1024" fill="#030508"/>
+
+  <!-- Red orb atmosphere -->
+  <ellipse cx="768" cy="600" rx="700" ry="500" fill="url(#red-orb)"/>
+
+  <!-- ==================== COLLAPSING GRID SYSTEM ==================== -->
+  <g clip-path="url(#grid-clip)" opacity="0.08" stroke="#9a9896" stroke-width="0.5" fill="none">
+    <!-- Vertical lines (collapsing) -->
+    <line x1="100" y1="0" x2="140" y2="1024"/>
+    <line x1="220" y1="0" x2="240" y2="1024"/>
+    <line x1="380" y1="0" x2="370" y2="1024"/>
+    <line x1="520" y1="0" x2="490" y2="1024"/>
+    <line x1="660" y1="0" x2="640" y2="1024"/>
+    <line x1="768" y1="0" x2="768" y2="1024"/>
+    <line x1="876" y1="0" x2="896" y2="1024"/>
+    <line x1="1016" y1="0" x2="1046" y2="1024"/>
+    <line x1="1156" y1="0" x2="1166" y2="1024"/>
+    <line x1="1296" y1="0" x2="1316" y2="1024"/>
+    <line x1="1436" y1="0" x2="1396" y2="1024"/>
+
+    <!-- Horizontal lines (collapsing) -->
+    <line x1="0" y1="80" x2="1536" y2="100"/>
+    <line x1="0" y1="200" x2="1536" y2="190"/>
+    <line x1="0" y1="340" x2="1536" y2="360"/>
+    <line x1="0" y1="512" x2="1536" y2="512"/>
+    <line x1="0" y1="684" x2="1536" y2="664"/>
+    <line x1="0" y1="824" x2="1536" y2="834"/>
+    <line x1="0" y1="944" x2="1536" y2="924"/>
+
+    <!-- Diagonal ruptures -->
+    <line x1="0" y1="0" x2="400" y2="1024" stroke-width="0.3"/>
+    <line x1="1536" y1="0" x2="1136" y2="1024" stroke-width="0.3"/>
+    <line x1="400" y1="0" x2="0" y2="600" stroke-width="0.2"/>
+    <line x1="1136" y1="0" x2="1536" y2="700" stroke-width="0.2"/>
+  </g>
+
+  <!-- ==================== SACRED GEOMETRY ==================== -->
+  <g transform="translate(768, 512)" opacity="0.06" stroke="#c4a882" stroke-width="0.8" fill="none">
+    <!-- Flower of life rings -->
+    <circle cx="0" cy="0" r="320"/>
+    <circle cx="0" cy="0" r="200"/>
+    <circle cx="0" cy="0" r="100"/>
+    <circle cx="100" cy="0" r="100"/>
+    <circle cx="-100" cy="0" r="100"/>
+    <circle cx="50" cy="-87" r="100"/>
+    <circle cx="-50" cy="-87" r="100"/>
+    <circle cx="50" cy="87" r="100"/>
+    <circle cx="-50" cy="87" r="100"/>
+    <!-- Star tetrahedron -->
+    <polygon points="0,-220 190,110 -190,110" stroke-width="0.6"/>
+    <polygon points="0,220 190,-110 -190,-110" stroke-width="0.6"/>
+    <!-- Cross -->
+    <line x1="0" y1="-320" x2="0" y2="320" stroke-width="0.4"/>
+    <line x1="-320" y1="0" x2="320" y2="0" stroke-width="0.4"/>
+  </g>
+
+  <!-- ==================== GHOST ARCHITECTURAL LAYERS ==================== -->
+  <!-- Column silhouettes (ancient) -->
+  <g opacity="0.04" fill="#c4a882">
+    <rect x="80" y="500" width="20" height="400"/>
+    <rect x="130" y="460" width="20" height="440"/>
+    <rect x="180" y="480" width="20" height="420"/>
+    <rect x="1340" y="500" width="20" height="400"/>
+    <rect x="1390" y="460" width="20" height="440"/>
+    <rect x="1440" y="480" width="20" height="420"/>
+    <!-- Pediment top -->
+    <polygon points="60,490 220,490 140,380"/>
+    <polygon points="1320,490 1480,490 1400,380"/>
+  </g>
+
+  <!-- Server rack silhouettes (modern) -->
+  <g opacity="0.04" stroke="#8aaac4" stroke-width="1" fill="none">
+    <rect x="60" y="600" width="100" height="300"/>
+    <rect x="70" y="610" width="80" height="8"/>
+    <rect x="70" y="625" width="80" height="8"/>
+    <rect x="70" y="640" width="80" height="8"/>
+    <rect x="70" y="655" width="80" height="8"/>
+    <rect x="70" y="670" width="80" height="8"/>
+    <rect x="1380" y="600" width="100" height="300"/>
+    <rect x="1390" y="610" width="80" height="8"/>
+    <rect x="1390" y="625" width="80" height="8"/>
+    <rect x="1390" y="640" width="80" height="8"/>
+    <rect x="1390" y="655" width="80" height="8"/>
+    <rect x="1390" y="670" width="80" height="8"/>
+  </g>
+
+  <!-- ==================== MAIN TYPOGRAPHY ==================== -->
+
+  <!-- WHO — massive, dominant -->
+  <text
+    x="60"
+    y="520"
+    font-family="'Bebas Neue', 'Arial Black', sans-serif"
+    font-size="540"
+    font-weight="400"
+    letter-spacing="-20"
+    fill="url(#chrome-who)"
+    opacity="0.95"
+  >WHO</text>
+
+  <!-- ARE — offset below, slightly right, hollow treatment -->
+  <text
+    x="120"
+    y="900"
+    font-family="'Bebas Neue', 'Arial Black', sans-serif"
+    font-size="460"
+    font-weight="400"
+    letter-spacing="-15"
+    fill="none"
+    stroke="url(#chrome-are)"
+    stroke-width="1.5"
+    opacity="0.75"
+  >ARE</text>
+
+  <!-- ARE — filled underneath slightly offset for depth -->
+  <text
+    x="124"
+    y="903"
+    font-family="'Bebas Neue', 'Arial Black', sans-serif"
+    font-size="460"
+    font-weight="400"
+    letter-spacing="-15"
+    fill="url(#chrome-are)"
+    opacity="0.12"
+  >ARE</text>
+
+  <!-- ? — blood red, floating -->
+  <text
+    x="1240"
+    y="480"
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-size="420"
+    font-weight="300"
+    fill="url(#chrome-q)"
+    opacity="0.85"
+  >?</text>
+
+  <!-- ==================== PHILOSOPHICAL FRAGMENTS ==================== -->
+  <g font-family="'Inter Tight', 'Arial', sans-serif" font-weight="200" fill="#9a9896">
+
+    <!-- Top left micro-text -->
+    <text x="64" y="72" font-size="11" letter-spacing="4" opacity="0.5">TRANSMISSION — 001 — IDENTITY — 2026</text>
+
+    <!-- Bottom left fragments -->
+    <text x="64" y="960" font-size="10" letter-spacing="3" opacity="0.35">WHO ARE YOU? / WHO AM I? / WHO ARE THEY?</text>
+    <text x="64" y="980" font-size="10" letter-spacing="3" opacity="0.25">WHAT IS THE MATTER OF ALL OF THIS?</text>
+    <text x="64" y="1000" font-size="10" letter-spacing="3" opacity="0.18">BABYLON LEARNED INTERFACE DESIGN</text>
+
+    <!-- Right side vertical annotation -->
+    <text
+      x="1490"
+      y="800"
+      font-size="10"
+      letter-spacing="4"
+      opacity="0.3"
+      transform="rotate(-90, 1490, 800)"
+      text-anchor="middle"
+    >PHILOSOPHICAL MANIFESTO — EXISTENTIAL INTERROGATION</text>
+
+    <!-- Center bottom micro coordinates -->
+    <text x="768" y="1008" font-size="9" letter-spacing="5" opacity="0.2" text-anchor="middle">
+      id.followorbounce.com / pages / who-are
+    </text>
+
+  </g>
+
+  <!-- ==================== GLITCH FRAGMENTS ==================== -->
+  <!-- Sliced WHO ghost -->
+  <g clip-path="url(#grid-clip)">
+    <text
+      x="64"
+      y="520"
+      font-family="'Bebas Neue', 'Arial Black', sans-serif"
+      font-size="540"
+      font-weight="400"
+      letter-spacing="-20"
+      fill="#8b1a1a"
+      opacity="0.04"
+      transform="translate(4, -6)"
+    >WHO</text>
+
+    <text
+      x="56"
+      y="520"
+      font-family="'Bebas Neue', 'Arial Black', sans-serif"
+      font-size="540"
+      font-weight="400"
+      letter-spacing="-20"
+      fill="#1a3a5c"
+      opacity="0.03"
+      transform="translate(-3, 4)"
+    >WHO</text>
+  </g>
+
+  <!-- ==================== ORNAMENTAL LINES ==================== -->
+  <g stroke="#c4a882" stroke-width="0.5" fill="none" opacity="0.15">
+    <!-- Top border rule -->
+    <line x1="60" y1="40" x2="1476" y2="40"/>
+    <!-- Bottom border rule -->
+    <line x1="60" y1="984" x2="1476" y2="984"/>
+    <!-- Corner accents top left -->
+    <line x1="60" y1="40" x2="60" y2="80"/>
+    <line x1="60" y1="40" x2="100" y2="40"/>
+    <!-- Corner accents top right -->
+    <line x1="1476" y1="40" x2="1476" y2="80"/>
+    <line x1="1476" y1="40" x2="1436" y2="40"/>
+    <!-- Corner accents bottom left -->
+    <line x1="60" y1="984" x2="60" y2="944"/>
+    <line x1="60" y1="984" x2="100" y2="984"/>
+    <!-- Corner accents bottom right -->
+    <line x1="1476" y1="984" x2="1476" y2="944"/>
+    <line x1="1476" y1="984" x2="1436" y2="984"/>
+  </g>
+
+  <!-- Rust accent divider -->
+  <line x1="60" y1="540" x2="240" y2="540" stroke="#8b1a1a" stroke-width="1" opacity="0.3"/>
+  <line x1="260" y1="540" x2="320" y2="540" stroke="#8b1a1a" stroke-width="1" opacity="0.15"/>
+
+  <!-- ==================== VOID GRADIENT OVERLAY ==================== -->
+  <rect width="1536" height="1024" fill="url(#void-glow)"/>
+
+  <!-- ==================== NOISE OVERLAY ==================== -->
+  <rect width="1536" height="1024" fill="#1a1a1a" filter="url(#noise)" opacity="0.06"/>
+
+  <!-- Final dark vignette edges -->
+  <rect width="1536" height="1024" fill="none" stroke="#000000" stroke-width="80" opacity="0.6"/>
+
+</svg>

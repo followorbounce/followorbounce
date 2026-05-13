@@ -80,7 +80,7 @@
   description: "Identity system presentation for Follow or Bounce v2 — a publication at the intersection of technology, literature, and law. Covers typographic scale, ink-on-paper color logic, grid principles, UI components, and the editorial philosophy behind the brand"
   cover:       "/assets/images/portfolio/fob-v2.jpg"
   url:         "https://id.followorbounce.com/pages/FollowOrBounce_v2"
-  featured:    true
+#  featured:    true
   year:        "2026"
 
 - title:       "Ministry of Final Things"
@@ -117,5 +117,14 @@
   cover: "/assets/images/portfolio/the-illuminators.svg"
   url: "https://id.followorbounce.com/pages/the-illuminators"
 #  featured: "true"
+  year: "2026"
+
+- title: "WHO ARE"
+  category: "identity"
+  tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
+  description: "An existential digital manifesto exploring identity, empire, consciousness, and the illusion of progress."
+  cover: "/assets/images/portfolio/who-are.svg"
+  url: "https://id.followorbounce.com/pages/who-are"
+  featured: "true"
   year: "2026"
 
