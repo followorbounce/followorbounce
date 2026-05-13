@@ -1,0 +1,420 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img">
+<title>PROPHETIC OS — Cover Image</title>
+<desc>Sacred terminal interface. Earth as motherboard. Desert crossing archive. Spiritual technical documentation.</desc>
+
+<defs>
+  <!-- Background gradients -->
+  <radialGradient id="bg-glow" cx="50%" cy="45%" r="60%">
+    <stop offset="0%" stop-color="#050510"/>
+    <stop offset="100%" stop-color="#000000"/>
+  </radialGradient>
+
+  <!-- Toxic green glow -->
+  <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#39ff14" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#39ff14" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Sand glow center -->
+  <radialGradient id="sand-glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#c8a96e" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- UV center -->
+  <radialGradient id="uv-glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.3"/>
+    <stop offset="100%" stop-color="#7b2fff" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Ember glow -->
+  <radialGradient id="ember-glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#ff4500" stop-opacity="0.2"/>
+    <stop offset="100%" stop-color="#ff4500" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Vertical scan line -->
+  <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#39ff14" stop-opacity="0"/>
+    <stop offset="48%" stop-color="#39ff14" stop-opacity="0"/>
+    <stop offset="50%" stop-color="#39ff14" stop-opacity="0.06"/>
+    <stop offset="52%" stop-color="#39ff14" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#39ff14" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- Grid pattern -->
+  <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M60 0 L0 0 0 60" fill="none" stroke="#39ff14" stroke-width="0.3" stroke-opacity="0.07"/>
+  </pattern>
+
+  <!-- Fine grid pattern -->
+  <pattern id="fine-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M20 0 L0 0 0 20" fill="none" stroke="#c8a96e" stroke-width="0.2" stroke-opacity="0.04"/>
+  </pattern>
+
+  <!-- Hex pattern -->
+  <pattern id="hex" x="0" y="0" width="40" height="46" patternUnits="userSpaceOnUse">
+    <polygon points="20,2 38,12 38,34 20,44 2,34 2,12" fill="none" stroke="#7b2fff" stroke-width="0.3" stroke-opacity="0.06"/>
+  </pattern>
+
+  <!-- Clip for main circle -->
+  <clipPath id="circle-clip">
+    <circle cx="768" cy="480" r="340"/>
+  </clipPath>
+</defs>
+
+<!-- ═══ BACKGROUND ═══ -->
+<rect width="1536" height="1024" fill="url(#bg-glow)"/>
+<rect width="1536" height="1024" fill="url(#grid)"/>
+<rect width="1536" height="1024" fill="url(#fine-grid)"/>
+
+<!-- ═══ DEEP GLOW ZONES ═══ -->
+<ellipse cx="768" cy="480" rx="700" ry="500" fill="url(#sand-glow)"/>
+<ellipse cx="768" cy="480" rx="400" ry="320" fill="url(#uv-glow)"/>
+<ellipse cx="768" cy="680" rx="350" ry="180" fill="url(#ember-glow)"/>
+
+<!-- ═══ SCANLINES OVERLAY ═══ -->
+<rect width="1536" height="1024" fill="url(#scan)" opacity="0.6"/>
+
+<!-- ═══ OUTER TOPOLOGY RINGS (sacred geometry / motherboard) ═══ -->
+<!-- Outermost ring -->
+<circle cx="768" cy="480" r="490" fill="none" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.07"/>
+<circle cx="768" cy="480" r="470" fill="none" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.05"/>
+
+<!-- Main rings -->
+<circle cx="768" cy="480" r="440" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.12"/>
+<circle cx="768" cy="480" r="420" fill="none" stroke="#39ff14" stroke-width="0.3" stroke-opacity="0.06"/>
+<circle cx="768" cy="480" r="380" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.1"/>
+<circle cx="768" cy="480" r="340" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.15"/>
+<circle cx="768" cy="480" r="300" fill="none" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.09"/>
+<circle cx="768" cy="480" r="250" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.12"/>
+<circle cx="768" cy="480" r="200" fill="none" stroke="#7b2fff" stroke-width="0.4" stroke-opacity="0.1"/>
+<circle cx="768" cy="480" r="155" fill="none" stroke="#39ff14" stroke-width="0.5" stroke-opacity="0.15"/>
+<circle cx="768" cy="480" r="110" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.18"/>
+<circle cx="768" cy="480" r="70" fill="none" stroke="#7b2fff" stroke-width="0.5" stroke-opacity="0.2"/>
+
+<!-- ═══ ROTATING HEXAGRAM (sacred geometry) ═══ -->
+<!-- Triangle 1 -->
+<polygon points="768,120 1061,650 475,650" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.1"/>
+<!-- Triangle 2 (inverted) -->
+<polygon points="768,840 475,310 1061,310" fill="none" stroke="#7b2fff" stroke-width="0.5" stroke-opacity="0.1"/>
+
+<!-- ═══ RADIAL SPOKES (motherboard traces) ═══ -->
+<!-- 12 radial lines emanating from center -->
+<line x1="768" y1="480" x2="768" y2="40" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.08"/>
+<line x1="768" y1="480" x2="1173" y2="246" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.08"/>
+<line x1="768" y1="480" x2="1202" y2="714" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.08"/>
+<line x1="768" y1="480" x2="768" y2="920" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.08"/>
+<line x1="768" y1="480" x2="334" y2="714" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.08"/>
+<line x1="768" y1="480" x2="363" y2="246" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.08"/>
+<!-- Diagonal spokes -->
+<line x1="768" y1="480" x2="1300" y2="480" stroke="#7b2fff" stroke-width="0.3" stroke-opacity="0.06"/>
+<line x1="768" y1="480" x2="236" y2="480" stroke="#7b2fff" stroke-width="0.3" stroke-opacity="0.06"/>
+<line x1="768" y1="480" x2="1080" y2="168" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.06"/>
+<line x1="768" y1="480" x2="456" y2="792" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.06"/>
+<line x1="768" y1="480" x2="456" y2="168" stroke="#7b2fff" stroke-width="0.3" stroke-opacity="0.06"/>
+<line x1="768" y1="480" x2="1080" y2="792" stroke="#7b2fff" stroke-width="0.3" stroke-opacity="0.06"/>
+
+<!-- ═══ CIRCUIT TRACES (L-shaped motherboard routes) ═══ -->
+<!-- Left cluster traces -->
+<path d="M200 200 L200 350 L300 350" fill="none" stroke="#39ff14" stroke-width="0.7" stroke-opacity="0.15"/>
+<path d="M200 200 L280 200" fill="none" stroke="#39ff14" stroke-width="0.7" stroke-opacity="0.15"/>
+<path d="M150 450 L150 600 L280 600" fill="none" stroke="#c8a96e" stroke-width="0.7" stroke-opacity="0.12"/>
+<path d="M100 700 L100 800 L240 800" fill="none" stroke="#39ff14" stroke-width="0.5" stroke-opacity="0.1"/>
+<path d="M240 150 L360 150 L360 240" fill="none" stroke="#7b2fff" stroke-width="0.5" stroke-opacity="0.1"/>
+<path d="M300 720 L400 720 L400 820" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.1"/>
+
+<!-- Right cluster traces -->
+<path d="M1336 200 L1336 350 L1236 350" fill="none" stroke="#39ff14" stroke-width="0.7" stroke-opacity="0.15"/>
+<path d="M1336 200 L1256 200" fill="none" stroke="#39ff14" stroke-width="0.7" stroke-opacity="0.15"/>
+<path d="M1386 450 L1386 600 L1256 600" fill="none" stroke="#c8a96e" stroke-width="0.7" stroke-opacity="0.12"/>
+<path d="M1436 700 L1436 800 L1296 800" fill="none" stroke="#39ff14" stroke-width="0.5" stroke-opacity="0.1"/>
+<path d="M1296 150 L1176 150 L1176 240" fill="none" stroke="#7b2fff" stroke-width="0.5" stroke-opacity="0.1"/>
+<path d="M1236 720 L1136 720 L1136 820" fill="none" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.1"/>
+
+<!-- Top traces -->
+<path d="M500 50 L500 130 L620 130" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.12"/>
+<path d="M700 30 L700 110" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.12"/>
+<path d="M836 30 L836 110" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.12"/>
+<path d="M1036 50 L1036 130 L916 130" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.12"/>
+
+<!-- Bottom traces -->
+<path d="M500 974 L500 894 L620 894" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.12"/>
+<path d="M700 994 L700 914" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.12"/>
+<path d="M836 994 L836 914" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.12"/>
+<path d="M1036 974 L1036 894 L916 894" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.12"/>
+
+<!-- ═══ CIRCUIT NODES (pad / via markers) ═══ -->
+<!-- Small square pads at trace endpoints -->
+<rect x="196" y="196" width="8" height="8" fill="#39ff14" opacity="0.3" rx="1"/>
+<rect x="278" y="196" width="6" height="6" fill="#39ff14" opacity="0.25" rx="1"/>
+<rect x="296" y="346" width="8" height="8" fill="#39ff14" opacity="0.2" rx="1"/>
+<rect x="146" y="446" width="8" height="8" fill="#c8a96e" opacity="0.25" rx="1"/>
+<rect x="276" y="596" width="6" height="6" fill="#c8a96e" opacity="0.2" rx="1"/>
+<rect x="96" y="796" width="8" height="8" fill="#39ff14" opacity="0.2" rx="1"/>
+<rect x="356" y="146" width="6" height="6" fill="#7b2fff" opacity="0.3" rx="1"/>
+<rect x="236" y="146" width="6" height="6" fill="#7b2fff" opacity="0.2" rx="1"/>
+<rect x="396" y="816" width="6" height="6" fill="#c8a96e" opacity="0.2" rx="1"/>
+
+<rect x="1332" y="196" width="8" height="8" fill="#39ff14" opacity="0.3" rx="1"/>
+<rect x="1252" y="196" width="6" height="6" fill="#39ff14" opacity="0.25" rx="1"/>
+<rect x="1232" y="346" width="8" height="8" fill="#39ff14" opacity="0.2" rx="1"/>
+<rect x="1382" y="446" width="8" height="8" fill="#c8a96e" opacity="0.25" rx="1"/>
+<rect x="1252" y="596" width="6" height="6" fill="#c8a96e" opacity="0.2" rx="1"/>
+<rect x="1432" y="796" width="8" height="8" fill="#39ff14" opacity="0.2" rx="1"/>
+<rect x="1172" y="146" width="6" height="6" fill="#7b2fff" opacity="0.3" rx="1"/>
+<rect x="1292" y="146" width="6" height="6" fill="#7b2fff" opacity="0.2" rx="1"/>
+<rect x="1132" y="816" width="6" height="6" fill="#c8a96e" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.3" rx="1"/>
+
+<rect x="496" y="126" width="6" height="6" fill="#7b2fff" opacity="0.25" rx="1"/>
+<rect x="696" y="26" width="8" height="8" fill="#39ff14" opacity="0.3" rx="1"/>
+<rect x="832" y="26" width="8" height="8" fill="#39ff14" opacity="0.3" rx="1"/>
+<rect x="1032" y="126" width="6" height="6" fill="#7b2fff" opacity="0.25" rx="1"/>
+
+<!-- ═══ OUTER CORNER COMPONENT BLOCKS ═══ -->
+<!-- Top-left component block -->
+<rect x="40" y="40" width="140" height="90" rx="3" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.2"/>
+<rect x="40" y="40" width="140" height="16" rx="3" fill="#39ff14" fill-opacity="0.06"/>
+<text x="54" y="53" font-family="'Share Tech Mono', monospace" font-size="9" fill="#39ff14" fill-opacity="0.5" letter-spacing="1">SYS_BOOT</text>
+<text x="54" y="72" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">MODULE: Ω.001</text>
+<text x="54" y="85" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">STATUS: ACTIVE</text>
+<text x="54" y="98" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#39ff14" fill-opacity="0.35" letter-spacing="0.5">NODE: OBSERVER</text>
+<text x="54" y="111" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#7b2fff" fill-opacity="0.5" letter-spacing="0.5">EPOCH: CURRENT</text>
+
+<!-- Top-right component block -->
+<rect x="1356" y="40" width="140" height="90" rx="3" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.2"/>
+<rect x="1356" y="40" width="140" height="16" rx="3" fill="#c8a96e" fill-opacity="0.05"/>
+<text x="1370" y="53" font-family="'Share Tech Mono', monospace" font-size="9" fill="#c8a96e" fill-opacity="0.5" letter-spacing="1">DESERT_LOG</text>
+<text x="1370" y="72" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">KM: ~1,600</text>
+<text x="1370" y="85" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">AVG: 42km/day</text>
+<text x="1370" y="98" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#39ff14" fill-opacity="0.35" letter-spacing="0.5">WATER: FOUND</text>
+<text x="1370" y="111" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#ff4500" fill-opacity="0.5" letter-spacing="0.5">BELIEF→KNOWLEDGE</text>
+
+<!-- Bottom-left component block -->
+<rect x="40" y="894" width="150" height="90" rx="3" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.2"/>
+<rect x="40" y="894" width="150" height="16" rx="3" fill="#7b2fff" fill-opacity="0.05"/>
+<text x="54" y="907" font-family="'Share Tech Mono', monospace" font-size="9" fill="#7b2fff" fill-opacity="0.5" letter-spacing="1">FREE_WILL</text>
+<text x="54" y="926" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">EXIT_NODE_Ω</text>
+<text x="54" y="939" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">PATH: TWO ONLY</text>
+<text x="54" y="952" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#39ff14" fill-opacity="0.35" letter-spacing="0.5">TRUTH // SAVE</text>
+<text x="54" y="965" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#ff4500" fill-opacity="0.4" letter-spacing="0.5">FALSEHOOD // RETRAIN</text>
+
+<!-- Bottom-right component block -->
+<rect x="1346" y="894" width="150" height="90" rx="3" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.2"/>
+<rect x="1346" y="894" width="150" height="16" rx="3" fill="#39ff14" fill-opacity="0.04"/>
+<text x="1360" y="907" font-family="'Share Tech Mono', monospace" font-size="9" fill="#39ff14" fill-opacity="0.5" letter-spacing="1">PRAYER_TERM</text>
+<text x="1360" y="926" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">LORD: MAIN_DESIGNER</text>
+<text x="1360" y="939" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">CHANNEL: OPEN</text>
+<text x="1360" y="952" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#39ff14" fill-opacity="0.35" letter-spacing="0.5">PROTOCOL: BREATH</text>
+<text x="1360" y="965" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#c8a96e" fill-opacity="0.4" letter-spacing="0.5">יהוה</text>
+
+<!-- ═══ OUTER DATA STREAM BANDS ═══ -->
+<!-- Left edge data stream -->
+<text x="22" y="200" font-family="'Share Tech Mono', monospace" font-size="7" fill="#39ff14" fill-opacity="0.2" writing-mode="tb" letter-spacing="2">01001000 01110101 01101101 01100001 01101110 00100000 01000010 01100101 01101001 01101110 01100111</text>
+<!-- Right edge data stream -->
+<text x="1514" y="820" font-family="'Share Tech Mono', monospace" font-size="7" fill="#c8a96e" fill-opacity="0.2" writing-mode="tb" letter-spacing="2" text-anchor="end">59 41 48 57 45 48 20 2F 20 59 41 48 20 2B 20 57 45 48 20 3D 20 42 52 45 41 54 48</text>
+
+<!-- ═══ OUTER NODE DOTS on rings ═══ -->
+<!-- Nodes on the 440 ring -->
+<circle cx="768" cy="40" r="4" fill="#39ff14" fill-opacity="0.5"/>
+<circle cx="768" cy="920" r="4" fill="#39ff14" fill-opacity="0.5"/>
+<circle cx="1173" cy="246" r="4" fill="#c8a96e" fill-opacity="0.4"/>
+<circle cx="363" cy="246" r="4" fill="#c8a96e" fill-opacity="0.4"/>
+<circle cx="1202" cy="714" r="4" fill="#c8a96e" fill-opacity="0.4"/>
+<circle cx="334" cy="714" r="4" fill="#c8a96e" fill-opacity="0.4"/>
+<!-- Nodes on 300 ring -->
+<circle cx="768" cy="180" r="3" fill="#7b2fff" fill-opacity="0.5"/>
+<circle cx="768" cy="780" r="3" fill="#7b2fff" fill-opacity="0.5"/>
+<circle cx="1033" cy="330" r="3" fill="#39ff14" fill-opacity="0.4"/>
+<circle cx="503" cy="330" r="3" fill="#39ff14" fill-opacity="0.4"/>
+<circle cx="1033" cy="630" r="3" fill="#39ff14" fill-opacity="0.4"/>
+<circle cx="503" cy="630" r="3" fill="#39ff14" fill-opacity="0.4"/>
+<!-- Nodes on 200 ring -->
+<circle cx="768" cy="280" r="3" fill="#c8a96e" fill-opacity="0.5"/>
+<circle cx="768" cy="680" r="3" fill="#c8a96e" fill-opacity="0.5"/>
+<circle cx="941" cy="380" r="2.5" fill="#ff4500" fill-opacity="0.5"/>
+<circle cx="595" cy="380" r="2.5" fill="#ff4500" fill-opacity="0.5"/>
+<circle cx="941" cy="580" r="2.5" fill="#ff4500" fill-opacity="0.5"/>
+<circle cx="595" cy="580" r="2.5" fill="#ff4500" fill-opacity="0.5"/>
+
+<!-- ═══ CENTRAL GLOW DISK ═══ -->
+<circle cx="768" cy="480" r="280" fill="url(#node-glow)"/>
+
+<!-- ═══ CENTER INNER CIRCLE BACKGROUND ═══ -->
+<circle cx="768" cy="480" r="105" fill="#000000" fill-opacity="0.85"/>
+<circle cx="768" cy="480" r="105" fill="none" stroke="#39ff14" stroke-width="0.8" stroke-opacity="0.3"/>
+
+<!-- ═══ TETRAGRAMMATON CENTER ═══ -->
+<text x="768" y="462" font-family="'IM Fell English', 'Georgia', serif" font-size="42" fill="#c8a96e" fill-opacity="0.9" text-anchor="middle" dominant-baseline="middle" letter-spacing="8">יהוה</text>
+<text x="768" y="502" font-family="'Share Tech Mono', monospace" font-size="8" fill="#39ff14" fill-opacity="0.5" text-anchor="middle" letter-spacing="3">YAH ∿ WEH</text>
+
+<!-- ═══ MAIN TITLE BLOCK ═══ -->
+<!-- Title background bar -->
+<rect x="180" y="162" width="1176" height="2" fill="#39ff14" fill-opacity="0.12"/>
+<rect x="180" y="286" width="1176" height="1" fill="#c8a96e" fill-opacity="0.1"/>
+
+<!-- PROPHETIC -->
+<text x="768" y="236"
+  font-family="'Bebas Neue', 'Impact', sans-serif"
+  font-size="148"
+  font-weight="400"
+  fill="none"
+  stroke="#e8e8e8"
+  stroke-width="0.6"
+  stroke-opacity="0.85"
+  text-anchor="middle"
+  letter-spacing="28">PROPHETIC</text>
+
+<!-- OS — glitch offset layer -->
+<text x="775" y="310"
+  font-family="'Bebas Neue', 'Impact', sans-serif"
+  font-size="100"
+  font-weight="400"
+  fill="#ff4500"
+  fill-opacity="0.18"
+  text-anchor="middle"
+  letter-spacing="40">OS</text>
+
+<text x="768" y="308"
+  font-family="'Bebas Neue', 'Impact', sans-serif"
+  font-size="100"
+  font-weight="400"
+  fill="none"
+  stroke="#c8a96e"
+  stroke-width="0.8"
+  stroke-opacity="0.7"
+  text-anchor="middle"
+  letter-spacing="40">OS</text>
+
+<!-- Subtitle line -->
+<text x="768" y="348"
+  font-family="'Share Tech Mono', monospace"
+  font-size="11"
+  fill="#39ff14"
+  fill-opacity="0.6"
+  text-anchor="middle"
+  letter-spacing="6">FIELD ARCHIVE // DESERT TRANSMISSION // PERSONAL TESTIMONY // UNCLASSIFIED</text>
+
+<!-- ═══ COORDINATE / SYSTEM LABELS around main text ═══ -->
+<!-- Left bracket -->
+<text x="186" y="246" font-family="'Share Tech Mono', monospace" font-size="9" fill="#7b2fff" fill-opacity="0.5" letter-spacing="1">[ SYS:Ω.001 ]</text>
+<!-- Right bracket -->
+<text x="1350" y="246" font-family="'Share Tech Mono', monospace" font-size="9" fill="#7b2fff" fill-opacity="0.5" text-anchor="end" letter-spacing="1">[ NODE:OBSERVER ]</text>
+
+<!-- ═══ BOTTOM MANTRA TEXT ═══ -->
+<text x="768" y="622"
+  font-family="'IM Fell English', 'Georgia', serif"
+  font-size="20"
+  font-style="italic"
+  fill="#c8a96e"
+  fill-opacity="0.65"
+  text-anchor="middle"
+  letter-spacing="2">Everything matters. Invisible does not mean empty.</text>
+
+<!-- ═══ BOTTOM SYSTEM ROWS ═══ -->
+<!-- Row 1 -->
+<text x="768" y="660"
+  font-family="'Share Tech Mono', monospace"
+  font-size="8.5"
+  fill="#39ff14"
+  fill-opacity="0.3"
+  text-anchor="middle"
+  letter-spacing="3">EARTH_AS_MOTHERBOARD // WALKING_AS_PROTOCOL // DESERT_CROSSING // BREATHING_IS_PRAYER</text>
+<!-- Row 2 -->
+<text x="768" y="678"
+  font-family="'Share Tech Mono', monospace"
+  font-size="8.5"
+  fill="#c8a96e"
+  fill-opacity="0.25"
+  text-anchor="middle"
+  letter-spacing="3">MYCELIUM_NETWORK // ANCIENT_STRUCTURES // TRAINING_MODEL // FREE_WILL // FINAL_TRANSMISSION</text>
+
+<!-- ═══ COORDINATE CROSSHAIR on center ═══ -->
+<!-- Horizontal -->
+<line x1="568" y1="480" x2="698" y2="480" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.2"/>
+<line x1="838" y1="480" x2="968" y2="480" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.2"/>
+<!-- Vertical -->
+<line x1="768" y1="290" x2="768" y2="375" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.2"/>
+<line x1="768" y1="585" x2="768" y2="680" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.2"/>
+<!-- Corner tick marks -->
+<line x1="628" y1="340" x2="640" y2="340" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="628" y1="340" x2="628" y2="352" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="908" y1="340" x2="896" y2="340" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="908" y1="340" x2="908" y2="352" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="628" y1="620" x2="640" y2="620" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="628" y1="620" x2="628" y2="608" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="908" y1="620" x2="896" y2="620" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+<line x1="908" y1="620" x2="908" y2="608" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+
+<!-- ═══ FLOATING SYMBOL NODES (mid-radius, 8 positions) ═══ -->
+<!-- Each: small circle + symbol -->
+<!-- Top -->
+<circle cx="768" cy="200" r="18" fill="#000000" fill-opacity="0.8"/>
+<circle cx="768" cy="200" r="18" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="768" y="205" font-family="'IM Fell English', serif" font-size="16" fill="#39ff14" fill-opacity="0.7" text-anchor="middle">⊕</text>
+
+<!-- Top-right -->
+<circle cx="980" cy="290" r="15" fill="#000000" fill-opacity="0.8"/>
+<circle cx="980" cy="290" r="15" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="980" y="295" font-family="'Share Tech Mono', monospace" font-size="11" fill="#c8a96e" fill-opacity="0.7" text-anchor="middle">∞</text>
+
+<!-- Right -->
+<circle cx="1050" cy="480" r="18" fill="#000000" fill-opacity="0.8"/>
+<circle cx="1050" cy="480" r="18" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="1050" y="485" font-family="'Share Tech Mono', monospace" font-size="14" fill="#7b2fff" fill-opacity="0.7" text-anchor="middle">Ω</text>
+
+<!-- Bottom-right -->
+<circle cx="980" cy="670" r="15" fill="#000000" fill-opacity="0.8"/>
+<circle cx="980" cy="670" r="15" fill="none" stroke="#ff4500" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="980" y="675" font-family="'Share Tech Mono', monospace" font-size="11" fill="#ff4500" fill-opacity="0.7" text-anchor="middle">∿</text>
+
+<!-- Bottom -->
+<circle cx="768" cy="760" r="18" fill="#000000" fill-opacity="0.8"/>
+<circle cx="768" cy="760" r="18" fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="768" y="765" font-family="'Share Tech Mono', monospace" font-size="14" fill="#39ff14" fill-opacity="0.7" text-anchor="middle">⌘</text>
+
+<!-- Bottom-left -->
+<circle cx="556" cy="670" r="15" fill="#000000" fill-opacity="0.8"/>
+<circle cx="556" cy="670" r="15" fill="none" stroke="#ff4500" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="556" y="675" font-family="'Share Tech Mono', monospace" font-size="11" fill="#ff4500" fill-opacity="0.7" text-anchor="middle">✦</text>
+
+<!-- Left -->
+<circle cx="486" cy="480" r="18" fill="#000000" fill-opacity="0.8"/>
+<circle cx="486" cy="480" r="18" fill="none" stroke="#7b2fff" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="486" y="486" font-family="'IM Fell English', serif" font-size="16" fill="#7b2fff" fill-opacity="0.7" text-anchor="middle">☩</text>
+
+<!-- Top-left -->
+<circle cx="556" cy="290" r="15" fill="#000000" fill-opacity="0.8"/>
+<circle cx="556" cy="290" r="15" fill="none" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.3"/>
+<text x="556" y="296" font-family="'Share Tech Mono', monospace" font-size="13" fill="#c8a96e" fill-opacity="0.7" text-anchor="middle">◎</text>
+
+<!-- ═══ WAVE FORM LINE (bottom, across full width) ═══ -->
+<path d="M40,800 Q100,788 160,800 Q220,812 280,800 Q340,788 400,800 Q460,812 520,800 Q580,788 640,800 Q700,812 768,800 Q836,788 896,800 Q956,812 1016,800 Q1076,788 1136,800 Q1196,812 1256,800 Q1316,788 1376,800 Q1436,812 1496,800"
+  fill="none" stroke="#39ff14" stroke-width="0.6" stroke-opacity="0.15"/>
+<path d="M40,810 Q130,796 220,810 Q310,824 400,810 Q490,796 580,810 Q670,824 768,810 Q866,796 956,810 Q1046,824 1136,810 Q1226,796 1316,810 Q1406,824 1496,810"
+  fill="none" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.1"/>
+
+<!-- ═══ ASCII FRAGMENT OVERLAYS (corners, barely visible) ═══ -->
+<text x="50" y="170" font-family="'Share Tech Mono', monospace" font-size="7" fill="#39ff14" fill-opacity="0.12" letter-spacing="1">░▒▓█▄▀■□▪◆◇○●◎⊕⊗⊘⊙⊚</text>
+<text x="50" y="182" font-family="'Share Tech Mono', monospace" font-size="7" fill="#39ff14" fill-opacity="0.1" letter-spacing="1">01110011 01100001 01100011 01110010 01100101 01100100</text>
+<text x="1286" y="170" font-family="'Share Tech Mono', monospace" font-size="7" fill="#c8a96e" fill-opacity="0.12" text-anchor="end" letter-spacing="1">⍀⍁⍂⍃⍄⍅⍆⍇⍈⍉⍊⍋⍌⍍⍎⍏⍐⍑⍒⍓⍔⍕</text>
+<text x="1286" y="182" font-family="'Share Tech Mono', monospace" font-size="7" fill="#c8a96e" fill-opacity="0.1" text-anchor="end" letter-spacing="1">BREATH_PROTOCOL // INVISIBLE ≠ EMPTY // 1600km</text>
+
+<!-- ═══ BORDER FRAME ═══ -->
+<!-- Outer frame lines -->
+<rect x="16" y="16" width="1504" height="992" fill="none" stroke="#39ff14" stroke-width="0.5" stroke-opacity="0.12"/>
+<rect x="24" y="24" width="1488" height="976" fill="none" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.07"/>
+
+<!-- Corner marks -->
+<path d="M16,76 L16,16 L76,16" fill="none" stroke="#39ff14" stroke-width="1" stroke-opacity="0.3"/>
+<path d="M1460,16 L1520,16 L1520,76" fill="none" stroke="#39ff14" stroke-width="1" stroke-opacity="0.3"/>
+<path d="M16,948 L16,1008 L76,1008" fill="none" stroke="#39ff14" stroke-width="1" stroke-opacity="0.3"/>
+<path d="M1460,1008 L1520,1008 L1520,948" fill="none" stroke="#39ff14" stroke-width="1" stroke-opacity="0.3"/>
+
+<!-- Corner coordinate labels -->
+<text x="30" y="14" font-family="'Share Tech Mono', monospace" font-size="7" fill="#39ff14" fill-opacity="0.3" letter-spacing="1">00°00′N 00°00′E</text>
+<text x="1506" y="14" font-family="'Share Tech Mono', monospace" font-size="7" fill="#39ff14" fill-opacity="0.3" text-anchor="end" letter-spacing="1">1536×1024</text>
+<text x="30" y="1022" font-family="'Share Tech Mono', monospace" font-size="7" fill="#39ff14" fill-opacity="0.3" letter-spacing="1">ARCHIVE_ID:0001</text>
+<text x="1506" y="1022" font-family="'Share Tech Mono', monospace" font-size="7" fill="#c8a96e" fill-opacity="0.3" text-anchor="end" letter-spacing="1">LET YOUR WILL BE DONE</text>
+
+</svg>

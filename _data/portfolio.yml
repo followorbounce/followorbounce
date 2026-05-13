@@ -105,7 +105,7 @@
   category:    web
   tags:        ["Editorial", "Experimental", "Interactive", "Mythology"]
   description: "In order to understand where we are, we must first look at the surface of the earth. Everything matters. Sometimes we just don't see it. INVISIBLE ≠ EMPTY"
-  cover:      # "/assets/images/portfolio/prophetic-os.svg"
+  cover:      "/assets/images/portfolio/prophetic-os.svg"
   url:         "https://id.followorbounce.com/pages/prophetic-os"
 #  featured:    true
   year:        "2024"
