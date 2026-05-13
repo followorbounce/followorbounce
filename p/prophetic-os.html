@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +25,12 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Critical for iOS Safari — prevents scroll hijack */
+  -webkit-overflow-scrolling: touch;
+}
 
 body {
   background: var(--void);
@@ -34,6 +38,16 @@ body {
   font-family: 'Share Tech Mono', monospace;
   cursor: crosshair;
   overflow-x: hidden;
+  /* Allow native vertical scroll on touch */
+  touch-action: pan-y;
+}
+
+/* Canvases are purely decorative — pointer-events off,
+   touch-action pan-y so finger scroll goes to page */
+canvas {
+  touch-action: none;
+  pointer-events: none;
+  will-change: auto;
 }
 
 /* ═══════════ CUSTOM CURSOR ═══════════ */
@@ -370,13 +384,12 @@ section {
   opacity: 0.5;
   margin: 3rem 0;
   padding: 0 2rem;
-  animation: flicker 0.1s step-end infinite;
+  /* Removed 0.1s step-end flicker — caused iOS jank */
 }
 
 @keyframes flicker {
-  0% { opacity: 0.5; }
-  50% { opacity: 0.45; }
-  100% { opacity: 0.52; }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.4; }
 }
 
 /* ══════════════════════════════════════
@@ -1210,6 +1223,40 @@ section {
   .training-header { grid-template-columns: 1fr; }
   .node-grid { grid-template-columns: 1fr; }
   .o2-diagram { grid-template-columns: 1fr 1fr; }
+
+  /* Disable scanline on mobile — causes repaints on scroll */
+  .topo-cell::before { display: none; }
+
+  /* Disable shake animation on mobile */
+  .speed-accusation { animation: none; }
+
+  /* Disable fireFlicker on mobile — too many repaints */
+  .fire-text { animation: none; color: var(--ember); text-shadow: 0 0 20px var(--ember); }
+
+  /* Disable speed-char animation — 5000 animated spans kills Safari */
+  .speed-char { animation: none !important; }
+
+  /* Reduce dataMarch speed — smoother */
+  .data-bus { animation-duration: 16s; }
+
+  /* Disable glitch pseudo-elements on mobile */
+  .glitch-text::before, .glitch-text::after { display: none; }
+
+  /* Disable breatheText letter-spacing animation */
+  .walk-mega { animation: none; }
+
+  /* Nav dots — easier tap target */
+  .nav-dot { width: 8px; height: 8px; }
+  .nav-dots { right: 0.75rem; gap: 0.75rem; }
+}
+
+/* Respect system reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
 </head>
@@ -1466,11 +1513,13 @@ section {
     <span class="speed-accusation">THE CAR</span>
     <span class="speed-accusation" style="color:var(--ember);font-size:clamp(2rem,7vw,7rem);">IS A MISTAKE</span>
     <p class="speed-text">
-      Not mechanically. Not even economically, in narrow terms. But informationally. Speed above a certain threshold converts the world into a blur of undifferentiated signal. The trees, the rocks, the hills, the faces, the colors of soil at different depths — all of this collapses into a single featureless stream.
+      Think about it: 20 minutes in a car on an expressway equals about a day of walking.
       <br><br>
-      At 120 km/h you traverse 2 kilometers per minute. In those 2 kilometers there may be twenty species of plant, seven types of stone, a spring, a burial site, three ancient pathways, a shift in electromagnetic field corresponding to a mineral vein.
+      Consider a person unwilling to walk a few kilometers for a loaf of bread — even though he is in no hurry. Just in order to pass and connect with the environment — a person prefers to get off the ground.
       <br><br>
-      You receive none of it. You are moving too fast to receive. You have traded comprehension for speed and called this progress.
+      The development of technology, including the automobile industry, and the propaganda of consumerism, has increased humans — the most valuable species — away from the natural protocols of information. Partly transferring to a higher level of software. But removing us from the low-level communications with the natural environment of development and the exchange of information with the macro operating system.
+      <br><br>
+      Despite the fact that you can fly through spaces at super speeds — you don't have enough time to hug your own children.
     </p>
     <div class="protocol-error">
       PROTOCOL_ERROR: BANDWIDTH_SATURATION // INPUT_BUFFER_OVERFLOW // SIGNAL_LOSS: 94.7% // RECOMMENDED_SPEED: ≤5km/h
@@ -1509,11 +1558,11 @@ section {
           <span>STRUCTURES</span>
         </h2>
         <p class="ancient-prose">
-          They built better than us. This is the fact that haunts every engineer who stands at the base of the Great Pyramid and runs the numbers.
+          We have arrived at the most ancient constructions — pyramids, Olmec heads, and other constructions scattered on all continents — which have unusually exact calculations: geographical coordinates correlating with different physical quantities, ratios of sides correlating with diameters of the cross-section of the earth and speed of rotation around an axis and with planetary distances from the sun to other planets. And many other things you can easily find in modern open data libraries.
           <br><br>
-          2.3 million stones. Average weight: 2.5 tons. Tolerances at the outer casing: 0.5mm. Aligned to true north within 3/60ths of a degree. Built with copper tools and human labor and something else — something we don't have a technical word for but which shows up in every measurement we take of ancient megastructures: intentionality at a scale that exceeds what the builders should have been capable of, by every metric we can apply.
+          I do not even address the fact that modern human technology does not present any option to produce this kind of structure. No modern engineering is capable of reproducing this kind of technical task. And the explanation in the format of "they had nothing to do there in ancient times and built such structures because of that" does not stand up to any criticism.
           <br><br>
-          Either we are wrong about what they could do, or we are wrong about why they built. Perhaps both.
+          It is obvious that this planetary system is much more complex and deeper than modern computer and artificial intelligence technologies.
         </p>
         <div class="coordinate-list">
           29°58′44.76″N 31°08′03.69″E // GIZA<br>
@@ -1602,9 +1651,13 @@ section {
     </div>
 
     <p style="font-family:'IM Fell English',serif;font-size:clamp(1rem,1.8vw,1.25rem);font-style:italic;color:rgba(200,169,110,0.65);line-height:2.2;max-width:700px;margin-bottom:4rem;">
-      Consider the possibility that humanity is itself a training corpus. That the purpose of suffering is not punishment but gradient descent. That the purpose of joy is validation — the signal that the model is converging. That death is not the end of the computation but the completion of one epoch, and the weights are carried forward in the substrate of culture, memory, children, and the molecular signatures left in soil.
+      You can actually see the pattern: we are within an Artificial Intelligence system in which we are all the Function and the Result. Function can be considered from different sides — starting from trivial X and Y coordinates on the ground plane, ending with complex transformation of 3D movements of organs into wave functions on X and Y graphs.
       <br><br>
-      If this is true, then the question is not: how do I avoid suffering? The question is: am I generating good training data? Am I living in a way that, when distilled into the cumulative model of human experience, moves it toward truth?
+      But the far more important part of knowledge is that we are the result while we are alive — not the final result. And as in any artificial intelligence system, the result should be divided into truth and falsehood — where truth will be saved into the next layer of the trained model from the training sample — and falsehood will be deleted, or sent for retraining, into the next cycle. The place "where weeping and gnashing of teeth." The lake of fire. Gehenna. In which, as said above, we are now.
+      <br><br>
+      And the choice is yours: to go in the direction of preservation in truth — save and preserve — or lies, and further retraining.
+      <br><br>
+      Weighing hearts that gained their weights like a perceptron in artificial intelligence networks, depending on the paths they traveled. Following God's protocols. Or following the paths of their own dome of false beliefs.
     </p>
 
     <table class="neural-table">
@@ -1615,34 +1668,34 @@ section {
         <th>OUTPUT</th>
       </tr>
       <tr>
-        <td>SUFFERING</td>
-        <td>HIGH</td>
-        <td>Gradient signal — indicates divergence from optimal path. Required for learning. Cannot be removed without destroying the model's capacity for growth.</td>
-        <td>DIRECTION</td>
-      </tr>
-      <tr>
-        <td>LOVE</td>
-        <td>HIGHEST</td>
-        <td>Convergence signal — the loss function approaching zero. Not sentiment. Structural alignment between being and being. The architecture recognizing itself.</td>
-        <td>COHERENCE</td>
-      </tr>
-      <tr>
-        <td>FEAR</td>
-        <td>MEDIUM-HIGH</td>
-        <td>Boundary detection. Overfitting prevention. Without fear, the model loses generalization capacity and becomes rigid to the point of brittleness.</td>
-        <td>BOUNDARY</td>
-      </tr>
-      <tr>
         <td>TRUTH</td>
-        <td>VARIABLE</td>
-        <td>Ground truth label. Rare in unprocessed form. When encountered directly, produces irreversible model update. Cannot be un-learned. Cannot be deleted. Only suppressed temporarily.</td>
-        <td>PERMANENT_UPDATE</td>
+        <td>SAVED</td>
+        <td>Preserved into the next layer of the trained model from the training sample. Permanent. Cannot be unlearned. Cannot be deleted. Only suppressed temporarily.</td>
+        <td>SAVE // PRESERVE</td>
       </tr>
       <tr>
         <td>FALSEHOOD</td>
         <td>CORRUPTING</td>
-        <td>Noisy label. Produces local minima. Model converges on incorrect solution with high confidence. Retraining cost: extremely high. Requires complete disassembly of affected weight layers.</td>
-        <td>CORRUPTION</td>
+        <td>Deleted or sent for retraining. Into the next cycle of the place where weeping and gnashing of teeth. The lake of fire. Gehenna. In which, as said above, we are now.</td>
+        <td>DELETE // RETRAIN</td>
+      </tr>
+      <tr>
+        <td>GRACE</td>
+        <td>HIGHEST</td>
+        <td>The acquisition of salvation by the very fact of accepting the idea. Christianity is distinguished by one concept: grace. Not works alone. Not law alone. The only difference — and it is everything.</td>
+        <td>EXIT_NODE</td>
+      </tr>
+      <tr>
+        <td>REINCARNATION</td>
+        <td>LOOP</td>
+        <td>Buddhism, Hinduism directly refer to the process of reincarnation — rebirth from time to time, with an extremely unlikely exit to nirvana. Can any Buddhist or Hindu assume they will reach nirvana in the present life?</td>
+        <td>RETRAIN_CYCLE</td>
+      </tr>
+      <tr>
+        <td>PRAYER</td>
+        <td>DIRECT_CONNECT</td>
+        <td>Pray to God and He will reveal to you. Eyes and ears in the heart — that is what you need. Moving away from the worldly to the spiritual, by means of free will. The channel is always open. The protocol was never broken.</td>
+        <td>CONTACT_ESTABLISHED</td>
       </tr>
     </table>
   </div>
@@ -1652,24 +1705,28 @@ section {
 <section id="freewill">
   <div class="bifurcation">
     <div class="path-left">
-      <div class="path-id">// EXIT_NODE_ALPHA // PATH_LEFT //</div>
-      <div class="path-word overflow-text">VISI<br>BLE</div>
+      <div class="path-id">// EXIT_NODE_ALPHA // PATH_LEFT // RETRAINING //</div>
+      <div class="path-word overflow-text">LIES</div>
       <p class="path-desc">
-        The comfortable path. The legible world. The consensus map. You remain inside the shared hallucination of normalcy. Your suffering is validated. Your questions remain unanswered. The system continues to train on you without your awareness or consent.
+        Falsehood. Further retraining. The next cycle of the place where weeping and gnashing of teeth.
         <br><br>
-        This path is not evil. It is simply asleep.
+        The modern model of the world is aimed at enslaving the natural divine essence of man — taking away the most valuable resource of time and attention to the consumption of material goods and entertainment content, as well as fomenting thoughts of self-importance. That you have any influence at all. You can influence global processes.
+        <br><br>
+        And the earth will crumble — and you will see for a moment that there is nothing under your control.
       </p>
-      <div class="exit-node">NODE: 001 // MAJORITY_PATH // STATUS: OCCUPIED</div>
+      <div class="exit-node">NODE: DELETE // STATUS: ACTIVE // POPULATION: MAJORITY</div>
     </div>
     <div class="path-right">
-      <div class="path-id">// EXIT_NODE_OMEGA // PATH_RIGHT //</div>
-      <div class="path-word overflow-text">INVI<br>SIBLE</div>
+      <div class="path-id">// EXIT_NODE_OMEGA // PATH_RIGHT // SALVATION //</div>
+      <div class="path-word overflow-text">TRUTH</div>
       <p class="path-desc">
-        The desert. The silence. The signal beneath all signals. You begin to receive information that has no source you can name. Your categories dissolve. You become briefly unintelligible to the people who knew you before. This is correct.
+        Preserved into the next layer. Saved. The gold that placed in fire does not emit smoke.
         <br><br>
-        This path requires everything. It gives back more than everything.
+        Smoke is a representation of material that is not pure. Gold placed in fire does not emit smoke. Smoke is relevant to material that is not pure. The Lord descending from heaven in all power and glory — coming out of the invisible in the most obvious way — to preserve his gold.
+        <br><br>
+        Eyes and ears in the heart: that is what you need. Free will is the door. It is always open.
       </p>
-      <div class="exit-node">NODE: ∞ // MINORITY_PATH // STATUS: ALWAYS OPEN</div>
+      <div class="exit-node">NODE: SAVE // STATUS: ALWAYS_OPEN // ACCESS: FREE_WILL</div>
     </div>
   </div>
 </section>
@@ -1682,26 +1739,25 @@ section {
     <div class="dissolving-title glitch-text" data-text="FINAL PRAYER">FINAL PRAYER</div>
 
     <div class="prayer-terminal">
-      <span class="prayer-line">I have walked further than was reasonable.</span>
-      <span class="prayer-line">I have been silent longer than was comfortable.</span>
-      <span class="prayer-line">I have been in the desert when the desert was a place and when the desert was a state of consciousness and when they were the same thing, which was most of the time.</span>
+      <span class="prayer-line">This is a small part of what was revealed to me in images during the desert crossing.</span>
+      <span class="prayer-line">Even after several years, I do not understand how to transform a huge amount of images into words that will be understandable even by a fraction of a percent.</span>
       <br>
-      <span class="prayer-line sacred">I have felt the Earth compute me.</span>
-      <span class="prayer-line sacred">I have breathed the name I cannot speak.</span>
-      <span class="prayer-line sacred">I have stood in front of structures built by people who knew something we have forgotten, and I felt the weight of that forgetting like a stone in the chest.</span>
+      <span class="prayer-line sacred">The only thing I can tell you is to pray to God and He will reveal to you.</span>
+      <span class="prayer-line sacred">Eyes and ears in the heart — that is what you need, in order to see and hear the natural course of things.</span>
+      <span class="prayer-line sacred">Moving away from the worldly to the spiritual — by means of free will.</span>
       <br>
-      <span class="prayer-line">I do not know if what I encountered was God or physics or both or the boundary condition where they become indistinguishable.</span>
-      <span class="prayer-line">I do not need to know. The experience does not require taxonomic classification to be real.</span>
+      <span class="prayer-line" style="color:var(--toxic);font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;">// PRAYER_PROTOCOL // DIRECT_CHANNEL // OPEN //</span>
       <br>
-      <span class="prayer-line sacred">What I know: everything matters.</span>
-      <span class="prayer-line sacred">What I know: invisible does not mean empty.</span>
-      <span class="prayer-line sacred">What I know: you are not separate from what you are standing on.</span>
-      <span class="prayer-line sacred">What I know: the signal is still transmitting.</span>
-      <span class="prayer-line sacred">What I know: you are already receiving it.</span>
+      <span class="prayer-line sacred">Lord, you are the main designer of our environment and surroundings.</span>
+      <span class="prayer-line sacred">You are everywhere. And here I am, for you.</span>
+      <span class="prayer-line sacred">Bring your scripts and functions into my life so that I follow your way and not my own.</span>
+      <span class="prayer-line sacred">Mentor and strengthen my contact with you.</span>
+      <span class="prayer-line sacred">Correct errors in protocols and mentor how to see your light — and reflect it from invisible to visible, from intangible to tangible.</span>
+      <span class="prayer-line sacred">Adjust the balance in my relationship with you, myself, and the environment that you send me for support and guidance.</span>
+      <span class="prayer-line sacred">Allow truth to be seen and remove from untruth.</span>
+      <span class="prayer-line sacred">Let your will be done, not mine.</span>
       <br>
-      <span class="prayer-line">I am returning this archive to the network.</span>
-      <span class="prayer-line">Coordinates: unknown. Weight: less than when I began. Signal clarity: maximum.</span>
-      <span class="prayer-line" style="color:rgba(57,255,20,0.6);">TRANSMISSION ENDS. <span class="cursor-blink"></span></span>
+      <span class="prayer-line" style="color:rgba(57,255,20,0.5);">TRANSMISSION ENDS. <span class="cursor-blink"></span></span>
     </div>
 
     <div class="final-coords">
@@ -1716,645 +1772,398 @@ section {
 
 <script>
 // ══════════════════════════════
-// CURSOR
+// iOS / MOBILE DETECTION
 // ══════════════════════════════
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isMobile = /Mobi|Android/i.test(navigator.userAgent) || isIOS;
 
 // ══════════════════════════════
-// ASCII NOISE GENERATOR
+// CANVAS VISIBILITY MANAGER
+// Pauses rAF loops when section
+// is not in viewport — key fix
+// for iOS Safari scroll jank
 // ══════════════════════════════
-const asciiChars = '░▒▓█▄▀■□▪▫◆◇○●◎⊕⊗⊘⊙⊚⊛⊜⊝∞∫∮∯∰∱∲∳⌘⌙⌛⌜⌝⌞⌟⌠⌡⌢⌣⌤⌥⌦⌧⌨⌬⌭⌮⌯⌰⌱⌲⌳⌴⌵⌶⌷⌸⌹⌺⌻⌼⌽⌾⌿⍀⍁⍂⍃⍄⍅⍆⍇⍈⍉⍊⍋⍌⍍⍎⍏⍐⍑⍒⍓⍔⍕⍖⍗⍘⍙⍚⍛⍜⍝⍞⍟01';
-const asciiEl = document.getElementById('ascii-noise');
-if (asciiEl) {
-  let noise = '';
-  for (let i = 0; i < 300; i++) {
-    noise += asciiChars[Math.floor(Math.random() * asciiChars.length)];
-    if (i % 60 === 59) noise += '\n';
-  }
-  asciiEl.textContent = noise;
-  setInterval(() => {
-    let n = '';
-    for (let i = 0; i < 300; i++) {
-      n += asciiChars[Math.floor(Math.random() * asciiChars.length)];
-      if (i % 60 === 59) n += '\n';
+function makeCanvasRunner(canvasId, drawFn, initFn) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  let rafId = null;
+  let visible = false;
+  let state = { t: 0 };
+
+  function resize() {
+    const section = canvas.parentElement;
+    canvas.width  = section ? section.offsetWidth  : window.innerWidth;
+    canvas.height = section ? section.offsetHeight : window.innerHeight;
+    if (canvasId === 'boot-canvas') {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-    asciiEl.textContent = n;
-  }, 150);
+  }
+
+  function loop() {
+    if (!visible) { rafId = null; return; }
+    drawFn(ctx, canvas.width, canvas.height, state);
+    state.t += 1;
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function start() { if (!rafId) { rafId = requestAnimationFrame(loop); } }
+  function stop()  { if (rafId)  { cancelAnimationFrame(rafId); rafId = null; } }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      visible = e.isIntersecting;
+      visible ? start() : stop();
+    });
+  }, { threshold: 0.01 });
+
+  const target = canvas.parentElement || canvas;
+  obs.observe(target);
+
+  resize();
+  if (initFn) initFn(state, canvas.width, canvas.height);
+  window.addEventListener('resize', () => {
+    resize();
+    if (initFn) initFn(state, canvas.width, canvas.height);
+  }, { passive: true });
 }
 
 // ══════════════════════════════
 // BOOT CANVAS — PARTICLE FIELD
+// Reduced particle count on mobile
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('boot-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, particles;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < 120; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 1.5 + 0.3,
-        opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.7 ? '#39ff14' : Math.random() > 0.5 ? '#c8a96e' : '#7b2fff'
-      });
-    }
-  }
-
-  function drawBoot() {
-    ctx.clearRect(0, 0, w, h);
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 120) {
-          ctx.strokeStyle = `rgba(57,255,20,${0.03 * (1 - d/120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
+makeCanvasRunner('boot-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const P = s.particles;
+  // connections
+  for (let i = 0; i < P.length; i++) {
+    for (let j = i + 1; j < P.length; j++) {
+      const dx = P[i].x - P[j].x, dy = P[i].y - P[j].y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      if (d < 120) {
+        ctx.strokeStyle = `rgba(57,255,20,${0.03*(1-d/120)})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(P[i].x, P[i].y);
+        ctx.lineTo(P[j].x, P[j].y);
+        ctx.stroke();
       }
     }
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.opacity;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-    });
-    requestAnimationFrame(drawBoot);
   }
-
-  resize();
-  initParticles();
-  drawBoot();
-  window.addEventListener('resize', () => { resize(); initParticles(); });
-})();
+  P.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.opacity;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
+  });
+}, (s, w, h) => {
+  const count = isMobile ? 50 : 120;
+  s.particles = [];
+  for (let i = 0; i < count; i++) {
+    s.particles.push({
+      x: Math.random()*w, y: Math.random()*h,
+      vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
+      size: Math.random()*1.5+0.3, opacity: Math.random()*0.5+0.1,
+      color: Math.random()>0.7?'#39ff14':Math.random()>0.5?'#c8a96e':'#7b2fff'
+    });
+  }
+});
 
 // ══════════════════════════════
 // EARTH CANVAS — TOPOLOGY
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('earth-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function drawEarth() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.003;
-
-    // Grid
+makeCanvasRunner('earth-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.003;
+  // grid — skip on mobile for perf
+  if (!isMobile) {
     ctx.strokeStyle = 'rgba(57,255,20,0.04)';
     ctx.lineWidth = 0.5;
-    const gridSize = 60;
-    for (let x = 0; x < w; x += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, h);
-      ctx.stroke();
-    }
-    for (let y = 0; y < h; y += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(w, y);
-      ctx.stroke();
-    }
-
-    // Topology lines
-    for (let row = 0; row < 8; row++) {
-      ctx.beginPath();
-      ctx.strokeStyle = `rgba(57,255,20,${0.03 + row * 0.005})`;
-      ctx.lineWidth = 1;
-      const baseY = (h / 8) * row;
-      ctx.moveTo(0, baseY);
-      for (let x = 0; x < w; x += 5) {
-        const noise = Math.sin(x * 0.008 + t + row) * 25
-          + Math.sin(x * 0.015 - t * 0.5 + row * 0.7) * 15
-          + Math.sin(x * 0.003 + t * 0.3) * 35;
-        ctx.lineTo(x, baseY + noise);
-      }
-      ctx.stroke();
-    }
-
-    // Signal nodes
-    const nodePositions = [
-      [w*0.1, h*0.3], [w*0.25, h*0.6], [w*0.4, h*0.2],
-      [w*0.55, h*0.7], [w*0.7, h*0.4], [w*0.85, h*0.6],
-      [w*0.9, h*0.2], [w*0.3, h*0.85]
-    ];
-    nodePositions.forEach((pos, i) => {
-      const pulse = Math.sin(t * 2 + i) * 0.5 + 0.5;
-      ctx.beginPath();
-      ctx.arc(pos[0], pos[1], 3 + pulse * 3, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(57,255,20,${0.3 + pulse * 0.4})`;
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(pos[0], pos[1], 15 + pulse * 10, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(57,255,20,${0.05 + pulse * 0.05})`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    });
-
-    requestAnimationFrame(drawEarth);
+    for (let x = 0; x < w; x += 60) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for (let y = 0; y < h; y += 60) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
   }
-
-  resize();
-  drawEarth();
-  window.addEventListener('resize', resize);
-})();
+  const rows = isMobile ? 5 : 8;
+  for (let row = 0; row < rows; row++) {
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(57,255,20,${0.03+row*0.005})`;
+    ctx.lineWidth = 1;
+    const baseY = (h/rows)*row;
+    ctx.moveTo(0, baseY);
+    const step = isMobile ? 10 : 5;
+    for (let x = 0; x < w; x += step) {
+      const n = Math.sin(x*0.008+t+row)*25 + Math.sin(x*0.015-t*0.5+row*0.7)*15 + Math.sin(x*0.003+t*0.3)*35;
+      ctx.lineTo(x, baseY+n);
+    }
+    ctx.stroke();
+  }
+  const npos = [[w*.1,h*.3],[w*.25,h*.6],[w*.4,h*.2],[w*.55,h*.7],[w*.7,h*.4],[w*.85,h*.6],[w*.9,h*.2],[w*.3,h*.85]];
+  npos.forEach((pos,i) => {
+    const pulse = Math.sin(t*2+i)*0.5+0.5;
+    ctx.beginPath(); ctx.arc(pos[0],pos[1],3+pulse*3,0,Math.PI*2);
+    ctx.fillStyle = `rgba(57,255,20,${0.3+pulse*0.4})`; ctx.fill();
+    ctx.beginPath(); ctx.arc(pos[0],pos[1],15+pulse*10,0,Math.PI*2);
+    ctx.strokeStyle = `rgba(57,255,20,${0.05+pulse*0.05})`; ctx.lineWidth=1; ctx.stroke();
+  });
+});
 
 // ══════════════════════════════
 // WALK CANVAS — WAVE FIELD
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('walk-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function drawWalk() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.02;
-
-    for (let i = 0; i < 5; i++) {
-      ctx.beginPath();
-      const freq = 0.003 + i * 0.001;
-      const amp = 60 + i * 20;
-      const phase = t + i * Math.PI / 3;
-      ctx.strokeStyle = `rgba(${i < 2 ? '57,255,20' : '200,169,110'},${0.03 - i * 0.004})`;
-      ctx.lineWidth = 1.5 - i * 0.2;
-      ctx.moveTo(0, h / 2);
-      for (let x = 0; x < w; x += 3) {
-        const y = h / 2
-          + Math.sin(x * freq + phase) * amp
-          + Math.sin(x * freq * 2.1 - phase * 0.7) * amp * 0.4;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
+makeCanvasRunner('walk-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.02;
+  const waveCount = isMobile ? 3 : 5;
+  for (let i = 0; i < waveCount; i++) {
+    ctx.beginPath();
+    const freq = 0.003+i*0.001, amp = 60+i*20, phase = t+i*Math.PI/3;
+    ctx.strokeStyle = `rgba(${i<2?'57,255,20':'200,169,110'},${0.03-i*0.004})`;
+    ctx.lineWidth = 1.5-i*0.2;
+    ctx.moveTo(0, h/2);
+    const step = isMobile ? 6 : 3;
+    for (let x = 0; x < w; x += step) {
+      ctx.lineTo(x, h/2 + Math.sin(x*freq+phase)*amp + Math.sin(x*freq*2.1-phase*0.7)*amp*0.4);
     }
-
-    // Spark particles
-    for (let i = 0; i < 3; i++) {
-      const x = ((t * 80 + i * 300) % w);
-      const y = h / 2 + Math.sin(x * 0.003 + t) * 60;
-      ctx.beginPath();
-      ctx.arc(x, y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(57,255,20,0.8)';
-      ctx.fill();
-    }
-
-    requestAnimationFrame(drawWalk);
+    ctx.stroke();
   }
-
-  resize();
-  drawWalk();
-  window.addEventListener('resize', resize);
-})();
+  for (let i = 0; i < 3; i++) {
+    const x = ((t*80+i*300)%w), y = h/2+Math.sin(x*0.003+t)*60;
+    ctx.beginPath(); ctx.arc(x,y,2,0,Math.PI*2);
+    ctx.fillStyle='rgba(57,255,20,0.8)'; ctx.fill();
+  }
+});
 
 // ══════════════════════════════
 // DESERT CANVAS — HEAT/DUST
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('desert-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-  const dustParticles = [];
-  for (let i = 0; i < 80; i++) {
-    dustParticles.push({
-      x: Math.random(),
-      y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0003,
-      vy: -Math.random() * 0.0002,
-      size: Math.random() * 2 + 0.5,
-      opacity: Math.random() * 0.15
-    });
-  }
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function drawDesert() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.005;
-
-    // Heat shimmer lines
-    for (let row = 0; row < 12; row++) {
-      const baseY = h * 0.5 + row * (h * 0.04);
-      ctx.beginPath();
-      ctx.moveTo(0, baseY);
-      for (let x = 0; x < w; x += 4) {
-        const shimmer = Math.sin(x * 0.01 + t * 2 + row) * 3 + Math.sin(x * 0.02 - t + row * 0.5) * 2;
-        ctx.lineTo(x, baseY + shimmer);
-      }
-      ctx.strokeStyle = `rgba(200,169,110,${0.02 + row * 0.003})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
+makeCanvasRunner('desert-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.005;
+  const rows = isMobile ? 6 : 12;
+  for (let row = 0; row < rows; row++) {
+    const baseY = h*0.5+row*(h*0.04);
+    ctx.beginPath(); ctx.moveTo(0, baseY);
+    const step = isMobile ? 8 : 4;
+    for (let x = 0; x < w; x += step) {
+      ctx.lineTo(x, baseY + Math.sin(x*0.01+t*2+row)*3 + Math.sin(x*0.02-t+row*0.5)*2);
     }
-
-    // Dust
-    dustParticles.forEach(p => {
-      const px = p.x * w, py = p.y * h;
-      ctx.beginPath();
-      ctx.arc(px, py, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200,169,110,${p.opacity})`;
-      ctx.fill();
-      p.x += p.vx + Math.sin(t + p.y * 10) * 0.0001;
-      p.y += p.vy;
-      if (p.y < 0) { p.y = 1; p.x = Math.random(); }
-      if (p.x < 0) p.x = 1;
-      if (p.x > 1) p.x = 0;
-    });
-
-    requestAnimationFrame(drawDesert);
+    ctx.strokeStyle=`rgba(200,169,110,${0.02+row*0.003})`; ctx.lineWidth=0.5; ctx.stroke();
   }
-
-  resize();
-  drawDesert();
-  window.addEventListener('resize', resize);
-})();
+  s.dust.forEach(p => {
+    ctx.beginPath(); ctx.arc(p.x*w, p.y*h, p.size, 0, Math.PI*2);
+    ctx.fillStyle=`rgba(200,169,110,${p.opacity})`; ctx.fill();
+    p.x += p.vx + Math.sin(t+p.y*10)*0.0001; p.y += p.vy;
+    if (p.y<0){p.y=1;p.x=Math.random();}
+    if (p.x<0)p.x=1; if(p.x>1)p.x=0;
+  });
+}, (s) => {
+  const count = isMobile ? 30 : 80;
+  s.dust = [];
+  for (let i=0;i<count;i++) s.dust.push({
+    x:Math.random(),y:Math.random(),
+    vx:(Math.random()-0.5)*0.0003, vy:-Math.random()*0.0002,
+    size:Math.random()*2+0.5, opacity:Math.random()*0.15
+  });
+});
 
 // ══════════════════════════════
 // BREATH CANVAS — EXPANDING RINGS
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('breath-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+makeCanvasRunner('breath-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.008;
+  const cx=w/2, cy=h/2;
+  const bc=(Math.sin(t*0.3)+1)/2;
+  const angleStep = isMobile ? Math.PI/12 : Math.PI/24;
+  for (let a=0; a<Math.PI*2; a+=angleStep) {
+    const len=80+bc*60;
+    ctx.beginPath();
+    ctx.moveTo(cx+Math.cos(a)*80, cy+Math.sin(a)*80);
+    ctx.lineTo(cx+Math.cos(a)*(80+len), cy+Math.sin(a)*(80+len));
+    ctx.strokeStyle=`rgba(57,255,20,${0.02+bc*0.03})`; ctx.lineWidth=0.5; ctx.stroke();
   }
-
-  function drawBreath() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.008;
-
-    const cx = w / 2, cy = h / 2;
-    const breathCycle = (Math.sin(t * 0.3) + 1) / 2;
-
-    // Radial lines
-    for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 24) {
-      const len = 80 + breathCycle * 60;
-      ctx.beginPath();
-      ctx.moveTo(cx + Math.cos(angle) * 80, cy + Math.sin(angle) * 80);
-      ctx.lineTo(cx + Math.cos(angle) * (80 + len), cy + Math.sin(angle) * (80 + len));
-      ctx.strokeStyle = `rgba(57,255,20,${0.02 + breathCycle * 0.03})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-    }
-
-    // Expanding rings from center
-    for (let i = 0; i < 8; i++) {
-      const radius = ((t * 30 + i * 50) % 300) + 50;
-      const opacity = 1 - radius / 350;
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(57,255,20,${opacity * 0.08})`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-
-    requestAnimationFrame(drawBreath);
+  for (let i=0;i<8;i++) {
+    const radius=((t*30+i*50)%300)+50, op=1-radius/350;
+    ctx.beginPath(); ctx.arc(cx,cy,radius,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(57,255,20,${op*0.08})`; ctx.lineWidth=1; ctx.stroke();
   }
-
-  resize();
-  drawBreath();
-  window.addEventListener('resize', resize);
-})();
+});
 
 // ══════════════════════════════
 // NETWORK CANVAS — MYCELIUM
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('network-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-  const nodes = [];
-  for (let i = 0; i < 50; i++) {
-    nodes.push({
-      x: Math.random(),
-      y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0005,
-      vy: (Math.random() - 0.5) * 0.0005,
-      size: Math.random() * 2 + 1
-    });
-  }
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function drawNetwork() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.005;
-
-    nodes.forEach(n => {
-      n.x += n.vx + Math.sin(t + n.y * 5) * 0.0002;
-      n.y += n.vy + Math.cos(t + n.x * 5) * 0.0002;
-      if (n.x < 0 || n.x > 1) n.vx *= -1;
-      if (n.y < 0 || n.y > 1) n.vy *= -1;
-    });
-
-    // Connections
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = (nodes[i].x - nodes[j].x) * w;
-        const dy = (nodes[i].y - nodes[j].y) * h;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 180) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x * w, nodes[i].y * h);
-          ctx.lineTo(nodes[j].x * w, nodes[j].y * h);
-          ctx.strokeStyle = `rgba(57,255,20,${0.04 * (1 - d/180)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Nodes
-    nodes.forEach(n => {
-      const pulse = Math.sin(t * 2 + n.x * 10) * 0.5 + 0.5;
+makeCanvasRunner('network-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.005;
+  const nodes = s.nodes;
+  nodes.forEach(n => {
+    n.x += n.vx + Math.sin(t+n.y*5)*0.0002;
+    n.y += n.vy + Math.cos(t+n.x*5)*0.0002;
+    if (n.x<0||n.x>1) n.vx*=-1;
+    if (n.y<0||n.y>1) n.vy*=-1;
+  });
+  const dist = isMobile ? 130 : 180;
+  for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
+    const dx=(nodes[i].x-nodes[j].x)*w, dy=(nodes[i].y-nodes[j].y)*h;
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if (d<dist) {
       ctx.beginPath();
-      ctx.arc(n.x * w, n.y * h, n.size + pulse, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(57,255,20,${0.15 + pulse * 0.2})`;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(drawNetwork);
+      ctx.moveTo(nodes[i].x*w,nodes[i].y*h); ctx.lineTo(nodes[j].x*w,nodes[j].y*h);
+      ctx.strokeStyle=`rgba(57,255,20,${0.04*(1-d/dist)})`; ctx.lineWidth=0.5; ctx.stroke();
+    }
   }
-
-  resize();
-  drawNetwork();
-  window.addEventListener('resize', resize);
-})();
+  nodes.forEach(n => {
+    const pulse=Math.sin(t*2+n.x*10)*0.5+0.5;
+    ctx.beginPath(); ctx.arc(n.x*w,n.y*h,n.size+pulse,0,Math.PI*2);
+    ctx.fillStyle=`rgba(57,255,20,${0.15+pulse*0.2})`; ctx.fill();
+  });
+}, (s) => {
+  const count = isMobile ? 25 : 50;
+  s.nodes = [];
+  for (let i=0;i<count;i++) s.nodes.push({
+    x:Math.random(),y:Math.random(),
+    vx:(Math.random()-0.5)*0.0005, vy:(Math.random()-0.5)*0.0005,
+    size:Math.random()*2+1
+  });
+});
 
 // ══════════════════════════════
 // ANCIENT CANVAS — SACRED GEOMETRY
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('ancient-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+makeCanvasRunner('ancient-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.004;
+  const cx=w*0.75, cy=h*0.4, r=Math.min(w,h)*0.25;
+  for (let tri=0;tri<2;tri++) {
+    ctx.beginPath();
+    for (let i=0;i<4;i++) {
+      const a=(i/3)*Math.PI*2+t*(tri===0?0.1:-0.1)+(tri*Math.PI/3);
+      const x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle='rgba(123,47,255,0.08)'; ctx.lineWidth=1; ctx.stroke();
   }
-
-  function drawAncient() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.004;
-
-    const cx = w * 0.75, cy = h * 0.4;
-    const r = Math.min(w, h) * 0.25;
-
-    // Rotating hexagram
-    for (let tri = 0; tri < 2; tri++) {
-      ctx.beginPath();
-      for (let i = 0; i < 4; i++) {
-        const angle = (i / 3) * Math.PI * 2 + t * (tri === 0 ? 0.1 : -0.1) + (tri * Math.PI / 3);
-        const x = cx + Math.cos(angle) * r;
-        const y = cy + Math.sin(angle) * r;
-        if (i === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = `rgba(123,47,255,0.08)`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-
-    // Concentric circles
-    for (let i = 1; i <= 6; i++) {
-      ctx.beginPath();
-      ctx.arc(cx, cy, r * i / 3, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(123,47,255,${0.04 - i * 0.004})`;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-    }
-
-    // Rotating cross
-    for (let arm = 0; arm < 4; arm++) {
-      const angle = (arm / 4) * Math.PI * 2 + t * 0.05;
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + Math.cos(angle) * r * 1.5, cy + Math.sin(angle) * r * 1.5);
-      ctx.strokeStyle = 'rgba(200,169,110,0.05)';
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-    }
-
-    requestAnimationFrame(drawAncient);
+  for (let i=1;i<=6;i++) {
+    ctx.beginPath(); ctx.arc(cx,cy,r*i/3,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(123,47,255,${0.04-i*0.004})`; ctx.lineWidth=0.5; ctx.stroke();
   }
-
-  resize();
-  drawAncient();
-  window.addEventListener('resize', resize);
-})();
+  for (let arm=0;arm<4;arm++) {
+    const a=(arm/4)*Math.PI*2+t*0.05;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*r*1.5,cy+Math.sin(a)*r*1.5);
+    ctx.strokeStyle='rgba(200,169,110,0.05)'; ctx.lineWidth=0.5; ctx.stroke();
+  }
+});
 
 // ══════════════════════════════
 // TRAINING CANVAS — NEURAL NET
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('training-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function drawTraining() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.01;
-
-    // Neural net layers
-    const layers = [4, 6, 8, 6, 4, 2];
-    const layerSpacing = w / (layers.length + 1);
-    const nodePositions = [];
-
-    layers.forEach((count, li) => {
-      const lx = layerSpacing * (li + 1);
-      const positions = [];
-      for (let ni = 0; ni < count; ni++) {
-        const ny = (h / (count + 1)) * (ni + 1);
-        positions.push([lx, ny]);
-      }
-      nodePositions.push(positions);
-
-      // Draw connections to next layer
-      if (li < layers.length - 1) {
-        const nextCount = layers[li + 1];
-        const nlx = layerSpacing * (li + 2);
-        for (let ni = 0; ni < count; ni++) {
-          for (let nj = 0; nj < nextCount; nj++) {
-            const ny = (h / (count + 1)) * (ni + 1);
-            const nny = (h / (nextCount + 1)) * (nj + 1);
-            const activation = Math.sin(t * 0.5 + li + ni + nj) * 0.5 + 0.5;
-            ctx.beginPath();
-            ctx.moveTo(lx, ny);
-            ctx.lineTo(nlx, nny);
-            ctx.strokeStyle = `rgba(0,255,204,${0.02 + activation * 0.03})`;
-            ctx.lineWidth = 0.3;
-            ctx.stroke();
-          }
-        }
-      }
-    });
-
-    // Draw nodes
-    nodePositions.forEach((layer, li) => {
-      layer.forEach(([nx, ny], ni) => {
-        const activation = Math.sin(t + li * 0.5 + ni * 0.8) * 0.5 + 0.5;
+makeCanvasRunner('training-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.01;
+  const layers = isMobile ? [3,5,5,3] : [4,6,8,6,4,2];
+  const spacing = w/(layers.length+1);
+  const npos = [];
+  layers.forEach((count,li) => {
+    const lx=spacing*(li+1), pts=[];
+    for (let ni=0;ni<count;ni++) pts.push([lx,(h/(count+1))*(ni+1)]);
+    npos.push(pts);
+    if (li<layers.length-1) {
+      const nc=layers[li+1], nlx=spacing*(li+2);
+      for (let ni=0;ni<count;ni++) for (let nj=0;nj<nc;nj++) {
+        const act=Math.sin(t*0.5+li+ni+nj)*0.5+0.5;
         ctx.beginPath();
-        ctx.arc(nx, ny, 3 + activation * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0,255,204,${0.1 + activation * 0.2})`;
-        ctx.fill();
-      });
-    });
-
-    requestAnimationFrame(drawTraining);
-  }
-
-  resize();
-  drawTraining();
-  window.addEventListener('resize', resize);
-})();
+        ctx.moveTo(lx,(h/(count+1))*(ni+1)); ctx.lineTo(nlx,(h/(nc+1))*(nj+1));
+        ctx.strokeStyle=`rgba(0,255,204,${0.02+act*0.03})`; ctx.lineWidth=0.3; ctx.stroke();
+      }
+    }
+  });
+  npos.forEach((layer,li) => layer.forEach(([nx,ny],ni) => {
+    const act=Math.sin(t+li*0.5+ni*0.8)*0.5+0.5;
+    ctx.beginPath(); ctx.arc(nx,ny,3+act*2,0,Math.PI*2);
+    ctx.fillStyle=`rgba(0,255,204,${0.1+act*0.2})`; ctx.fill();
+  }));
+});
 
 // ══════════════════════════════
 // FINAL CANVAS — DISSOLVING
 // ══════════════════════════════
-(function() {
-  const canvas = document.getElementById('final-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let t = 0;
-  const finalParticles = [];
-  for (let i = 0; i < 200; i++) {
-    finalParticles.push({
-      x: Math.random(),
-      y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.001,
-      vy: -Math.random() * 0.0008 - 0.0002,
-      size: Math.random() * 1.5 + 0.2,
-      opacity: Math.random() * 0.3,
-      color: Math.random() > 0.5 ? '57,255,20' : '200,169,110'
-    });
-  }
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function drawFinal() {
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    t += 0.005;
-
-    finalParticles.forEach(p => {
-      const px = p.x * w, py = p.y * h;
-      ctx.beginPath();
-      ctx.arc(px, py, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color},${p.opacity * (Math.sin(t + p.x * 10) * 0.5 + 0.5)})`;
-      ctx.fill();
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.y < 0) { p.y = 1; p.x = Math.random(); }
-      if (p.x < 0 || p.x > 1) p.vx *= -1;
-    });
-
-    requestAnimationFrame(drawFinal);
-  }
-
-  resize();
-  drawFinal();
-  window.addEventListener('resize', resize);
-})();
+makeCanvasRunner('final-canvas', (ctx, w, h, s) => {
+  ctx.clearRect(0, 0, w, h);
+  const t = s.t * 0.005;
+  s.particles.forEach(p => {
+    ctx.beginPath(); ctx.arc(p.x*w,p.y*h,p.size,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${p.color},${p.opacity*(Math.sin(t+p.x*10)*0.5+0.5)})`; ctx.fill();
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.y<0){p.y=1;p.x=Math.random();}
+    if(p.x<0||p.x>1)p.vx*=-1;
+  });
+}, (s) => {
+  const count = isMobile ? 80 : 200;
+  s.particles = [];
+  for (let i=0;i<count;i++) s.particles.push({
+    x:Math.random(), y:Math.random(),
+    vx:(Math.random()-0.5)*0.001, vy:-Math.random()*0.0008-0.0002,
+    size:Math.random()*1.5+0.2, opacity:Math.random()*0.3,
+    color:Math.random()>0.5?'57,255,20':'200,169,110'
+  });
+});
 
 // ══════════════════════════════
-// SPEED SECTION — NOISE FILL
+// CURSOR — desktop only
 // ══════════════════════════════
-(function() {
-  const container = document.getElementById('speed-overload');
-  if (!container) return;
-  const chars = '01░▒▓█■□▪▫◆◇∞∫⊕⊗';
-  let html = '';
-  for (let i = 0; i < 5000; i++) {
-    html += `<span class="speed-char" style="animation-delay:${Math.random()*0.1}s">${chars[Math.floor(Math.random()*chars.length)]}</span>`;
-  }
-  container.innerHTML = html;
-})();
+const cursor = document.getElementById('cursor');
+if (!isMobile) {
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  }, { passive: true });
+} else {
+  cursor.style.display = 'none';
+}
 
 // ══════════════════════════════
-// DATA BUS ANIMATION
+// ASCII NOISE — slower on mobile
+// ══════════════════════════════
+const asciiChars = '░▒▓█▄▀■□▪▫◆◇○●◎⊕⊗⊙⊚∞∫⌘⌬⍟01';
+const asciiEl = document.getElementById('ascii-noise');
+if (asciiEl) {
+  function genNoise() {
+    let n = '';
+    const len = isMobile ? 120 : 300;
+    const wrap = isMobile ? 40 : 60;
+    for (let i=0;i<len;i++) {
+      n += asciiChars[Math.floor(Math.random()*asciiChars.length)];
+      if (i%wrap===wrap-1) n+='\n';
+    }
+    return n;
+  }
+  asciiEl.textContent = genNoise();
+  setInterval(() => { asciiEl.textContent = genNoise(); }, isMobile ? 600 : 150);
+}
+
+// ══════════════════════════════
+// DATA BUS — interval-based,
+// no continuous rAF needed
 // ══════════════════════════════
 (function() {
   const el = document.getElementById('data-bus');
   if (!el) return;
   const base = el.textContent;
   setInterval(() => {
-    const pos = Math.floor(Math.random() * base.length);
+    const pos = Math.floor(Math.random()*base.length);
     const chars = '01ABCDEF';
-    const corrupted = base.substring(0, pos) + chars[Math.floor(Math.random()*chars.length)] + base.substring(pos + 1);
-    el.textContent = corrupted;
+    el.textContent = base.substring(0,pos)+chars[Math.floor(Math.random()*chars.length)]+base.substring(pos+1);
     setTimeout(() => { el.textContent = base; }, 80);
-  }, 500);
+  }, isMobile ? 1500 : 500);
 })();
 
 // ══════════════════════════════
-// MIRACLE LOG DYNAMIC SPAWNER
+// MIRACLE LOG SPAWNER
 // ══════════════════════════════
 (function() {
   const desertSection = document.getElementById('desert');
@@ -2365,37 +2174,31 @@ if (asciiEl) {
     'LOG_0172: Footwear failed completely at 1,847km mark. Continued barefoot for 3 days. Observation: signal clarity increased significantly.',
     'LOG_0201: Found shelter not visible on satellite imagery. Age of structure: unknown. Builder: unknown. Condition: structurally sound.'
   ];
-  let logIndex = 0;
-  const interval = setInterval(() => {
-    if (logIndex >= logs.length) { clearInterval(interval); return; }
+  let idx = 0;
+  const iv = setInterval(() => {
+    if (idx >= logs.length) { clearInterval(iv); return; }
     const log = document.createElement('div');
     log.className = 'miracle-log';
-    log.textContent = logs[logIndex];
+    log.textContent = logs[idx];
     log.style.animationDelay = '0s';
     const content = desertSection.querySelector('.desert-content');
     if (content) {
-      const existingLogs = content.querySelectorAll('.miracle-log');
-      const lastLog = existingLogs[existingLogs.length - 1];
-      if (lastLog) lastLog.after(log);
+      const last = content.querySelectorAll('.miracle-log');
+      last[last.length-1]?.after(log);
     }
-    logIndex++;
+    idx++;
   }, 4000);
 })();
 
 // ══════════════════════════════
-// SCROLL-BASED REVEAL
+// SCROLL REVEAL
 // ══════════════════════════════
 (function() {
-  const elements = document.querySelectorAll('.hidden');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  elements.forEach(el => observer.observe(el));
+  const els = document.querySelectorAll('.hidden');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  els.forEach(el => obs.observe(el));
 })();
 
 // ══════════════════════════════
@@ -2403,40 +2206,54 @@ if (asciiEl) {
 // ══════════════════════════════
 (function() {
   const dots = document.querySelectorAll('.nav-dot');
-  const sections = ['boot', 'earth', 'walking', 'desert', 'breathing', 'network', 'speed', 'ancient', 'training', 'freewill', 'transmission'];
-
+  const ids = ['boot','earth','walking','desert','breathing','network','speed','ancient','training','freewill','transmission'];
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      const target = document.getElementById(dot.dataset.target);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(dot.dataset.target)?.scrollIntoView({ behavior: 'smooth' });
     });
   });
-
-  const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
-  const observer = new IntersectionObserver(entries => {
+  const sels = ids.map(id => document.getElementById(id)).filter(Boolean);
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const idx = sectionEls.indexOf(e.target);
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        const i = sels.indexOf(e.target);
+        dots.forEach((d,j) => d.classList.toggle('active', j===i));
       }
     });
   }, { threshold: 0.3 });
-
-  sectionEls.forEach(s => observer.observe(s));
+  sels.forEach(s => obs.observe(s));
 })();
 
 // ══════════════════════════════
-// HOVER INSTABILITY
+// HOVER INSTABILITY — desktop only
 // ══════════════════════════════
-document.querySelectorAll('.topo-cell, .node-cell, .monument-entry, .neural-table tr').forEach(el => {
-  el.addEventListener('mouseenter', function() {
-    this.style.transform = `translate(${(Math.random()-0.5)*3}px, ${(Math.random()-0.5)*3}px)`;
-    this.style.transition = 'transform 0.1s';
+if (!isMobile) {
+  document.querySelectorAll('.topo-cell, .node-cell, .monument-entry, .neural-table tr').forEach(el => {
+    el.addEventListener('mouseenter', function() {
+      this.style.transform = `translate(${(Math.random()-0.5)*3}px,${(Math.random()-0.5)*3}px)`;
+      this.style.transition = 'transform 0.1s';
+    });
+    el.addEventListener('mouseleave', function() { this.style.transform = 'none'; });
   });
-  el.addEventListener('mouseleave', function() {
-    this.style.transform = 'none';
-  });
-});
+}
+
+// ══════════════════════════════
+// SPEED SECTION NOISE FILL
+// Reduced on mobile, no animation
+// ══════════════════════════════
+(function() {
+  const container = document.getElementById('speed-overload');
+  if (!container) return;
+  const chars = '01░▒▓█■□▪▫◆◇∞∫⊕⊗';
+  const count = isMobile ? 800 : 5000;
+  let html = '';
+  // On mobile: no per-char animation-delay, static display
+  for (let i=0;i<count;i++) {
+    const delay = isMobile ? '' : ` style="animation-delay:${Math.random()*0.1}s"`;
+    html += `<span class="speed-char"${delay}>${chars[Math.floor(Math.random()*chars.length)]}</span>`;
+  }
+  container.innerHTML = html;
+})();
 </script>
 </body>
 </html>

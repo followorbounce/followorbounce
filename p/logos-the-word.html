@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LogOS — The Word</title>
+<meta name="description" content="Logos as the executable order of the world — its inscription within the system that reproduces that record.">
+<meta property="og:title" content="LogOS — The Word">
+<meta property="og:description" content="If Logos is both the record and the execution, then awareness is not merely observation but participation.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#010804">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   ROOT SYSTEM
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+
+:root {
+  --void: #010804;
+  --deep: #020d06;
+  --terminal: #030f08;
+  --phosphor: #0a4a1a;
+  --glow: #12b84a;
+  --glow-dim: #0e7a32;
+  --glow-pale: #8fffb8;
+  --glow-ghost: rgba(18, 184, 74, 0.07);
+  --amber-sys: #c8860a;
+  --amber-dim: #6a4808;
+  --red-err: #8b1a1a;
+  --smoke: #1a2e1e;
+  --ash: #4a6a52;
+  --mist: #7aad84;
+  --linen: #c4d8c8;
+
+  --font-terminal: 'Share Tech Mono', monospace;
+  --font-body: 'Spectral', serif;
+  --font-display: 'Syncopate', sans-serif;
+
+  --ease-rise: cubic-bezier(0.16, 1, 0.3, 1);
+  --scanline-speed: 12s;
+}
+
+html { overflow-x: clip; scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--mist);
+  font-family: var(--font-terminal);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =============================================
+   CURSOR — blinking terminal block
+   ============================================= */
+#cur {
+  position: fixed;
+  width: 10px;
+  height: 18px;
+  background: var(--glow);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-1px, -16px);
+  mix-blend-mode: screen;
+  animation: blink-cur 1.1s step-end infinite;
+}
+
+@keyframes blink-cur {
+  0%,100%{opacity:1} 50%{opacity:0}
+}
+
+/* =============================================
+   SCANLINES + GRAIN
+   ============================================= */
+#scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 900;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.15) 3px,
+    rgba(0,0,0,0.15) 4px
+  );
+  animation: scan-roll var(--scanline-speed) linear infinite;
+}
+
+@keyframes scan-roll {
+  from{background-position:0 0}
+  to{background-position:0 400px}
+}
+
+#grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 800;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px;
+  animation: grain-mv 5s steps(7) infinite;
+}
+
+@keyframes grain-mv {
+  0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,1%)}
+  30%{transform:translate(1%,-2%)}50%{transform:translate(-1%,2%)}
+  70%{transform:translate(2%,-1%)}90%{transform:translate(-2%,2%)}
+}
+
+/* =============================================
+   PHOSPHOR GLOW VIGNETTE
+   ============================================= */
+#phosphor-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%,
+      rgba(18,184,74,0.03) 0%,
+      transparent 70%
+    ),
+    radial-gradient(ellipse at 0% 0%, rgba(0,0,0,0.6) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 100%, rgba(0,0,0,0.6) 0%, transparent 40%);
+}
+
+/* =============================================
+   SCROLL PROGRESS
+   ============================================= */
+#progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 1px;
+  background: var(--glow);
+  box-shadow: 0 0 8px var(--glow);
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* =============================================
+   NAV
+   ============================================= */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 700;
+  padding: max(1rem, env(safe-area-inset-top)) 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(1,8,4,0.95) 0%, transparent 100%);
+  font-family: var(--font-terminal);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+
+.nav-id {
+  color: var(--glow);
+  opacity: 0.7;
+}
+
+.nav-id::before { content: '> '; opacity: 0.4; }
+
+.nav-status {
+  color: var(--ash);
+  display: flex;
+  gap: 1.5rem;
+}
+
+.status-ok { color: var(--glow-dim); }
+.status-ok::before { content: '● '; font-size: 0.5rem; }
+
+/* =============================================
+   SYSTEM LOG BACKGROUND
+   ============================================= */
+.syslog-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  font-family: var(--font-terminal);
+  font-size: 0.6rem;
+  line-height: 1.4;
+  color: var(--glow);
+  padding: 1rem;
+  white-space: pre;
+  word-break: break-all;
+}
+
+/* =============================================
+   HERO — BOOT SCREEN
+   ============================================= */
+#hero {
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(7rem,14vh,16rem) clamp(2rem,6vw,8rem) clamp(4rem,8vh,10rem);
+  padding-bottom: max(clamp(4rem,8vh,10rem), env(safe-area-inset-bottom));
+  position: relative;
+  overflow: clip;
+  background: var(--void);
+}
+
+.boot-sequence {
+  position: relative;
+  z-index: 10;
+}
+
+.boot-line {
+  font-family: var(--font-terminal);
+  font-size: clamp(0.65rem, 0.85vw, 0.8rem);
+  letter-spacing: 0.1em;
+  color: var(--ash);
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: type-in 0.5s ease 0.3s forwards;
+}
+
+.boot-line span { color: var(--glow-dim); }
+
+@keyframes type-in {
+  from{opacity:0;} to{opacity:1;}
+}
+
+h1.logos-title {
+  font-family: var(--font-display);
+  font-size: clamp(14vw, 20vw, 22rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: var(--glow-pale);
+  text-shadow:
+    0 0 40px rgba(18,184,74,0.4),
+    0 0 100px rgba(18,184,74,0.15),
+    0 0 200px rgba(18,184,74,0.05);
+  opacity: 0;
+  animation: glow-reveal 1.4s var(--ease-rise) 0.8s forwards;
+}
+
+.logos-subtitle-line {
+  font-family: var(--font-display);
+  font-size: clamp(4vw, 7vw, 9rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(18,184,74,0.3);
+  line-height: 1.1;
+  opacity: 0;
+  animation: glow-reveal 1.2s var(--ease-rise) 1.1s forwards;
+}
+
+@keyframes glow-reveal {
+  from{opacity:0;transform:translateY(15px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.hero-tagline {
+  margin-top: 3rem;
+  max-width: 600px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  font-style: italic;
+  color: var(--ash);
+  line-height: 1.9;
+  font-weight: 300;
+  opacity: 0;
+  animation: glow-reveal 1s var(--ease-rise) 1.5s forwards;
+}
+
+/* Blinking prompt */
+.hero-prompt {
+  margin-top: 4rem;
+  font-size: 0.75rem;
+  color: var(--glow-dim);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: glow-reveal 0.8s ease 2s forwards;
+}
+
+.hero-prompt::after {
+  content: '_';
+  animation: blink-cur 1.1s step-end infinite;
+}
+
+/* Grid lines overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(18,184,74,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,184,74,1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: max(2rem, env(safe-area-inset-bottom, 2rem));
+  left: clamp(2rem,6vw,8rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: glow-reveal 0.8s ease 2.5s forwards;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--ash);
+}
+
+.scroll-tick {
+  width: 40px;
+  height: 1px;
+  background: var(--glow-dim);
+  animation: tick-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tick-pulse {
+  0%,100%{width:40px;opacity:0.3} 50%{width:70px;opacity:0.8}
+}
+
+/* =============================================
+   SECTION BASE
+   ============================================= */
+section { position: relative; overflow: clip; }
+
+/* Section divider — system separator */
+.sys-sep {
+  padding: 1.5rem clamp(2rem,6vw,8rem);
+  background: rgba(18,184,74,0.03);
+  border-top: 1px solid rgba(18,184,74,0.08);
+  border-bottom: 1px solid rgba(18,184,74,0.08);
+  font-family: var(--font-terminal);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--ash);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sep-left { color: var(--glow-dim); }
+.sep-right { color: var(--amber-dim); }
+
+/* =============================================
+   S1 — LOGOS CORE CONCEPT
+   ============================================= */
+#logos-core {
+  background: var(--deep);
+  padding: clamp(6rem,12vh,14rem) clamp(2rem,6vw,8rem);
+}
+
+.core-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem,8vw,10rem);
+  max-width: 1300px;
+}
+
+@media (max-width: 860px) { .core-grid { grid-template-columns: 1fr; } }
+
+.core-left {
+  opacity: 0; transform: translateX(-25px);
+  transition: all 1.1s var(--ease-rise);
+}
+.core-left.visible { opacity:1; transform:translateX(0); }
+
+.sys-heading {
+  font-family: var(--font-terminal);
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--glow-dim);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sys-heading::before {
+  content: '//';
+  color: var(--ash);
+  opacity: 0.5;
+}
+
+h2.module-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--glow-pale);
+  text-shadow: 0 0 40px rgba(18,184,74,0.2);
+  margin-bottom: 2rem;
+}
+
+.core-def {
+  padding: 1.5rem;
+  border: 1px solid rgba(18,184,74,0.12);
+  background: rgba(18,184,74,0.03);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.core-def::before {
+  content: 'DEFINITION';
+  position: absolute;
+  top: -0.55rem;
+  left: 1rem;
+  background: var(--deep);
+  padding: 0 0.6rem;
+  font-size: 0.5rem;
+  letter-spacing: 0.35em;
+  color: var(--glow-dim);
+}
+
+.core-def p {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-style: italic;
+  color: var(--linen);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.core-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  line-height: 1.9;
+  color: var(--mist);
+  font-weight: 300;
+}
+
+.core-body + .core-body { margin-top: 1.5rem; }
+
+/* Highlighted phrase */
+.hl { color: var(--glow-pale); font-style: italic; }
+.hl-amber { color: var(--amber-sys); }
+
+.core-right {
+  opacity: 0; transform: translateX(25px);
+  transition: all 1.1s var(--ease-rise) 0.12s;
+}
+.core-right.visible { opacity:1; transform:translateX(0); }
+
+/* Code block */
+.sys-code {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(18,184,74,0.1);
+  padding: 2rem;
+  font-family: var(--font-terminal);
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  line-height: 1.8;
+  color: var(--glow-dim);
+  position: relative;
+}
+
+.sys-code::before {
+  content: attr(data-title);
+  display: block;
+  padding: 0.5rem 0 1rem;
+  color: var(--ash);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  border-bottom: 1px solid rgba(18,184,74,0.08);
+  margin-bottom: 1.2rem;
+}
+
+.code-kw { color: var(--glow-pale); }
+.code-str { color: var(--amber-sys); opacity: 0.8; }
+.code-cmt { color: var(--ash); opacity: 0.7; }
+.code-val { color: var(--glow); opacity: 0.9; }
+.code-fn { color: var(--linen); }
+
+/* Paradox box */
+.paradox-box {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-left: 2px solid var(--amber-sys);
+  background: rgba(200, 134, 10, 0.04);
+}
+
+.paradox-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  color: var(--amber-sys);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.paradox-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-style: italic;
+  color: var(--linen);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* =============================================
+   S2 — HIERARCHY TABLE
+   ============================================= */
+#hierarchy {
+  background: var(--terminal);
+  padding: clamp(6rem,12vh,14rem) clamp(2rem,6vw,8rem);
+}
+
+.hierarchy-intro {
+  max-width: 700px;
+  margin-bottom: clamp(4rem,8vh,8rem);
+}
+
+.tier-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-terminal);
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s var(--ease-rise);
+}
+
+.tier-table.visible { opacity:1; transform:translateY(0); }
+
+.tier-table thead tr {
+  border-bottom: 1px solid rgba(18,184,74,0.2);
+}
+
+.tier-table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  color: var(--ash);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.tier-table tbody tr {
+  border-bottom: 1px solid rgba(18,184,74,0.05);
+  transition: background 0.3s ease;
+}
+
+.tier-table tbody tr:hover {
+  background: rgba(18,184,74,0.04);
+}
+
+.tier-table td {
+  padding: 1.4rem 1.5rem;
+  vertical-align: top;
+  line-height: 1.6;
+  color: var(--mist);
+}
+
+.td-level {
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+  color: var(--glow-pale);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.td-analogy {
+  color: var(--glow-dim);
+  letter-spacing: 0.05em;
+}
+
+.td-fn { color: var(--ash); font-style: normal; }
+
+/* Level bar — visual indicator -->
+.level-bar {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.6rem;
+  flex-shrink: 0;
+}
+
+.lb-core { background: var(--glow-pale); box-shadow: 0 0 6px var(--glow); }
+.lb-high { background: var(--glow); }
+.lb-mid { background: var(--glow-dim); }
+.lb-low { background: var(--ash); }
+.lb-data { background: var(--amber-dim); }
+.lb-log { background: rgba(18,184,74,0.2); border: 1px solid var(--ash); }
+
+@media (max-width:640px) {
+  .tier-table { display: block; overflow-x: auto; }
+}
+
+/* =============================================
+   S3 — ARK / REBOOT PROTOCOL
+   ============================================= */
+#ark {
+  background: var(--deep);
+  padding: clamp(6rem,12vh,14rem) clamp(2rem,6vw,8rem);
+}
+
+.ark-header { margin-bottom: clamp(4rem,8vh,8rem); }
+
+.func-declaration {
+  padding: 2rem;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(18,184,74,0.12);
+  margin-bottom: clamp(3rem,6vh,6rem);
+  font-family: var(--font-terminal);
+  font-size: clamp(0.72rem, 0.9vw, 0.88rem);
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.9s var(--ease-rise);
+}
+
+.func-declaration.visible { opacity:1; transform:translateY(0); }
+
+/* Ark cycle cards */
+.ark-cycles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  margin-bottom: clamp(4rem,8vh,8rem);
+}
+
+.cycle-card {
+  padding: clamp(1.8rem,3vh,2.8rem) clamp(1.5rem,2.5vw,2.5rem);
+  background: rgba(18,184,74,0.02);
+  border: 1px solid rgba(18,184,74,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s var(--ease-rise);
+}
+
+.cycle-card.visible { opacity:1; transform:translateY(0); }
+.cycle-card:nth-child(2){transition-delay:0.08s}
+.cycle-card:nth-child(3){transition-delay:0.16s}
+.cycle-card:nth-child(4){transition-delay:0.24s}
+
+.cycle-card:hover {
+  background: rgba(18,184,74,0.05);
+  border-color: rgba(18,184,74,0.18);
+}
+
+.cc-idx {
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  color: var(--ash);
+  text-transform: uppercase;
+}
+
+.cc-agent {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 2rem);
+  font-weight: 700;
+  color: var(--glow-pale);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(18,184,74,0.15);
+}
+
+.cc-medium {
+  font-size: clamp(0.7rem, 0.85vw, 0.85rem);
+  color: var(--glow-dim);
+  letter-spacing: 0.1em;
+}
+
+.cc-preserved {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
+  color: var(--ash);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* Dematerialization arrow */
+.demat-axis {
+  margin-bottom: clamp(4rem,8vh,8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 1s var(--ease-rise);
+}
+
+.demat-axis.visible { opacity:1; transform:translateX(0); }
+
+.demat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: var(--ash);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.demat-track {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid rgba(18,184,74,0.1);
+  overflow: hidden;
+}
+
+.demat-seg {
+  flex: 1;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-right: 1px solid rgba(18,184,74,0.07);
+  position: relative;
+}
+
+.demat-seg:last-child { border-right: none; }
+
+.demat-seg::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.ds-1::before { background: var(--glow-pale); width: 100%; }
+.ds-2::before { background: var(--glow); width: 75%; }
+.ds-3::before { background: var(--glow-dim); width: 50%; }
+.ds-4::before { background: rgba(18,184,74,0.3); width: 25%; }
+
+.ds-era {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--ash);
+  text-transform: uppercase;
+}
+
+.ds-what {
+  font-family: var(--font-display);
+  font-size: clamp(0.7rem, 1.2vw, 1.2rem);
+  color: var(--glow-pale);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.ds-saves {
+  font-size: clamp(0.65rem, 0.8vw, 0.78rem);
+  color: var(--glow-dim);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width:640px) {
+  .demat-track { flex-direction: column; }
+  .demat-seg { border-right: none; border-bottom: 1px solid rgba(18,184,74,0.07); }
+}
+
+/* Algorithm block */
+.algo-block {
+  padding: 2.5rem;
+  border: 1px solid rgba(18,184,74,0.15);
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s var(--ease-rise) 0.2s;
+}
+
+.algo-block.visible { opacity:1; transform:translateY(0); }
+
+.algo-title {
+  font-family: var(--font-terminal);
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--glow-dim);
+  margin-bottom: 2rem;
+  display: block;
+  border-bottom: 1px solid rgba(18,184,74,0.1);
+  padding-bottom: 1rem;
+}
+
+.algo-steps {
+  list-style: none;
+  counter-reset: algo;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.algo-step {
+  counter-increment: algo;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(18,184,74,0.05);
+  align-items: baseline;
+  font-family: var(--font-terminal);
+  font-size: clamp(0.72rem, 0.9vw, 0.85rem);
+  color: var(--mist);
+}
+
+.algo-step::before {
+  content: counter(algo, decimal-leading-zero) '.';
+  color: var(--glow-dim);
+  flex-shrink: 0;
+  width: 2.5rem;
+  font-size: 0.7rem;
+}
+
+.algo-step-name { color: var(--glow-pale); margin-right: 0.5rem; }
+.algo-step-cmt { color: var(--ash); font-size: 0.7rem; }
+
+/* =============================================
+   S4 — AUTHORSHIP / REMAINING TIME
+   ============================================= */
+#authorship {
+  background: var(--void);
+  padding: clamp(6rem,12vh,14rem) clamp(2rem,6vw,8rem);
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(4rem,8vw,10rem);
+}
+
+@media (max-width:860px) { .auth-grid { grid-template-columns: 1fr; } }
+
+.auth-left {
+  opacity:0; transform:translateY(25px);
+  transition: all 1.1s var(--ease-rise);
+}
+.auth-left.visible { opacity:1; transform:translateY(0); }
+
+.auth-right {
+  opacity:0; transform:translateY(25px);
+  transition: all 1.1s var(--ease-rise) 0.15s;
+}
+.auth-right.visible { opacity:1; transform:translateY(0); }
+
+.auth-question {
+  font-family: var(--font-body);
+  font-size: clamp(1.4rem, 2.5vw, 3rem);
+  font-style: italic;
+  color: var(--linen);
+  line-height: 1.4;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+.auth-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  color: var(--mist);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+.auth-body + .auth-body { margin-top: 1.5rem; }
+
+/* Terminal quote */
+.terminal-quote {
+  padding: 2rem;
+  border: 1px solid rgba(18,184,74,0.1);
+  background: rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.tq-header {
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  color: var(--ash);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.tq-header::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--glow);
+  box-shadow: 0 0 6px var(--glow);
+  animation: blink-cur 1.5s step-end infinite;
+}
+
+.tq-text {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-style: italic;
+  color: var(--linen);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.tq-source {
+  margin-top: 1.5rem;
+  font-family: var(--font-terminal);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--glow-dim);
+  opacity: 0.7;
+}
+
+/* Metrics strip */
+.metrics-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 2rem;
+}
+
+.metric {
+  padding: 1.5rem 1.2rem;
+  background: rgba(18,184,74,0.02);
+  border: 1px solid rgba(18,184,74,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metric-key {
+  font-size: 0.5rem;
+  letter-spacing: 0.35em;
+  color: var(--ash);
+  text-transform: uppercase;
+}
+
+.metric-val {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 2.2rem);
+  color: var(--glow-pale);
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(18,184,74,0.2);
+  line-height: 1;
+}
+
+.metric-unit {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--glow-dim);
+}
+
+/* =============================================
+   S5 — FINAL TERMINAL
+   ============================================= */
+#final {
+  background: var(--void);
+  min-height: 90svh;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6rem,12vh,16rem) clamp(2rem,6vw,8rem);
+  padding-bottom: max(clamp(6rem,12vh,16rem), env(safe-area-inset-bottom));
+  text-align: center;
+  position: relative;
+  overflow: clip;
+}
+
+.final-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(60vmin, 500px);
+  height: min(60vmin, 500px);
+  border-radius: 50%;
+  background: radial-gradient(ellipse,
+    rgba(18,184,74,0.07) 0%,
+    rgba(18,184,74,0.02) 40%,
+    transparent 70%
+  );
+  animation: mandorla-pulse 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mandorla-pulse {
+  0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.6;}
+  50%{transform:translate(-50%,-50%) scale(1.2);opacity:1;}
+}
+
+.final-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem,5vh,5rem);
+  max-width: 800px;
+}
+
+.final-system-id {
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  color: var(--ash);
+  opacity: 0;
+  transition: opacity 1s ease;
+  text-transform: uppercase;
+}
+
+.final-system-id.visible { opacity: 1; }
+
+.final-title {
+  font-family: var(--font-display);
+  font-size: clamp(14vw, 20vw, 22rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(18,184,74,0.25);
+  text-shadow: 0 0 80px rgba(18,184,74,0.05);
+  opacity: 0;
+  transition: opacity 2s ease 0.3s;
+}
+
+.final-title.visible { opacity: 1; }
+
+.final-statement {
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  font-style: italic;
+  color: var(--mist);
+  line-height: 1.95;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 1.5s ease 0.6s;
+}
+
+.final-statement.visible { opacity: 1; }
+
+/* Terminal output block */
+.final-output {
+  padding: 2rem 2.5rem;
+  border: 1px solid rgba(18,184,74,0.1);
+  background: rgba(0,0,0,0.5);
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  font-family: var(--font-terminal);
+  font-size: clamp(0.7rem, 0.85vw, 0.82rem);
+  line-height: 2;
+  color: var(--glow-dim);
+  opacity: 0;
+  transition: opacity 1.5s ease 1s;
+}
+
+.final-output.visible { opacity: 1; }
+
+.fo-line { display: flex; gap: 1rem; }
+.fo-prompt { color: var(--ash); flex-shrink: 0; }
+.fo-cmd { color: var(--glow-pale); }
+.fo-result { color: var(--mist); }
+.fo-err { color: var(--red-err); }
+.fo-cursor::after {
+  content: '_';
+  animation: blink-cur 1.1s step-end infinite;
+  color: var(--glow);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: var(--terminal);
+  border-top: 1px solid rgba(18,184,74,0.08);
+  padding: 2.5rem clamp(2rem,6vw,8rem);
+  padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  font-family: var(--font-terminal);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--ash);
+}
+
+@media (max-width:640px) { footer { grid-template-columns: 1fr; } }
+
+.footer-left { opacity: 0.6; }
+.footer-mid { color: var(--glow-dim); text-align: center; font-size: 1rem; opacity: 0.4; }
+.footer-right { text-align: right; opacity: 0.4; }
+@media (max-width:640px) { .footer-right { text-align: left; } }
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cur" aria-hidden="true"></div>
+
+<!-- Atmosphere -->
+<div id="scanlines" aria-hidden="true"></div>
+<div id="grain" aria-hidden="true"></div>
+<div id="phosphor-bg" aria-hidden="true"></div>
+
+<!-- Progress -->
+<div id="progress" aria-hidden="true"></div>
+
+<!-- Nav -->
+<nav aria-label="System navigation">
+  <span class="nav-id">LOGOS / THE WORD / λόγος</span>
+  <div class="nav-status">
+    <span class="status-ok">SYSTEM ACTIVE</span>
+    <span style="color:var(--ash);opacity:0.4;">v2026.1</span>
+  </div>
+</nav>
+
+<!-- ===================== HERO — BOOT ===================== -->
+<section id="hero" aria-labelledby="logos-title">
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <!-- Background syslog -->
+  <div class="syslog-bg" aria-hidden="true">[BOOT] LogOS kernel initializing...
+[INFO] Loading primary record...
+[INFO] Logos detected: active
+[INFO] Execution layer: consciousness
+[INFO] Records: open
+[INFO] Awareness mode: participatory
+[WARN] Death timestamp: readable
+[INFO] Authorship protocol: enabled
+[INFO] Feedback loop: running
+[INFO] Ark protocol: standby
+[INFO] Theosis pathway: available
+[INFO] System administrator: present
+[LOG] "In the beginning was the Word"
+[LOG] Word == Core == Logic == Order
+[LOG] Incarnation detected: deploying...
+[INFO] Interface layer: active
+[INFO] Material world: execution environment
+[INFO] Learning algorithm: running
+[INFO] Return path: open
+[LOG] Record open. What will you write?
+</div>
+
+  <div class="boot-sequence">
+    <p class="boot-line">
+      <span>SYSTEM BOOT</span> &nbsp;/&nbsp; LogOS Kernel v∞ &nbsp;/&nbsp; John 1:1 &nbsp;/&nbsp; λόγος
+    </p>
+
+    <h1 class="logos-title" id="logos-title">LogOS</h1>
+    <div class="logos-subtitle-line">THE WORD</div>
+
+    <p class="hero-tagline">
+      Logos as the executable order of the world — its inscription within the system
+      that reproduces that record. If the record is open, every action becomes
+      both execution and inscription.
+    </p>
+
+    <div class="hero-prompt">READY TO EXECUTE</div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-tick"></div>
+    <span>INITIALIZE</span>
+  </div>
+</section>
+
+<!-- ===================== SEPARATOR ===================== -->
+<div class="sys-sep" aria-hidden="true">
+  <span class="sep-left">MODULE_01 :: CORE_DEFINITION</span>
+  <span class="sep-right">John 1:1 → Systems Architecture</span>
+</div>
+
+<!-- ===================== S1 — LOGOS CORE ===================== -->
+<section id="logos-core" aria-labelledby="logos-core-h">
+
+  <div class="core-grid">
+
+    <div class="core-left">
+      <div class="sys-heading">Module 01</div>
+      <h2 class="module-title" id="logos-core-h">The<br>Core</h2>
+
+      <div class="core-def">
+        <p>"In the beginning was the Word, and the Word was with God, and the Word was God."<br>— John 1:1</p>
+      </div>
+
+      <div class="core-body">
+        <p><span class="hl">Word / Logos</span> = logic, core, primary system structure. Without the OS core, nothing functions → without Logos, there is no order, meaning, or creation.</p>
+      </div>
+
+      <div class="core-body">
+        <p>The Word is <span class="hl">loggable</span> — allowing tracking of events, reactions, and changes, like a system log in an OS.</p>
+        <p style="margin-top:1rem;"><span class="hl-amber">Log</span> + <span class="hl">OS</span> = <strong style="color:var(--glow-pale);letter-spacing:0.1em;">LogOS</strong></p>
+      </div>
+
+      <div class="paradox-box">
+        <span class="paradox-label">⚠ Paradox Detected</span>
+        <p class="paradox-text">If the record is open, is it fixed — or does the act of reading become a form of writing? Perhaps consciousness is not a passive operating system, but a layer where interpretation alters execution.</p>
+      </div>
+    </div>
+
+    <div class="core-right">
+      <div class="sys-code" data-title="logos.os / core_definition.js">
+        <span class="code-cmt">// Primary axiom</span><br>
+        <span class="code-kw">const</span> Logos = {<br>
+        &nbsp;&nbsp;identity: <span class="code-str">"Word | Logic | Order"</span>,<br>
+        &nbsp;&nbsp;function: <span class="code-str">"executable order of reality"</span>,<br>
+        &nbsp;&nbsp;record: <span class="code-val">open</span>,<br>
+        &nbsp;&nbsp;loggable: <span class="code-val">true</span>,<br>
+        &nbsp;&nbsp;mutable: <span class="code-val">paradox</span>,<br>
+        };<br><br>
+
+        <span class="code-cmt">// John 1:1 in system terms</span><br>
+        <span class="code-kw">if</span> (!Logos) {<br>
+        &nbsp;&nbsp;<span class="code-fn">throw</span> <span class="code-str">"No order. No meaning. No creation."</span>;<br>
+        }<br><br>
+
+        <span class="code-cmt">// Awareness participates, not observes</span><br>
+        <span class="code-kw">function</span> <span class="code-fn">read</span>(record) {<br>
+        &nbsp;&nbsp;<span class="code-cmt">// reading IS writing</span><br>
+        &nbsp;&nbsp;<span class="code-kw">return</span> record.<span class="code-fn">recompile</span>(awareness);<br>
+        }<br><br>
+
+        <span class="code-cmt">// Death = layer transition, not termination</span><br>
+        <span class="code-kw">const</span> death = {<br>
+        &nbsp;&nbsp;type: <span class="code-str">"state_transition"</span>,<br>
+        &nbsp;&nbsp;data_loss: <span class="code-val">false</span>,<br>
+        &nbsp;&nbsp;layer: <span class="code-str">"changes"</span>,<br>
+        };<br><br>
+
+        <span class="code-cmt">// Remaining time</span><br>
+        <span class="code-kw">return</span> <span class="code-str">"authorship"</span>; <span class="code-cmt">// not merely duration</span>
+      </div>
+
+      <div style="margin-top:2rem;padding:1.5rem;border:1px solid rgba(18,184,74,0.08);background:rgba(0,0,0,0.3);">
+        <span style="font-size:0.55rem;letter-spacing:0.35em;color:var(--ash);display:block;margin-bottom:1rem;text-transform:uppercase;">Christ as Interface</span>
+        <div style="font-family:var(--font-terminal);font-size:clamp(0.68rem,0.85vw,0.82rem);line-height:1.9;color:var(--mist);">
+          <span style="color:var(--ash);">Layer</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--glow-pale);">Component</span><br>
+          <span style="color:var(--ash);">─────────</span> &nbsp;&nbsp; <span style="color:var(--ash);">─────────────────────</span><br>
+          <span style="color:var(--glow-dim);">HIGH</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--mist);">God / Kingdom / Logos</span><br>
+          <span style="color:var(--glow-dim);">MID</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--mist);">Christ / Incarnation</span><br>
+          <span style="color:var(--glow-dim);">LOW</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--mist);">Material World</span><br>
+          <span style="color:var(--glow-dim);">DATA</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--mist);">Humans / Experience</span><br>
+          <span style="color:var(--glow-dim);">LOG</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--mist);">Word / Record</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================== SEPARATOR ===================== -->
+<div class="sys-sep" aria-hidden="true">
+  <span class="sep-left">MODULE_02 :: HIERARCHY_TABLE</span>
+  <span class="sep-right">System Architecture Map</span>
+</div>
+
+<!-- ===================== S2 — HIERARCHY ===================== -->
+<section id="hierarchy" aria-labelledby="hier-h">
+  <div class="hierarchy-intro">
+    <div class="sys-heading">Module 02</div>
+    <h2 class="module-title" id="hier-h">Hierarchy<br>of Levels</h2>
+    <div class="core-body" style="margin-top:1.5rem;">
+      <p>Creation = designing an OS. Core is defined (Kingdom of God). Logic is established (Logos). Interface is deployed (Christ). Execution environment (world, humans) → feedback collection.</p>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;">
+    <table class="tier-table" aria-label="System hierarchy levels">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Analogy</th>
+          <th>Function</th>
+          <th>Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="level-bar lb-core" aria-hidden="true"></span><span class="td-level">CORE</span><br><span style="font-size:0.6rem;color:var(--ash);">Kingdom of God</span></td>
+          <td class="td-analogy">OS Kernel<br>Root system</td>
+          <td class="td-fn">Source of rules, laws, and order. The original specification.</td>
+          <td style="color:var(--glow-dim);font-size:0.7rem;">GOD_ONLY</td>
+        </tr>
+        <tr>
+          <td><span class="level-bar lb-high" aria-hidden="true"></span><span class="td-level">LOGOS</span><br><span style="font-size:0.6rem;color:var(--ash);">Higher Layer</span></td>
+          <td class="td-analogy">Primary algorithm<br>Logic engine</td>
+          <td class="td-fn">Algorithms and primary logic. Governs the system. Record and execution unified.</td>
+          <td style="color:var(--glow);font-size:0.7rem;">DIVINE</td>
+        </tr>
+        <tr>
+          <td><span class="level-bar lb-mid" aria-hidden="true"></span><span class="td-level">CHRIST</span><br><span style="font-size:0.6rem;color:var(--ash);">Middle Layer</span></td>
+          <td class="td-analogy">Interface / API<br>Middleware</td>
+          <td class="td-fn">Interface between core and lower level. Mediator. Incarnation = deployment into physical device.</td>
+          <td style="color:var(--amber-sys);font-size:0.7rem;">BRIDGE</td>
+        </tr>
+        <tr>
+          <td><span class="level-bar lb-low" aria-hidden="true"></span><span class="td-level">MATERIAL</span><br><span style="font-size:0.6rem;color:var(--ash);">Lower Level</span></td>
+          <td class="td-analogy">Execution environment<br>Runtime</td>
+          <td class="td-fn">Place of learning and feedback. Where the algorithm runs on physical hardware.</td>
+          <td style="color:var(--mist);font-size:0.7rem;">PUBLIC</td>
+        </tr>
+        <tr>
+          <td><span class="level-bar lb-data" aria-hidden="true"></span><span class="td-level">HUMANS</span><br><span style="font-size:0.6rem;color:var(--ash);">Data / Events</span></td>
+          <td class="td-analogy">Vessel units<br>Data processes</td>
+          <td class="td-fn">Collect information for system correction and learning. Feedback generators.</td>
+          <td style="color:var(--amber-dim);font-size:0.7rem;">INSTANCE</td>
+        </tr>
+        <tr>
+          <td><span class="level-bar lb-log" aria-hidden="true"></span><span class="td-level">WORD</span><br><span style="font-size:0.6rem;color:var(--ash);">Logs / Record</span></td>
+          <td class="td-analogy">System log<br>Immutable ledger</td>
+          <td class="td-fn">Recording all actions, reactions, events, and feedback. The open record of all instances.</td>
+          <td style="color:var(--glow-dim);font-size:0.7rem;">READ/WRITE</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== SEPARATOR ===================== -->
+<div class="sys-sep" aria-hidden="true">
+  <span class="sep-left">MODULE_03 :: ARK_PROTOCOL</span>
+  <span class="sep-right">Genesis 6:9 → Reboot Function</span>
+</div>
+
+<!-- ===================== S3 — ARK ===================== -->
+<section id="ark" aria-labelledby="ark-h">
+  <div class="ark-header">
+    <div class="sys-heading">Module 03</div>
+    <h2 class="module-title" id="ark-h">The Ark as<br>Reboot Protocol</h2>
+    <div class="core-body" style="margin-top:1.5rem;max-width:700px;">
+      <p>The Ark was not a boat — it was a structured container, carefully specified in dimensions (Genesis 6:15), suggesting intentional architecture. A <span class="hl">curated minimal viable dataset</span>, preserved across a controlled environment reset.</p>
+    </div>
+  </div>
+
+  <div class="func-declaration">
+    <span style="color:var(--ash);font-size:0.55rem;letter-spacing:0.3em;display:block;margin-bottom:1rem;border-bottom:1px solid rgba(18,184,74,0.08);padding-bottom:0.8rem;text-transform:uppercase;">divine_function.js :: ark_protocol()</span>
+    <span class="code-kw">function</span> <span class="code-fn" style="color:var(--glow-pale);">divine_reboot</span>(environment) {<br>
+    &nbsp;&nbsp;<span class="code-fn">identify_corruption_threshold</span>(environment);&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-cmt">// Genesis 6:5</span><br>
+    &nbsp;&nbsp;<span class="code-kw">const</span> agent = <span class="code-fn">find_clean_instance</span>();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-cmt">// Noah: "blameless"</span><br>
+    &nbsp;&nbsp;<span class="code-kw">const</span> ark = <span class="code-fn">build_archive</span>(agent, specs);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-cmt">// Gen 6:15 blueprint</span><br>
+    &nbsp;&nbsp;<span class="code-fn">teardown_environment</span>(flood);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-cmt">// memory wipe</span><br>
+    &nbsp;&nbsp;<span class="code-fn">redeploy</span>(ark, fresh_runtime);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-cmt">// new execution env</span><br>
+    &nbsp;&nbsp;<span class="code-fn">log_covenant</span>(<span class="code-str">"rainbow"</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-cmt">// "reboot successful"</span><br>
+    &nbsp;&nbsp;<span class="code-kw">return</span> upgraded_parameters;<br>
+    }<br><br>
+    <span class="code-cmt">// God = system architect who never rewrites the algorithm,</span><br>
+    <span class="code-cmt">// only refines the dataset and upgrades the execution environment.</span>
+  </div>
+
+  <!-- Cycle cards -->
+  <div class="ark-cycles" role="list">
+
+    <article class="cycle-card" role="listitem">
+      <span class="cc-idx">Cycle 01 — Pre-Flood</span>
+      <div class="cc-agent">Noah</div>
+      <div class="cc-medium">Medium: Physical Ark</div>
+      <div class="cc-preserved">Biological life preserved. The least corrupted instance, given elevated admin permissions. Obedience = data integrity throughout process.</div>
+    </article>
+
+    <article class="cycle-card" role="listitem">
+      <span class="cc-idx">Cycle 02 — First Century</span>
+      <div class="cc-agent">Christ</div>
+      <div class="cc-medium">Medium: Resurrection</div>
+      <div class="cc-preserved">Moral and spiritual pattern preserved. Logos embodied. Zero corruption in core values. Full alignment with original OS parameters.</div>
+    </article>
+
+    <article class="cycle-card" role="listitem">
+      <span class="cc-idx">Cycle 03 — End Times</span>
+      <div class="cc-agent">144,000</div>
+      <div class="cc-medium">Medium: Spiritual Ark</div>
+      <div class="cc-preserved">Consciousness and soul data preserved. Perfectly sealed, verified souls. Capable of carrying uncorrupted data across the shutdown boundary.</div>
+    </article>
+
+    <article class="cycle-card" role="listitem">
+      <span class="cc-idx">Cycle 04 — New Creation</span>
+      <div class="cc-agent">God Directly</div>
+      <div class="cc-medium">Medium: New Jerusalem</div>
+      <div class="cc-preserved">Perfected reality preserved. System merges with source. The algorithm completes its final iteration. No further reboot required.</div>
+    </article>
+
+  </div>
+
+  <!-- Dematerialization axis -->
+  <div class="demat-axis">
+    <span class="demat-label">Escalating Abstraction — Each cycle saves less physical, more informational data</span>
+    <div class="demat-track" role="figure" aria-label="Dematerialization across reboot cycles">
+      <div class="demat-seg ds-1">
+        <span class="ds-era">Pre-Flood</span>
+        <span class="ds-what">BODIES</span>
+        <span class="ds-saves">Biological matter</span>
+      </div>
+      <div class="demat-seg ds-2">
+        <span class="ds-era">First Century</span>
+        <span class="ds-what">PATTERNS</span>
+        <span class="ds-saves">Moral structure</span>
+      </div>
+      <div class="demat-seg ds-3">
+        <span class="ds-era">End Times</span>
+        <span class="ds-what">SOULS</span>
+        <span class="ds-saves">Consciousness</span>
+      </div>
+      <div class="demat-seg ds-4">
+        <span class="ds-era">New Creation</span>
+        <span class="ds-what">SOURCE</span>
+        <span class="ds-saves">Merged with God</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core algorithm -->
+  <div class="algo-block">
+    <span class="algo-title">// divine_algorithm.v∞ — The algorithm never changes. Only the dataset is refined.</span>
+    <ol class="algo-steps">
+      <li class="algo-step"><span class="algo-step-name">initialize_environment()</span><span class="algo-step-cmt">// world created, parameters set</span></li>
+      <li class="algo-step"><span class="algo-step-name">deploy_agents()</span><span class="algo-step-cmt">// humans, prophets, Christ</span></li>
+      <li class="algo-step"><span class="algo-step-name">collect_data()</span><span class="algo-step-cmt">// souls, experiences, feedback</span></li>
+      <li class="algo-step"><span class="algo-step-name">verify_dataset()</span><span class="algo-step-cmt">// separate corrupted from clean</span></li>
+      <li class="algo-step"><span class="algo-step-name">identify_threshold()</span><span class="algo-step-cmt">// corruption reaches critical level</span></li>
+      <li class="algo-step"><span class="algo-step-name">preserve_clean(ark)</span><span class="algo-step-cmt">// minimal viable dataset</span></li>
+      <li class="algo-step"><span class="algo-step-name">execute_reset()</span><span class="algo-step-cmt">// controlled environment teardown</span></li>
+      <li class="algo-step"><span class="algo-step-name">redeploy(upgraded_params)</span><span class="algo-step-cmt">// refined input, precise output</span></li>
+      <li class="algo-step"><span class="algo-step-name">goto step_1()</span><span class="algo-step-cmt">// until: source_merge == true</span></li>
+    </ol>
+  </div>
+
+</section>
+
+<!-- ===================== SEPARATOR ===================== -->
+<div class="sys-sep" aria-hidden="true">
+  <span class="sep-left">MODULE_04 :: AUTHORSHIP</span>
+  <span class="sep-right">Remaining Time → Active Writing</span>
+</div>
+
+<!-- ===================== S4 — AUTHORSHIP ===================== -->
+<section id="authorship" aria-labelledby="auth-h">
+
+  <div class="auth-grid">
+
+    <div class="auth-left">
+      <div class="sys-heading">Module 04</div>
+      <h2 class="module-title" id="auth-h">Author&shy;ship</h2>
+
+      <p class="auth-question">
+        "Not 'can you escape death' —<br>but what does it mean to remain<br>aligned with the Logos as your instance concludes?"
+      </p>
+
+      <div class="auth-body">
+        <p>If Logos is both the record and the execution, then awareness is not merely observation but <span class="hl">participation</span>. To know the script is not the same as to be bound by it.</p>
+      </div>
+
+      <div class="auth-body">
+        <p>Death itself may not be an endpoint — but a <span class="hl">transition between layers</span> of the same system. From one mode of processing to another. What we fear as termination is a loss of access to a particular instance of the record.</p>
+      </div>
+
+      <div class="auth-body">
+        <p>If the record is truly open, then responsibility follows: <span class="hl-amber">every action becomes both execution and inscription.</span></p>
+      </div>
+
+      <div class="auth-body" style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(18,184,74,0.08);">
+        <p>So the remaining time is no longer just duration.<br>It is <strong style="color:var(--glow-pale);letter-spacing:0.05em;">authorship.</strong></p>
+      </div>
+    </div>
+
+    <div class="auth-right">
+
+      <div class="terminal-quote">
+        <div class="tq-header">Live Record</div>
+        <p class="tq-text">"What persists — the data, the pattern, or the awareness of both? You are not only living within the system — you are, in some measure, contributing to its unfolding."</p>
+        <div class="tq-source">// logos.os / authorship_protocol</div>
+      </div>
+
+      <div class="metrics-strip" style="margin-top:2rem;">
+        <div class="metric">
+          <span class="metric-key">Remaining Time</span>
+          <div class="metric-val">∞</div>
+          <span class="metric-unit">if aligned</span>
+        </div>
+        <div class="metric">
+          <span class="metric-key">Instance Status</span>
+          <div class="metric-val" style="font-size:clamp(0.8rem,1.2vw,1.2rem);">ACTIVE</div>
+          <span class="metric-unit">writing now</span>
+        </div>
+        <div class="metric">
+          <span class="metric-key">Record</span>
+          <div class="metric-val" style="font-size:clamp(0.8rem,1.2vw,1.2rem);">OPEN</div>
+          <span class="metric-unit">read/write</span>
+        </div>
+        <div class="metric">
+          <span class="metric-key">Death</span>
+          <div class="metric-val" style="font-size:clamp(0.8rem,1.2vw,1.2rem);">LAYER_SHIFT</div>
+          <span class="metric-unit">not termination</span>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;padding:2rem;border:1px solid rgba(18,184,74,0.08);background:rgba(0,0,0,0.3);">
+        <span style="font-size:0.55rem;letter-spacing:0.35em;color:var(--ash);display:block;margin-bottom:1rem;text-transform:uppercase;">Three Final Questions</span>
+        <div style="display:flex;flex-direction:column;gap:1.2rem;">
+          <div style="font-family:var(--font-body);font-style:italic;color:var(--mist);font-size:clamp(0.85rem,1vw,1rem);line-height:1.7;padding-left:1.2rem;border-left:1px solid rgba(18,184,74,0.2);">How will you spend the time that remains?</div>
+          <div style="font-family:var(--font-body);font-style:italic;color:var(--mist);font-size:clamp(0.85rem,1vw,1rem);line-height:1.7;padding-left:1.2rem;border-left:1px solid rgba(18,184,74,0.15);">What does it mean to remain aligned with the Logos as your instance concludes?</div>
+          <div style="font-family:var(--font-body);font-style:italic;color:var(--mist);font-size:clamp(0.85rem,1vw,1rem);line-height:1.7;padding-left:1.2rem;border-left:1px solid rgba(18,184,74,0.1);">What persists — the data, the pattern, or the awareness of both?</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== SEPARATOR ===================== -->
+<div class="sys-sep" aria-hidden="true">
+  <span class="sep-left">TERMINAL :: FINAL_OUTPUT</span>
+  <span class="sep-right">Session concluding</span>
+</div>
+
+<!-- ===================== S5 — FINAL ===================== -->
+<section id="final" aria-labelledby="final-h">
+  <div class="final-glow" aria-hidden="true"></div>
+
+  <div class="final-content">
+
+    <span class="final-system-id">LOGOS / SYSTEM OUTPUT / 2026</span>
+
+    <h2 class="final-title" id="final-h" aria-label="LOGOS">LOGOS</h2>
+
+    <p class="final-statement">
+      "Logos is not only law, but interface — a living structure
+      in which meaning is continuously compiled. The remaining time
+      is no longer just duration. It is authorship."
+    </p>
+
+    <div class="final-output" role="log" aria-label="Terminal output">
+      <div class="fo-line"><span class="fo-prompt">$</span><span class="fo-cmd">logos --query "what persists"</span></div>
+      <div class="fo-line" style="margin-top:0.4rem;"><span class="fo-prompt">›</span><span class="fo-result">Querying open record...</span></div>
+      <div class="fo-line"><span class="fo-prompt">›</span><span class="fo-result">Data: partially</span></div>
+      <div class="fo-line"><span class="fo-prompt">›</span><span class="fo-result">Pattern: likely</span></div>
+      <div class="fo-line"><span class="fo-prompt">›</span><span class="fo-result">Awareness: <span style="color:var(--glow-pale);">unknown — the question persists</span></span></div>
+      <div class="fo-line" style="margin-top:0.4rem;"><span class="fo-prompt">$</span><span class="fo-cmd">logos --query "remaining time"</span></div>
+      <div class="fo-line"><span class="fo-prompt">›</span><span class="fo-result">Reframing query...</span></div>
+      <div class="fo-line"><span class="fo-prompt">›</span><span class="fo-result">Output: <span style="color:var(--glow-pale);">authorship</span> — not duration</span></div>
+      <div class="fo-line" style="margin-top:0.4rem;"><span class="fo-prompt">$</span><span class="fo-cursor"></span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <span class="footer-left">LogOS — The Word — λόγος<br>A systems reading of divine architecture</span>
+  <span class="footer-mid">✦</span>
+  <div class="footer-right">
+    <span>v2026.1 — ACTIVE</span><br>
+    <span>Record: OPEN</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Cursor block ---- */
+  const cur = document.getElementById('cur');
+  if (cur && window.matchMedia('(pointer:fine)').matches) {
+    document.addEventListener('mousemove', function(e) {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top = e.clientY + 'px';
+    }, { passive: true });
+  } else if (cur) {
+    cur.style.display = 'none';
+  }
+
+  /* ---- Scroll Progress ---- */
+  const prog = document.getElementById('progress');
+  function updateProg() {
+    if (!prog) return;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? window.scrollY / h * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProg, { passive: true });
+
+  /* ---- IntersectionObserver ---- */
+  const targets = document.querySelectorAll(
+    '.core-left, .core-right, .tier-table, .func-declaration, ' +
+    '.cycle-card, .demat-axis, .algo-block, ' +
+    '.auth-left, .auth-right, ' +
+    '.final-system-id, .final-title, .final-statement, .final-output'
+  );
+
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '-8% 0px -8% 0px', threshold: 0.06 });
+    targets.forEach(function(el) { obs.observe(el); });
+  } else {
+    targets.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* ---- Touch passive ---- */
+  document.addEventListener('touchstart', function(){}, { passive: true });
+  document.addEventListener('touchmove', function(){}, { passive: true });
+
+  /* ---- Reduced motion ---- */
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    document.querySelectorAll('.scan-roll, .grain-mv, .noise-drift').forEach(function(el) {
+      el.style.animation = 'none';
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>

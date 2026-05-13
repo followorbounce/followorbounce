@@ -132,8 +132,16 @@
   category: "identity"
   tags: ["Spiritual", "Process", "Consciousness"]
   description: "."
-  cover: ""
+  cover: "/assets/images/portfolio/divine-liturgy-architecture.svg"
   url: "/p/divine-liturgy-architecture"
- # featured: "true"
+  featured: "true"
   year: "2025"
 
+- title: "Logos: The Word"
+  category: "identity"
+  tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
+  description: ""
+  cover: "/assets/images/portfolio/logos-the-word.svg"
+  url: "/p/logos-the-word"
+  featured: "true"
+  year: "2025"

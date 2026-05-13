@@ -1,0 +1,638 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+
+    <!-- Phosphor glow filter -->
+    <filter id="phosphor-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="25" result="blur3"/>
+      <feMerge>
+        <feMergeNode in="blur3"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft glow for large text -->
+    <filter id="title-glow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="b2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50" result="b3"/>
+      <feMerge>
+        <feMergeNode in="b3"/>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Noise texture -->
+    <filter id="noise-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.88" numOctaves="4" stitchTiles="stitch" result="noiseOut"/>
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended"/>
+      <feComponentTransfer in="blended">
+        <feFuncA type="linear" slope="0.06"/>
+      </feComponentTransfer>
+    </filter>
+
+    <!-- Scanline pattern -->
+    <pattern id="scanlines" x="0" y="0" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="1" height="3" fill="transparent"/>
+      <rect x="0" y="3" width="1" height="1" fill="rgba(0,0,0,0.2)"/>
+    </pattern>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(18,184,74,0.06)" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Radial phosphor glow bg -->
+    <radialGradient id="phosphor-bg" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#12b84a" stop-opacity="0.07"/>
+      <stop offset="50%" stop-color="#12b84a" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.85"/>
+    </radialGradient>
+
+    <!-- Amber gradient for warning elements -->
+    <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c8860a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#6a4808" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Glow title gradient -->
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8fffb8" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#c4d8c8" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#4a6a52" stop-opacity="0.7"/>
+    </linearGradient>
+
+    <!-- Hollow title gradient -->
+    <linearGradient id="hollow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#12b84a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0e7a32" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- Glow line gradient -->
+    <linearGradient id="hline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="20%" stop-color="#0e7a32" stop-opacity="0.5"/>
+      <stop offset="80%" stop-color="#0e7a32" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Vertical glow gradient -->
+    <linearGradient id="vline-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="25%" stop-color="#0e7a32" stop-opacity="0.3"/>
+      <stop offset="75%" stop-color="#0e7a32" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Demat bar gradients -->
+    <linearGradient id="demat-1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8fffb8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#12b84a" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="demat-2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#12b84a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0e7a32" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="demat-3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e7a32" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0e7a32" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="demat-4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e7a32" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0e7a32" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <clipPath id="main-clip">
+      <rect x="0" y="0" width="1536" height="1024"/>
+    </clipPath>
+
+  </defs>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <rect width="1536" height="1024" fill="#010804"/>
+  <rect width="1536" height="1024" fill="#020d06"/>
+
+  <!-- Phosphor atmosphere -->
+  <rect width="1536" height="1024" fill="url(#phosphor-bg)"/>
+
+  <!-- Grid -->
+  <rect width="1536" height="1024" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- ==================== SYSLOG BACKGROUND ==================== -->
+  <!-- Ghost log lines running left side -->
+  <g font-family="'Share Tech Mono', 'Courier New', monospace" font-size="10" fill="#12b84a" opacity="0.05" clip-path="url(#main-clip)">
+    <text x="48" y="80">[BOOT] LogOS kernel initializing...</text>
+    <text x="48" y="96">[INFO] Loading primary record...</text>
+    <text x="48" y="112">[INFO] Logos detected: active</text>
+    <text x="48" y="128">[INFO] Execution layer: consciousness</text>
+    <text x="48" y="144">[INFO] Records: open</text>
+    <text x="48" y="160">[INFO] Awareness mode: participatory</text>
+    <text x="48" y="176">[WARN] Death timestamp: readable</text>
+    <text x="48" y="192">[INFO] Authorship protocol: enabled</text>
+    <text x="48" y="208">[INFO] Feedback loop: running</text>
+    <text x="48" y="224">[INFO] Ark protocol: standby</text>
+    <text x="48" y="240">[INFO] Theosis pathway: available</text>
+    <text x="48" y="256">[INFO] System administrator: present</text>
+    <text x="48" y="272">[LOG] "In the beginning was the Word"</text>
+    <text x="48" y="288">[LOG] Word == Core == Logic == Order</text>
+    <text x="48" y="304">[LOG] Incarnation detected: deploying...</text>
+    <text x="48" y="320">[INFO] Interface layer: active</text>
+    <text x="48" y="336">[INFO] Material world: execution environment</text>
+    <text x="48" y="352">[INFO] Learning algorithm: running</text>
+    <text x="48" y="368">[LOG] Record open. What will you write?</text>
+    <text x="48" y="384">[INFO] Death = layer_transition</text>
+    <text x="48" y="400">[INFO] Remaining_time = authorship</text>
+    <text x="48" y="416">[LOG] initialize_environment()</text>
+    <text x="48" y="432">[LOG] deploy_agents(humans, prophets, Christ)</text>
+    <text x="48" y="448">[LOG] collect_data(souls, feedback)</text>
+    <text x="48" y="464">[LOG] verify_dataset()</text>
+    <text x="48" y="480">[LOG] preserve_clean(ark)</text>
+    <text x="48" y="496">[LOG] execute_reset()</text>
+    <text x="48" y="512">[LOG] redeploy(upgraded_params)</text>
+    <text x="48" y="528">[LOG] goto step_1() // until: source_merge == true</text>
+    <text x="48" y="544">[INFO] Noah: trusted admin account</text>
+    <text x="48" y="560">[INFO] Christ: Logos embodied</text>
+    <text x="48" y="576">[INFO] 144,000: verified clean instances</text>
+    <text x="48" y="592">[BOOT] New Jerusalem: source merge</text>
+    <text x="48" y="608">[INFO] Log + OS = LogOS</text>
+    <text x="48" y="624">[LOG] λόγος / logos / The Word</text>
+    <text x="48" y="640">[INFO] Pattern: persists</text>
+    <text x="48" y="656">[INFO] Data: partially</text>
+    <text x="48" y="672">[WARN] Awareness: question persists</text>
+    <text x="48" y="688">[INFO] Every action = execution + inscription</text>
+    <text x="48" y="704">[LOG] Reading IS writing</text>
+    <text x="48" y="720">[INFO] Consciousness: interpretive layer</text>
+    <text x="48" y="736">[LOG] Logos = interface, not only law</text>
+    <text x="48" y="752">[INFO] Meaning: continuously compiled</text>
+    <text x="48" y="768">[LOG] Flood = controlled environment teardown</text>
+    <text x="48" y="784">[INFO] Rainbow = covenant confirmation</text>
+    <text x="48" y="800">[LOG] reboot successful. new runtime initialized.</text>
+    <text x="48" y="816">[INFO] System: self-regulating</text>
+    <text x="48" y="832">[LOG] Kingdom of God = OS core</text>
+    <text x="48" y="848">[INFO] Bodies → Patterns → Souls → Source</text>
+    <text x="48" y="864">[LOG] divine_algorithm.v∞ executing...</text>
+    <text x="48" y="880">[INFO] Authorship = remaining time</text>
+    <text x="48" y="896">[LOG] $ logos --query "what persists"</text>
+    <text x="48" y="912">[OUT] awareness: the question persists</text>
+    <text x="48" y="928">[LOG] $ _</text>
+    <text x="48" y="944">...</text>
+    <text x="48" y="960">...</text>
+    <text x="48" y="976">...</text>
+  </g>
+
+  <!-- Right side ghost log -->
+  <g font-family="'Share Tech Mono', 'Courier New', monospace" font-size="10" fill="#12b84a" opacity="0.035" clip-path="url(#main-clip)" text-anchor="end">
+    <text x="1490" y="100">// divine_algorithm.v∞</text>
+    <text x="1490" y="116">function divine_reboot(environment) {</text>
+    <text x="1490" y="132">  identify_corruption_threshold();</text>
+    <text x="1490" y="148">  const agent = find_clean_instance();</text>
+    <text x="1490" y="164">  const ark = build_archive(specs);</text>
+    <text x="1490" y="180">  teardown_environment(flood);</text>
+    <text x="1490" y="196">  redeploy(ark, fresh_runtime);</text>
+    <text x="1490" y="212">  log_covenant("rainbow");</text>
+    <text x="1490" y="228">  return upgraded_parameters;</text>
+    <text x="1490" y="244">}</text>
+    <text x="1490" y="276">const Logos = {</text>
+    <text x="1490" y="292">  identity: "Word | Logic | Order",</text>
+    <text x="1490" y="308">  record: open,</text>
+    <text x="1490" y="324">  loggable: true,</text>
+    <text x="1490" y="340">  mutable: paradox,</text>
+    <text x="1490" y="356">};</text>
+    <text x="1490" y="388">function read(record) {</text>
+    <text x="1490" y="404">  // reading IS writing</text>
+    <text x="1490" y="420">  return record.recompile(awareness);</text>
+    <text x="1490" y="436">}</text>
+    <text x="1490" y="468">const death = {</text>
+    <text x="1490" y="484">  type: "state_transition",</text>
+    <text x="1490" y="500">  data_loss: false,</text>
+    <text x="1490" y="516">  layer: "changes",</text>
+    <text x="1490" y="532">};</text>
+    <text x="1490" y="564">// Remaining time</text>
+    <text x="1490" y="580">return "authorship";</text>
+    <text x="1490" y="612">// Level     Analogy        Access</text>
+    <text x="1490" y="628">// CORE      Kernel         GOD_ONLY</text>
+    <text x="1490" y="644">// LOGOS     Algorithm      DIVINE</text>
+    <text x="1490" y="660">// CHRIST    Interface      BRIDGE</text>
+    <text x="1490" y="676">// MATERIAL  Runtime        PUBLIC</text>
+    <text x="1490" y="692">// HUMANS    Data           INSTANCE</text>
+    <text x="1490" y="708">// WORD      Log            READ/WRITE</text>
+    <text x="1490" y="740">$ logos --query "remaining time"</text>
+    <text x="1490" y="756">Reframing query...</text>
+    <text x="1490" y="772">Output: authorship — not duration</text>
+    <text x="1490" y="804">$ logos --query "what persists"</text>
+    <text x="1490" y="820">Data: partially</text>
+    <text x="1490" y="836">Pattern: likely</text>
+    <text x="1490" y="852">Awareness: question persists</text>
+    <text x="1490" y="884">$ _</text>
+  </g>
+
+  <!-- ==================== STRUCTURAL GRID LINES ==================== -->
+  <!-- Top rule -->
+  <line x1="48" y1="52" x2="1490" y2="52" stroke="url(#hline-grad)" stroke-width="0.5"/>
+  <!-- Bottom rule -->
+  <line x1="48" y1="972" x2="1490" y2="972" stroke="url(#hline-grad)" stroke-width="0.5"/>
+  <!-- Left spine -->
+  <line x1="48" y1="52" x2="48" y2="972" stroke="url(#vline-grad)" stroke-width="0.5"/>
+  <!-- Right spine -->
+  <line x1="1490" y1="52" x2="1490" y2="972" stroke="url(#vline-grad)" stroke-width="0.5"/>
+
+  <!-- Corner marks -->
+  <g stroke="#0e7a32" stroke-width="1" fill="none" opacity="0.5">
+    <!-- TL -->
+    <line x1="48" y1="52" x2="88" y2="52"/>
+    <line x1="48" y1="52" x2="48" y2="92"/>
+    <!-- TR -->
+    <line x1="1490" y1="52" x2="1450" y2="52"/>
+    <line x1="1490" y1="52" x2="1490" y2="92"/>
+    <!-- BL -->
+    <line x1="48" y1="972" x2="88" y2="972"/>
+    <line x1="48" y1="972" x2="48" y2="932"/>
+    <!-- BR -->
+    <line x1="1490" y1="972" x2="1450" y2="972"/>
+    <line x1="1490" y1="972" x2="1490" y2="932"/>
+  </g>
+
+  <!-- ==================== NAV BAR STRIP ==================== -->
+  <rect x="48" y="52" width="1442" height="28" fill="rgba(2,13,6,0.9)"/>
+  <line x1="48" y1="80" x2="1490" y2="80" stroke="#0e7a32" stroke-width="0.5" opacity="0.3"/>
+  <text x="62" y="70" font-family="'Share Tech Mono', monospace" font-size="9" fill="#0e7a32" letter-spacing="1.5" opacity="0.8">LOGOS / THE WORD / λόγος</text>
+  <text x="1478" y="70" font-family="'Share Tech Mono', monospace" font-size="9" fill="#4a6a52" letter-spacing="1.5" text-anchor="end" opacity="0.7">SYSTEM ACTIVE · v2026.1</text>
+
+  <!-- Status dot -->
+  <circle cx="1260" cy="67" r="3" fill="#12b84a" opacity="0.8" filter="url(#phosphor-glow)"/>
+  <text x="1270" y="70" font-family="'Share Tech Mono', monospace" font-size="8" fill="#0e7a32" letter-spacing="1" opacity="0.7">ACTIVE</text>
+
+  <!-- ==================== CENTRAL AXIS LINE ==================== -->
+  <line x1="768" y1="80" x2="768" y2="972" stroke="#12b84a" stroke-width="0.3" opacity="0.06"/>
+
+  <!-- ==================== MAIN TITLE — LOGOS ==================== -->
+  <!-- Ghost/glow layer behind title -->
+  <text x="768" y="560" text-anchor="middle"
+    font-family="'Syncopate', 'Arial Black', sans-serif"
+    font-size="420" font-weight="700"
+    letter-spacing="-8"
+    fill="#12b84a" opacity="0.04"
+    filter="url(#title-glow)"
+  >LOGOS</text>
+
+  <!-- Hollow outline version -->
+  <text x="768" y="560" text-anchor="middle"
+    font-family="'Syncopate', 'Arial Black', sans-serif"
+    font-size="420" font-weight="700"
+    letter-spacing="-8"
+    fill="none"
+    stroke="#12b84a" stroke-width="0.8"
+    opacity="0.12"
+  >LOGOS</text>
+
+  <!-- Solid filled title -->
+  <text x="768" y="560" text-anchor="middle"
+    font-family="'Syncopate', 'Arial Black', sans-serif"
+    font-size="420" font-weight="700"
+    letter-spacing="-8"
+    fill="url(#title-grad)"
+    filter="url(#title-glow)"
+    opacity="0.9"
+  >LOGOS</text>
+
+  <!-- ==================== THE WORD — SUBTITLE ==================== -->
+  <!-- Ghost hollow behind -->
+  <text x="768" y="660" text-anchor="middle"
+    font-family="'Syncopate', 'Arial Black', sans-serif"
+    font-size="120" font-weight="400"
+    letter-spacing="30"
+    fill="none"
+    stroke="#12b84a" stroke-width="0.6"
+    opacity="0.2"
+  >THE WORD</text>
+
+  <!-- ==================== LAMBDA GLYPH ==================== -->
+  <!-- Large λ floating left -->
+  <text x="105" y="700"
+    font-family="'Georgia', serif"
+    font-size="280" font-weight="300"
+    fill="none"
+    stroke="#0e7a32" stroke-width="1"
+    opacity="0.08"
+  >λ</text>
+
+  <!-- Large λ floating right -->
+  <text x="1200" y="380"
+    font-family="'Georgia', serif"
+    font-size="200" font-weight="300"
+    fill="#12b84a"
+    opacity="0.04"
+    filter="url(#phosphor-glow)"
+  >λ</text>
+
+  <!-- ==================== HIERARCHY TABLE (miniature) ==================== -->
+  <!-- Positioned bottom-left quadrant -->
+  <g transform="translate(80, 790)" clip-path="url(#main-clip)" opacity="0.75">
+    <!-- Table border -->
+    <rect x="0" y="0" width="380" height="162" fill="rgba(2,13,6,0.85)" stroke="#0e7a32" stroke-width="0.5" opacity="0.8"/>
+
+    <!-- Header -->
+    <rect x="0" y="0" width="380" height="18" fill="rgba(18,184,74,0.05)"/>
+    <line x1="0" y1="18" x2="380" y2="18" stroke="#0e7a32" stroke-width="0.4"/>
+    <text x="8" y="12" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">LEVEL</text>
+    <text x="120" y="12" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">ANALOGY</text>
+    <text x="240" y="12" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">ACCESS</text>
+
+    <!-- Rows -->
+    <g font-family="'Share Tech Mono', monospace" font-size="8">
+      <!-- CORE -->
+      <line x1="0" y1="44" x2="380" y2="44" stroke="#0e7a32" stroke-width="0.3" opacity="0.4"/>
+      <circle cx="10" cy="31" r="4" fill="#8fffb8" filter="url(#phosphor-glow)" opacity="0.9"/>
+      <text x="22" y="34" fill="#8fffb8" letter-spacing="1">CORE</text>
+      <text x="22" y="42" fill="#4a6a52" font-size="6.5">Kingdom of God</text>
+      <text x="120" y="34" fill="#7aad84">OS Kernel</text>
+      <text x="240" y="34" fill="#0e7a32">GOD_ONLY</text>
+
+      <!-- LOGOS -->
+      <line x1="0" y1="66" x2="380" y2="66" stroke="#0e7a32" stroke-width="0.3" opacity="0.4"/>
+      <circle cx="10" cy="53" r="4" fill="#12b84a" opacity="0.9"/>
+      <text x="22" y="56" fill="#c4d8c8" letter-spacing="1">LOGOS</text>
+      <text x="22" y="64" fill="#4a6a52" font-size="6.5">Higher Layer</text>
+      <text x="120" y="56" fill="#7aad84">Algorithm</text>
+      <text x="240" y="56" fill="#12b84a">DIVINE</text>
+
+      <!-- CHRIST -->
+      <line x1="0" y1="88" x2="380" y2="88" stroke="#0e7a32" stroke-width="0.3" opacity="0.4"/>
+      <circle cx="10" cy="75" r="4" fill="#0e7a32" opacity="0.9"/>
+      <text x="22" y="78" fill="#c4d8c8" letter-spacing="1">CHRIST</text>
+      <text x="22" y="86" fill="#4a6a52" font-size="6.5">Middle Layer</text>
+      <text x="120" y="78" fill="#7aad84">Interface / API</text>
+      <text x="240" y="78" fill="#c8860a">BRIDGE</text>
+
+      <!-- MATERIAL -->
+      <line x1="0" y1="110" x2="380" y2="110" stroke="#0e7a32" stroke-width="0.3" opacity="0.4"/>
+      <circle cx="10" cy="97" r="4" fill="#4a6a52" opacity="0.9"/>
+      <text x="22" y="100" fill="#c4d8c8" letter-spacing="1">MATERIAL</text>
+      <text x="22" y="108" fill="#4a6a52" font-size="6.5">Lower Level</text>
+      <text x="120" y="100" fill="#7aad84">Runtime</text>
+      <text x="240" y="100" fill="#7aad84">PUBLIC</text>
+
+      <!-- HUMANS -->
+      <line x1="0" y1="132" x2="380" y2="132" stroke="#0e7a32" stroke-width="0.3" opacity="0.4"/>
+      <circle cx="10" cy="119" r="4" fill="#6a4808" opacity="0.9"/>
+      <text x="22" y="122" fill="#c4d8c8" letter-spacing="1">HUMANS</text>
+      <text x="22" y="130" fill="#4a6a52" font-size="6.5">Data / Events</text>
+      <text x="120" y="122" fill="#7aad84">Vessel Units</text>
+      <text x="240" y="122" fill="#c8860a" opacity="0.7">INSTANCE</text>
+
+      <!-- WORD -->
+      <circle cx="10" cy="141" r="4" fill="rgba(18,184,74,0.2)" stroke="#4a6a52" stroke-width="0.5"/>
+      <text x="22" y="144" fill="#c4d8c8" letter-spacing="1">WORD</text>
+      <text x="120" y="144" fill="#7aad84">System Log</text>
+      <text x="240" y="144" fill="#0e7a32">READ/WRITE</text>
+    </g>
+  </g>
+
+  <!-- ==================== TERMINAL CODE BLOCK (right) ==================== -->
+  <g transform="translate(1076, 790)" opacity="0.75">
+    <rect x="0" y="0" width="400" height="162" fill="rgba(0,0,0,0.7)" stroke="#0e7a32" stroke-width="0.5" opacity="0.7"/>
+
+    <!-- Header bar -->
+    <rect x="0" y="0" width="400" height="18" fill="rgba(18,184,74,0.04)"/>
+    <line x1="0" y1="18" x2="400" y2="18" stroke="#0e7a32" stroke-width="0.4"/>
+
+    <!-- Dots -->
+    <circle cx="12" cy="9" r="3.5" fill="#8b1a1a" opacity="0.6"/>
+    <circle cx="24" cy="9" r="3.5" fill="#6a4808" opacity="0.6"/>
+    <circle cx="36" cy="9" r="3.5" fill="#0e7a32" opacity="0.6"/>
+
+    <text x="200" y="12" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">logos.os / core_definition.js</text>
+
+    <!-- Code lines -->
+    <g font-family="'Share Tech Mono', monospace" font-size="8.5" line-height="14">
+      <text x="12" y="33" fill="#4a6a52">// Primary axiom</text>
+      <text x="12" y="47"><tspan fill="#8fffb8">const</tspan><tspan fill="#7aad84"> Logos = {</tspan></text>
+      <text x="12" y="61"><tspan fill="#7aad84">  identity: </tspan><tspan fill="#c8860a">"Word | Logic | Order"</tspan><tspan fill="#7aad84">,</tspan></text>
+      <text x="12" y="75"><tspan fill="#7aad84">  record: </tspan><tspan fill="#12b84a">open</tspan><tspan fill="#7aad84">,  loggable: </tspan><tspan fill="#12b84a">true</tspan><tspan fill="#7aad84">,</tspan></text>
+      <text x="12" y="89"><tspan fill="#7aad84">  mutable: </tspan><tspan fill="#12b84a">paradox</tspan><tspan fill="#7aad84">,</tspan></text>
+      <text x="12" y="103"><tspan fill="#7aad84">};</tspan></text>
+      <text x="12" y="117"><tspan fill="#8fffb8">function </tspan><tspan fill="#c4d8c8">read</tspan><tspan fill="#7aad84">(record) {</tspan></text>
+      <text x="12" y="131"><tspan fill="#4a6a52">  // reading IS writing</tspan></text>
+      <text x="12" y="145"><tspan fill="#8fffb8">  return </tspan><tspan fill="#7aad84">record.</tspan><tspan fill="#c4d8c8">recompile</tspan><tspan fill="#7aad84">(awareness);</tspan></text>
+      <text x="12" y="155"><tspan fill="#7aad84">}  </tspan><tspan fill="#4a6a52">// Remaining time = authorship</tspan></text>
+    </g>
+  </g>
+
+  <!-- ==================== DEMAT AXIS STRIP (center bottom) ==================== -->
+  <g transform="translate(480, 790)" opacity="0.8">
+    <!-- Label -->
+    <text x="288" y="-8" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="8" fill="#4a6a52" letter-spacing="2">ESCALATING ABSTRACTION</text>
+
+    <!-- 4 segments -->
+    <!-- Seg 1 -->
+    <rect x="0" y="0" width="142" height="55" fill="rgba(2,13,6,0.9)" stroke="#0e7a32" stroke-width="0.5"/>
+    <rect x="0" y="53" width="142" height="2" fill="url(#demat-1)"/>
+    <text x="8" y="14" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">PRE-FLOOD</text>
+    <text x="8" y="30" font-family="'Syncopate', sans-serif" font-size="13" font-weight="700" fill="#8fffb8" filter="url(#phosphor-glow)">BODIES</text>
+    <text x="8" y="44" font-family="'Share Tech Mono', monospace" font-size="7" fill="#7aad84">Biological matter</text>
+
+    <!-- Seg 2 -->
+    <rect x="144" y="0" width="142" height="55" fill="rgba(2,13,6,0.9)" stroke="#0e7a32" stroke-width="0.5"/>
+    <rect x="144" y="53" width="142" height="2" fill="url(#demat-2)"/>
+    <text x="152" y="14" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">FIRST CENTURY</text>
+    <text x="152" y="30" font-family="'Syncopate', sans-serif" font-size="13" font-weight="700" fill="#12b84a">PATTERNS</text>
+    <text x="152" y="44" font-family="'Share Tech Mono', monospace" font-size="7" fill="#7aad84">Moral structure</text>
+
+    <!-- Seg 3 -->
+    <rect x="288" y="0" width="142" height="55" fill="rgba(2,13,6,0.9)" stroke="#0e7a32" stroke-width="0.5"/>
+    <rect x="288" y="53" width="107" height="2" fill="url(#demat-3)"/>
+    <text x="296" y="14" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">END TIMES</text>
+    <text x="296" y="30" font-family="'Syncopate', sans-serif" font-size="13" font-weight="700" fill="#0e7a32">SOULS</text>
+    <text x="296" y="44" font-family="'Share Tech Mono', monospace" font-size="7" fill="#7aad84">Consciousness</text>
+
+    <!-- Seg 4 -->
+    <rect x="432" y="0" width="143" height="55" fill="rgba(2,13,6,0.9)" stroke="#0e7a32" stroke-width="0.5"/>
+    <rect x="432" y="53" width="71" height="2" fill="url(#demat-4)"/>
+    <text x="440" y="14" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="1.5">NEW CREATION</text>
+    <text x="440" y="30" font-family="'Syncopate', sans-serif" font-size="13" font-weight="700" fill="#4a6a52">SOURCE</text>
+    <text x="440" y="44" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52">Merged with God</text>
+  </g>
+
+  <!-- ==================== PARADOX WARNING BOX ==================== -->
+  <g transform="translate(80, 100)" opacity="0.8">
+    <rect x="0" y="0" width="340" height="72" fill="rgba(200,134,10,0.04)" stroke="#c8860a" stroke-width="0.5" opacity="0.5"/>
+    <!-- Left accent bar -->
+    <rect x="0" y="0" width="2" height="72" fill="url(#amber-grad)"/>
+    <text x="14" y="15" font-family="'Share Tech Mono', monospace" font-size="7" fill="#c8860a" letter-spacing="2" opacity="0.8">⚠ PARADOX DETECTED</text>
+    <line x1="14" y1="19" x2="326" y2="19" stroke="#c8860a" stroke-width="0.3" opacity="0.3"/>
+    <text x="14" y="33" font-family="'Share Tech Mono', monospace" font-size="8.5" fill="#7aad84">If the record is open, is it fixed —</text>
+    <text x="14" y="47" font-family="'Share Tech Mono', monospace" font-size="8.5" fill="#7aad84">or does the act of reading become</text>
+    <text x="14" y="61" font-family="'Share Tech Mono', monospace" font-size="8.5" fill="#8fffb8">a form of writing?</text>
+  </g>
+
+  <!-- ==================== TERMINAL PROMPT (bottom right) ==================== -->
+  <g transform="translate(1076, 100)" opacity="0.8">
+    <rect x="0" y="0" width="400" height="72" fill="rgba(0,0,0,0.6)" stroke="#0e7a32" stroke-width="0.5" opacity="0.6"/>
+    <text x="12" y="18" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="2">SYSTEM OUTPUT</text>
+    <line x1="12" y1="22" x2="388" y2="22" stroke="#0e7a32" stroke-width="0.3" opacity="0.3"/>
+    <text x="12" y="36" font-family="'Share Tech Mono', monospace" font-size="9"><tspan fill="#4a6a52">$ </tspan><tspan fill="#8fffb8">logos --query "remaining time"</tspan></text>
+    <text x="12" y="50" font-family="'Share Tech Mono', monospace" font-size="9"><tspan fill="#4a6a52">› </tspan><tspan fill="#7aad84">Output: </tspan><tspan fill="#8fffb8">authorship</tspan><tspan fill="#7aad84"> — not duration</tspan></text>
+    <text x="12" y="64" font-family="'Share Tech Mono', monospace" font-size="9"><tspan fill="#4a6a52">$ </tspan><tspan fill="#0e7a32">_</tspan></text>
+  </g>
+
+  <!-- ==================== PROGRESS BAR (top) ==================== -->
+  <rect x="48" y="52" width="1442" height="1" fill="#12b84a" opacity="0.6" filter="url(#phosphor-glow)"/>
+
+  <!-- ==================== SECTION MODULE LABELS ==================== -->
+  <!-- Left vertical label -->
+  <text
+    x="30" y="512"
+    font-family="'Share Tech Mono', monospace"
+    font-size="9"
+    fill="#0e7a32" opacity="0.4"
+    letter-spacing="4"
+    text-anchor="middle"
+    transform="rotate(-90, 30, 512)"
+  >MODULE_01 :: CORE_DEFINITION — MODULE_03 :: ARK_PROTOCOL — MODULE_04 :: AUTHORSHIP</text>
+
+  <!-- Right vertical label -->
+  <text
+    x="1510" y="512"
+    font-family="'Share Tech Mono', monospace"
+    font-size="9"
+    fill="#0e7a32" opacity="0.3"
+    letter-spacing="4"
+    text-anchor="middle"
+    transform="rotate(90, 1510, 512)"
+  >JOHN 1:1 — GENESIS 6:9 — λόγος — THEOSIS — LOGOS.OS</text>
+
+  <!-- ==================== FLOATING BIBLE REF ==================== -->
+  <!-- John 1:1 block, centered top -->
+  <g transform="translate(490, 100)" opacity="0.6">
+    <rect x="0" y="0" width="560" height="42" fill="rgba(2,13,6,0.7)" stroke="#0e7a32" stroke-width="0.4" opacity="0.5"/>
+    <text x="280" y="16" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="7" fill="#4a6a52" letter-spacing="2">JOHN 1:1 — PRIMARY AXIOM</text>
+    <line x1="20" y1="20" x2="540" y2="20" stroke="#0e7a32" stroke-width="0.3" opacity="0.3"/>
+    <text x="280" y="34" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="9" fill="#7aad84" letter-spacing="0.5">"In the beginning was the Word, and the Word was with God, and the Word was God."</text>
+  </g>
+
+  <!-- ==================== CENTER: LOG + OS = LOGOS ==================== -->
+  <!-- Below main title -->
+  <g transform="translate(768, 600)" opacity="0.85">
+    <!-- Formula display -->
+    <text x="-220" y="0" text-anchor="middle"
+      font-family="'Syncopate', 'Arial Black', sans-serif"
+      font-size="28" font-weight="700" letter-spacing="4"
+      fill="#0e7a32" filter="url(#phosphor-glow)"
+    >LOG</text>
+
+    <text x="0" y="0" text-anchor="middle"
+      font-family="'Share Tech Mono', monospace"
+      font-size="22"
+      fill="#4a6a52" opacity="0.7"
+    >+</text>
+
+    <text x="220" y="0" text-anchor="middle"
+      font-family="'Syncopate', 'Arial Black', sans-serif"
+      font-size="28" font-weight="700" letter-spacing="4"
+      fill="#0e7a32" filter="url(#phosphor-glow)"
+    >OS</text>
+
+    <text x="380" y="0" text-anchor="middle"
+      font-family="'Share Tech Mono', monospace"
+      font-size="22"
+      fill="#4a6a52" opacity="0.7"
+    >=</text>
+
+    <text x="580" y="0" text-anchor="middle"
+      font-family="'Syncopate', 'Arial Black', sans-serif"
+      font-size="34" font-weight="700" letter-spacing="4"
+      fill="#8fffb8" filter="url(#phosphor-glow)"
+    >LogOS</text>
+
+    <!-- Underline -->
+    <line x1="-330" y1="12" x2="720" y2="12" stroke="#0e7a32" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <!-- ==================== FOUR CYCLE ICONS ==================== -->
+  <g transform="translate(490, 660)" opacity="0.7" font-family="'Share Tech Mono', monospace">
+    <!-- Cycle cards — compact row -->
+    <!-- 01 NOAH -->
+    <rect x="0" y="0" width="138" height="54" fill="rgba(2,13,6,0.8)" stroke="#0e7a32" stroke-width="0.4"/>
+    <text x="8" y="14" font-size="6.5" fill="#4a6a52" letter-spacing="1.5">CYCLE 01</text>
+    <text x="8" y="28" font-size="11" fill="#8fffb8" font-family="'Syncopate', sans-serif" font-weight="700">NOAH</text>
+    <text x="8" y="40" font-size="7" fill="#7aad84">Physical Ark</text>
+    <text x="8" y="51" font-size="6.5" fill="#4a6a52">Biological life</text>
+
+    <!-- 02 CHRIST -->
+    <rect x="140" y="0" width="138" height="54" fill="rgba(2,13,6,0.8)" stroke="#0e7a32" stroke-width="0.4"/>
+    <text x="148" y="14" font-size="6.5" fill="#4a6a52" letter-spacing="1.5">CYCLE 02</text>
+    <text x="148" y="28" font-size="11" fill="#8fffb8" font-family="'Syncopate', sans-serif" font-weight="700">CHRIST</text>
+    <text x="148" y="40" font-size="7" fill="#7aad84">Resurrection</text>
+    <text x="148" y="51" font-size="6.5" fill="#4a6a52">Spiritual pattern</text>
+
+    <!-- 03 144,000 -->
+    <rect x="280" y="0" width="138" height="54" fill="rgba(2,13,6,0.8)" stroke="#0e7a32" stroke-width="0.4"/>
+    <text x="288" y="14" font-size="6.5" fill="#4a6a52" letter-spacing="1.5">CYCLE 03</text>
+    <text x="288" y="28" font-size="11" fill="#8fffb8" font-family="'Syncopate', sans-serif" font-weight="700">144,000</text>
+    <text x="288" y="40" font-size="7" fill="#7aad84">Spiritual Ark</text>
+    <text x="288" y="51" font-size="6.5" fill="#4a6a52">Soul data</text>
+
+    <!-- 04 GOD DIRECTLY -->
+    <rect x="420" y="0" width="138" height="54" fill="rgba(2,13,6,0.8)" stroke="#0e7a32" stroke-width="0.4"/>
+    <text x="428" y="14" font-size="6.5" fill="#4a6a52" letter-spacing="1.5">CYCLE 04</text>
+    <text x="428" y="28" font-size="9" fill="#4a6a52" font-family="'Syncopate', sans-serif" font-weight="700">GOD DIRECT</text>
+    <text x="428" y="40" font-size="7" fill="#7aad84">New Jerusalem</text>
+    <text x="428" y="51" font-size="6.5" fill="#4a6a52">Source merge</text>
+
+    <!-- Arrow connectors -->
+    <line x1="138" y1="27" x2="140" y2="27" stroke="#0e7a32" stroke-width="0.8" opacity="0.5"/>
+    <polygon points="138,25 142,27 138,29" fill="#0e7a32" opacity="0.5"/>
+    <line x1="278" y1="27" x2="280" y2="27" stroke="#0e7a32" stroke-width="0.8" opacity="0.5"/>
+    <polygon points="278,25 282,27 278,29" fill="#0e7a32" opacity="0.5"/>
+    <line x1="418" y1="27" x2="420" y2="27" stroke="#0e7a32" stroke-width="0.8" opacity="0.5"/>
+    <polygon points="418,25 422,27 418,29" fill="#0e7a32" opacity="0.5"/>
+  </g>
+
+  <!-- ==================== THREE QUESTIONS ==================== -->
+  <g transform="translate(480, 730)" opacity="0.65" font-family="'Share Tech Mono', monospace" font-size="8.5">
+    <rect x="0" y="0" width="577" height="52" fill="rgba(0,0,0,0.5)" stroke="#0e7a32" stroke-width="0.4" opacity="0.6"/>
+    <text x="12" y="16" fill="#4a6a52" letter-spacing="2" font-size="7">THREE FINAL QUESTIONS</text>
+    <text x="12" y="30"><tspan fill="#0e7a32">I. </tspan><tspan fill="#7aad84">How will you spend the time that remains?</tspan></text>
+    <text x="12" y="43"><tspan fill="#0e7a32">II. </tspan><tspan fill="#7aad84">What does it mean to remain aligned with the Logos?</tspan></text>
+  </g>
+
+  <!-- ==================== BOTTOM METADATA STRIP ==================== -->
+  <rect x="48" y="955" width="1442" height="18" fill="rgba(2,13,6,0.85)"/>
+  <line x1="48" y1="955" x2="1490" y2="955" stroke="#0e7a32" stroke-width="0.4" opacity="0.3"/>
+  <text x="62" y="966" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#0e7a32" letter-spacing="2" opacity="0.6">LogOS — The Word — λόγος — 2026 — John 1:1 — Every action = execution + inscription</text>
+  <text x="1478" y="966" font-family="'Share Tech Mono', monospace" font-size="7.5" fill="#0e7a32" text-anchor="end" letter-spacing="2" opacity="0.5">Record: OPEN · Instance: ACTIVE · Death: LAYER_SHIFT</text>
+
+  <!-- ==================== SCANLINES OVERLAY ==================== -->
+  <rect width="1536" height="1024" fill="url(#scanlines)" opacity="0.5"/>
+
+  <!-- ==================== NOISE OVERLAY ==================== -->
+  <rect width="1536" height="1024" fill="#0a0a0a" filter="url(#noise-filter)" opacity="0.05"/>
+
+  <!-- ==================== VIGNETTE ==================== -->
+  <rect width="1536" height="1024" fill="url(#vignette)"/>
+
+  <!-- Final phosphor glow pulse on title (outermost layer) -->
+  <text x="768" y="560" text-anchor="middle"
+    font-family="'Syncopate', 'Arial Black', sans-serif"
+    font-size="420" font-weight="700"
+    letter-spacing="-8"
+    fill="none"
+    stroke="#8fffb8" stroke-width="0.3"
+    opacity="0.06"
+    filter="url(#phosphor-glow)"
+  >LOGOS</text>
+
+</svg>
