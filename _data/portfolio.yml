@@ -131,7 +131,7 @@
 - title: "Divine Architecture"
   category: "identity"
   tags: ["Spiritual", "Process", "Consciousness"]
-  description: "."
+  description: "A visual exploration of the architecture of consciousness and the divine. A digital liturgy for the age of information, where the Logos is the operating system of reality and the Word is the code that runs the universe."
   cover: "/assets/images/portfolio/divine-liturgy-architecture.svg"
   url: "/p/divine-liturgy-architecture"
   featured: "true"
@@ -140,8 +140,17 @@
 - title: "Logos: The Word"
   category: "identity"
   tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
-  description: ""
+  description: " A digital liturgy for the age of information, where the Logos is the operating system of reality and the Word is the code that runs the universe."
   cover: "/assets/images/portfolio/logos-the-word.svg"
   url: "/p/logos-the-word"
   featured: "true"
   year: "2025"
+
+- title: "Singularity Archive"
+  category: "development"
+  tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
+  description: "A classified transmission on consciousness, programmed existence, and the neural architecture of reality."
+  cover: ""
+  url: "/p/singularity"
+#  featured: ""
+  year: "2023"

@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="A classified transmission on consciousness, programmed existence, and the neural architecture of reality.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Singularity Archive — Classified Transmission">
+<meta property="og:description" content="A classified transmission on consciousness, programmed existence, and the neural architecture of reality.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/images/portfolio/singularity-archive.svg">
+<meta property="og:site_name" content="followorbounce.com">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Singularity Archive — Classified Transmission">
+<meta name="twitter:description" content="A classified transmission on consciousness, programmed existence, and the neural architecture of reality.">
+<meta name="twitter:image" content="/assets/images/portfolio/singularity-archive.svg">
+
+<title>SINGULARITY ARCHIVE — FRAGMENT 001</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,700;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap">
+
+<style>
+/* ─── VARIABLES ──────────────────────────────────────────────────────────── */
+:root {
+  --black:      #000000;
+  --void:       #070704;
+  --bone:       #e8dcc8;
+  --bone-dim:   #a89880;
+  --oxide:      #3a3830;
+  --metal:      #5a5850;
+  --crt:        #00ff41;
+  --crt-dim:    #00882a;
+  --amber:      #c8860a;
+  --amber-deep: #7a4f00;
+  --infra:      #cc1a00;
+  --infra-dim:  #7a1000;
+  --sand:       #d4a843;
+
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+
+  --font-head:  'Bebas Neue', sans-serif;
+  --font-mono:  'IBM Plex Mono', monospace;
+  --font-serif: 'IM Fell English', serif;
+  --font-space: 'Space Mono', monospace;
+}
+
+/* ─── RESET ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  background: var(--black);
+}
+body {
+  background: var(--void);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  cursor: crosshair;
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--amber-deep); }
+
+/* ─── NAV ────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding-top: calc(14px + var(--safe-top));
+  padding-bottom: 14px;
+  padding-left: calc(32px + var(--safe-left));
+  padding-right: calc(32px + var(--safe-right));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-backdrop-filter: blur(8px) saturate(0.3);
+  backdrop-filter: blur(8px) saturate(0.3);
+  background: rgba(0,0,0,0.7);
+  border-bottom: 1px solid rgba(200,134,10,0.15);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+.nav-id {
+  font-family: var(--font-space);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--crt-dim);
+  text-transform: uppercase;
+}
+.nav-status {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  opacity: 0.7;
+}
+.nav-status::before {
+  content: '● ';
+  color: var(--infra);
+  -webkit-animation: blink 2.4s infinite;
+  animation: blink 2.4s infinite;
+}
+
+/* ─── GLITCH OVERLAY ─────────────────────────────────────────────────────── */
+.glitch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ─── HERO ───────────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 48px 80px;
+  position: relative;
+  overflow: clip;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 55%, rgba(200,134,10,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,255,65,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 40% at 80% 20%, rgba(204,26,0,0.04) 0%, transparent 60%);
+  z-index: 0;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(200,134,10,0.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,134,10,0.8) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-label {
+  font-family: var(--font-space);
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--crt);
+  opacity: 0.6;
+  margin-bottom: 24px;
+  -webkit-animation: fadeUp 1s 0.2s both;
+  animation: fadeUp 1s 0.2s both;
+}
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(80px, 14vw, 220px);
+  line-height: 0.88;
+  letter-spacing: -2px;
+  color: var(--bone);
+  -webkit-animation: fadeUp 1s 0.4s both;
+  animation: fadeUp 1s 0.4s both;
+  position: relative;
+}
+.hero-title .glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.hero-title .glitch-text::before,
+.hero-title .glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-title .glitch-text::before {
+  color: var(--infra);
+  clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+  opacity: 0;
+  -webkit-animation: glitch-a 8s infinite;
+  animation: glitch-a 8s infinite;
+}
+.hero-title .glitch-text::after {
+  color: var(--crt);
+  clip-path: polygon(0 65%, 100% 65%, 100% 75%, 0 75%);
+  -webkit-transform: translateX(3px);
+  transform: translateX(3px);
+  opacity: 0;
+  -webkit-animation: glitch-b 8s 0.5s infinite;
+  animation: glitch-b 8s 0.5s infinite;
+}
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(14px, 1.8vw, 22px);
+  color: var(--amber);
+  margin-top: 24px;
+  max-width: 680px;
+  line-height: 1.5;
+  opacity: 0.85;
+  -webkit-animation: fadeUp 1s 0.6s both;
+  animation: fadeUp 1s 0.6s both;
+}
+.hero-meta {
+  display: flex;
+  gap: 48px;
+  margin-top: 48px;
+  -webkit-animation: fadeUp 1s 0.8s both;
+  animation: fadeUp 1s 0.8s both;
+}
+.hero-meta-item {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--metal);
+  text-transform: uppercase;
+}
+.hero-meta-item span {
+  display: block;
+  color: var(--crt-dim);
+  margin-top: 4px;
+}
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  right: 48px;
+  font-family: var(--font-space);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--oxide);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  -webkit-animation: fadeIn 2s 1.5s both;
+  animation: fadeIn 2s 1.5s both;
+}
+
+/* ─── NEURAL CANVAS ──────────────────────────────────────────────────────── */
+#neural-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* ─── SECTION BASE ───────────────────────────────────────────────────────── */
+section {
+  overflow: clip;
+  position: relative;
+}
+.fragment {
+  padding: 120px 48px;
+  position: relative;
+  overflow: clip;
+}
+.fragment + .fragment {
+  border-top: 1px solid rgba(200,134,10,0.1);
+}
+
+/* ─── FRAGMENT LABELS ────────────────────────────────────────────────────── */
+.frag-number {
+  font-family: var(--font-space);
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--infra);
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+.frag-title {
+  font-family: var(--font-head);
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 0.9;
+  color: var(--bone);
+  margin-bottom: 48px;
+  letter-spacing: 1px;
+}
+.frag-title.amber { color: var(--amber); }
+.frag-title.crt   { color: var(--crt); opacity: 0.8; }
+
+/* ─── TEXT BODY ──────────────────────────────────────────────────────────── */
+.prose {
+  font-family: var(--font-serif);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.9;
+  color: var(--bone-dim);
+  max-width: 680px;
+}
+.prose p + p { margin-top: 1.4em; }
+.prose .highlight {
+  color: var(--bone);
+  font-style: normal;
+}
+.prose .amber-text { color: var(--amber); }
+.prose .crt-text   { color: var(--crt); font-family: var(--font-mono); font-size: 0.85em; }
+
+/* ─── SIDENOTES ──────────────────────────────────────────────────────────── */
+.sidenote {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--crt-dim);
+  opacity: 0.7;
+  border-left: 1px solid var(--crt-dim);
+  padding-left: 16px;
+  max-width: 240px;
+}
+.annotation {
+  font-family: var(--font-space);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--metal);
+  text-transform: uppercase;
+  line-height: 1.9;
+}
+
+/* ─── TWO-COLUMN LAYOUT ──────────────────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .two-col, .three-col { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ─── QUOTE BLOCK ────────────────────────────────────────────────────────── */
+.pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(24px, 3.5vw, 48px);
+  line-height: 1.3;
+  color: var(--bone);
+  border-left: 3px solid var(--amber);
+  padding-left: 32px;
+  margin: 60px 0;
+  max-width: 800px;
+}
+.pullquote-source {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--amber);
+  margin-top: 16px;
+  display: block;
+  font-style: normal;
+}
+
+/* ─── CODE ANNOTATION ────────────────────────────────────────────────────── */
+.code-block {
+  background: rgba(0,255,65,0.03);
+  border: 1px solid rgba(0,255,65,0.1);
+  padding: 24px 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--crt-dim);
+  line-height: 1.8;
+  position: relative;
+  overflow: hidden;
+}
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px; height: 100%;
+  background: var(--crt);
+  opacity: 0.4;
+}
+.code-block .key   { color: var(--crt); }
+.code-block .val   { color: var(--amber); }
+.code-block .com   { color: var(--metal); font-style: italic; }
+.code-block .infra { color: var(--infra); }
+
+/* ─── DATA TABLE ─────────────────────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.data-table th {
+  text-align: left;
+  padding: 8px 16px 8px 0;
+  color: var(--metal);
+  letter-spacing: 3px;
+  font-size: 9px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(200,134,10,0.2);
+}
+.data-table td {
+  padding: 10px 16px 10px 0;
+  color: var(--bone-dim);
+  border-bottom: 1px solid rgba(58,56,48,0.5);
+  vertical-align: top;
+}
+.data-table td.key-cell { color: var(--crt-dim); }
+.data-table td.val-cell { color: var(--amber); }
+
+/* ─── STRATA VISUAL ──────────────────────────────────────────────────────── */
+.strata {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  margin: 48px 0;
+}
+.strata-layer {
+  position: absolute;
+  left: 0; right: 0;
+  height: var(--h);
+  top: var(--top);
+  background: var(--col);
+  opacity: var(--op, 1);
+}
+.strata-label {
+  position: absolute;
+  right: 16px;
+  top: var(--top);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--bone-dim);
+  opacity: 0.5;
+  letter-spacing: 2px;
+  transform: translateY(2px);
+  -webkit-transform: translateY(2px);
+}
+
+/* ─── LARGE OVERSIZED NUMBER ─────────────────────────────────────────────── */
+.bg-number {
+  position: absolute;
+  font-family: var(--font-head);
+  font-size: clamp(200px, 28vw, 420px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200,134,10,0.06);
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 0;
+}
+
+/* ─── DIVIDER ────────────────────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0;
+}
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--oxide), transparent);
+}
+.divider-glyph {
+  font-family: var(--font-space);
+  font-size: 10px;
+  color: var(--amber);
+  opacity: 0.5;
+  letter-spacing: 4px;
+}
+
+/* ─── TERMINAL BLOCK ─────────────────────────────────────────────────────── */
+.terminal {
+  background: #000;
+  border: 1px solid var(--crt-dim);
+  padding: 24px 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--crt);
+  line-height: 1.9;
+  position: relative;
+  max-width: 600px;
+}
+.terminal::before {
+  content: 'TERMINAL — SYS_ACCESS_7F3A';
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  text-align: center;
+  font-size: 8px;
+  letter-spacing: 3px;
+  background: var(--crt-dim);
+  color: #000;
+  padding: 2px 0;
+}
+.terminal .prompt { color: var(--amber); }
+.terminal .cursor {
+  display: inline-block;
+  width: 8px; height: 12px;
+  background: var(--crt);
+  vertical-align: middle;
+  -webkit-animation: blink 1s infinite;
+  animation: blink 1s infinite;
+}
+
+/* ─── VECTOR FIELD ───────────────────────────────────────────────────────── */
+#vector-field {
+  width: 100%;
+  height: 300px;
+  display: block;
+}
+
+/* ─── INFRA ACCENT BAND ──────────────────────────────────────────────────── */
+.infra-band {
+  background: rgba(204,26,0,0.04);
+  border-top: 1px solid rgba(204,26,0,0.2);
+  border-bottom: 1px solid rgba(204,26,0,0.2);
+  padding: 60px 48px;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+footer {
+  padding: 80px 48px;
+  padding-bottom: calc(80px + var(--safe-bottom));
+  border-top: 1px solid rgba(200,134,10,0.15);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  position: relative;
+  overflow: clip;
+}
+footer::before {
+  content: 'END TRANSMISSION';
+  position: absolute;
+  top: 0; left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-family: var(--font-space);
+  font-size: 8px;
+  letter-spacing: 6px;
+  color: var(--infra);
+  opacity: 0.5;
+  padding: 8px 16px;
+  border: 1px solid rgba(204,26,0,0.2);
+  top: -1px;
+  background: var(--void);
+}
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--metal);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.footer-col p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--oxide);
+}
+.footer-col p + p { margin-top: 8px; }
+.footer-col p span { color: var(--crt-dim); }
+@media (max-width: 900px) {
+  footer { grid-template-columns: 1fr; }
+}
+
+/* ─── FLOATING FRAGMENTS ──────────────────────────────────────────────────── */
+.float-frag {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--amber);
+  opacity: 0.18;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, -webkit-transform 0.9s ease;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* ─── TORN PAPER ─────────────────────────────────────────────────────────── */
+.torn-edge {
+  height: 40px;
+  background: var(--void);
+  position: relative;
+  overflow: hidden;
+}
+.torn-edge::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: var(--black);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40'%3E%3Cpath d='M0,0 L0,20 Q30,40 60,20 Q90,0 120,20 Q150,40 180,20 Q210,0 240,20 Q270,40 300,25 Q330,10 360,22 Q390,35 420,18 Q450,0 480,22 Q510,40 540,20 Q570,0 600,18 Q630,38 660,22 Q690,5 720,20 Q750,38 780,18 Q810,0 840,22 Q870,40 900,20 Q930,0 960,22 Q990,40 1020,20 Q1050,0 1080,22 Q1110,40 1140,20 Q1170,0 1200,20 L1200,0 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40'%3E%3Cpath d='M0,0 L0,20 Q30,40 60,20 Q90,0 120,20 Q150,40 180,20 Q210,0 240,20 Q270,40 300,25 Q330,10 360,22 Q390,35 420,18 Q450,0 480,22 Q510,40 540,20 Q570,0 600,18 Q630,38 660,22 Q690,5 720,20 Q750,38 780,18 Q810,0 840,22 Q870,40 900,20 Q930,0 960,22 Q990,40 1020,20 Q1050,0 1080,22 Q1110,40 1140,20 Q1170,0 1200,20 L1200,0 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* ─── INTERACTIVE ELEMENTS ───────────────────────────────────────────────── */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.glyph-link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--crt-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+  padding-bottom: 2px;
+}
+@media (hover: hover) {
+  .glyph-link:hover {
+    color: var(--crt);
+    border-color: var(--crt-dim);
+  }
+}
+
+/* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
+@-webkit-keyframes fadeUp {
+  from { opacity: 0; -webkit-transform: translateY(24px); transform: translateY(24px); }
+  to   { opacity: 1; -webkit-transform: translateY(0);    transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-webkit-keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@-webkit-keyframes glitch-a {
+  0%,90%,100% { opacity: 0; }
+  91%,93%     { opacity: 0.7; -webkit-transform: translateX(-4px); transform: translateX(-4px); }
+  92%         { opacity: 0.4; -webkit-transform: translateX(4px); transform: translateX(4px); }
+}
+@keyframes glitch-a {
+  0%,90%,100% { opacity: 0; }
+  91%,93%     { opacity: 0.7; transform: translateX(-4px); }
+  92%         { opacity: 0.4; transform: translateX(4px); }
+}
+@-webkit-keyframes glitch-b {
+  0%,85%,100% { opacity: 0; }
+  86%,88%     { opacity: 0.6; -webkit-transform: translateX(5px); transform: translateX(5px); }
+  87%         { opacity: 0.3; -webkit-transform: translateX(-3px); transform: translateX(-3px); }
+}
+@keyframes glitch-b {
+  0%,85%,100% { opacity: 0; }
+  86%,88%     { opacity: 0.6; transform: translateX(5px); }
+  87%         { opacity: 0.3; transform: translateX(-3px); }
+}
+@-webkit-keyframes drift {
+  0%   { -webkit-transform: translateY(0) translateX(0);    transform: translateY(0) translateX(0); }
+  33%  { -webkit-transform: translateY(-8px) translateX(5px); transform: translateY(-8px) translateX(5px); }
+  66%  { -webkit-transform: translateY(4px) translateX(-4px); transform: translateY(4px) translateX(-4px); }
+  100% { -webkit-transform: translateY(0) translateX(0);    transform: translateY(0) translateX(0); }
+}
+@keyframes drift {
+  0%   { transform: translateY(0) translateX(0); }
+  33%  { transform: translateY(-8px) translateX(5px); }
+  66%  { transform: translateY(4px) translateX(-4px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+@-webkit-keyframes scanline {
+  0%   { top: -5%; }
+  100% { top: 105%; }
+}
+@keyframes scanline {
+  0%   { top: -5%; }
+  100% { top: 105%; }
+}
+@-webkit-keyframes signal {
+  0%,100% { opacity: 0.6; }
+  50%     { opacity: 1; }
+}
+@keyframes signal {
+  0%,100% { opacity: 0.6; }
+  50%     { opacity: 1; }
+}
+
+/* ─── SCANLINE SWEEP ──────────────────────────────────────────────────────── */
+.scanline-sweep {
+  position: absolute;
+  left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,65,0.08), transparent);
+  pointer-events: none;
+  z-index: 2;
+  -webkit-animation: scanline 8s linear infinite;
+  animation: scanline 8s linear infinite;
+}
+
+/* ─── REDUCED MOTION ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── ASPECT RATIO BOXES ─────────────────────────────────────────────────── */
+.svg-wrap {
+  aspect-ratio: 3 / 2;
+  min-height: 200px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  border: 1px solid rgba(200,134,10,0.12);
+}
+@supports (aspect-ratio: 3 / 2) {
+  .svg-wrap { min-height: unset; }
+}
+
+/* ─── MISC ───────────────────────────────────────────────────────────────── */
+.text-center { text-align: center; }
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-40 { margin-top: 40px; }
+.mt-60 { margin-top: 60px; }
+.overflow-wrap { overflow-wrap: break-word; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<!-- Scan-line CRT overlay -->
+<div class="glitch-overlay" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav aria-label="Archive navigation">
+  <span class="nav-id">SINGULARITY — ARCHIVE — FRAGMENT_001</span>
+  <span class="nav-status">TRANSMISSION ACTIVE</span>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- HERO                                                                    -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="scanline-sweep" aria-hidden="true"></div>
+
+  <canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating background fragments -->
+  <span class="float-frag" style="top:18%;right:8%;letter-spacing:3px" aria-hidden="true">34.1478°N 114.5982°W</span>
+  <span class="float-frag" style="top:32%;left:2%;font-size:8px" aria-hidden="true">// EPOCH: UNKNOWN</span>
+  <span class="float-frag" style="top:55%;right:14%;font-size:8px" aria-hidden="true">NODE_0x7F3A → SUPERPOSITION</span>
+  <span class="float-frag" style="top:70%;left:5%;font-size:8px" aria-hidden="true">RESET_CYCLE: 28000yr</span>
+
+  <div class="hero-content">
+    <p class="hero-label">// CLASSIFIED — THEOLOGICAL SYSTEMS DIVISION — LEVEL OMEGA</p>
+    <h1 class="hero-title">
+      <span class="glitch-text" data-text="SINGULARITY">SINGULARITY</span>
+    </h1>
+    <p class="hero-subtitle">
+      A transmission on consciousness, executable existence,<br>
+      and the neural architecture of reality.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">ORIGIN<span>DESERT TRANSIT / DAY 28</span></div>
+      <div class="hero-meta-item">COORDINATES<span>BLYTHE, CA/AZ BORDER</span></div>
+      <div class="hero-meta-item">CLASSIFICATION<span>OMEGA / UNRESOLVED</span></div>
+      <div class="hero-meta-item">TEMP<span>120°F / 48.8°C</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator" aria-hidden="true">SCROLL ↓ DESCEND ↓ ENTER</div>
+</section>
+
+<div class="torn-edge" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FRAGMENT 01 — THE DESERT DICTIONARY                                     -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment reveal" id="f01">
+  <div class="bg-number" style="top:-80px;right:-20px;opacity:0.03" aria-hidden="true">01</div>
+
+  <p class="frag-number">FRAGMENT — 001 // DESERT TRANSMISSION // MEMORY ARTIFACT</p>
+  <h2 class="frag-title">THE WORD<br>I COULD NOT<br>REMEMBER</h2>
+
+  <div class="three-col">
+    <div class="prose">
+      <p>
+        <span class="highlight">Day 28.</span> California–Arizona desert.
+        Extreme. Exactly before my birthday. 120 degrees Fahrenheit.
+      </p>
+      <p>
+        For <span class="amber-text">three days in a row</span> I kept thinking about a concept —
+        in science, in society, in consciousness — but I simply could not
+        remember the word itself.
+      </p>
+      <p>
+        It felt strange. I started wondering whether my brain was
+        <em>melting from the heat.</em>
+      </p>
+      <p>
+        By tradition, every time I entered a town during the walk, I visited
+        the local library. At the entrance I lost my Bible.
+        I became obsessed with finding the word inside a dictionary.
+      </p>
+      <p>
+        "We don't have one. Sorry."
+      </p>
+      <p>
+        Thirty minutes later: <span class="highlight">"Okay. I think I have a dictionary for you."</span>
+      </p>
+      <p>
+        The moment she handed it to me, I opened it randomly.
+        Only one page in the entire dictionary had a <span class="amber-text">torn corner.</span>
+        And that broken corner pointed directly at the word.
+      </p>
+    </div>
+
+    <div>
+      <!-- Dictionary page visual -->
+      <div style="background:#0a0900;border:1px solid rgba(200,134,10,0.2);padding:32px 24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:rgba(200,134,10,0.08);clip-path:polygon(100% 0,0 0,100% 100%);"></div>
+        <div style="position:absolute;top:0;right:0;width:2px;height:60px;background:linear-gradient(180deg,rgba(200,134,10,0.4),transparent);"></div>
+        <div style="position:absolute;top:60px;right:0;width:60px;height:2px;background:linear-gradient(270deg,rgba(200,134,10,0.4),transparent);"></div>
+
+        <p style="font-family:var(--font-mono);font-size:8px;color:var(--metal);letter-spacing:3px;margin-bottom:24px;">DICTIONARY — PAGE 847</p>
+
+        <p style="font-family:var(--font-serif);font-size:11px;color:var(--bone-dim);line-height:1.8;margin-bottom:12px;">
+          <em>sin·gu·lar·i·ty</em> <span style="color:var(--metal)">/ˌsiŋɡjəˈlarədē/</span>
+        </p>
+        <p style="font-family:var(--font-serif);font-size:20px;font-weight:bold;color:var(--bone);margin-bottom:16px;border-bottom:1px solid rgba(200,134,10,0.3);padding-bottom:12px;letter-spacing:1px;">SINGULARITY</p>
+        <p style="font-family:var(--font-serif);font-size:11px;color:var(--bone-dim);line-height:1.9;">
+          <em>n.</em> 1. The quality of being singular or unique.
+          2. A point at which a function takes an infinite value.
+          3. A hypothetical moment when artificial intelligence surpasses human intelligence.
+          4. In physics: a point of infinite density from which spacetime itself emerges.
+        </p>
+        <div style="margin-top:20px;padding-top:12px;border-top:1px solid rgba(58,56,48,0.5);">
+          <p style="font-family:var(--font-mono);font-size:9px;color:var(--infra);opacity:0.6;letter-spacing:2px;">↑ TORN CORNER — THIS PAGE — ONLY THIS PAGE</p>
+        </div>
+      </div>
+
+      <div class="sidenote mt-24">
+        The dictionary fell open to the only torn page.
+        In information theory this is called a
+        <em>prior probability of zero</em> — 
+        yet the event occurred.
+        The universe does not roll dice.
+        Or perhaps it only rolls them once.
+      </div>
+    </div>
+
+    <div class="annotation" style="padding-top:8px;">
+      <p style="color:var(--infra);margin-bottom:8px;">COORDINATES</p>
+      <p>34.1478° N</p>
+      <p>114.5982° W</p>
+      <br>
+      <p style="color:var(--metal);">BLYTHE, CA</p>
+      <p style="color:var(--metal);">INTERSTATE 10</p>
+      <br>
+      <p style="color:var(--crt-dim);">AMBIENT TEMP</p>
+      <p>48.8°C / 120°F</p>
+      <br>
+      <p style="color:var(--metal);">WATER AHEAD</p>
+      <p style="color:var(--infra);">86 MILES / NONE</p>
+      <br>
+      <p style="color:var(--metal);">BIBLE STATUS</p>
+      <p style="color:var(--infra);">LOST / ENTRANCE</p>
+    </div>
+  </div>
+
+  <div class="pullquote reveal">
+    "That is everything I know about singularity."
+    <span class="pullquote-source">— Desert transmission, Day 28, Blythe, California–Arizona border</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FRAGMENT 02 — THE SYSTEM                                                -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment reveal" id="f02" style="background:rgba(0,255,65,0.012);">
+  <div class="bg-number" style="top:-40px;left:-30px;opacity:0.025" aria-hidden="true">02</div>
+  <div class="scanline-sweep" aria-hidden="true"></div>
+
+  <p class="frag-number">FRAGMENT — 002 // SYSTEM ARCHITECTURE // FREE_WILL MODULE</p>
+  <h2 class="frag-title crt">WHERE<br>ARE WE</h2>
+
+  <div class="two-col">
+    <div>
+      <div class="prose">
+        <p>
+          A friend argued against my idea that we may exist inside
+          a form of <span class="highlight">artificial intelligence system.</span>
+          His argument: such a system would remove free will.
+        </p>
+        <p>
+          But if we consider ourselves not as prisoners of programming,
+          but as <span class="amber-text">result-units moving through a programmed environment</span> —
+          then the picture changes.
+        </p>
+        <p>
+          At every transition point in time, we still make choices.
+          At minimum: <em>left or right.</em>
+        </p>
+        <p>
+          There is neither absolute good nor absolute evil in these directions.
+          As it is written: <span class="crt-text">"Everything is permitted, but not everything is beneficial."</span>
+        </p>
+        <p>
+          A conscious individual should perceive at least
+          <span class="highlight">three possible choices.</span>
+          If a person sees only two options, this may resemble
+          a split or fragmented perception of reality.
+        </p>
+      </div>
+
+      <div class="divider mt-40">
+        <div class="divider-line"></div>
+        <div class="divider-glyph">// BINARY VS SUPERPOSITION //</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="prose">
+        <p>
+          The difference resembles the distinction between a
+          <span class="amber-text">binary electron state</span> and the
+          <span class="highlight">superposition of a wave function</span> —
+          where all possibilities exist simultaneously between zero and one.
+        </p>
+        <p>
+          Every choice we make simply moves us to another coordinate
+          within the <span class="crt-text">neural network of possibilities.</span>
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <div class="code-block">
+        <p><span class="com">// SYSTEM ARCHITECTURE — DRAFT v0.∞</span></p>
+        <br>
+        <p><span class="key">class</span> <span class="val">ConsciousnessUnit</span> {</p>
+        <p style="padding-left:20px"><span class="key">position</span>: Vector3D;</p>
+        <p style="padding-left:20px"><span class="key">state</span>: <span class="val">SUPERPOSITION</span>;</p>
+        <p style="padding-left:20px"><span class="key">free_will</span>: <span class="infra">UNRESOLVED</span>;</p>
+        <p style="padding-left:20px"><span class="key">moral_axis</span>: [X, Y, Z];</p>
+        <br>
+        <p style="padding-left:20px"><span class="key">function</span> <span class="val">choose</span>(options[]) {</p>
+        <p style="padding-left:40px"><span class="com">// min 3 options required</span></p>
+        <p style="padding-left:40px"><span class="com">// binary = fragmented reality</span></p>
+        <p style="padding-left:40px"><span class="key">return</span> next_coordinate;</p>
+        <p style="padding-left:20px">}</p>
+        <br>
+        <p style="padding-left:20px"><span class="key">function</span> <span class="val">move</span>(direction) {</p>
+        <p style="padding-left:40px"><span class="com">// LEFT|RIGHT → horizontal</span></p>
+        <p style="padding-left:40px"><span class="com">// UP|DOWN    → vertical</span></p>
+        <p style="padding-left:40px"><span class="com">// affects self|others</span></p>
+        <p style="padding-left:20px">}</p>
+        <p>}</p>
+        <br>
+        <p><span class="com">// ENVIRONMENT: programmed</span></p>
+        <p><span class="com">// AGENT: free</span></p>
+        <p><span class="com">// CONTRADICTION: unresolved</span></p>
+      </div>
+
+      <!-- Vector field canvas -->
+      <svg id="vector-field" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" style="margin-top:24px;background:#000;border:1px solid rgba(0,255,65,0.1);">
+        <!-- Vector field arrows representing choice directions -->
+        <defs>
+          <marker id="arr" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
+            <path d="M0,0 L4,2 L0,4 Z" fill="rgba(0,255,65,0.4)"/>
+          </marker>
+          <marker id="arr-amber" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
+            <path d="M0,0 L4,2 L0,4 Z" fill="rgba(200,134,10,0.6)"/>
+          </marker>
+        </defs>
+        <!-- Grid of vector arrows -->
+        <g stroke="rgba(0,255,65,0.25)" stroke-width="0.8" marker-end="url(#arr)">
+          <!-- row 1 -->
+          <line x1="40" y1="40" x2="65" y2="28"/>
+          <line x1="100" y1="40" x2="118" y2="52"/>
+          <line x1="160" y1="40" x2="148" y2="27"/>
+          <line x1="220" y1="40" x2="238" y2="50"/>
+          <line x1="280" y1="40" x2="268" y2="28"/>
+          <line x1="340" y1="40" x2="358" y2="30"/>
+          <line x1="400" y1="40" x2="388" y2="52"/>
+          <line x1="460" y1="40" x2="478" y2="32"/>
+          <line x1="520" y1="40" x2="510" y2="50"/>
+          <!-- row 2 -->
+          <line x1="40" y1="90" x2="52" y2="102"/>
+          <line x1="100" y1="90" x2="88" y2="78"/>
+          <line x1="160" y1="90" x2="172" y2="80"/>
+          <line x1="220" y1="90" x2="208" y2="102"/>
+          <line x1="280" y1="90" x2="295" y2="80"/>
+          <line x1="340" y1="90" x2="328" y2="78"/>
+          <line x1="400" y1="90" x2="415" y2="100"/>
+          <line x1="460" y1="90" x2="448" y2="78"/>
+          <line x1="520" y1="90" x2="532" y2="100"/>
+          <!-- row 3 -->
+          <line x1="40" y1="140" x2="58" y2="132"/>
+          <line x1="100" y1="140" x2="90" y2="152"/>
+          <line x1="160" y1="140" x2="172" y2="148"/>
+          <line x1="220" y1="140" x2="208" y2="130"/>
+          <line x1="280" y1="140" x2="295" y2="150"/>
+          <line x1="340" y1="140" x2="355" y2="130"/>
+          <line x1="400" y1="140" x2="388" y2="150"/>
+          <line x1="460" y1="140" x2="475" y2="132"/>
+          <line x1="520" y1="140" x2="508" y2="152"/>
+          <!-- row 4 -->
+          <line x1="40" y1="190" x2="52" y2="178"/>
+          <line x1="100" y1="190" x2="112" y2="200"/>
+          <line x1="160" y1="190" x2="148" y2="180"/>
+          <line x1="220" y1="190" x2="235" y2="200"/>
+          <line x1="280" y1="190" x2="268" y2="178"/>
+          <line x1="340" y1="190" x2="352" y2="200"/>
+          <line x1="400" y1="190" x2="415" y2="182"/>
+          <line x1="460" y1="190" x2="450" y2="200"/>
+          <line x1="520" y1="190" x2="532" y2="180"/>
+        </g>
+        <!-- Central attractor point (singularity) -->
+        <g marker-end="url(#arr-amber)" stroke="rgba(200,134,10,0.5)" stroke-width="1">
+          <line x1="280" y1="90" x2="298" y2="105"/>
+          <line x1="340" y1="90" x2="322" y2="105"/>
+          <line x1="280" y1="140" x2="298" y2="122"/>
+          <line x1="340" y1="140" x2="322" y2="122"/>
+        </g>
+        <circle cx="310" cy="112" r="5" fill="none" stroke="rgba(200,134,10,0.6)" stroke-width="1"/>
+        <circle cx="310" cy="112" r="2" fill="rgba(255,255,255,0.8)"/>
+        <text x="310" y="220" text-anchor="middle" font-family="monospace" font-size="8" fill="rgba(0,255,65,0.4)" letter-spacing="3">AI VECTOR FIELD — CHOICE TOPOLOGY</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FRAGMENT 03 — MULTIDIMENSIONAL MORAL MOVEMENT                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment reveal" id="f03">
+  <div class="bg-number" style="bottom:-60px;right:-20px;opacity:0.025" aria-hidden="true">03</div>
+
+  <p class="frag-number">FRAGMENT — 003 // MORAL TOPOLOGY // VERTICAL AXIS DETECTED</p>
+  <h2 class="frag-title amber">HEAVEN &amp;<br>HELL<br>ARE NOW</h2>
+
+  <div class="three-col">
+    <div class="prose">
+      <p>
+        Most decisions are not inherently good or bad
+        if observed only inside a <span class="highlight">flat plane.</span>
+      </p>
+      <p>
+        But highly complex intelligent systems — the human brain,
+        civilizations, solar systems, perhaps the universe itself —
+        do not operate inside a flat plane.
+      </p>
+      <p>
+        These systems are <span class="amber-text">vector-based and multidimensional.</span>
+      </p>
+      <p>
+        We always move not only left or right,
+        but also <span class="highlight">up or down.</span>
+      </p>
+      <p>
+        Within this interpretation, we begin to notice symbolic
+        similarities with concepts historically described as
+        <em>Heaven</em> and <em>Hell</em> —
+        not as future destinations, but as
+        <span class="crt-text">states of positioning inside the system.</span>
+        States that already exist now.
+      </p>
+    </div>
+
+    <div>
+      <!-- Axis diagram -->
+      <svg viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;background:transparent;">
+        <!-- Axes -->
+        <line x1="150" y1="20" x2="150" y2="300" stroke="rgba(200,134,10,0.5)" stroke-width="1.5"/>
+        <line x1="20" y1="160" x2="280" y2="160" stroke="rgba(90,88,80,0.5)" stroke-width="1.5"/>
+        <!-- Arrow heads -->
+        <polygon points="150,14 145,26 155,26" fill="rgba(200,134,10,0.5)"/>
+        <polygon points="286,160 274,155 274,165" fill="rgba(90,88,80,0.5)"/>
+        <!-- Labels -->
+        <text x="160" y="16" font-family="monospace" font-size="9" fill="rgba(200,134,10,0.7)" letter-spacing="2">HEAVEN / UP</text>
+        <text x="160" y="298" font-family="monospace" font-size="9" fill="rgba(200,134,10,0.4)" letter-spacing="2">HELL / DOWN</text>
+        <text x="22" y="152" font-family="monospace" font-size="9" fill="rgba(90,88,80,0.7)" letter-spacing="2">LEFT</text>
+        <text x="245" y="152" font-family="monospace" font-size="9" fill="rgba(90,88,80,0.7)" letter-spacing="2">RIGHT</text>
+        <!-- Quadrant labels -->
+        <text x="162" y="100" font-family="monospace" font-size="8" fill="rgba(0,255,65,0.25)">SELF+</text>
+        <text x="75" y="100" font-family="monospace" font-size="8" fill="rgba(0,255,65,0.25)">OTHERS+</text>
+        <text x="162" y="240" font-family="monospace" font-size="8" fill="rgba(204,26,0,0.35)">SELF−</text>
+        <text x="68" y="240" font-family="monospace" font-size="8" fill="rgba(204,26,0,0.35)">OTHERS−</text>
+        <!-- Origin -->
+        <circle cx="150" cy="160" r="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        <circle cx="150" cy="160" r="2" fill="rgba(255,255,255,0.7)"/>
+        <!-- Sample path -->
+        <polyline points="150,160 180,140 210,130 240,100 200,80" fill="none" stroke="rgba(200,134,10,0.35)" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <circle cx="200" cy="80" r="3" fill="rgba(200,134,10,0.6)"/>
+        <text x="205" y="77" font-family="monospace" font-size="7" fill="rgba(200,134,10,0.5)">YOU?</text>
+        <!-- Self-affecting only path -->
+        <polyline points="150,160 160,160 180,165 200,162 220,160" fill="none" stroke="rgba(90,88,80,0.3)" stroke-width="1" stroke-dasharray="2,3"/>
+        <text x="180" y="178" font-family="monospace" font-size="7" fill="rgba(90,88,80,0.4)">self-affecting</text>
+      </svg>
+
+      <div class="sidenote mt-16">
+        Choices affecting <em>yourself</em> — your body, consciousness, soul — move you horizontally.
+        Choices affecting <em>others</em> — their freedom, suffering, growth — may influence vertical movement.
+      </div>
+    </div>
+
+    <div>
+      <div class="terminal" style="margin-top:0">
+        <p><span class="prompt">$ </span>query --axis=vertical</p>
+        <br>
+        <p>SCANNING MORAL_VECTOR...</p>
+        <br>
+        <p>HORIZONTAL_AXIS:</p>
+        <p>  → affects: SELF</p>
+        <p>  → impact: body | mind | soul</p>
+        <p>  → type: permitted</p>
+        <br>
+        <p>VERTICAL_AXIS:</p>
+        <p>  → affects: OTHERS</p>
+        <p>  → impact: freedom | pain | growth</p>
+        <p>  → type: validated by system</p>
+        <br>
+        <p>BACKGROUND PROCESS:</p>
+        <p>  separation of true/false</p>
+        <p>  running... <span class="cursor"></span></p>
+      </div>
+
+      <div class="code-block mt-24" style="font-size:10px">
+        <p><span class="com">// background_validation.sys</span></p>
+        <br>
+        <p><span class="key">if</span> (choice.affects === <span class="val">'others'</span>) {</p>
+        <p style="padding-left:16px">system.adjustVerticalVector();</p>
+        <p style="padding-left:16px"><span class="key">if</span> (impact === <span class="infra">'harm'</span>) {</p>
+        <p style="padding-left:32px">z_position -= weight;</p>
+        <p style="padding-left:16px">}</p>
+        <p>}</p>
+        <br>
+        <p><span class="com">// eternal ≠ after-death</span></p>
+        <p><span class="com">// eternal = current state</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FRAGMENT 04 — THE RESET CYCLE                                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment infra-band reveal" id="f04">
+  <div class="scanline-sweep" aria-hidden="true"></div>
+
+  <p class="frag-number">FRAGMENT — 004 // CYCLICAL COLLAPSE // GEOLOGICAL RECORD</p>
+  <h2 class="frag-title" style="color:var(--infra)">THE RESET<br>BUTTON</h2>
+
+  <div class="two-col">
+    <div class="prose">
+      <p>
+        According to some geological interpretations, Earth appears to
+        experience <span class="highlight">catastrophic global events in repeating cycles</span> —
+        floods, impacts, collapses, resets.
+      </p>
+      <p>
+        Some alternative researchers associate these cycles with roughly
+        <span class="amber-text">28,000-year patterns</span> found in geological layers
+        and historical anomalies.
+      </p>
+      <p>
+        Others connect such theories to the idea of a hidden celestial body
+        described in ancient mythology as <span class="crt-text">Nibiru</span> or "Planet X."
+      </p>
+      <p>
+        This concept has appeared in modern speculative discussions
+        around the hypothetical ninth planet researched by scientists
+        such as Konstantin Batygin at Caltech.
+      </p>
+      <p>
+        Whether literal or symbolic, the idea represents something larger:
+        <span class="highlight">a reset button.</span>
+      </p>
+    </div>
+
+    <div>
+      <!-- Geological strata -->
+      <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:var(--metal);margin-bottom:16px;text-transform:uppercase;">Core Sample — Geological Strata</p>
+      <div class="strata">
+        <div class="strata-layer" style="--h:8px;--top:0px;--col:#1a1608;--op:0.9;"></div>
+        <div class="strata-layer" style="--h:4px;--top:10px;--col:#3a2d10;--op:0.8;"></div>
+        <div class="strata-layer" style="--h:12px;--top:16px;--col:#0a0a08;--op:0.95;"></div>
+        <div class="strata-layer" style="--h:3px;--top:30px;--col:#8b6914;--op:0.6;"></div>
+        <div class="strata-layer" style="--h:18px;--top:35px;--col:#1a1200;--op:0.9;"></div>
+        <div class="strata-layer" style="--h:5px;--top:55px;--col:#7a1000;--op:0.4;"></div>
+        <div class="strata-layer" style="--h:14px;--top:62px;--col:#0d0d0b;--op:0.95;"></div>
+        <div class="strata-layer" style="--h:3px;--top:78px;--col:#c8860a;--op:0.3;"></div>
+        <div class="strata-layer" style="--h:20px;--top:83px;--col:#080806;--op:0.98;"></div>
+        <div class="strata-layer" style="--h:6px;--top:105px;--col:#4a3408;--op:0.7;"></div>
+        <div class="strata-layer" style="--h:10px;--top:113px;--col:#151510;--op:0.9;"></div>
+        <div class="strata-layer" style="--h:25px;--top:125px;--col:#0a0906;--op:1;"></div>
+        <div class="strata-layer" style="--h:2px;--top:152px;--col:#cc1a00;--op:0.2;"></div>
+        <div class="strata-layer" style="--h:6px;--top:156px;--col:#1a1200;--op:0.9;"></div>
+
+        <!-- Labels -->
+        <div class="strata-label" style="--top:2px;font-size:8px;">PRESENT — 0yr</div>
+        <div class="strata-label" style="--top:32px;font-size:8px;color:var(--amber);">ANOMALY LAYER — ~3,200yr</div>
+        <div class="strata-label" style="--top:56px;font-size:8px;color:var(--infra);">IMPACT EVENT — ~12,000yr</div>
+        <div class="strata-label" style="--top:80px;font-size:8px;">TRANSITION — ~14,000yr</div>
+        <div class="strata-label" style="--top:107px;font-size:8px;color:var(--amber);">ANOMALY — ~22,000yr</div>
+        <div class="strata-label" style="--top:153px;font-size:8px;color:var(--infra);">RESET EVENT — ~28,000yr</div>
+      </div>
+
+      <table class="data-table mt-40">
+        <thead>
+          <tr>
+            <th>CYCLE</th>
+            <th>INTERVAL</th>
+            <th>TYPE</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="key-cell">CURRENT</td>
+            <td>~12,000yr</td>
+            <td>HOLOCENE</td>
+            <td class="val-cell">ACTIVE</td>
+          </tr>
+          <tr>
+            <td class="key-cell">PRIOR</td>
+            <td>~28,000yr</td>
+            <td>UNKNOWN</td>
+            <td style="color:var(--infra)">ERASED</td>
+          </tr>
+          <tr>
+            <td class="key-cell">TRIGGER</td>
+            <td>UNKNOWN</td>
+            <td>CELESTIAL?</td>
+            <td style="color:var(--metal)">DISPUTED</td>
+          </tr>
+          <tr>
+            <td class="key-cell">PLANET 9</td>
+            <td>10,000–20,000yr</td>
+            <td>ORBITAL</td>
+            <td style="color:var(--crt-dim)">UNCONFIRMED</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FRAGMENT 05 — LOST CIVILIZATIONS                                        -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment reveal" id="f05">
+  <div class="bg-number" style="top:-80px;left:-30px;opacity:0.025" aria-hidden="true">05</div>
+
+  <p class="frag-number">FRAGMENT — 005 // CIVILIZATIONAL ARCHAEOLOGY // ABSENCE ≠ PROOF</p>
+  <h2 class="frag-title">WRITTEN<br>IN STONE</h2>
+
+  <div class="three-col">
+    <div class="prose">
+      <p>
+        An acquaintance once said:
+        <em>"Real history was written in stone. Later it was rewritten on paper."</em>
+      </p>
+      <p>
+        The necessity of written contracts may itself represent a form of
+        <span class="highlight">regression</span> — the loss of honor within spoken agreements.
+      </p>
+      <p>
+        Modern science often dismisses highly advanced ancient civilizations
+        due to the absence of conventional evidence:
+        writing systems, preserved documentation.
+      </p>
+      <p>
+        But does the <span class="amber-text">absence of familiar evidence</span>
+        prove absence itself?
+      </p>
+      <p>
+        Human civilization learned widespread hand washing
+        <span class="highlight">barely a century ago.</span>
+        And yet we speak confidently about billions of years of history.
+      </p>
+      <p>
+        Even our most advanced modern devices would eventually decay into
+        <span class="crt-text">oxidized metals, dust, and sand</span>
+        over sufficiently long periods of time.
+      </p>
+    </div>
+
+    <div>
+      <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:var(--metal);margin-bottom:20px;text-transform:uppercase;">Surviving Anomalies</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="border:1px solid rgba(200,134,10,0.15);padding:16px 20px;position:relative;">
+          <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--amber);opacity:0.4;"></div>
+          <p style="font-family:var(--font-head);font-size:20px;color:var(--bone);letter-spacing:1px;">ANTIKYTHERA</p>
+          <p style="font-family:var(--font-mono);font-size:9px;color:var(--crt-dim);margin-top:4px;letter-spacing:2px;">~100 BCE — MECHANICAL COMPUTATION</p>
+          <p style="font-size:11px;color:var(--bone-dim);margin-top:8px;font-family:var(--font-serif);font-style:italic;">Differential gear system. Astronomical prediction. Recovered from seabed.</p>
+        </div>
+        <div style="border:1px solid rgba(200,134,10,0.12);padding:16px 20px;position:relative;">
+          <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--amber);opacity:0.25;"></div>
+          <p style="font-family:var(--font-head);font-size:20px;color:var(--bone);letter-spacing:1px;">GREAT PYRAMID</p>
+          <p style="font-family:var(--font-mono);font-size:9px;color:var(--crt-dim);margin-top:4px;letter-spacing:2px;">~2560 BCE — PRECISION UNKNOWN</p>
+          <p style="font-size:11px;color:var(--bone-dim);margin-top:8px;font-family:var(--font-serif);font-style:italic;">2.3M blocks. Alignment: 0.05° arc. No written construction records.</p>
+        </div>
+        <div style="border:1px solid rgba(200,134,10,0.1);padding:16px 20px;position:relative;">
+          <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--infra);opacity:0.25;"></div>
+          <p style="font-family:var(--font-head);font-size:20px;color:var(--bone);letter-spacing:1px;">ARKAIM</p>
+          <p style="font-family:var(--font-mono);font-size:9px;color:var(--crt-dim);margin-top:4px;letter-spacing:2px;">~2100 BCE — URAL MOUNTAINS</p>
+          <p style="font-size:11px;color:var(--bone-dim);margin-top:8px;font-family:var(--font-serif);font-style:italic;">Circular urban plan. Astronomical orientation. Abandoned deliberately.</p>
+        </div>
+        <div style="border:1px solid rgba(200,134,10,0.08);padding:16px 20px;position:relative;">
+          <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--amber);opacity:0.15;"></div>
+          <p style="font-family:var(--font-head);font-size:20px;color:var(--bone);letter-spacing:1px;">OLMEC HEADS</p>
+          <p style="font-family:var(--font-mono);font-size:9px;color:var(--crt-dim);margin-top:4px;letter-spacing:2px;">~900 BCE — MESOAMERICA</p>
+          <p style="font-size:11px;color:var(--bone-dim);margin-top:8px;font-family:var(--font-serif);font-style:italic;">Basalt colossi. Transport unknown. Civilization origin: unresolved.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidenote" style="margin-bottom:32px">
+        What society calls truth is often merely an agreement
+        reinforced by repetition.
+        A dome of inherited assumptions.
+      </div>
+
+      <div class="code-block">
+        <p><span class="com">// epistemology.query</span></p>
+        <br>
+        <p><span class="key">assert</span>(absence_of_evidence</p>
+        <p>  === evidence_of_absence);</p>
+        <br>
+        <p><span class="infra">// ERROR: FALSE EQUIVALENCE</span></p>
+        <p><span class="com">// Stack trace:</span></p>
+        <p><span class="com">// consensus.js:1847</span></p>
+        <p><span class="com">// repetition.js:2201</span></p>
+        <p><span class="com">// assumption.js:999</span></p>
+        <br>
+        <p><span class="key">known_ancient_world</span></p>
+        <p>  = fragments</p>
+        <p>  + shadows</p>
+        <p>  + narrow_beam</p>
+        <p>  + <span class="val">researcher_bias</span>;</p>
+      </div>
+
+      <div style="margin-top:32px;padding:20px;border:1px solid rgba(204,26,0,0.15);background:rgba(204,26,0,0.03);">
+        <p style="font-family:var(--font-mono);font-size:9px;color:var(--infra);letter-spacing:3px;margin-bottom:8px;">HANDWASHING PARADOX</p>
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:12px;color:var(--bone-dim);line-height:1.8;">
+          Ignaz Semmelweis proved hand hygiene in 1847.
+          Germ theory accepted ~1880.
+          Universal practice: ~1980.
+          <br><br>
+          Time to accept: <span style="color:var(--infra)">133 years.</span>
+          <br>
+          We claim knowledge of 4.5 billion.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote reveal">
+    "Almost everything we know about the ancient world exists only as fragments — shadows illuminated briefly by the narrow beam of whichever historical period a researcher happens to study."
+    <span class="pullquote-source">— Fragment 005 // Civilizational Archive</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FRAGMENT 06 — COLLAPSE OF TRUTH                                         -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment reveal" id="f06" style="background:rgba(0,0,0,0.4);">
+  <div class="scanline-sweep" aria-hidden="true"></div>
+  <div class="bg-number" style="bottom:-40px;right:-20px;opacity:0.03" aria-hidden="true">06</div>
+
+  <p class="frag-number">FRAGMENT — 006 // TRUTH STRUCTURE // TERMINAL DISSOLUTION</p>
+  <h2 class="frag-title" style="color:var(--bone-dim);">DOME<br>OF<br>ASSUMPTION</h2>
+
+  <div class="two-col">
+    <div>
+      <div class="prose">
+        <p>
+          Modern society often assumes itself to be the most advanced
+          civilization in human history.
+        </p>
+        <p>
+          But what if <span class="amber-text">technological growth</span> is not equivalent
+          to <span class="highlight">conscious evolution?</span>
+        </p>
+        <p>
+          Technologies — television, radio, the internet —
+          can both expand and reduce awareness.
+          Writing may have become a compensation for disappearing trust.
+        </p>
+        <p>
+          What society calls truth is often merely an agreement
+          reinforced by repetition.
+          <span class="crt-text">A dome of inherited assumptions.</span>
+        </p>
+      </div>
+
+      <div class="divider mt-40">
+        <div class="divider-line"></div>
+        <div class="divider-glyph">// SIGNAL //</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- Interference pattern -->
+      <svg viewBox="0 0 500 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-top:8px;">
+        <!-- Signal waveform with "interference" -->
+        <polyline
+          points="0,40 20,40 25,20 30,60 35,15 40,65 45,30 50,50 55,40 70,40 80,25 85,55 90,22 95,62 100,38 105,45 110,40 130,40 140,18 145,62 150,28 155,55 160,35 165,48 170,40 190,40 200,40 210,40 215,38 220,42 225,35 230,48 235,38 240,43 245,40 260,40 270,22 275,58 280,18 285,65 290,25 295,58 300,38 305,45 310,40 320,40 340,40 345,28 350,52 355,22 360,60 365,32 370,50 375,40 400,40 410,40 420,32 425,50 430,28 435,55 440,35 445,48 450,40 480,40 500,40"
+          fill="none" stroke="rgba(0,255,65,0.35)" stroke-width="1.5"/>
+        <!-- Glitch break -->
+        <rect x="195" y="0" width="15" height="80" fill="rgba(0,255,65,0.04)"/>
+        <line x1="195" y1="0" x2="195" y2="80" stroke="rgba(204,26,0,0.3)" stroke-width="0.5"/>
+        <line x1="210" y1="0" x2="210" y2="80" stroke="rgba(204,26,0,0.3)" stroke-width="0.5"/>
+        <text x="197" y="12" font-family="monospace" font-size="7" fill="rgba(204,26,0,0.5)">ERR</text>
+      </svg>
+    </div>
+
+    <div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>CONSENSUS NODE</th>
+            <th>ORIGIN</th>
+            <th>VALIDITY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="key-cell">Human uniqueness</td>
+            <td>Greco-Roman</td>
+            <td style="color:var(--infra)">CONTESTED</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Linear progress</td>
+            <td>Enlightenment</td>
+            <td style="color:var(--infra)">CONTESTED</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Written = true</td>
+            <td>Medieval</td>
+            <td style="color:var(--amber)">PARTIAL</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Science = complete</td>
+            <td>Industrial</td>
+            <td style="color:var(--infra)">FALSE</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Modernity = peak</td>
+            <td>Post-war</td>
+            <td style="color:var(--infra)">UNVERIFIED</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Absence = non-exist.</td>
+            <td>Academic</td>
+            <td style="color:var(--infra)">LOGICAL_ERR</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Consciousness = brain</td>
+            <td>Neuroscience</td>
+            <td style="color:var(--amber)">OPEN</td>
+          </tr>
+          <tr>
+            <td class="key-cell">Death = end</td>
+            <td>Materialist</td>
+            <td style="color:var(--crt-dim)">NULL</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sidenote mt-40">
+        In truth, almost everything we know about the ancient world
+        exists only as fragments. What society calls truth is often
+        merely an agreement reinforced by repetition.
+        <br><br>
+        <span style="color:var(--infra)">A dome of inherited assumptions.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- CLOSING TRANSMISSION                                                    -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section class="fragment reveal" id="close" style="min-height:60vh;min-height:60svh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse 60% 70% at 50% 50%, rgba(200,134,10,0.05), transparent);">
+  <div class="scanline-sweep" aria-hidden="true"></div>
+
+  <p class="frag-number text-center">TRANSMISSION CLOSING // ARCHIVE FRAGMENT ENDS // STATUS: UNRESOLVED</p>
+
+  <h2 style="font-family:var(--font-head);font-size:clamp(60px,10vw,160px);line-height:0.88;color:var(--bone);text-align:center;letter-spacing:1px;margin:40px 0;" class="reveal">
+    ARE<br>
+    <span style="color:var(--amber)">YOU</span><br>
+    <span style="color:var(--crt);opacity:0.7">CERTAIN</span>
+  </h2>
+
+  <div style="text-align:center;max-width:600px;margin:0 auto;" class="reveal">
+    <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(14px,1.5vw,18px);color:var(--bone-dim);line-height:1.9;">
+      Every choice we make simply moves us to another coordinate
+      within the neural network of possibilities.
+      <br><br>
+      The question is not whether the system exists.
+      <br>
+      The question is <span style="color:var(--bone)">which direction you are moving.</span>
+    </p>
+
+    <div class="divider mt-40">
+      <div class="divider-line"></div>
+      <div class="divider-glyph">// END //</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:4px;color:var(--metal);margin-top:24px;">
+      34.1478°N 114.5982°W — DAY 28 — BLYTHE LIBRARY — ONE TORN PAGE
+    </p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ──────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-col">
+    <p class="footer-col-title">Archive</p>
+    <p><span>Document:</span> Fragment_001</p>
+    <p><span>Classification:</span> Omega</p>
+    <p><span>Status:</span> Unresolved</p>
+    <p><span>Origin:</span> Desert Transit</p>
+    <p><span>Year:</span> 2026</p>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-title">Coordinates</p>
+    <p><span>Lat:</span> 34.1478° N</p>
+    <p><span>Lng:</span> 114.5982° W</p>
+    <p><span>Location:</span> Blythe, CA</p>
+    <p><span>Temp:</span> 120°F / 48.8°C</p>
+    <p><span>Day:</span> 28 of walk</p>
+  </div>
+  <div class="footer-col">
+    <p class="footer-col-title">System</p>
+    <p><span>Free_will:</span> Unresolved</p>
+    <p><span>Vector:</span> Multidimensional</p>
+    <p><span>Reset_cycle:</span> 28,000yr</p>
+    <p><span>Truth_structure:</span> Collapsing</p>
+    <p><span>Observer:</span> You</p>
+  </div>
+</footer>
+
+<!-- ─── JAVASCRIPT ───────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Passive scroll support detection ── */
+  var passiveSupported = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function () { passiveSupported = true; }
+    });
+    window.addEventListener('_t', null, opts);
+    window.removeEventListener('_t', null, opts);
+  } catch (e) {}
+  var PASSIVE = passiveSupported ? { passive: true } : false;
+
+  /* ── Neural canvas ── */
+  var canvas = document.getElementById('neural-canvas');
+  if (canvas) {
+    var ctx = canvas.getContext('2d');
+    var nodes = [];
+    var W, H;
+
+    function resizeCanvas() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function initNodes() {
+      nodes = [];
+      var count = Math.floor((W * H) / 14000);
+      for (var i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          r: Math.random() * 1.5 + 0.5
+        });
+      }
+    }
+
+    function drawNeural() {
+      ctx.clearRect(0, 0, W, H);
+      var maxDist = 140;
+
+      for (var i = 0; i < nodes.length; i++) {
+        nodes[i].x += nodes[i].vx;
+        nodes[i].y += nodes[i].vy;
+        if (nodes[i].x < 0 || nodes[i].x > W) nodes[i].vx *= -1;
+        if (nodes[i].y < 0 || nodes[i].y > H) nodes[i].vy *= -1;
+
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < maxDist) {
+            var alpha = (1 - dist / maxDist) * 0.12;
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(200,134,10,' + alpha + ')';
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(nodes[i].x, nodes[i].y, nodes[i].r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(200,134,10,0.3)';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(drawNeural);
+    }
+
+    resizeCanvas();
+    initNodes();
+    drawNeural();
+
+    window.addEventListener('resize', function () {
+      resizeCanvas();
+      initNodes();
+    }, PASSIVE);
+  }
+
+  /* ── Scroll reveal ── */
+  var revealEls = document.querySelectorAll('.reveal');
+
+  if (!('IntersectionObserver' in window)) {
+    for (var k = 0; k < revealEls.length; k++) {
+      revealEls[k].classList.add('is-visible');
+    }
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      for (var e = 0; e < entries.length; e++) {
+        if (entries[e].isIntersecting) {
+          entries[e].target.classList.add('is-visible');
+          observer.unobserve(entries[e].target);
+        }
+      }
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    for (var m = 0; m < revealEls.length; m++) {
+      observer.observe(revealEls[m]);
+    }
+  }
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ── Subtle cursor trail glyph ── */
+  var glyphs = ['∞','Ω','⊗','△','◈','⬡','✦','⊕','⋯'];
+  var lastGlyph = 0;
+  document.addEventListener('mousemove', function (e) {
+    var now = Date.now();
+    if (now - lastGlyph < 800) return;
+    lastGlyph = now;
+
+    var el = document.createElement('div');
+    el.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+    el.style.cssText = [
+      'position:fixed',
+      'left:' + (e.clientX + 12) + 'px',
+      'top:' + (e.clientY - 8) + 'px',
+      'font-family:monospace',
+      'font-size:10px',
+      'color:rgba(200,134,10,0.4)',
+      'pointer-events:none',
+      'z-index:9999',
+      'transition:opacity 1.2s ease, transform 1.2s ease',
+      'will-change:opacity,transform'
+    ].join(';');
+    document.body.appendChild(el);
+
+    setTimeout(function () {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-20px)';
+    }, 50);
+    setTimeout(function () {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    }, 1300);
+  }, PASSIVE);
+
+  /* ── Random glitch flicker on hero title ── */
+  var heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    setInterval(function () {
+      heroTitle.style.opacity = (Math.random() > 0.97) ? '0.85' : '1';
+    }, 100);
+  }
+
+}());
+</script>
+
+</body>
+</html>
