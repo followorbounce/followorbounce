@@ -150,7 +150,16 @@
   category: "development"
   tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
   description: "A classified transmission on consciousness, programmed existence, and the neural architecture of reality."
-  cover: ""
+  cover: "/assets/images/portfolio/singularity-archive.svg"
   url: "/p/singularity"
 #  featured: ""
   year: "2023"
+
+- title: "The Architecture of Untruth"
+  category: "web"
+  tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
+  description: "A philosophical editorial monument exploring lies, omission, and the collapse of sincerity in modern civilization. Avant-garde brutalist design inspired by Giacometti."
+  cover: "/assets/images/portfolio/the-architecture-of-untruth.svg"
+  url: "/p/the-architecture-of-untruth/"
+ # featured: "true"
+  year: "2025"

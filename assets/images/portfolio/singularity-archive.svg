@@ -1,0 +1,433 @@
+<svg viewBox="0 0 1536 1024" xmlns="http://www.w3.org/2000/svg" width="1536" height="1024">
+  <defs>
+
+
+
+    <!-- Base vignette — pure black edges, deep void centre -->
+    <radialGradient id="bg-vignette" cx="50%" cy="55%" r="75%">
+      <stop offset="0%"   stop-color="#0d0c09"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Amber glow pool — centre -->
+    <radialGradient id="amber-glow" cx="50%" cy="55%" r="50%">
+      <stop offset="0%"   stop-color="#c8860a" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#070704" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- CRT glow — lower left -->
+    <radialGradient id="crt-glow" cx="18%" cy="80%" r="40%">
+      <stop offset="0%"   stop-color="#00ff41" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#070704" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Infra glow — upper right -->
+    <radialGradient id="infra-glow" cx="82%" cy="20%" r="38%">
+      <stop offset="0%"   stop-color="#cc1a00" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#070704" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Amber horizontal rule -->
+    <linearGradient id="amber-rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#c8860a" stop-opacity="0"/>
+      <stop offset="25%"  stop-color="#c8860a" stop-opacity="0.5"/>
+      <stop offset="75%"  stop-color="#c8860a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c8860a" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- CRT dim rule -->
+    <linearGradient id="crt-rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00882a" stop-opacity="0"/>
+      <stop offset="40%"  stop-color="#00882a" stop-opacity="0.35"/>
+      <stop offset="60%"  stop-color="#00882a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00882a" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Infra rule -->
+    <linearGradient id="infra-rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#cc1a00" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#cc1a00" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#cc1a00" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Neural node connection fade -->
+    <linearGradient id="node-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#c8860a" stop-opacity="0.06"/>
+      <stop offset="50%"  stop-color="#c8860a" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#c8860a" stop-opacity="0.06"/>
+    </linearGradient>
+
+    <!-- Bottom fade-out -->
+    <linearGradient id="bottom-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.7"/>
+    </linearGradient>
+
+    <!-- CRT scanline pattern -->
+    <pattern id="scanlines" x="0" y="0" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="1536" height="2" fill="#000000" opacity="0.04"/>
+    </pattern>
+
+    <!-- Amber grid (hero-grid equivalent) -->
+    <pattern id="amber-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#c8860a" stroke-width="0.6" opacity="0.06"/>
+    </pattern>
+
+    <!-- Soft blur for neural nodes -->
+    <filter id="node-blur">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <filter id="glow-amber">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-crt">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-infra">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Noise / grain -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+      <feBlend in="SourceGraphic" in2="gray" mode="overlay"/>
+    </filter>
+
+  </defs>
+
+  <!-- ── BASE LAYERS ── -->
+  <rect width="1536" height="1024" fill="#000000"/>
+  <rect width="1536" height="1024" fill="url(#bg-vignette)"/>
+  <rect width="1536" height="1024" fill="url(#amber-glow)"/>
+  <rect width="1536" height="1024" fill="url(#crt-glow)"/>
+  <rect width="1536" height="1024" fill="url(#infra-glow)"/>
+
+  <!-- Amber grid (faint structural blueprint) -->
+  <rect width="1536" height="1024" fill="url(#amber-grid)"/>
+
+  <!-- CRT scanline overlay -->
+  <rect width="1536" height="1024" fill="url(#scanlines)"/>
+
+  <!-- ── NEURAL NETWORK — amber node/edge graph ── -->
+  <!-- Edges first, nodes on top -->
+  <g opacity="0.28">
+    <!-- Node coordinate map (hand-placed for visual balance across canvas) -->
+    <!-- Primary cluster — centre-right -->
+    <line x1="820" y1="310" x2="940" y2="255" stroke="#c8860a" stroke-width="0.5" opacity="0.5"/>
+    <line x1="820" y1="310" x2="760" y2="390" stroke="#c8860a" stroke-width="0.5" opacity="0.4"/>
+    <line x1="820" y1="310" x2="920" y2="420" stroke="#c8860a" stroke-width="0.5" opacity="0.35"/>
+    <line x1="940" y1="255" x2="1040" y2="180" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="940" y1="255" x2="1060" y2="310" stroke="#c8860a" stroke-width="0.5" opacity="0.4"/>
+    <line x1="940" y1="255" x2="920" y2="420" stroke="#c8860a" stroke-width="0.5" opacity="0.25"/>
+    <line x1="1060" y1="310" x2="1040" y2="180" stroke="#c8860a" stroke-width="0.5" opacity="0.45"/>
+    <line x1="1060" y1="310" x2="1160" y2="350" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="1060" y1="310" x2="920"  y2="420" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="920"  y1="420" x2="760"  y2="390" stroke="#c8860a" stroke-width="0.5" opacity="0.35"/>
+    <line x1="920"  y1="420" x2="1010" y2="510" stroke="#c8860a" stroke-width="0.5" opacity="0.4"/>
+    <line x1="760"  y1="390" x2="680"  y2="470" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="680"  y1="470" x2="760"  y2="560" stroke="#c8860a" stroke-width="0.5" opacity="0.35"/>
+    <line x1="680"  y1="470" x2="580"  y2="420" stroke="#c8860a" stroke-width="0.5" opacity="0.25"/>
+    <line x1="1010" y1="510" x2="1160" y2="350" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="1010" y1="510" x2="1120" y2="580" stroke="#c8860a" stroke-width="0.5" opacity="0.35"/>
+    <line x1="1010" y1="510" x2="760"  y2="560" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <line x1="1120" y1="580" x2="1160" y2="350" stroke="#c8860a" stroke-width="0.5" opacity="0.25"/>
+    <line x1="1120" y1="580" x2="1260" y2="610" stroke="#c8860a" stroke-width="0.5" opacity="0.3"/>
+    <!-- Extended right cluster -->
+    <line x1="1160" y1="350" x2="1280" y2="290" stroke="#c8860a" stroke-width="0.5" opacity="0.25"/>
+    <line x1="1280" y1="290" x2="1380" y2="340" stroke="#c8860a" stroke-width="0.5" opacity="0.2"/>
+    <line x1="1380" y1="340" x2="1260" y2="610" stroke="#c8860a" stroke-width="0.5" opacity="0.18"/>
+    <line x1="1260" y1="610" x2="1380" y2="700" stroke="#c8860a" stroke-width="0.5" opacity="0.22"/>
+    <line x1="1380" y1="700" x2="1480" y2="660" stroke="#c8860a" stroke-width="0.5" opacity="0.18"/>
+    <!-- Upper scattered -->
+    <line x1="1040" y1="180" x2="1140" y2="110" stroke="#c8860a" stroke-width="0.5" opacity="0.2"/>
+    <line x1="1140" y1="110" x2="1280" y2="290" stroke="#c8860a" stroke-width="0.5" opacity="0.18"/>
+    <!-- Far left sparse -->
+    <line x1="200"  y1="680" x2="340"  y2="720" stroke="#c8860a" stroke-width="0.5" opacity="0.15"/>
+    <line x1="340"  y1="720" x2="480"  y2="640" stroke="#c8860a" stroke-width="0.5" opacity="0.18"/>
+    <line x1="480"  y1="640" x2="580"  y2="420" stroke="#c8860a" stroke-width="0.5" opacity="0.2"/>
+    <line x1="580"  y1="420" x2="820"  y2="310" stroke="#c8860a" stroke-width="0.5" opacity="0.25"/>
+    <line x1="340"  y1="720" x2="580"  y2="420" stroke="#c8860a" stroke-width="0.5" opacity="0.12"/>
+    <line x1="200"  y1="680" x2="260"  y2="540" stroke="#c8860a" stroke-width="0.5" opacity="0.1"/>
+    <line x1="760"  y1="560" x2="680"  y2="640" stroke="#c8860a" stroke-width="0.5" opacity="0.2"/>
+    <line x1="680"  y1="640" x2="480"  y2="640" stroke="#c8860a" stroke-width="0.5" opacity="0.18"/>
+    <!-- Bottom sparse -->
+    <line x1="680"  y1="640" x2="760"  y2="760" stroke="#c8860a" stroke-width="0.5" opacity="0.15"/>
+    <line x1="760"  y1="760" x2="1010" y2="510" stroke="#c8860a" stroke-width="0.5" opacity="0.1"/>
+  </g>
+
+  <!-- Neural nodes (dots) -->
+  <g filter="url(#node-blur)">
+    <circle cx="820"  cy="310" r="2.2" fill="#c8860a" opacity="0.65"/>
+    <circle cx="940"  cy="255" r="1.8" fill="#c8860a" opacity="0.55"/>
+    <circle cx="1060" cy="310" r="2.0" fill="#c8860a" opacity="0.6"/>
+    <circle cx="920"  cy="420" r="1.6" fill="#c8860a" opacity="0.5"/>
+    <circle cx="760"  cy="390" r="1.4" fill="#c8860a" opacity="0.45"/>
+    <circle cx="680"  cy="470" r="1.6" fill="#c8860a" opacity="0.45"/>
+    <circle cx="1010" cy="510" r="1.8" fill="#c8860a" opacity="0.55"/>
+    <circle cx="1160" cy="350" r="1.4" fill="#c8860a" opacity="0.4"/>
+    <circle cx="1120" cy="580" r="1.6" fill="#c8860a" opacity="0.45"/>
+    <circle cx="1040" cy="180" r="1.2" fill="#c8860a" opacity="0.35"/>
+    <circle cx="1140" cy="110" r="1.0" fill="#c8860a" opacity="0.28"/>
+    <circle cx="1280" cy="290" r="1.2" fill="#c8860a" opacity="0.3"/>
+    <circle cx="1380" cy="340" r="1.0" fill="#c8860a" opacity="0.25"/>
+    <circle cx="1260" cy="610" r="1.4" fill="#c8860a" opacity="0.35"/>
+    <circle cx="1380" cy="700" r="1.0" fill="#c8860a" opacity="0.25"/>
+    <circle cx="1480" cy="660" r="0.8" fill="#c8860a" opacity="0.2"/>
+    <circle cx="580"  cy="420" r="1.4" fill="#c8860a" opacity="0.4"/>
+    <circle cx="480"  cy="640" r="1.2" fill="#c8860a" opacity="0.3"/>
+    <circle cx="340"  cy="720" r="1.0" fill="#c8860a" opacity="0.25"/>
+    <circle cx="200"  cy="680" r="0.8" fill="#c8860a" opacity="0.18"/>
+    <circle cx="260"  cy="540" r="0.8" fill="#c8860a" opacity="0.18"/>
+    <circle cx="760"  cy="560" r="1.4" fill="#c8860a" opacity="0.4"/>
+    <circle cx="680"  cy="640" r="1.2" fill="#c8860a" opacity="0.35"/>
+    <circle cx="760"  cy="760" r="1.0" fill="#c8860a" opacity="0.22"/>
+  </g>
+
+  <!-- ── NAV BAR ECHO ── -->
+  <rect x="0" y="0" width="1536" height="44" fill="#000000" opacity="0.75"/>
+  <rect x="0" y="43" width="1536" height="1" fill="#c8860a" opacity="0.15"/>
+  <!-- Nav left: archive ID -->
+  <text x="48" y="26"
+        font-family="'Space Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="5" fill="#00882a" opacity="0.9">SINGULARITY-ARCHIVE // FRAGMENT_001</text>
+  <!-- Nav right: status -->
+  <circle cx="1390" cy="21" r="3" fill="#cc1a00" opacity="0.85"/>
+  <text x="1400" y="26"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="3" fill="#c8860a" opacity="0.7">TRANSMISSION ACTIVE</text>
+
+  <!-- ── GHOST OVERSIZED NUMBER — bg-number ── -->
+  <text x="1120" y="860"
+        font-family="'Bebas Neue', 'Impact', sans-serif"
+        font-size="680"
+        letter-spacing="-8"
+        fill="none"
+        stroke="#c8860a"
+        stroke-width="1"
+        opacity="0.045"
+        text-anchor="middle">001</text>
+
+  <!-- ── HERO LABEL ── -->
+  <text x="48" y="148"
+        font-family="'Space Mono', 'Courier New', monospace"
+        font-size="10" letter-spacing="7"
+        fill="#00ff41" opacity="0.6">CLASSIFIED TRANSMISSION // OMEGA CLEARANCE</text>
+
+  <!-- ── MAIN TITLE — SINGULARITY ── -->
+  <!-- Infra glitch layer (offset -4px) -->
+  <text x="43" y="390"
+        font-family="'Bebas Neue', 'Impact', sans-serif"
+        font-size="310" letter-spacing="-3"
+        fill="#cc1a00" opacity="0.25"
+        clip-path="inset(20% 0% 60% 0%)">SINGULARITY</text>
+  <!-- CRT glitch layer (offset +3px) -->
+  <text x="51" y="390"
+        font-family="'Bebas Neue', 'Impact', sans-serif"
+        font-size="310" letter-spacing="-3"
+        fill="#00ff41" opacity="0.15"
+        clip-path="inset(58% 0% 18% 0%)">SINGULARITY</text>
+  <!-- Primary bone text -->
+  <text x="47" y="390"
+        font-family="'Bebas Neue', 'Impact', sans-serif"
+        font-size="310" letter-spacing="-3"
+        fill="#e8dcc8" opacity="0.97">SINGULARITY</text>
+
+  <!-- ── ARCHIVE subtitle line ── -->
+  <text x="47" y="450"
+        font-family="'Bebas Neue', 'Impact', sans-serif"
+        font-size="96" letter-spacing="18"
+        fill="#c8860a" opacity="0.85">ARCHIVE</text>
+
+  <!-- Amber underline rule -->
+  <rect x="47" y="462" width="620" height="1.5" fill="#c8860a" opacity="0.5"/>
+
+  <!-- ── ITALIC SUBTITLE — IM Fell English serif ── -->
+  <text x="48" y="510"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic"
+        font-size="18" letter-spacing="0.5"
+        fill="#c8860a" opacity="0.85">A classified transmission on consciousness, programmed existence,</text>
+  <text x="48" y="534"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic"
+        font-size="18" letter-spacing="0.5"
+        fill="#c8860a" opacity="0.85">and the neural architecture of reality.</text>
+
+  <!-- ── TERMINAL BLOCK — right column ── -->
+  <rect x="1050" y="440" width="440" height="260" fill="#000000" opacity="0.92"/>
+  <rect x="1050" y="440" width="440" height="260" fill="none" stroke="#00882a" stroke-width="1" opacity="0.6"/>
+  <!-- Terminal top bar -->
+  <rect x="1050" y="440" width="440" height="18" fill="#00882a" opacity="0.7"/>
+  <text x="1270" y="453"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="8" letter-spacing="3"
+        fill="#000000" text-anchor="middle">TERMINAL — SYS_ACCESS_7F3A</text>
+  <!-- CRT left bar -->
+  <rect x="1050" y="458" width="2" height="242" fill="#00ff41" opacity="0.4"/>
+  <!-- Terminal content -->
+  <text x="1068" y="482" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#00882a">// INITIALISING ARCHIVE SEQUENCE...</text>
+  <text x="1068" y="502" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">STATUS:</text>
+  <text x="1130" y="502" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#00ff41">UNRESOLVED</text>
+  <text x="1068" y="522" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">CLASS:</text>
+  <text x="1128" y="522" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#e8dcc8">OMEGA</text>
+  <text x="1068" y="542" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">ORIGIN:</text>
+  <text x="1136" y="542" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#a89880">DESERT TRANSIT // BLYTHE</text>
+  <text x="1068" y="562" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">COORDS:</text>
+  <text x="1138" y="562" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#a89880">34.1478°N  114.5982°W</text>
+  <text x="1068" y="582" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">FREE_WILL:</text>
+  <text x="1152" y="582" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#cc1a00">UNRESOLVED</text>
+  <text x="1068" y="602" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">TRUTH_STRUCT:</text>
+  <text x="1180" y="602" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#cc1a00">COLLAPSING</text>
+  <text x="1068" y="622" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">RESET_CYCLE:</text>
+  <text x="1176" y="622" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#a89880">28,000yr</text>
+  <text x="1068" y="642" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#c8860a">OBSERVER:</text>
+  <text x="1148" y="642" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" letter-spacing="1" fill="#e8dcc8">YOU</text>
+  <!-- Blinking cursor block -->
+  <rect x="1068" y="656" width="8" height="12" fill="#00ff41" opacity="0.8"/>
+  <text x="1082" y="666" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="10" fill="#00882a" opacity="0.5">_</text>
+
+  <!-- ── HERO META ROW ── -->
+  <text x="48" y="600"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="3"
+        fill="#5a5850">DOCUMENT</text>
+  <text x="48" y="616"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="1"
+        fill="#00882a">Fragment_001</text>
+
+  <text x="200" y="600"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="3"
+        fill="#5a5850">CLASSIFICATION</text>
+  <text x="200" y="616"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="1"
+        fill="#c8860a">Omega</text>
+
+  <text x="390" y="600"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="3"
+        fill="#5a5850">VECTOR</text>
+  <text x="390" y="616"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="1"
+        fill="#a89880">Multidimensional</text>
+
+  <text x="560" y="600"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="3"
+        fill="#5a5850">YEAR</text>
+  <text x="560" y="616"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="1"
+        fill="#a89880">2026</text>
+
+  <!-- ── DIVIDER ── -->
+  <rect x="0"   y="650" width="1536" height="1" fill="url(#amber-rule)" opacity="0.5"/>
+
+  <!-- ── PULLQUOTE / CLOSING TRANSMISSION echoes ── -->
+  <text x="48" y="698"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic"
+        font-size="22" letter-spacing="0.3"
+        fill="#e8dcc8" opacity="0.65">Every choice we make simply moves us to another coordinate</text>
+  <text x="48" y="726"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic"
+        font-size="22" letter-spacing="0.3"
+        fill="#e8dcc8" opacity="0.65">within the neural network of possibilities.</text>
+
+  <!-- Amber left border on pullquote -->
+  <rect x="40" y="678" width="3" height="62" fill="#c8860a" opacity="0.65"/>
+
+  <!-- ── INFRA BAND — bottom accent ── -->
+  <rect x="0" y="770" width="1536" height="1" fill="url(#infra-rule)" opacity="0.6"/>
+  <rect x="0" y="771" width="1536" height="40" fill="#cc1a00" opacity="0.03"/>
+  <rect x="0" y="811" width="1536" height="1" fill="url(#infra-rule)" opacity="0.4"/>
+
+  <!-- ── FLOATING GLYPH FRAGMENTS — cursor trail echo ── -->
+  <text x="1400" y="200" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="16" fill="#c8860a" opacity="0.18">∞</text>
+  <text x="88"   y="240" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="12" fill="#c8860a" opacity="0.14">⊗</text>
+  <text x="1480" y="480" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="14" fill="#00882a" opacity="0.18">△</text>
+  <text x="44"   y="800" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="13" fill="#c8860a" opacity="0.15">◈</text>
+  <text x="1020" y="160" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="11" fill="#cc1a00" opacity="0.2">Ω</text>
+  <text x="640"  y="760" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="11" fill="#c8860a" opacity="0.12">⬡</text>
+
+  <!-- ── FOOTER COLOPHON ── -->
+  <rect x="0" y="858" width="1536" height="1" fill="#3a3830" opacity="0.5"/>
+
+  <!-- Footer left -->
+  <text x="48" y="894"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="4" fill="#5a5850">ARCHIVE</text>
+  <text x="48" y="912" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#3a3830">Document:</text>
+  <text x="120" y="912" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#5a5850">Fragment_001</text>
+  <text x="48" y="928" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#3a3830">Status:</text>
+  <text x="104" y="928" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#5a5850">Unresolved</text>
+
+  <!-- Footer centre -->
+  <text x="600" y="894"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="4" fill="#5a5850">COORDINATES</text>
+  <text x="600" y="912" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#3a3830">Lat / Lng:</text>
+  <text x="678" y="912" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#5a5850">34.1478°N  114.5982°W</text>
+  <text x="600" y="928" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#3a3830">Temp:</text>
+  <text x="644" y="928" font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#5a5850">120°F / 48.8°C — Blythe, CA</text>
+
+  <!-- Footer right -->
+  <text x="1200" y="894"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" letter-spacing="4" fill="#5a5850" text-anchor="end">followorbounce.com</text>
+  <text x="1200" y="912"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#3a3830" text-anchor="end">Day 28 of walk</text>
+  <text x="1200" y="928"
+        font-family="'IBM Plex Mono', 'Courier New', monospace"
+        font-size="9" fill="#3a3830" text-anchor="end">One torn page</text>
+
+  <!-- END TRANSMISSION label centre bottom -->
+  <rect x="662" y="856" width="212" height="18" fill="#070704"/>
+  <rect x="662" y="856" width="212" height="18" fill="none" stroke="#cc1a00" stroke-width="0.8" opacity="0.4"/>
+  <text x="768" y="869"
+        font-family="'Space Mono', 'Courier New', monospace"
+        font-size="8" letter-spacing="5"
+        fill="#cc1a00" opacity="0.6"
+        text-anchor="middle">END TRANSMISSION</text>
+
+  <!-- Vertical scroll hint — right edge -->
+  <text transform="rotate(90, 1500, 512)"
+        x="1500" y="512"
+        font-family="'Space Mono', 'Courier New', monospace"
+        font-size="8" letter-spacing="5"
+        fill="#3a3830" opacity="0.6"
+        text-anchor="middle">SCROLL TO DECODE — FRAGMENT 001</text>
+
+  <!-- ── BOTTOM FADE ── -->
+  <rect width="1536" height="1024" fill="url(#bottom-fade)"/>
+
+  <!-- ── GRAIN OVERLAY ── -->
+  <rect width="1536" height="1024" fill="#c8860a" opacity="0.012" filter="url(#noise)"/>
+
+  <!-- Final CRT scanline pass -->
+  <rect width="1536" height="1024" fill="url(#scanlines)" opacity="0.4"/>
+
+</svg>

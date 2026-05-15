@@ -1,0 +1,1694 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- FIX: viewport-fit=cover for notch/Dynamic Island support -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- FIX: -webkit-text-size-adjust prevents Safari auto-scaling on rotate -->
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<title>The Architecture of Untruth — A Philosophical Archive</title>
+<meta name="description" content="A philosophical archive on the death of sincerity — exploring the invisible structures of lies, silence, and hypocrisy that modern civilization is built upon.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Architecture of Untruth">
+<meta property="og:description" content="A philosophical archive on the death of sincerity — exploring lies, omission, and the collapse of honest communication in modern civilization.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/images/portfolio/the-architecture-of-untruth.svg">
+<meta property="og:site_name" content="followorbounce.com">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Architecture of Untruth">
+<meta name="twitter:description" content="A philosophical archive on the death of sincerity — exploring lies, omission, and the collapse of honest communication in modern civilization.">
+<meta name="twitter:image" content="/assets/images/portfolio/the-architecture-of-untruth.svg">
+
+<!-- FIX: Font loading — both preconnect tags, crossorigin on gstatic, display=swap -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=Space+Mono:ital@0;1&display=swap">
+
+<style>
+  /* ─── SAFARI: text size adjust ─── */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --void: #080806;
+    --ash: #1a1916;
+    --smoke: #2e2c28;
+    --dust: #4a4740;
+    --fog: #7a7870;
+    --pale: #b8b4a8;
+    --ghost: #d4d0c4;
+    --bone: #e8e4d8;
+    --paper: #f2eed8;
+    --warm: #c4a882;
+    --rust: #8a6040;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --fell: 'IM Fell English', Georgia, serif;
+    --mono: 'Space Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    /* FIX: safe area insets for notch/home bar */
+    --safe-top:    env(safe-area-inset-top,    0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left:   env(safe-area-inset-left,   0px);
+    --safe-right:  env(safe-area-inset-right,  0px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--void);
+    color: var(--ghost);
+    font-family: var(--serif);
+    /* FIX: prevents horizontal scroll on iOS */
+    max-width: 100vw;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* FIX: sections with absolute children use overflow:clip, not overflow:hidden
+     Safari does NOT clip position:absolute with overflow:hidden */
+  section {
+    position: relative;
+    overflow: clip;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor-dot {
+    position: fixed;
+    width: 4px; height: 4px;
+    background: var(--warm);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    /* FIX: -webkit-transform prefix */
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(196,168,130,0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    /* FIX: -webkit-transform prefix */
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar-track { background: var(--void); }
+  ::-webkit-scrollbar-thumb { background: var(--dust); }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* FIX: safe-area-inset-top for notch */
+    padding: calc(2rem + var(--safe-top)) 3rem 2rem;
+    mix-blend-mode: difference;
+    /* FIX: translateZ(0) prevents fixed nav flicker during iOS momentum scroll */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  .nav-mark {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--fog);
+    text-transform: uppercase;
+    writing-mode: horizontal-tb;
+  }
+  .nav-index {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--dust);
+    text-align: right;
+    line-height: 2;
+  }
+
+  /* ─── TOUCH TARGETS ─── */
+  /* FIX: Apple HIG minimum 44×44pt + remove tap highlight flash */
+  a, button {
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    /* FIX: both 100vh (fallback) and 100svh (correct, excludes browser chrome) */
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10vh 6vw 8vh;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    opacity: 0;
+    /* FIX: -webkit-animation prefix */
+    -webkit-animation: fadeRise 2s 0.5s forwards;
+    animation: fadeRise 2s 0.5s forwards;
+  }
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(5rem, 14vw, 14rem);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--bone);
+    position: relative;
+    opacity: 0;
+    /* FIX: -webkit-animation prefix */
+    -webkit-animation: fadeRise 2.5s 0.8s forwards;
+    animation: fadeRise 2.5s 0.8s forwards;
+  }
+  .hero-title .word-truth {
+    color: var(--warm);
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+  }
+  .hero-title .word-truth::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em; left: 0; right: 0;
+    height: 1px;
+    background: var(--rust);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    /* FIX: -webkit-animation prefix */
+    -webkit-animation: strikethrough 1.5s 3s forwards;
+    animation: strikethrough 1.5s 3s forwards;
+  }
+  /* FIX: @-webkit-keyframes alongside @keyframes */
+  @-webkit-keyframes strikethrough {
+    to {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      -webkit-transform-origin: left;
+      transform-origin: left;
+    }
+  }
+  @keyframes strikethrough {
+    to {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      -webkit-transform-origin: left;
+      transform-origin: left;
+    }
+  }
+  .hero-subtitle {
+    margin-top: 4rem;
+    max-width: 55ch;
+    font-family: var(--fell);
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--pale);
+    opacity: 0;
+    -webkit-animation: fadeRise 2s 1.5s forwards;
+    animation: fadeRise 2s 1.5s forwards;
+  }
+  .hero-number {
+    position: absolute;
+    right: 6vw;
+    bottom: 10vh;
+    font-family: var(--display);
+    font-size: 20vw;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(122,120,112,0.08);
+    line-height: 1;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 6vw;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    color: var(--dust);
+    text-transform: uppercase;
+    opacity: 0;
+    -webkit-animation: fadeRise 1s 3s forwards;
+    animation: fadeRise 1s 3s forwards;
+  }
+  .hero-line {
+    position: absolute;
+    bottom: 3rem;
+    left: 18vw;
+    width: 0;
+    height: 1px;
+    background: var(--dust);
+    -webkit-animation: expandLine 2s 3.5s forwards;
+    animation: expandLine 2s 3.5s forwards;
+  }
+  @-webkit-keyframes expandLine {
+    to { width: 12vw; }
+  }
+  @keyframes expandLine {
+    to { width: 12vw; }
+  }
+
+  /* floating fragments */
+  .frag {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    color: var(--dust);
+    letter-spacing: 0.2em;
+    pointer-events: none;
+    -webkit-animation: drift 20s ease-in-out infinite;
+    animation: drift 20s ease-in-out infinite;
+  }
+  .frag-1 { top: 20%; right: 8%; -webkit-animation-delay: 0s; animation-delay: 0s; }
+  .frag-2 { top: 60%; right: 15%; -webkit-animation-delay: -7s; animation-delay: -7s; }
+  .frag-3 { top: 40%; right: 3%; -webkit-animation-delay: -14s; animation-delay: -14s; }
+  @-webkit-keyframes drift {
+    0%, 100% { -webkit-transform: translate(0, 0) rotate(0deg); transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+    33%       { -webkit-transform: translate(-8px, 12px) rotate(1deg); transform: translate(-8px, 12px) rotate(1deg); opacity: 0.5; }
+    66%       { -webkit-transform: translate(5px, -8px) rotate(-1deg); transform: translate(5px, -8px) rotate(-1deg); opacity: 0.2; }
+  }
+  @keyframes drift {
+    0%, 100% { -webkit-transform: translate(0, 0) rotate(0deg); transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+    33%       { -webkit-transform: translate(-8px, 12px) rotate(1deg); transform: translate(-8px, 12px) rotate(1deg); opacity: 0.5; }
+    66%       { -webkit-transform: translate(5px, -8px) rotate(-1deg); transform: translate(5px, -8px) rotate(-1deg); opacity: 0.2; }
+  }
+
+  /* FIX: master fadeRise @-webkit-keyframes */
+  @-webkit-keyframes fadeRise {
+    from { opacity: 0; -webkit-transform: translateY(20px); transform: translateY(20px); }
+    to   { opacity: 1; -webkit-transform: translateY(0);    transform: translateY(0); }
+  }
+  @keyframes fadeRise {
+    from { opacity: 0; -webkit-transform: translateY(20px); transform: translateY(20px); }
+    to   { opacity: 1; -webkit-transform: translateY(0);    transform: translateY(0); }
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--smoke) 30%, var(--smoke) 70%, transparent);
+    margin: 0 6vw;
+    opacity: 0.5;
+  }
+
+  /* ─── SECTION: SMILE MORE ─── */
+  #smile {
+    padding: 16vh 6vw;
+    /* FIX: both 100vh and 100svh */
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .smile-left {
+    padding-right: 6vw;
+    padding-top: 4rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20vh;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.5em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--rust);
+    flex-shrink: 0;
+  }
+  .section-num {
+    font-family: var(--display);
+    font-size: 8rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--smoke);
+    margin-bottom: 0;
+    display: block;
+  }
+  .section-title {
+    font-family: var(--fell);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--bone);
+    margin-bottom: 2.5rem;
+  }
+  .smile-right {
+    padding-left: 3vw;
+    border-left: 1px solid var(--smoke);
+  }
+  .body-text {
+    font-family: var(--serif);
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    line-height: 1.9;
+    color: var(--pale);
+    margin-bottom: 2.5rem;
+  }
+  .pull-quote {
+    font-family: var(--fell);
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: var(--warm);
+    line-height: 1.5;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--smoke);
+    border-bottom: 1px solid var(--smoke);
+    margin: 3rem 0;
+    position: relative;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.5em;
+    left: -0.2em;
+    font-size: 5rem;
+    color: var(--smoke);
+    font-family: var(--fell);
+    line-height: 1;
+  }
+  .annotation {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--dust);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    border-left: 2px solid var(--smoke);
+    padding-left: 1rem;
+  }
+  .fade-text {
+    background: linear-gradient(90deg, var(--pale) 60%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── FULL BLEED STATEMENT ─── */
+  .statement-block {
+    padding: 14vh 6vw;
+    position: relative;
+    overflow: clip;
+  }
+  .statement-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(138,96,64,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .mega-statement {
+    font-family: var(--display);
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    max-width: 18ch;
+    position: relative;
+  }
+  .mega-statement .italic-serif {
+    font-family: var(--fell);
+    font-style: italic;
+    font-size: 0.65em;
+    color: var(--warm);
+    display: block;
+    margin-top: 0.3em;
+  }
+
+  /* ─── SECTION: ARCHITECTURE OF SILENCE ─── */
+  #silence {
+    padding: 16vh 6vw;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .silence-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 4vw;
+    margin-bottom: 8rem;
+  }
+  .silence-title-block { flex: 1; }
+  .silence-annotation {
+    flex: 0 0 28ch;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--dust);
+    letter-spacing: 0.15em;
+    line-height: 2;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--smoke);
+    text-transform: uppercase;
+    padding-right: 2rem;
+  }
+  .grid-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem 5vw;
+  }
+  .grid-item { position: relative; }
+  .grid-item-num {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--dust);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+  }
+  .grid-item-title {
+    font-family: var(--fell);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--bone);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .grid-item-text {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--fog);
+  }
+  .partial-line {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    background: linear-gradient(90deg, var(--fog) 70%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── GIACOMETTI FIGURE ─── */
+  .figure-container {
+    position: relative;
+    height: 60vh;
+    /* FIX: aspect-ratio with min-height fallback for iOS < 15 */
+    aspect-ratio: 16 / 5;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: clip;
+    margin: 8rem 0;
+  }
+  @supports (aspect-ratio: 16 / 5) {
+    .figure-container { min-height: unset; }
+  }
+  .figure-svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .figure-text-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .figure-text-overlay p {
+    font-family: var(--fell);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    color: var(--warm);
+    line-height: 1.7;
+    max-width: 40ch;
+  }
+
+  /* ─── SECTION: PARALLEL LINES ─── */
+  #parallel {
+    padding: 16vh 6vw;
+    background: var(--ash);
+    position: relative;
+  }
+  #parallel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--smoke), transparent);
+  }
+  .parallel-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8vw;
+    align-items: center;
+  }
+  .contrast-pair {
+    margin: 4rem 0;
+    position: relative;
+  }
+  .contrast-pair::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--rust), transparent);
+  }
+  .contrast-line {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 0.8rem 0 0.8rem 2rem;
+  }
+  .contrast-label {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    color: var(--dust);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    width: 6ch;
+  }
+  .contrast-word {
+    font-family: var(--fell);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--pale);
+  }
+  .contrast-word.punished { color: var(--rust); }
+  .contrast-word.rewarded { color: var(--warm); }
+  .parallel-right {
+    padding-left: 4vw;
+    border-left: 1px solid var(--smoke);
+  }
+
+  /* ─── SECTION: INTIMACY ─── */
+  #intimacy {
+    padding: 16vh 6vw;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .intimacy-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6vw;
+  }
+  .intimacy-num-col { position: relative; }
+  .big-num {
+    font-family: var(--display);
+    font-size: 25vw;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(122,120,112,0.06);
+    line-height: 0.85;
+    position: absolute;
+    top: -2rem;
+    left: -3vw;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .intimacy-content { position: relative; }
+  .text-block-spaced > * + * { margin-top: 2rem; }
+  .footnote {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--dust);
+    letter-spacing: 0.2em;
+    line-height: 1.9;
+    text-transform: uppercase;
+    padding-top: 2rem;
+    border-top: 1px solid var(--smoke);
+    margin-top: 3rem;
+  }
+
+  /* ─── SECTION: RARE MIRACLE ─── */
+  #miracle {
+    padding: 16vh 6vw;
+    background: var(--ash);
+    position: relative;
+    overflow: clip;
+  }
+  .miracle-center {
+    text-align: center;
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+  .miracle-symbol {
+    font-family: var(--fell);
+    font-size: 5rem;
+    color: var(--smoke);
+    line-height: 1;
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .miracle-title {
+    font-family: var(--fell);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-style: italic;
+    color: var(--warm);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+  .miracle-text {
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--pale);
+    margin-bottom: 2rem;
+  }
+  .miracle-quote {
+    font-family: var(--fell);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--bone);
+    margin: 4rem 0;
+    line-height: 1.6;
+  }
+  .miracle-orbits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .orbit-ring {
+    position: absolute;
+    border: 1px solid;
+    border-radius: 50%;
+    opacity: 0.04;
+    -webkit-animation: slowSpin 40s linear infinite;
+    animation: slowSpin 40s linear infinite;
+  }
+  .orbit-1 { width: 120vw; height: 120vw; left: -30vw; top: -40vw; border-color: var(--warm); }
+  .orbit-2 {
+    width: 80vw; height: 80vw; right: -20vw; bottom: -20vw;
+    border-color: var(--pale);
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+    -webkit-animation-duration: 60s;
+    animation-duration: 60s;
+  }
+  @-webkit-keyframes slowSpin {
+    to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+  }
+  @keyframes slowSpin {
+    to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+  }
+
+  /* ─── SECTION: BETTER ALONE ─── */
+  #alone {
+    padding: 16vh 6vw;
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+  }
+  .alone-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.5fr;
+    gap: 8vw;
+    align-items: start;
+  }
+  .alone-left {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 25vh;
+  }
+  .alone-right { padding-top: 2rem; }
+  .verse-block {
+    font-family: var(--fell);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-style: italic;
+    color: var(--pale);
+    line-height: 2;
+    margin: 4rem 0;
+    padding-left: 3rem;
+    border-left: 1px solid var(--smoke);
+  }
+  .verse-block em { color: var(--warm); font-style: normal; }
+  .scripture-ref {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--dust);
+    letter-spacing: 0.3em;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  /* ─── FINALE ─── */
+  #finale {
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10vh 6vw;
+    overflow: clip;
+  }
+  .finale-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(138,96,64,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .finale-figures {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .finale-phrase {
+    font-family: var(--fell);
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: var(--pale);
+    line-height: 1.7;
+    max-width: 50ch;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .finale-phrase span {
+    display: block;
+    -webkit-animation: ghostFade 4s ease-in-out infinite;
+    animation: ghostFade 4s ease-in-out infinite;
+  }
+  .finale-phrase span:nth-child(2) { -webkit-animation-delay: 1s; animation-delay: 1s; }
+  .finale-phrase span:nth-child(3) { -webkit-animation-delay: 2s; animation-delay: 2s; }
+  .finale-phrase span:nth-child(4) { -webkit-animation-delay: 3s; animation-delay: 3s; }
+  @-webkit-keyframes ghostFade {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
+  }
+  @keyframes ghostFade {
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
+  }
+  .finale-title {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--warm);
+    letter-spacing: 0.3em;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+    opacity: 0.7;
+  }
+  .finale-end {
+    margin-top: 6rem;
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--dust);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── COLOPHON / FOOTER ─── */
+  footer {
+    /* FIX: safe-area-inset-bottom for home bar */
+    padding: 4rem 6vw calc(4rem + var(--safe-bottom));
+    border-top: 1px solid var(--smoke);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .colophon {
+    font-family: var(--mono);
+    font-size: 0.5rem;
+    color: var(--dust);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    line-height: 2.2;
+    /* FIX: long text overflow on narrow screens */
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+
+  /* ─── REVEAL STATES (via classList, not direct style) ─── */
+  .reveal {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                -webkit-transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .reveal-slow {
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+  .reveal-slow.is-visible {
+    opacity: 1;
+  }
+
+  /* FIX: cursor state class for ring expansion (via classList) */
+  .cursor-ring.is-hovering {
+    width: 56px;
+    height: 56px;
+    border-color: rgba(196,168,130,0.6);
+  }
+
+  /* ─── INLINE HIGHLIGHTS ─── */
+  .hl      { color: var(--warm); }
+  .hl-dust { color: var(--dust); }
+  .hl-bone { color: var(--bone); }
+
+  /* ─── HORIZONTAL RULES ─── */
+  .hr-dotted {
+    border: none;
+    border-top: 1px dotted var(--smoke);
+    margin: 5rem 6vw;
+    opacity: 0.5;
+  }
+
+  /* Giacometti figure group opacity */
+  .g-figure       { opacity: 0.12; }
+  .g-figure-right { opacity: 0.07; }
+
+  /* ─── HOVER — ONLY on pointer devices (FIX: prevents stuck-hover on iOS tap) ─── */
+  @media (hover: hover) {
+    .distort:hover {
+      letter-spacing: 0.08em;
+      -webkit-filter: blur(0.3px);
+      filter: blur(0.3px);
+      transition: letter-spacing 0.6s, filter 0.6s, -webkit-filter 0.6s;
+    }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    #smile,
+    .parallel-inner,
+    .intimacy-layout,
+    .alone-layout,
+    .grid-text            { grid-template-columns: 1fr; }
+    .smile-left           { position: static; }
+    .alone-left           { position: static; }
+    .silence-header       { flex-direction: column; }
+    .smile-right          { border-left: none; padding-left: 0; border-top: 1px solid var(--smoke); padding-top: 3rem; }
+    .parallel-right       { border-left: none; padding-left: 0; }
+    nav                   { padding: calc(1.5rem + var(--safe-top)) 2rem 1.5rem; }
+    #hero,
+    .statement-block,
+    #silence,
+    #parallel,
+    #intimacy,
+    #miracle,
+    #alone                { padding-left: 5vw; padding-right: 5vw; }
+  }
+
+  /* ─── REDUCED MOTION — mandatory ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      -webkit-animation-duration: 0.01ms !important;
+      animation-duration:         0.01ms !important;
+      -webkit-animation-delay:    0s     !important;
+      animation-delay:            0s     !important;
+      transition-duration:        0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Archive index">
+  <span class="nav-mark">The Architecture of Untruth — I.</span>
+  <div class="nav-index" aria-hidden="true">
+    I. Smile More<br>
+    II. Silence<br>
+    III. Contradiction<br>
+    IV. Intimacy<br>
+    V. Miracle<br>
+    VI. Alone
+  </div>
+</nav>
+
+<!-- ──────────────────────────────── HERO -->
+<section id="hero" aria-label="Introduction">
+
+  <div class="frag frag-1" aria-hidden="true">§ 001 — DOCUMENT</div>
+  <div class="frag frag-2" aria-hidden="true">CONTRA MENDACIUM</div>
+  <div class="frag frag-3" aria-hidden="true">AD INFINITUM</div>
+
+  <div class="hero-eyebrow">A philosophical archive — on the death of sincerity</div>
+
+  <h1 class="hero-title distort">
+    THE<br>
+    WORLD<br>
+    PREFERS<br>
+    <span class="word-truth">LIES.</span>
+  </h1>
+
+  <p class="hero-subtitle">
+    We built civilization on the pretense of honesty. We speak in layers —
+    the said, the unsaid, the deliberately withheld. Truth did not disappear.
+    It was <em>exiled</em>. Slowly. Politely. With a smile.
+  </p>
+
+  <div class="hero-number" aria-hidden="true">I.</div>
+  <span class="hero-scroll-hint" aria-hidden="true">Descend</span>
+  <div class="hero-line" aria-hidden="true"></div>
+</section>
+
+<div class="divider" role="separator"></div>
+
+<!-- ──────────────────────────────── SECTION I: SMILE MORE -->
+<section id="smile" aria-labelledby="smile-title">
+
+  <div class="smile-left reveal">
+    <div class="section-label">Section One</div>
+    <span class="section-num" aria-hidden="true">I</span>
+    <h2 class="section-title" id="smile-title">&ldquo;Smile More,<br>Talk Less&rdquo;</h2>
+    <p class="annotation">
+      On performative communication<br>
+      and the theater of social grace
+    </p>
+  </div>
+
+  <div class="smile-right">
+    <p class="body-text reveal">
+      There is a commandment, unwritten yet universally enforced:
+      <span class="hl-bone">smile more</span>. Not because you are joyful.
+      Because smiling is the coin of social admission. Because your authentic face —
+      tired, uncertain, grieving — makes others <span class="hl">uncomfortable</span>.
+    </p>
+    <blockquote class="pull-quote reveal">
+      &ldquo;Smile more, talk less&rdquo; is not advice.<br>
+      It is a <em>leash</em>.
+    </blockquote>
+    <p class="body-text reveal">
+      The social theater of modernity demands a performance of contentment.
+      We have become so skilled at wearing acceptable faces that we no longer
+      know where the performance ends and the person begins. The smile has
+      colonized the interior.
+    </p>
+    <p class="body-text reveal">
+      We speak in layers: the polite layer, the professional layer, the
+      what-they-need-to-hear layer. Below these — in the place where
+      genuine communication once lived — there is <span class="fade-text">only silence, and the
+      growing suspicion that no one would want to hear what actually lives there</span>.
+    </p>
+    <blockquote class="pull-quote reveal">
+      Politeness is the most widely accepted form of<br>
+      <span class="hl">deception</span> in human civilization.
+    </blockquote>
+    <p class="body-text reveal">
+      We call it <em>tact</em>. We call it <em>social intelligence</em>.
+      We award it. We promote those who perform it most convincingly.
+      The honest person — who says what they feel, who refuses the theater —
+      is called <span class="hl">difficult</span>. Toxic. Immature. Lacking culture.
+    </p>
+    <p class="body-text reveal">
+      In this way, civilization did not eliminate dishonesty.
+      It <span class="hl-bone">institutionalized</span> it.
+    </p>
+    <div class="annotation reveal">
+      On social agreement as control / the neutering of authentic speech /<br>
+      Hamilton&rsquo;s commandment as modern social law — &ldquo;talk less, smile more&rdquo;
+    </div>
+  </div>
+
+</section>
+
+<!-- FULL BLEED STATEMENT -->
+<div class="statement-block reveal" role="complementary">
+  <p class="mega-statement distort">
+    TRUTH BECAME
+    <span class="italic-serif">the aggressor.</span>
+    SILENCE BECAME
+    <span class="italic-serif">the civilized response.</span>
+  </p>
+</div>
+
+<div class="divider" role="separator"></div>
+
+<!-- ──────────────────────────────── SECTION II: ARCHITECTURE OF SILENCE -->
+<section id="silence" aria-labelledby="silence-title">
+
+  <div class="silence-header">
+    <div class="silence-title-block">
+      <div class="section-label reveal">Section Two</div>
+      <h2 class="section-title reveal" id="silence-title">The Architecture<br>of Silence</h2>
+    </div>
+    <div class="silence-annotation reveal" aria-hidden="true">
+      Omission / withheld truth /<br>
+      the unspoken word as weapon /<br>
+      silence as the highest form /<br>
+      of strategic deception
+    </div>
+  </div>
+
+  <p class="body-text reveal" style="max-width:65ch;margin-bottom:5rem;">
+    We have been taught that lying requires utterance. That to deceive,
+    one must <em>say</em> something false. This is the naive understanding.
+    The architecture of silence is far more sophisticated —
+    and far more destructive.
+  </p>
+
+  <div class="grid-text">
+    <div class="grid-item reveal">
+      <div class="grid-item-num">001 /</div>
+      <h3 class="grid-item-title">The Withheld Word</h3>
+      <p class="grid-item-text">
+        You did not lie. You simply did not say the thing that would
+        have changed everything. There is no legal testimony against
+        a silence. There is no confession to extract. The person
+        across from you never knew what you knew. You watched them
+        <span class="partial-line">build their life on incomplete in</span>formation.
+      </p>
+    </div>
+    <div class="grid-item reveal">
+      <div class="grid-item-num">002 /</div>
+      <h3 class="grid-item-title">Emotional Masking</h3>
+      <p class="grid-item-text">
+        The face trained into neutrality. The voice calibrated
+        to convey nothing dangerous. We learn, in childhood,
+        that certain emotions are unwelcome —
+        grief without occasion, rage without permission,
+        <span class="partial-line">love offered to someone who doesn&rsquo;t want</span>
+      </p>
+    </div>
+    <div class="grid-item reveal">
+      <div class="grid-item-num">003 /</div>
+      <h3 class="grid-item-title">Strategic Omission</h3>
+      <p class="grid-item-text">
+        In relationships: not saying you are unhappy.
+        In friendships: not saying you feel abandoned.
+        In workplaces: not saying the project is failing.
+        Each omission is a small architecture —
+        <span class="partial-line">a structure built where a conversa</span>tion should have stood.
+      </p>
+    </div>
+    <div class="grid-item reveal">
+      <div class="grid-item-num">004 /</div>
+      <h3 class="grid-item-title">The Reassuring Lie</h3>
+      <p class="grid-item-text">
+        &ldquo;I&rsquo;m fine.&rdquo; The most common lie in all languages.
+        A small act of social mercy — or so we tell ourselves.
+        But multiply it across a lifetime, across a marriage,
+        across a family, and what accumulates is not mercy.
+        <span class="partial-line">It is the slow strangulation of</span>
+      </p>
+    </div>
+    <div class="grid-item reveal">
+      <div class="grid-item-num">005 /</div>
+      <h3 class="grid-item-title">Performative Agreement</h3>
+      <p class="grid-item-text">
+        Nodding. Agreeing. Saying &ldquo;you&rsquo;re right&rdquo; to end a conversation
+        rather than continue one you find unbearable.
+        The agreement as exit strategy. As self-protection.
+        As the cheapest way to purchase
+        <span class="partial-line">the appearance of harmon</span>y.
+      </p>
+    </div>
+    <div class="grid-item reveal">
+      <div class="grid-item-num">006 /</div>
+      <h3 class="grid-item-title">The Unsent Message</h3>
+      <p class="grid-item-text">
+        You wrote it. You read it back. You decided
+        they couldn&rsquo;t handle it. Or you couldn&rsquo;t handle
+        what saying it would mean. So you deleted it —
+        and the thing you needed to say
+        <span class="partial-line">turned inward and bec</span>ame something else entirely.
+      </p>
+    </div>
+  </div>
+
+  <!-- Giacometti figure -->
+  <div class="figure-container reveal-slow" aria-hidden="true">
+    <svg class="figure-svg" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" role="presentation">
+      <defs>
+        <linearGradient id="figFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b8b4a8" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#b8b4a8" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="figFade2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7a7870" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#7a7870" stop-opacity="0"/>
+        </linearGradient>
+        <!-- FIX: fog gradient as proper SVG gradient, not CSS string in fill attr -->
+        <linearGradient id="fogRight" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#080806" stop-opacity="0"/>
+          <stop offset="75%"  stop-color="#080806" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#080806" stop-opacity="0.9"/>
+        </linearGradient>
+      </defs>
+      <g class="g-figure" transform="translate(200,50)">
+        <ellipse cx="0" cy="0" rx="6" ry="10" fill="url(#figFade)" transform="rotate(5)"/>
+        <line x1="0" y1="8"  x2="-2" y2="80"  stroke="#7a7870" stroke-width="3" stroke-linecap="round"/>
+        <line x1="-1" y1="30" x2="-25" y2="55" stroke="#7a7870" stroke-width="2" stroke-linecap="round"/>
+        <line x1="-1" y1="30" x2="18"  y2="60" stroke="#7a7870" stroke-width="2" stroke-linecap="round"/>
+        <line x1="-2" y1="80" x2="-18" y2="140" stroke="#7a7870" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-2" y1="80" x2="12"  y2="145" stroke="#7a7870" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <g class="g-figure" transform="translate(600,30)" style="opacity:0.15">
+        <ellipse cx="0" cy="0" rx="8" ry="12" fill="url(#figFade)"/>
+        <line x1="0" y1="10" x2="3"   y2="110" stroke="#b8b4a8" stroke-width="4" stroke-linecap="round"/>
+        <line x1="1" y1="45" x2="-35" y2="80"  stroke="#b8b4a8" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <line x1="1" y1="45" x2="30"  y2="75"  stroke="#b8b4a8" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <line x1="3" y1="110" x2="-10" y2="190" stroke="#b8b4a8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="3" y1="110" x2="18"  y2="195" stroke="#b8b4a8" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g class="g-figure-right" transform="translate(950,80)">
+        <ellipse cx="0" cy="0" rx="5" ry="8" fill="url(#figFade2)" opacity="0.4"/>
+        <line x1="0" y1="7"  x2="-4" y2="70"  stroke="#4a4740" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <line x1="-2" y1="30" x2="-20" y2="50" stroke="#4a4740" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+        <line x1="-2" y1="30" x2="12"  y2="52" stroke="#4a4740" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+        <line x1="-4" y1="70" x2="-14" y2="120" stroke="#4a4740" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        <line x1="-4" y1="70" x2="8"   y2="122" stroke="#4a4740" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+      </g>
+      <!-- FIX: fog rect now uses proper SVG gradient reference -->
+      <rect width="1200" height="500" fill="url(#fogRight)"/>
+    </svg>
+    <div class="figure-text-overlay">
+      <p>
+        The silence between two people<br>
+        who once knew everything about each other<br>
+        is the loudest thing in any room.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<hr class="hr-dotted" role="separator">
+
+<!-- ──────────────────────────────── SECTION III: PARALLEL LINES -->
+<section id="parallel" aria-labelledby="parallel-title">
+  <div class="parallel-inner">
+    <div class="parallel-left">
+      <div class="section-label reveal">Section Three</div>
+      <h2 class="section-title reveal" id="parallel-title">Parallel Lines<br>That Now<br>Intersect</h2>
+      <p class="body-text reveal">
+        Society has not merely tolerated contradiction —
+        it has <span class="hl-bone">rewarded</span> it. The person who says one thing
+        and does another is called <em>pragmatic</em>. The one
+        who insists on coherence between word and deed
+        is called <span class="hl">naive</span>, or worse: a liability.
+      </p>
+      <p class="body-text reveal">
+        Hypocrisy stopped being a character flaw.
+        It became a <span class="hl-bone">management skill</span>. A social technology.
+        The mechanism by which the contradictions of civilized life
+        are kept from collapsing into each other.
+      </p>
+      <p class="body-text reveal">
+        We have built entire professions around it:
+        diplomacy, public relations, performance management.
+        We dress it in language. We give it a salary.
+        We give it a <span class="fade-text">corner office and a title and a very convincing handshake.</span>
+      </p>
+      <div class="annotation reveal" style="margin-top:3rem;">
+        The normalization of hypocrisy as success mechanism /<br>
+        cognitive dissonance as social infrastructure /<br>
+        conformity rewarded, sincerity penalized
+      </div>
+    </div>
+
+    <div class="parallel-right reveal">
+      <p class="body-text" style="margin-bottom:2rem;font-size:0.85rem;color:var(--dust);">
+        WHAT WE PUNISH / WHAT WE REWARD
+      </p>
+      <div class="contrast-pair">
+        <div class="contrast-line"><span class="contrast-label">punished</span><span class="contrast-word punished">Honesty</span></div>
+        <div class="contrast-line"><span class="contrast-label">rewarded</span><span class="contrast-word rewarded">Diplomatic vagueness</span></div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-line"><span class="contrast-label">punished</span><span class="contrast-word punished">Visible grief</span></div>
+        <div class="contrast-line"><span class="contrast-label">rewarded</span><span class="contrast-word rewarded">Composed performance</span></div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-line"><span class="contrast-label">punished</span><span class="contrast-word punished">Disagreement</span></div>
+        <div class="contrast-line"><span class="contrast-label">rewarded</span><span class="contrast-word rewarded">Strategic alignment</span></div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-line"><span class="contrast-label">punished</span><span class="contrast-word punished">Saying no</span></div>
+        <div class="contrast-line"><span class="contrast-label">rewarded</span><span class="contrast-word rewarded">Yes with exceptions</span></div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-line"><span class="contrast-label">punished</span><span class="contrast-word punished">Authentic self</span></div>
+        <div class="contrast-line"><span class="contrast-label">rewarded</span><span class="contrast-word rewarded">Curated persona</span></div>
+      </div>
+      <div class="contrast-pair">
+        <div class="contrast-line"><span class="contrast-label">punished</span><span class="contrast-word punished">Sincerity</span></div>
+        <div class="contrast-line"><span class="contrast-label">rewarded</span><span class="contrast-word rewarded">Legible performance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" role="separator"></div>
+
+<!-- ──────────────────────────────── SECTION IV: INTIMACY WITHOUT TRUTH -->
+<section id="intimacy" aria-labelledby="intimacy-title">
+  <div class="intimacy-layout">
+    <div class="intimacy-num-col">
+      <div class="big-num" aria-hidden="true">IV</div>
+      <div style="position:relative;margin-top:8rem;">
+        <div class="section-label reveal">Section Four</div>
+        <h2 class="section-title reveal" id="intimacy-title">Intimacy<br>Without<br>Truth</h2>
+        <p class="annotation reveal" style="margin-top:2rem;">
+          Relationships constructed<br>
+          on concealed desire /<br>
+          hidden motive /<br>
+          the unspoken contract /<br>
+          trust as mutual fiction
+        </p>
+      </div>
+    </div>
+    <div class="intimacy-content text-block-spaced">
+      <p class="body-text reveal">
+        Most intimate relationships are not built on truth.
+        They are built on a negotiated version of truth —
+        the parts we judged acceptable to reveal,
+        the parts we calculated another person could receive
+        without retreating from us.
+      </p>
+      <p class="body-text reveal">
+        We curate ourselves for those we love.
+        Not out of malice — out of <span class="hl-bone">fear</span>.
+        The fear that the complete self, unedited and unmanaged,
+        would be too much. Too broken. Too strange.
+        Too <span class="hl">exactly what it is</span>.
+      </p>
+      <blockquote class="pull-quote reveal">
+        Every relationship contains<br>
+        at least two relationships:<br>
+        the real one, and the one<br>
+        both parties have agreed to perform.
+      </blockquote>
+      <p class="body-text reveal">
+        We enter long-term relationships carrying
+        entire territories of self that are never explored together —
+        not because there is no desire to share them,
+        but because the cost of revelation feels too high.
+        What if they leave? What if they look differently at you?
+        What if <em>knowing</em> the real thing destroys the imagined one,
+        which is the only one you have been permitted to keep?
+      </p>
+      <p class="body-text reveal">
+        And so trust is destroyed not by betrayal but by
+        <span class="hl">accumulation</span> — the slow accrual of small
+        concealments, each one reasonable in isolation,
+        catastrophic in sum. Years pass. The person beside you
+        knows the version of you that you decided they could handle.
+        Which is not, and has never been, <span class="fade-text">the actual you.</span>
+      </p>
+      <div class="footnote reveal">
+        &sect; On the destruction of trust through hidden motive /<br>
+        the unbridgeable distance between the presented self<br>
+        and the actual self / love as collaborative fiction
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr-dotted" role="separator">
+
+<!-- ──────────────────────────────── SECTION V: THE RARE MIRACLE -->
+<section id="miracle" aria-labelledby="miracle-title">
+  <div class="miracle-orbits" aria-hidden="true">
+    <div class="orbit-ring orbit-1"></div>
+    <div class="orbit-ring orbit-2"></div>
+  </div>
+  <div class="miracle-center">
+    <span class="miracle-symbol reveal" aria-hidden="true">&#10022;</span>
+    <h2 class="miracle-title reveal" id="miracle-title">The Rare Miracle<br>of Being Accepted</h2>
+    <p class="miracle-text reveal">
+      There exists, in the full span of a human life, a vanishingly small number
+      of people who will see you without flinching. Who will receive the version of
+      you that you have kept locked away — the ugly parts, the frightened parts,
+      the parts you are most ashamed of — and choose not to leave.
+    </p>
+    <blockquote class="miracle-quote reveal">
+      &ldquo;To be fully known<br>
+      and fully loved<br>
+      is the closest thing<br>
+      to the divine<br>
+      that a human being can experience.&rdquo;
+    </blockquote>
+    <p class="miracle-text reveal">
+      This is not a romantic fantasy. This is a theological statement.
+      The unconditional acceptance of another person&rsquo;s complete reality
+      &mdash; without correction, without management, without the silent calculation
+      of what it will cost you &mdash; resembles nothing so much as grace.
+    </p>
+    <p class="miracle-text reveal">
+      It is <span class="hl">extraordinarily rare</span>. Most people never encounter it.
+      Many spend entire lifetimes constructing personas so polished,
+      so socially legible, so carefully maintained — that by the time
+      someone willing to offer genuine acceptance appears,
+      there is <span class="fade-text">no longer a real self remaining to be accepted.</span>
+    </p>
+    <div class="annotation reveal" style="display:inline-block;text-align:left;margin-top:2rem;">
+      On unconditional acceptance as near-divine rarity /<br>
+      the partner who sees and remains / the agape of recognition /<br>
+      full self-disclosure as existential vulnerability
+    </div>
+  </div>
+</section>
+
+<div class="divider" role="separator"></div>
+
+<!-- ──────────────────────────────── SECTION VI: BETTER ALONE -->
+<section id="alone" aria-labelledby="alone-title">
+  <div class="alone-layout">
+    <div class="alone-left">
+      <div class="section-label reveal">Section Six</div>
+      <h2 class="section-title reveal" id="alone-title">Better<br>Alone</h2>
+      <p class="body-text reveal">
+        There is a particular loneliness that belongs
+        to honest people. Not the loneliness of isolation —
+        the loneliness of being <em>present</em> among people
+        who cannot receive you.
+      </p>
+      <div class="annotation reveal" style="margin-top:2rem;">
+        Isolation as consequence /<br>
+        the social punishment of truth /<br>
+        biblical loneliness /<br>
+        spiritual alienation as cost of sincerity
+      </div>
+    </div>
+    <div class="alone-right">
+      <p class="body-text reveal">
+        The honest person learns, slowly and then all at once,
+        that their honesty is not a gift to the world.
+        It is an <span class="hl">inconvenience</span>. A disruption of the social contract
+        that everyone else has quietly agreed to.
+      </p>
+      <p class="body-text reveal">
+        They say what they think. They name what they see.
+        They refuse the comfortable fiction when the comfortable fiction
+        is actively harmful. And for this, they are called
+        <em>difficult</em>. Lacking in emotional intelligence.
+        Unable to read the room &mdash; which is to say,
+        unwilling to pretend the room is something it isn&rsquo;t.
+      </p>
+      <blockquote class="verse-block reveal" cite="Isaiah 63:5">
+        <em>And I looked, and there was none to help;</em><br>
+        and I wondered that there was none to uphold.<br>
+        <em>I have trodden the winepress alone.</em><br>
+        <span class="scripture-ref">Isaiah 63:5</span>
+      </blockquote>
+      <p class="body-text reveal">
+        The spiritual literature of every tradition understands this.
+        There is a loneliness that attaches to those who cannot stop
+        seeing clearly &mdash; who cannot perform the required blindness.
+        It is not pathological. It is <span class="hl-bone">prophetic</span>. And it costs
+        exactly what prophetic vision has always cost:
+        a certain amount of comfortable belonging.
+      </p>
+      <p class="body-text reveal">
+        And perhaps, in the end, the honest person concludes
+        that it is better to be alone &mdash; truly, definitively alone &mdash;
+        than to be surrounded by people who only know the
+        version of you that you manufactured for their comfort.
+      </p>
+      <p class="body-text reveal">
+        There is a dignity in <span class="hl">chosen solitude</span>
+        that is absent from the performance of connection.
+        There is more genuine communion in a moment of
+        recognized loneliness than in years of
+        <span class="fade-text">carefully maintained pretense.</span>
+      </p>
+      <div class="footnote reveal">
+        &sect; On the existential dignity of solitude over performed belonging /<br>
+        the spiritual cost of truth-telling in a society built on untruth /<br>
+        honest isolation vs. dishonest community
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────── FINALE -->
+<section id="finale" aria-label="Conclusion">
+  <div class="finale-bg" aria-hidden="true"></div>
+
+  <div class="finale-figures" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="presentation">
+      <defs>
+        <filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="blur2"><feGaussianBlur stdDeviation="6"/></filter>
+        <linearGradient id="finFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b8b4a8" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#b8b4a8" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="finFade2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7a7870" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#7a7870" stop-opacity="0"/>
+        </linearGradient>
+        <!-- FIX: radial fog as proper SVG radialGradient (not CSS string in fill) -->
+        <radialGradient id="centerFog" cx="50%" cy="100%" r="60%" fx="50%" fy="100%">
+          <stop offset="30%"  stop-color="#080806" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#080806" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g filter="url(#blur1)" transform="translate(180,200)">
+        <ellipse cx="0" cy="0" rx="10" ry="15" fill="url(#finFade)"/>
+        <line x1="0"  y1="13"  x2="-5"  y2="120" stroke="url(#finFade)" stroke-width="5" stroke-linecap="round"/>
+        <line x1="-2" y1="55"  x2="-45" y2="95"  stroke="url(#finFade)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="-2" y1="55"  x2="30"  y2="100" stroke="url(#finFade)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="-5" y1="120" x2="-20" y2="210" stroke="url(#finFade)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="-5" y1="120" x2="15"  y2="215" stroke="url(#finFade)" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <g filter="url(#blur2)" transform="translate(1150,250)">
+        <ellipse cx="0" cy="0" rx="7" ry="10" fill="url(#finFade2)"/>
+        <line x1="0" y1="9"  x2="3"   y2="90"  stroke="url(#finFade2)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="1" y1="40" x2="-25" y2="70"  stroke="url(#finFade2)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="1" y1="40" x2="20"  y2="68"  stroke="url(#finFade2)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="3" y1="90" x2="-8"  y2="165" stroke="url(#finFade2)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="3" y1="90" x2="15"  y2="170" stroke="url(#finFade2)" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+      <rect width="1400" height="800" fill="url(#centerFog)"/>
+    </svg>
+  </div>
+
+  <div class="finale-title reveal">&mdash; In Memoriam &mdash;</div>
+
+  <div class="finale-phrase reveal">
+    <span>The world did not lose truth in a single catastrophe.</span>
+    <span>It was surrendered. One polite exchange at a time.</span>
+    <span>One managed expression. One unsent message.</span>
+    <span>One smile offered where a word should have been.</span>
+  </div>
+
+  <div style="margin:5rem auto;height:1px;background:linear-gradient(90deg,transparent,var(--smoke),transparent);width:40vw;" aria-hidden="true"></div>
+
+  <div class="finale-phrase reveal" style="font-size:clamp(0.9rem,1.5vw,1.2rem);color:var(--fog);">
+    <span>What remains?</span>
+    <span>The elongated figure. The dissolving silhouette.</span>
+    <span>The human form retreating into its own fog.</span>
+    <span>Incompletely known. Incompletely seen.</span>
+  </div>
+
+  <div class="finale-end">
+    A digital monument to the collapse of sincerity &mdash;<br>
+    This document is unfinished, as all honest things are.
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="colophon">
+    The Architecture of Untruth<br>
+    A philosophical archive on the death of sincerity<br>
+    Published in the present tense &mdash; edited never
+  </div>
+  <div class="colophon" style="text-align:right;">
+    Figures after Alberto Giacometti<br>
+    Typography: IM Fell English / Cormorant Garamond<br>
+    Bebas Neue / Space Mono
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   FIX: entire script wrapped in IIFE with 'use strict'
+   ═══════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* ── FIX: passive scroll listener detection ── */
+  var passiveSupported = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function () { passiveSupported = true; }
+    });
+    window.addEventListener('_t', null, opts);
+    window.removeEventListener('_t', null, opts);
+  } catch (e) {}
+  var PASSIVE = passiveSupported ? { passive: true } : false;
+
+  /* ── CURSOR ── */
+  var dot  = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  var mx = 0, my = 0, rx = 0, ry = 0;
+
+  /* FIX: cursor only on true pointer devices */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
+    });
+
+    (function animRing() {
+      rx += (mx - rx) * 0.1;
+      ry += (my - ry) * 0.1;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animRing);
+    }());
+
+    /* FIX: cursor ring expansion via classList, not direct style */
+    document.querySelectorAll('a, button, .distort').forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        ring.classList.add('is-hovering');
+      });
+      el.addEventListener('mouseleave', function () {
+        ring.classList.remove('is-hovering');
+      });
+    });
+  } else {
+    /* Hide cursors on touch devices */
+    if (dot)  dot.style.display  = 'none';
+    if (ring) ring.style.display = 'none';
+  }
+
+  /* ── SCROLL REVEAL with IntersectionObserver ── */
+  /* FIX: IntersectionObserver fallback for old Safari */
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal, .reveal-slow').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+          /* FIX: setTimeout uses function reference, not string */
+          setTimeout(function () {
+            /* FIX: state via classList, not direct style */
+            entry.target.classList.add('is-visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    document.querySelectorAll('.reveal, .reveal-slow').forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  /* ── PARALLAX ── */
+  var ticking = false;
+  /* FIX: passive: true on scroll listener */
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        var sy = window.scrollY || window.pageYOffset;
+        var heroNum   = document.querySelector('.hero-number');
+        var heroTitle = document.querySelector('.hero-title');
+        if (heroNum)   heroNum.style.transform   = 'translateY(' + (sy * 0.15) + 'px)';
+        if (heroTitle) heroTitle.style.transform = 'translateY(' + (sy * 0.04) + 'px)';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, PASSIVE);
+
+  /* ── SUBTLE TEXT DISTORTION ON MOUSE MOVE ── */
+  var distortEls = document.querySelectorAll('.distort');
+  if (distortEls.length) {
+    document.addEventListener('mousemove', function (e) {
+      distortEls.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var cx   = rect.left + rect.width  / 2;
+        var cy   = rect.top  + rect.height / 2;
+        var dx   = (e.clientX - cx) / window.innerWidth;
+        var dy   = (e.clientY - cy) / window.innerHeight;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 0.4) {
+          var skew = dx * 1.5;
+          el.style.transform     = 'skewX(' + skew + 'deg)';
+          el.style.letterSpacing = (-0.02 + dist * 0.05) + 'em';
+        } else {
+          el.style.transform     = '';
+          el.style.letterSpacing = '';
+        }
+      });
+    });
+  }
+
+  /* ── FIX: smooth scroll polyfill for Safari < 15.4 ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (!target) { return; }
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+}());
+</script>
+</body>
+</html>
