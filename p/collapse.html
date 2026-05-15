@@ -1,12 +1,20 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MINISTRY OF FINAL THINGS — Catalogue of Collapse №7</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,700&display=swap');
 
+<!-- Open Graph -->
+<meta property="og:title" content="MINISTRY OF FINAL THINGS — Catalogue of Collapse №7">
+<meta property="og:description" content="A comprehensive exploration of the themes and motifs present in the collapse of civilization, as seen through the lens of art, literature, and philosophy.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/images/portfolio/ministry-of-final-things.svg">
+<meta property="og:site_name" content="followorbounce.com">
+
+<style>
   :root {
     --acid-green: #7fff00;
     --dusty-pink: #d4a5a5;
@@ -18,16 +26,25 @@
     --void: #0a0a08;
     --concrete: #9e9e8a;
     --bruise: #6b4c7a;
+    --safe-top:    env(safe-area-inset-top,    0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left:   env(safe-area-inset-left,   0px);
+    --safe-right:  env(safe-area-inset-right,  0px);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
   body {
     background: var(--hospital-white);
     color: var(--void);
     font-family: 'Courier Prime', 'Courier New', monospace;
+    max-width: 100vw;
     overflow-x: hidden;
     cursor: crosshair;
   }
@@ -68,9 +85,12 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 12px 24px 10px;
+    padding: calc(12px + var(--safe-top)) calc(24px + var(--safe-right)) 10px calc(24px + var(--safe-left));
     background: var(--void);
     border-bottom: 3px solid var(--acid-green);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   .header-stamp {
@@ -103,12 +123,13 @@
   /* ═══ HERO ═══ */
   .hero {
     min-height: 100vh;
+    min-height: 100svh;
     background: var(--void);
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-top: 60px;
-    overflow: hidden;
+    overflow: clip;
   }
 
   .hero-left {
@@ -127,6 +148,7 @@
     text-transform: uppercase;
     margin-bottom: 40px;
     opacity: 0;
+    -webkit-animation: fadeUp 0.8s 0.3s forwards;
     animation: fadeUp 0.8s 0.3s forwards;
   }
 
@@ -138,6 +160,7 @@
     color: var(--hospital-white);
     letter-spacing: -0.02em;
     opacity: 0;
+    -webkit-animation: fadeUp 1s 0.5s forwards;
     animation: fadeUp 1s 0.5s forwards;
   }
 
@@ -163,6 +186,7 @@
     letter-spacing: 0.1em;
     max-width: 320px;
     opacity: 0;
+    -webkit-animation: fadeUp 0.8s 0.9s forwards;
     animation: fadeUp 0.8s 0.9s forwards;
   }
 
@@ -173,7 +197,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 80px 40px;
-    overflow: hidden;
+    overflow: clip;
   }
 
   .hero-right::before {
@@ -201,6 +225,7 @@
     bottom: -20px;
     right: -10px;
     letter-spacing: -0.05em;
+    -webkit-animation: pulse 4s ease-in-out infinite;
     animation: pulse 4s ease-in-out infinite;
   }
 
