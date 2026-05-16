@@ -160,7 +160,7 @@
   tags: ["Digital Manifesto", "Existentialism", "Consciousness"]
   description: "A philosophical editorial monument exploring lies, omission, and the collapse of sincerity in modern civilization. Avant-garde brutalist design inspired by Giacometti."
   cover: "/assets/images/portfolio/the-architecture-of-untruth.svg"
-  url: "/p/the-architecture-of-untruth/"
+  url: "/p/the-architecture-of-untruth"
  # featured: "true"
   year: "2025"
 
@@ -169,6 +169,6 @@
   tags: ["Drugs", "Consciousness", "Existentialism"]
   description: "A dark philosophical essay exploring DMT, consciousness, and the danger of forced transcendence through cyberpunk-minimalist design."
   cover: "/assets/images/portfolio/the-closed-door.svg"
-  url: "/p/the-closed-door/"
+  url: "/p/the-closed-door"
  # featured: "true"
   year: "2026"
