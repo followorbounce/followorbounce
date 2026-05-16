@@ -163,3 +163,12 @@
   url: "/p/the-architecture-of-untruth/"
  # featured: "true"
   year: "2025"
+
+- title: "The Closed Door"
+  category: "web"
+  tags: ["Drugs", "Consciousness", "Existentialism"]
+  description: "A dark philosophical essay exploring DMT, consciousness, and the danger of forced transcendence through cyberpunk-minimalist design."
+  cover: "/assets/images/portfolio/the-closed-door.svg"
+  url: "/p/the-closed-door/"
+ # featured: "true"
+  year: "2026"

@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+    <radialGradient id="voidGrad" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#0d0a05"/>
+      <stop offset="60%" stop-color="#050503"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glowCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.18"/>
+      <stop offset="40%" stop-color="#7a6540" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowLeft" cx="20%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRight" cx="80%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#c8a96e" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+    <filter id="blur-heavy">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="overlay" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <mask id="centerMask">
+      <radialGradient id="maskGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="white"/>
+        <stop offset="70%" stop-color="white"/>
+        <stop offset="100%" stop-color="black"/>
+      </radialGradient>
+      <rect width="1536" height="1024" fill="url(#maskGrad)"/>
+    </mask>
+  </defs>
+
+  <!-- Background void -->
+  <rect width="1536" height="1024" fill="url(#voidGrad)"/>
+
+  <!-- Ambient glow layers -->
+  <rect width="1536" height="1024" fill="url(#glowCenter)"/>
+  <rect width="1536" height="1024" fill="url(#glowLeft)"/>
+  <rect width="1536" height="1024" fill="url(#glowRight)"/>
+
+  <!-- Scanlines texture -->
+  <rect width="1536" height="1024" fill="none" stroke="#c8a96e" stroke-width="0.15" stroke-opacity="0.03"
+    style="background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.01) 3px, rgba(255,255,255,0.01) 4px)"/>
+
+  <!-- Grid lines — horizontal -->
+  <g stroke="#2a2a1a" stroke-width="0.4" stroke-opacity="0.35">
+    <line x1="0" y1="128" x2="1536" y2="128"/>
+    <line x1="0" y1="256" x2="1536" y2="256"/>
+    <line x1="0" y1="384" x2="1536" y2="384"/>
+    <line x1="0" y1="512" x2="1536" y2="512"/>
+    <line x1="0" y1="640" x2="1536" y2="640"/>
+    <line x1="0" y1="768" x2="1536" y2="768"/>
+    <line x1="0" y1="896" x2="1536" y2="896"/>
+  </g>
+
+  <!-- Grid lines — vertical, sparse -->
+  <g stroke="#2a2a1a" stroke-width="0.4" stroke-opacity="0.25">
+    <line x1="192" y1="0" x2="192" y2="1024"/>
+    <line x1="384" y1="0" x2="384" y2="1024"/>
+    <line x1="576" y1="0" x2="576" y2="1024"/>
+    <line x1="768" y1="0" x2="768" y2="1024"/>
+    <line x1="960" y1="0" x2="960" y2="1024"/>
+    <line x1="1152" y1="0" x2="1152" y2="1024"/>
+    <line x1="1344" y1="0" x2="1344" y2="1024"/>
+  </g>
+
+  <!-- Central geometric structure — outer rings -->
+  <g transform="translate(768, 512)" fill="none">
+    <!-- Large outer ring, faint -->
+    <circle r="380" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.08"/>
+    <circle r="350" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.06"/>
+
+    <!-- Mid rings -->
+    <circle r="260" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.14"/>
+    <circle r="240" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.08"/>
+
+    <!-- Inner working rings -->
+    <circle r="160" stroke="#c8a96e" stroke-width="0.8" stroke-opacity="0.22"/>
+    <circle r="140" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/>
+
+    <!-- Core rings -->
+    <circle r="80" stroke="#c8a96e" stroke-width="1.2" stroke-opacity="0.35"/>
+    <circle r="64" stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.18"/>
+    <circle r="48" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/>
+
+    <!-- Central dot -->
+    <circle r="4" fill="#c8a96e" fill-opacity="0.6"/>
+    <circle r="2" fill="#c8a96e" fill-opacity="0.9"/>
+
+    <!-- Cross hairs -->
+    <line x1="-380" y1="0" x2="-90" y2="0" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/>
+    <line x1="90" y1="0" x2="380" y2="0" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/>
+    <line x1="0" y1="-380" x2="0" y2="-90" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/>
+    <line x1="0" y1="90" x2="0" y2="380" stroke="#c8a96e" stroke-width="0.4" stroke-opacity="0.12"/>
+
+    <!-- Diagonal crosshairs -->
+    <line x1="-270" y1="-270" x2="-60" y2="-60" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.07"/>
+    <line x1="60" y1="60" x2="270" y2="270" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.07"/>
+    <line x1="270" y1="-270" x2="60" y2="-60" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.07"/>
+    <line x1="-60" y1="60" x2="-270" y2="270" stroke="#c8a96e" stroke-width="0.3" stroke-opacity="0.07"/>
+
+    <!-- Corner tick marks on outer ring -->
+    <g stroke="#c8a96e" stroke-width="1" stroke-opacity="0.3">
+      <line x1="-383" y1="-8" x2="-377" y2="-8"/>
+      <line x1="-383" y1="8" x2="-377" y2="8"/>
+      <line x1="377" y1="-8" x2="383" y2="-8"/>
+      <line x1="377" y1="8" x2="383" y2="8"/>
+      <line x1="-8" y1="-383" x2="-8" y2="-377"/>
+      <line x1="8" y1="-383" x2="8" y2="-377"/>
+      <line x1="-8" y1="377" x2="-8" y2="383"/>
+      <line x1="8" y1="377" x2="8" y2="383"/>
+    </g>
+
+    <!-- Hexagram inscription -->
+    <polygon points="0,-110 95,-55 95,55 0,110 -95,55 -95,-55"
+      stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.15" fill="none"/>
+    <polygon points="0,110 95,55 95,-55 0,-110 -95,-55 -95,55"
+      stroke="#c8a96e" stroke-width="0.6" stroke-opacity="0.1" fill="none"/>
+  </g>
+
+  <!-- Horizon line left -->
+  <line x1="60" y1="512" x2="340" y2="512" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+  <line x1="60" y1="512" x2="80" y2="512" stroke="#c8a96e" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Horizon line right -->
+  <line x1="1196" y1="512" x2="1476" y2="512" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.2"/>
+  <line x1="1456" y1="512" x2="1476" y2="512" stroke="#c8a96e" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Top left bracket corner -->
+  <g stroke="#c8a96e" stroke-width="1" stroke-opacity="0.25" fill="none">
+    <polyline points="60,80 60,60 80,60"/>
+    <polyline points="1456,60 1476,60 1476,80"/>
+    <polyline points="60,944 60,964 80,964"/>
+    <polyline points="1456,964 1476,964 1476,944"/>
+  </g>
+
+  <!-- Small tick measurements on edges -->
+  <g stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.15">
+    <line x1="256" y1="60" x2="256" y2="72"/>
+    <line x1="512" y1="60" x2="512" y2="72"/>
+    <line x1="768" y1="60" x2="768" y2="72"/>
+    <line x1="1024" y1="60" x2="1024" y2="72"/>
+    <line x1="1280" y1="60" x2="1280" y2="72"/>
+    <line x1="256" y1="952" x2="256" y2="964"/>
+    <line x1="512" y1="952" x2="512" y2="964"/>
+    <line x1="768" y1="952" x2="768" y2="964"/>
+    <line x1="1024" y1="952" x2="1024" y2="964"/>
+    <line x1="1280" y1="952" x2="1280" y2="964"/>
+  </g>
+
+  <!-- Glow bloom at center -->
+  <circle cx="768" cy="512" r="120" fill="#c8a96e" fill-opacity="0.04" filter="url(#blur-heavy)"/>
+  <circle cx="768" cy="512" r="60" fill="#c8a96e" fill-opacity="0.06" filter="url(#blur-heavy)"/>
+
+  <!-- Title text -->
+  <text x="768" y="430"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="72"
+    font-style="italic"
+    font-weight="400"
+    fill="#c8a96e"
+    fill-opacity="0.85"
+    text-anchor="middle"
+    letter-spacing="-1">The Closed Door</text>
+
+  <!-- Subtitle -->
+  <text x="768" y="610"
+    font-family="'Courier New', monospace"
+    font-size="13"
+    fill="#666655"
+    text-anchor="middle"
+    letter-spacing="5">ON DMT — CONSCIOUSNESS — AND THE ILLUSION OF BECOMING DIVINE</text>
+
+  <!-- Fine rule lines under title -->
+  <line x1="530" y1="446" x2="738" y2="446" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.25"/>
+  <line x1="798" y1="446" x2="1006" y2="446" stroke="#c8a96e" stroke-width="0.5" stroke-opacity="0.25"/>
+
+  <!-- Central divider symbol -->
+  <text x="768" y="452"
+    font-family="Georgia, serif"
+    font-size="10"
+    fill="#c8a96e"
+    fill-opacity="0.5"
+    text-anchor="middle"
+    letter-spacing="0">◆</text>
+
+  <!-- Bottom document ID -->
+  <text x="768" y="940"
+    font-family="'Courier New', monospace"
+    font-size="10"
+    fill="#333322"
+    text-anchor="middle"
+    letter-spacing="4">REF: DMT-0001 — followorbounce.com — 2026</text>
+
+  <!-- Top document classification -->
+  <text x="768" y="84"
+    font-family="'Courier New', monospace"
+    font-size="10"
+    fill="#2a2a1a"
+    text-anchor="middle"
+    letter-spacing="4">CLASSIFIED REFLECTION — PHILOSOPHICAL DOCUMENT</text>
+
+  <!-- Left data column text, vertical -->
+  <text x="88" y="520"
+    font-family="'Courier New', monospace"
+    font-size="9"
+    fill="#2a2a1a"
+    text-anchor="middle"
+    letter-spacing="3"
+    transform="rotate(-90, 88, 520)">NEUROSCIENCE — PHILOSOPHY — SPECULATION</text>
+
+  <!-- Right data column text, vertical -->
+  <text x="1448" y="512"
+    font-family="'Courier New', monospace"
+    font-size="9"
+    fill="#2a2a1a"
+    text-anchor="middle"
+    letter-spacing="3"
+    transform="rotate(90, 1448, 512)">CONSCIOUSNESS — TRANSFER — INTEGRATION</text>
+
+  <!-- Like — emphasis block -->
+  <text x="768" y="575"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="18"
+    font-style="italic"
+    fill="#7a6540"
+    fill-opacity="0.7"
+    text-anchor="middle"
+    letter-spacing="4">"like gods"</text>
+
+  <!-- Noise overlay (subtle) -->
+  <rect width="1536" height="1024" fill="black" fill-opacity="0.12"/>
+</svg>
