@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img">
+  <title>Ani Vaho Hoshia Na — אני והו הושיעה נא</title>
+  <desc>Sacred editorial cover: Hebrew prayer-book typography on cold archival paper with scan texture and bilingual gloss system</desc>
+
+  <defs>
+    <!-- Paper noise texture -->
+    <filter id="paper-noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray-noise"/>
+      <feBlend in="SourceGraphic" in2="gray-noise" mode="multiply" result="blended"/>
+      <feComposite in="blended" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Soft vignette via radial gradient -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="75%" stop-color="rgba(140,148,168,0.06)"/>
+      <stop offset="100%" stop-color="rgba(110,120,145,0.22)"/>
+    </radialGradient>
+
+    <!-- Scan curl shadow (left edge) -->
+    <linearGradient id="curl-left" x1="0%" y1="0%" x2="4%" y2="0%">
+      <stop offset="0%" stop-color="rgba(80,88,110,0.18)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Top fade -->
+    <linearGradient id="fade-top" x1="0%" y1="0%" x2="0%" y2="6%">
+      <stop offset="0%" stop-color="rgba(80,88,110,0.12)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Subtle blue-tint center wash -->
+    <radialGradient id="blue-wash" cx="50%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="rgba(180,192,215,0.07)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+    <!-- Horizontal rule fade -->
+    <linearGradient id="rule-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(40,44,52,0.0)"/>
+      <stop offset="8%" stop-color="rgba(40,44,52,0.55)"/>
+      <stop offset="92%" stop-color="rgba(40,44,52,0.55)"/>
+      <stop offset="100%" stop-color="rgba(40,44,52,0.0)"/>
+    </linearGradient>
+
+    <!-- Text mask for fragment fade -->
+    <linearGradient id="text-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="black"/>
+      <stop offset="60%" stop-color="black"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </linearGradient>
+    <mask id="fragment-mask">
+      <rect x="0" y="0" width="1536" height="1024" fill="url(#text-fade)"/>
+    </mask>
+  </defs>
+
+  <!-- Paper background -->
+  <rect width="1536" height="1024" fill="#edeef0"/>
+
+  <!-- Blue-gray tint wash -->
+  <rect width="1536" height="1024" fill="url(#blue-wash)"/>
+
+  <!-- Page curl shadows -->
+  <rect width="1536" height="1024" fill="url(#curl-left)"/>
+  <rect width="1536" height="1024" fill="url(#fade-top)"/>
+
+  <!-- Vignette overlay -->
+  <rect width="1536" height="1024" fill="url(#vignette)"/>
+
+  <!-- ── Grid lines (horizontal manuscript rules) ───────────────── -->
+  <line x1="0" y1="112" x2="1536" y2="112" stroke="rgba(40,44,52,0.12)" stroke-width="0.5"/>
+  <line x1="0" y1="880" x2="1536" y2="880" stroke="rgba(40,44,52,0.12)" stroke-width="0.5"/>
+
+  <!-- ── Top folio line ─────────────────────────────────────────── -->
+  <rect x="100" y="56" width="1336" height="0.5" fill="url(#rule-fade)"/>
+
+  <!-- Folio left -->
+  <text x="100" y="48"
+    font-family="'EB Garamond', Georgia, serif"
+    font-size="12"
+    fill="#9095a0"
+    letter-spacing="2.5">SHACHARIT — MORNING SERVICE</text>
+
+  <!-- Folio center Hebrew -->
+  <text x="768" y="48"
+    font-family="'Frank Ruhl Libre', serif"
+    font-size="15"
+    fill="#9095a0"
+    text-anchor="middle"
+    direction="rtl">שחרית</text>
+
+  <!-- Folio right -->
+  <text x="1436" y="48"
+    font-family="'EB Garamond', Georgia, serif"
+    font-size="12"
+    fill="#9095a0"
+    text-anchor="end"
+    letter-spacing="2">PAGE 48 / BET</text>
+
+  <!-- ── Sub-label ────────────────────────────────────────────────── -->
+  <text x="100" y="152"
+    font-family="'EB Garamond', Georgia, serif"
+    font-size="12"
+    fill="#9095a0"
+    letter-spacing="3.5">[ RECONSTRUCTED FRAGMENT — MUSAF APPENDIX / HOSHANOT ]</text>
+
+  <!-- ── Heavy rule beneath label ─────────────────────────────────── -->
+  <rect x="100" y="166" width="1336" height="1" fill="rgba(40,44,52,0.55)"/>
+  <rect x="100" y="170" width="1336" height="0.5" fill="rgba(40,44,52,0.18)"/>
+
+  <!-- ── Primary Hebrew headline ──────────────────────────────────── -->
+  <g mask="url(#fragment-mask)">
+    <text x="1436" y="340"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="900"
+      font-size="148"
+      fill="#111214"
+      text-anchor="end"
+      direction="rtl"
+      letter-spacing="-2">אֲנִי וָהוֹ הוֹשִׁיעָה נָּא.</text>
+  </g>
+
+  <!-- ── Transliteration ──────────────────────────────────────────── -->
+  <text x="100" y="375"
+    font-family="'EB Garamond', Georgia, serif"
+    font-style="italic"
+    font-size="20"
+    fill="#5a5d65"
+    letter-spacing="1.2">Ani Vaho Hoshia Na</text>
+
+  <!-- ── Gloss line with directional markers ──────────────────────── -->
+  <g font-family="'EB Garamond', Georgia, serif" font-size="11" fill="#9095a0" letter-spacing="1.8">
+    <text x="100" y="406">«  now  ‹  bring salvation  ‹  VAHO  ‹  ANI</text>
+  </g>
+
+  <!-- ── Thin separator ───────────────────────────────────────────── -->
+  <rect x="100" y="422" width="600" height="0.5" fill="rgba(40,44,52,0.28)"/>
+
+  <!-- ── Second verse block Hebrew ────────────────────────────────── -->
+  <text x="1436" y="510"
+    font-family="'Frank Ruhl Libre', serif"
+    font-weight="700"
+    font-size="40"
+    fill="#111214"
+    text-anchor="end"
+    direction="rtl">הוֹשִׁיעָה אֶת עַמֶּ֫ךָ, וּבָרֵ֥ךְ אֶת נַחֲלָתֶ֗ךָ,</text>
+
+  <text x="1436" y="560"
+    font-family="'Frank Ruhl Libre', serif"
+    font-weight="700"
+    font-size="40"
+    fill="#111214"
+    text-anchor="end"
+    direction="rtl">וּרְעֵ֔ם וְנַשְּׂאֵ֖ם עַד הָעוֹלָם.</text>
+
+  <!-- ── English gloss row ─────────────────────────────────────────── -->
+  <g font-family="'EB Garamond', Georgia, serif" font-size="13" fill="#5a5d65">
+    <text x="100" y="504">‹  and raise  ‹  tend</text>
+    <text x="480" y="504">«  Your inheritance;  ‹  and bless</text>
+    <text x="880" y="504">‹  Your nation,</text>
+    <text x="1150" y="504">‹  Save</text>
+  </g>
+  <g font-family="'EB Garamond', Georgia, serif" font-size="13" fill="#5a5d65">
+    <text x="100" y="524">  them up</text>
+    <text x="168" y="524">them</text>
+  </g>
+
+  <!-- ── Geometric separator ──────────────────────────────────────── -->
+  <line x1="100" y1="598" x2="680" y2="598" stroke="rgba(40,44,52,0.18)" stroke-width="0.5"/>
+  <text x="688" y="603"
+    font-family="'Frank Ruhl Libre', serif"
+    font-size="13"
+    fill="#9095a0"
+    direction="rtl">עד</text>
+  <line x1="720" y1="598" x2="1436" y2="598" stroke="rgba(40,44,52,0.18)" stroke-width="0.5"/>
+
+  <!-- ── Third verse block ─────────────────────────────────────────── -->
+  <text x="1436" y="672"
+    font-family="'Frank Ruhl Libre', serif"
+    font-weight="700"
+    font-size="38"
+    fill="#111214"
+    text-anchor="end"
+    direction="rtl">לְמַ֥עַן דַּ֖עַת כָּל עַמֵּ֣י הָאָ֑רֶץ,</text>
+
+  <text x="1436" y="718"
+    font-family="'Frank Ruhl Libre', serif"
+    font-weight="700"
+    font-size="38"
+    fill="#111214"
+    text-anchor="end"
+    direction="rtl">כִּ֥י יְהוָ֖ה ה֥וּא הָאֱלֹהִֽים.</text>
+
+  <!-- ── English gloss row 2 ───────────────────────────────────────── -->
+  <g font-family="'EB Garamond', Georgia, serif" font-size="13" fill="#5a5d65">
+    <text x="100" y="665">«  God,   ‹  is   ‹  HASHEM  ‹  that  «  of the   ‹  the  ‹ — all  «  they shall  ‹  so that</text>
+    <text x="100" y="682">                                           earth —  peoples             know</text>
+  </g>
+
+  <!-- ── Final declaration ────────────────────────────────────────── -->
+  <text x="1436" y="800"
+    font-family="'Frank Ruhl Libre', serif"
+    font-weight="900"
+    font-size="80"
+    fill="#111214"
+    text-anchor="end"
+    direction="rtl">אֵין עוֹד.</text>
+
+  <!-- ── Superscript footnote ref ───────────────────────────────────── -->
+  <text x="1350" y="762"
+    font-family="'EB Garamond', Georgia, serif"
+    font-size="14"
+    fill="#9095a0">2.</text>
+
+  <!-- ── Footnote text ─────────────────────────────────────────────── -->
+  <text x="100" y="798"
+    font-family="'EB Garamond', Georgia, serif"
+    font-style="italic"
+    font-size="13"
+    fill="#9095a0">«  [and] there is no other.</text>
+
+  <!-- ── Bottom rule ───────────────────────────────────────────────── -->
+  <rect x="100" y="848" width="1336" height="0.5" fill="rgba(40,44,52,0.55)"/>
+  <rect x="100" y="851" width="1336" height="0.5" fill="rgba(40,44,52,0.18)"/>
+
+  <!-- ── Colophon ──────────────────────────────────────────────────── -->
+  <text x="100" y="894"
+    font-family="'EB Garamond', Georgia, serif"
+    font-size="11"
+    fill="#9095a0"
+    letter-spacing="2.5">FOLLOWORBOUNCE.COM — LITURGICAL TYPOGRAPHY SERIES · NO. 01 · 2026</text>
+
+  <text x="1436" y="894"
+    font-family="'Frank Ruhl Libre', serif"
+    font-size="13"
+    fill="#9095a0"
+    text-anchor="end"
+    direction="rtl">אֲנִי וָהוֹ הוֹשִׁיעָה נָּא</text>
+
+  <!-- Vignette overlay (top layer) -->
+  <rect width="1536" height="1024" fill="url(#vignette)" opacity="0.7"/>
+</svg>

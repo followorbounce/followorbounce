@@ -172,3 +172,12 @@
   url: "/p/the-closed-door"
  # featured: "true"
   year: "2026"
+
+- title: "Ani Vaho Hoshia Na"
+  category: "web"
+  tags: ["Hebrew", "Typography", "Liturgical"]
+  description: "A liturgical manuscript reconstructed through modernist editorial design. Sacred Hebrew prayer-book typography meets cold archival silence."
+  cover: "/assets/images/portfolio/ani-vaho-hoshia-na.svg"
+  url: "/p/ani-vaho-hoshia-na"
+ # featured: "true"
+  year: "5786"

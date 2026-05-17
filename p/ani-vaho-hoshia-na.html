@@ -1,0 +1,1100 @@
+<!--
+title: "Ani Vaho Hoshia Na"
+category: "graphic"
+description: "A liturgical manuscript reconstructed through modernist editorial design. Sacred Hebrew prayer-book typography meets cold archival silence."
+cover: "/assets/images/portfolio/ani-vaho-hoshia-na.svg"
+url: "id.followorbounce.com/pages/ani-vaho-hoshia-na/"
+featured: "true"
+year: "2026"
+-->
+<!DOCTYPE html>
+<html lang="he-Latn" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="A liturgical manuscript reconstructed through modernist editorial design. Sacred Hebrew prayer-book typography meets cold archival silence.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Ani Vaho Hoshia Na — אני והו הושיעה נא">
+<meta property="og:description" content="A sacred transmission reconstructed through modernist editorial design. Hebrew prayer-book typography, archival aesthetics, cold contemplative silence.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/images/portfolio/ani-vaho-hoshia-na.svg">
+<meta property="og:site_name" content="followorbounce.com">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ani Vaho Hoshia Na — אני והו הושיעה נא">
+<meta name="twitter:description" content="A sacred transmission reconstructed through modernist editorial design.">
+<meta name="twitter:image" content="/assets/images/portfolio/ani-vaho-hoshia-na.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Suisse+Intl:wght@300;400&display=swap">
+
+<title>Ani Vaho Hoshia Na — אני והו הושיעה נא</title>
+
+<style>
+/* ── Root Variables ──────────────────────────────────────────────── */
+:root {
+  --paper:       #edeef0;
+  --paper-warm:  #e8e9eb;
+  --ink:         #111214;
+  --ink-mid:     #2a2c30;
+  --ink-soft:    #5a5d65;
+  --ink-faint:   #9095a0;
+  --rule:        rgba(40,44,52,0.18);
+  --rule-heavy:  rgba(40,44,52,0.55);
+  --blue-tint:   rgba(180,192,215,0.12);
+  --scan-noise:  rgba(100,110,130,0.04);
+  --safe-top:    env(safe-area-inset-top,    0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left,   0px);
+  --safe-right:  env(safe-area-inset-right,  0px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ── Reset ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Paper texture via SVG filter ───────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.6;
+}
+
+/* ── Page scan vignette ─────────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 48%,
+    transparent 55%,
+    rgba(160,168,185,0.09) 78%,
+    rgba(130,140,160,0.18) 100%
+  );
+}
+
+/* ── Navigation bar ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding-top: calc(14px + var(--safe-top));
+  padding-bottom: 14px;
+  padding-left: calc(var(--safe-left) + 40px);
+  padding-right: calc(var(--safe-right) + 40px);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  border-bottom: 0.5px solid var(--rule);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  backdrop-filter: blur(16px) saturate(1.1);
+  background: rgba(237,238,240,0.82);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-mark {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-glyph {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  direction: rtl;
+}
+
+.nav-ref {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+/* ── Main wrapper ───────────────────────────────────────────────── */
+main {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 130px 40px 80px;
+}
+
+/* ── Section spacing ────────────────────────────────────────────── */
+section {
+  overflow: clip;
+}
+
+/* ── Rule lines ─────────────────────────────────────────────────── */
+.rule-full {
+  width: 100%;
+  height: 0.5px;
+  background: var(--rule-heavy);
+  margin: 0 0 6px;
+}
+
+.rule-thin {
+  width: 100%;
+  height: 0.5px;
+  background: var(--rule);
+  margin: 8px 0;
+}
+
+/* ── Folio line ─────────────────────────────────────────────────── */
+.folio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 56px;
+  padding-bottom: 8px;
+  border-bottom: 0.5px solid var(--rule);
+}
+
+.folio-left {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+}
+
+.folio-center {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  font-family: 'Frank Ruhl Libre', serif;
+  direction: rtl;
+}
+
+.folio-right {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+}
+
+/* ── Opening inscription ────────────────────────────────────────── */
+.inscription {
+  margin-bottom: 72px;
+}
+
+.inscription-small {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 28px;
+  font-family: 'EB Garamond', serif;
+}
+
+/* ── Primary Hebrew headline ────────────────────────────────────── */
+.hebrew-headline {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 900;
+  font-size: clamp(42px, 9vw, 76px);
+  line-height: 1.1;
+  direction: rtl;
+  text-align: right;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  -webkit-animation: fadeDown 1.1s cubic-bezier(0.16,1,0.3,1) both;
+  animation: fadeDown 1.1s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+}
+
+/* ── Transliteration line ───────────────────────────────────────── */
+.translit {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+  -webkit-animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both;
+  animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.35s;
+  -webkit-animation-delay: 0.35s;
+}
+
+.translit-gloss {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-top: 4px;
+}
+
+.gloss-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 6px;
+}
+
+.gloss-hebrew {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 18px;
+  direction: rtl;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.gloss-english {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  margin-top: 2px;
+}
+
+/* ── Directional markers ────────────────────────────────────────── */
+.dir-marker {
+  font-size: 9px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  font-family: 'EB Garamond', serif;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+/* ── Main verse block ───────────────────────────────────────────── */
+.verse-block {
+  margin: 56px 0;
+  padding: 0;
+  -webkit-animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+}
+
+.verse-number {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.verse-hebrew {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: clamp(22px, 5vw, 34px);
+  line-height: 1.45;
+  direction: rtl;
+  text-align: right;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.verse-english {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  font-style: italic;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  align-items: baseline;
+}
+
+.en-word {
+  display: inline;
+}
+
+.en-angle {
+  font-size: 10px;
+  color: var(--ink-faint);
+  margin: 0 3px;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+.en-double-angle {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-style: normal;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
+/* ── Annotation column layout ───────────────────────────────────── */
+.annotated-row {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 32px;
+  margin: 48px 0;
+  align-items: start;
+}
+
+.annotation-col {
+  border-left: 0.5px solid var(--rule);
+  padding-left: 20px;
+}
+
+.annotation-label {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.annotation-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  font-style: italic;
+}
+
+/* ── Marginal notes ─────────────────────────────────────────────── */
+.marginal {
+  position: relative;
+  margin: 40px 0;
+}
+
+.marginal-num {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  vertical-align: super;
+  font-style: normal;
+}
+
+/* ── Fragment section ───────────────────────────────────────────── */
+.fragment {
+  margin: 64px 0;
+  padding: 32px 0;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  -webkit-animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+}
+
+.fragment-hebrew {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 900;
+  font-size: clamp(54px, 12vw, 110px);
+  line-height: 0.9;
+  direction: rtl;
+  text-align: center;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, var(--ink) 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, var(--ink) 60%, transparent 100%);
+}
+
+.fragment-caption {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+}
+
+/* ── Two-column grid verse ──────────────────────────────────────── */
+.bilingual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 48px 0;
+  border: 0.5px solid var(--rule);
+}
+
+.bilingual-col {
+  padding: 28px 24px;
+}
+
+.bilingual-col:first-child {
+  border-right: 0.5px solid var(--rule);
+  direction: rtl;
+  text-align: right;
+}
+
+.bilingual-col-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  margin-bottom: 16px;
+  display: block;
+  direction: ltr;
+}
+
+.bilingual-col:first-child .bilingual-col-label {
+  direction: rtl;
+}
+
+.bilingual-verse-he {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.bilingual-verse-en {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  font-style: italic;
+}
+
+/* ── Commentary block ───────────────────────────────────────────── */
+.commentary {
+  margin: 56px 0;
+  padding-left: 32px;
+  border-left: 2px solid var(--ink-mid);
+}
+
+.commentary-source {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.commentary-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+}
+
+/* ── Geometric separator ────────────────────────────────────────── */
+.geo-sep {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 52px 0;
+}
+
+.geo-sep::before,
+.geo-sep::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--rule);
+}
+
+.geo-mark {
+  font-size: 11px;
+  color: var(--ink-faint);
+  font-family: 'Frank Ruhl Libre', serif;
+  direction: rtl;
+}
+
+/* ── Footnotes ──────────────────────────────────────────────────── */
+.footnotes {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--rule-heavy);
+}
+
+.footnotes-header {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.fn {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fn-num {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  padding-top: 2px;
+}
+
+.fn-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* ── Final declaration block ────────────────────────────────────── */
+.declaration {
+  margin: 72px 0 48px;
+  text-align: center;
+  -webkit-animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.9s;
+  -webkit-animation-delay: 0.9s;
+}
+
+.declaration-he {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 6vw, 52px);
+  direction: rtl;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.declaration-en {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+}
+
+/* ── Colophon / footer ──────────────────────────────────────────── */
+footer {
+  position: relative;
+  z-index: 2;
+  border-top: 0.5px solid var(--rule);
+  padding-top: 24px;
+  padding-bottom: calc(32px + var(--safe-bottom));
+  padding-left: calc(var(--safe-left) + 40px);
+  padding-right: calc(var(--safe-right) + 40px);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.colophon-left {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+}
+
+.colophon-center {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 14px;
+  direction: rtl;
+  color: var(--ink-soft);
+}
+
+.colophon-right {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  text-align: right;
+}
+
+/* ── Scan blur at page edges ────────────────────────────────────── */
+.edge-blur-top {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  z-index: 99;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(237,238,240,0.6) 0%, transparent 100%);
+  -webkit-backdrop-filter: blur(0.5px);
+  backdrop-filter: blur(0.5px);
+}
+
+/* ── is-visible animation state ─────────────────────────────────── */
+.observe {
+  opacity: 0;
+  -webkit-transform: translateY(18px);
+  transform: translateY(18px);
+  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+              -webkit-transform 0.85s cubic-bezier(0.16,1,0.3,1),
+              transform 0.85s cubic-bezier(0.16,1,0.3,1);
+}
+
+.observe.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────── */
+@-webkit-keyframes fadeUp {
+  from { opacity: 0; -webkit-transform: translateY(22px); transform: translateY(22px); }
+  to   { opacity: 1; -webkit-transform: translateY(0);    transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@-webkit-keyframes fadeDown {
+  from { opacity: 0; -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+  to   { opacity: 1; -webkit-transform: translateY(0);      transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Touch targets ──────────────────────────────────────────────── */
+a, button {
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Overflow words ─────────────────────────────────────────────── */
+.long-word {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Mobile ─────────────────────────────────────────────────────── */
+@media (max-width: 620px) {
+  main { padding: 110px 24px 60px; }
+
+  .annotated-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .annotation-col {
+    border-left: none;
+    border-top: 0.5px solid var(--rule);
+    padding-left: 0;
+    padding-top: 16px;
+  }
+
+  .bilingual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bilingual-col:first-child {
+    border-right: none;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  footer {
+    padding-left: calc(var(--safe-left) + 24px);
+    padding-right: calc(var(--safe-right) + 24px);
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  nav {
+    padding-left: calc(var(--safe-left) + 24px);
+    padding-right: calc(var(--safe-right) + 24px);
+  }
+}
+
+/* ── Hover: only for pointer devices ────────────────────────────── */
+@media (hover: hover) {
+  .gloss-item:hover .gloss-hebrew { color: var(--ink-soft); }
+}
+
+/* ── aspect-ratio fallback ──────────────────────────────────────── */
+.page-aspect {
+  aspect-ratio: 3 / 2;
+  min-height: 200px;
+}
+@supports (aspect-ratio: 3 / 2) {
+  .page-aspect { min-height: unset; }
+}
+</style>
+</head>
+<body>
+
+<div class="edge-blur-top" aria-hidden="true"></div>
+
+<!-- ── Navigation ──────────────────────────────────────────────── -->
+<nav aria-label="Site navigation">
+  <span class="nav-mark">followorbounce — liturgical series</span>
+  <span class="nav-glyph" lang="he">אנ״י</span>
+  <span class="nav-ref">Siddur · Kings I 8:59</span>
+</nav>
+
+<!-- ── Main content ─────────────────────────────────────────────── -->
+<main role="main">
+
+  <!-- Folio line -->
+  <div class="folio" aria-hidden="true">
+    <span class="folio-left">Shacharit — Morning</span>
+    <span class="folio-center" lang="he">שחרית</span>
+    <span class="folio-right">Page 48 / Bet</span>
+  </div>
+
+  <!-- ── Opening inscription ────────────────────────────────────── -->
+  <section class="inscription" aria-labelledby="main-title">
+    <p class="inscription-small">[ Reconstructed Fragment — Musaf Appendix / Hoshanot ]</p>
+
+    <div class="rule-full" aria-hidden="true"></div>
+
+    <h1 class="hebrew-headline" id="main-title" lang="he" dir="rtl">
+      אֲנִי וָהוֹ הוֹשִׁיעָה נָּא.
+    </h1>
+
+    <p class="translit">Ani Vaho Hoshia Na — "I and He, bring salvation, please."</p>
+
+    <div class="rule-thin" aria-hidden="true"></div>
+
+    <!-- Gloss word-by-word -->
+    <div class="translit-gloss" role="list" aria-label="Word-by-word gloss">
+      <span class="dir-marker" aria-hidden="true">«</span>
+      <div class="gloss-item" role="listitem">
+        <span class="gloss-hebrew" lang="he">נָּא</span>
+        <span class="gloss-english">now</span>
+      </div>
+      <span class="dir-marker" aria-hidden="true">‹</span>
+      <div class="gloss-item" role="listitem">
+        <span class="gloss-hebrew" lang="he">הוֹשִׁיעָה</span>
+        <span class="gloss-english">bring salvation</span>
+      </div>
+      <span class="dir-marker" aria-hidden="true">‹</span>
+      <div class="gloss-item" role="listitem">
+        <span class="gloss-hebrew" lang="he">וָהוֹ</span>
+        <span class="gloss-english">VAHO</span>
+      </div>
+      <span class="dir-marker" aria-hidden="true">‹</span>
+      <div class="gloss-item" role="listitem">
+        <span class="gloss-hebrew" lang="he">אֲנִי</span>
+        <span class="gloss-english">ANI</span>
+      </div>
+      <span class="dir-marker" aria-hidden="true">«</span>
+    </div>
+  </section>
+
+  <!-- ── Large centered fragment ───────────────────────────────── -->
+  <section class="fragment observe" aria-label="Display inscription">
+    <div class="fragment-hebrew" lang="he" dir="rtl" aria-hidden="true">הוֹשִׁיעָה</div>
+    <p class="fragment-caption">Hoshia — Imperative. Salvage. Now. Without delay.</p>
+  </section>
+
+  <!-- ── Verse I ────────────────────────────────────────────────── -->
+  <section class="verse-block observe" aria-labelledby="verse-1-label">
+    <span class="verse-number" id="verse-1-label">Verse I — Psalm 28:9 / Hoshanot Opening</span>
+
+    <p class="verse-hebrew" lang="he" dir="rtl">
+      הוֹשִׁיעָה אֶת עַמֶּ֫ךָ, וּבָרֵ֥ךְ אֶת נַחֲלָתֶ֗ךָ,
+      וּרְעֵ֔ם וְנַשְּׂאֵ֖ם עַד הָעוֹלָם.
+    </p>
+
+    <div class="verse-english" lang="en" aria-label="English gloss">
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">Save</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">Your nation,</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">and bless</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">Your inheritance;</span>
+      <span class="en-double-angle" aria-hidden="true">«</span>
+      <span class="en-word">tend them</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">and raise them up</span>
+      <span class="en-double-angle" aria-hidden="true">«</span>
+      <span class="en-word">forever.</span>
+    </div>
+  </section>
+
+  <!-- ── Annotated row ─────────────────────────────────────────── -->
+  <div class="annotated-row observe" aria-label="Verse with marginal annotation">
+    <div>
+      <span class="verse-number">Verse II — Kings I 8:59 / Shacharit conclusion</span>
+      <p class="verse-hebrew" lang="he" dir="rtl">
+        וְיִהְיוּ<sup class="marginal-num">1</sup> דְבָרַי אֵ֗לֶּה
+        אֲשֶׁ֑ר הִתְחַנַּ֖נְתִּי לִפְנֵ֤י יְהוָ֔ה,
+        קְרֹבִ֗ים אֶל יְהוָ֖ה אֱלֹהֵ֑ינוּ
+        יוֹמָ֖ם וָלָ֑יְלָה.
+      </p>
+      <p class="verse-english" lang="en">
+        <span class="en-double-angle" aria-hidden="true">«</span>
+        May they be
+        <span class="en-double-angle" aria-hidden="true">«</span>
+        — these words of mine,
+        <span class="en-angle" aria-hidden="true">‹</span>
+        which I have supplicated
+        <span class="en-angle" aria-hidden="true">‹</span>
+        before
+        <span class="en-double-angle" aria-hidden="true">«</span>
+        Hashem —
+        <span class="en-angle" aria-hidden="true">‹</span>
+        near
+        <span class="en-double-angle" aria-hidden="true">«</span>
+        Hashem
+        <span class="en-angle" aria-hidden="true">‹</span>
+        our God,
+        <span class="en-angle" aria-hidden="true">‹</span>
+        by day
+        <span class="en-angle" aria-hidden="true">‹</span>
+        and by night.
+      </p>
+    </div>
+
+    <aside class="annotation-col" aria-label="Marginal note">
+      <span class="annotation-label">Marginal note ¹</span>
+      <p class="annotation-text">
+        The Solomonic petition: that the words of supplication remain eternally
+        proximate — not dissolved by time but preserved in active nearness.
+        Yomam va-lailah: day and night without cessation.
+      </p>
+    </aside>
+  </div>
+
+  <!-- ── Geometric separator ───────────────────────────────────── -->
+  <div class="geo-sep observe" aria-hidden="true">
+    <span class="geo-mark" lang="he">עד</span>
+  </div>
+
+  <!-- ── Bilingual grid ─────────────────────────────────────────── -->
+  <section class="bilingual-grid observe" aria-label="Bilingual parallel text">
+    <div class="bilingual-col" lang="he" dir="rtl">
+      <span class="bilingual-col-label" dir="ltr">Hebrew — עברית</span>
+      <p class="bilingual-verse-he">
+        לַֽעֲשׂ֗וֹת מִשְׁפַּ֤ט עַבְדּוֹ֙
+        וּמִשְׁפַּ֣ט עַמּ֣וֹ יִשְׂרָאֵ֔ל
+        דְּבַ֥ר י֖וֹם בְּיוֹמֽוֹ.
+      </p>
+    </div>
+    <div class="bilingual-col" lang="en">
+      <span class="bilingual-col-label">English — Translation</span>
+      <p class="bilingual-verse-en">
+        — that He perform
+        <span class="en-double-angle" aria-hidden="true">«</span>
+        justice for His servant
+        <span class="en-angle" aria-hidden="true">‹</span>
+        and justice for His people Israel,
+        <span class="en-angle" aria-hidden="true">‹</span>
+        each day's need
+        <span class="en-angle" aria-hidden="true">‹</span>
+        in its day.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Commentary block ──────────────────────────────────────── -->
+  <div class="commentary observe" aria-label="Commentary">
+    <span class="commentary-source">Rashi · Commentary on Kings I 8:59</span>
+    <p class="commentary-text">
+      The proximity of prayer is not spatial — it is temporal and intentional.
+      Words offered in full consciousness draw near not through distance
+      but through the quality of attention brought to the utterance.
+      <em>Ani Vaho:</em> the Divine Name embedded within, pronounced but not disclosed —
+      an encryption of sovereignty within the cry for rescue.
+    </p>
+  </div>
+
+  <!-- ── Verse III with footnote ───────────────────────────────── -->
+  <section class="verse-block observe" aria-labelledby="verse-3-label">
+    <span class="verse-number" id="verse-3-label">Verse III — Declaration of Unity</span>
+
+    <p class="verse-hebrew" lang="he" dir="rtl">
+      לְמַ֥עַן דַּ֖עַת כָּל עַמֵּ֣י הָאָ֑רֶץ,
+      כִּ֥י יְהוָ֖ה ה֥וּא הָאֱלֹהִֽים.
+    </p>
+
+    <div class="verse-english" lang="en">
+      <span class="en-double-angle" aria-hidden="true">«</span>
+      <span class="en-word">so that</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">they shall know</span>
+      <span class="en-double-angle" aria-hidden="true">«</span>
+      <span class="en-word">— all</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">the peoples</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">of the earth —</span>
+      <span class="en-double-angle" aria-hidden="true">«</span>
+      <span class="en-word">that Hashem</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">is</span>
+      <span class="en-angle" aria-hidden="true">‹</span>
+      <span class="en-word">God.</span>
+      <span class="en-double-angle" aria-hidden="true">«</span>
+    </div>
+  </section>
+
+  <!-- ── Final declaration ─────────────────────────────────────── -->
+  <div class="declaration observe" aria-label="Final declaration">
+    <p class="declaration-he" lang="he" dir="rtl">אֵין עוֹד.</p>
+    <p class="declaration-en">Ein Od — "There is no other."</p>
+  </div>
+
+  <!-- ── Geometric separator ───────────────────────────────────── -->
+  <div class="geo-sep observe" aria-hidden="true">
+    <span class="geo-mark" lang="he">סוף</span>
+  </div>
+
+  <!-- ── Footnotes ─────────────────────────────────────────────── -->
+  <aside class="footnotes observe" aria-label="Footnotes">
+    <span class="footnotes-header">Notes &amp; References</span>
+
+    <div class="fn">
+      <span class="fn-num">1.</span>
+      <p class="fn-text">
+        <em>Veyihyu</em> — "May they be." The optative mood signals ongoing wish, not completed action.
+        The prayer does not end with its utterance; it persists as an aspiration carried forward
+        into the time beyond the lips. Source: Babylonian Talmud, Berakhot 4b.
+      </p>
+    </div>
+
+    <div class="fn">
+      <span class="fn-num">2.</span>
+      <p class="fn-text">
+        <em>Ani Vaho</em> — Mystic double-name. The Talmud (Sukkah 45a) records that the priests
+        would call out this phrase during the Hoshana circuits of the Temple. Its precise meaning
+        remains a subject of kabbalistic inquiry: one reading holds it encodes
+        the 72-letter Divine Name in compressed form.
+      </p>
+    </div>
+
+    <div class="fn">
+      <span class="fn-num">3.</span>
+      <p class="fn-text">
+        Typography reconstructed from bilingual Ashkenazi siddur layouts, ca. 1890–1950.
+        Directionality markers (‹ ‹ «) reproduce the original interlinear gloss system,
+        reading right-to-left for Hebrew word order while English explanations
+        cascade leftward beneath each phrase.
+      </p>
+    </div>
+  </aside>
+
+</main>
+
+<!-- ── Footer / Colophon ────────────────────────────────────────── -->
+<footer aria-label="Colophon">
+  <span class="colophon-left">followorbounce.com · 2026</span>
+  <span class="colophon-center" lang="he" dir="rtl">אֲנִי וָהוֹ הוֹשִׁיעָה נָּא</span>
+  <span class="colophon-right">Liturgical Typography Series<br>No. 01 / Shacharit</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Passive scroll support detection ─────────────────────────── */
+  var passiveSupported = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function () { passiveSupported = true; }
+    });
+    window.addEventListener('_t', null, opts);
+    window.removeEventListener('_t', null, opts);
+  } catch (e) {}
+  var PASSIVE = passiveSupported ? { passive: true } : false;
+
+  /* ── IntersectionObserver for scroll reveals ──────────────────── */
+  var elements = document.querySelectorAll('.observe');
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  elements.forEach(function (el) { observer.observe(el); });
+
+  /* ── Smooth scroll for anchor links ───────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ── Nav scrolled class ────────────────────────────────────────── */
+  var navEl = document.querySelector('nav');
+  function onScroll() {
+    if (window.scrollY > 40) {
+      navEl.classList.add('scrolled');
+    } else {
+      navEl.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, PASSIVE);
+
+}());
+</script>
+
+</body>
+</html>
