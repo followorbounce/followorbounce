@@ -1,0 +1,495 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img">
+  <title>Sheva Berachos / שבע ברכות — Liturgical Typography Series</title>
+  <desc>ArtScroll-faithful bilingual liturgical spread: bold Hebrew blessings with interlinear English gloss, folio headers, commentary columns, and cold archival paper texture.</desc>
+
+  <defs>
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="multiply"/>
+    </filter>
+
+    <!-- Page vignette -->
+    <radialGradient id="vig" cx="50%" cy="50%" r="62%">
+      <stop offset="0%"   stop-color="transparent"/>
+      <stop offset="72%"  stop-color="rgba(130,138,158,0.07)"/>
+      <stop offset="100%" stop-color="rgba(100,110,135,0.24)"/>
+    </radialGradient>
+
+    <!-- Left spine shadow -->
+    <linearGradient id="spine" x1="0%" y1="0%" x2="3.5%" y2="0%">
+      <stop offset="0%"   stop-color="rgba(60,68,90,0.22)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Centre gutter shadow (book spine) -->
+    <linearGradient id="gutter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="rgba(40,48,70,0.18)"/>
+      <stop offset="8%"   stop-color="transparent"/>
+      <stop offset="92%"  stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(40,48,70,0.18)"/>
+    </linearGradient>
+
+    <!-- Horizontal rule fade -->
+    <linearGradient id="rfade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="rgba(14,16,20,0)"/>
+      <stop offset="6%"   stop-color="rgba(14,16,20,0.52)"/>
+      <stop offset="94%"  stop-color="rgba(14,16,20,0.52)"/>
+      <stop offset="100%" stop-color="rgba(14,16,20,0)"/>
+    </linearGradient>
+
+    <!-- Clip for left page -->
+    <clipPath id="left-page">
+      <rect x="0" y="0" width="748" height="1024"/>
+    </clipPath>
+
+    <!-- Clip for right page -->
+    <clipPath id="right-page">
+      <rect x="788" y="0" width="748" height="1024"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ─────────────────────────────────────────────── -->
+  <rect width="1536" height="1024" fill="#ecedf0"/>
+
+  <!-- Book gutter (center shadow) -->
+  <rect x="748" y="0" width="40" height="1024" fill="#d8d9dc"/>
+  <rect x="748" y="0" width="40" height="1024" fill="url(#gutter)"/>
+
+  <!-- Spine and right shadow -->
+  <rect width="1536" height="1024" fill="url(#spine)"/>
+
+  <!-- Noise grain overlay -->
+  <rect width="1536" height="1024" fill="#ecedf0" opacity="0.01" filter="url(#grain)"/>
+
+  <!-- Vignette -->
+  <rect width="1536" height="1024" fill="url(#vig)" opacity="0.9"/>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LEFT PAGE — 291 / SHEVA BERACHOS
+  ════════════════════════════════════════════════════════════ -->
+  <g clip-path="url(#left-page)">
+
+    <!-- Folio header -->
+    <text x="68" y="56"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="13" font-weight="500"
+      fill="#2b2e36">291 /</text>
+    <text x="102" y="56"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="13" font-weight="700" letter-spacing="1"
+      fill="#0e1014">SHEVA BERACHOS</text>
+
+    <!-- Folio rule -->
+    <rect x="68" y="64" width="640" height="0.75" fill="#0e1014" opacity="0.55"/>
+
+    <!-- Blessing 1 label -->
+    <text x="68" y="106"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="10" letter-spacing="2"
+      fill="#8a8f9e">1.</text>
+
+    <!-- Blessing 1 Hebrew — BARUCH bold first word -->
+    <text x="708" y="110"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="900" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">בָּרוּךְ</text>
+    <text x="580" y="110"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">אַתָּה יְהוָה אֱלֹהֵינוּ</text>
+    <text x="708" y="155"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">מֶלֶךְ הָעוֹלָם, שֶׁהַכֹּל בָּרָא לִכְבוֹדוֹ.</text>
+
+    <!-- Gloss row 1 -->
+    <text x="68" y="180"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11"
+      fill="#555a66">‹ Who has created  «« everything  «« of the universe,  ‹ King  ‹ our God,  ‹ Hashem,  ‹ are You,  ‹ Blessed</text>
+
+    <!-- לכבודו gloss -->
+    <text x="68" y="198"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#8a8f9e">«« for His glory.*</text>
+    <text x="708" y="198"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="14" fill="#555a66"
+      text-anchor="end" direction="rtl">*לִכְבוֹדוֹ.</text>
+
+    <!-- Amen 1 -->
+    <text x="68" y="222"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="12" fill="#8a8f9e">«« (Amen.)</text>
+    <text x="200" y="222"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="15" font-weight="700" fill="#0e1014" direction="rtl">(אָמֵן.)</text>
+    <text x="708" y="222"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" fill="#8a8f9e" text-anchor="end">— All</text>
+
+    <!-- thin rule -->
+    <rect x="68" y="234" width="640" height="0.5" fill="rgba(14,16,20,0.15)"/>
+
+    <!-- Blessing 2 label -->
+    <text x="68" y="260"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="10" letter-spacing="2" fill="#8a8f9e">2.</text>
+
+    <text x="708" y="268"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="900" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">בָּרוּךְ</text>
+    <text x="540" y="268"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, יוֹצֵר הָאָדָם.</text>
+
+    <text x="68" y="295"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11"
+      fill="#555a66">‹ Who fashioned  «« of the universe,  ‹ King  ‹ our God,  ‹ Hashem,  ‹ are You,  ‹ Blessed</text>
+
+    <text x="68" y="313"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#8a8f9e">«« the Man.*</text>
+    <text x="708" y="313"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="14" fill="#555a66"
+      text-anchor="end" direction="rtl">*הָאָדָם.</text>
+
+    <text x="68" y="336"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="12" fill="#8a8f9e">«« (Amen.)</text>
+    <text x="200" y="336"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="15" font-weight="700" fill="#0e1014" direction="rtl">(אָמֵן.)</text>
+    <text x="708" y="336"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" fill="#8a8f9e" text-anchor="end">— All</text>
+
+    <!-- thin rule -->
+    <rect x="68" y="348" width="640" height="0.5" fill="rgba(14,16,20,0.15)"/>
+
+    <!-- BLESSING 6 — large display block -->
+    <text x="68" y="390"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="10" letter-spacing="2" fill="#8a8f9e">6.</text>
+
+    <text x="708" y="398"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="900" font-size="42"
+      fill="#0e1014" text-anchor="end" direction="rtl">בָּרוּךְ אַתָּה יְהוָה אֱלֹהֵינוּ</text>
+    <text x="708" y="446"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="42"
+      fill="#0e1014" text-anchor="end" direction="rtl">מֶלֶךְ הָעוֹלָם, אֲשֶׁר בָּרָא</text>
+    <text x="708" y="494"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">שָׂשׂוֹן וְשִׂמְחָה, חָתָן וְכַלָּה,</text>
+    <text x="708" y="538"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">גִּילָה רִנָּה, דִּיצָה וְחֶדְוָה,</text>
+    <text x="708" y="582"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">אַהֲבָה וְאַחֲוָה, שָׁלוֹם וְרֵעוּת.*</text>
+
+    <!-- Gloss rows for blessing 6 -->
+    <text x="68" y="554"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11"
+      fill="#555a66">‹ delight, ‹ pleasure, ‹ glad song, ‹ rejoicing, ‹ and gladness, ‹ groom and bride, ‹ joy*</text>
+    <text x="68" y="570"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11"
+      fill="#555a66">‹ love, ‹ brotherhood, ‹ peace, ‹ and companionship.*</text>
+
+    <!-- Second Hebrew stanza -->
+    <text x="708" y="632"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="500" font-size="22"
+      fill="#2b2e36" text-anchor="end" direction="rtl">מְהֵרָה יְהוָה אֱלֹהֵינוּ יִשָּׁמַע בְּעָרֵי יְהוּדָה</text>
+    <text x="708" y="659"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="500" font-size="22"
+      fill="#2b2e36" text-anchor="end" direction="rtl">וּבְחוּצוֹת יְרוּשָׁלַיִם קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה,</text>
+    <text x="708" y="686"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="500" font-size="22"
+      fill="#2b2e36" text-anchor="end" direction="rtl">קוֹל חָתָן וְקוֹל כַּלָּה,</text>
+
+    <!-- Gloss for second stanza -->
+    <text x="68" y="710"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">‹ and the  ‹ of joy  ‹ the  ‹ of Jerusalem,  ‹ and in the  ‹ of Judah  ‹ let there be heard</text>
+    <text x="68" y="727"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">«« of grooms  ‹ of the jubilance  «« of the  ‹ the  «« of gladness,  ‹ voice  ‹ groom  ‹ bride</text>
+
+    <!-- Conclusion line -->
+    <text x="708" y="770"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="22"
+      fill="#0e1014" text-anchor="end" direction="rtl">בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ חָתָן וְכַלָּה.</text>
+
+    <text x="68" y="770"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">«« the bride.  ‹ with  ‹ the groom  ‹ Who gladdens  ‹ Hashem,</text>
+
+    <!-- Amen 6 -->
+    <text x="68" y="800"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="12" fill="#8a8f9e">«« (Amen.)</text>
+    <text x="200" y="800"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="16" font-weight="700" fill="#0e1014" direction="rtl">(אָמֵן.)</text>
+    <text x="708" y="800"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" fill="#8a8f9e" text-anchor="end">— All</text>
+
+    <!-- Footnote area -->
+    <rect x="68" y="836" width="640" height="0.75" fill="rgba(14,16,20,0.52)"/>
+
+    <text x="68" y="862"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="9" letter-spacing="1.5" fill="#8a8f9e">(1) Psalms 113:2.  (2) Cf. 23:3.</text>
+
+    <text x="68" y="884"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">
+      <tspan font-style="italic">שָׂשׂוֹן</tspan> — Joy … and companionship. Ten expressions of joy allude to the ten canopies
+    </text>
+    <text x="68" y="900"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">which God erected for Adam and Eve in the Garden of Eden (Bava Basra 75a).</text>
+
+    <text x="68" y="924"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">
+      <tspan font-style="italic">מְשַׂמֵּחַ חָתָן וְכַלָּה</tspan> — Who gladdens groom and bride, individually; for each must be
+    </text>
+    <text x="68" y="940"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">the recipient of God's blessing. The following blessing is recited from days of old.</text>
+
+    <text x="68" y="970"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="9" letter-spacing="1.2" fill="#8a8f9e">followorbounce.com · liturgical series · no. 02</text>
+
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       RIGHT PAGE — 290 / זִמּוּן
+  ════════════════════════════════════════════════════════════ -->
+  <g clip-path="url(#right-page)">
+
+    <!-- Folio header right page -->
+    <text x="1468" y="56"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="13" font-weight="500"
+      fill="#2b2e36" text-anchor="end">290</text>
+
+    <text x="1468" y="56"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="15" font-weight="700"
+      fill="#0e1014" text-anchor="end" direction="rtl">שֶׁבַע בְּרָכוֹת /</text>
+
+    <text x="805" y="56"
+      font-family="'Frank Ruhl Libre', serif"
+      font-size="15" direction="rtl"
+      fill="#555a66">זִמּוּן</text>
+
+    <!-- Folio rule -->
+    <rect x="828" y="64" width="640" height="0.75" fill="#0e1014" opacity="0.55"/>
+
+    <!-- Prose intro — small caps rubric -->
+    <text x="828" y="92"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" letter-spacing="0.5" fill="#555a66">
+      AFTER THE RING IS PLACED ON THE BRIDE'S FINGER, THE
+    </text>
+    <text x="828" y="107"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">
+      <tspan font-style="italic">Kesubah</tspan> (MARRIAGE CONTRACT) IS READ ALOUD. A SECOND CUP
+    </text>
+    <text x="828" y="122"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">
+      OF WINE IS POURED AND THE SEVEN BLESSINGS (
+    </text>
+    <text x="828" y="137"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">
+      <tspan font-style="italic">שֶׁבַע בְּרָכוֹת</tspan>) ARE RECITED ALOUD. THE HONOR OF RECITING
+    </text>
+    <text x="828" y="152"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">THESE SEVEN BLESSINGS MAY BE DIVIDED AMONG SEVERAL PEOPLE.</text>
+
+    <!-- Section banner -->
+    <text x="1148" y="200"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" letter-spacing="3" fill="#8a8f9e"
+      text-anchor="middle">❧  SHEVA BERACHOS / שֶׁבַע בְּרָכוֹת  ❧</text>
+
+    <text x="1148" y="221"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66"
+      text-anchor="middle">When Sheva Berachos are recited, the Leader recites the following Zimun,</text>
+    <text x="1148" y="237"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66"
+      text-anchor="middle">with a cup of wine in hand.</text>
+
+    <!-- thin rule -->
+    <rect x="828" y="248" width="640" height="0.5" fill="rgba(14,16,20,0.15)"/>
+
+    <!-- Zimun Hebrew — Leader -->
+    <text x="1468" y="290"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="30"
+      fill="#0e1014" text-anchor="end" direction="rtl">רַבּוֹתַי מִיר וֶועֶלֶן בֶּנְטְשֶׁן [רַבּוֹתַי נְבָרֵךְ].</text>
+    <text x="828" y="290"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" fill="#8a8f9e">— Leader</text>
+
+    <text x="828" y="312"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">«« [let us bless.  ‹ Gentlemen,]  «« bless.  ‹ let us  ‹ Gentlemen,</text>
+
+    <!-- thin rule -->
+    <rect x="828" y="328" width="640" height="0.5" fill="rgba(14,16,20,0.12)"/>
+
+    <!-- Others response -->
+    <text x="1468" y="364"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="28"
+      fill="#0e1014" text-anchor="end" direction="rtl">יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם.</text>
+    <text x="828" y="364"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="9" fill="#8a8f9e">1</text>
+
+    <text x="1468" y="386"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" fill="#8a8f9e" text-anchor="end">— Others</text>
+
+    <text x="828" y="386"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">«« eternity.  ‹ until  ‹ from  ‹ be  ‹ of the  ‹ Let this time blessed  ‹ Hashem Name</text>
+
+    <!-- thin rule -->
+    <rect x="828" y="400" width="640" height="0.5" fill="rgba(14,16,20,0.12)"/>
+
+    <!-- Leader repeats -->
+    <text x="1468" y="432"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="28"
+      fill="#0e1014" text-anchor="end" direction="rtl">יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם.</text>
+    <text x="1468" y="450"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" fill="#8a8f9e" text-anchor="end">— Leader</text>
+
+    <text x="828" y="450"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">«« eternity.  ‹ until  ‹ from  ‹ be  ‹ of the  ‹ Let  ‹ this time blessed  ‹ Hashem Name</text>
+
+    <!-- thin rule + not on sabbath note -->
+    <rect x="828" y="466" width="640" height="0.5" fill="rgba(14,16,20,0.12)"/>
+
+    <text x="1148" y="488"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="10" letter-spacing="2" fill="#8a8f9e" text-anchor="middle">IN MANY CONGREGATIONS THE FOLLOWING IS NOT RECITED ON THE SABBATH:</text>
+
+    <!-- Blessing 4 + 5 preview -->
+    <text x="1468" y="528"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="900" font-size="42"
+      fill="#0e1014" text-anchor="end" direction="rtl">שׂוֹשׂ תָּשִׂישׂ* וְתָגֵל הָעֲקָרָה,*</text>
+    <text x="1468" y="574"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="42"
+      fill="#0e1014" text-anchor="end" direction="rtl">בְּקִבּוּץ בָּנֶיהָ לְתוֹכָהּ בְּשִׂמְחָה.</text>
+
+    <text x="828" y="550"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">‹ amidst  ‹ her through the  «« — the barren  ‹ and exult  ‹ May she rejoice</text>
+    <text x="828" y="566"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">  her children  ingathering  one*  —  intensely*</text>
+
+    <text x="1468" y="612"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="500" font-size="22"
+      fill="#2b2e36" text-anchor="end" direction="rtl">בְּשִׂמְחָה. בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ צִיּוֹן בְּבָנֶיהָ.</text>
+
+    <text x="828" y="612"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">«« through her children.* ‹ Zion ‹ Who gladdens «« Hashem, ‹ are You, ‹ Blessed «« in gladness.</text>
+
+    <!-- Blessing 5 -->
+    <text x="1468" y="654"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="900" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">שַׂמֵּחַ תְּשַׂמַּח רֵעִים הָאֲהוּבִים,*</text>
+    <text x="1468" y="696"
+      font-family="'Frank Ruhl Libre', serif"
+      font-weight="700" font-size="38"
+      fill="#0e1014" text-anchor="end" direction="rtl">כְּשַׂמֵּחֲךָ יְצִירְךָ* בְּגַן עֵדֶן מִקֶּדֶם.</text>
+
+    <text x="828" y="672"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">‹ Your creation,  ‹ as You  «« who are beloved,*  ‹ the companions  ‹ Gladden intensely*</text>
+    <text x="828" y="712"
+      font-family="'EB Garamond', Georgia, serif"
+      font-style="italic" font-size="11" fill="#555a66">  gladdened  Adam,*</text>
+
+    <!-- Commentary box -->
+    <rect x="828" y="736" width="640" height="0.5" fill="rgba(14,16,20,0.15)"/>
+
+    <text x="1148" y="766"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="9" letter-spacing="2" fill="#8a8f9e" text-anchor="middle">❧  SHEVA BERACHOS  ▶</text>
+
+    <text x="828" y="790"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">The number seven in Jewish thought denotes completion — seven days</text>
+    <text x="828" y="806"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">in the week, seven years in the Sabbatical Year cycle, seven days to</text>
+    <text x="828" y="822"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">inaugurate the Tabernacle, etc. Both Jacob and Samson celebrated their</text>
+    <text x="828" y="838"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">marriages for seven days (<tspan font-style="italic">Genesis</tspan> 29:27; <tspan font-style="italic">Judges</tspan> 14:17).</text>
+
+    <!-- Zimun commentary col header -->
+    <text x="1148" y="874"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="9" letter-spacing="2" fill="#8a8f9e" text-anchor="middle">❧  Zimun for Sheva Berachos</text>
+
+    <text x="828" y="898"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66"><tspan font-weight="500" font-family="'Frank Ruhl Libre', serif" font-size="13" direction="rtl">דּוֹנַי הֵסֵר</tspan> — <tspan font-style="italic">Pain banish.</tspan> The first letters of each phrase spell</text>
+    <text x="828" y="914"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66"><tspan font-style="italic">רוּנַ"ז</tspan>. Donash ben Labrat, composer of this brief poem, was a 10th-century</text>
+    <text x="828" y="930"
+      font-family="'EB Garamond', Georgia, serif"
+      font-size="11" fill="#555a66">pioneer Hebrew grammarian, frequently cited by Rashi.</text>
+
+    <text x="828" y="970"
+      font-family="'IBM Plex Mono', monospace"
+      font-size="9" letter-spacing="1.2" fill="#8a8f9e">followorbounce.com · liturgical series · no. 02</text>
+
+  </g>
+
+  <!-- ── FINAL VIGNETTE OVERLAY ────────────────────────────────── -->
+  <rect width="1536" height="1024" fill="url(#vig)" opacity="0.5"/>
+
+</svg>

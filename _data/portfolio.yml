@@ -181,3 +181,12 @@
   url: "/p/ani-vaho-hoshia-na"
  # featured: "true"
   year: "5786"
+
+- title: "Sheva Berachos"
+  category: "graphic"
+  tags: ["Hebrew", "Typography", "Liturgical"]
+  description: "Sacred transmission reconstructed through modernist editorial design. ArtScroll liturgical typography meets cold archival silence."
+  cover: "/assets/images/portfolio/sheva-berachos.svg"
+  url: "/p//sheva-berachos/"
+  featured: "true"
+  year: "5786"
