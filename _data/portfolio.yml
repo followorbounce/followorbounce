@@ -190,3 +190,12 @@
   url: "/p//sheva-berachos/"
   featured: "true"
   year: "5786"
+
+- title: "We Are Not Separate"
+  category: "web"
+  tags: ["Philosophy", "Collective Consciousness", "Unity"]
+  description: "An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity."
+  cover: ""
+  url: "/p/collective-consciousness"
+  featured: "true"
+  year: "2026"
