@@ -4,59 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
   <title>We Are Not Separate</title>
   <meta name="description" content="An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity.">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="We Are Not Separate">
   <meta property="og:description" content="An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/images/portfolio/collective-consciousness.svg">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="We Are Not Separate">
   <meta name="twitter:description" content="An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity.">
   <meta name="twitter:image" content="/assets/images/portfolio/collective-consciousness.svg">
-
-  <!-- Preconnect Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Space+Mono:wght@400;700&display=swap">
 
   <style>
-    /* ─── CSS CUSTOM PROPERTIES ─────────────────────────────── */
     :root {
-      --ink: #0d0d0b;
-      --parchment: #f5f2ec;
-      --warm-white: #faf8f4;
-      --ghost: #c8c3b8;
-      --mist: #e8e4dc;
-      --accent: #1a1a17;
-      --faint: rgba(13,13,11,0.08);
-      --grain-opacity: 0.035;
+      --ink:       #0a0a09;
+      --parchment: #f4f1ea;
+      --warm:      #f9f7f2;
+      --bone:      #ede9e0;
+      --ash:       #b0ab9f;
+      --faint:     rgba(10,10,9,0.07);
+      --red:       #8b1a1a;
 
       --safe-top:    env(safe-area-inset-top,    0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --safe-left:   env(safe-area-inset-left,   0px);
       --safe-right:  env(safe-area-inset-right,  0px);
 
-      --serif: 'EB Garamond', 'Georgia', serif;
-      --display: 'Cormorant Garamond', serif;
-      --mono: 'Space Mono', monospace;
+      --serif:   'EB Garamond',        Georgia, serif;
+      --display: 'Cormorant Garamond', Georgia, serif;
+      --mono:    'Space Mono', 'Courier New', monospace;
 
-      --section-pad: clamp(80px, 12vw, 160px);
-      --content-width: min(720px, 90vw);
-      --wide-width: min(1080px, 94vw);
+      --ph: clamp(24px, 7vw, 112px);
+      --pv: clamp(72px, 11vw, 152px);
     }
 
-    /* ─── RESET ─────────────────────────────────────────────── */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       -webkit-text-size-adjust: 100%;
@@ -65,1134 +50,1129 @@
     }
 
     body {
-      background-color: var(--warm-white);
+      background: var(--warm);
       color: var(--ink);
       font-family: var(--serif);
-      font-size: clamp(17px, 1.8vw, 20px);
-      line-height: 1.75;
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.78;
       max-width: 100vw;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ─── GRAIN OVERLAY ──────────────────────────────────────── */
+    /* grain */
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: var(--grain-opacity);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 180px 180px;
+      content:''; position:fixed; inset:0;
+      pointer-events:none; z-index:9999; opacity:0.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:160px 160px;
     }
 
-    /* ─── PROGRESS LINE ──────────────────────────────────────── */
+    /* progress */
     #progress-line {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 1px;
-      width: 0%;
-      background: var(--ink);
-      z-index: 1000;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      will-change: width;
-      opacity: 0.4;
-      transition: width 0.1s linear;
+      position:fixed; top:0; left:0; height:2px; width:0%;
+      background:var(--ink); z-index:1001;
+      -webkit-transform:translateZ(0); transform:translateZ(0);
+      will-change:width; transition:width .08s linear;
     }
 
-    /* ─── NAVIGATION ─────────────────────────────────────────── */
+    /* nav */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: calc(20px + var(--safe-top)) clamp(24px, 5vw, 80px) 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      will-change: transform;
-      transition: background 0.5s ease, -webkit-backdrop-filter 0.5s ease, backdrop-filter 0.5s ease;
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      padding:calc(18px + var(--safe-top)) var(--ph) 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      -webkit-transform:translateZ(0); transform:translateZ(0);
+      will-change:transform;
+      transition:background .4s ease, -webkit-backdrop-filter .4s ease, backdrop-filter .4s ease;
     }
-
     nav.scrolled {
-      background: rgba(250, 248, 244, 0.88);
-      -webkit-backdrop-filter: blur(16px);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--faint);
+      background:rgba(249,247,242,.93);
+      -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--faint);
+    }
+    .nav-id {
+      font-family:var(--mono); font-size:9px; letter-spacing:.22em;
+      text-transform:uppercase; opacity:.32;
+      min-height:44px; display:flex; align-items:center;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .nav-phase {
+      font-family:var(--mono); font-size:9px;
+      letter-spacing:.22em; text-transform:uppercase;
+      opacity:.2; transition:opacity .4s ease;
     }
 
-    .nav-word {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0.45;
-      text-decoration: none;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .nav-marker {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0.3;
-      transition: opacity 0.3s ease;
-    }
-
-    /* ─── SECTIONS ───────────────────────────────────────────── */
+    /* sections */
     section {
-      overflow: clip;
-      padding: var(--section-pad) clamp(24px, 8vw, 120px);
-      min-height: 100vh;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
+      overflow:clip; padding:var(--pv) var(--ph);
+      min-height:100vh; min-height:100svh;
+      display:flex; flex-direction:column; justify-content:center;
+      position:relative;
     }
+    section.auto { min-height:auto; }
 
-    .section-inner {
-      max-width: var(--content-width);
-      margin: 0 auto;
-      width: 100%;
+    /* widths */
+    .narrow { max-width:min(660px,90vw); margin:0 auto; width:100%; }
+    .mid    { max-width:min(820px,92vw); margin:0 auto; width:100%; }
+    .wide   { max-width:min(1100px,94vw); margin:0 auto; width:100%; }
+
+    /* tag */
+    .tag {
+      font-family:var(--mono); font-size:8.5px;
+      letter-spacing:.32em; text-transform:uppercase;
+      opacity:.26; display:block;
+      margin-bottom:clamp(32px,5vw,72px);
     }
+    .tag-inv { color:var(--parchment); }
+    .tag-red { color:var(--red); opacity:.85; }
 
-    .section-inner--wide {
-      max-width: var(--wide-width);
-      margin: 0 auto;
-      width: 100%;
+    /* display scale */
+    .d-hero {
+      font-family:var(--display);
+      font-size:clamp(88px,18vw,260px);
+      font-weight:300; line-height:.88; letter-spacing:-.035em;
     }
-
-    /* ─── SECTION LABELS ─────────────────────────────────────── */
-    .section-label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0.3;
-      margin-bottom: clamp(40px, 6vw, 80px);
-      display: block;
+    .d-xl {
+      font-family:var(--display);
+      font-size:clamp(52px,9vw,136px);
+      font-weight:300; line-height:.92; letter-spacing:-.025em;
     }
-
-    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
-    .display-xl {
-      font-family: var(--display);
-      font-size: clamp(56px, 10vw, 144px);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--ink);
+    .d-lg {
+      font-family:var(--display);
+      font-size:clamp(34px,5.5vw,80px);
+      font-weight:300; line-height:1.05; letter-spacing:-.02em;
     }
-
-    .display-lg {
-      font-family: var(--display);
-      font-size: clamp(36px, 6vw, 80px);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--ink);
+    .d-md {
+      font-family:var(--display);
+      font-size:clamp(24px,3.5vw,50px);
+      font-weight:400; line-height:1.18; letter-spacing:-.01em;
     }
-
-    .display-md {
-      font-family: var(--display);
-      font-size: clamp(28px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--ink);
+    .d-sm {
+      font-family:var(--display);
+      font-size:clamp(18px,2.2vw,32px);
+      font-weight:400; line-height:1.3;
     }
 
     .prose {
-      font-family: var(--serif);
-      font-size: clamp(17px, 1.7vw, 21px);
-      line-height: 1.85;
-      color: var(--ink);
-      opacity: 0.82;
+      font-family:var(--serif);
+      font-size:clamp(15px,1.4vw,19px);
+      line-height:1.88; opacity:.76;
+    }
+    .prose-lg {
+      font-family:var(--serif);
+      font-size:clamp(17px,1.8vw,23px);
+      line-height:1.78; opacity:.7;
+    }
+    .prose-xs {
+      font-family:var(--serif);
+      font-size:clamp(12px,1vw,14px);
+      line-height:1.78; opacity:.42;
     }
 
-    .prose-sm {
-      font-family: var(--serif);
-      font-size: clamp(14px, 1.3vw, 16px);
-      line-height: 1.8;
-      color: var(--ink);
-      opacity: 0.55;
+    .italic { font-style:italic; }
+    .bold   { font-weight:700; }
+    .op-full { opacity:1; }
+    .op-high { opacity:.88; }
+    .op-mid  { opacity:.52; }
+    .op-low  { opacity:.28; }
+    .op-ghost{ opacity:.10; }
+    .inv  { color:var(--parchment); }
+    .red  { color:var(--red); }
+
+    /* dividers */
+    .rule-v {
+      display:block; width:1px;
+      height:clamp(48px,7vw,96px);
+      background:var(--ink); opacity:.18;
+      margin:clamp(32px,4vw,56px) 0;
     }
-
-    .italic { font-style: italic; }
-    .light { opacity: 0.45; }
-    .ghost { opacity: 0.22; }
-
-    /* Oversized singular words */
-    .word-stamp {
-      font-family: var(--display);
-      font-size: clamp(80px, 18vw, 260px);
-      font-weight: 300;
-      line-height: 0.88;
-      letter-spacing: -0.04em;
-      color: var(--ink);
-      opacity: 0.06;
-      position: absolute;
-      pointer-events: none;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    /* ─── DIVIDERS ───────────────────────────────────────────── */
-    .rule {
-      width: 1px;
-      height: clamp(48px, 6vw, 80px);
-      background: var(--ink);
-      opacity: 0.2;
-      margin: clamp(40px, 5vw, 64px) 0;
-      display: block;
-    }
-
     .rule-h {
-      width: clamp(40px, 5vw, 64px);
-      height: 1px;
-      background: var(--ink);
-      opacity: 0.2;
-      margin: clamp(32px, 4vw, 56px) 0;
-      display: block;
+      display:block; height:1px;
+      width:clamp(40px,5vw,80px);
+      background:var(--ink); opacity:.2;
+      margin:clamp(24px,3vw,40px) 0;
+    }
+    .rule-full {
+      display:block; height:1px; width:100%;
+      background:var(--ink); opacity:.1;
+    }
+    .rule-inv { background:var(--parchment); }
+    .rule-bold { height:2px; opacity:.55; }
+
+    /* spacing */
+    .mt-xs { margin-top:clamp(12px,1.5vw,20px); }
+    .mt-sm { margin-top:clamp(20px,2.5vw,32px); }
+    .mt-md { margin-top:clamp(32px,4vw,52px); }
+    .mt-lg { margin-top:clamp(48px,6vw,80px); }
+    .mt-xl { margin-top:clamp(72px,9vw,120px); }
+    .mb-sm { margin-bottom:clamp(20px,2.5vw,32px); }
+    .mb-md { margin-bottom:clamp(32px,4vw,52px); }
+
+    /* ── REVEAL SYSTEM ── */
+    .r {
+      opacity:0;
+      -webkit-transform:translateY(22px); transform:translateY(22px);
+      transition:opacity 1.1s cubic-bezier(.16,1,.3,1),
+                 -webkit-transform 1.1s cubic-bezier(.16,1,.3,1),
+                 transform 1.1s cubic-bezier(.16,1,.3,1);
+    }
+    .r.on { opacity:1; -webkit-transform:none; transform:none; }
+    .r-fade { opacity:0; transition:opacity 1.6s ease; }
+    .r-fade.on { opacity:1; }
+    .d1 { transition-delay:.06s; }
+    .d2 { transition-delay:.16s; }
+    .d3 { transition-delay:.30s; }
+    .d4 { transition-delay:.46s; }
+    .d5 { transition-delay:.64s; }
+    .d6 { transition-delay:.84s; }
+    .d7 { transition-delay:1.06s; }
+    .d8 { transition-delay:1.30s; }
+
+    /* ══════════════════════════════
+       0 — PRELUDE
+    ══════════════════════════════ */
+    #prelude { padding-top:calc(var(--pv) + 72px + var(--safe-top)); }
+
+    .prelude-letter {
+      display:block; font-family:var(--display);
+      font-size:clamp(160px,32vw,520px);
+      font-weight:300; line-height:.82; letter-spacing:-.05em;
+      opacity:0;
+      -webkit-animation:fadeIn 2.4s .2s forwards ease;
+      animation:fadeIn 2.4s .2s forwards ease;
+    }
+    .prelude-caption {
+      display:flex; align-items:flex-start;
+      gap:clamp(16px,2vw,32px); margin-top:clamp(28px,3.5vw,48px);
+      opacity:0;
+      -webkit-animation:fadeUp 1.2s 1.8s forwards ease;
+      animation:fadeUp 1.2s 1.8s forwards ease;
+    }
+    .prelude-bar {
+      width:2px; height:clamp(36px,5vw,64px);
+      background:var(--ink); opacity:.22;
+      flex-shrink:0; margin-top:4px;
+    }
+    .prelude-text {
+      font-family:var(--serif); font-style:italic;
+      font-size:clamp(14px,1.4vw,17px);
+      line-height:1.85; opacity:.45; max-width:400px;
+    }
+    /* ghost I echo */
+    .prelude-ghost {
+      position:absolute; pointer-events:none;
+      user-select:none; -webkit-user-select:none;
+      font-family:var(--display);
+      font-size:clamp(300px,55vw,900px);
+      font-weight:300; line-height:1; letter-spacing:-.06em;
+      color:var(--ink); opacity:.025;
+      right:-4vw; bottom:-8vw;
     }
 
-    /* ─── SECTION 0 — PRELUDE ────────────────────────────────── */
-    #prelude {
-      background: var(--warm-white);
-      padding-top: calc(var(--section-pad) + 80px + var(--safe-top));
+    /* ══════════════════════════════
+       1 — THE LOOP
+    ══════════════════════════════ */
+    #the-loop { background:var(--bone); }
+
+    .bg-stamp {
+      position:absolute; pointer-events:none;
+      user-select:none; -webkit-user-select:none;
+      font-family:var(--display); font-weight:700;
+      font-size:clamp(100px,22vw,340px);
+      line-height:.9; letter-spacing:-.04em;
+      text-transform:uppercase; opacity:.04;
     }
 
-    .prelude-i {
-      font-family: var(--display);
-      font-size: clamp(120px, 28vw, 420px);
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: var(--ink);
-      display: block;
-      opacity: 0;
-      -webkit-animation: fadeIn 2s 0.3s forwards ease;
-      animation: fadeIn 2s 0.3s forwards ease;
+    .loop-grid {
+      display:grid;
+      grid-template-columns:1fr 2fr;
+      gap:clamp(32px,5vw,80px); align-items:start;
+    }
+    @media (max-width:680px) { .loop-grid { grid-template-columns:1fr; } }
+
+    .loop-line {
+      display:block; font-family:var(--display);
+      font-size:clamp(28px,4.5vw,64px);
+      font-weight:300; line-height:1.08; letter-spacing:-.02em;
+    }
+    .loop-line + .loop-line { margin-top:.08em; }
+    .ll-dim   { opacity:.42; }
+    .ll-ghost { opacity:.16; }
+
+    .evidence-log {
+      display:flex; flex-direction:column;
+      gap:clamp(14px,2vw,24px); margin-top:clamp(32px,4vw,56px);
+    }
+    .ev-item {
+      border-left:1px solid rgba(10,10,9,.14);
+      padding-left:clamp(16px,2vw,28px);
+    }
+    .ev-label {
+      font-family:var(--mono); font-size:8px;
+      letter-spacing:.28em; text-transform:uppercase;
+      opacity:.28; margin-bottom:4px; display:block;
+    }
+    .ev-text {
+      font-family:var(--serif); font-style:italic;
+      font-size:clamp(13px,1.15vw,15px);
+      line-height:1.75; opacity:.58;
     }
 
-    .prelude-sub {
-      margin-top: clamp(24px, 3vw, 40px);
-      opacity: 0;
-      -webkit-animation: fadeUp 1.2s 1.4s forwards ease;
-      animation: fadeUp 1.2s 1.4s forwards ease;
+    /* ══════════════════════════════
+       INTERSTITIAL — BLACK
+    ══════════════════════════════ */
+    .black-strip {
+      background:var(--ink); overflow:clip; position:relative;
+      padding:clamp(80px,12vw,160px) var(--ph);
+      display:flex; flex-direction:column; justify-content:center;
+      min-height:55vh; min-height:55svh;
+    }
+    .strip-ghost {
+      position:absolute; pointer-events:none;
+      user-select:none; -webkit-user-select:none;
+      font-family:var(--display);
+      font-size:clamp(80px,18vw,280px);
+      font-weight:300; letter-spacing:-.04em;
+      color:var(--parchment); opacity:.06;
+    }
+    .strip-quote {
+      font-family:var(--display);
+      font-size:clamp(22px,3.5vw,52px);
+      font-weight:300; font-style:italic;
+      line-height:1.32; letter-spacing:-.01em;
+      color:var(--parchment);
+      max-width:min(700px,90vw);
+      position:relative; z-index:1;
+    }
+    .strip-attr {
+      margin-top:clamp(20px,2.5vw,36px);
+      font-family:var(--mono); font-size:9px;
+      letter-spacing:.25em; text-transform:uppercase;
+      color:var(--parchment); opacity:.28;
+      position:relative; z-index:1;
     }
 
-    /* ─── SECTION 1 — THE LOOP ───────────────────────────────── */
-    #the-loop {
-      background: var(--parchment);
+    /* ══════════════════════════════
+       2 — ARCHETYPES / CASE FILE
+    ══════════════════════════════ */
+    #archetypes { background:var(--warm); }
+
+    .case-bar {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:rgba(10,10,9,.12);
+      border-top:2px solid var(--ink);
+      border-bottom:1px solid rgba(10,10,9,.12);
+      margin-bottom:clamp(40px,5vw,72px);
+    }
+    @media (max-width:600px) {
+      .case-bar { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:360px) {
+      .case-bar { grid-template-columns:1fr; }
+    }
+    .case-cell {
+      background:var(--warm);
+      padding:clamp(12px,1.5vw,20px) clamp(14px,1.8vw,26px);
+    }
+    .case-cell-lbl {
+      font-family:var(--mono); font-size:7.5px;
+      letter-spacing:.3em; text-transform:uppercase;
+      opacity:.28; display:block; margin-bottom:4px;
+    }
+    .case-cell-val {
+      font-family:var(--mono); font-size:clamp(10px,.95vw,12px);
+      letter-spacing:.04em; opacity:.65;
+    }
+    .case-cell-val.red-val { color:var(--red); opacity:.9; }
+
+    /* exhibit grid */
+    .exhibit-grid {
+      display:grid; grid-template-columns:repeat(2,1fr);
+      gap:1px; background:rgba(10,10,9,.1);
+      border:1px solid rgba(10,10,9,.1);
+    }
+    @media (max-width:640px) { .exhibit-grid { grid-template-columns:1fr; } }
+
+    .exhibit {
+      background:var(--warm); overflow:clip;
+      padding:clamp(24px,3vw,44px) clamp(20px,2.5vw,36px);
+      position:relative; display:flex;
+      flex-direction:column; gap:10px;
+      transition:background .35s ease;
+    }
+    @media (hover:hover) { .exhibit:hover { background:var(--bone); } }
+
+    .ex-ghost {
+      position:absolute; bottom:-.1em; right:.08em;
+      font-family:var(--display); font-weight:700;
+      font-size:clamp(80px,11vw,160px);
+      color:var(--ink); opacity:.04;
+      pointer-events:none; user-select:none;
+      -webkit-user-select:none; line-height:1;
+      -webkit-transform:translateZ(0); transform:translateZ(0);
+      transition:opacity .35s ease;
+    }
+    @media (hover:hover) { .exhibit:hover .ex-ghost { opacity:.08; } }
+
+    .ex-tag {
+      font-family:var(--mono); font-size:7.5px;
+      letter-spacing:.32em; text-transform:uppercase; opacity:.26;
+    }
+    .ex-id { opacity:1; margin-right:.5em; }
+    .ex-name {
+      font-family:var(--display);
+      font-size:clamp(26px,3.2vw,46px);
+      font-weight:700; line-height:1.05; letter-spacing:-.02em;
+    }
+    .ex-alias {
+      font-family:var(--display);
+      font-size:clamp(14px,1.5vw,20px);
+      font-weight:300; font-style:italic;
+      opacity:.36; line-height:1.3;
+    }
+    .ex-verdict {
+      font-family:var(--mono); font-size:8px;
+      letter-spacing:.28em; text-transform:uppercase;
+      color:var(--red); opacity:.82;
+      display:flex; align-items:center; gap:8px; margin-top:4px;
+    }
+    .ex-verdict::before {
+      content:''; display:block; width:18px; height:1px;
+      background:var(--red); opacity:.6;
+    }
+    .ex-body {
+      font-family:var(--serif); font-size:clamp(12px,1.1vw,15px);
+      line-height:1.78; opacity:.5;
+      max-width:360px; position:relative; z-index:1;
+    }
+    .ex-body strong { font-style:italic; font-weight:500; opacity:1; color:var(--ink); }
+
+    /* wide exhibit */
+    .exhibit-wide {
+      grid-column:1 / -1;
+      flex-direction:row; gap:clamp(28px,4vw,64px); align-items:flex-start;
+    }
+    @media (max-width:640px) { .exhibit-wide { flex-direction:column; } }
+    .ew-l { flex:1; }
+    .ew-r { flex:1.4; padding-top:clamp(32px,4vw,56px); }
+    .ew-r .ex-body {
+      max-width:100%; opacity:.62;
+      font-size:clamp(14px,1.3vw,17px); line-height:1.85;
     }
 
-    .loop-fragments {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(16px, 2.5vw, 28px);
+    /* ══════════════════════════════
+       3 — FRACTURE
+    ══════════════════════════════ */
+    #fracture { background:var(--parchment); }
+
+    .fracture-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:clamp(40px,6vw,96px); align-items:start;
+    }
+    @media (max-width:660px) { .fracture-grid { grid-template-columns:1fr; } }
+
+    .q-seq { display:flex; flex-direction:column; }
+    .q-item {
+      padding:clamp(18px,2.2vw,32px) 0;
+      border-top:1px solid rgba(10,10,9,.1);
+      display:flex; align-items:baseline;
+      gap:clamp(12px,1.8vw,24px);
+    }
+    .q-item:last-child { border-bottom:1px solid rgba(10,10,9,.1); }
+    .q-n {
+      font-family:var(--mono); font-size:8px;
+      letter-spacing:.25em; opacity:.2;
+      flex-shrink:0; width:18px;
+    }
+    .q-body {
+      font-family:var(--display);
+      font-size:clamp(18px,2.8vw,40px);
+      font-weight:300; line-height:1.15; letter-spacing:-.015em;
+    }
+    .q-body.qdim    { opacity:.48; font-size:clamp(15px,2vw,30px); }
+    .q-body.qdimmer { opacity:.26; font-size:clamp(13px,1.6vw,22px); font-style:italic; }
+    .q-body.qanswer {
+      font-size:clamp(17px,2.5vw,38px);
+      font-style:italic; font-weight:400;
     }
 
-    .frag {
-      opacity: 0;
-      -webkit-transform: translateY(16px);
-      transform: translateY(16px);
-      transition: opacity 0.9s ease, -webkit-transform 0.9s ease, transform 0.9s ease;
+    .notes-col { display:flex; flex-direction:column; gap:clamp(20px,2.5vw,32px); padding-top:clamp(48px,6vw,80px); }
+    .note {
+      padding:clamp(16px,2vw,28px);
+      border:1px solid rgba(10,10,9,.1);
+      background:rgba(10,10,9,.025);
+    }
+    .note-lbl {
+      font-family:var(--mono); font-size:8px;
+      letter-spacing:.3em; text-transform:uppercase;
+      opacity:.28; margin-bottom:8px; display:block;
+    }
+    .note-txt {
+      font-family:var(--serif); font-style:italic;
+      font-size:clamp(12px,1.15vw,15px);
+      line-height:1.78; opacity:.55;
     }
 
-    .frag.is-visible {
-      opacity: 1;
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
+    /* ══════════════════════════════
+       RED STRIP
+    ══════════════════════════════ */
+    .red-strip {
+      background:var(--red); overflow:clip; position:relative;
+      padding:clamp(80px,12vw,160px) var(--ph);
+      display:flex; flex-direction:column; justify-content:center;
+      min-height:46vh; min-height:46svh;
+    }
+    .red-ghost {
+      position:absolute; right:-1vw; bottom:-.1em;
+      font-family:var(--display); font-weight:700;
+      font-size:clamp(120px,24vw,380px);
+      line-height:.88; color:var(--parchment); opacity:.07;
+      pointer-events:none; user-select:none; -webkit-user-select:none;
+    }
+    .red-text {
+      font-family:var(--display);
+      font-size:clamp(26px,4.5vw,68px);
+      font-weight:300; font-style:italic;
+      line-height:1.22; letter-spacing:-.015em;
+      color:var(--parchment);
+      max-width:min(640px,90vw);
+      position:relative; z-index:1;
     }
 
-    .frag:nth-child(1) { transition-delay: 0s; }
-    .frag:nth-child(2) { transition-delay: 0.1s; }
-    .frag:nth-child(3) { transition-delay: 0.2s; }
-    .frag:nth-child(4) { transition-delay: 0.3s; }
-    .frag:nth-child(5) { transition-delay: 0.4s; }
-    .frag:nth-child(6) { transition-delay: 0.5s; }
-    .frag:nth-child(7) { transition-delay: 0.6s; }
-    .frag:nth-child(8) { transition-delay: 0.7s; }
-    .frag:nth-child(9) { transition-delay: 0.8s; }
-    .frag:nth-child(10) { transition-delay: 0.9s; }
-    .frag:nth-child(11) { transition-delay: 1.0s; }
-    .frag:nth-child(12) { transition-delay: 1.1s; }
+    /* ══════════════════════════════
+       4 — THE ORGANISM (dark)
+    ══════════════════════════════ */
+    #organism { background:var(--ink); padding-bottom:clamp(80px,10vw,140px); }
 
-    .frag--line {
-      font-family: var(--display);
-      font-size: clamp(22px, 3.5vw, 44px);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+    .organism-headline .d-xl { color:var(--parchment); }
+    .organism-headline .d-xl.ghost-l {
+      opacity:.1; display:block; margin-top:.08em; font-style:italic;
     }
 
-    .frag--dim {
-      font-family: var(--serif);
-      font-size: clamp(15px, 1.5vw, 18px);
-      opacity: 0.42;
-      font-style: italic;
+    .nerve-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:rgba(245,242,234,.07);
+      margin-top:clamp(48px,6vw,88px);
+    }
+    @media (max-width:760px) { .nerve-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:480px) { .nerve-grid { grid-template-columns:1fr; } }
+
+    .nerve {
+      background:var(--ink); overflow:clip;
+      padding:clamp(20px,2.5vw,36px) clamp(18px,2.2vw,32px);
+      display:flex; flex-direction:column; gap:9px;
+      transition:background .3s ease;
+    }
+    @media (hover:hover) { .nerve:hover { background:#141412; } }
+    .nerve-n {
+      font-family:var(--mono); font-size:8px;
+      letter-spacing:.28em; color:var(--parchment); opacity:.18;
+    }
+    .nerve-title {
+      font-family:var(--display); font-size:clamp(17px,2vw,26px);
+      font-weight:400; line-height:1.15;
+      color:var(--parchment); opacity:.85;
+    }
+    .nerve-body {
+      font-family:var(--serif); font-size:clamp(12px,1.05vw,14px);
+      line-height:1.72; color:var(--parchment); opacity:.36;
+    }
+    .nerve-accent {
+      background:rgba(139,26,26,.18);
+      border:1px solid rgba(139,26,26,.25);
+    }
+    @media (hover:hover) { .nerve-accent:hover { background:rgba(139,26,26,.26); } }
+    .nerve-accent .nerve-title { color:#d4908e; opacity:1; }
+    .nerve-accent .nerve-body  { opacity:.44; }
+
+    .organism-coda {
+      margin-top:clamp(56px,7vw,100px);
+      border-top:1px solid rgba(245,242,234,.08);
+      padding-top:clamp(40px,5vw,72px);
+    }
+    .coda-text {
+      font-family:var(--display);
+      font-size:clamp(19px,2.6vw,38px);
+      font-style:italic; font-weight:300; line-height:1.48;
+      color:var(--parchment); opacity:.5;
+      max-width:min(640px,90vw);
     }
 
-    .frag--echo {
-      font-family: var(--display);
-      font-size: clamp(18px, 2.5vw, 32px);
-      opacity: 0.22;
-      letter-spacing: 0.08em;
-      font-style: italic;
-    }
-
-    /* ─── SECTION 2 — THE ARCHETYPES ────────────────────────── */
-    #archetypes {
-      background: var(--warm-white);
-    }
-
-    .archetype-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 4vw, 64px);
-      margin-top: clamp(48px, 6vw, 80px);
-    }
-
-    @media (max-width: 600px) {
-      .archetype-grid { grid-template-columns: 1fr; }
-    }
-
-    .archetype-pair {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .archetype-label {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      opacity: 0.3;
-    }
-
-    .archetype-name {
-      font-family: var(--display);
-      font-size: clamp(22px, 3vw, 38px);
-      font-weight: 400;
-      line-height: 1.1;
-    }
-
-    .archetype-echo {
-      font-family: var(--display);
-      font-size: clamp(16px, 2vw, 26px);
-      font-weight: 300;
-      opacity: 0.3;
-      font-style: italic;
-    }
-
-    .archetype-desc {
-      font-family: var(--serif);
-      font-size: clamp(13px, 1.2vw, 15px);
-      line-height: 1.7;
-      opacity: 0.5;
-      margin-top: 4px;
-    }
-
-    /* Mirrored layout for archetypes section */
-    .mirror-row {
-      display: flex;
-      align-items: center;
-      gap: clamp(24px, 4vw, 64px);
-      margin-top: clamp(48px, 6vw, 80px);
-    }
-
-    .mirror-row > * { flex: 1; }
-
-    .mirror-axis {
-      width: 1px;
-      height: clamp(80px, 12vw, 160px);
-      background: var(--ink);
-      opacity: 0.12;
-      flex: 0 0 1px;
-    }
-
-    /* ─── SECTION 3 — FRACTURE ───────────────────────────────── */
-    #fracture {
-      background: var(--parchment);
-    }
-
-    .question-stack {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(24px, 3.5vw, 48px);
-    }
-
-    .question-item {
-      display: flex;
-      align-items: baseline;
-      gap: clamp(12px, 2vw, 24px);
-    }
-
-    .q-num {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      opacity: 0.25;
-      flex-shrink: 0;
-      width: 24px;
-    }
-
-    .q-text {
-      font-family: var(--display);
-      font-size: clamp(24px, 4vw, 58px);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-
-    .q-text.shrinking {
-      font-size: clamp(18px, 2.5vw, 36px);
-      opacity: 0.55;
-    }
-
-    .q-text.dissolving {
-      font-size: clamp(14px, 1.8vw, 24px);
-      opacity: 0.28;
-      font-style: italic;
-    }
-
-    /* ─── SECTION 4 — THE ORGANISM ───────────────────────────── */
-    #organism {
-      background: var(--warm-white);
-    }
-
-    .organism-intro {
-      margin-bottom: clamp(56px, 8vw, 100px);
-    }
-
-    .organism-nodes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-      gap: 1px;
-      background: var(--faint);
-      border: 1px solid var(--faint);
-      margin-top: clamp(48px, 6vw, 80px);
-    }
-
-    .node {
-      background: var(--warm-white);
-      padding: clamp(24px, 3vw, 40px);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: background 0.3s ease;
-    }
-
-    @media (hover: hover) {
-      .node:hover {
-        background: var(--parchment);
-      }
-    }
-
-    .node-num {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      opacity: 0.3;
-    }
-
-    .node-title {
-      font-family: var(--display);
-      font-size: clamp(18px, 2.2vw, 28px);
-      font-weight: 400;
-      line-height: 1.2;
-    }
-
-    .node-body {
-      font-family: var(--serif);
-      font-size: clamp(13px, 1.2vw, 15px);
-      line-height: 1.75;
-      opacity: 0.55;
-    }
-
-    /* Nervous system visualization */
-    .nervous-visual {
-      position: relative;
-      height: clamp(120px, 16vw, 200px);
-      margin: clamp(48px, 6vw, 80px) 0;
-      overflow: clip;
-    }
-
-    .nerve-line {
-      position: absolute;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--ink), transparent);
-      opacity: 0.08;
-      -webkit-animation: pulse 4s infinite ease-in-out;
-      animation: pulse 4s infinite ease-in-out;
-    }
-
-    .nerve-line:nth-child(1) { top: 20%; width: 100%; animation-delay: 0s; }
-    .nerve-line:nth-child(2) { top: 40%; width: 80%; left: 10%; animation-delay: 0.6s; }
-    .nerve-line:nth-child(3) { top: 60%; width: 90%; left: 5%; animation-delay: 1.2s; }
-    .nerve-line:nth-child(4) { top: 80%; width: 70%; left: 15%; animation-delay: 1.8s; }
-    .nerve-line:nth-child(5) { top: 50%; width: 60%; left: 20%; animation-delay: 0.9s; }
-
-    /* ─── SECTION 5 — SUBMISSION ─────────────────────────────── */
+    /* ══════════════════════════════
+       5 — SUBMISSION
+    ══════════════════════════════ */
     #submission {
-      background: var(--ink);
-      color: var(--parchment);
-      --section-pad: clamp(80px, 14vw, 180px);
+      background:var(--ink);
+      border-top:1px solid rgba(245,242,234,.07);
     }
 
-    #submission .section-label {
-      color: var(--parchment);
-      opacity: 0.25;
+    .sub-layout {
+      display:grid; grid-template-columns:1.2fr 1fr;
+      gap:clamp(40px,6vw,96px); align-items:start;
+    }
+    @media (max-width:680px) { .sub-layout { grid-template-columns:1fr; } }
+
+    .sub-he {
+      font-family:var(--display);
+      font-size:clamp(100px,20vw,300px);
+      font-weight:300; line-height:.84; letter-spacing:-.04em;
+      color:var(--parchment); display:block;
     }
 
-    #submission .display-xl {
-      color: var(--parchment);
+    .sub-lines {
+      display:flex; flex-direction:column;
+      gap:clamp(18px,2.2vw,32px);
+      padding-top:clamp(16px,2vw,32px);
     }
-
-    #submission .prose {
-      color: var(--parchment);
-      opacity: 0.65;
-    }
-
-    #submission .rule {
-      background: var(--parchment);
-    }
-
-    .submission-lines {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(20px, 3vw, 40px);
-      margin-top: clamp(48px, 7vw, 96px);
-    }
-
     .sub-line {
-      font-family: var(--display);
-      font-size: clamp(18px, 2.8vw, 40px);
-      font-weight: 300;
-      line-height: 1.3;
-      color: var(--parchment);
-      opacity: 0.7;
-      border-left: 1px solid rgba(245, 242, 236, 0.15);
-      padding-left: clamp(20px, 3vw, 40px);
+      padding-left:clamp(16px,2.5vw,36px);
+      border-left:1px solid rgba(245,242,234,.1);
+      font-family:var(--display);
+      font-size:clamp(16px,2.2vw,30px);
+      font-weight:300; line-height:1.45; letter-spacing:-.01em;
+      color:var(--parchment); opacity:.5;
+    }
+    .sub-line.sl-em {
+      border-left-color:rgba(245,242,234,.4);
+      opacity:.92; font-size:clamp(18px,2.8vw,40px); font-style:italic;
+    }
+    .sub-line.sl-red {
+      border-left-color:var(--red); opacity:.72;
     }
 
-    .sub-line.emphasis {
-      opacity: 1;
-      font-size: clamp(22px, 3.5vw, 52px);
-      border-color: rgba(245, 242, 236, 0.35);
+    .final-triad {
+      margin-top:clamp(64px,9vw,128px);
+      display:flex; flex-direction:column; gap:clamp(8px,1.2vw,16px);
+    }
+    .ft-line {
+      font-family:var(--display);
+      font-size:clamp(16px,2vw,28px);
+      font-style:italic; font-weight:300;
+      color:var(--parchment); line-height:1.5;
+    }
+    .ft-bright { opacity:.88; }
+    .ft-mid    { opacity:.48; }
+    .ft-dim    { opacity:.2; }
+
+    .basmala {
+      display:block; margin-top:clamp(40px,5vw,72px);
+      font-size:clamp(20px,3vw,40px);
+      color:var(--parchment); opacity:.2; letter-spacing:.08em;
     }
 
-    .final-line {
-      margin-top: clamp(64px, 10vw, 140px);
-      font-family: var(--display);
-      font-size: clamp(14px, 1.8vw, 22px);
-      color: var(--parchment);
-      opacity: 0.4;
-      font-style: italic;
-      line-height: 2;
-      letter-spacing: 0.02em;
-    }
-
-    .arabic-ornament {
-      font-size: clamp(24px, 4vw, 48px);
-      opacity: 0.18;
-      letter-spacing: 0.1em;
-      display: block;
-      margin-top: clamp(40px, 5vw, 64px);
-      font-style: normal;
-    }
-
-    /* ─── GEOMETRIC ORNAMENTS ────────────────────────────────── */
-    .geo-circle {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid var(--ink);
-      opacity: 0.04;
-      pointer-events: none;
-    }
-
-    .geo-square {
-      position: absolute;
-      border: 1px solid var(--ink);
-      opacity: 0.04;
-      pointer-events: none;
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-
-    /* ─── SCROLL REVEAL BASE ─────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      -webkit-transform: translateY(24px);
-      transform: translateY(24px);
-      transition: opacity 1s ease, -webkit-transform 1s ease, transform 1s ease;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.15s; }
-    .reveal-delay-2 { transition-delay: 0.3s; }
-    .reveal-delay-3 { transition-delay: 0.45s; }
-    .reveal-delay-4 { transition-delay: 0.6s; }
-
-    /* ─── FOOTER ─────────────────────────────────────────────── */
+    /* footer */
     footer {
-      padding: clamp(32px, 5vw, 64px) clamp(24px, 8vw, 120px) calc(clamp(24px, 4vw, 48px) + var(--safe-bottom));
-      background: var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(245, 242, 236, 0.08);
+      background:var(--ink);
+      padding:clamp(28px,4vw,48px) var(--ph) calc(clamp(20px,3vw,36px) + var(--safe-bottom));
+      border-top:1px solid rgba(245,242,234,.06);
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:12px;
+    }
+    .footer-t {
+      font-family:var(--mono); font-size:8.5px;
+      letter-spacing:.24em; text-transform:uppercase;
+      color:var(--parchment); opacity:.18;
     }
 
-    .footer-text {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--parchment);
-      opacity: 0.25;
-    }
-
-    /* ─── KEYFRAMES ──────────────────────────────────────────── */
+    /* keyframes */
     @-webkit-keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity:0; } to { opacity:1; }
     }
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity:0; } to { opacity:1; }
     }
-
     @-webkit-keyframes fadeUp {
-      from { opacity: 0; -webkit-transform: translateY(20px); transform: translateY(20px); }
-      to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+      from { opacity:0; -webkit-transform:translateY(18px); transform:translateY(18px); }
+      to   { opacity:1; -webkit-transform:none; transform:none; }
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:none; }
     }
 
-    @-webkit-keyframes pulse {
-      0%, 100% { opacity: 0.04; }
-      50% { opacity: 0.14; }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.04; }
-      50% { opacity: 0.14; }
-    }
-
-    @-webkit-keyframes slideRight {
-      from { -webkit-transform: translateX(-8px); transform: translateX(-8px); opacity: 0; }
-      to { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideRight {
-      from { transform: translateX(-8px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* ─── REDUCED MOTION ─────────────────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
+    /* reduced motion */
+    @media (prefers-reduced-motion:reduce) {
       *, *::before, *::after {
-        -webkit-animation-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+        -webkit-animation-duration:.01ms !important;
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
       }
-      .reveal, .frag {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-      }
-      .prelude-i, .prelude-sub {
-        opacity: 1;
-        -webkit-animation: none;
-        animation: none;
-      }
-    }
-
-    /* ─── PRINT ──────────────────────────────────────────────── */
-    @media print {
-      .reveal, .frag { opacity: 1; -webkit-transform: none; transform: none; }
-      nav, #progress-line, body::before { display: none; }
+      .r, .r-fade { opacity:1; -webkit-transform:none; transform:none; }
+      .prelude-letter, .prelude-caption { opacity:1; -webkit-animation:none; animation:none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Progress line -->
   <div id="progress-line" role="presentation" aria-hidden="true"></div>
 
-  <!-- Navigation -->
   <nav id="main-nav" aria-label="Page navigation">
-    <span class="nav-word">We Are Not Separate</span>
-    <span class="nav-marker" id="nav-section" aria-live="polite">I</span>
+    <span class="nav-id">Case File — We Are Not Separate</span>
+    <span class="nav-phase" id="nav-phase" aria-live="polite">I</span>
   </nav>
 
-  <!-- ════════════════════════════════════════
-       SECTION 0 — PRELUDE
-  ════════════════════════════════════════ -->
+
+  <!-- ══════════ 0 — PRELUDE ══════════ -->
   <section id="prelude" aria-label="Prelude">
-    <!-- Geometric ornament -->
-    <div class="geo-circle" style="width:400px;height:400px;right:-80px;top:50%;margin-top:-200px;" aria-hidden="true"></div>
-    <div class="geo-circle" style="width:200px;height:200px;right:-20px;top:50%;margin-top:-100px;" aria-hidden="true"></div>
-
-    <div class="section-inner">
-      <span class="prelude-i" aria-label="I">I</span>
-      <div class="prelude-sub">
-        <p class="prose italic" style="max-width:520px;">
-          Begin here. In the solitude of a single point. 
-          In the certainty that this experience is yours alone.
+    <span class="prelude-ghost" aria-hidden="true">I</span>
+    <div style="max-width:min(780px,90vw);">
+      <span class="prelude-letter" aria-label="I">I</span>
+      <div class="prelude-caption">
+        <div class="prelude-bar" aria-hidden="true"></div>
+        <p class="prelude-text">
+          You begin here. A single point of awareness
+          inside a body that does not yet know
+          it is not alone.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 1 — THE LOOP
-  ════════════════════════════════════════ -->
-  <section id="the-loop" aria-labelledby="loop-heading">
-    <div class="word-stamp" style="right:-2vw;bottom:-4vw;" aria-hidden="true">RETURN</div>
 
-    <div class="section-inner">
-      <span class="section-label" id="loop-label">Section I — The Loop</span>
-
-      <div class="loop-fragments" role="text" aria-label="The Loop">
-        <div class="frag frag--line" id="loop-heading">Day after day.</div>
-        <div class="frag frag--line">Year after year.</div>
-        <div class="frag frag--line ghost">Life after life.</div>
-
-        <div class="frag" style="margin-top:clamp(16px,2.5vw,32px);">
-          <span class="rule-h" aria-hidden="true"></span>
-        </div>
-
-        <div class="frag frag--dim">
-          You have felt this before. This exact weight.<br>
-          This same unnamed longing that arrives without invitation<br>
-          and refuses to explain itself.
-        </div>
-
-        <div class="frag" style="margin-top:clamp(8px,1.5vw,20px);"></div>
-
-        <div class="frag frag--line" style="opacity:0.75;">The faces change.</div>
-        <div class="frag frag--line" style="opacity:0.55;">The names change.</div>
-        <div class="frag frag--line" style="opacity:0.35;">The body changes.</div>
-
-        <div class="frag" style="margin-top:clamp(8px,1.5vw,20px);"></div>
-
-        <div class="frag frag--dim">
-          But something underneath does not change.<br>
-          Something in the structure of the feeling.<br>
-          Something in the shape of the wound.
-        </div>
-
-        <div class="frag frag--echo" style="margin-top:clamp(24px,3vw,40px);">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return &nbsp;&nbsp;&nbsp; return &nbsp;&nbsp;&nbsp; return
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       SECTION 2 — THE ARCHETYPES
-  ════════════════════════════════════════ -->
-  <section id="archetypes" aria-labelledby="archetypes-heading" style="min-height:auto; padding-top: var(--section-pad); padding-bottom: var(--section-pad);">
-    <div class="word-stamp" style="left:-2vw;top:0;" aria-hidden="true">REMEMBER</div>
-
-    <div class="section-inner--wide">
-      <span class="section-label">Section II — The Archetypes</span>
-
-      <div class="reveal">
-        <p class="display-md" id="archetypes-heading">
-          People change.<br>
-          <span class="italic light">Patterns do not.</span>
-        </p>
-      </div>
-
-      <div class="reveal reveal-delay-1" style="margin-top:clamp(24px,3vw,40px);">
-        <p class="prose" style="max-width:540px;">
-          Every generation summons the same ancient figures.
-          They wear new clothes, speak new languages,
-          carry modern wounds — yet they are unmistakable.
-          You have met them all before.
-        </p>
-      </div>
-
-      <div class="archetype-grid" role="list">
-        <div class="archetype-pair reveal" role="listitem">
-          <span class="archetype-label">The Betrayer</span>
-          <span class="archetype-name">Judas.</span>
-          <span class="archetype-echo">Your colleague. Your friend. Your mirror.</span>
-          <p class="archetype-desc">Always the same gesture. Trust extended. Trust broken. The architecture of the wound identical across millennia.</p>
-        </div>
-        <div class="archetype-pair reveal reveal-delay-1" role="listitem">
-          <span class="archetype-label">The Seeker</span>
-          <span class="archetype-name">The wanderer.</span>
-          <span class="archetype-echo">Restless. Burning. Arriving nowhere.</span>
-          <p class="archetype-desc">Moving through cities, through philosophies, through relationships — searching for the thing that cannot be named.</p>
-        </div>
-        <div class="archetype-pair reveal reveal-delay-2" role="listitem">
-          <span class="archetype-label">The Witness</span>
-          <span class="archetype-name">The one who sees.</span>
-          <span class="archetype-echo">Silently. Completely. Too clearly.</span>
-          <p class="archetype-desc">Bearing the weight of understanding without the comfort of ignorance. Carrying knowledge that cannot be shared.</p>
-        </div>
-        <div class="archetype-pair reveal reveal-delay-3" role="listitem">
-          <span class="archetype-label">The Beloved</span>
-          <span class="archetype-name">The one who reflects.</span>
-          <span class="archetype-echo">Your longing projected. Your God misplaced.</span>
-          <p class="archetype-desc">Standing in for something vaster. Enduring the weight of being worshipped by someone who does not yet know where worship truly belongs.</p>
-        </div>
-      </div>
-
-      <!-- Mirror row visualization -->
-      <div class="mirror-row reveal" aria-hidden="true">
-        <div style="text-align:right;">
-          <p class="display-md italic ghost" style="font-size:clamp(16px,2.5vw,36px);">Then</p>
-        </div>
-        <div class="mirror-axis"></div>
+  <!-- ══════════ 1 — THE LOOP ══════════ -->
+  <section id="the-loop" style="background:var(--bone);" aria-labelledby="loop-h">
+    <span class="bg-stamp" style="right:-2vw;bottom:-4vw;" aria-hidden="true">RETURN</span>
+    <div class="wide">
+      <span class="tag r">Section I — The Loop</span>
+      <div class="loop-grid">
         <div>
-          <p class="display-md italic ghost" style="font-size:clamp(16px,2.5vw,36px);">Now</p>
+          <span class="loop-line r d1" id="loop-h">Day after day.</span>
+          <span class="loop-line ll-dim r d2">Year after year.</span>
+          <span class="loop-line ll-ghost r d3">Life after life.</span>
+          <div class="mt-lg r d4">
+            <span class="rule-h" aria-hidden="true"></span>
+            <p class="prose italic" style="max-width:300px;">
+              Something underneath the surface
+              refuses to change.
+              You can feel it right now.
+              You have felt it before.
+            </p>
+          </div>
+        </div>
+        <div class="evidence-log r d2" role="list" aria-label="Evidence log">
+          <div class="ev-item r d2" role="listitem">
+            <span class="ev-label">Exhibit A — The Feeling</span>
+            <p class="ev-text">"The same heaviness. The same particular silence
+              that descends on Sunday evenings
+              without being invited."</p>
+          </div>
+          <div class="ev-item r d3" role="listitem">
+            <span class="ev-label">Exhibit B — The Pattern</span>
+            <p class="ev-text">"A different name. Different apartment.
+              Same argument at 2am. You wonder
+              if you wrote the script yourself."</p>
+          </div>
+          <div class="ev-item r d4" role="listitem">
+            <span class="ev-label">Exhibit C — The Question</span>
+            <p class="ev-text">"Why does this keep happening?
+              What is the universe trying to show me
+              that I keep refusing to see?"</p>
+          </div>
+          <div class="ev-item r d5" role="listitem">
+            <span class="ev-label">Exhibit D — The Silence</span>
+            <p class="ev-text">No answer arrives.
+              Only the loop, patient and vast,
+              beginning again.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ INTERSTITIAL 1 — BLACK ══════════ -->
+  <div class="black-strip">
+    <span class="strip-ghost" style="right:-1vw;top:-.1em;" aria-hidden="true">REMEMBER</span>
+    <div class="mid" style="position:relative;z-index:1;">
+      <p class="strip-quote r">
+        "The faces that haunt you are not persons.
+        They are forces. They are frequencies
+        that the universe keeps transmitting
+        until someone finally listens."
+      </p>
+      <p class="strip-attr r d2">— From the margin of an unfinished manuscript</p>
+    </div>
+  </div>
+
+
+  <!-- ══════════ 2 — ARCHETYPES ══════════ -->
+  <section id="archetypes" class="auto" style="padding-top:var(--pv);padding-bottom:var(--pv);" aria-labelledby="arch-h">
+    <div class="wide">
+      <span class="tag r">Section II — The Archetypes / Case File</span>
+
+      <div class="case-bar r" role="group" aria-label="Case file metadata">
+        <div class="case-cell">
+          <span class="case-cell-lbl">Classification</span>
+          <span class="case-cell-val">Recurring Psychological Structure</span>
+        </div>
+        <div class="case-cell">
+          <span class="case-cell-lbl">Status</span>
+          <span class="case-cell-val red-val">Active — All Known Civilizations</span>
+        </div>
+        <div class="case-cell">
+          <span class="case-cell-lbl">Primary Finding</span>
+          <span class="case-cell-val">People change. Patterns do not.</span>
+        </div>
+        <div class="case-cell">
+          <span class="case-cell-lbl">Case Officer</span>
+          <span class="case-cell-val">You. Always you.</span>
         </div>
       </div>
 
-      <div class="reveal reveal-delay-1" style="margin-top:clamp(40px,5vw,64px);">
-        <p class="prose-sm italic" style="max-width:500px;">
-          The ancients named these forces. Mythology was not fantasy — 
-          it was the first honest cartography of what it means to be human.
-          We stopped drawing the map. The territory remained.
+      <div class="r mb-md">
+        <p class="d-md italic op-mid" id="arch-h" style="max-width:600px;">
+          Every generation summons the same ancient figures.
+          They arrive in new bodies.
+          They carry old instructions.
+        </p>
+      </div>
+
+      <div class="exhibit-grid r d2" role="list">
+
+        <div class="exhibit" role="listitem">
+          <span class="ex-ghost" aria-hidden="true">01</span>
+          <span class="ex-tag"><span class="ex-id">EXH-01</span> · The Betrayer</span>
+          <span class="ex-name">Judas.</span>
+          <span class="ex-alias">Your colleague. Your brother. The one you trusted completely.</span>
+          <span class="ex-verdict">Recurring since antiquity</span>
+          <p class="ex-body">The gesture is always the same: <strong>intimacy weaponized.</strong> The architecture of the wound is identical across millennia — trust extended at precisely the moment it can be shattered most completely. You have met this person. You will meet them again.</p>
+        </div>
+
+        <div class="exhibit" role="listitem">
+          <span class="ex-ghost" aria-hidden="true">02</span>
+          <span class="ex-tag"><span class="ex-id">EXH-02</span> · The Seeker</span>
+          <span class="ex-name">The Wanderer.</span>
+          <span class="ex-alias">Restless. Burning. Arriving nowhere that feels like home.</span>
+          <span class="ex-verdict">Documented in every tradition</span>
+          <p class="ex-body">Moving through cities, ideologies, relationships — searching for the thing with no name. <strong>The tragedy is not the searching.</strong> The tragedy is the refusal to ask what exactly is being searched for.</p>
+        </div>
+
+        <div class="exhibit" role="listitem">
+          <span class="ex-ghost" aria-hidden="true">03</span>
+          <span class="ex-tag"><span class="ex-id">EXH-03</span> · The Witness</span>
+          <span class="ex-name">The One Who Sees.</span>
+          <span class="ex-alias">Silently. Completely. Too clearly, too early.</span>
+          <span class="ex-verdict">Cannot be silenced — only ignored</span>
+          <p class="ex-body">Carries the weight of understanding without the comfort of being understood. <strong>Knowledge without permission to speak it</strong> is its own kind of exile. You know someone like this. You may be this person.</p>
+        </div>
+
+        <div class="exhibit" role="listitem">
+          <span class="ex-ghost" aria-hidden="true">04</span>
+          <span class="ex-tag"><span class="ex-id">EXH-04</span> · The Beloved</span>
+          <span class="ex-name">The Mirror.</span>
+          <span class="ex-alias">Your longing projected. Your God, misplaced.</span>
+          <span class="ex-verdict">Destined to disappoint — by design</span>
+          <p class="ex-body">Standing in for something infinitely vaster. Enduring the impossible weight of being worshipped by someone who does not yet know <strong>where worship truly belongs.</strong></p>
+        </div>
+
+        <!-- Wide exhibit — the meta-archetype -->
+        <div class="exhibit exhibit-wide" role="listitem">
+          <span class="ex-ghost" style="font-size:clamp(80px,12vw,180px);" aria-hidden="true">∞</span>
+          <div class="ew-l">
+            <span class="ex-tag"><span class="ex-id">EXH-∞</span> · The Loop Itself</span>
+            <span class="ex-name" style="font-size:clamp(28px,3.8vw,56px);">You.<br>Again.</span>
+            <span class="ex-alias">The recurring student.<br>The one who keeps forgetting the lesson.</span>
+            <span class="ex-verdict">Under continuous observation</span>
+          </div>
+          <div class="ew-r">
+            <p class="ex-body">The archetypes do not come to destroy you. They come because <strong>the curriculum requires repetition.</strong> This is not punishment. This is pedagogy.<br><br>The universe is running a school. The universe is running an experiment. Both at once. In the same building. On the same body.<br><br>The question is not "why does this keep happening." The question is: <strong>what am I still refusing to understand?</strong></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ 3 — FRACTURE ══════════ -->
+  <section id="fracture" style="background:var(--parchment);" aria-labelledby="frac-h">
+    <div class="wide">
+      <span class="tag r">Section III — The Fracture</span>
+      <div class="fracture-grid">
+        <div>
+          <p class="d-md italic op-mid mt-xs r mb-md" id="frac-h">
+            Something breaks open.<br>
+            The certainty dissolves.
+          </p>
+          <div class="q-seq r d2" role="list">
+            <div class="q-item" role="listitem">
+              <span class="q-n" aria-hidden="true">01</span>
+              <span class="q-body">Who am I?</span>
+            </div>
+            <div class="q-item" role="listitem">
+              <span class="q-n" aria-hidden="true">02</span>
+              <span class="q-body qdim">Am I the actor — or the stage?</span>
+            </div>
+            <div class="q-item" role="listitem">
+              <span class="q-n" aria-hidden="true">03</span>
+              <span class="q-body qdim">Who are they?</span>
+            </div>
+            <div class="q-item" role="listitem">
+              <span class="q-n" aria-hidden="true">04</span>
+              <span class="q-body qdimmer">Are they separate from me — or extensions of something I carry inside?</span>
+            </div>
+            <div class="q-item" role="listitem">
+              <span class="q-n" aria-hidden="true">05</span>
+              <span class="q-body qdimmer">Who are we?</span>
+            </div>
+            <div class="q-item" role="listitem">
+              <span class="q-n" aria-hidden="true">→</span>
+              <span class="q-body qanswer">We are the same wound,<br>looking at itself.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notes-col r d3" aria-label="Field notes">
+          <div class="note">
+            <span class="note-lbl">Field Note — The Prison</span>
+            <p class="note-txt">The self is a cell. Comfortable. Well-furnished. You've decorated it carefully over decades. The door has been open the entire time. You didn't notice because you were busy arranging the furniture.</p>
+          </div>
+          <div class="note">
+            <span class="note-lbl">Field Note — The Academy</span>
+            <p class="note-txt">Every encounter is a lecture. Every betrayal, a seminar on attachment. Every loss, a thesis defense. The degree you are working toward has no name in any language yet spoken.</p>
+          </div>
+          <div class="note">
+            <span class="note-lbl">Field Note — Both, Simultaneously</span>
+            <p class="note-txt">Perhaps the prison is the academy. Perhaps the bars are the curriculum. Perhaps the point of containment was never punishment — but concentration. Enough pressure to produce something clear.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="r mt-xl">
+        <span class="rule-full" aria-hidden="true"></span>
+        <p class="prose-lg italic mt-md" style="max-width:min(660px,90vw);">
+          What you called "other people" was always
+          yourself, perceived from a different coordinate.
+          The same longing. The same wound.
+          The same refusal to accept
+          that separation was ever real.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 3 — FRACTURE OF THE SELF
-  ════════════════════════════════════════ -->
-  <section id="fracture" aria-labelledby="fracture-heading">
-    <div class="word-stamp" style="right:-1vw;top:50%;margin-top:-80px;" aria-hidden="true">WE</div>
 
-    <div class="section-inner">
-      <span class="section-label">Section III — The Fracture</span>
-
-      <div class="reveal">
-        <p class="prose" id="fracture-heading" style="max-width:480px;">
-          Something breaks open. The certainty dissolves.
-          The container of the self develops cracks.
-        </p>
-      </div>
-
-      <span class="rule" aria-hidden="true"></span>
-
-      <div class="question-stack" role="list">
-        <div class="question-item reveal" role="listitem">
-          <span class="q-num" aria-hidden="true">01</span>
-          <span class="q-text">Who am I?</span>
-        </div>
-        <div class="question-item reveal reveal-delay-1" role="listitem">
-          <span class="q-num" aria-hidden="true">02</span>
-          <span class="q-text shrinking">Am I the one who acts — or the one who watches?</span>
-        </div>
-        <div class="question-item reveal reveal-delay-2" role="listitem">
-          <span class="q-num" aria-hidden="true">03</span>
-          <span class="q-text shrinking">Who are they?</span>
-        </div>
-        <div class="question-item reveal reveal-delay-2" role="listitem">
-          <span class="q-num" aria-hidden="true">04</span>
-          <span class="q-text dissolving">Are they truly separate from me — or extensions of something I carry inside?</span>
-        </div>
-        <div class="question-item reveal reveal-delay-3" role="listitem">
-          <span class="q-num" aria-hidden="true">05</span>
-          <span class="q-text dissolving">Who are we?</span>
-        </div>
-      </div>
-
-      <div class="reveal reveal-delay-4" style="margin-top:clamp(48px,6vw,80px);">
-        <p class="prose italic" style="max-width:520px; opacity:0.6;">
-          The question does not arrive with answers. 
-          It arrives with space. A profound, disorienting expansion
-          where the walls of the self used to be.
-        </p>
-      </div>
-
-      <div class="reveal reveal-delay-4" style="margin-top:clamp(24px,3vw,40px);">
-        <p class="prose-sm" style="max-width:440px; opacity:0.38;">
-          And inside that space — not emptiness, but recognition.
-          The same breath you breathe has been breathed before.
-          By others. By everyone. By the same fear,
-          the same wonder, the same ache to understand.
-        </p>
-      </div>
+  <!-- ══════════ RED STRIP ══════════ -->
+  <div class="red-strip">
+    <span class="red-ghost" aria-hidden="true">WE</span>
+    <div class="mid" style="position:relative;z-index:1;">
+      <p class="red-text r">
+        The experiment has always been running.<br>
+        You are not the subject.<br><br>
+        You are the method.
+      </p>
     </div>
-  </section>
+  </div>
 
-  <!-- ════════════════════════════════════════
-       SECTION 4 — THE COLLECTIVE ORGANISM
-  ════════════════════════════════════════ -->
-  <section id="organism" aria-labelledby="organism-heading" style="min-height:auto; padding-top:var(--section-pad); padding-bottom:var(--section-pad);">
-    <div class="word-stamp" style="left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);top:-2vw;white-space:nowrap;" aria-hidden="true">US</div>
 
-    <div class="section-inner--wide">
-      <span class="section-label">Section IV — The Organism</span>
+  <!-- ══════════ 4 — THE ORGANISM ══════════ -->
+  <section id="organism" aria-labelledby="org-h">
+    <div class="wide">
+      <span class="tag tag-inv r">Section IV — The Organism</span>
 
-      <div class="organism-intro reveal">
-        <p class="display-lg" id="organism-heading">
-          Humanity is not<br>
-          a collection of individuals.
-        </p>
-        <span class="rule-h" aria-hidden="true"></span>
-        <p class="display-lg italic light" style="margin-top:0;">
-          It is a single thing<br>
-          experiencing itself<br>
+      <div class="organism-headline r">
+        <span class="d-xl" id="org-h" style="color:var(--parchment);">
+          Humanity is not a collection.
+        </span>
+        <span class="d-xl ghost-l" style="color:var(--parchment);">
+          It is a single thing
+          experiencing itself
           from ten billion angles.
-        </p>
+        </span>
       </div>
 
-      <!-- Nervous system -->
-      <div class="nervous-visual reveal" aria-hidden="true">
-        <div class="nerve-line"></div>
-        <div class="nerve-line"></div>
-        <div class="nerve-line"></div>
-        <div class="nerve-line"></div>
-        <div class="nerve-line"></div>
-      </div>
-
-      <!-- Node grid -->
-      <div class="organism-nodes" role="list" aria-label="Dimensions of collective consciousness">
-        <div class="node reveal" role="listitem">
-          <span class="node-num">001</span>
-          <span class="node-title">Inherited Memory</span>
-          <p class="node-body">Your ancestors' fears live in your nervous system. Their joys left residue in your capacity for wonder. You are not new. You are accumulated.</p>
+      <div class="nerve-grid r d3" role="list" aria-label="Dimensions of collective being">
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">001</span>
+          <span class="nerve-title">Inherited Memory</span>
+          <p class="nerve-body">Your ancestors' terror lives in your nervous system. Their wonder left residue in your capacity for awe. You are not new. You are accumulated. Layered. Ancient.</p>
         </div>
-        <div class="node reveal reveal-delay-1" role="listitem">
-          <span class="node-num">002</span>
-          <span class="node-title">Synchronized Hearts</span>
-          <p class="node-body">Crowds weep together. Strangers fall silent at the same moment. Something passes between people that language cannot carry and science has only begun to trace.</p>
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">002</span>
+          <span class="nerve-title">Synchronized Hearts</span>
+          <p class="nerve-body">Crowds weep together at a threshold no one announced. Strangers fall silent at the same moment. Something passes between people that language cannot carry.</p>
         </div>
-        <div class="node reveal reveal-delay-2" role="listitem">
-          <span class="node-num">003</span>
-          <span class="node-title">Shared Suffering</span>
-          <p class="node-body">The grief you feel is not only yours. It belongs to everyone who has ever lost what you have lost. To mourn is to join an ancient, ongoing congregation.</p>
+        <div class="nerve nerve-accent" role="listitem">
+          <span class="nerve-n">003</span>
+          <span class="nerve-title">The Danger of Ego</span>
+          <p class="nerve-body">Isolation is not independence. The cell that refuses to belong to the body becomes something else entirely — something that consumes without contributing. History has a name for this.</p>
         </div>
-        <div class="node reveal" role="listitem">
-          <span class="node-num">004</span>
-          <span class="node-title">Moral Responsibility</span>
-          <p class="node-body">Because we are not separate, what you do to another, you do to a part of the whole. The wound in one part pulses through the entire body.</p>
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">004</span>
+          <span class="nerve-title">Shared Suffering</span>
+          <p class="nerve-body">The grief you feel is not only yours. It belongs to everyone who has ever lost what you have lost. To mourn is to join an ancient, ongoing congregation with no walls.</p>
         </div>
-        <div class="node reveal reveal-delay-1" role="listitem">
-          <span class="node-num">005</span>
-          <span class="node-title">The Danger of Ego</span>
-          <p class="node-body">Isolation is not strength. The cell that refuses to belong to the body becomes something else entirely. Something that consumes without contributing.</p>
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">005</span>
+          <span class="nerve-title">Moral Responsibility</span>
+          <p class="nerve-body">What you do to another, you do to a part of the whole. The wound in one part pulses through the entire nervous system. This is not metaphor. This is structure.</p>
         </div>
-        <div class="node reveal reveal-delay-2" role="listitem">
-          <span class="node-num">006</span>
-          <span class="node-title">Civilization as Nervous System</span>
-          <p class="node-body">Every city ever built was a neuron. Every road a synapse. Every library an attempt to remember what the organism has learned and must not forget.</p>
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">006</span>
+          <span class="nerve-title">Civilization as Neuron</span>
+          <p class="nerve-body">Every city ever built was a synapse. Every library an attempt to remember what must not be forgotten. Every war, a misfiring. Every act of beauty, a successful transmission.</p>
         </div>
-        <div class="node reveal" role="listitem">
-          <span class="node-num">007</span>
-          <span class="node-title">Shared Transcendence</span>
-          <p class="node-body">The moments of pure beauty — sunrise witnessed together, music that moves a crowd to silence — these are the organism recognizing itself. Briefly. Completely.</p>
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">007</span>
+          <span class="nerve-title">Shared Transcendence</span>
+          <p class="nerve-body">The moments of pure beauty — music that moves a crowd to silence — are the organism recognizing itself. Briefly. Completely. Without intermediary.</p>
         </div>
-        <div class="node reveal reveal-delay-1" role="listitem">
-          <span class="node-num">008</span>
-          <span class="node-title">The Necessity of Compassion</span>
-          <p class="node-body">Not sentiment. Not softness. A structural requirement. Without it, the organism turns against itself. History records what happens then.</p>
+        <div class="nerve nerve-accent" role="listitem">
+          <span class="nerve-n">008</span>
+          <span class="nerve-title">The Necessity of Compassion</span>
+          <p class="nerve-body">Not sentiment. Not softness. A structural requirement. An organ without blood supply dies. A civilization without compassion turns predatory. The record is consistent and damning.</p>
         </div>
-        <div class="node reveal reveal-delay-2" role="listitem">
-          <span class="node-num">009</span>
-          <span class="node-title">Moving Toward Awareness</span>
-          <p class="node-body">Something in humanity keeps reaching. Despite every reason to stop. Despite every betrayal and catastrophe. Something refuses to believe this is all there is.</p>
+        <div class="nerve" role="listitem">
+          <span class="nerve-n">009</span>
+          <span class="nerve-title">The Unending Reach</span>
+          <p class="nerve-body">Something in humanity keeps reaching. Despite every catastrophe, every reason to stop. Something refuses to accept that this surface is all there is. That refusal is itself the evidence.</p>
         </div>
       </div>
 
-      <div class="reveal" style="margin-top:clamp(48px,6vw,80px);">
-        <p class="prose italic" style="max-width:560px; opacity:0.65;">
+      <div class="organism-coda r d4">
+        <p class="coda-text">
           If every person you have ever met carries the same fundamental longing —
           the same fear, the same hunger, the same capacity for love and destruction —
           then what you called "other people"
-          was always yourself, seen from a different position.
+          was always a mirror,
+          held at a distance you chose.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       SECTION 5 — SUBMISSION
-  ════════════════════════════════════════ -->
-  <section id="submission" aria-labelledby="submission-heading">
-    <div class="word-stamp" style="right:-1vw;bottom:-2vw;color:var(--parchment);" aria-hidden="true">SUBMIT</div>
 
-    <!-- Geometric ornament (inverted) -->
-    <div class="geo-circle" style="width:600px;height:600px;left:-200px;top:50%;margin-top:-300px;border-color:var(--parchment);opacity:0.03;" aria-hidden="true"></div>
+  <!-- ══════════ 5 — SUBMISSION ══════════ -->
+  <section id="submission" aria-labelledby="sub-h">
+    <div class="wide">
+      <span class="tag tag-inv r">Section V — Submission</span>
 
-    <div class="section-inner">
-      <span class="section-label">Section V — Submission</span>
+      <div class="sub-layout">
+        <div>
+          <span class="sub-he r" id="sub-h" aria-label="He">He.</span>
+          <div class="mt-md r d2">
+            <p class="prose italic inv" style="opacity:.4; max-width:340px;">
+              The final dissolving.
+              Not into chaos.
+              Into something far more structured
+              than the self could ever be.
+            </p>
+          </div>
+        </div>
 
-      <div class="reveal">
-        <p class="display-xl" id="submission-heading">He.</p>
+        <div class="sub-lines r d3" role="list">
+          <p class="sub-line sl-em" role="listitem">
+            There is no movement outside His will.
+          </p>
+          <p class="sub-line" role="listitem">
+            No story that unfolds outside His knowledge.
+          </p>
+          <p class="sub-line sl-red" role="listitem">
+            No encounter that arrives without His permission.
+          </p>
+          <p class="sub-line" role="listitem">
+            No grief He has not already witnessed.<br>
+            No joy He did not already know.
+          </p>
+          <p class="sub-line sl-em" role="listitem">
+            Every pattern you recognized<br>was His pattern.<br>
+            Every face that returned<br>was His reminder.
+          </p>
+          <p class="sub-line" role="listitem">
+            The loops were not accidents.
+            They were lessons — delivered with infinite patience
+            to a student who kept forgetting.
+          </p>
+          <p class="sub-line sl-red" role="listitem">
+            The prison and the academy<br>
+            were always the same building.<br>
+            He designed both.
+          </p>
+        </div>
       </div>
 
-      <div class="reveal reveal-delay-1" style="margin-top:clamp(24px,3vw,40px);">
-        <p class="prose italic" style="max-width:520px; color:var(--parchment); opacity:0.6;">
-          And now, the final dissolving.
-          Not into chaos — into something far more structured than the self ever was.
-        </p>
-      </div>
-
-      <div class="submission-lines reveal reveal-delay-2">
-        <p class="sub-line">
-          There is no movement outside His will.
-        </p>
-        <p class="sub-line emphasis">
-          No story that unfolds outside His knowledge.
-        </p>
-        <p class="sub-line">
-          No encounter that arrives without His permission.
-        </p>
-        <p class="sub-line">
-          No grief He has not already witnessed.<br>
-          No joy He did not already know.
-        </p>
-        <p class="sub-line emphasis">
-          Every pattern you recognized<br>
-          was His pattern.<br>
-          Every face that returned<br>
-          was His reminder.
-        </p>
-        <p class="sub-line">
-          The loops were not accidents.<br>
-          They were lessons
-          delivered with infinite patience
-          to a student who kept forgetting.
-        </p>
-      </div>
-
-      <div class="reveal reveal-delay-3">
-        <span class="rule" aria-hidden="true" style="background:var(--parchment);"></span>
-      </div>
-
-      <div class="reveal reveal-delay-3">
-        <p class="final-line">
-          I am who I am.<br>
-          And what I am cannot exist without us.<br>
-          And us cannot exist without Him.
-        </p>
-        <span class="arabic-ornament" aria-label="Arabic ornament" role="img">
-          ﷽
-        </span>
+      <div class="final-triad r d5">
+        <span class="rule-full rule-inv" style="opacity:.08;" aria-hidden="true"></span>
+        <div style="margin-top:clamp(32px,4vw,56px);">
+          <p class="ft-line ft-bright">I am who I am.</p>
+          <p class="ft-line ft-mid">And what I am cannot exist without us.</p>
+          <p class="ft-line ft-dim">And us cannot exist without Him.</p>
+        </div>
+        <span class="basmala" aria-label="Bismillah ir-Rahman ir-Rahim" role="img">﷽</span>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+
   <footer>
-    <span class="footer-text">We Are Not Separate</span>
-    <span class="footer-text">2026</span>
+    <span class="footer-t">We Are Not Separate — Case File</span>
+    <span class="footer-t">2026</span>
   </footer>
+
 
   <script>
   (function () {
     'use strict';
 
-    /* ── Passive scroll detection ── */
     var passiveSupported = false;
     try {
-      var opts = Object.defineProperty({}, 'passive', {
+      var _o = Object.defineProperty({}, 'passive', {
         get: function () { passiveSupported = true; }
       });
-      window.addEventListener('_test', null, opts);
-      window.removeEventListener('_test', null, opts);
+      window.addEventListener('_t', null, _o);
+      window.removeEventListener('_t', null, _o);
     } catch (e) {}
     var PASSIVE = passiveSupported ? { passive: true } : false;
 
-    /* ── Elements ── */
-    var nav = document.getElementById('main-nav');
-    var progressLine = document.getElementById('progress-line');
-    var navSection = document.getElementById('nav-section');
+    var nav      = document.getElementById('main-nav');
+    var progress = document.getElementById('progress-line');
+    var phase    = document.getElementById('nav-phase');
 
-    /* ── Nav scroll state ── */
+    var sMap = {
+      'prelude':'I','the-loop':'I','archetypes':'II',
+      'fracture':'III','organism':'IV','submission':'V'
+    };
+
     function onScroll() {
-      var scrolled = window.pageYOffset > 60;
-      if (scrolled) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+      var y = window.pageYOffset;
+      if (y > 60) { nav.classList.add('scrolled'); }
+      else { nav.classList.remove('scrolled'); }
 
-      /* Progress */
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = docHeight > 0 ? (window.pageYOffset / docHeight) * 100 : 0;
-      progressLine.style.width = progress + '%';
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (total > 0 ? (y / total) * 100 : 0) + '%';
 
-      /* Section label update */
-      var sections = document.querySelectorAll('section[id]');
-      var current = 'I';
-      var labels = { 'prelude': 'I', 'the-loop': 'I', 'archetypes': 'II', 'fracture': 'III', 'organism': 'IV', 'submission': 'V' };
-      for (var i = 0; i < sections.length; i++) {
-        var rect = sections[i].getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.5) {
-          current = labels[sections[i].id] || current;
+      var cur = 'I';
+      var secs = document.querySelectorAll('section[id]');
+      for (var i = 0; i < secs.length; i++) {
+        if (secs[i].getBoundingClientRect().top <= window.innerHeight * 0.5) {
+          cur = sMap[secs[i].id] || cur;
         }
       }
-      if (navSection.textContent !== current) {
-        navSection.textContent = current;
-      }
+      if (phase.textContent !== cur) { phase.textContent = cur; }
     }
 
     window.addEventListener('scroll', onScroll, PASSIVE);
 
-    /* ── IntersectionObserver for reveal ── */
-    var revealEls = document.querySelectorAll('.reveal, .frag');
+    var els = document.querySelectorAll('.r, .r-fade');
 
     if (!('IntersectionObserver' in window)) {
-      for (var j = 0; j < revealEls.length; j++) {
-        revealEls[j].classList.add('is-visible');
-      }
+      for (var j = 0; j < els.length; j++) { els[j].classList.add('on'); }
     } else {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
         });
-      }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
-      });
-
-      revealEls.forEach(function (el) {
-        observer.observe(el);
-      });
+      }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+      els.forEach(function (el) { io.observe(el); });
     }
 
-    /* ── Smooth scroll for anchor links ── */
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-      anchor.addEventListener('click', function (e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var t = document.querySelector(this.getAttribute('href'));
+        if (!t) return;
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 

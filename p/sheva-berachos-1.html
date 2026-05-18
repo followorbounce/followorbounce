@@ -1,0 +1,1067 @@
+<!--
+title: "Sheva Berachos"
+category: "graphic"
+description: "Sacred transmission reconstructed through modernist editorial design. ArtScroll liturgical typography meets cold archival silence."
+cover: "/assets/images/portfolio/sheva-berachos.svg"
+url: "id.followorbounce.com/pages/sheva-berachos/"
+featured: "true"
+year: "2026"
+-->
+<!DOCTYPE html>
+<html lang="he-Latn" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Seven Blessings. Sacred Hebrew prayer-book typography reconstructed through modernist editorial design.">
+<meta property="og:title" content="Sheva Berachos / שבע ברכות">
+<meta property="og:description" content="A sacred transmission reconstructed through modernist editorial design. Hebrew liturgical typography, archival aesthetics, cold contemplative silence.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/images/portfolio/sheva-berachos.svg">
+<meta property="og:site_name" content="followorbounce.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sheva Berachos / שבע ברכות">
+<meta name="twitter:description" content="Sacred transmission reconstructed through modernist editorial design.">
+<meta name="twitter:image" content="/assets/images/portfolio/sheva-berachos.svg">
+
+<!-- 3 FONTS ONLY -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@300;400&display=swap">
+
+<title>Sheva Berachos / שבע ברכות</title>
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   ROOT & TOKENS
+───────────────────────────────────────────────────────────── */
+:root {
+  --paper:        #ecedf0;
+  --paper-dim:    #e4e5e8;
+  --ink:          #0e1014;
+  --ink-2:        #2b2e36;
+  --ink-3:        #555a66;
+  --ink-4:        #8a8f9e;
+  --rule:         rgba(14,16,20,0.16);
+  --rule-heavy:   rgba(14,16,20,0.52);
+  --safe-top:     env(safe-area-inset-top,    0px);
+  --safe-bottom:  env(safe-area-inset-bottom, 0px);
+  --safe-left:    env(safe-area-inset-left,   0px);
+  --safe-right:   env(safe-area-inset-right,  0px);
+
+  /* FONT STACK — exactly 3 families */
+  --f-he:   'Frank Ruhl Libre', 'David Libre', 'Times New Roman', serif;
+  --f-en:   'EB Garamond', Georgia, 'Times New Roman', serif;
+  --f-ref:  'IBM Plex Mono', 'Courier New', monospace;
+
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-en);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Paper noise layer */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.55;
+}
+
+/* Scan vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 88% 78% at 50% 46%, transparent 50%, rgba(150,158,178,0.08) 76%, rgba(120,130,155,0.20) 100%);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NAV
+───────────────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding-top:    calc(13px + var(--safe-top));
+  padding-bottom: 13px;
+  padding-left:   calc(var(--safe-left)  + 36px);
+  padding-right:  calc(var(--safe-right) + 36px);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  -webkit-backdrop-filter: blur(20px) saturate(1.08);
+  backdrop-filter: blur(20px) saturate(1.08);
+  background: rgba(236,237,240,0.84);
+  border-bottom: 0.5px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-en  { font-family: var(--f-en);  font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); }
+.nav-he  { font-family: var(--f-he);  font-size: 16px; font-weight: 700; direction: rtl; color: var(--ink); }
+.nav-ref { font-family: var(--f-ref); font-size: 10px; color: var(--ink-4); }
+
+/* ─────────────────────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────────────────────── */
+.page-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 116px 40px 80px;
+}
+
+section { overflow: clip; }
+
+/* ─────────────────────────────────────────────────────────────
+   FOLIO HEADER — exact ArtScroll style
+───────────────────────────────────────────────────────────── */
+.folio {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 5px;
+  border-bottom: 0.75px solid var(--ink);
+  margin-bottom: 52px;
+}
+
+.folio-num  { font-family: var(--f-en); font-size: 12px; font-weight: 500; color: var(--ink-2); }
+.folio-en   { font-family: var(--f-en); font-size: 12.5px; font-weight: 500; letter-spacing: .04em; color: var(--ink-2); }
+.folio-he   { font-family: var(--f-he); font-size: 14px; font-weight: 700; direction: rtl; color: var(--ink); }
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION LABEL — "SHEVA BERACHOS" banner style
+───────────────────────────────────────────────────────────── */
+.section-banner {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.section-banner-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-leaf { font-family: var(--f-he); font-size: 14px; color: var(--ink-3); }
+
+.banner-he {
+  font-family: var(--f-he);
+  font-size: 18px;
+  font-weight: 700;
+  direction: rtl;
+  color: var(--ink);
+}
+
+.banner-slash { font-family: var(--f-en); font-size: 14px; color: var(--ink-3); margin: 0 4px; }
+
+.banner-en {
+  font-family: var(--f-en);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.banner-sub {
+  font-family: var(--f-en);
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: .03em;
+  color: var(--ink-3);
+  margin-bottom: 36px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BLESSING BLOCK — the core unit
+───────────────────────────────────────────────────────────── */
+.blessing {
+  margin-bottom: 56px;
+  opacity: 0;
+  -webkit-transform: translateY(16px);
+  transform: translateY(16px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), -webkit-transform .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+.blessing.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* Blessing number badge */
+.blessing-num {
+  font-family: var(--f-en);
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ── INTERLINEAR VERSE — Hebrew above, English below ── */
+.interlinear {
+  margin-bottom: 10px;
+}
+
+/* Primary Hebrew — large, bold, RTL */
+.he-primary {
+  font-family: var(--f-he);
+  font-weight: 700;
+  font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.3;
+  direction: rtl;
+  text-align: right;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.he-primary.bold-first::first-line {
+  font-weight: 900;
+}
+
+/* English gloss row — small, directional markers, italic */
+.gloss-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 2px;
+  font-family: var(--f-en);
+  font-size: 11px;
+  color: var(--ink-3);
+  line-height: 1.9;
+  margin-bottom: 2px;
+  font-style: italic;
+}
+
+.gl-angle  { color: var(--ink-4); font-style: normal; margin: 0 1px; }
+.gl-dangle { color: var(--ink-4); font-style: normal; margin: 0 1px; }
+.gl-word   { white-space: nowrap; }
+.gl-role   { font-family: var(--f-ref); font-size: 9px; letter-spacing: .08em; color: var(--ink-4); margin-left: 6px; font-style: normal; align-self: baseline; }
+
+/* Secondary Hebrew — medium weight for embedded phrases */
+.he-secondary {
+  font-family: var(--f-he);
+  font-weight: 500;
+  font-size: clamp(16px, 3vw, 22px);
+  direction: rtl;
+  text-align: right;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin: 8px 0 4px;
+}
+
+/* ── AMEN line ── */
+.amen-line {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 6px 0 0;
+}
+
+.amen-he  { font-family: var(--f-he); font-size: 18px; font-weight: 700; direction: rtl; color: var(--ink); }
+.amen-en  { font-family: var(--f-en); font-size: 11px; color: var(--ink-3); font-style: italic; }
+.amen-dbl { font-family: var(--f-en); font-size: 10px; color: var(--ink-4); margin-right: 2px; }
+
+/* ─────────────────────────────────────────────────────────────
+   PROSE INSTRUCTION BLOCK — rubric / leader note
+───────────────────────────────────────────────────────────── */
+.rubric {
+  font-family: var(--f-en);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-3);
+  line-height: 1.65;
+  margin: 20px 0 16px;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 8px 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TWO-COLUMN LAYOUT — Hebrew left, commentary right
+───────────────────────────────────────────────────────────── */
+.split-block {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0 40px;
+  margin: 48px 0;
+  align-items: start;
+  opacity: 0;
+  -webkit-transform: translateY(16px);
+  transform: translateY(16px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1) .1s, -webkit-transform .85s cubic-bezier(.16,1,.3,1) .1s, transform .85s cubic-bezier(.16,1,.3,1) .1s;
+}
+
+.split-block.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.commentary-col {
+  border-left: 0.75px solid var(--rule-heavy);
+  padding-left: 20px;
+}
+
+.commentary-label {
+  font-family: var(--f-ref);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.commentary-body {
+  font-family: var(--f-en);
+  font-size: 12px;
+  color: var(--ink-3);
+  line-height: 1.78;
+}
+
+.commentary-body em {
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   GEOMETRIC SEPARATOR
+───────────────────────────────────────────────────────────── */
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 44px 0;
+}
+.sep::before, .sep::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--rule);
+}
+.sep-glyph {
+  font-family: var(--f-he);
+  font-size: 13px;
+  color: var(--ink-4);
+  direction: rtl;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LARGE DISPLAY FRAGMENT — center-stage dramatic
+───────────────────────────────────────────────────────────── */
+.display-fragment {
+  padding: 40px 0 32px;
+  border-top: 0.75px solid var(--ink-2);
+  border-bottom: 0.75px solid var(--ink-2);
+  margin: 52px 0;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translateY(14px);
+  transform: translateY(14px);
+  transition: opacity 1s cubic-bezier(.16,1,.3,1) .15s, -webkit-transform 1s cubic-bezier(.16,1,.3,1) .15s, transform 1s cubic-bezier(.16,1,.3,1) .15s;
+}
+
+.display-fragment.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.df-he {
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: clamp(48px, 10vw, 96px);
+  direction: rtl;
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, black 55%, rgba(0,0,0,0) 100%);
+}
+
+.df-translit {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-3);
+  letter-spacing: .06em;
+  margin-bottom: 6px;
+}
+
+.df-gloss {
+  font-family: var(--f-en);
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTNOTES
+───────────────────────────────────────────────────────────── */
+.footnotes {
+  margin-top: 60px;
+  padding-top: 18px;
+  border-top: 0.75px solid var(--ink);
+  opacity: 0;
+  transition: opacity .8s cubic-bezier(.16,1,.3,1) .2s;
+}
+
+.footnotes.is-visible { opacity: 1; }
+
+.fn-header {
+  font-family: var(--f-ref);
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.fn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 48px;
+}
+
+.fn-item {}
+
+.fn-ref {
+  font-family: var(--f-ref);
+  font-size: 9px;
+  color: var(--ink-4);
+  display: inline;
+  margin-right: 5px;
+}
+
+.fn-he {
+  font-family: var(--f-he);
+  font-size: 13px;
+  font-weight: 500;
+  direction: rtl;
+  display: inline;
+  color: var(--ink-2);
+}
+
+.fn-dash {
+  font-family: var(--f-en);
+  font-size: 11px;
+  color: var(--ink-3);
+  margin: 0 3px;
+}
+
+.fn-text {
+  font-family: var(--f-en);
+  font-size: 11.5px;
+  color: var(--ink-3);
+  line-height: 1.72;
+  font-style: italic;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER / COLOPHON
+───────────────────────────────────────────────────────────── */
+footer {
+  position: relative;
+  z-index: 2;
+  border-top: 0.5px solid var(--rule);
+  padding: 22px calc(var(--safe-left) + 40px) calc(28px + var(--safe-bottom)) calc(var(--safe-right) + 40px);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.col-en  { font-family: var(--f-en);  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-4); }
+.col-he  { font-family: var(--f-he);  font-size: 14px; direction: rtl; color: var(--ink-3); }
+.col-ref { font-family: var(--f-ref); font-size: 9.5px; color: var(--ink-4); text-align: right; }
+
+/* ─────────────────────────────────────────────────────────────
+   TOUCH / INTERACTION
+───────────────────────────────────────────────────────────── */
+a, button { min-height: 44px; -webkit-tap-highlight-color: transparent; }
+
+@media (hover: hover) {
+  .blessing:hover { --ink: #000; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .page-wrap { padding: 104px 22px 60px; }
+  .split-block { grid-template-columns: 1fr; gap: 24px 0; }
+  .commentary-col { border-left: none; border-top: 0.5px solid var(--rule); padding-left: 0; padding-top: 16px; }
+  .fn-grid { grid-template-columns: 1fr; gap: 14px; }
+  footer { padding-left: calc(var(--safe-left) + 22px); padding-right: calc(var(--safe-right) + 22px); }
+  nav { padding-left: calc(var(--safe-left) + 22px); padding-right: calc(var(--safe-right) + 22px); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   REDUCED MOTION
+───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    -webkit-animation-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Site navigation">
+  <span class="nav-en">followorbounce — liturgical series</span>
+  <span class="nav-he" lang="he">שבע ברכות</span>
+  <span class="nav-ref">Artscroll · Zimun · p.290</span>
+</nav>
+
+<!-- MAIN -->
+<main class="page-wrap" role="main">
+
+  <!-- FOLIO HEADER -->
+  <div class="folio" aria-label="Page header">
+    <span class="folio-en">291 / <strong>Sheva Berachos</strong></span>
+    <span class="folio-he" lang="he">זִמּוּן</span>
+    <span class="folio-he" lang="he">שֶׁבַע בְּרָכוֹת / 290</span>
+  </div>
+
+  <!-- SECTION BANNER -->
+  <div class="section-banner" aria-label="Section title">
+    <div class="section-banner-inner">
+      <span class="banner-leaf" lang="he">❧</span>
+      <span class="banner-he" lang="he">שֶׁבַע בְּרָכוֹת</span>
+      <span class="banner-slash">/</span>
+      <span class="banner-en">Sheva Berachos</span>
+      <span class="banner-leaf" lang="he">❧</span>
+    </div>
+  </div>
+
+  <p class="banner-sub">
+    When <em>Sheva Berachos</em> are recited, the Leader recites the following <em>Zimun,</em><br>
+    with a cup of wine in hand.
+  </p>
+
+  <!-- ── ZIMUN OPENING ── -->
+  <section class="blessing is-visible" aria-labelledby="zimun-label">
+    <span class="blessing-num" id="zimun-label">Zimun — Leader</span>
+
+    <div class="interlinear">
+      <p class="he-primary" lang="he" dir="rtl">
+        רַבּוֹתַי מִיר וֶועֶלֶן בֶּנְטְשֶׁן [רַבּוֹתַי נְבָרֵךְ].
+      </p>
+      <div class="gloss-row" aria-label="Gloss">
+        <span class="gl-dangle">«</span><span class="gl-word">[let us bless.</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Gentlemen,]</span>
+        <span class="gl-dangle">«</span><span class="gl-word">bless.</span>
+        <span class="gl-angle">‹</span><span class="gl-word">let us</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Gentlemen,</span>
+      </div>
+    </div>
+
+    <!-- Others response -->
+    <div class="interlinear" style="margin-top:16px;">
+      <p class="he-secondary" lang="he" dir="rtl">יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם.<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">1</sup></p>
+      <div class="gloss-row">
+        <span class="gl-dangle">«</span><span class="gl-word">eternity.</span>
+        <span class="gl-angle">‹</span><span class="gl-word">until</span>
+        <span class="gl-angle">‹</span><span class="gl-word">from</span>
+        <span class="gl-angle">‹</span><span class="gl-word">be</span>
+        <span class="gl-angle">‹</span><span class="gl-word">of the</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Let this time blessed</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Hashem Name</span>
+        <span class="gl-role">— Others</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DRAMATIC DISPLAY FRAGMENT ── -->
+  <div class="display-fragment" aria-label="Display verse — Baruch Atah">
+    <div class="df-he" lang="he" dir="rtl">בָּרוּךְ אַתָּה</div>
+    <p class="df-translit">Baruch Atah — "Blessed are You"</p>
+    <p class="df-gloss">« are You · ‹ Hashem · ‹ our God · ‹ King · « of the universe</p>
+  </div>
+
+  <!-- RUBRIC -->
+  <p class="rubric">
+    After the ring is placed on the bride's finger, the <em>Kesubah</em> is read aloud and handed to the groom.
+    A second cup of wine is poured and the seven blessings (<em>שֶׁבַע בְּרָכוֹת</em>) are recited aloud.
+    The first six may all be recited by one person or distributed among several people.
+    Whoever recites a blessing holds the second cup as he recites.
+  </p>
+
+  <!-- ── BLESSING 1 ── -->
+  <section class="blessing" aria-labelledby="b1-label">
+    <span class="blessing-num" id="b1-label">1. — All respond <em style="font-family:var(--f-he);font-size:14px;direction:rtl;">אָמֵן</em></span>
+
+    <div class="interlinear">
+      <p class="he-primary bold-first" lang="he" dir="rtl">
+        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, שֶׁהַכֹּל בָּרָא לִכְבוֹדוֹ.
+      </p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">Who has created</span>
+        <span class="gl-dangle">«</span><span class="gl-word">everything</span>
+        <span class="gl-dangle">«</span><span class="gl-word">of the universe,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">King</span>
+        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+      </div>
+    </div>
+
+    <p class="he-secondary" lang="he" dir="rtl" style="text-align:right;font-size:14px;margin-top:10px;color:var(--ink-3);">*לִכְבוֹדוֹ.</p>
+    <div class="gloss-row"><span class="gl-dangle">«</span><span class="gl-word">for His glory.*</span></div>
+
+    <div class="amen-line">
+      <span class="amen-dbl">«</span>
+      <span class="amen-en">(Amen.)</span>
+      <span class="amen-he" lang="he">(אָמֵן.)</span>
+      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    </div>
+  </section>
+
+  <!-- ── BLESSING 2 ── -->
+  <section class="blessing" aria-labelledby="b2-label">
+    <span class="blessing-num" id="b2-label">2.</span>
+
+    <div class="interlinear">
+      <p class="he-primary" lang="he" dir="rtl">
+        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, יוֹצֵר הָאָדָם.
+      </p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">Who fashioned</span>
+        <span class="gl-dangle">«</span><span class="gl-word">of the universe,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">King</span>
+        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+      </div>
+    </div>
+
+    <p class="he-secondary" lang="he" dir="rtl" style="text-align:right;font-size:14px;margin-top:10px;color:var(--ink-3);">*הָאָדָם.</p>
+    <div class="gloss-row"><span class="gl-dangle">«</span><span class="gl-word">the Man.*</span></div>
+
+    <div class="amen-line">
+      <span class="amen-dbl">«</span>
+      <span class="amen-en">(Amen.)</span>
+      <span class="amen-he" lang="he">(אָמֵן.)</span>
+      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    </div>
+  </section>
+
+  <!-- ── SPLIT: BLESSING 3 with commentary ── -->
+  <div class="split-block" aria-label="Blessing 3 with commentary">
+    <section class="blessing is-visible" style="opacity:1;transform:none;" aria-labelledby="b3-label">
+      <span class="blessing-num" id="b3-label">3.</span>
+
+      <div class="interlinear">
+        <p class="he-primary" lang="he" dir="rtl">
+          <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,
+          אֲשֶׁר יָצַר אֶת הָאָדָם בְּצַלְמוֹ,<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">3</sup>
+          בְּצֶלֶם דְּמוּת תַּבְנִיתוֹ, וְהִתְקִין לוֹ מִמֶּנּוּ בִּנְיַן עֲדֵי עַד.
+        </p>
+        <div class="gloss-row">
+          <span class="gl-angle">‹</span><span class="gl-word">and</span>
+          <span class="gl-dangle">«</span><span class="gl-word">of his</span>
+          <span class="gl-angle">‹</span><span class="gl-word">in the</span>
+          <span class="gl-angle">‹</span><span class="gl-word">in His</span>
+          <span class="gl-angle">‹</span><span class="gl-word">the Man</span>
+          <span class="gl-angle">‹</span><span class="gl-word">fashioned</span>
+          <span class="gl-angle">‹</span><span class="gl-word">Who</span>
+        </div>
+        <div class="gloss-row" style="padding-left:24px;">
+          <span class="gl-word">prepared</span>
+          <span class="gl-word">likeness,*</span>
+          <span class="gl-word">semblance image</span>
+          <span class="gl-word">image,*</span>
+        </div>
+      </div>
+
+      <p class="he-secondary" lang="he" dir="rtl" style="font-size:15px;margin-top:10px;">בָּרוּךְ אַתָּה יְהוָה, יוֹצֵר.</p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">Who</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+        <span class="gl-dangle">«</span><span class="gl-word">for eternity.*</span>
+        <span class="gl-angle">‹</span><span class="gl-word">a</span>
+        <span class="gl-angle">–</span><span class="gl-word">from</span>
+        <span class="gl-dangle">«</span><span class="gl-word">for building himself*</span>
+        <span class="gl-angle">‹</span><span class="gl-word">him</span>
+      </div>
+
+      <div class="amen-line">
+        <span class="amen-dbl">«</span>
+        <span class="amen-en">(Amen.)</span>
+        <span class="amen-he" lang="he">(אָמֵן.)</span>
+        <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+      </div>
+    </section>
+
+    <aside class="commentary-col" aria-label="Commentary on Blessing 3">
+      <span class="commentary-label">Commentary · ³ בְּצַלְמוֹ</span>
+      <p class="commentary-body">
+        <em>In His image.</em> The commentators generally agree that the Divine image refers to
+        wisdom, intelligence, and free will (see <em>ArtScroll Genesis</em> 1:26).
+      </p>
+      <p class="commentary-body" style="margin-top:10px;">
+        <em>בִּנְיַן עֲדֵי עַד</em> — <em>A building for eternity.</em> Eve was created
+        from Adam himself, from a part of Adam's body. The resultant human couple
+        was to reproduce and populate the earth forever (<em>Avodas Yisrael</em>).
+      </p>
+    </aside>
+  </div>
+
+  <!-- SEP -->
+  <div class="sep" aria-hidden="true"><span class="sep-glyph" lang="he">ו</span></div>
+
+  <!-- ── BLESSING 4 ── -->
+  <section class="blessing" aria-labelledby="b4-label">
+    <span class="blessing-num" id="b4-label">4.</span>
+
+    <div class="interlinear">
+      <p class="he-primary" lang="he" dir="rtl">
+        <strong>שׂוֹשׂ</strong> תָּשִׂישׂ* וְתָגֵל הָעֲקָרָה,* בְּקִבּוּץ בָּנֶיהָ לְתוֹכָהּ בְּשִׂמְחָה.
+      </p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">amidst</span>
+        <span class="gl-angle">‹</span><span class="gl-word">her through the</span>
+        <span class="gl-dangle">«</span><span class="gl-word">— the barren</span>
+        <span class="gl-angle">‹</span><span class="gl-word">and exult</span>
+        <span class="gl-angle">‹</span><span class="gl-word">May she rejoice</span>
+      </div>
+      <div class="gloss-row" style="padding-left:12px;">
+        <span class="gl-word">her children</span>
+        <span class="gl-word">ingathering</span>
+        <span class="gl-word">one*</span>
+        <span class="gl-word">—</span>
+        <span class="gl-word">intensely*</span>
+      </div>
+    </div>
+
+    <p class="he-secondary" lang="he" dir="rtl" style="margin-top:12px;">בְּשִׂמְחָה. בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ צִיּוֹן בְּבָנֶיהָ.</p>
+    <div class="gloss-row">
+      <span class="gl-dangle">«</span><span class="gl-word">through her children.*</span>
+      <span class="gl-angle">‹</span><span class="gl-word">Zion</span>
+      <span class="gl-angle">‹</span><span class="gl-word">Who gladdens</span>
+      <span class="gl-dangle">«</span><span class="gl-word">Hashem,</span>
+      <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
+      <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+      <span class="gl-dangle">«</span><span class="gl-word">in gladness.</span>
+    </div>
+
+    <div class="amen-line">
+      <span class="amen-dbl">«</span>
+      <span class="amen-en">(Amen.)</span>
+      <span class="amen-he" lang="he">(אָמֵן.)</span>
+      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    </div>
+  </section>
+
+  <!-- ── BLESSING 5 ── -->
+  <section class="blessing" aria-labelledby="b5-label">
+    <span class="blessing-num" id="b5-label">5.</span>
+
+    <div class="interlinear">
+      <p class="he-primary" lang="he" dir="rtl">
+        <strong>שַׂמֵּחַ</strong> תְּשַׂמַּח רֵעִים הָאֲהוּבִים,* כְּשַׂמֵּחֲךָ יְצִירְךָ* בְּגַן עֵדֶן מִקֶּדֶם.
+      </p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">Your creation,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">as You</span>
+        <span class="gl-dangle">«</span><span class="gl-word">who are beloved,*</span>
+        <span class="gl-angle">‹</span><span class="gl-word">the companions</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Gladden intensely*</span>
+      </div>
+      <div class="gloss-row" style="padding-left:12px;">
+        <span class="gl-word">gladdened</span>
+        <span class="gl-word">Adam,*</span>
+        <span class="gl-angle">‹</span><span class="gl-word">in the Garden of Eden</span>
+        <span class="gl-angle">‹</span><span class="gl-word">from days of old.*</span>
+      </div>
+    </div>
+
+    <div class="amen-line" style="margin-top:12px;">
+      <span class="amen-dbl">«</span>
+      <span class="amen-en">(Amen.)</span>
+      <span class="amen-he" lang="he">(אָמֵן.)</span>
+      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    </div>
+  </section>
+
+  <!-- SEP -->
+  <div class="sep" aria-hidden="true"><span class="sep-glyph" lang="he">ז</span></div>
+
+  <!-- ── BLESSING 6 — full display ── -->
+  <section class="blessing" aria-labelledby="b6-label">
+    <span class="blessing-num" id="b6-label">6. — Joy and Gladness</span>
+
+    <div class="interlinear">
+      <p class="he-primary" lang="he" dir="rtl">
+        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר בָּרָא
+        שָׂשׂוֹן וְשִׂמְחָה,<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">6</sup>
+        חָתָן וְכַלָּה, גִּילָה רִנָּה, דִּיצָה וְחֶדְוָה,
+        אַהֲבָה וְאַחֲוָה, שָׁלוֹם וְרֵעוּת.*
+      </p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">delight,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">pleasure,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">glad song,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">rejoicing,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">and gladness,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">groom and bride,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">joy*</span>
+      </div>
+      <div class="gloss-row" style="padding-left:12px;">
+        <span class="gl-angle">‹</span><span class="gl-word">love,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">brotherhood,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">peace,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">and companionship.*</span>
+        <span class="gl-dangle">«</span><span class="gl-word">Soon,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Hashem</span>
+        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
+      </div>
+    </div>
+
+    <p class="he-secondary" lang="he" dir="rtl" style="margin-top:12px;">
+      מְהֵרָה יְהוָה אֱלֹהֵינוּ יִשָּׁמַע בְּעָרֵי יְהוּדָה וּבְחוּצוֹת יְרוּשָׁלַיִם
+      קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה, קוֹל חָתָן וְקוֹל כַּלָּה,<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">1</sup>
+      קוֹל מִצְהֲלוֹת חֲתָנִּים מֵחֻפָּתָם, וּנְעָרִים מִמִּשְׁתֵּה נְגִינָתָם.
+    </p>
+    <div class="gloss-row">
+      <span class="gl-angle">‹</span><span class="gl-word">and the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">of joy</span>
+      <span class="gl-angle">‹</span><span class="gl-word">the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">of Jerusalem,</span>
+      <span class="gl-angle">‹</span><span class="gl-word">and in the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">of Judah</span>
+      <span class="gl-angle">‹</span><span class="gl-word">in the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">let there</span>
+    </div>
+    <div class="gloss-row" style="padding-left:12px;">
+      <span class="gl-word">sound</span>
+      <span class="gl-word">of gladness,</span>
+      <span class="gl-word">cities</span>
+      <span class="gl-word">streets</span>
+      <span class="gl-word">be heard</span>
+    </div>
+    <div class="gloss-row" style="margin-top:4px;">
+      <span class="gl-dangle">«</span><span class="gl-word">of grooms</span>
+      <span class="gl-angle">‹</span><span class="gl-word">of the jubilance</span>
+      <span class="gl-dangle">«</span><span class="gl-word">of the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">and the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">of the</span>
+      <span class="gl-angle">‹</span><span class="gl-word">the</span>
+      <span class="gl-dangle">«</span><span class="gl-word">of gladness,</span>
+    </div>
+    <div class="gloss-row" style="padding-left:12px;">
+      <span class="gl-word">sound</span>
+      <span class="gl-word">bride,</span>
+      <span class="gl-word">voice</span>
+      <span class="gl-word">groom</span>
+      <span class="gl-word">voice</span>
+    </div>
+    <div class="gloss-row" style="margin-top:4px;">
+      <span class="gl-angle">‹</span><span class="gl-word">מַחֲפּוֹתָם</span>
+      <span class="gl-angle">‹</span><span class="gl-word">and of youths</span>
+      <span class="gl-angle">‹</span><span class="gl-word">from their feasts</span>
+      <span class="gl-angle">‹</span><span class="gl-word">and from their canopies</span>
+      <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
+      <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+    </div>
+    <div class="gloss-row" style="padding-left:12px;">
+      <span class="gl-word">of song.</span>
+    </div>
+
+    <p class="he-secondary" lang="he" dir="rtl" style="margin-top:14px;">בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ חָתָן וְכַלָּה.</p>
+    <div class="gloss-row">
+      <span class="gl-dangle">«</span><span class="gl-word">the bride.</span>
+      <span class="gl-angle">‹</span><span class="gl-word">with</span>
+      <span class="gl-angle">‹</span><span class="gl-word">the groom</span>
+      <span class="gl-angle">‹</span><span class="gl-word">Who gladdens</span>
+      <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
+    </div>
+
+    <div class="amen-line" style="margin-top:10px;">
+      <span class="amen-dbl">«</span>
+      <span class="amen-en">(Amen.)</span>
+      <span class="amen-he" lang="he">(אָמֵן.)</span>
+      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    </div>
+  </section>
+
+  <!-- RUBRIC before blessing 7 -->
+  <p class="rubric" style="margin-top:32px;">
+    The Leader of <em>Bircas Hamazon</em> recites the seventh blessing while holding the first cup.
+    Then wine from the two cups is mixed together and one cup is given to the groom and the other to the bride.
+  </p>
+
+  <!-- ── BLESSING 7 — final ── -->
+  <section class="blessing" aria-labelledby="b7-label">
+    <span class="blessing-num" id="b7-label">7. — פְּרִי הַגָּפֶן</span>
+
+    <div class="interlinear">
+      <p class="he-primary" lang="he" dir="rtl">
+        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, בּוֹרֵא פְּרִי הַגָּפֶן.
+      </p>
+      <div class="gloss-row">
+        <span class="gl-angle">‹</span><span class="gl-word">Who creates</span>
+        <span class="gl-dangle">«</span><span class="gl-word">of the universe,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">King</span>
+        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
+        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+      </div>
+    </div>
+
+    <p class="he-secondary" lang="he" dir="rtl" style="font-size:16px;margin-top:14px;color:var(--ink-3);">*פְּרִי הַגָּפֶן.</p>
+    <div class="gloss-row"><span class="gl-dangle">«</span><span class="gl-word">of the vine.</span><span class="gl-angle">‹</span><span class="gl-word">the fruit</span></div>
+
+    <div class="amen-line" style="margin-top:10px;">
+      <span class="amen-dbl">«</span>
+      <span class="amen-en">(Amen.)</span>
+      <span class="amen-he" lang="he">(אָמֵן.)</span>
+      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    </div>
+  </section>
+
+  <!-- ── FOOTNOTES ── -->
+  <aside class="footnotes" aria-label="Notes and references">
+    <span class="fn-header">Notes &amp; References</span>
+    <div class="fn-grid">
+
+      <div class="fn-item">
+        <span class="fn-ref">(1)</span>
+        <span class="fn-he" lang="he">שָׂשׂוֹן וְשִׂמְחָה</span>
+        <span class="fn-dash">—</span>
+        <span class="fn-text"><em>Joy… and companionship.</em> There are ten expressions of joy in this blessing; they allude to the ten canopies which, according to the Talmud (<em>Bava Basra</em> 75a), God erected for Adam and Eve in the Garden of Eden.</span>
+      </div>
+
+      <div class="fn-item">
+        <span class="fn-ref">(2)</span>
+        <span class="fn-he" lang="he">יוֹצֵר הָאָדָם</span>
+        <span class="fn-dash">—</span>
+        <span class="fn-text"><em>Who fashioned the Man.</em> This blessing refers to the creation of Adam, the first human being, and constitutes an introduction to the next blessing which thanks God for the creation of males and females (<em>Rashi</em>).</span>
+      </div>
+
+      <div class="fn-item">
+        <span class="fn-ref">(3)</span>
+        <span class="fn-he" lang="he">בְּצַלְמוֹ</span>
+        <span class="fn-dash">—</span>
+        <span class="fn-text"><em>In His image.</em> The commentators generally agree that the Divine image refers to wisdom, intelligence, and free will. The translation spells the word <em>his</em> with a lower case "h" following <em>Abudraham</em> who interprets the phrase as referring to the human body.</span>
+      </div>
+
+      <div class="fn-item">
+        <span class="fn-ref">(4)</span>
+        <span class="fn-he" lang="he">שׂוֹשׂ תָּשִׂישׂ</span>
+        <span class="fn-dash">—</span>
+        <span class="fn-text"><em>May she rejoice intensely.</em> The repetition of the Hebrew verb indicates intensity and continuity. The same is true of the next blessing. Thus we pray that the joy and gladness of both Jerusalem and the new couple will be intense and never ending.</span>
+      </div>
+
+    </div>
+  </aside>
+
+</main>
+
+<!-- FOOTER -->
+<footer aria-label="Colophon">
+  <span class="col-en">followorbounce.com · 2026</span>
+  <span class="col-he" lang="he">שֶׁבַע בְּרָכוֹת</span>
+  <span class="col-ref">Liturgical Typography Series<br>No. 02 / Sheva Berachos</span>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* passive detection */
+  var passiveOk = false;
+  try {
+    var o = Object.defineProperty({}, 'passive', { get: function () { passiveOk = true; } });
+    window.addEventListener('_t', null, o);
+    window.removeEventListener('_t', null, o);
+  } catch (e) {}
+  var PASSIVE = passiveOk ? { passive: true } : false;
+
+  /* IntersectionObserver scroll reveals */
+  var targets = document.querySelectorAll('.blessing, .split-block, .display-fragment, .footnotes');
+
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -28px 0px' });
+
+  targets.forEach(function (el) { io.observe(el); });
+
+  /* smooth scroll anchors */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(this.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* nav scroll class */
+  var nav = document.querySelector('nav');
+  function onScroll() {
+    nav.classList[window.scrollY > 30 ? 'add' : 'remove']('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, PASSIVE);
+
+}());
+</script>
+</body>
+</html>

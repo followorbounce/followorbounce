@@ -1,169 +1,354 @@
-<!--
-
--->
 <!DOCTYPE html>
 <html lang="he-Latn" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Seven Blessings. Sacred Hebrew prayer-book typography reconstructed through modernist editorial design.">
-<meta property="og:title" content="Sheva Berachos / שבע ברכות">
-<meta property="og:description" content="A sacred transmission reconstructed through modernist editorial design. Hebrew liturgical typography, archival aesthetics, cold contemplative silence.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="/assets/images/portfolio/sheva-berachos.svg">
-<meta property="og:site_name" content="followorbounce.com">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sheva Berachos / שבע ברכות">
-<meta name="twitter:description" content="Sacred transmission reconstructed through modernist editorial design.">
-<meta name="twitter:image" content="/assets/images/portfolio/sheva-berachos.svg">
-
-<!-- 3 FONTS ONLY -->
+<title>שֶׁבַע בְּרָכוֹת / Sheva Berachos — Living Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@300;400&display=swap">
-
-<title>Sheva Berachos / שבע ברכות</title>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&display=swap">
 <style>
-/* ─────────────────────────────────────────────────────────────
-   ROOT & TOKENS
-───────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   ROOT TOKENS
+═══════════════════════════════════════════════════════════ */
 :root {
-  --paper:        #ecedf0;
-  --paper-dim:    #e4e5e8;
-  --ink:          #0e1014;
-  --ink-2:        #2b2e36;
-  --ink-3:        #555a66;
-  --ink-4:        #8a8f9e;
-  --rule:         rgba(14,16,20,0.16);
-  --rule-heavy:   rgba(14,16,20,0.52);
-  --safe-top:     env(safe-area-inset-top,    0px);
-  --safe-bottom:  env(safe-area-inset-bottom, 0px);
-  --safe-left:    env(safe-area-inset-left,   0px);
-  --safe-right:   env(safe-area-inset-right,  0px);
-
-  /* FONT STACK — exactly 3 families */
-  --f-he:   'Frank Ruhl Libre', 'David Libre', 'Times New Roman', serif;
-  --f-en:   'EB Garamond', Georgia, 'Times New Roman', serif;
-  --f-ref:  'IBM Plex Mono', 'Courier New', monospace;
-
+  --paper:   #e8e9ec;
+  --ink:     #0b0c0f;
+  --mid:     #2c2f38;
+  --soft:    #575c6b;
+  --faint:   #9098ab;
+  --accent:  #1a1d27;
+  --line:    rgba(11,12,15,0.14);
+  --heavy:   rgba(11,12,15,0.55);
+  --f-he:    'Frank Ruhl Libre', serif;
+  --f-en:    'EB Garamond', Georgia, serif;
+  --f-mono:  'IBM Plex Mono', monospace;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   RESET
-───────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-en);
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 100vw;
   overflow-x: hidden;
+  max-width: 100vw;
+  cursor: crosshair;
 }
 
-/* Paper noise layer */
+/* ═══════════════════════════════════════════════════════════
+   SCAN LINE OVERLAY
+═══════════════════════════════════════════════════════════ */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 1000;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  opacity: 0.55;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(11,12,15,0.012) 3px,
+    rgba(11,12,15,0.012) 4px
+  );
 }
 
-/* Scan vignette */
+/* Moving scan beam */
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
-  z-index: 1;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 999;
   pointer-events: none;
-  background: radial-gradient(ellipse 88% 78% at 50% 46%, transparent 50%, rgba(150,158,178,0.08) 76%, rgba(120,130,155,0.20) 100%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.025) 40%,
+    rgba(255,255,255,0.05) 50%,
+    rgba(255,255,255,0.025) 60%,
+    transparent 100%
+  );
+  -webkit-animation: scanBeam 8s linear infinite;
+  animation: scanBeam 8s linear infinite;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   NAV
-───────────────────────────────────────────────────────────── */
-nav {
+@-webkit-keyframes scanBeam {
+  0%   { top: -60%; }
+  100% { top: 130%; }
+}
+@keyframes scanBeam {
+  0%   { top: -60%; }
+  100% { top: 130%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TICKER TAPE — top
+═══════════════════════════════════════════════════════════ */
+.ticker {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 200;
-  padding-top:    calc(13px + var(--safe-top));
-  padding-bottom: 13px;
-  padding-left:   calc(var(--safe-left)  + 36px);
-  padding-right:  calc(var(--safe-right) + 36px);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
-  -webkit-backdrop-filter: blur(20px) saturate(1.08);
-  backdrop-filter: blur(20px) saturate(1.08);
-  background: rgba(236,237,240,0.84);
-  border-bottom: 0.5px solid var(--rule);
+  z-index: 500;
+  height: 36px;
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.nav-en  { font-family: var(--f-en);  font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); }
-.nav-he  { font-family: var(--f-he);  font-size: 16px; font-weight: 700; direction: rtl; color: var(--ink); }
-.nav-ref { font-family: var(--f-ref); font-size: 10px; color: var(--ink-4); }
-
-/* ─────────────────────────────────────────────────────────────
-   LAYOUT
-───────────────────────────────────────────────────────────── */
-.page-wrap {
-  position: relative;
-  z-index: 2;
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 116px 40px 80px;
-}
-
-section { overflow: clip; }
-
-/* ─────────────────────────────────────────────────────────────
-   FOLIO HEADER — exact ArtScroll style
-───────────────────────────────────────────────────────────── */
-.folio {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 5px;
-  border-bottom: 0.75px solid var(--ink);
-  margin-bottom: 52px;
-}
-
-.folio-num  { font-family: var(--f-en); font-size: 12px; font-weight: 500; color: var(--ink-2); }
-.folio-en   { font-family: var(--f-en); font-size: 12.5px; font-weight: 500; letter-spacing: .04em; color: var(--ink-2); }
-.folio-he   { font-family: var(--f-he); font-size: 14px; font-weight: 700; direction: rtl; color: var(--ink); }
-
-/* ─────────────────────────────────────────────────────────────
-   SECTION LABEL — "SHEVA BERACHOS" banner style
-───────────────────────────────────────────────────────────── */
-.section-banner {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.section-banner-inner {
-  display: inline-flex;
   align-items: center;
-  gap: 16px;
+  border-bottom: 1px solid var(--heavy);
 }
 
-.banner-leaf { font-family: var(--f-he); font-size: 14px; color: var(--ink-3); }
+.ticker-inner {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  -webkit-animation: ticker 28s linear infinite;
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
 
-.banner-he {
+.ticker-inner span {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  padding: 0 40px;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+.ticker-he {
+  font-family: var(--f-he) !important;
+  font-size: 14px !important;
+  direction: rtl;
+  letter-spacing: 0 !important;
+}
+
+@-webkit-keyframes ticker {
+  from { -webkit-transform: translateX(0); transform: translateX(0); }
+  to   { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FIXED LEFT SIDEBAR — orbiting Hebrew glyphs
+═══════════════════════════════════════════════════════════ */
+.sidebar-left {
+  position: fixed;
+  left: 0;
+  top: 36px;
+  bottom: 0;
+  width: 64px;
+  z-index: 200;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: hidden;
+  border-right: 1px solid var(--heavy);
+}
+
+.sidebar-glyph {
+  font-family: var(--f-he);
+  font-weight: 900;
+  color: var(--paper);
+  line-height: 1;
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  opacity: 0.7;
+  -webkit-animation: glyphPulse 3s ease-in-out infinite;
+  animation: glyphPulse 3s ease-in-out infinite;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-glyph:nth-child(1) { font-size: 32px; animation-delay: 0s; }
+.sidebar-glyph:nth-child(2) { font-size: 22px; animation-delay: .4s; }
+.sidebar-glyph:nth-child(3) { font-size: 38px; animation-delay: .8s; }
+.sidebar-glyph:nth-child(4) { font-size: 18px; animation-delay: 1.2s; }
+.sidebar-glyph:nth-child(5) { font-size: 44px; animation-delay: 1.6s; }
+.sidebar-glyph:nth-child(6) { font-size: 26px; animation-delay: 2s; }
+.sidebar-glyph:nth-child(7) { font-size: 20px; animation-delay: 2.4s; }
+
+@-webkit-keyframes glyphPulse {
+  0%,100% { opacity: 0.3; -webkit-transform: scale(1);    transform: scale(1); }
+  50%      { opacity: 0.9; -webkit-transform: scale(1.08); transform: scale(1.08); }
+}
+@keyframes glyphPulse {
+  0%,100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 0.9; transform: scale(1.08); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FIXED RIGHT SIDEBAR — blessing counter + time
+═══════════════════════════════════════════════════════════ */
+.sidebar-right {
+  position: fixed;
+  right: 0;
+  top: 36px;
+  bottom: 0;
+  width: 64px;
+  z-index: 200;
+  background: var(--paper);
+  border-left: 1px solid var(--heavy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.sr-num {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--faint);
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+}
+
+.sr-counter {
+  font-family: var(--f-he);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1;
+  -webkit-animation: counterFlicker 6s ease-in-out infinite;
+  animation: counterFlicker 6s ease-in-out infinite;
+}
+
+@-webkit-keyframes counterFlicker {
+  0%,90%,100% { opacity: 1; }
+  92%          { opacity: 0.2; }
+  94%          { opacity: 1; }
+  96%          { opacity: 0.4; }
+  98%          { opacity: 1; }
+}
+@keyframes counterFlicker {
+  0%,90%,100% { opacity: 1; }
+  92%          { opacity: 0.2; }
+  94%          { opacity: 1; }
+  96%          { opacity: 0.4; }
+  98%          { opacity: 1; }
+}
+
+.sr-bar {
+  width: 2px;
+  background: var(--ink);
+  flex: 1;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sr-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 30%;
+  background: var(--paper);
+  -webkit-animation: barSweep 4s ease-in-out infinite;
+  animation: barSweep 4s ease-in-out infinite;
+}
+
+@-webkit-keyframes barSweep {
+  0%   { top: -30%; }
+  100% { top: 130%; }
+}
+@keyframes barSweep {
+  0%   { top: -30%; }
+  100% { top: 130%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN CANVAS
+═══════════════════════════════════════════════════════════ */
+.canvas {
+  margin-left: 64px;
+  margin-right: 64px;
+  padding-top: 36px;
+  min-height: 100svh;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO SECTION — full-bleed crazy grid
+═══════════════════════════════════════════════════════════ */
+.hero {
+  overflow: clip;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr auto;
+  gap: 0;
+  position: relative;
+  border-bottom: 1px solid var(--heavy);
+}
+
+/* Folio strip — full width top bar */
+.folio-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  position: relative;
+  z-index: 10;
+}
+
+.folio-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 10%; right: 10%;
+  height: 1px;
+  background: var(--ink);
+  -webkit-animation: ruleExpand 2s cubic-bezier(.16,1,.3,1) both;
+  animation: ruleExpand 2s cubic-bezier(.16,1,.3,1) both;
+  transform-origin: center;
+}
+
+@-webkit-keyframes ruleExpand {
+  from { -webkit-transform: scaleX(0); transform: scaleX(0); opacity: 0; }
+  to   { -webkit-transform: scaleX(1); transform: scaleX(1); opacity: 1; }
+}
+@keyframes ruleExpand {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+.folio-pg {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: var(--faint);
+}
+
+.folio-title-en {
+  font-family: var(--f-en);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.folio-title-he {
   font-family: var(--f-he);
   font-size: 18px;
   font-weight: 700;
@@ -171,846 +356,1542 @@ section { overflow: clip; }
   color: var(--ink);
 }
 
-.banner-slash { font-family: var(--f-en); font-size: 14px; color: var(--ink-3); margin: 0 4px; }
-
-.banner-en {
-  font-family: var(--f-en);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--ink);
+/* ── HERO MAIN — large Hebrew display ── */
+.hero-main {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 40px 32px 40px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: clip;
 }
 
-.banner-sub {
+/* Background large ghost text */
+.hero-ghost {
+  position: absolute;
+  bottom: -40px;
+  left: -20px;
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: clamp(120px, 20vw, 240px);
+  color: rgba(11,12,15,0.04);
+  direction: rtl;
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-animation: ghostDrift 20s ease-in-out infinite;
+  animation: ghostDrift 20s ease-in-out infinite;
+  line-height: 1;
+  z-index: 0;
+}
+
+@-webkit-keyframes ghostDrift {
+  0%,100% { -webkit-transform: translateX(0) translateY(0); transform: translateX(0) translateY(0); }
+  33%      { -webkit-transform: translateX(30px) translateY(-20px); transform: translateX(30px) translateY(-20px); }
+  66%      { -webkit-transform: translateX(-15px) translateY(10px); transform: translateX(-15px) translateY(10px); }
+}
+@keyframes ghostDrift {
+  0%,100% { transform: translateX(0) translateY(0); }
+  33%      { transform: translateX(30px) translateY(-20px); }
+  66%      { transform: translateX(-15px) translateY(10px); }
+}
+
+.blessing-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: var(--faint);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.blessing-label::before {
+  content: '▶';
+  margin-right: 8px;
+  font-size: 8px;
+  -webkit-animation: blink 1.4s step-end infinite;
+  animation: blink 1.4s step-end infinite;
+}
+
+@-webkit-keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+
+/* MAIN HEBREW — kinetic reveal */
+.h1-he {
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: clamp(44px, 7vw, 90px);
+  line-height: 1.05;
+  direction: rtl;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  position: relative;
+  z-index: 1;
+  -webkit-animation: slideIn 1.2s cubic-bezier(.16,1,.3,1) both;
+  animation: slideIn 1.2s cubic-bezier(.16,1,.3,1) both;
+  animation-delay: .2s;
+}
+
+@-webkit-keyframes slideIn {
+  from { -webkit-transform: translateX(60px); transform: translateX(60px); opacity: 0; clip-path: inset(0 0 0 100%); }
+  to   { -webkit-transform: translateX(0);    transform: translateX(0);    opacity: 1; clip-path: inset(0 0 0 0%); }
+}
+@keyframes slideIn {
+  from { transform: translateX(60px); opacity: 0; clip-path: inset(0 0 0 100%); }
+  to   { transform: translateX(0);    opacity: 1; clip-path: inset(0 0 0 0%); }
+}
+
+/* GLOSS ROW — scrolling independently */
+.gloss-tape {
+  margin-top: 20px;
+  overflow: hidden;
+  border-top: 0.5px solid var(--line);
+  border-bottom: 0.5px solid var(--line);
+  padding: 6px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.gloss-tape-inner {
+  display: flex;
+  white-space: nowrap;
   font-family: var(--f-en);
-  font-size: 11px;
-  text-align: center;
-  letter-spacing: .03em;
-  color: var(--ink-3);
-  margin-bottom: 36px;
   font-style: italic;
+  font-size: 12px;
+  color: var(--soft);
+  gap: 0;
+  -webkit-animation: glossScroll 18s linear infinite;
+  animation: glossScroll 18s linear infinite;
+}
+
+.gloss-tape-inner span {
+  padding: 0 20px;
+  border-right: 1px solid var(--line);
+}
+
+@-webkit-keyframes glossScroll {
+  from { -webkit-transform: translateX(0); transform: translateX(0); }
+  to   { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+}
+@keyframes glossScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.translit-row {
+  margin-top: 16px;
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--soft);
+  position: relative;
+  z-index: 1;
+  -webkit-animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s both;
+  animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s both;
+}
+
+@-webkit-keyframes fadeUp {
+  from { -webkit-transform: translateY(20px); transform: translateY(20px); opacity: 0; }
+  to   { -webkit-transform: translateY(0);    transform: translateY(0);    opacity: 1; }
+}
+@keyframes fadeUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── HERO PANEL — right column ── */
+.hero-panel {
+  grid-column: 2;
+  grid-row: 2;
+  border-left: 1px solid var(--heavy);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.panel-segment {
+  flex: 1;
+  padding: 20px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-segment:last-child { border-bottom: none; }
+
+.ps-label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.ps-he {
+  font-family: var(--f-he);
+  font-weight: 700;
+  font-size: 22px;
+  direction: rtl;
+  color: var(--paper);
+  line-height: 1.3;
+}
+
+.ps-en {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 6px;
   line-height: 1.6;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   BLESSING BLOCK — the core unit
-───────────────────────────────────────────────────────────── */
-.blessing {
-  margin-bottom: 56px;
-  opacity: 0;
-  -webkit-transform: translateY(16px);
-  transform: translateY(16px);
-  transition: opacity .8s cubic-bezier(.16,1,.3,1), -webkit-transform .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+/* Animated dot */
+.ps-dot {
+  position: absolute;
+  top: 16px; right: 14px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--paper);
+  -webkit-animation: dotPulse 2s ease-in-out infinite;
+  animation: dotPulse 2s ease-in-out infinite;
 }
 
-.blessing.is-visible {
+.panel-segment:nth-child(2) .ps-dot { animation-delay: .4s; background: rgba(255,255,255,0.5); }
+.panel-segment:nth-child(3) .ps-dot { animation-delay: .8s; background: rgba(255,255,255,0.3); }
+.panel-segment:nth-child(4) .ps-dot { animation-delay: 1.2s; }
+
+@-webkit-keyframes dotPulse {
+  0%,100% { -webkit-transform: scale(1);   transform: scale(1);   opacity: 1; }
+  50%      { -webkit-transform: scale(2.5); transform: scale(2.5); opacity: 0.3; }
+}
+@keyframes dotPulse {
+  0%,100% { transform: scale(1);   opacity: 1; }
+  50%      { transform: scale(2.5); opacity: 0.3; }
+}
+
+/* Hover shimmer on panel segments */
+@media (hover: hover) {
+  .panel-segment:hover { background: rgba(255,255,255,0.06); }
+}
+
+/* ── HERO BOTTOM BAR ── */
+.hero-bottom {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid var(--heavy);
+  height: 48px;
+  overflow: hidden;
+}
+
+.hb-cell {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--line);
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  color: var(--faint);
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.hb-cell:last-child { border-right: none; }
+
+.hb-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--ink);
+  transition: width .4s cubic-bezier(.16,1,.3,1);
+}
+
+@media (hover: hover) {
+  .hb-cell:hover::after { width: 100%; }
+  .hb-cell:hover { color: var(--ink); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BLESSING GRID — the crazy part
+═══════════════════════════════════════════════════════════ */
+.blessing-grid {
+  display: grid;
+  grid-template-columns: 48px 1fr 260px 1fr 48px;
+  grid-auto-rows: auto;
+  position: relative;
+}
+
+/* Column track lines */
+.blessing-grid::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 48px;
+  width: 1px;
+  background: var(--line);
+  pointer-events: none;
+}
+
+.blessing-grid::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  right: 48px;
+  width: 1px;
+  background: var(--line);
+  pointer-events: none;
+}
+
+/* ── TRACK COL — left/right numbered strips ── */
+.track-col {
+  background: var(--paper);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  gap: 32px;
+  position: sticky;
+  top: 36px;
+  height: calc(100vh - 36px);
+  overflow: hidden;
+}
+
+.track-col.right {
+  border-right: none;
+  border-left: 1px solid var(--line);
+}
+
+.track-num {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  color: var(--faint);
+  letter-spacing: .08em;
+  -webkit-writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
+  -webkit-animation: trackScroll 4s ease-in-out infinite;
+  animation: trackScroll 4s ease-in-out infinite;
+}
+
+.track-num:nth-child(2) { animation-delay: .5s; }
+.track-num:nth-child(3) { animation-delay: 1s; }
+.track-num:nth-child(4) { animation-delay: 1.5s; }
+
+@-webkit-keyframes trackScroll {
+  0%,100% { opacity: .3; }
+  50%      { opacity: .9; }
+}
+@keyframes trackScroll {
+  0%,100% { opacity: .3; }
+  50%      { opacity: .9; }
+}
+
+/* ── BLESSING ROW ── */
+.b-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 48px 1fr 260px 1fr 48px;
+  border-bottom: 1px solid var(--line);
+  min-height: 200px;
+  position: relative;
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), -webkit-transform .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+}
+
+.b-row.visible {
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
 
-/* Blessing number badge */
-.blessing-num {
-  font-family: var(--f-en);
-  font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 8px;
-  display: block;
+/* Row number cell */
+.b-num-cell {
+  grid-column: 1;
+  border-right: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 0;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--faint);
+  letter-spacing: .08em;
+  position: relative;
 }
 
-/* ── INTERLINEAR VERSE — Hebrew above, English below ── */
-.interlinear {
-  margin-bottom: 10px;
+.b-num-cell::after {
+  content: attr(data-num);
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: 64px;
+  color: rgba(11,12,15,0.04);
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
-/* Primary Hebrew — large, bold, RTL */
-.he-primary {
+/* Hebrew column */
+.b-he-col {
+  grid-column: 2;
+  padding: 28px 32px 28px 24px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.b-he-text {
   font-family: var(--f-he);
   font-weight: 700;
-  font-size: clamp(22px, 4.5vw, 36px);
-  line-height: 1.3;
+  font-size: clamp(20px, 3.5vw, 36px);
   direction: rtl;
-  text-align: right;
   color: var(--ink);
-  margin-bottom: 6px;
+  line-height: 1.35;
 }
 
-.he-primary.bold-first::first-line {
-  font-weight: 900;
-}
+.b-he-text strong { font-weight: 900; }
 
-/* English gloss row — small, directional markers, italic */
-.gloss-row {
+.b-gloss {
+  margin-top: 10px;
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--soft);
+  line-height: 1.85;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   gap: 0 2px;
-  font-family: var(--f-en);
-  font-size: 11px;
-  color: var(--ink-3);
-  line-height: 1.9;
-  margin-bottom: 2px;
-  font-style: italic;
+  align-items: baseline;
 }
 
-.gl-angle  { color: var(--ink-4); font-style: normal; margin: 0 1px; }
-.gl-dangle { color: var(--ink-4); font-style: normal; margin: 0 1px; }
-.gl-word   { white-space: nowrap; }
-.gl-role   { font-family: var(--f-ref); font-size: 9px; letter-spacing: .08em; color: var(--ink-4); margin-left: 6px; font-style: normal; align-self: baseline; }
+.b-gloss .ang { color: var(--faint); font-style: normal; }
 
-/* Secondary Hebrew — medium weight for embedded phrases */
-.he-secondary {
-  font-family: var(--f-he);
-  font-weight: 500;
-  font-size: clamp(16px, 3vw, 22px);
-  direction: rtl;
-  text-align: right;
-  color: var(--ink-2);
-  line-height: 1.5;
-  margin: 8px 0 4px;
-}
-
-/* ── AMEN line ── */
-.amen-line {
+.amen-row {
+  margin-top: 14px;
   display: flex;
   align-items: baseline;
-  gap: 12px;
-  margin: 6px 0 0;
+  gap: 10px;
 }
 
-.amen-he  { font-family: var(--f-he); font-size: 18px; font-weight: 700; direction: rtl; color: var(--ink); }
-.amen-en  { font-family: var(--f-en); font-size: 11px; color: var(--ink-3); font-style: italic; }
-.amen-dbl { font-family: var(--f-en); font-size: 10px; color: var(--ink-4); margin-right: 2px; }
+.amen-he {
+  font-family: var(--f-he);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
 
-/* ─────────────────────────────────────────────────────────────
-   PROSE INSTRUCTION BLOCK — rubric / leader note
-───────────────────────────────────────────────────────────── */
-.rubric {
+.amen-en {
   font-family: var(--f-en);
+  font-style: italic;
   font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--ink-3);
-  line-height: 1.65;
-  margin: 20px 0 16px;
-  border-top: 0.5px solid var(--rule);
-  border-bottom: 0.5px solid var(--rule);
-  padding: 8px 0;
+  color: var(--faint);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   TWO-COLUMN LAYOUT — Hebrew left, commentary right
-───────────────────────────────────────────────────────────── */
-.split-block {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 0 40px;
-  margin: 48px 0;
-  align-items: start;
-  opacity: 0;
-  -webkit-transform: translateY(16px);
-  transform: translateY(16px);
-  transition: opacity .85s cubic-bezier(.16,1,.3,1) .1s, -webkit-transform .85s cubic-bezier(.16,1,.3,1) .1s, transform .85s cubic-bezier(.16,1,.3,1) .1s;
+/* Centre divider col */
+.b-center-col {
+  grid-column: 3;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  gap: 16px;
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  position: relative;
 }
 
-.split-block.is-visible {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+/* Animated background in center col */
+.b-center-col::before {
+  content: attr(data-he);
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: 72px;
+  direction: rtl;
+  position: absolute;
+  opacity: 0.07;
+  pointer-events: none;
+  -webkit-animation: centerBg 12s ease-in-out infinite;
+  animation: centerBg 12s ease-in-out infinite;
 }
 
-.commentary-col {
-  border-left: 0.75px solid var(--rule-heavy);
-  padding-left: 20px;
+@-webkit-keyframes centerBg {
+  0%,100% { -webkit-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); }
+  33%      { -webkit-transform: scale(1.3) rotate(3deg); transform: scale(1.3) rotate(3deg); }
+  66%      { -webkit-transform: scale(0.9) rotate(-2deg); transform: scale(0.9) rotate(-2deg); }
+}
+@keyframes centerBg {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  33%      { transform: scale(1.3) rotate(3deg); }
+  66%      { transform: scale(0.9) rotate(-2deg); }
 }
 
-.commentary-label {
-  font-family: var(--f-ref);
+.center-num {
+  font-family: var(--f-mono);
   font-size: 9px;
   letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 10px;
-  display: block;
+  color: rgba(255,255,255,0.35);
+  position: relative;
+  z-index: 1;
 }
 
-.commentary-body {
+.center-he {
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: clamp(18px, 2.5vw, 28px);
+  direction: rtl;
+  text-align: center;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+
+.center-bar {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.center-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: rgba(255,255,255,0.7);
+  -webkit-animation: barFlow 2s linear infinite;
+  animation: barFlow 2s linear infinite;
+}
+
+@-webkit-keyframes barFlow {
+  0%   { top: -50%; }
+  100% { top: 150%; }
+}
+@keyframes barFlow {
+  0%   { top: -50%; }
+  100% { top: 150%; }
+}
+
+.center-en {
   font-family: var(--f-en);
-  font-size: 12px;
-  color: var(--ink-3);
+  font-style: italic;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Commentary column */
+.b-comment-col {
+  grid-column: 4;
+  padding: 28px 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.comment-tag {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: var(--faint);
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+.comment-body {
+  font-family: var(--f-en);
+  font-size: 12.5px;
+  color: var(--soft);
   line-height: 1.78;
 }
 
-.commentary-body em {
+.comment-body em {
+  color: var(--mid);
   font-style: italic;
-  color: var(--ink-2);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   GEOMETRIC SEPARATOR
-───────────────────────────────────────────────────────────── */
-.sep {
+.comment-he-ref {
+  font-family: var(--f-he);
+  font-size: 15px;
+  font-weight: 500;
+  direction: rtl;
+  color: var(--mid);
+  display: block;
+  margin-top: 6px;
+}
+
+/* Right track */
+.b-end-cell {
+  grid-column: 5;
+  border-left: 1px solid var(--line);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MEGA DISPLAY ROW — blessing 6 full bleed
+═══════════════════════════════════════════════════════════ */
+.mega-row {
+  border-bottom: 1px solid var(--heavy);
+  padding: 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  overflow: clip;
+  background: var(--ink);
+  color: var(--paper);
+  opacity: 0;
+  transition: opacity .9s cubic-bezier(.16,1,.3,1);
+}
+
+.mega-row.visible { opacity: 1; }
+
+/* Animated background stripe */
+.mega-row::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 40%;
+  height: 100%;
+  background: rgba(255,255,255,0.025);
+  -webkit-animation: megaStripe 6s ease-in-out infinite;
+  animation: megaStripe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@-webkit-keyframes megaStripe {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+@keyframes megaStripe {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+.mega-he {
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: clamp(32px, 5.5vw, 72px);
+  direction: rtl;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.mega-he strong { font-size: clamp(44px, 7vw, 96px); display: block; }
+
+.mega-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.mega-tag {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: rgba(255,255,255,0.35);
+}
+
+.mega-en {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+}
+
+.mega-amen {
+  font-family: var(--f-he);
+  font-weight: 900;
+  font-size: 40px;
+  color: var(--paper);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 20px;
+  text-align: center;
+  direction: rtl;
+  -webkit-animation: amenPulse 3s ease-in-out infinite;
+  animation: amenPulse 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes amenPulse {
+  0%,100% { border-color: rgba(255,255,255,0.2); }
+  50%      { border-color: rgba(255,255,255,0.7); }
+}
+@keyframes amenPulse {
+  0%,100% { border-color: rgba(255,255,255,0.2); }
+  50%      { border-color: rgba(255,255,255,0.7); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLLING GLOSS BAND (between blessings)
+═══════════════════════════════════════════════════════════ */
+.gloss-band {
+  height: 38px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin: 44px 0;
+  background: var(--paper);
+  position: relative;
 }
-.sep::before, .sep::after {
+
+.gloss-band::before {
   content: '';
-  flex: 1;
-  height: 0.5px;
-  background: var(--rule);
-}
-.sep-glyph {
-  font-family: var(--f-he);
-  font-size: 13px;
-  color: var(--ink-4);
-  direction: rtl;
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 60px;
+  background: linear-gradient(to right, var(--paper), transparent);
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   LARGE DISPLAY FRAGMENT — center-stage dramatic
-───────────────────────────────────────────────────────────── */
-.display-fragment {
-  padding: 40px 0 32px;
-  border-top: 0.75px solid var(--ink-2);
-  border-bottom: 0.75px solid var(--ink-2);
-  margin: 52px 0;
-  text-align: center;
+.gloss-band::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 60px;
+  background: linear-gradient(to left, var(--paper), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gloss-band-inner {
+  display: flex;
+  white-space: nowrap;
+  font-family: var(--f-en);
+  font-style: italic;
+  font-size: 11.5px;
+  color: var(--soft);
+  gap: 0;
+}
+
+.gloss-band-inner span {
+  padding: 0 24px;
+  border-right: 1px solid var(--line);
+}
+
+.gloss-band-inner.rev {
+  -webkit-animation: glossScrollRev 22s linear infinite;
+  animation: glossScrollRev 22s linear infinite;
+}
+.gloss-band-inner.fwd {
+  -webkit-animation: glossScroll 16s linear infinite;
+  animation: glossScroll 16s linear infinite;
+}
+
+@-webkit-keyframes glossScrollRev {
+  from { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+  to   { -webkit-transform: translateX(0);    transform: translateX(0); }
+}
+@keyframes glossScrollRev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ASYMMETRIC STAGGER ROWS — blessings 4&5
+═══════════════════════════════════════════════════════════ */
+.stagger-section {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  border-bottom: 1px solid var(--line);
+  min-height: 300px;
   opacity: 0;
-  -webkit-transform: translateY(14px);
-  transform: translateY(14px);
-  transition: opacity 1s cubic-bezier(.16,1,.3,1) .15s, -webkit-transform 1s cubic-bezier(.16,1,.3,1) .15s, transform 1s cubic-bezier(.16,1,.3,1) .15s;
+  -webkit-transform: translateY(24px);
+  transform: translateY(24px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1), -webkit-transform .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
 }
 
-.display-fragment.is-visible {
+.stagger-section.visible {
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
 
-.df-he {
-  font-family: var(--f-he);
-  font-weight: 900;
-  font-size: clamp(48px, 10vw, 96px);
-  direction: rtl;
-  color: var(--ink);
-  line-height: 1.05;
-  letter-spacing: -.02em;
-  margin-bottom: 16px;
-  -webkit-mask-image: linear-gradient(to bottom, black 55%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, black 55%, rgba(0,0,0,0) 100%);
+.stagger-section.flip { grid-template-columns: 45% 55%; }
+
+.stagger-he {
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--line);
 }
 
-.df-translit {
-  font-family: var(--f-en);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--ink-3);
-  letter-spacing: .06em;
-  margin-bottom: 6px;
+.stagger-en {
+  padding: 36px 36px 36px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(11,12,15,0.03);
 }
 
-.df-gloss {
-  font-family: var(--f-en);
-  font-size: 11px;
-  color: var(--ink-4);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   FOOTNOTES
-───────────────────────────────────────────────────────────── */
-.footnotes {
-  margin-top: 60px;
-  padding-top: 18px;
-  border-top: 0.75px solid var(--ink);
+/* ═══════════════════════════════════════════════════════════
+   FOOTNOTE STRIP
+═══════════════════════════════════════════════════════════ */
+.footnote-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--heavy);
+  border-bottom: 1px solid var(--line);
   opacity: 0;
   transition: opacity .8s cubic-bezier(.16,1,.3,1) .2s;
 }
 
-.footnotes.is-visible { opacity: 1; }
+.footnote-strip.visible { opacity: 1; }
 
-.fn-header {
-  font-family: var(--f-ref);
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 18px;
-  display: block;
+.fn-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
 }
 
-.fn-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 48px;
+.fn-cell:last-child { border-right: none; }
+
+.fn-cell::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--ink);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: -webkit-transform .6s cubic-bezier(.16,1,.3,1);
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
 }
 
-.fn-item {}
+.footnote-strip.visible .fn-cell::after {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.fn-cell:nth-child(2)::after { transition-delay: .1s; }
+.fn-cell:nth-child(3)::after { transition-delay: .2s; }
+.fn-cell:nth-child(4)::after { transition-delay: .3s; }
 
 .fn-ref {
-  font-family: var(--f-ref);
-  font-size: 9px;
-  color: var(--ink-4);
-  display: inline;
-  margin-right: 5px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--faint);
+  margin-bottom: 8px;
+  display: block;
 }
 
-.fn-he {
+.fn-he-ref {
   font-family: var(--f-he);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   direction: rtl;
-  display: inline;
-  color: var(--ink-2);
+  color: var(--mid);
+  display: block;
+  margin-bottom: 6px;
 }
 
-.fn-dash {
-  font-family: var(--f-en);
-  font-size: 11px;
-  color: var(--ink-3);
-  margin: 0 3px;
-}
-
-.fn-text {
+.fn-body {
   font-family: var(--f-en);
   font-size: 11.5px;
-  color: var(--ink-3);
+  color: var(--soft);
   line-height: 1.72;
-  font-style: italic;
-  display: block;
-  margin-top: 2px;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   FOOTER / COLOPHON
-───────────────────────────────────────────────────────────── */
-footer {
-  position: relative;
-  z-index: 2;
-  border-top: 0.5px solid var(--rule);
-  padding: 22px calc(var(--safe-left) + 40px) calc(28px + var(--safe-bottom)) calc(var(--safe-right) + 40px);
+.fn-body em { font-style: italic; color: var(--mid); }
+
+/* ═══════════════════════════════════════════════════════════
+   BOTTOM COLOPHON BAR
+═══════════════════════════════════════════════════════════ */
+.colophon {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding: 16px 32px;
+  border-top: 1px solid var(--heavy);
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
 }
 
-.col-en  { font-family: var(--f-en);  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-4); }
-.col-he  { font-family: var(--f-he);  font-size: 14px; direction: rtl; color: var(--ink-3); }
-.col-ref { font-family: var(--f-ref); font-size: 9.5px; color: var(--ink-4); text-align: right; }
-
-/* ─────────────────────────────────────────────────────────────
-   TOUCH / INTERACTION
-───────────────────────────────────────────────────────────── */
-a, button { min-height: 44px; -webkit-tap-highlight-color: transparent; }
-
-@media (hover: hover) {
-  .blessing:hover { --ink: #000; }
+.colophon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    rgba(11,12,15,0.03) 80px,
+    rgba(11,12,15,0.03) 81px
+  );
+  pointer-events: none;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .page-wrap { padding: 104px 22px 60px; }
-  .split-block { grid-template-columns: 1fr; gap: 24px 0; }
-  .commentary-col { border-left: none; border-top: 0.5px solid var(--rule); padding-left: 0; padding-top: 16px; }
-  .fn-grid { grid-template-columns: 1fr; gap: 14px; }
-  footer { padding-left: calc(var(--safe-left) + 22px); padding-right: calc(var(--safe-right) + 22px); }
-  nav { padding-left: calc(var(--safe-left) + 22px); padding-right: calc(var(--safe-right) + 22px); }
+.col-en  { font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; color: var(--faint); position: relative; }
+.col-he  { font-family: var(--f-he);  font-size: 16px; font-weight: 700; direction: rtl; color: var(--ink); position: relative; }
+.col-ref { font-family: var(--f-mono); font-size: 9px; letter-spacing: .1em; color: var(--faint); text-align: right; position: relative; }
+
+/* ═══════════════════════════════════════════════════════════
+   MOUSE FOLLOWER
+═══════════════════════════════════════════════════════════ */
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  pointer-events: none;
+  z-index: 9999;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  transition: width .15s, height .15s, background .15s;
+  mix-blend-mode: multiply;
 }
 
-/* ─────────────────────────────────────────────────────────────
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  pointer-events: none;
+  z-index: 9998;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  opacity: 0.4;
+  transition: all .12s ease-out;
+  mix-blend-mode: multiply;
+}
+
+/* ═══════════════════════════════════════════════════════════
    REDUCED MOTION
-───────────────────────────────────────────────────────────── */
+═══════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     -webkit-animation-duration: .01ms !important;
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
+  .cursor-dot, .cursor-ring { display: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .sidebar-left, .sidebar-right { display: none; }
+  .canvas { margin-left: 0; margin-right: 0; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-panel { display: none; }
+  .blessing-grid { grid-template-columns: 32px 1fr 32px; }
+  .b-row { grid-template-columns: 32px 1fr 32px; }
+  .b-center-col { display: none; }
+  .b-comment-col { display: none; }
+  .b-num-cell { grid-column: 1; }
+  .b-he-col { grid-column: 2; }
+  .b-end-cell { grid-column: 3; }
+  .stagger-section { grid-template-columns: 1fr; }
+  .stagger-section.flip { grid-template-columns: 1fr; }
+  .stagger-he { border-right: none; border-bottom: 1px solid var(--line); }
+  .mega-row { grid-template-columns: 1fr; padding: 40px 28px; }
+  .footnote-strip { grid-template-columns: 1fr 1fr; }
+  .track-col { display: none; }
+}
+
+a, button { min-height: 44px; -webkit-tap-highlight-color: transparent; }
+.long-word { overflow-wrap: break-word; word-break: break-all; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav aria-label="Site navigation">
-  <span class="nav-en">followorbounce — liturgical series</span>
-  <span class="nav-he" lang="he">שבע ברכות</span>
-  <span class="nav-ref">Artscroll · Zimun · p.290</span>
-</nav>
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-<!-- MAIN -->
-<main class="page-wrap" role="main">
-
-  <!-- FOLIO HEADER -->
-  <div class="folio" aria-label="Page header">
-    <span class="folio-en">291 / <strong>Sheva Berachos</strong></span>
-    <span class="folio-he" lang="he">זִמּוּן</span>
-    <span class="folio-he" lang="he">שֶׁבַע בְּרָכוֹת / 290</span>
+<!-- ═══════ TICKER ════════════════════════════════════════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner" id="tickerInner">
+    <span>SHEVA BERACHOS</span>
+    <span class="ticker-he">שֶׁבַע בְּרָכוֹת</span>
+    <span>ZIMUN · 290</span>
+    <span class="ticker-he">בָּרוּךְ אַתָּה יְהוָה</span>
+    <span>SEVEN BLESSINGS</span>
+    <span class="ticker-he">אָמֵן</span>
+    <span>LITURGICAL SERIES · NO.02</span>
+    <span class="ticker-he">אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם</span>
+    <span>FOLLOWORBOUNCE.COM</span>
+    <span class="ticker-he">חָתָן וְכַלָּה</span>
+    <span>BRIDE + GROOM</span>
+    <span class="ticker-he">שָׂשׂוֹן וְשִׂמְחָה</span>
+    <!-- duplicate for seamless -->
+    <span>SHEVA BERACHOS</span>
+    <span class="ticker-he">שֶׁבַע בְּרָכוֹת</span>
+    <span>ZIMUN · 290</span>
+    <span class="ticker-he">בָּרוּךְ אַתָּה יְהוָה</span>
+    <span>SEVEN BLESSINGS</span>
+    <span class="ticker-he">אָמֵן</span>
+    <span>LITURGICAL SERIES · NO.02</span>
+    <span class="ticker-he">אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם</span>
+    <span>FOLLOWORBOUNCE.COM</span>
+    <span class="ticker-he">חָתָן וְכַלָּה</span>
+    <span>BRIDE + GROOM</span>
+    <span class="ticker-he">שָׂשׂוֹן וְשִׂמְחָה</span>
   </div>
+</div>
 
-  <!-- SECTION BANNER -->
-  <div class="section-banner" aria-label="Section title">
-    <div class="section-banner-inner">
-      <span class="banner-leaf" lang="he">❧</span>
-      <span class="banner-he" lang="he">שֶׁבַע בְּרָכוֹת</span>
-      <span class="banner-slash">/</span>
-      <span class="banner-en">Sheva Berachos</span>
-      <span class="banner-leaf" lang="he">❧</span>
+<!-- ═══════ LEFT SIDEBAR ═══════════════════════════════════════ -->
+<aside class="sidebar-left" aria-hidden="true">
+  <span class="sidebar-glyph" lang="he">ב</span>
+  <span class="sidebar-glyph" lang="he">ר</span>
+  <span class="sidebar-glyph" lang="he">כ</span>
+  <span class="sidebar-glyph" lang="he">ו</span>
+  <span class="sidebar-glyph" lang="he">ת</span>
+  <span class="sidebar-glyph" lang="he">ז</span>
+  <span class="sidebar-glyph" lang="he">׃</span>
+</aside>
+
+<!-- ═══════ RIGHT SIDEBAR ══════════════════════════════════════ -->
+<aside class="sidebar-right" aria-hidden="true">
+  <span class="sr-num">P.290</span>
+  <div class="sr-bar"></div>
+  <span class="sr-counter" lang="he">ז</span>
+  <div class="sr-bar"></div>
+  <span class="sr-num">NO.02</span>
+</aside>
+
+<!-- ═══════════════ MAIN CANVAS ════════════════════════════════ -->
+<div class="canvas">
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="hero" aria-labelledby="hero-title">
+
+    <div class="folio-bar">
+      <span class="folio-pg">291 / SHEVA BERACHOS</span>
+      <span class="folio-title-en">שבע ברכות — Seven Blessings</span>
+      <span class="folio-title-he" lang="he">זִמּוּן / 290</span>
     </div>
-  </div>
 
-  <p class="banner-sub">
-    When <em>Sheva Berachos</em> are recited, the Leader recites the following <em>Zimun,</em><br>
-    with a cup of wine in hand.
-  </p>
+    <div class="hero-main">
+      <div class="hero-ghost" lang="he" aria-hidden="true">בָּרוּךְ</div>
 
-  <!-- ── ZIMUN OPENING ── -->
-  <section class="blessing is-visible" aria-labelledby="zimun-label">
-    <span class="blessing-num" id="zimun-label">Zimun — Leader</span>
+      <span class="blessing-label">Zimun — Leader recites</span>
 
-    <div class="interlinear">
-      <p class="he-primary" lang="he" dir="rtl">
-        רַבּוֹתַי מִיר וֶועֶלֶן בֶּנְטְשֶׁן [רַבּוֹתַי נְבָרֵךְ].
+      <h1 class="h1-he" id="hero-title" lang="he" dir="rtl">
+        שֶׁבַע<br>בְּרָכוֹת.
+      </h1>
+
+      <div class="gloss-tape" aria-hidden="true">
+        <div class="gloss-tape-inner">
+          <span>‹ bring salvation ‹ VAHO ‹ ANI</span>
+          <span>«« let us bless ‹ Gentlemen</span>
+          <span>‹ Blessed ‹ are You ‹ Hashem ‹ our God</span>
+          <span>‹ King ‹ of the universe</span>
+          <span>‹ Who has created everything</span>
+          <span>‹ for His glory</span>
+          <span>‹ Who fashioned the Man</span>
+          <span>‹ in His image ‹ in His semblance</span>
+          <!-- duplicate -->
+          <span>‹ bring salvation ‹ VAHO ‹ ANI</span>
+          <span>«« let us bless ‹ Gentlemen</span>
+          <span>‹ Blessed ‹ are You ‹ Hashem ‹ our God</span>
+          <span>‹ King ‹ of the universe</span>
+          <span>‹ Who has created everything</span>
+          <span>‹ for His glory</span>
+          <span>‹ Who fashioned the Man</span>
+          <span>‹ in His image ‹ in His semblance</span>
+        </div>
+      </div>
+
+      <p class="translit-row">
+        Baruch Atah Adonai Eloheinu Melech Ha'olam —<br>
+        <em>Blessed are You, Lord our God, King of the universe.</em>
       </p>
-      <div class="gloss-row" aria-label="Gloss">
-        <span class="gl-dangle">«</span><span class="gl-word">[let us bless.</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Gentlemen,]</span>
-        <span class="gl-dangle">«</span><span class="gl-word">bless.</span>
-        <span class="gl-angle">‹</span><span class="gl-word">let us</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Gentlemen,</span>
-      </div>
     </div>
 
-    <!-- Others response -->
-    <div class="interlinear" style="margin-top:16px;">
-      <p class="he-secondary" lang="he" dir="rtl">יְהִי שֵׁם יְהוָה מְבֹרָךְ מֵעַתָּה וְעַד עוֹלָם.<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">1</sup></p>
-      <div class="gloss-row">
-        <span class="gl-dangle">«</span><span class="gl-word">eternity.</span>
-        <span class="gl-angle">‹</span><span class="gl-word">until</span>
-        <span class="gl-angle">‹</span><span class="gl-word">from</span>
-        <span class="gl-angle">‹</span><span class="gl-word">be</span>
-        <span class="gl-angle">‹</span><span class="gl-word">of the</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Let this time blessed</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Hashem Name</span>
-        <span class="gl-role">— Others</span>
+    <!-- Right panel -->
+    <div class="hero-panel" aria-label="Quick reference panel">
+
+      <div class="panel-segment">
+        <div class="ps-dot"></div>
+        <span class="ps-label">Blessing 1 of 7</span>
+        <p class="ps-he" lang="he" dir="rtl">שֶׁהַכֹּל בָּרָא לִכְבוֹדוֹ</p>
+        <p class="ps-en">Who has created everything for His glory</p>
       </div>
+
+      <div class="panel-segment">
+        <div class="ps-dot"></div>
+        <span class="ps-label">Blessing 2 of 7</span>
+        <p class="ps-he" lang="he" dir="rtl">יוֹצֵר הָאָדָם</p>
+        <p class="ps-en">Who fashioned the Man</p>
+      </div>
+
+      <div class="panel-segment">
+        <div class="ps-dot"></div>
+        <span class="ps-label">Blessing 4 of 7</span>
+        <p class="ps-he" lang="he" dir="rtl">שׂוֹשׂ תָּשִׂישׂ</p>
+        <p class="ps-en">May she rejoice intensely — the barren one</p>
+      </div>
+
+      <div class="panel-segment">
+        <div class="ps-dot"></div>
+        <span class="ps-label">Blessing 7 of 7</span>
+        <p class="ps-he" lang="he" dir="rtl">בּוֹרֵא פְּרִי הַגָּפֶן</p>
+        <p class="ps-en">Who creates the fruit of the vine</p>
+      </div>
+
     </div>
+
+    <!-- Bottom bar -->
+    <div class="hero-bottom" aria-hidden="true">
+      <div class="hb-cell">AFTER THE RING</div>
+      <div class="hb-cell">KESUBAH READ</div>
+      <div class="hb-cell">SECOND CUP POURED</div>
+      <div class="hb-cell">7 BLESSINGS RECITED</div>
+      <div class="hb-cell">GROOM + BRIDE DRINK</div>
+    </div>
+
   </section>
 
-  <!-- ── DRAMATIC DISPLAY FRAGMENT ── -->
-  <div class="display-fragment" aria-label="Display verse — Baruch Atah">
-    <div class="df-he" lang="he" dir="rtl">בָּרוּךְ אַתָּה</div>
-    <p class="df-translit">Baruch Atah — "Blessed are You"</p>
-    <p class="df-gloss">« are You · ‹ Hashem · ‹ our God · ‹ King · « of the universe</p>
+  <!-- ══ GLOSS BAND ═════════════════════════════════════════ -->
+  <div class="gloss-band" aria-hidden="true">
+    <div class="gloss-band-inner rev">
+      <span>‹ delight ‹ pleasure ‹ glad song ‹ rejoicing ‹ and gladness ‹ groom and bride ‹ joy</span>
+      <span>‹ love ‹ brotherhood ‹ peace ‹ companionship ‹ eternity</span>
+      <span>«« let there be heard ‹ in the cities of Judah ‹ in the streets of Jerusalem</span>
+      <span>‹ sound of joy ‹ sound of gladness ‹ voice of groom ‹ voice of bride</span>
+      <!-- dup -->
+      <span>‹ delight ‹ pleasure ‹ glad song ‹ rejoicing ‹ and gladness ‹ groom and bride ‹ joy</span>
+      <span>‹ love ‹ brotherhood ‹ peace ‹ companionship ‹ eternity</span>
+      <span>«« let there be heard ‹ in the cities of Judah ‹ in the streets of Jerusalem</span>
+      <span>‹ sound of joy ‹ sound of gladness ‹ voice of groom ‹ voice of bride</span>
+    </div>
   </div>
 
-  <!-- RUBRIC -->
-  <p class="rubric">
-    After the ring is placed on the bride's finger, the <em>Kesubah</em> is read aloud and handed to the groom.
-    A second cup of wine is poured and the seven blessings (<em>שֶׁבַע בְּרָכוֹת</em>) are recited aloud.
-    The first six may all be recited by one person or distributed among several people.
-    Whoever recites a blessing holds the second cup as he recites.
-  </p>
+  <!-- ══ BLESSING GRID ══════════════════════════════════════ -->
+  <div class="blessing-grid" role="list">
 
-  <!-- ── BLESSING 1 ── -->
-  <section class="blessing" aria-labelledby="b1-label">
-    <span class="blessing-num" id="b1-label">1. — All respond <em style="font-family:var(--f-he);font-size:14px;direction:rtl;">אָמֵן</em></span>
-
-    <div class="interlinear">
-      <p class="he-primary bold-first" lang="he" dir="rtl">
-        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, שֶׁהַכֹּל בָּרָא לִכְבוֹדוֹ.
-      </p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">Who has created</span>
-        <span class="gl-dangle">«</span><span class="gl-word">everything</span>
-        <span class="gl-dangle">«</span><span class="gl-word">of the universe,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">King</span>
-        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
+    <!-- Blessing 1 -->
+    <div class="b-row" role="listitem" aria-labelledby="b1-he">
+      <div class="b-num-cell" data-num="א">
+        <span>01</span>
       </div>
-    </div>
-
-    <p class="he-secondary" lang="he" dir="rtl" style="text-align:right;font-size:14px;margin-top:10px;color:var(--ink-3);">*לִכְבוֹדוֹ.</p>
-    <div class="gloss-row"><span class="gl-dangle">«</span><span class="gl-word">for His glory.*</span></div>
-
-    <div class="amen-line">
-      <span class="amen-dbl">«</span>
-      <span class="amen-en">(Amen.)</span>
-      <span class="amen-he" lang="he">(אָמֵן.)</span>
-      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
-    </div>
-  </section>
-
-  <!-- ── BLESSING 2 ── -->
-  <section class="blessing" aria-labelledby="b2-label">
-    <span class="blessing-num" id="b2-label">2.</span>
-
-    <div class="interlinear">
-      <p class="he-primary" lang="he" dir="rtl">
-        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, יוֹצֵר הָאָדָם.
-      </p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">Who fashioned</span>
-        <span class="gl-dangle">«</span><span class="gl-word">of the universe,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">King</span>
-        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
-      </div>
-    </div>
-
-    <p class="he-secondary" lang="he" dir="rtl" style="text-align:right;font-size:14px;margin-top:10px;color:var(--ink-3);">*הָאָדָם.</p>
-    <div class="gloss-row"><span class="gl-dangle">«</span><span class="gl-word">the Man.*</span></div>
-
-    <div class="amen-line">
-      <span class="amen-dbl">«</span>
-      <span class="amen-en">(Amen.)</span>
-      <span class="amen-he" lang="he">(אָמֵן.)</span>
-      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
-    </div>
-  </section>
-
-  <!-- ── SPLIT: BLESSING 3 with commentary ── -->
-  <div class="split-block" aria-label="Blessing 3 with commentary">
-    <section class="blessing is-visible" style="opacity:1;transform:none;" aria-labelledby="b3-label">
-      <span class="blessing-num" id="b3-label">3.</span>
-
-      <div class="interlinear">
-        <p class="he-primary" lang="he" dir="rtl">
+      <div class="b-he-col">
+        <p class="b-he-text" id="b1-he" lang="he" dir="rtl">
           <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,
-          אֲשֶׁר יָצַר אֶת הָאָדָם בְּצַלְמוֹ,<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">3</sup>
-          בְּצֶלֶם דְּמוּת תַּבְנִיתוֹ, וְהִתְקִין לוֹ מִמֶּנּוּ בִּנְיַן עֲדֵי עַד.
+          שֶׁהַכֹּל בָּרָא לִכְבוֹדוֹ.
         </p>
-        <div class="gloss-row">
-          <span class="gl-angle">‹</span><span class="gl-word">and</span>
-          <span class="gl-dangle">«</span><span class="gl-word">of his</span>
-          <span class="gl-angle">‹</span><span class="gl-word">in the</span>
-          <span class="gl-angle">‹</span><span class="gl-word">in His</span>
-          <span class="gl-angle">‹</span><span class="gl-word">the Man</span>
-          <span class="gl-angle">‹</span><span class="gl-word">fashioned</span>
-          <span class="gl-angle">‹</span><span class="gl-word">Who</span>
+        <div class="b-gloss" aria-label="Interlinear gloss">
+          <span class="ang">‹</span><span>Who has created</span>
+          <span class="ang">««</span><span>everything</span>
+          <span class="ang">««</span><span>of the universe,</span>
+          <span class="ang">‹</span><span>King</span>
+          <span class="ang">‹</span><span>our God,</span>
+          <span class="ang">‹</span><span>Hashem,</span>
+          <span class="ang">‹</span><span>are You,</span>
+          <span class="ang">‹</span><span>Blessed</span>
+          <span class="ang">——</span>
+          <span class="ang">««</span><span>for His glory.*</span>
         </div>
-        <div class="gloss-row" style="padding-left:24px;">
-          <span class="gl-word">prepared</span>
-          <span class="gl-word">likeness,*</span>
-          <span class="gl-word">semblance image</span>
-          <span class="gl-word">image,*</span>
+        <div class="amen-row">
+          <span class="amen-he" lang="he">(אָמֵן.)</span>
+          <span class="amen-en">— All</span>
         </div>
       </div>
-
-      <p class="he-secondary" lang="he" dir="rtl" style="font-size:15px;margin-top:10px;">בָּרוּךְ אַתָּה יְהוָה, יוֹצֵר.</p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">Who</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
-        <span class="gl-dangle">«</span><span class="gl-word">for eternity.*</span>
-        <span class="gl-angle">‹</span><span class="gl-word">a</span>
-        <span class="gl-angle">–</span><span class="gl-word">from</span>
-        <span class="gl-dangle">«</span><span class="gl-word">for building himself*</span>
-        <span class="gl-angle">‹</span><span class="gl-word">him</span>
+      <div class="b-center-col" data-he="א" aria-hidden="true">
+        <span class="center-num">01 / 07</span>
+        <div class="center-bar"></div>
+        <p class="center-he" lang="he" dir="rtl">לִכְבוֹדוֹ</p>
+        <div class="center-bar"></div>
+        <p class="center-en">for His glory</p>
       </div>
-
-      <div class="amen-line">
-        <span class="amen-dbl">«</span>
-        <span class="amen-en">(Amen.)</span>
-        <span class="amen-he" lang="he">(אָמֵן.)</span>
-        <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+      <div class="b-comment-col">
+        <span class="comment-tag">Commentary · Rashi</span>
+        <p class="comment-body">
+          This blessing does not deal directly with marriage. It was instituted
+          in honor of the guests who gathered to celebrate the marriage, for they
+          emulate God Himself, Who served as a member of the wedding party in the
+          Garden of Eden when Adam married Eve (<em>Rashi, Kesubos 8a</em>).
+        </p>
+        <span class="comment-he-ref" lang="he">שֶׁהַכֹּל בָּרָא לִכְבוֹדוֹ</span>
       </div>
-    </section>
+      <div class="b-end-cell"></div>
+    </div>
 
-    <aside class="commentary-col" aria-label="Commentary on Blessing 3">
-      <span class="commentary-label">Commentary · ³ בְּצַלְמוֹ</span>
-      <p class="commentary-body">
-        <em>In His image.</em> The commentators generally agree that the Divine image refers to
-        wisdom, intelligence, and free will (see <em>ArtScroll Genesis</em> 1:26).
-      </p>
-      <p class="commentary-body" style="margin-top:10px;">
-        <em>בִּנְיַן עֲדֵי עַד</em> — <em>A building for eternity.</em> Eve was created
-        from Adam himself, from a part of Adam's body. The resultant human couple
-        was to reproduce and populate the earth forever (<em>Avodas Yisrael</em>).
-      </p>
-    </aside>
+    <!-- Blessing 2 -->
+    <div class="b-row" role="listitem" aria-labelledby="b2-he">
+      <div class="b-num-cell" data-num="ב"><span>02</span></div>
+      <div class="b-he-col">
+        <p class="b-he-text" id="b2-he" lang="he" dir="rtl">
+          <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, יוֹצֵר הָאָדָם.
+        </p>
+        <div class="b-gloss">
+          <span class="ang">‹</span><span>Who fashioned</span>
+          <span class="ang">««</span><span>of the universe,</span>
+          <span class="ang">‹</span><span>King</span>
+          <span class="ang">‹</span><span>our God,</span>
+          <span class="ang">‹</span><span>Hashem,</span>
+          <span class="ang">‹</span><span>are You,</span>
+          <span class="ang">‹</span><span>Blessed</span>
+          <span class="ang">——</span>
+          <span class="ang">««</span><span>the Man.*</span>
+        </div>
+        <div class="amen-row">
+          <span class="amen-he" lang="he">(אָמֵן.)</span>
+          <span class="amen-en">— All</span>
+        </div>
+      </div>
+      <div class="b-center-col" data-he="ב" aria-hidden="true">
+        <span class="center-num">02 / 07</span>
+        <div class="center-bar"></div>
+        <p class="center-he" lang="he" dir="rtl">יוֹצֵר</p>
+        <div class="center-bar"></div>
+        <p class="center-en">Who fashioned</p>
+      </div>
+      <div class="b-comment-col">
+        <span class="comment-tag">Commentary · Etz Yosef</span>
+        <p class="comment-body">
+          <em>Who fashioned the Man.</em> This blessing refers to the creation of Adam,
+          the first human being, and constitutes an introduction to the next blessing
+          which thanks God for the creation of males and females (<em>Rashi</em>).
+        </p>
+        <span class="comment-he-ref" lang="he">יוֹצֵר הָאָדָם</span>
+      </div>
+      <div class="b-end-cell"></div>
+    </div>
+
+    <!-- Blessing 3 -->
+    <div class="b-row" role="listitem" aria-labelledby="b3-he">
+      <div class="b-num-cell" data-num="ג"><span>03</span></div>
+      <div class="b-he-col">
+        <p class="b-he-text" id="b3-he" lang="he" dir="rtl">
+          <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,
+          אֲשֶׁר יָצַר אֶת הָאָדָם בְּצַלְמוֹ,
+          בְּצֶלֶם דְּמוּת תַּבְנִיתוֹ,
+          וְהִתְקִין לוֹ מִמֶּנּוּ בִּנְיַן עֲדֵי עַד.
+          בָּרוּךְ אַתָּה יְהוָה, יוֹצֵר.
+        </p>
+        <div class="b-gloss">
+          <span class="ang">‹</span><span>and</span>
+          <span class="ang">««</span><span>of his likeness,*</span>
+          <span class="ang">‹</span><span>in the semblance image</span>
+          <span class="ang">‹</span><span>in His image,*</span>
+          <span class="ang">‹</span><span>the Man</span>
+          <span class="ang">‹</span><span>fashioned</span>
+          <span class="ang">‹</span><span>Who</span>
+          <span class="ang">——</span>
+          <span class="ang">‹</span><span>a building for eternity</span>
+          <span class="ang">‹</span><span>from him</span>
+        </div>
+        <div class="amen-row">
+          <span class="amen-he" lang="he">(אָמֵן.)</span>
+          <span class="amen-en">— All</span>
+        </div>
+      </div>
+      <div class="b-center-col" data-he="ג" aria-hidden="true">
+        <span class="center-num">03 / 07</span>
+        <div class="center-bar"></div>
+        <p class="center-he" lang="he" dir="rtl">בְּצַלְמוֹ</p>
+        <div class="center-bar"></div>
+        <p class="center-en">in His image</p>
+      </div>
+      <div class="b-comment-col">
+        <span class="comment-tag">Commentary · ArtScroll Genesis 1:26</span>
+        <p class="comment-body">
+          <em>In His image.</em> The commentators generally agree that the Divine image
+          refers to wisdom, intelligence, and free will.
+          <em>A building for eternity</em> — Eve was created from Adam himself,
+          from a part of Adam's body (<em>Avodas Yisrael</em>).
+        </p>
+        <span class="comment-he-ref" lang="he">בִּנְיַן עֲדֵי עַד</span>
+      </div>
+      <div class="b-end-cell"></div>
+    </div>
+
+  </div><!-- /blessing-grid -->
+
+  <!-- ══ GLOSS BAND 2 ═══════════════════════════════════════ -->
+  <div class="gloss-band" aria-hidden="true">
+    <div class="gloss-band-inner fwd">
+      <span>‹ May she rejoice intensely ‹ the barren one ‹ and exult</span>
+      <span>‹ through the ingathering of her children ‹ amidst her</span>
+      <span>«« Who gladdens ‹ Zion ‹ through her children</span>
+      <span>‹ Gladden intensely ‹ the companions ‹ who are beloved</span>
+      <span>‹ as You gladdened ‹ Your creation ‹ in the Garden of Eden</span>
+      <!-- dup -->
+      <span>‹ May she rejoice intensely ‹ the barren one ‹ and exult</span>
+      <span>‹ through the ingathering of her children ‹ amidst her</span>
+      <span>«« Who gladdens ‹ Zion ‹ through her children</span>
+      <span>‹ Gladden intensely ‹ the companions ‹ who are beloved</span>
+      <span>‹ as You gladdened ‹ Your creation ‹ in the Garden of Eden</span>
+    </div>
   </div>
 
-  <!-- SEP -->
-  <div class="sep" aria-hidden="true"><span class="sep-glyph" lang="he">ו</span></div>
-
-  <!-- ── BLESSING 4 ── -->
-  <section class="blessing" aria-labelledby="b4-label">
-    <span class="blessing-num" id="b4-label">4.</span>
-
-    <div class="interlinear">
-      <p class="he-primary" lang="he" dir="rtl">
-        <strong>שׂוֹשׂ</strong> תָּשִׂישׂ* וְתָגֵל הָעֲקָרָה,* בְּקִבּוּץ בָּנֶיהָ לְתוֹכָהּ בְּשִׂמְחָה.
+  <!-- ══ STAGGER SECTION — Blessings 4 & 5 ══════════════════ -->
+  <section class="stagger-section" aria-labelledby="b4-he">
+    <div class="stagger-he">
+      <span class="blessing-label">4. — שׂוֹשׂ תָּשִׂישׂ</span>
+      <p class="b-he-text" id="b4-he" lang="he" dir="rtl">
+        <strong>שׂוֹשׂ</strong> תָּשִׂישׂ* וְתָגֵל הָעֲקָרָה,*
+        בְּקִבּוּץ בָּנֶיהָ לְתוֹכָהּ בְּשִׂמְחָה.
+        בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ צִיּוֹן בְּבָנֶיהָ.
       </p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">amidst</span>
-        <span class="gl-angle">‹</span><span class="gl-word">her through the</span>
-        <span class="gl-dangle">«</span><span class="gl-word">— the barren</span>
-        <span class="gl-angle">‹</span><span class="gl-word">and exult</span>
-        <span class="gl-angle">‹</span><span class="gl-word">May she rejoice</span>
+      <div class="b-gloss" style="margin-top:12px;">
+        <span class="ang">‹</span><span>amidst</span>
+        <span class="ang">‹</span><span>her children</span>
+        <span class="ang">‹</span><span>ingathering</span>
+        <span class="ang">««</span><span>— the barren one*</span>
+        <span class="ang">‹</span><span>and exult</span>
+        <span class="ang">‹</span><span>May she rejoice intensely*</span>
+        <span class="ang">——</span>
+        <span class="ang">««</span><span>through her children.*</span>
+        <span class="ang">‹</span><span>Zion</span>
+        <span class="ang">‹</span><span>Who gladdens</span>
       </div>
-      <div class="gloss-row" style="padding-left:12px;">
-        <span class="gl-word">her children</span>
-        <span class="gl-word">ingathering</span>
-        <span class="gl-word">one*</span>
-        <span class="gl-word">—</span>
-        <span class="gl-word">intensely*</span>
+      <div class="amen-row" style="margin-top:14px;">
+        <span class="amen-he" lang="he">(אָמֵן.)</span>
+        <span class="amen-en">— All</span>
       </div>
     </div>
-
-    <p class="he-secondary" lang="he" dir="rtl" style="margin-top:12px;">בְּשִׂמְחָה. בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ צִיּוֹן בְּבָנֶיהָ.</p>
-    <div class="gloss-row">
-      <span class="gl-dangle">«</span><span class="gl-word">through her children.*</span>
-      <span class="gl-angle">‹</span><span class="gl-word">Zion</span>
-      <span class="gl-angle">‹</span><span class="gl-word">Who gladdens</span>
-      <span class="gl-dangle">«</span><span class="gl-word">Hashem,</span>
-      <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
-      <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
-      <span class="gl-dangle">«</span><span class="gl-word">in gladness.</span>
-    </div>
-
-    <div class="amen-line">
-      <span class="amen-dbl">«</span>
-      <span class="amen-en">(Amen.)</span>
-      <span class="amen-he" lang="he">(אָמֵן.)</span>
-      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    <div class="stagger-en">
+      <span class="comment-tag">Commentary · Etz Yosef</span>
+      <p class="comment-body" style="margin-top:10px;">
+        <em>שׂוֹשׂ תָּשִׂישׂ</em> — <em>May she rejoice intensely.</em> The repetition of the
+        Hebrew verb indicates intensity and continuity. The same is true of the next blessing.
+        Thus we pray that the joy and gladness of both Jerusalem and the new couple will be
+        intense and never ending.
+      </p>
+      <p class="comment-body" style="margin-top:12px;">
+        The <em>barren one</em> refers to Jerusalem, whose future joy is likened by the prophets
+        to the joy of bride and groom (see <em>Isaiah 62:5</em>).
+      </p>
     </div>
   </section>
 
-  <!-- ── BLESSING 5 ── -->
-  <section class="blessing" aria-labelledby="b5-label">
-    <span class="blessing-num" id="b5-label">5.</span>
-
-    <div class="interlinear">
-      <p class="he-primary" lang="he" dir="rtl">
-        <strong>שַׂמֵּחַ</strong> תְּשַׂמַּח רֵעִים הָאֲהוּבִים,* כְּשַׂמֵּחֲךָ יְצִירְךָ* בְּגַן עֵדֶן מִקֶּדֶם.
+  <section class="stagger-section flip" aria-labelledby="b5-he">
+    <div class="stagger-en">
+      <span class="comment-tag">Commentary · Abudraham</span>
+      <p class="comment-body" style="margin-top:10px;">
+        <em>שַׂמֵּחַ תְּשַׂמַּח</em> — <em>Gladden intensely.</em> May God bring joy to the newly
+        joined lives of the bride and groom. The companions who are beloved — the bride and groom
+        who, through marriage, become loving companions to one another (<em>Avodas Yisrael</em>).
       </p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">Your creation,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">as You</span>
-        <span class="gl-dangle">«</span><span class="gl-word">who are beloved,*</span>
-        <span class="gl-angle">‹</span><span class="gl-word">the companions</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Gladden intensely*</span>
-      </div>
-      <div class="gloss-row" style="padding-left:12px;">
-        <span class="gl-word">gladdened</span>
-        <span class="gl-word">Adam,*</span>
-        <span class="gl-angle">‹</span><span class="gl-word">in the Garden of Eden</span>
-        <span class="gl-angle">‹</span><span class="gl-word">from days of old.*</span>
-      </div>
+      <p class="comment-body" style="margin-top:12px;">
+        <em>יְצִירְךָ</em> — <em>Your creation</em>, Adam, whose lonely life was gladdened
+        when Eve was formed and life was shared.
+      </p>
     </div>
-
-    <div class="amen-line" style="margin-top:12px;">
-      <span class="amen-dbl">«</span>
-      <span class="amen-en">(Amen.)</span>
-      <span class="amen-he" lang="he">(אָמֵן.)</span>
-      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    <div class="stagger-he">
+      <span class="blessing-label">5. — שַׂמֵּחַ תְּשַׂמַּח</span>
+      <p class="b-he-text" id="b5-he" lang="he" dir="rtl">
+        <strong>שַׂמֵּחַ</strong> תְּשַׂמַּח רֵעִים הָאֲהוּבִים,*
+        כְּשַׂמֵּחֲךָ יְצִירְךָ* בְּגַן עֵדֶן מִקֶּדֶם.
+      </p>
+      <div class="b-gloss" style="margin-top:12px;">
+        <span class="ang">‹</span><span>Your creation,</span>
+        <span class="ang">‹</span><span>as You gladdened</span>
+        <span class="ang">‹</span><span>who are beloved,*</span>
+        <span class="ang">‹</span><span>the companions</span>
+        <span class="ang">‹</span><span>Gladden intensely*</span>
+        <span class="ang">——</span>
+        <span class="ang">‹</span><span>in the Garden of Eden</span>
+        <span class="ang">‹</span><span>from days of old.*</span>
+      </div>
+      <div class="amen-row" style="margin-top:14px;">
+        <span class="amen-he" lang="he">(אָמֵן.)</span>
+        <span class="amen-en">— All</span>
+      </div>
     </div>
   </section>
 
-  <!-- SEP -->
-  <div class="sep" aria-hidden="true"><span class="sep-glyph" lang="he">ז</span></div>
-
-  <!-- ── BLESSING 6 — full display ── -->
-  <section class="blessing" aria-labelledby="b6-label">
-    <span class="blessing-num" id="b6-label">6. — Joy and Gladness</span>
-
-    <div class="interlinear">
-      <p class="he-primary" lang="he" dir="rtl">
-        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר בָּרָא
-        שָׂשׂוֹן וְשִׂמְחָה,<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">6</sup>
-        חָתָן וְכַלָּה, גִּילָה רִנָּה, דִּיצָה וְחֶדְוָה,
-        אַהֲבָה וְאַחֲוָה, שָׁלוֹם וְרֵעוּת.*
+  <!-- ══ MEGA ROW — Blessing 6 ═══════════════════════════════ -->
+  <section class="mega-row" aria-labelledby="b6-he">
+    <div>
+      <span class="blessing-label" style="color:rgba(255,255,255,0.4);">6. — Joy and Gladness · שָׂשׂוֹן וְשִׂמְחָה</span>
+      <p class="mega-he" id="b6-he" lang="he" dir="rtl">
+        <strong>בָּרוּךְ</strong><br>
+        אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם,<br>
+        אֲשֶׁר בָּרָא שָׂשׂוֹן וְשִׂמְחָה,<br>
+        חָתָן וְכַלָּה, גִּילָה רִנָּה,<br>
+        דִּיצָה וְחֶדְוָה, אַהֲבָה וְאַחֲוָה,<br>
+        שָׁלוֹם וְרֵעוּת.
       </p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">delight,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">pleasure,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">glad song,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">rejoicing,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">and gladness,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">groom and bride,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">joy*</span>
-      </div>
-      <div class="gloss-row" style="padding-left:12px;">
-        <span class="gl-angle">‹</span><span class="gl-word">love,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">brotherhood,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">peace,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">and companionship.*</span>
-        <span class="gl-dangle">«</span><span class="gl-word">Soon,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Hashem</span>
-        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
+      <div class="b-gloss" style="margin-top:16px;color:rgba(255,255,255,0.5);">
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>delight,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>pleasure,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>glad song,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>rejoicing,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>and gladness,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>groom and bride,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>joy</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>love,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>brotherhood,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>peace,</span>
+        <span class="ang" style="color:rgba(255,255,255,0.3);">‹</span><span>companionship.*</span>
       </div>
     </div>
-
-    <p class="he-secondary" lang="he" dir="rtl" style="margin-top:12px;">
-      מְהֵרָה יְהוָה אֱלֹהֵינוּ יִשָּׁמַע בְּעָרֵי יְהוּדָה וּבְחוּצוֹת יְרוּשָׁלַיִם
-      קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה, קוֹל חָתָן וְקוֹל כַּלָּה,<sup style="font-family:var(--f-en);font-size:10px;color:var(--ink-4);">1</sup>
-      קוֹל מִצְהֲלוֹת חֲתָנִּים מֵחֻפָּתָם, וּנְעָרִים מִמִּשְׁתֵּה נְגִינָתָם.
-    </p>
-    <div class="gloss-row">
-      <span class="gl-angle">‹</span><span class="gl-word">and the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">of joy</span>
-      <span class="gl-angle">‹</span><span class="gl-word">the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">of Jerusalem,</span>
-      <span class="gl-angle">‹</span><span class="gl-word">and in the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">of Judah</span>
-      <span class="gl-angle">‹</span><span class="gl-word">in the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">let there</span>
-    </div>
-    <div class="gloss-row" style="padding-left:12px;">
-      <span class="gl-word">sound</span>
-      <span class="gl-word">of gladness,</span>
-      <span class="gl-word">cities</span>
-      <span class="gl-word">streets</span>
-      <span class="gl-word">be heard</span>
-    </div>
-    <div class="gloss-row" style="margin-top:4px;">
-      <span class="gl-dangle">«</span><span class="gl-word">of grooms</span>
-      <span class="gl-angle">‹</span><span class="gl-word">of the jubilance</span>
-      <span class="gl-dangle">«</span><span class="gl-word">of the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">and the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">of the</span>
-      <span class="gl-angle">‹</span><span class="gl-word">the</span>
-      <span class="gl-dangle">«</span><span class="gl-word">of gladness,</span>
-    </div>
-    <div class="gloss-row" style="padding-left:12px;">
-      <span class="gl-word">sound</span>
-      <span class="gl-word">bride,</span>
-      <span class="gl-word">voice</span>
-      <span class="gl-word">groom</span>
-      <span class="gl-word">voice</span>
-    </div>
-    <div class="gloss-row" style="margin-top:4px;">
-      <span class="gl-angle">‹</span><span class="gl-word">מַחֲפּוֹתָם</span>
-      <span class="gl-angle">‹</span><span class="gl-word">and of youths</span>
-      <span class="gl-angle">‹</span><span class="gl-word">from their feasts</span>
-      <span class="gl-angle">‹</span><span class="gl-word">and from their canopies</span>
-      <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
-      <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
-    </div>
-    <div class="gloss-row" style="padding-left:12px;">
-      <span class="gl-word">of song.</span>
-    </div>
-
-    <p class="he-secondary" lang="he" dir="rtl" style="margin-top:14px;">בָּרוּךְ אַתָּה יְהוָה, מְשַׂמֵּחַ חָתָן וְכַלָּה.</p>
-    <div class="gloss-row">
-      <span class="gl-dangle">«</span><span class="gl-word">the bride.</span>
-      <span class="gl-angle">‹</span><span class="gl-word">with</span>
-      <span class="gl-angle">‹</span><span class="gl-word">the groom</span>
-      <span class="gl-angle">‹</span><span class="gl-word">Who gladdens</span>
-      <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
-    </div>
-
-    <div class="amen-line" style="margin-top:10px;">
-      <span class="amen-dbl">«</span>
-      <span class="amen-en">(Amen.)</span>
-      <span class="amen-he" lang="he">(אָמֵן.)</span>
-      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    <div class="mega-side">
+      <span class="mega-tag">07 BLESSINGS · ZIMUN · P.291</span>
+      <p class="mega-en">
+        Joy… and companionship. Ten expressions of joy — alluding to the ten canopies
+        God erected for Adam and Eve in the Garden of Eden (<em>Bava Basra 75a</em>).
+      </p>
+      <div class="mega-amen" lang="he" dir="rtl">אָמֵן</div>
     </div>
   </section>
 
-  <!-- RUBRIC before blessing 7 -->
-  <p class="rubric" style="margin-top:32px;">
-    The Leader of <em>Bircas Hamazon</em> recites the seventh blessing while holding the first cup.
-    Then wine from the two cups is mixed together and one cup is given to the groom and the other to the bride.
-  </p>
+  <!-- ══ BLESSING 7 — back to grid ════════════════════════════ -->
+  <div class="blessing-grid" style="border-top:1px solid var(--heavy);" role="list">
+    <div class="b-row" role="listitem" aria-labelledby="b7-he">
+      <div class="b-num-cell" data-num="ז"><span>07</span></div>
+      <div class="b-he-col">
+        <span class="blessing-label">Leader holds the first cup</span>
+        <p class="b-he-text" id="b7-he" lang="he" dir="rtl">
+          <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, בּוֹרֵא פְּרִי הַגָּפֶן.
+        </p>
+        <div class="b-gloss">
+          <span class="ang">‹</span><span>Who creates</span>
+          <span class="ang">««</span><span>of the universe,</span>
+          <span class="ang">‹</span><span>King</span>
+          <span class="ang">‹</span><span>our God,</span>
+          <span class="ang">‹</span><span>Hashem,</span>
+          <span class="ang">‹</span><span>are You,</span>
+          <span class="ang">‹</span><span>Blessed</span>
+          <span class="ang">——</span>
+          <span class="ang">««</span><span>of the vine.</span>
+          <span class="ang">‹</span><span>the fruit</span>
+        </div>
+        <div class="amen-row">
+          <span class="amen-he" lang="he">(אָמֵן.)</span>
+          <span class="amen-en">— All</span>
+        </div>
+      </div>
+      <div class="b-center-col" data-he="ז" aria-hidden="true">
+        <span class="center-num">07 / 07</span>
+        <div class="center-bar"></div>
+        <p class="center-he" lang="he" dir="rtl" style="font-size:clamp(28px,4vw,52px);">הַגָּפֶן</p>
+        <div class="center-bar"></div>
+        <p class="center-en">the vine</p>
+      </div>
+      <div class="b-comment-col">
+        <span class="comment-tag">Note · Wine Mixing</span>
+        <p class="comment-body">
+          The Leader drinks some of the wine from his cup; then wine from the two cups
+          is mixed together and one cup is given to the groom and the other to the bride.
+          It is laudable for those present to drink a bit of wine from the
+          <em>כּוֹס שֶׁל בְּרָכָה</em>, cup of blessing, since it was used in the
+          performance of a mitzvah.
+        </p>
+      </div>
+      <div class="b-end-cell"></div>
+    </div>
+  </div>
 
-  <!-- ── BLESSING 7 — final ── -->
-  <section class="blessing" aria-labelledby="b7-label">
-    <span class="blessing-num" id="b7-label">7. — פְּרִי הַגָּפֶן</span>
+  <!-- ══ GLOSS BAND 3 ═══════════════════════════════════════ -->
+  <div class="gloss-band" aria-hidden="true">
+    <div class="gloss-band-inner rev">
+      <span>‹ Who creates ‹ the fruit ‹ of the vine ‹ (Amen.)</span>
+      <span>‹ mixed together ‹ one cup to the groom ‹ one to the bride</span>
+      <span>‹ cup of blessing ‹ performance of a mitzvah</span>
+      <span>‹ Psalms 113:2 ‹ Cf. 23:3 ‹ Genesis 29:27</span>
+      <span>‹ Judges 14:17 ‹ Isaiah 62:5 ‹ Jeremiah 33:10</span>
+      <!-- dup -->
+      <span>‹ Who creates ‹ the fruit ‹ of the vine ‹ (Amen.)</span>
+      <span>‹ mixed together ‹ one cup to the groom ‹ one to the bride</span>
+      <span>‹ cup of blessing ‹ performance of a mitzvah</span>
+      <span>‹ Psalms 113:2 ‹ Cf. 23:3 ‹ Genesis 29:27</span>
+      <span>‹ Judges 14:17 ‹ Isaiah 62:5 ‹ Jeremiah 33:10</span>
+    </div>
+  </div>
 
-    <div class="interlinear">
-      <p class="he-primary" lang="he" dir="rtl">
-        <strong>בָּרוּךְ</strong> אַתָּה יְהוָה אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, בּוֹרֵא פְּרִי הַגָּפֶן.
+  <!-- ══ FOOTNOTES ══════════════════════════════════════════ -->
+  <div class="footnote-strip" role="complementary" aria-label="Footnotes">
+    <div class="fn-cell">
+      <span class="fn-ref">(1) Psalms 113:2</span>
+      <span class="fn-he-ref" lang="he">שָׂשׂוֹן וְשִׂמְחָה</span>
+      <p class="fn-body">
+        <em>Joy… and companionship.</em> Ten expressions of joy allude to the ten canopies
+        which God erected for Adam and Eve in the Garden of Eden (<em>Bava Basra</em> 75a).
       </p>
-      <div class="gloss-row">
-        <span class="gl-angle">‹</span><span class="gl-word">Who creates</span>
-        <span class="gl-dangle">«</span><span class="gl-word">of the universe,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">King</span>
-        <span class="gl-angle">‹</span><span class="gl-word">our God,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Hashem,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">are You,</span>
-        <span class="gl-angle">‹</span><span class="gl-word">Blessed</span>
-      </div>
     </div>
-
-    <p class="he-secondary" lang="he" dir="rtl" style="font-size:16px;margin-top:14px;color:var(--ink-3);">*פְּרִי הַגָּפֶן.</p>
-    <div class="gloss-row"><span class="gl-dangle">«</span><span class="gl-word">of the vine.</span><span class="gl-angle">‹</span><span class="gl-word">the fruit</span></div>
-
-    <div class="amen-line" style="margin-top:10px;">
-      <span class="amen-dbl">«</span>
-      <span class="amen-en">(Amen.)</span>
-      <span class="amen-he" lang="he">(אָמֵן.)</span>
-      <span class="amen-en" style="margin-left:auto;font-size:10px;color:var(--ink-4);">— All</span>
+    <div class="fn-cell">
+      <span class="fn-ref">(2) Cf. 23:3</span>
+      <span class="fn-he-ref" lang="he">יוֹצֵר הָאָדָם</span>
+      <p class="fn-body">
+        <em>Who fashioned the Man.</em> This blessing refers to the creation of Adam,
+        the first human being, and constitutes an introduction to the next blessing
+        (<em>Rashi</em>).
+      </p>
     </div>
-  </section>
-
-  <!-- ── FOOTNOTES ── -->
-  <aside class="footnotes" aria-label="Notes and references">
-    <span class="fn-header">Notes &amp; References</span>
-    <div class="fn-grid">
-
-      <div class="fn-item">
-        <span class="fn-ref">(1)</span>
-        <span class="fn-he" lang="he">שָׂשׂוֹן וְשִׂמְחָה</span>
-        <span class="fn-dash">—</span>
-        <span class="fn-text"><em>Joy… and companionship.</em> There are ten expressions of joy in this blessing; they allude to the ten canopies which, according to the Talmud (<em>Bava Basra</em> 75a), God erected for Adam and Eve in the Garden of Eden.</span>
-      </div>
-
-      <div class="fn-item">
-        <span class="fn-ref">(2)</span>
-        <span class="fn-he" lang="he">יוֹצֵר הָאָדָם</span>
-        <span class="fn-dash">—</span>
-        <span class="fn-text"><em>Who fashioned the Man.</em> This blessing refers to the creation of Adam, the first human being, and constitutes an introduction to the next blessing which thanks God for the creation of males and females (<em>Rashi</em>).</span>
-      </div>
-
-      <div class="fn-item">
-        <span class="fn-ref">(3)</span>
-        <span class="fn-he" lang="he">בְּצַלְמוֹ</span>
-        <span class="fn-dash">—</span>
-        <span class="fn-text"><em>In His image.</em> The commentators generally agree that the Divine image refers to wisdom, intelligence, and free will. The translation spells the word <em>his</em> with a lower case "h" following <em>Abudraham</em> who interprets the phrase as referring to the human body.</span>
-      </div>
-
-      <div class="fn-item">
-        <span class="fn-ref">(4)</span>
-        <span class="fn-he" lang="he">שׂוֹשׂ תָּשִׂישׂ</span>
-        <span class="fn-dash">—</span>
-        <span class="fn-text"><em>May she rejoice intensely.</em> The repetition of the Hebrew verb indicates intensity and continuity. The same is true of the next blessing. Thus we pray that the joy and gladness of both Jerusalem and the new couple will be intense and never ending.</span>
-      </div>
-
+    <div class="fn-cell">
+      <span class="fn-ref">(3) Genesis 1:26</span>
+      <span class="fn-he-ref" lang="he">בְּצַלְמוֹ</span>
+      <p class="fn-body">
+        <em>In His image.</em> The commentators generally agree that the Divine image
+        refers to wisdom, intelligence, and free will. The translation spells
+        <em>his</em> with a lower case "h" following <em>Abudraham</em>.
+      </p>
     </div>
-  </aside>
+    <div class="fn-cell">
+      <span class="fn-ref">(4) Isaiah 62:5</span>
+      <span class="fn-he-ref" lang="he">הָעֲקָרָה</span>
+      <p class="fn-body">
+        <em>The barren one</em> — Jerusalem, whose future joy is likened by the prophets
+        to the joy of bride and groom. How will God comfort Jerusalem? By gathering
+        her children to her (<em>Tanchuma; Abudraham</em>).
+      </p>
+    </div>
+  </div>
 
-</main>
+  <!-- ══ COLOPHON ═══════════════════════════════════════════ -->
+  <footer class="colophon" aria-label="Colophon">
+    <span class="col-en">followorbounce.com · 2026</span>
+    <span class="col-he" lang="he">שֶׁבַע בְּרָכוֹת</span>
+    <span class="col-ref">Liturgical Typography Series<br>No. 02 / Sheva Berachos</span>
+  </footer>
 
-<!-- FOOTER -->
-<footer aria-label="Colophon">
-  <span class="col-en">followorbounce.com · 2026</span>
-  <span class="col-he" lang="he">שֶׁבַע בְּרָכוֹת</span>
-  <span class="col-ref">Liturgical Typography Series<br>No. 02 / Sheva Berachos</span>
-</footer>
+</div><!-- /canvas -->
 
 <script>
 (function () {
   'use strict';
 
-  /* passive detection */
+  /* ── Passive support ── */
   var passiveOk = false;
   try {
     var o = Object.defineProperty({}, 'passive', { get: function () { passiveOk = true; } });
@@ -1019,26 +1900,76 @@ a, button { min-height: 44px; -webkit-tap-highlight-color: transparent; }
   } catch (e) {}
   var PASSIVE = passiveOk ? { passive: true } : false;
 
-  /* IntersectionObserver scroll reveals */
-  var targets = document.querySelectorAll('.blessing, .split-block, .display-fragment, .footnotes');
+  /* ── Custom cursor ── */
+  var dot  = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  var mx = -200, my = -200, rx = -200, ry = -200;
 
-  if (!('IntersectionObserver' in window)) {
-    targets.forEach(function (el) { el.classList.add('is-visible'); });
-    return;
+  function moveCursor(e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
   }
 
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('mousemove', moveCursor, PASSIVE);
+    animateRing();
+  } else {
+    dot.style.display  = 'none';
+    ring.style.display = 'none';
+  }
+
+  /* ── IntersectionObserver for scroll reveals ── */
+  var reveals = document.querySelectorAll('.b-row, .stagger-section, .mega-row, .footnote-strip');
+
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ── Sidebar glyph click — random pulse burst ── */
+  document.querySelectorAll('.sidebar-glyph').forEach(function (g) {
+    g.addEventListener('click', function () {
+      var el = this;
+      el.style.color = 'var(--paper)';
+      el.style.webkitTransform = 'scale(1.5)';
+      el.style.transform = 'scale(1.5)';
+      setTimeout(function () {
+        el.style.color = '';
+        el.style.webkitTransform = '';
+        el.style.transform = '';
+      }, 400);
     });
-  }, { threshold: 0.06, rootMargin: '0px 0px -28px 0px' });
+  });
 
-  targets.forEach(function (el) { io.observe(el); });
+  /* ── Track columns: sticky height recalc on resize ── */
+  var tracks = document.querySelectorAll('.track-col');
+  function setTrackHeight() {
+    tracks.forEach(function (t) {
+      t.style.height = (window.innerHeight - 36) + 'px';
+    });
+  }
+  setTrackHeight();
+  window.addEventListener('resize', setTrackHeight, PASSIVE);
 
-  /* smooth scroll anchors */
+  /* ── Smooth scroll anchors ── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var t = document.querySelector(this.getAttribute('href'));
@@ -1047,13 +1978,6 @@ a, button { min-height: 44px; -webkit-tap-highlight-color: transparent; }
       t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-
-  /* nav scroll class */
-  var nav = document.querySelector('nav');
-  function onScroll() {
-    nav.classList[window.scrollY > 30 ? 'add' : 'remove']('scrolled');
-  }
-  window.addEventListener('scroll', onScroll, PASSIVE);
 
 }());
 </script>
