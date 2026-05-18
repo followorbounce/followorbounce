@@ -195,7 +195,7 @@
   category: "web"
   tags: ["Philosophy", "Collective Consciousness", "Unity"]
   description: "An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity."
-  cover: ""
+  cover: "/assets/images/portfolio/its-us.svg"
   url: "/p/its-us"
   featured: "true"
   year: "2026"

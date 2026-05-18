@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-label="We Are Not Separate — cover image">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&amp;display=swap');
+    </style>
+
+    <!-- Grain filter -->
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended"/>
+      <feComposite in="blended" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Soft radial gradient for central glow -->
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#f5f2ec" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f5f2ec" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d0d0b" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0d0d0b" stop-opacity="0.55"/>
+    </radialGradient>
+
+    <!-- Clip to canvas -->
+    <clipPath id="canvas">
+      <rect width="1536" height="1024"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#canvas)">
+
+    <!-- Background -->
+    <rect width="1536" height="1024" fill="#0d0d0b"/>
+
+    <!-- ── Geometric concentric circles — center ── -->
+    <!-- Outermost, faintest -->
+    <circle cx="768" cy="512" r="480" fill="none" stroke="#f5f2ec" stroke-width="0.5" opacity="0.06"/>
+    <circle cx="768" cy="512" r="420" fill="none" stroke="#f5f2ec" stroke-width="0.5" opacity="0.07"/>
+    <circle cx="768" cy="512" r="360" fill="none" stroke="#f5f2ec" stroke-width="0.5" opacity="0.09"/>
+    <circle cx="768" cy="512" r="300" fill="none" stroke="#f5f2ec" stroke-width="0.5" opacity="0.10"/>
+    <circle cx="768" cy="512" r="240" fill="none" stroke="#f5f2ec" stroke-width="0.8" opacity="0.12"/>
+    <circle cx="768" cy="512" r="180" fill="none" stroke="#f5f2ec" stroke-width="0.8" opacity="0.14"/>
+    <circle cx="768" cy="512" r="120" fill="none" stroke="#f5f2ec" stroke-width="1" opacity="0.16"/>
+    <circle cx="768" cy="512" r="60"  fill="none" stroke="#f5f2ec" stroke-width="1" opacity="0.20"/>
+
+    <!-- ── Rotated squares (diamond grid) — inscribed ── -->
+    <rect x="768" y="512" width="678" height="678" fill="none" stroke="#f5f2ec" stroke-width="0.4" opacity="0.05"
+          transform="rotate(45 768 512) translate(-339 -339)"/>
+    <rect x="768" y="512" width="508" height="508" fill="none" stroke="#f5f2ec" stroke-width="0.4" opacity="0.06"
+          transform="rotate(45 768 512) translate(-254 -254)"/>
+    <rect x="768" y="512" width="340" height="340" fill="none" stroke="#f5f2ec" stroke-width="0.5" opacity="0.07"
+          transform="rotate(45 768 512) translate(-170 -170)"/>
+    <rect x="768" y="512" width="170" height="170" fill="none" stroke="#f5f2ec" stroke-width="0.5" opacity="0.09"
+          transform="rotate(45 768 512) translate(-85 -85)"/>
+
+    <!-- ── Cross-hair axes ── -->
+    <line x1="768" y1="0"    x2="768" y2="1024" stroke="#f5f2ec" stroke-width="0.4" opacity="0.06"/>
+    <line x1="0"   y1="512" x2="1536" y2="512"  stroke="#f5f2ec" stroke-width="0.4" opacity="0.06"/>
+    <!-- Diagonals -->
+    <line x1="0"    y1="0"    x2="1536" y2="1024" stroke="#f5f2ec" stroke-width="0.3" opacity="0.04"/>
+    <line x1="1536" y1="0"    x2="0"    y2="1024" stroke="#f5f2ec" stroke-width="0.3" opacity="0.04"/>
+
+    <!-- ── Radial lines from center ── -->
+    <g opacity="0.05" stroke="#f5f2ec" stroke-width="0.4">
+      <line x1="768" y1="512" x2="768" y2="32"/>
+      <line x1="768" y1="512" x2="768" y2="992"/>
+      <line x1="768" y1="512" x2="288" y2="512"/>
+      <line x1="768" y1="512" x2="1248" y2="512"/>
+      <line x1="768" y1="512" x2="429" y2="173"/>
+      <line x1="768" y1="512" x2="1107" y2="851"/>
+      <line x1="768" y1="512" x2="1107" y2="173"/>
+      <line x1="768" y1="512" x2="429" y2="851"/>
+      <!-- 22.5deg intervals -->
+      <line x1="768" y1="512" x2="952" y2="36"/>
+      <line x1="768" y1="512" x2="584" y2="988"/>
+      <line x1="768" y1="512" x2="1244" y2="328"/>
+      <line x1="768" y1="512" x2="292" y2="696"/>
+      <line x1="768" y1="512" x2="1244" y2="696"/>
+      <line x1="768" y1="512" x2="292" y2="328"/>
+      <line x1="768" y1="512" x2="952" y2="988"/>
+      <line x1="768" y1="512" x2="584" y2="36"/>
+    </g>
+
+    <!-- ── Nerve lines (horizontal echoes) ── -->
+    <g opacity="0.06" stroke="#f5f2ec" stroke-width="0.6">
+      <line x1="0" y1="180" x2="1536" y2="180"/>
+      <line x1="0" y1="256" x2="1536" y2="256"/>
+      <line x1="0" y1="768" x2="1536" y2="768"/>
+      <line x1="0" y1="844" x2="1536" y2="844"/>
+    </g>
+
+    <!-- ── Central glow ── -->
+    <rect width="1536" height="1024" fill="url(#centerGlow)"/>
+
+    <!-- ── Small center dot ── -->
+    <circle cx="768" cy="512" r="3" fill="#f5f2ec" opacity="0.5"/>
+    <circle cx="768" cy="512" r="8" fill="none" stroke="#f5f2ec" stroke-width="0.8" opacity="0.25"/>
+
+    <!-- ── Grain texture ── -->
+    <rect width="1536" height="1024" fill="#f5f2ec" opacity="0.025" filter="url(#grain)"/>
+
+    <!-- ── Vignette ── -->
+    <rect width="1536" height="1024" fill="url(#vignette)"/>
+
+    <!-- ══════════════════════════════════
+         TYPOGRAPHY
+    ══════════════════════════════════ -->
+
+    <!-- Top label -->
+    <text
+      x="768" y="108"
+      text-anchor="middle"
+      font-family="'Courier New', Courier, monospace"
+      font-size="11"
+      letter-spacing="6"
+      fill="#f5f2ec"
+      opacity="0.25"
+      font-weight="400">WE ARE NOT SEPARATE</text>
+
+    <!-- Large "I" — left -->
+    <text
+      x="220" y="580"
+      text-anchor="middle"
+      font-family="Georgia, 'Times New Roman', serif"
+      font-style="italic"
+      font-size="300"
+      font-weight="300"
+      fill="#f5f2ec"
+      opacity="0.05">I</text>
+
+    <!-- Large "WE" — center, slightly above -->
+    <text
+      x="768" y="556"
+      text-anchor="middle"
+      font-family="Georgia, 'Times New Roman', serif"
+      font-style="italic"
+      font-size="180"
+      font-weight="300"
+      fill="#f5f2ec"
+      opacity="0.55"
+      letter-spacing="-6">WE</text>
+
+    <!-- Large "HE" — right -->
+    <text
+      x="1316" y="580"
+      text-anchor="middle"
+      font-family="Georgia, 'Times New Roman', serif"
+      font-style="italic"
+      font-size="300"
+      font-weight="300"
+      fill="#f5f2ec"
+      opacity="0.05">He</text>
+
+    <!-- Subtitle line -->
+    <text
+      x="768" y="620"
+      text-anchor="middle"
+      font-family="Georgia, 'Times New Roman', serif"
+      font-style="italic"
+      font-size="18"
+      fill="#f5f2ec"
+      opacity="0.28"
+      letter-spacing="1">I — We — He</text>
+
+    <!-- Thin rule below subtitle -->
+    <line x1="648" y1="644" x2="888" y2="644" stroke="#f5f2ec" stroke-width="0.6" opacity="0.15"/>
+
+    <!-- Arabic Basmala -->
+    <text
+      x="768" y="700"
+      text-anchor="middle"
+      font-family="Georgia, serif"
+      font-size="22"
+      fill="#f5f2ec"
+      opacity="0.18"
+      letter-spacing="4">﷽</text>
+
+    <!-- Bottom meta line -->
+    <text
+      x="768" y="940"
+      text-anchor="middle"
+      font-family="'Courier New', Courier, monospace"
+      font-size="10"
+      letter-spacing="5"
+      fill="#f5f2ec"
+      opacity="0.18">PHILOSOPHICAL EDITORIAL — 2026</text>
+
+    <!-- Corner marks — subtle registration marks -->
+    <!-- TL -->
+    <line x1="48" y1="56" x2="80" y2="56" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <line x1="48" y1="56" x2="48" y2="88" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <!-- TR -->
+    <line x1="1488" y1="56" x2="1456" y2="56" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <line x1="1488" y1="56" x2="1488" y2="88" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <!-- BL -->
+    <line x1="48" y1="968" x2="80" y2="968" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <line x1="48" y1="968" x2="48" y2="936" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <!-- BR -->
+    <line x1="1488" y1="968" x2="1456" y2="968" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+    <line x1="1488" y1="968" x2="1488" y2="936" stroke="#f5f2ec" stroke-width="0.6" opacity="0.12"/>
+
+  </g>
+</svg>
