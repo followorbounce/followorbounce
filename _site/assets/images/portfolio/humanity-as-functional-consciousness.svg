@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap');
+    </style>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8e0d0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#e8e0d0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    <filter id="blur6">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1536" height="1024" fill="url(#glow)"/>
+  <rect width="1536" height="1024" fill="#0a0a08"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="128" x2="1536" y2="128"/>
+    <line x1="0" y1="256" x2="1536" y2="256"/>
+    <line x1="0" y1="384" x2="1536" y2="384"/>
+    <line x1="0" y1="512" x2="1536" y2="512"/>
+    <line x1="0" y1="640" x2="1536" y2="640"/>
+    <line x1="0" y1="768" x2="1536" y2="768"/>
+    <line x1="0" y1="896" x2="1536" y2="896"/>
+    <line x1="192" y1="0" x2="192" y2="1024"/>
+    <line x1="384" y1="0" x2="384" y2="1024"/>
+    <line x1="576" y1="0" x2="576" y2="1024"/>
+    <line x1="768" y1="0" x2="768" y2="1024"/>
+    <line x1="960" y1="0" x2="960" y2="1024"/>
+    <line x1="1152" y1="0" x2="1152" y2="1024"/>
+    <line x1="1344" y1="0" x2="1344" y2="1024"/>
+  </g>
+
+  <!-- Neural network connections -->
+  <g stroke="#e8e0d0" stroke-opacity="0.08" stroke-width="0.8" fill="none">
+    <!-- Central web -->
+    <line x1="768" y1="512" x2="520" y2="320"/>
+    <line x1="768" y1="512" x2="640" y2="210"/>
+    <line x1="768" y1="512" x2="900" y2="280"/>
+    <line x1="768" y1="512" x2="1050" y2="360"/>
+    <line x1="768" y1="512" x2="980" y2="680"/>
+    <line x1="768" y1="512" x2="820" y2="780"/>
+    <line x1="768" y1="512" x2="580" y2="720"/>
+    <line x1="768" y1="512" x2="430" y2="600"/>
+    <line x1="768" y1="512" x2="350" y2="420"/>
+    <line x1="768" y1="512" x2="1150" y2="500"/>
+    <line x1="768" y1="512" x2="1180" y2="260"/>
+    <line x1="768" y1="512" x2="300" y2="280"/>
+    <line x1="768" y1="512" x2="200" y2="560"/>
+    <line x1="768" y1="512" x2="1280" y2="700"/>
+    <line x1="768" y1="512" x2="680" y2="860"/>
+    <!-- Secondary connections -->
+    <line x1="520" y1="320" x2="640" y2="210"/>
+    <line x1="640" y1="210" x2="900" y2="280"/>
+    <line x1="900" y1="280" x2="1050" y2="360"/>
+    <line x1="1050" y1="360" x2="1150" y2="500"/>
+    <line x1="1150" y1="500" x2="980" y2="680"/>
+    <line x1="980" y1="680" x2="820" y2="780"/>
+    <line x1="820" y1="780" x2="680" y2="860"/>
+    <line x1="680" y1="860" x2="580" y2="720"/>
+    <line x1="580" y1="720" x2="430" y2="600"/>
+    <line x1="430" y1="600" x2="350" y2="420"/>
+    <line x1="350" y1="420" x2="520" y2="320"/>
+    <line x1="300" y1="280" x2="520" y2="320"/>
+    <line x1="300" y1="280" x2="350" y2="420"/>
+    <line x1="200" y1="560" x2="430" y2="600"/>
+    <line x1="1180" y1="260" x2="900" y2="280"/>
+    <line x1="1280" y1="700" x2="1150" y2="500"/>
+    <!-- Far nodes -->
+    <line x1="100" y1="180" x2="300" y2="280"/>
+    <line x1="100" y1="180" x2="200" y2="560"/>
+    <line x1="1420" y1="200" x2="1180" y2="260"/>
+    <line x1="1420" y1="200" x2="1280" y2="700"/>
+    <line x1="1400" y1="850" x2="1280" y2="700"/>
+    <line x1="150" y1="900" x2="200" y2="560"/>
+    <line x1="150" y1="900" x2="580" y2="720"/>
+    <line x1="400" y1="950" x2="680" y2="860"/>
+  </g>
+
+  <!-- Nodes — outer ring -->
+  <g fill="#e8e0d0" fill-opacity="0.25">
+    <circle cx="100" cy="180" r="3"/>
+    <circle cx="1420" cy="200" r="3"/>
+    <circle cx="1400" cy="850" r="3"/>
+    <circle cx="150" cy="900" r="3"/>
+    <circle cx="400" cy="950" r="4"/>
+  </g>
+
+  <!-- Nodes — mid ring -->
+  <g fill="#e8e0d0" fill-opacity="0.45">
+    <circle cx="300" cy="280" r="4"/>
+    <circle cx="640" cy="210" r="4"/>
+    <circle cx="1180" cy="260" r="4"/>
+    <circle cx="1280" cy="700" r="4"/>
+    <circle cx="200" cy="560" r="4"/>
+    <circle cx="680" cy="860" r="5"/>
+  </g>
+
+  <!-- Nodes — inner ring -->
+  <g fill="#e8e0d0" fill-opacity="0.65">
+    <circle cx="520" cy="320" r="5"/>
+    <circle cx="900" cy="280" r="5"/>
+    <circle cx="1050" cy="360" r="5"/>
+    <circle cx="1150" cy="500" r="5"/>
+    <circle cx="980" cy="680" r="5"/>
+    <circle cx="820" cy="780" r="5"/>
+    <circle cx="580" cy="720" r="5"/>
+    <circle cx="430" cy="600" r="5"/>
+    <circle cx="350" cy="420" r="5"/>
+  </g>
+
+  <!-- Central glow -->
+  <circle cx="768" cy="512" r="80" fill="url(#nodeGlow)" filter="url(#blur6)"/>
+  <circle cx="768" cy="512" r="12" fill="#e8e0d0" fill-opacity="0.9"/>
+  <circle cx="768" cy="512" r="6" fill="#ffffff"/>
+
+  <!-- Function labels -->
+  <g font-family="'Courier New', monospace" fill="#e8e0d0" fill-opacity="0.35" font-size="9" letter-spacing="1">
+    <text x="480" y="315" text-anchor="middle">HERO</text>
+    <text x="644" y="202" text-anchor="middle">PROPHET</text>
+    <text x="908" y="272" text-anchor="middle">CREATOR</text>
+    <text x="1068" y="355" text-anchor="middle">TYRANT</text>
+    <text x="1165" y="495" text-anchor="middle">LOVER</text>
+    <text x="992" y="698" text-anchor="middle">MARTYR</text>
+    <text x="826" y="796" text-anchor="middle">VICTIM</text>
+    <text x="576" y="736" text-anchor="middle">OBSERVER</text>
+    <text x="340" y="440" text-anchor="middle">DESTROYER</text>
+  </g>
+
+  <!-- Main title -->
+  <text x="768" y="140" font-family="'Georgia', serif" font-size="52" font-weight="normal" fill="#e8e0d0" fill-opacity="0.92" text-anchor="middle" letter-spacing="8">HUMANITY</text>
+  <text x="768" y="175" font-family="'Courier New', monospace" font-size="11" fill="#e8e0d0" fill-opacity="0.4" text-anchor="middle" letter-spacing="18">AS FUNCTIONAL CONSCIOUSNESS</text>
+
+  <!-- Horizontal rule -->
+  <line x1="568" y1="190" x2="968" y2="190" stroke="#e8e0d0" stroke-opacity="0.2" stroke-width="0.5"/>
+
+  <!-- Bottom caption -->
+  <text x="768" y="900" font-family="'Courier New', monospace" font-size="9" fill="#e8e0d0" fill-opacity="0.25" text-anchor="middle" letter-spacing="4">AWARENESS ITSELF MAY ONLY BE A FUNCTION</text>
+
+  <!-- Corner markers — brutalist -->
+  <g stroke="#e8e0d0" stroke-opacity="0.15" stroke-width="1" fill="none">
+    <polyline points="40,40 40,70 70,70"/>
+    <polyline points="1496,40 1496,70 1466,70"/>
+    <polyline points="40,984 40,954 70,954"/>
+    <polyline points="1496,984 1496,954 1466,954"/>
+  </g>
+
+  <!-- System annotation -->
+  <text x="56" y="56" font-family="'Courier New', monospace" font-size="8" fill="#e8e0d0" fill-opacity="0.2" letter-spacing="2">SYS.NODE.001</text>
+  <text x="1480" y="56" font-family="'Courier New', monospace" font-size="8" fill="#e8e0d0" fill-opacity="0.2" text-anchor="end" letter-spacing="2">v2026.1</text>
+</svg>

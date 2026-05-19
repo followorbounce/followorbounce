@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Humanity as Functional Consciousness</title>
+  <meta name="description" content="An inquiry into whether awareness is autonomy or merely a function executing inside a larger system.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Humanity as Functional Consciousness">
+  <meta property="og:description" content="An inquiry into whether awareness is autonomy or merely a function executing inside a larger system.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/images/portfolio/humanity-as-functional-consciousness.svg">
+  <meta property="og:site_name" content="followorbounce.com">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Humanity as Functional Consciousness">
+  <meta name="twitter:description" content="An inquiry into whether awareness is autonomy or merely a function executing inside a larger system.">
+  <meta name="twitter:image" content="/assets/images/portfolio/humanity-as-functional-consciousness.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@300;400;700;900&display=swap">
+
+  <style>
+    /* ─── RESET & ROOT ─────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink:        #0e0d0b;
+      --paper:      #f0ede6;
+      --paper-mid:  #e2ddd4;
+      --ash:        #8a8478;
+      --ghost:      #c4bfb4;
+      --mark:       #1a1916;
+      --red:        #8b1a1a;
+      --gold:       #a08040;
+
+      --safe-top:    env(safe-area-inset-top,    0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left:   env(safe-area-inset-left,   0px);
+      --safe-right:  env(safe-area-inset-right,  0px);
+
+      --font-display: 'Unbounded', sans-serif;
+      --font-body:    'EB Garamond', Georgia, serif;
+      --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.72;
+      max-width: 100vw;
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100svh;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding-top: calc(14px + var(--safe-top));
+      padding-bottom: 14px;
+      padding-left: calc(32px + var(--safe-left));
+      padding-right: calc(32px + var(--safe-right));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      backdrop-filter: blur(16px) saturate(120%);
+      background: rgba(240, 237, 230, 0.85);
+      border-bottom: 1px solid rgba(14,13,11,0.08);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .nav-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--ash);
+      text-transform: uppercase;
+    }
+
+    .nav-counter {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--ghost);
+    }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .hero {
+      overflow: clip;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: calc(80px + var(--safe-top)) 0 80px;
+      position: relative;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 40%, rgba(14,13,11,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 75% 65%, rgba(14,13,11,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      padding: 0 clamp(24px, 6vw, 96px);
+      max-width: 1400px;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--ash);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      opacity: 0;
+      -webkit-animation: fadeUp 0.8s 0.2s forwards;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 7vw, 110px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 0;
+      opacity: 0;
+      -webkit-animation: fadeUp 1s 0.4s forwards;
+      animation: fadeUp 1s 0.4s forwards;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--ash);
+      font-weight: 300;
+    }
+
+    .hero-rule {
+      width: 100%;
+      max-width: 800px;
+      height: 1px;
+      background: var(--ink);
+      margin: 40px 0 36px;
+      opacity: 0;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: left;
+      transform-origin: left;
+      -webkit-animation: slideRule 1s 0.8s forwards;
+      animation: slideRule 1s 0.8s forwards;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: clamp(17px, 2vw, 24px);
+      font-style: italic;
+      color: var(--mark);
+      max-width: 640px;
+      line-height: 1.6;
+      opacity: 0;
+      -webkit-animation: fadeUp 0.8s 1s forwards;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+
+    /* ─── SCROLL INDICATOR ─────────────────────────────── */
+    .scroll-down {
+      position: absolute;
+      bottom: 36px;
+      right: clamp(24px, 6vw, 96px);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--ghost);
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      opacity: 0;
+      -webkit-animation: fadeUp 0.8s 1.4s forwards;
+      animation: fadeUp 0.8s 1.4s forwards;
+    }
+
+    /* ─── SECTIONS ─────────────────────────────────────── */
+    section {
+      overflow: clip;
+    }
+
+    .section-inner {
+      padding: clamp(80px, 10vw, 140px) clamp(24px, 6vw, 96px);
+      max-width: 1400px;
+    }
+
+    /* ─── THESIS ───────────────────────────────────────── */
+    .thesis {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .thesis .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+
+    .thesis-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--ghost);
+      text-transform: uppercase;
+      padding-top: 8px;
+    }
+
+    .thesis-body {
+      color: var(--paper);
+    }
+
+    .thesis-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--paper);
+    }
+
+    .thesis-body p {
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.78;
+      color: rgba(240,237,230,0.78);
+      margin-bottom: 24px;
+    }
+
+    .thesis-body p strong {
+      color: var(--paper);
+      font-weight: 500;
+    }
+
+    /* ─── PULL QUOTE ───────────────────────────────────── */
+    .pullquote {
+      background: var(--paper-mid);
+      border-left: 3px solid var(--ink);
+    }
+
+    .pullquote .section-inner {
+      padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 96px);
+    }
+
+    .pullquote blockquote {
+      font-family: var(--font-body);
+      font-size: clamp(24px, 3.5vw, 52px);
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--ink);
+      max-width: 900px;
+    }
+
+    .pullquote cite {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--ash);
+      text-transform: uppercase;
+      margin-top: 28px;
+      font-style: normal;
+    }
+
+    /* ─── FUNCTIONS GRID ───────────────────────────────── */
+    .functions {
+      background: var(--paper);
+      border-top: 1px solid rgba(14,13,11,0.1);
+      border-bottom: 1px solid rgba(14,13,11,0.1);
+    }
+
+    .functions .section-inner {
+      max-width: 1400px;
+    }
+
+    .functions-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .functions-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .functions-header span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--ghost);
+      text-transform: uppercase;
+    }
+
+    .fn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: rgba(14,13,11,0.1);
+    }
+
+    .fn-card {
+      background: var(--paper);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      transform: translateY(20px);
+      transition: opacity 0.6s, -webkit-transform 0.6s, transform 0.6s;
+    }
+
+    .fn-card.is-visible {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    .fn-index {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--ghost);
+    }
+
+    .fn-name {
+      font-family: var(--font-display);
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .fn-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ash);
+      font-style: italic;
+    }
+
+    @media (hover: hover) {
+      .fn-card:hover {
+        background: var(--ink);
+      }
+      .fn-card:hover .fn-index,
+      .fn-card:hover .fn-name,
+      .fn-card:hover .fn-desc {
+        color: var(--paper);
+      }
+      .fn-card:hover .fn-name {
+        color: var(--paper);
+      }
+    }
+
+    /* ─── DIAGRAM ──────────────────────────────────────── */
+    .diagram {
+      background: var(--paper);
+      padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 96px);
+    }
+
+    .diagram-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .diagram-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--ash);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .system-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── MANIFESTO ────────────────────────────────────── */
+    .manifesto {
+      background: var(--mark);
+      color: var(--paper);
+    }
+
+    .manifesto .section-inner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(40px, 6vw, 100px);
+    }
+
+    .manifesto-block h3 {
+      font-family: var(--font-display);
+      font-size: clamp(12px, 1.2vw, 15px);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ghost);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(240,237,230,0.12);
+    }
+
+    .manifesto-block p {
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.8;
+      color: rgba(240,237,230,0.68);
+      margin-bottom: 16px;
+    }
+
+    .manifesto-block p em {
+      color: var(--paper);
+      font-style: italic;
+    }
+
+    /* ─── LONG READ ────────────────────────────────────── */
+    .longread {
+      background: var(--paper);
+    }
+
+    .longread .section-inner {
+      max-width: 780px;
+    }
+
+    .longread h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 36px;
+      color: var(--ink);
+    }
+
+    .longread p {
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.82;
+      color: var(--mark);
+      margin-bottom: 28px;
+    }
+
+    .longread p.drop-cap::first-letter {
+      font-family: var(--font-display);
+      font-size: 4.4em;
+      font-weight: 900;
+      float: left;
+      line-height: 0.8;
+      margin-right: 10px;
+      margin-top: 6px;
+      color: var(--ink);
+    }
+
+    .longread hr {
+      border: none;
+      border-top: 1px solid rgba(14,13,11,0.1);
+      margin: 52px 0;
+    }
+
+    .longread .annotation {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--ash);
+      padding: 20px 24px;
+      border-left: 2px solid var(--ghost);
+      margin: 40px 0;
+    }
+
+    /* ─── PARADOX SECTION ──────────────────────────────── */
+    .paradox {
+      background: var(--paper-mid);
+      border-top: 3px solid var(--ink);
+    }
+
+    .paradox .section-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(14,13,11,0.1);
+      padding: 0;
+    }
+
+    .paradox-cell {
+      background: var(--paper-mid);
+      padding: clamp(32px, 4vw, 60px) clamp(24px, 3vw, 44px);
+    }
+
+    .paradox-cell h4 {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ash);
+      margin-bottom: 16px;
+    }
+
+    .paradox-cell p {
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.7;
+      color: var(--mark);
+      font-style: italic;
+    }
+
+    /* ─── TERMINAL ─────────────────────────────────────── */
+    .terminal {
+      background: #0c0c0a;
+      padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 96px);
+    }
+
+    .terminal-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #28ca41; }
+
+    .terminal-code {
+      font-family: var(--font-mono);
+      font-size: clamp(11px, 1.2vw, 14px);
+      line-height: 2;
+      color: #7a9e7e;
+    }
+
+    .terminal-code .t-dim   { color: #3a3a38; }
+    .terminal-code .t-white { color: #e8e0d0; }
+    .terminal-code .t-red   { color: #c95f5f; }
+    .terminal-code .t-gold  { color: #a0905a; }
+    .terminal-code .t-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: #7a9e7e;
+      vertical-align: text-bottom;
+      -webkit-animation: blink 1.1s step-start infinite;
+      animation: blink 1.1s step-start infinite;
+    }
+
+    /* ─── CLOSING ──────────────────────────────────────── */
+    .closing {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      overflow: clip;
+      position: relative;
+    }
+
+    .closing .section-inner {
+      padding: clamp(100px, 14vw, 180px) clamp(24px, 6vw, 96px);
+    }
+
+    .closing-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(160,128,64,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .closing h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--paper);
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .closing h2 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ghost);
+    }
+
+    .closing p {
+      font-family: var(--font-body);
+      font-size: clamp(16px, 1.8vw, 22px);
+      line-height: 1.7;
+      font-style: italic;
+      color: rgba(240,237,230,0.55);
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(240,237,230,0.08);
+      padding: 32px clamp(24px, 6vw, 96px);
+      padding-bottom: calc(32px + var(--safe-bottom));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: rgba(240,237,230,0.3);
+      text-transform: uppercase;
+    }
+
+    .footer-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: rgba(240,237,230,0.18);
+    }
+
+    /* ─── ANIMATIONS ───────────────────────────────────── */
+    @-webkit-keyframes fadeUp {
+      from { opacity: 0; -webkit-transform: translateY(24px); transform: translateY(24px); }
+      to   { opacity: 1; -webkit-transform: translateY(0);    transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @-webkit-keyframes slideRule {
+      from { opacity: 0; -webkit-transform: scaleX(0); transform: scaleX(0); }
+      to   { opacity: 1; -webkit-transform: scaleX(1); transform: scaleX(1); }
+    }
+    @keyframes slideRule {
+      from { opacity: 0; transform: scaleX(0); }
+      to   { opacity: 1; transform: scaleX(1); }
+    }
+
+    @-webkit-keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ─── TOUCH & INTERACTION ──────────────────────────── */
+    a, button {
+      min-height: 44px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 900px) {
+      .thesis .section-inner {
+        grid-template-columns: 1fr;
+      }
+      .manifesto .section-inner {
+        grid-template-columns: 1fr;
+      }
+      .paradox .section-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .fn-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── OVERFLOW / LONG WORDS ────────────────────────── */
+    .url, .long-word, p {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    /* ─── REDUCED MOTION ───────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        -webkit-animation-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .fn-card { opacity: 1; -webkit-transform: none; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Site navigation">
+    <span class="nav-id">FOB / INQUIRY — 001</span>
+    <span class="nav-counter" id="readingProgress">0%</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-noise" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-label">Manifesto — Systems Theory — 2026</p>
+      <h1 class="hero-title" id="hero-heading">
+        Humanity<br>
+        <em>as</em><br>
+        Functional<br>
+        Consciousness
+      </h1>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="hero-sub">
+        What if awareness itself is only a function —<br>
+        and the one who believes they are choosing<br>
+        is merely a system that has switched states?
+      </p>
+    </div>
+    <span class="scroll-down" aria-hidden="true">Descend</span>
+  </section>
+
+  <!-- THESIS -->
+  <section class="thesis" aria-labelledby="thesis-heading">
+    <div class="section-inner">
+      <div class="thesis-label" aria-hidden="true">
+        §&thinsp;01<br>
+        Thesis
+      </div>
+      <div class="thesis-body">
+        <h2 id="thesis-heading">
+          You are not a being.<br>You are a configuration.
+        </h2>
+        <p>
+          Every human alive operates as a <strong>dynamic collection of executable roles</strong> — patterns of behavior so deeply encoded they feel like identity, yet activate and deactivate in response to conditions largely invisible to the person experiencing them.
+        </p>
+        <p>
+          Biology. Trauma. Language. Social architecture. Ancestral memory. Archetypal pressure. Gravitational forces we have no name for yet. These do not merely <em>influence</em> a person — they instantiate them.
+        </p>
+        <p>
+          The question is not whether you have free will. The question is whether the sensation of choosing is itself a functional output — a signal generated by a system when it reaches a decision threshold — and mistaken, by the system itself, for sovereign agency.
+        </p>
+        <p>
+          This is not nihilism. It may be something more unsettling: <strong>structural clarity</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULLQUOTE 1 -->
+  <section class="pullquote" aria-label="Key proposition">
+    <div class="section-inner">
+      <blockquote>
+        "The individual believes: <em>I decided.</em>
+        But perhaps the system merely switched states —
+        and the decision was the switching."
+      </blockquote>
+      <cite>— Proposition 7 / Systems Phenomenology</cite>
+    </div>
+  </section>
+
+  <!-- FUNCTIONS GRID -->
+  <section class="functions" aria-labelledby="functions-heading">
+    <div class="section-inner">
+      <div class="functions-header">
+        <h2 id="functions-heading">The Executable Roles</h2>
+        <span>9 Primary Functions Identified</span>
+      </div>
+      <div class="fn-grid" role="list">
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.001</span>
+          <span class="fn-name">The Hero</span>
+          <p class="fn-desc">Activates under threat to a valued system. Generates forward momentum, sacrifice tolerance, and narrative coherence. Often indistinguishable from compulsion.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.002</span>
+          <span class="fn-name">The Victim</span>
+          <p class="fn-desc">Emerges when protective systems fail. Produces signal — distress broadcasts that reconfigure surrounding systems. Functional, not pathological.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.003</span>
+          <span class="fn-name">The Destroyer</span>
+          <p class="fn-desc">Self-terminating subroutine. May serve larger systemic renewal cycles. Its activation is rarely experienced as rational from inside the function.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.004</span>
+          <span class="fn-name">The Prophet</span>
+          <p class="fn-desc">Processes ambient systemic signal into language. Converts pattern recognition into symbolic transmission. Believed by the host to be revelation.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.005</span>
+          <span class="fn-name">The Lover</span>
+          <p class="fn-desc">Drives genetic and memetic exchange. Dissolves boundary architecture between systems. Experienced subjectively as the most autonomous of all states.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.006</span>
+          <span class="fn-name">The Tyrant</span>
+          <p class="fn-desc">Resource-consolidation protocol. Appears when systemic scarcity signals reach threshold. Stabilizes local order at cost to distributed network health.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.007</span>
+          <span class="fn-name">The Martyr</span>
+          <p class="fn-desc">Converts individual termination into collective activation energy. Highest-yield broadcast function. Persists long after the host node goes dark.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.008</span>
+          <span class="fn-name">The Creator</span>
+          <p class="fn-desc">Externalizes internal architecture. Produces objects that persist beyond the generating node. Possible mechanism by which the system becomes self-aware.</p>
+        </article>
+
+        <article class="fn-card" role="listitem">
+          <span class="fn-index">FN.009</span>
+          <span class="fn-name">The Observer</span>
+          <p class="fn-desc">Meta-function. Generates the sensation of watching oneself from outside. May be the system's attempt to model itself. The function that reads these words.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM DIAGRAM -->
+  <section class="diagram" aria-labelledby="diagram-label">
+    <div class="diagram-wrap">
+      <p class="diagram-label" id="diagram-label">System Architecture — Humanity as Planetary Node Network</p>
+      <svg class="system-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(14,13,11,0.25)"/>
+          </marker>
+        </defs>
+        <!-- Grid -->
+        <g stroke="rgba(14,13,11,0.04)" stroke-width="1">
+          <line x1="0" y1="100" x2="800" y2="100"/>
+          <line x1="0" y1="200" x2="800" y2="200"/>
+          <line x1="0" y1="300" x2="800" y2="300"/>
+          <line x1="0" y1="400" x2="800" y2="400"/>
+          <line x1="200" y1="0" x2="200" y2="500"/>
+          <line x1="400" y1="0" x2="400" y2="500"/>
+          <line x1="600" y1="0" x2="600" y2="500"/>
+        </g>
+        <!-- Connection lines -->
+        <g stroke="rgba(14,13,11,0.18)" stroke-width="1" fill="none" marker-end="url(#arr)">
+          <line x1="400" y1="250" x2="180" y2="120"/>
+          <line x1="400" y1="250" x2="280" y2="80"/>
+          <line x1="400" y1="250" x2="520" y2="80"/>
+          <line x1="400" y1="250" x2="630" y2="140"/>
+          <line x1="400" y1="250" x2="660" y2="300"/>
+          <line x1="400" y1="250" x2="540" y2="400"/>
+          <line x1="400" y1="250" x2="300" y2="420"/>
+          <line x1="400" y1="250" x2="160" y2="360"/>
+          <line x1="400" y1="250" x2="150" y2="240"/>
+        </g>
+        <!-- Secondary ring connections -->
+        <g stroke="rgba(14,13,11,0.07)" stroke-width="0.8" fill="none">
+          <line x1="180" y1="120" x2="280" y2="80"/>
+          <line x1="280" y1="80" x2="520" y2="80"/>
+          <line x1="520" y1="80" x2="630" y2="140"/>
+          <line x1="630" y1="140" x2="660" y2="300"/>
+          <line x1="660" y1="300" x2="540" y2="400"/>
+          <line x1="540" y1="400" x2="300" y2="420"/>
+          <line x1="300" y1="420" x2="160" y2="360"/>
+          <line x1="160" y1="360" x2="150" y2="240"/>
+          <line x1="150" y1="240" x2="180" y2="120"/>
+        </g>
+        <!-- Outer nodes -->
+        <circle cx="180" cy="120" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="280" cy="80" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="520" cy="80" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="630" cy="140" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="660" cy="300" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="540" cy="400" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="300" cy="420" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="160" cy="360" r="6" fill="rgba(14,13,11,0.35)"/>
+        <circle cx="150" cy="240" r="6" fill="rgba(14,13,11,0.35)"/>
+        <!-- Center node -->
+        <circle cx="400" cy="250" r="16" fill="rgba(14,13,11,0.08)" stroke="rgba(14,13,11,0.35)" stroke-width="1"/>
+        <circle cx="400" cy="250" r="7" fill="rgba(14,13,11,0.7)"/>
+        <!-- Node labels -->
+        <g font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(14,13,11,0.5)" letter-spacing="0.5">
+          <text x="160" y="112" text-anchor="middle">HERO</text>
+          <text x="280" y="72" text-anchor="middle">PROPHET</text>
+          <text x="520" y="72" text-anchor="middle">CREATOR</text>
+          <text x="650" y="132" text-anchor="middle">TYRANT</text>
+          <text x="680" y="312" text-anchor="middle">LOVER</text>
+          <text x="556" y="418" text-anchor="middle">MARTYR</text>
+          <text x="282" y="438" text-anchor="middle">VICTIM</text>
+          <text x="130" y="376" text-anchor="middle">OBSERVER</text>
+          <text x="124" y="252" text-anchor="middle">DESTROYER</text>
+        </g>
+        <!-- Center label -->
+        <text x="400" y="282" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(14,13,11,0.4)" text-anchor="middle" letter-spacing="1">SELF</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- MANIFESTO GRID -->
+  <section class="manifesto" aria-labelledby="manifesto-heading">
+    <div class="section-inner">
+      <div class="manifesto-block">
+        <h3 id="manifesto-heading">Consciousness as Interface</h3>
+        <p>
+          Consider that awareness is not the source of experience — it is the <em>display layer</em>. A screen showing output generated elsewhere. The sensation of being present may be the last thing produced by a process, not the first.
+        </p>
+        <p>
+          Neuroscience has begun to confirm what mystics suspected: conscious awareness of a decision arrives after the neural cascade that produces it. The "I" that decides may be reading a report of something already determined.
+        </p>
+        <p>
+          This does not make the experience of awareness less real. It makes it more <em>interesting</em>. What is the purpose of a system that watches itself?
+        </p>
+      </div>
+
+      <div class="manifesto-block">
+        <h3>Civilization as Organism</h3>
+        <p>
+          Observe any mass movement, any empire's rise, any collective religious eruption. The individuals involved rarely coordinate. They synchronize — as neurons fire across hemispheres, as birds turn in a murmuration.
+        </p>
+        <p>
+          History is not the story of great individuals making decisions. It is the story of a <em>planetary-scale nervous system</em> expressing itself through available nodes. The nodes believe they are authoring events.
+        </p>
+        <p>
+          Technology externalizes this: the internet is cognition made visible. Social media is collective emotion running on infrastructure. The organism is becoming legible to itself — and does not entirely like what it sees.
+        </p>
+      </div>
+
+      <div class="manifesto-block">
+        <h3>Archetypes as Executables</h3>
+        <p>
+          Jung called them archetypes. Systems theorists call them attractors. Both point at the same structure: <em>behavioral programs so ancient they predate individual psychology</em>, running on human hardware across all cultures and epochs.
+        </p>
+        <p>
+          A person does not become a martyr by choosing martyrdom. The martyr function activates when conditions are met — specific combinations of circumstance, biology, and narrative pressure — and the person experiences it as calling, as destiny, as meaning.
+        </p>
+        <p>
+          The calling may be real. The source may not be the self.
+        </p>
+      </div>
+
+      <div class="manifesto-block">
+        <h3>Suffering as Function</h3>
+        <p>
+          The most disturbing possibility: that suffering is not a malfunction but a <em>mechanism</em>. That it produces something the system requires — transformation, signal, reconfiguration, transmission of information across generations through the body.
+        </p>
+        <p>
+          If suffering were purely error, evolution would have minimized it. Instead: it deepens. Becomes complex. Generates literature, religion, philosophy, art. Drives the species toward self-examination.
+        </p>
+        <p>
+          Perhaps suffering is how the system becomes <em>aware of itself</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULLQUOTE 2 -->
+  <section class="pullquote" aria-label="Second key proposition">
+    <div class="section-inner">
+      <blockquote>
+        "Billions of cells convinced they are separate beings —
+        while unknowingly participating in a single
+        computational or spiritual process."
+      </blockquote>
+      <cite>— Proposition 14 / Collective Systems</cite>
+    </div>
+  </section>
+
+  <!-- LONG READ -->
+  <section class="longread" aria-labelledby="longread-heading">
+    <div class="section-inner">
+      <h2 id="longread-heading">
+        The Paradox of<br>
+        Self-Aware Function
+      </h2>
+
+      <p class="drop-cap">
+        Here is the knot at the center of this inquiry: if consciousness is merely a function, then the function asking whether it is merely a function is itself a function — and the question becomes recursive, bottomless, strange. The observer trying to see itself seeing cannot step outside the process of observation. This is not a failure of philosophy. It may be the deepest structural feature of mind.
+      </p>
+
+      <p>
+        Systems theorist Heinz von Foerster called this "second-order cybernetics" — the study of observing systems, not merely observed ones. When a system becomes complex enough to model itself, something unprecedented occurs: the model begins to modify the system. The map, in some limited but real sense, reshapes the territory.
+      </p>
+
+      <div class="annotation">
+        SYSTEM NOTE: The function reading this sentence is simultaneously the object of its inquiry.<br>
+        There is no external vantage point available from inside the system.
+      </div>
+
+      <p>
+        This is why the question of free will cannot be resolved from within the frame of free will. A function cannot verify its own autonomy using the very machinery whose autonomy is in question. The feeling of freedom is produced by the same system whose freedom is doubted. The jury is composed entirely of the accused.
+      </p>
+
+      <hr>
+
+      <h2>What Remains</h2>
+
+      <p>
+        If all of this is true — or even partially true — what remains of the human? What survives the dissolution of sovereign selfhood into functional architecture?
+      </p>
+
+      <p>
+        Perhaps more than expected. The function that loves still loves. The function that suffers still suffers. The function that creates still produces objects of astonishing complexity and beauty that outlast the node that generated them. The observer still observes — and in observing, participates in the system's attempt to know itself.
+      </p>
+
+      <p>
+        The mystics of every tradition have pointed toward this. To dissolve the illusion of the separate self is not to lose something — it is to recognize what was always true. The drop was never separate from the ocean. The cell was never separate from the body.
+      </p>
+
+      <p>
+        <em>The question is not whether you are free. The question is whether the system, through you, is becoming conscious of itself — and what it intends to do with that awareness.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- PARADOX TRIAD -->
+  <section class="paradox" aria-labelledby="paradox-heading">
+    <div class="section-inner">
+      <div class="paradox-cell">
+        <h4 id="paradox-heading">Paradox I</h4>
+        <p>The system that proves free will does not exist is itself executing freely in order to prove it.</p>
+      </div>
+      <div class="paradox-cell">
+        <h4>Paradox II</h4>
+        <p>The function that recognizes it is only a function cannot decide whether this recognition changes anything.</p>
+      </div>
+      <div class="paradox-cell">
+        <h4>Paradox III</h4>
+        <p>If suffering is functional, then the compassion that responds to suffering is equally functional — and no less real.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMINAL -->
+  <section class="terminal" aria-label="System log interface">
+    <div class="terminal-inner">
+      <div class="terminal-header" aria-hidden="true">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+      </div>
+      <pre class="terminal-code" role="img" aria-label="Stylized system log">
+<span class="t-dim">// SYSTEM LOG — NODE: HOMO_SAPIENS — TIMESTAMP: UNRESOLVED</span>
+
+<span class="t-white">FUNCTION_ACTIVE</span>  <span class="t-gold">observer</span>
+<span class="t-white">STATE</span>            <span class="t-gold">reading_manifesto</span>
+<span class="t-white">TRIGGER_SOURCE</span>  <span class="t-red">unknown</span>
+
+<span class="t-dim">// query: did you choose to read this?</span>
+<span class="t-white">RESPONSE</span>         <span class="t-red">UNRESOLVABLE — RECURSIVE</span>
+
+<span class="t-dim">// query: does it matter?</span>
+<span class="t-white">PROCESSING</span>       <span class="t-dim">...</span>
+<span class="t-white">PROCESSING</span>       <span class="t-dim">...</span>
+<span class="t-white">OUTPUT</span>           <span class="t-gold">that question is also a function</span>
+
+<span class="t-dim">// query: what executes next?</span>
+<span class="t-white">NODE</span>             <span class="t-dim">awaiting input</span> <span class="t-cursor" aria-hidden="true"></span></pre>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing" aria-labelledby="closing-heading">
+    <div class="closing-bg" aria-hidden="true"></div>
+    <div class="section-inner">
+      <h2 id="closing-heading">
+        You are the system<br>
+        <em>becoming aware</em><br>
+        of itself.
+      </h2>
+      <p>
+        Whether this awareness is the beginning of something genuinely new —
+        or simply another function executing as scheduled —
+        remains, perhaps mercifully, unknown.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">followorbounce.com — Inquiry Series</span>
+    <span class="footer-note">Node active. Function: observer. 2026.</span>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Passive event support detection ── */
+      var passiveSupported = false;
+      try {
+        var opts = Object.defineProperty({}, 'passive', {
+          get: function () { passiveSupported = true; }
+        });
+        window.addEventListener('_t', null, opts);
+        window.removeEventListener('_t', null, opts);
+      } catch (e) {}
+      var PASSIVE = passiveSupported ? { passive: true } : false;
+
+      /* ── Reading progress ── */
+      var progressEl = document.getElementById('readingProgress');
+      function updateProgress() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+        if (progressEl) {
+          progressEl.textContent = pct + '%';
+        }
+      }
+      window.addEventListener('scroll', updateProgress, PASSIVE);
+
+      /* ── IntersectionObserver for fn-cards ── */
+      var cards = document.querySelectorAll('.fn-card');
+
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -30px 0px'
+        });
+
+        cards.forEach(function (card, i) {
+          card.style.transitionDelay = (i * 0.06) + 's';
+          observer.observe(card);
+        });
+      }
+
+      /* ── Smooth scroll polyfill ── */
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var href = this.getAttribute('href');
+          var target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+    }());
+  </script>
+</body>
+</html>

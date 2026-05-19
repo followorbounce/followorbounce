@@ -173,6 +173,15 @@
  # featured: "true"
   year: "2026"
 
+- title: "We Are Not Separate"
+  category: "web"
+  tags: ["Philosophy", "Collective Consciousness", "Unity"]
+  description: "An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity."
+  cover: "/assets/images/portfolio/its-us.svg"
+  url: "/p/its-us"
+  featured: "true"
+  year: "2026"
+
 - title: "Ani Vaho Hoshia Na"
   category: "web"
   tags: ["Hebrew", "Typography", "Liturgical"]
@@ -191,11 +200,12 @@
   featured: "true"
   year: "5786"
 
-- title: "We Are Not Separate"
-  category: "web"
-  tags: ["Philosophy", "Collective Consciousness", "Unity"]
-  description: "An immersive philosophical editorial exploring the dissolution of the isolated self into collective consciousness and divine unity."
-  cover: "/assets/images/portfolio/its-us.svg"
-  url: "/p/its-us"
-  featured: "true"
+- title: "Humanity as Functional Consciousness"
+  category: "identity"
+  tags: ["Philosophy", "Consciousness", "Existentialism"]
+  description: "A philosophical manifesto exploring the possibility that human consciousness is not true autonomy, but merely a functional interface inside a larger system."
+  cover: "/assets/images/portfolio/humanity-as-functional-consciousness.svg"
+  url: "/p/humanity-as-functional-consciousness"
+ # featured: "true"
   year: "2026"
+
